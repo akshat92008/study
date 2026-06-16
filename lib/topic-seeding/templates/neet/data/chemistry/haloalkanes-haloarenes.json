@@ -2,536 +2,395 @@
   "missions": [
     {
       "id": "m-haloalkanes-haloarenes-1",
-      "title": "Organic Compounds Containing Halogens - Section 1",
-      "description": "Comprehensive analysis covering haloalkane/haloarene classification, C-X bond nature, preparation and more.",
+      "title": "Mastery Module 1: Classification of haloalkanes and haloarenes and Related Concepts",
+      "description": "Comprehensive analysis covering classification of haloalkanes and haloarenes, nature of C-X bond, preparation of haloalkanes from alcohols and advanced applications.",
       "conceptTags": [
         "haloalkanes-haloarenes",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-haloalkanes-haloarenes-haloalkane-haloarene-classification",
-          "title": "Haloalkane/haloarene classification",
+          "id": "mt-haloalkanes-haloarenes-classification-of-haloalkanes-and-haloarenes-0",
+          "title": "Classification of haloalkanes and haloarenes",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "haloalkane-haloarene-classification"
+            "classification-of-haloalkanes-and-haloarenes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Haloalkane/haloarene classification"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Classification of haloalkanes and haloarenes"
           ],
           "mustKnowFacts": [
-            "Haloalkane/haloarene classification is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Haloalkane/haloarene classification for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for haloalkane/haloarene classification",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Classification of haloalkanes and haloarenes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Classification of haloalkanes and haloarenes correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving haloalkane/haloarene classification",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical classification of haloalkanes and haloarenes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Haloalkane/haloarene classification during complex MCQs.",
-            "Failing to apply the correct logic for Haloalkane/haloarene classification."
+            "Misinterpreting the subtle edge cases of Classification of haloalkanes and haloarenes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Classification of haloalkanes and haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Haloalkane/haloarene classification."
+            "Can accurately solve numericals or identify biological structures related specifically to Classification of haloalkanes and haloarenes.",
+            "Successfully avoids common pitfalls when Classification of haloalkanes and haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Haloalkane/haloarene classification."
+            "Past year questions frequently test the application of Classification of haloalkanes and haloarenes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-haloalkane-haloarene-classification-1",
-              "question": "Explain the core concept behind Haloalkane/haloarene classification.",
+              "id": "haloalkanes-haloarenes-q-classification-of-haloalkanes-and-haloarenes-1",
+              "question": "What are the critical factors or principles governing Classification of haloalkanes and haloarenes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "haloalkane-haloarene-classification"
+                "haloalkanes-haloarenes",
+                "classification-of-haloalkanes-and-haloarenes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "haloalkane-haloarene-classification",
-                "conceptSlug": "core-haloalkane-haloarene-classification",
-                "microskillSlug": "understand-haloalkane-haloarene-classification",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "classification-of-haloalkanes-and-haloarenes",
+                "conceptSlug": "core-classification-of-haloalkanes-and-haloarenes",
+                "microskillSlug": "understand-classification-of-haloalkanes-and-haloarenes"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-haloalkane-haloarene-classification-2",
-              "question": "What is a common trap associated with Haloalkane/haloarene classification?",
+              "id": "haloalkanes-haloarenes-q-classification-of-haloalkanes-and-haloarenes-2",
+              "question": "Describe a scenario where applying the concept of Classification of haloalkanes and haloarenes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "haloalkane-haloarene-classification",
+                "haloalkanes-haloarenes",
+                "classification-of-haloalkanes-and-haloarenes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "haloalkane-haloarene-classification",
-                "conceptSlug": "trap-haloalkane-haloarene-classification",
-                "microskillSlug": "avoid-haloalkane-haloarene-classification",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "classification-of-haloalkanes-and-haloarenes",
+                "conceptSlug": "trap-classification-of-haloalkanes-and-haloarenes",
+                "microskillSlug": "avoid-classification-of-haloalkanes-and-haloarenes"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-c-x-bond-nature",
-          "title": "C-X bond nature",
+          "id": "mt-haloalkanes-haloarenes-nature-of-c-x-bond-1",
+          "title": "Nature of C-X bond",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "c-x-bond-nature"
+            "nature-of-c-x-bond"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, C-X bond nature"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Nature of C-X bond"
           ],
           "mustKnowFacts": [
-            "C-X bond nature is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing C-X bond nature for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for C-X bond nature",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving C-X bond nature",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Nature of C-X bond is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nature of C-X bond correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "commonTraps": [
-            "Students often misinterpret C-X bond nature during complex MCQs.",
-            "Failing to apply the correct logic for C-X bond nature."
+            "Misinterpreting the subtle edge cases of Nature of C-X bond during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nature of C-X bond."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to C-X bond nature."
+            "Can accurately solve numericals or identify biological structures related specifically to Nature of C-X bond.",
+            "Successfully avoids common pitfalls when Nature of C-X bond is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about C-X bond nature."
+            "Past year questions frequently test the application of Nature of C-X bond in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-c-x-bond-nature-1",
-              "question": "Explain the core concept behind C-X bond nature.",
+              "id": "haloalkanes-haloarenes-q-nature-of-c-x-bond-1",
+              "question": "What are the critical factors or principles governing Nature of C-X bond?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "c-x-bond-nature"
+                "haloalkanes-haloarenes",
+                "nature-of-c-x-bond"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "c-x-bond-nature",
-                "conceptSlug": "core-c-x-bond-nature",
-                "microskillSlug": "understand-c-x-bond-nature",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "nature-of-c-x-bond",
+                "conceptSlug": "core-nature-of-c-x-bond",
+                "microskillSlug": "understand-nature-of-c-x-bond"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-c-x-bond-nature-2",
-              "question": "What is a common trap associated with C-X bond nature?",
+              "id": "haloalkanes-haloarenes-q-nature-of-c-x-bond-2",
+              "question": "Describe a scenario where applying the concept of Nature of C-X bond can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "c-x-bond-nature",
+                "haloalkanes-haloarenes",
+                "nature-of-c-x-bond",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "c-x-bond-nature",
-                "conceptSlug": "trap-c-x-bond-nature",
-                "microskillSlug": "avoid-c-x-bond-nature",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "nature-of-c-x-bond",
+                "conceptSlug": "trap-nature-of-c-x-bond",
+                "microskillSlug": "avoid-nature-of-c-x-bond"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-preparation",
-          "title": "Preparation",
+          "id": "mt-haloalkanes-haloarenes-preparation-of-haloalkanes-from-alcohols-2",
+          "title": "Preparation of haloalkanes from alcohols",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "preparation"
+            "preparation-of-haloalkanes-from-alcohols"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Preparation"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Preparation of haloalkanes from alcohols"
           ],
           "mustKnowFacts": [
-            "Preparation is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Preparation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for preparation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Preparation of haloalkanes from alcohols is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of haloalkanes from alcohols correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving preparation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical preparation of haloalkanes from alcohols Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Preparation during complex MCQs.",
-            "Failing to apply the correct logic for Preparation."
+            "Misinterpreting the subtle edge cases of Preparation of haloalkanes from alcohols during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of haloalkanes from alcohols."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Preparation."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloalkanes from alcohols.",
+            "Successfully avoids common pitfalls when Preparation of haloalkanes from alcohols is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Preparation."
+            "Past year questions frequently test the application of Preparation of haloalkanes from alcohols in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-preparation-1",
-              "question": "Explain the core concept behind Preparation.",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloalkanes-from-alcohols-1",
+              "question": "What are the critical factors or principles governing Preparation of haloalkanes from alcohols?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "preparation"
+                "haloalkanes-haloarenes",
+                "preparation-of-haloalkanes-from-alcohols"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "preparation",
-                "conceptSlug": "core-preparation",
-                "microskillSlug": "understand-preparation",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "preparation-of-haloalkanes-from-alcohols",
+                "conceptSlug": "core-preparation-of-haloalkanes-from-alcohols",
+                "microskillSlug": "understand-preparation-of-haloalkanes-from-alcohols"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-preparation-2",
-              "question": "What is a common trap associated with Preparation?",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloalkanes-from-alcohols-2",
+              "question": "Describe a scenario where applying the concept of Preparation of haloalkanes from alcohols can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "preparation",
+                "haloalkanes-haloarenes",
+                "preparation-of-haloalkanes-from-alcohols",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "preparation",
-                "conceptSlug": "trap-preparation",
-                "microskillSlug": "avoid-preparation",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "preparation-of-haloalkanes-from-alcohols",
+                "conceptSlug": "trap-preparation-of-haloalkanes-from-alcohols",
+                "microskillSlug": "avoid-preparation-of-haloalkanes-from-alcohols"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-physical-properties",
-          "title": "Physical properties",
+          "id": "mt-haloalkanes-haloarenes-preparation-of-haloalkanes-from-hydrocarbons-3",
+          "title": "Preparation of haloalkanes from hydrocarbons",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "physical-properties"
+            "preparation-of-haloalkanes-from-hydrocarbons"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Physical properties"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Preparation of haloalkanes from hydrocarbons"
           ],
           "mustKnowFacts": [
-            "Physical properties is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Physical properties for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for physical properties",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Preparation of haloalkanes from hydrocarbons is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of haloalkanes from hydrocarbons correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving physical properties",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical preparation of haloalkanes from hydrocarbons Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Physical properties during complex MCQs.",
-            "Failing to apply the correct logic for Physical properties."
+            "Misinterpreting the subtle edge cases of Preparation of haloalkanes from hydrocarbons during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of haloalkanes from hydrocarbons."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Physical properties."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloalkanes from hydrocarbons.",
+            "Successfully avoids common pitfalls when Preparation of haloalkanes from hydrocarbons is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Physical properties."
+            "Past year questions frequently test the application of Preparation of haloalkanes from hydrocarbons in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-physical-properties-1",
-              "question": "Explain the core concept behind Physical properties.",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloalkanes-from-hydrocarbons-1",
+              "question": "What are the critical factors or principles governing Preparation of haloalkanes from hydrocarbons?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "physical-properties"
+                "haloalkanes-haloarenes",
+                "preparation-of-haloalkanes-from-hydrocarbons"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "physical-properties",
-                "conceptSlug": "core-physical-properties",
-                "microskillSlug": "understand-physical-properties",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "preparation-of-haloalkanes-from-hydrocarbons",
+                "conceptSlug": "core-preparation-of-haloalkanes-from-hydrocarbons",
+                "microskillSlug": "understand-preparation-of-haloalkanes-from-hydrocarbons"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-physical-properties-2",
-              "question": "What is a common trap associated with Physical properties?",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloalkanes-from-hydrocarbons-2",
+              "question": "Describe a scenario where applying the concept of Preparation of haloalkanes from hydrocarbons can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "physical-properties",
+                "haloalkanes-haloarenes",
+                "preparation-of-haloalkanes-from-hydrocarbons",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "physical-properties",
-                "conceptSlug": "trap-physical-properties",
-                "microskillSlug": "avoid-physical-properties",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-haloalkanes-haloarenes-sn1",
-          "title": "SN1",
-          "conceptTags": [
-            "haloalkanes-haloarenes",
-            "sn1"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, SN1"
-          ],
-          "mustKnowFacts": [
-            "SN1 is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing SN1 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for SN1",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving SN1",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret SN1 during complex MCQs.",
-            "Failing to apply the correct logic for SN1."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to SN1."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about SN1."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "haloalkanes-haloarenes-q-sn1-1",
-              "question": "Explain the core concept behind SN1.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "sn1"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "haloalkanes-haloarenes",
                 "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "sn1",
-                "conceptSlug": "core-sn1",
-                "microskillSlug": "understand-sn1",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            },
-            {
-              "id": "haloalkanes-haloarenes-q-sn1-2",
-              "question": "What is a common trap associated with SN1?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "sn1",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "sn1",
-                "conceptSlug": "trap-sn1",
-                "microskillSlug": "avoid-sn1",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "subtopicSlug": "preparation-of-haloalkanes-from-hydrocarbons",
+                "conceptSlug": "trap-preparation-of-haloalkanes-from-hydrocarbons",
+                "microskillSlug": "avoid-preparation-of-haloalkanes-from-hydrocarbons"
               }
             }
           ]
@@ -540,536 +399,415 @@
     },
     {
       "id": "m-haloalkanes-haloarenes-2",
-      "title": "Organic Compounds Containing Halogens - Section 2",
-      "description": "Comprehensive analysis covering SN2, stereochemical outcome, reactivity order and more.",
+      "title": "Mastery Module 2: Preparation of haloarenes and Related Concepts",
+      "description": "Comprehensive analysis covering preparation of haloarenes, physical properties of haloalkanes, SN1 mechanism and advanced applications.",
       "conceptTags": [
         "haloalkanes-haloarenes",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-haloalkanes-haloarenes-sn2",
-          "title": "SN2",
+          "id": "mt-haloalkanes-haloarenes-preparation-of-haloarenes-4",
+          "title": "Preparation of haloarenes",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "sn2"
+            "preparation-of-haloarenes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, SN2"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Preparation of haloarenes"
           ],
           "mustKnowFacts": [
-            "SN2 is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing SN2 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for SN2",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Preparation of haloarenes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of haloarenes correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving SN2",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical preparation of haloarenes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret SN2 during complex MCQs.",
-            "Failing to apply the correct logic for SN2."
+            "Misinterpreting the subtle edge cases of Preparation of haloarenes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to SN2."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of haloarenes.",
+            "Successfully avoids common pitfalls when Preparation of haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about SN2."
+            "Past year questions frequently test the application of Preparation of haloarenes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-sn2-1",
-              "question": "Explain the core concept behind SN2.",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloarenes-1",
+              "question": "What are the critical factors or principles governing Preparation of haloarenes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "sn2"
+                "haloalkanes-haloarenes",
+                "preparation-of-haloarenes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "sn2",
-                "conceptSlug": "core-sn2",
-                "microskillSlug": "understand-sn2",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "preparation-of-haloarenes",
+                "conceptSlug": "core-preparation-of-haloarenes",
+                "microskillSlug": "understand-preparation-of-haloarenes"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-sn2-2",
-              "question": "What is a common trap associated with SN2?",
+              "id": "haloalkanes-haloarenes-q-preparation-of-haloarenes-2",
+              "question": "Describe a scenario where applying the concept of Preparation of haloarenes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "sn2",
+                "haloalkanes-haloarenes",
+                "preparation-of-haloarenes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "sn2",
-                "conceptSlug": "trap-sn2",
-                "microskillSlug": "avoid-sn2",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "preparation-of-haloarenes",
+                "conceptSlug": "trap-preparation-of-haloarenes",
+                "microskillSlug": "avoid-preparation-of-haloarenes"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-stereochemical-outcome",
-          "title": "Stereochemical outcome",
+          "id": "mt-haloalkanes-haloarenes-physical-properties-of-haloalkanes-5",
+          "title": "Physical properties of haloalkanes",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "stereochemical-outcome"
+            "physical-properties-of-haloalkanes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Stereochemical outcome"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Physical properties of haloalkanes"
           ],
           "mustKnowFacts": [
-            "Stereochemical outcome is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Stereochemical outcome for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for stereochemical outcome",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Physical properties of haloalkanes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Physical properties of haloalkanes correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving stereochemical outcome",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical physical properties of haloalkanes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Stereochemical outcome during complex MCQs.",
-            "Failing to apply the correct logic for Stereochemical outcome."
+            "Misinterpreting the subtle edge cases of Physical properties of haloalkanes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Physical properties of haloalkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Stereochemical outcome."
+            "Can accurately solve numericals or identify biological structures related specifically to Physical properties of haloalkanes.",
+            "Successfully avoids common pitfalls when Physical properties of haloalkanes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Stereochemical outcome."
+            "Past year questions frequently test the application of Physical properties of haloalkanes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-stereochemical-outcome-1",
-              "question": "Explain the core concept behind Stereochemical outcome.",
+              "id": "haloalkanes-haloarenes-q-physical-properties-of-haloalkanes-1",
+              "question": "What are the critical factors or principles governing Physical properties of haloalkanes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "stereochemical-outcome"
+                "haloalkanes-haloarenes",
+                "physical-properties-of-haloalkanes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "stereochemical-outcome",
-                "conceptSlug": "core-stereochemical-outcome",
-                "microskillSlug": "understand-stereochemical-outcome",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "physical-properties-of-haloalkanes",
+                "conceptSlug": "core-physical-properties-of-haloalkanes",
+                "microskillSlug": "understand-physical-properties-of-haloalkanes"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-stereochemical-outcome-2",
-              "question": "What is a common trap associated with Stereochemical outcome?",
+              "id": "haloalkanes-haloarenes-q-physical-properties-of-haloalkanes-2",
+              "question": "Describe a scenario where applying the concept of Physical properties of haloalkanes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "stereochemical-outcome",
+                "haloalkanes-haloarenes",
+                "physical-properties-of-haloalkanes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "stereochemical-outcome",
-                "conceptSlug": "trap-stereochemical-outcome",
-                "microskillSlug": "avoid-stereochemical-outcome",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "physical-properties-of-haloalkanes",
+                "conceptSlug": "trap-physical-properties-of-haloalkanes",
+                "microskillSlug": "avoid-physical-properties-of-haloalkanes"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-reactivity-order",
-          "title": "Reactivity order",
+          "id": "mt-haloalkanes-haloarenes-sn1-mechanism-6",
+          "title": "SN1 mechanism",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "reactivity-order"
+            "sn1-mechanism",
+            "mechanism"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Reactivity order"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing SN1 mechanism"
           ],
           "mustKnowFacts": [
-            "Reactivity order is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Reactivity order for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for reactivity order",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of SN1 mechanism is heavily tested in recent NEET papers.",
+            "Applying the core principles of SN1 mechanism correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving reactivity order",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "SN1 Reaction",
+              "equation": "R-X + Nu^- -> R-Nu + X^-",
               "reagentConditions": [
-                "Heat"
+                "Polar protic solvent"
               ],
               "mechanismTags": [
-                "combustion"
+                "Carbocation intermediate",
+                "Racemisation"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Reactivity order during complex MCQs.",
-            "Failing to apply the correct logic for Reactivity order."
+            "Misinterpreting the subtle edge cases of SN1 mechanism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with SN1 mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Reactivity order."
+            "Can accurately solve numericals or identify biological structures related specifically to SN1 mechanism.",
+            "Successfully avoids common pitfalls when SN1 mechanism is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Reactivity order."
+            "Past year questions frequently test the application of SN1 mechanism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-reactivity-order-1",
-              "question": "Explain the core concept behind Reactivity order.",
+              "id": "haloalkanes-haloarenes-q-sn1-mechanism-1",
+              "question": "What are the critical factors or principles governing SN1 mechanism?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "reactivity-order"
+                "haloalkanes-haloarenes",
+                "sn1-mechanism",
+                "mechanism"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "reactivity-order",
-                "conceptSlug": "core-reactivity-order",
-                "microskillSlug": "understand-reactivity-order",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "sn1-mechanism",
+                "conceptSlug": "core-sn1-mechanism",
+                "microskillSlug": "understand-sn1-mechanism"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-reactivity-order-2",
-              "question": "What is a common trap associated with Reactivity order?",
+              "id": "haloalkanes-haloarenes-q-sn1-mechanism-2",
+              "question": "Describe a scenario where applying the concept of SN1 mechanism can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "reactivity-order",
+                "haloalkanes-haloarenes",
+                "sn1-mechanism",
+                "mechanism",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "reactivity-order",
-                "conceptSlug": "trap-reactivity-order",
-                "microskillSlug": "avoid-reactivity-order",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "sn1-mechanism",
+                "conceptSlug": "trap-sn1-mechanism",
+                "microskillSlug": "avoid-sn1-mechanism"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-elimination",
-          "title": "Elimination",
+          "id": "mt-haloalkanes-haloarenes-sn2-mechanism-7",
+          "title": "SN2 mechanism",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "elimination"
+            "sn2-mechanism",
+            "mechanism"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Elimination"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing SN2 mechanism"
           ],
           "mustKnowFacts": [
-            "Elimination is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Elimination for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for elimination",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of SN2 mechanism is heavily tested in recent NEET papers.",
+            "Applying the core principles of SN2 mechanism correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving elimination",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "SN2 Reaction",
+              "equation": "R-X + Nu^- -> R-Nu + X^-",
               "reagentConditions": [
-                "Heat"
+                "Polar aprotic solvent"
               ],
               "mechanismTags": [
-                "combustion"
+                "Transition state",
+                "Inversion of configuration"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Elimination during complex MCQs.",
-            "Failing to apply the correct logic for Elimination."
+            "Misinterpreting the subtle edge cases of SN2 mechanism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with SN2 mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Elimination."
+            "Can accurately solve numericals or identify biological structures related specifically to SN2 mechanism.",
+            "Successfully avoids common pitfalls when SN2 mechanism is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Elimination."
+            "Past year questions frequently test the application of SN2 mechanism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-elimination-1",
-              "question": "Explain the core concept behind Elimination.",
+              "id": "haloalkanes-haloarenes-q-sn2-mechanism-1",
+              "question": "What are the critical factors or principles governing SN2 mechanism?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "elimination"
+                "haloalkanes-haloarenes",
+                "sn2-mechanism",
+                "mechanism"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "elimination",
-                "conceptSlug": "core-elimination",
-                "microskillSlug": "understand-elimination",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "sn2-mechanism",
+                "conceptSlug": "core-sn2-mechanism",
+                "microskillSlug": "understand-sn2-mechanism"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-elimination-2",
-              "question": "What is a common trap associated with Elimination?",
+              "id": "haloalkanes-haloarenes-q-sn2-mechanism-2",
+              "question": "Describe a scenario where applying the concept of SN2 mechanism can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "elimination",
+                "haloalkanes-haloarenes",
+                "sn2-mechanism",
+                "mechanism",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "elimination",
-                "conceptSlug": "trap-elimination",
-                "microskillSlug": "avoid-elimination",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-haloalkanes-haloarenes-reactions-with-kcn-agcn-kno2-agno2-ammonia",
-          "title": "Reactions with KCN/AgCN/KNO2/AgNO2/ammonia",
-          "conceptTags": [
-            "haloalkanes-haloarenes",
-            "reactions-with-kcn-agcn-kno2-agno2-ammonia"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Reactions with KCN/AgCN/KNO2/AgNO2/ammonia"
-          ],
-          "mustKnowFacts": [
-            "Reactions with KCN/AgCN/KNO2/AgNO2/ammonia is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Reactions with KCN/AgCN/KNO2/AgNO2/ammonia for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for reactions with KCN/AgCN/KNO2/AgNO2/ammonia",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving reactions with KCN/AgCN/KNO2/AgNO2/ammonia",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Reactions with KCN/AgCN/KNO2/AgNO2/ammonia during complex MCQs.",
-            "Failing to apply the correct logic for Reactions with KCN/AgCN/KNO2/AgNO2/ammonia."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Reactions with KCN/AgCN/KNO2/AgNO2/ammonia."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Reactions with KCN/AgCN/KNO2/AgNO2/ammonia."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "haloalkanes-haloarenes-q-reactions-with-kcn-agcn-kno2-agno2-ammonia-1",
-              "question": "Explain the core concept behind Reactions with KCN/AgCN/KNO2/AgNO2/ammonia.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "reactions-with-kcn-agcn-kno2-agno2-ammonia"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "haloalkanes-haloarenes",
                 "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "conceptSlug": "core-reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "microskillSlug": "understand-reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            },
-            {
-              "id": "haloalkanes-haloarenes-q-reactions-with-kcn-agcn-kno2-agno2-ammonia-2",
-              "question": "What is a common trap associated with Reactions with KCN/AgCN/KNO2/AgNO2/ammonia?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "conceptSlug": "trap-reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "microskillSlug": "avoid-reactions-with-kcn-agcn-kno2-agno2-ammonia",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "subtopicSlug": "sn2-mechanism",
+                "conceptSlug": "trap-sn2-mechanism",
+                "microskillSlug": "avoid-sn2-mechanism"
               }
             }
           ]
@@ -1078,536 +816,371 @@
     },
     {
       "id": "m-haloalkanes-haloarenes-3",
-      "title": "Organic Compounds Containing Halogens - Section 3",
-      "description": "Comprehensive analysis covering Wurtz/Fittig/Wurtz-Fittig, haloarene reactions, nucleophilic substitution in haloarenes and more.",
+      "title": "Mastery Module 3: Stereochemical aspects of nucleophilic substitution and Related Concepts",
+      "description": "Comprehensive analysis covering stereochemical aspects of nucleophilic substitution, elimination reactions (Saytzeff rule), reaction with metals (Grignard reagent) and advanced applications.",
       "conceptTags": [
         "haloalkanes-haloarenes",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-haloalkanes-haloarenes-wurtz-fittig-wurtz-fittig",
-          "title": "Wurtz/Fittig/Wurtz-Fittig",
+          "id": "mt-haloalkanes-haloarenes-stereochemical-aspects-of-nucleophilic-substitution-8",
+          "title": "Stereochemical aspects of nucleophilic substitution",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "wurtz-fittig-wurtz-fittig"
+            "stereochemical-aspects-of-nucleophilic-substitution"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Wurtz/Fittig/Wurtz-Fittig"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Stereochemical aspects of nucleophilic substitution"
           ],
           "mustKnowFacts": [
-            "Wurtz/Fittig/Wurtz-Fittig is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Wurtz/Fittig/Wurtz-Fittig for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Wurtz/Fittig/Wurtz-Fittig",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Wurtz/Fittig/Wurtz-Fittig",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Stereochemical aspects of nucleophilic substitution is heavily tested in recent NEET papers.",
+            "Applying the core principles of Stereochemical aspects of nucleophilic substitution correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "commonTraps": [
-            "Students often misinterpret Wurtz/Fittig/Wurtz-Fittig during complex MCQs.",
-            "Failing to apply the correct logic for Wurtz/Fittig/Wurtz-Fittig."
+            "Misinterpreting the subtle edge cases of Stereochemical aspects of nucleophilic substitution during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Stereochemical aspects of nucleophilic substitution."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Wurtz/Fittig/Wurtz-Fittig."
+            "Can accurately solve numericals or identify biological structures related specifically to Stereochemical aspects of nucleophilic substitution.",
+            "Successfully avoids common pitfalls when Stereochemical aspects of nucleophilic substitution is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Wurtz/Fittig/Wurtz-Fittig."
+            "Past year questions frequently test the application of Stereochemical aspects of nucleophilic substitution in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-wurtz-fittig-wurtz-fittig-1",
-              "question": "Explain the core concept behind Wurtz/Fittig/Wurtz-Fittig.",
+              "id": "haloalkanes-haloarenes-q-stereochemical-aspects-of-nucleophilic-substitution-1",
+              "question": "What are the critical factors or principles governing Stereochemical aspects of nucleophilic substitution?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "wurtz-fittig-wurtz-fittig"
+                "haloalkanes-haloarenes",
+                "stereochemical-aspects-of-nucleophilic-substitution"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "wurtz-fittig-wurtz-fittig",
-                "conceptSlug": "core-wurtz-fittig-wurtz-fittig",
-                "microskillSlug": "understand-wurtz-fittig-wurtz-fittig",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "stereochemical-aspects-of-nucleophilic-substitution",
+                "conceptSlug": "core-stereochemical-aspects-of-nucleophilic-substitution",
+                "microskillSlug": "understand-stereochemical-aspects-of-nucleophilic-substitution"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-wurtz-fittig-wurtz-fittig-2",
-              "question": "What is a common trap associated with Wurtz/Fittig/Wurtz-Fittig?",
+              "id": "haloalkanes-haloarenes-q-stereochemical-aspects-of-nucleophilic-substitution-2",
+              "question": "Describe a scenario where applying the concept of Stereochemical aspects of nucleophilic substitution can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "wurtz-fittig-wurtz-fittig",
+                "haloalkanes-haloarenes",
+                "stereochemical-aspects-of-nucleophilic-substitution",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "wurtz-fittig-wurtz-fittig",
-                "conceptSlug": "trap-wurtz-fittig-wurtz-fittig",
-                "microskillSlug": "avoid-wurtz-fittig-wurtz-fittig",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "stereochemical-aspects-of-nucleophilic-substitution",
+                "conceptSlug": "trap-stereochemical-aspects-of-nucleophilic-substitution",
+                "microskillSlug": "avoid-stereochemical-aspects-of-nucleophilic-substitution"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-haloarene-reactions",
-          "title": "Haloarene reactions",
+          "id": "mt-haloalkanes-haloarenes-elimination-reactions-saytzeff-rule-9",
+          "title": "Elimination reactions (Saytzeff rule)",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "haloarene-reactions"
+            "elimination-reactions-saytzeff-rule"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Haloarene reactions"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Elimination reactions (Saytzeff rule)"
           ],
           "mustKnowFacts": [
-            "Haloarene reactions is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Haloarene reactions for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for haloarene reactions",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving haloarene reactions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Elimination reactions (Saytzeff rule) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Elimination reactions (Saytzeff rule) correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "commonTraps": [
-            "Students often misinterpret Haloarene reactions during complex MCQs.",
-            "Failing to apply the correct logic for Haloarene reactions."
+            "Misinterpreting the subtle edge cases of Elimination reactions (Saytzeff rule) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Elimination reactions (Saytzeff rule)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Haloarene reactions."
+            "Can accurately solve numericals or identify biological structures related specifically to Elimination reactions (Saytzeff rule).",
+            "Successfully avoids common pitfalls when Elimination reactions (Saytzeff rule) is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Haloarene reactions."
+            "Past year questions frequently test the application of Elimination reactions (Saytzeff rule) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-haloarene-reactions-1",
-              "question": "Explain the core concept behind Haloarene reactions.",
+              "id": "haloalkanes-haloarenes-q-elimination-reactions-saytzeff-rule-1",
+              "question": "What are the critical factors or principles governing Elimination reactions (Saytzeff rule)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "haloarene-reactions"
+                "haloalkanes-haloarenes",
+                "elimination-reactions-saytzeff-rule"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "haloarene-reactions",
-                "conceptSlug": "core-haloarene-reactions",
-                "microskillSlug": "understand-haloarene-reactions",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "elimination-reactions-saytzeff-rule",
+                "conceptSlug": "core-elimination-reactions-saytzeff-rule",
+                "microskillSlug": "understand-elimination-reactions-saytzeff-rule"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-haloarene-reactions-2",
-              "question": "What is a common trap associated with Haloarene reactions?",
+              "id": "haloalkanes-haloarenes-q-elimination-reactions-saytzeff-rule-2",
+              "question": "Describe a scenario where applying the concept of Elimination reactions (Saytzeff rule) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "haloarene-reactions",
+                "haloalkanes-haloarenes",
+                "elimination-reactions-saytzeff-rule",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "haloarene-reactions",
-                "conceptSlug": "trap-haloarene-reactions",
-                "microskillSlug": "avoid-haloarene-reactions",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "elimination-reactions-saytzeff-rule",
+                "conceptSlug": "trap-elimination-reactions-saytzeff-rule",
+                "microskillSlug": "avoid-elimination-reactions-saytzeff-rule"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-nucleophilic-substitution-in-haloarenes",
+          "id": "mt-haloalkanes-haloarenes-reaction-with-metals-grignard-reagent-10",
+          "title": "Reaction with metals (Grignard reagent)",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "reaction-with-metals-grignard-reagent"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Reaction with metals (Grignard reagent)"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Reaction with metals (Grignard reagent) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Reaction with metals (Grignard reagent) correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Reaction with metals (Grignard reagent) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Reaction with metals (Grignard reagent)."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Reaction with metals (Grignard reagent).",
+            "Successfully avoids common pitfalls when Reaction with metals (Grignard reagent) is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Reaction with metals (Grignard reagent) in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-reaction-with-metals-grignard-reagent-1",
+              "question": "What are the critical factors or principles governing Reaction with metals (Grignard reagent)?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "reaction-with-metals-grignard-reagent"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "reaction-with-metals-grignard-reagent",
+                "conceptSlug": "core-reaction-with-metals-grignard-reagent",
+                "microskillSlug": "understand-reaction-with-metals-grignard-reagent"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-reaction-with-metals-grignard-reagent-2",
+              "question": "Describe a scenario where applying the concept of Reaction with metals (Grignard reagent) can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "reaction-with-metals-grignard-reagent",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "reaction-with-metals-grignard-reagent",
+                "conceptSlug": "trap-reaction-with-metals-grignard-reagent",
+                "microskillSlug": "avoid-reaction-with-metals-grignard-reagent"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-nucleophilic-substitution-in-haloarenes-11",
           "title": "Nucleophilic substitution in haloarenes",
           "conceptTags": [
             "haloalkanes-haloarenes",
             "nucleophilic-substitution-in-haloarenes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Nucleophilic substitution in haloarenes"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Nucleophilic substitution in haloarenes"
           ],
           "mustKnowFacts": [
-            "Nucleophilic substitution in haloarenes is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Nucleophilic substitution in haloarenes for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for nucleophilic substitution in haloarenes",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Nucleophilic substitution in haloarenes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nucleophilic substitution in haloarenes correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving nucleophilic substitution in haloarenes",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical nucleophilic substitution in haloarenes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Nucleophilic substitution in haloarenes during complex MCQs.",
-            "Failing to apply the correct logic for Nucleophilic substitution in haloarenes."
+            "Misinterpreting the subtle edge cases of Nucleophilic substitution in haloarenes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nucleophilic substitution in haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nucleophilic substitution in haloarenes."
+            "Can accurately solve numericals or identify biological structures related specifically to Nucleophilic substitution in haloarenes.",
+            "Successfully avoids common pitfalls when Nucleophilic substitution in haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nucleophilic substitution in haloarenes."
+            "Past year questions frequently test the application of Nucleophilic substitution in haloarenes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "haloalkanes-haloarenes-q-nucleophilic-substitution-in-haloarenes-1",
-              "question": "Explain the core concept behind Nucleophilic substitution in haloarenes.",
+              "question": "What are the critical factors or principles governing Nucleophilic substitution in haloarenes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "haloalkanes-haloarenes",
                 "nucleophilic-substitution-in-haloarenes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
                 "topicSlug": "haloalkanes-haloarenes",
                 "subtopicSlug": "nucleophilic-substitution-in-haloarenes",
                 "conceptSlug": "core-nucleophilic-substitution-in-haloarenes",
-                "microskillSlug": "understand-nucleophilic-substitution-in-haloarenes",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "microskillSlug": "understand-nucleophilic-substitution-in-haloarenes"
               }
             },
             {
               "id": "haloalkanes-haloarenes-q-nucleophilic-substitution-in-haloarenes-2",
-              "question": "What is a common trap associated with Nucleophilic substitution in haloarenes?",
+              "question": "Describe a scenario where applying the concept of Nucleophilic substitution in haloarenes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "haloalkanes-haloarenes",
                 "nucleophilic-substitution-in-haloarenes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
                 "topicSlug": "haloalkanes-haloarenes",
                 "subtopicSlug": "nucleophilic-substitution-in-haloarenes",
                 "conceptSlug": "trap-nucleophilic-substitution-in-haloarenes",
-                "microskillSlug": "avoid-nucleophilic-substitution-in-haloarenes",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-haloalkanes-haloarenes-environmental-effects-of-chloroform",
-          "title": "Environmental effects of chloroform",
-          "conceptTags": [
-            "haloalkanes-haloarenes",
-            "environmental-effects-of-chloroform"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Environmental effects of chloroform"
-          ],
-          "mustKnowFacts": [
-            "Environmental effects of chloroform is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Environmental effects of chloroform for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for environmental effects of chloroform",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving environmental effects of chloroform",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Environmental effects of chloroform during complex MCQs.",
-            "Failing to apply the correct logic for Environmental effects of chloroform."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Environmental effects of chloroform."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Environmental effects of chloroform."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "haloalkanes-haloarenes-q-environmental-effects-of-chloroform-1",
-              "question": "Explain the core concept behind Environmental effects of chloroform.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "environmental-effects-of-chloroform"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "environmental-effects-of-chloroform",
-                "conceptSlug": "core-environmental-effects-of-chloroform",
-                "microskillSlug": "understand-environmental-effects-of-chloroform",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            },
-            {
-              "id": "haloalkanes-haloarenes-q-environmental-effects-of-chloroform-2",
-              "question": "What is a common trap associated with Environmental effects of chloroform?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "environmental-effects-of-chloroform",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "environmental-effects-of-chloroform",
-                "conceptSlug": "trap-environmental-effects-of-chloroform",
-                "microskillSlug": "avoid-environmental-effects-of-chloroform",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-haloalkanes-haloarenes-iodoform",
-          "title": "Iodoform",
-          "conceptTags": [
-            "haloalkanes-haloarenes",
-            "iodoform"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Iodoform"
-          ],
-          "mustKnowFacts": [
-            "Iodoform is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Iodoform for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for iodoform",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving iodoform",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Iodoform during complex MCQs.",
-            "Failing to apply the correct logic for Iodoform."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Iodoform."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Iodoform."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "haloalkanes-haloarenes-q-iodoform-1",
-              "question": "Explain the core concept behind Iodoform.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "iodoform"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "iodoform",
-                "conceptSlug": "core-iodoform",
-                "microskillSlug": "understand-iodoform",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
-              }
-            },
-            {
-              "id": "haloalkanes-haloarenes-q-iodoform-2",
-              "question": "What is a common trap associated with Iodoform?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "iodoform",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "iodoform",
-                "conceptSlug": "trap-iodoform",
-                "microskillSlug": "avoid-iodoform",
-                "subject": "Chemistry",
-                "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "microskillSlug": "avoid-nucleophilic-substitution-in-haloarenes"
               }
             }
           ]
@@ -1616,221 +1189,768 @@
     },
     {
       "id": "m-haloalkanes-haloarenes-4",
-      "title": "Organic Compounds Containing Halogens - Section 4",
-      "description": "Comprehensive analysis covering freons, DDT and more.",
+      "title": "Mastery Module 4: Electrophilic substitution in haloarenes and Related Concepts",
+      "description": "Comprehensive analysis covering electrophilic substitution in haloarenes, polyhalogen compounds uses and environmental effects, dichloromethane and trichloromethane and advanced applications.",
       "conceptTags": [
         "haloalkanes-haloarenes",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-haloalkanes-haloarenes-freons",
-          "title": "Freons",
+          "id": "mt-haloalkanes-haloarenes-electrophilic-substitution-in-haloarenes-12",
+          "title": "Electrophilic substitution in haloarenes",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "freons"
+            "electrophilic-substitution-in-haloarenes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Freons"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Electrophilic substitution in haloarenes"
           ],
           "mustKnowFacts": [
-            "Freons is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing Freons for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for freons",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Electrophilic substitution in haloarenes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrophilic substitution in haloarenes correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving freons",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical electrophilic substitution in haloarenes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Freons during complex MCQs.",
-            "Failing to apply the correct logic for Freons."
+            "Misinterpreting the subtle edge cases of Electrophilic substitution in haloarenes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrophilic substitution in haloarenes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Freons."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrophilic substitution in haloarenes.",
+            "Successfully avoids common pitfalls when Electrophilic substitution in haloarenes is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Freons."
+            "Past year questions frequently test the application of Electrophilic substitution in haloarenes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-freons-1",
-              "question": "Explain the core concept behind Freons.",
+              "id": "haloalkanes-haloarenes-q-electrophilic-substitution-in-haloarenes-1",
+              "question": "What are the critical factors or principles governing Electrophilic substitution in haloarenes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "freons"
+                "haloalkanes-haloarenes",
+                "electrophilic-substitution-in-haloarenes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "freons",
-                "conceptSlug": "core-freons",
-                "microskillSlug": "understand-freons",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "electrophilic-substitution-in-haloarenes",
+                "conceptSlug": "core-electrophilic-substitution-in-haloarenes",
+                "microskillSlug": "understand-electrophilic-substitution-in-haloarenes"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-freons-2",
-              "question": "What is a common trap associated with Freons?",
+              "id": "haloalkanes-haloarenes-q-electrophilic-substitution-in-haloarenes-2",
+              "question": "Describe a scenario where applying the concept of Electrophilic substitution in haloarenes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "freons",
+                "haloalkanes-haloarenes",
+                "electrophilic-substitution-in-haloarenes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "freons",
-                "conceptSlug": "trap-freons",
-                "microskillSlug": "avoid-freons",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "electrophilic-substitution-in-haloarenes",
+                "conceptSlug": "trap-electrophilic-substitution-in-haloarenes",
+                "microskillSlug": "avoid-electrophilic-substitution-in-haloarenes"
               }
             }
           ]
         },
         {
-          "id": "mt-haloalkanes-haloarenes-ddt",
-          "title": "DDT",
+          "id": "mt-haloalkanes-haloarenes-polyhalogen-compounds-uses-and-environmental-effects-13",
+          "title": "Polyhalogen compounds uses and environmental effects",
           "conceptTags": [
             "haloalkanes-haloarenes",
-            "ddt"
+            "polyhalogen-compounds-uses-and-environmental-effects"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, DDT"
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Polyhalogen compounds uses and environmental effects"
           ],
           "mustKnowFacts": [
-            "DDT is a fundamental subtopic of Organic Compounds Containing Halogens.",
-            "Crucial to understand the principles governing DDT for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for DDT",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Polyhalogen compounds uses and environmental effects is heavily tested in recent NEET papers.",
+            "Applying the core principles of Polyhalogen compounds uses and environmental effects correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
           ],
           "reactions": [
             {
-              "name": "Reaction involving DDT",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical polyhalogen compounds uses and environmental effects Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret DDT during complex MCQs.",
-            "Failing to apply the correct logic for DDT."
+            "Misinterpreting the subtle edge cases of Polyhalogen compounds uses and environmental effects during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Polyhalogen compounds uses and environmental effects."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to DDT."
+            "Can accurately solve numericals or identify biological structures related specifically to Polyhalogen compounds uses and environmental effects.",
+            "Successfully avoids common pitfalls when Polyhalogen compounds uses and environmental effects is integrated with other concepts in Organic Compounds Containing Halogens."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about DDT."
+            "Past year questions frequently test the application of Polyhalogen compounds uses and environmental effects in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "haloalkanes-haloarenes-q-ddt-1",
-              "question": "Explain the core concept behind DDT.",
+              "id": "haloalkanes-haloarenes-q-polyhalogen-compounds-uses-and-environmental-effects-1",
+              "question": "What are the critical factors or principles governing Polyhalogen compounds uses and environmental effects?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ddt"
+                "haloalkanes-haloarenes",
+                "polyhalogen-compounds-uses-and-environmental-effects"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "ddt",
-                "conceptSlug": "core-ddt",
-                "microskillSlug": "understand-ddt",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "polyhalogen-compounds-uses-and-environmental-effects",
+                "conceptSlug": "core-polyhalogen-compounds-uses-and-environmental-effects",
+                "microskillSlug": "understand-polyhalogen-compounds-uses-and-environmental-effects"
               }
             },
             {
-              "id": "haloalkanes-haloarenes-q-ddt-2",
-              "question": "What is a common trap associated with DDT?",
+              "id": "haloalkanes-haloarenes-q-polyhalogen-compounds-uses-and-environmental-effects-2",
+              "question": "Describe a scenario where applying the concept of Polyhalogen compounds uses and environmental effects can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ddt",
+                "haloalkanes-haloarenes",
+                "polyhalogen-compounds-uses-and-environmental-effects",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "haloalkanes-haloarenes",
-                "subtopicSlug": "ddt",
-                "conceptSlug": "trap-ddt",
-                "microskillSlug": "avoid-ddt",
                 "subject": "Chemistry",
                 "unitSlug": "haloalkanes-haloarenes",
-                "chapterSlug": "haloalkanes-haloarenes"
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "polyhalogen-compounds-uses-and-environmental-effects",
+                "conceptSlug": "trap-polyhalogen-compounds-uses-and-environmental-effects",
+                "microskillSlug": "avoid-polyhalogen-compounds-uses-and-environmental-effects"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-dichloromethane-and-trichloromethane-14",
+          "title": "Dichloromethane and trichloromethane",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "dichloromethane-and-trichloromethane"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Dichloromethane and trichloromethane"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Dichloromethane and trichloromethane is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dichloromethane and trichloromethane correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Dichloromethane and trichloromethane during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dichloromethane and trichloromethane."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Dichloromethane and trichloromethane.",
+            "Successfully avoids common pitfalls when Dichloromethane and trichloromethane is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Dichloromethane and trichloromethane in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-dichloromethane-and-trichloromethane-1",
+              "question": "What are the critical factors or principles governing Dichloromethane and trichloromethane?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "dichloromethane-and-trichloromethane"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "dichloromethane-and-trichloromethane",
+                "conceptSlug": "core-dichloromethane-and-trichloromethane",
+                "microskillSlug": "understand-dichloromethane-and-trichloromethane"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-dichloromethane-and-trichloromethane-2",
+              "question": "Describe a scenario where applying the concept of Dichloromethane and trichloromethane can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "dichloromethane-and-trichloromethane",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "dichloromethane-and-trichloromethane",
+                "conceptSlug": "trap-dichloromethane-and-trichloromethane",
+                "microskillSlug": "avoid-dichloromethane-and-trichloromethane"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-iodoform-and-freons-15",
+          "title": "Iodoform and freons",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "iodoform-and-freons"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Iodoform and freons"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Iodoform and freons is heavily tested in recent NEET papers.",
+            "Applying the core principles of Iodoform and freons correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Iodoform and freons during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Iodoform and freons."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Iodoform and freons.",
+            "Successfully avoids common pitfalls when Iodoform and freons is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Iodoform and freons in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-iodoform-and-freons-1",
+              "question": "What are the critical factors or principles governing Iodoform and freons?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "iodoform-and-freons"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "iodoform-and-freons",
+                "conceptSlug": "core-iodoform-and-freons",
+                "microskillSlug": "understand-iodoform-and-freons"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-iodoform-and-freons-2",
+              "question": "Describe a scenario where applying the concept of Iodoform and freons can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "iodoform-and-freons",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "iodoform-and-freons",
+                "conceptSlug": "trap-iodoform-and-freons",
+                "microskillSlug": "avoid-iodoform-and-freons"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-haloalkanes-haloarenes-5",
+      "title": "Mastery Module 5: DDT structure and impact and Related Concepts",
+      "description": "Comprehensive analysis covering DDT structure and impact, Swarts and Finkelstein reactions, Organic Compounds Containing Halogens Specific Application 18 and advanced applications.",
+      "conceptTags": [
+        "haloalkanes-haloarenes",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-haloalkanes-haloarenes-ddt-structure-and-impact-16",
+          "title": "DDT structure and impact",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "ddt-structure-and-impact"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing DDT structure and impact"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of DDT structure and impact is heavily tested in recent NEET papers.",
+            "Applying the core principles of DDT structure and impact correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of DDT structure and impact during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with DDT structure and impact."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to DDT structure and impact.",
+            "Successfully avoids common pitfalls when DDT structure and impact is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of DDT structure and impact in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-ddt-structure-and-impact-1",
+              "question": "What are the critical factors or principles governing DDT structure and impact?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "ddt-structure-and-impact"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "ddt-structure-and-impact",
+                "conceptSlug": "core-ddt-structure-and-impact",
+                "microskillSlug": "understand-ddt-structure-and-impact"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-ddt-structure-and-impact-2",
+              "question": "Describe a scenario where applying the concept of DDT structure and impact can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "ddt-structure-and-impact",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "ddt-structure-and-impact",
+                "conceptSlug": "trap-ddt-structure-and-impact",
+                "microskillSlug": "avoid-ddt-structure-and-impact"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-swarts-and-finkelstein-reactions-17",
+          "title": "Swarts and Finkelstein reactions",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "swarts-and-finkelstein-reactions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Swarts and Finkelstein reactions"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Swarts and Finkelstein reactions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Swarts and Finkelstein reactions correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Swarts and Finkelstein reactions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Swarts and Finkelstein reactions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Swarts and Finkelstein reactions.",
+            "Successfully avoids common pitfalls when Swarts and Finkelstein reactions is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Swarts and Finkelstein reactions in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-swarts-and-finkelstein-reactions-1",
+              "question": "What are the critical factors or principles governing Swarts and Finkelstein reactions?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "swarts-and-finkelstein-reactions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "swarts-and-finkelstein-reactions",
+                "conceptSlug": "core-swarts-and-finkelstein-reactions",
+                "microskillSlug": "understand-swarts-and-finkelstein-reactions"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-swarts-and-finkelstein-reactions-2",
+              "question": "Describe a scenario where applying the concept of Swarts and Finkelstein reactions can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "swarts-and-finkelstein-reactions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "swarts-and-finkelstein-reactions",
+                "conceptSlug": "trap-swarts-and-finkelstein-reactions",
+                "microskillSlug": "avoid-swarts-and-finkelstein-reactions"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-organic-compounds-containing-halogens-specific-application-18-18",
+          "title": "Organic Compounds Containing Halogens Specific Application 18",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "organic-compounds-containing-halogens-specific-application-18"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Organic Compounds Containing Halogens Specific Application 18"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Organic Compounds Containing Halogens Specific Application 18 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Organic Compounds Containing Halogens Specific Application 18 correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "reactions": [
+            {
+              "name": "Typical Organic Compounds Containing Halogens Specific Application 18 Reaction",
+              "equation": "Reactant -> Product",
+              "reagentConditions": [
+                "Specific catalyst/temperature"
+              ],
+              "mechanismTags": [
+                "Characteristic mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Organic Compounds Containing Halogens Specific Application 18 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Organic Compounds Containing Halogens Specific Application 18."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Organic Compounds Containing Halogens Specific Application 18.",
+            "Successfully avoids common pitfalls when Organic Compounds Containing Halogens Specific Application 18 is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Organic Compounds Containing Halogens Specific Application 18 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-organic-compounds-containing-halogens-specific-application-18-1",
+              "question": "What are the critical factors or principles governing Organic Compounds Containing Halogens Specific Application 18?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "organic-compounds-containing-halogens-specific-application-18"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "organic-compounds-containing-halogens-specific-application-18",
+                "conceptSlug": "core-organic-compounds-containing-halogens-specific-application-18",
+                "microskillSlug": "understand-organic-compounds-containing-halogens-specific-application-18"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-organic-compounds-containing-halogens-specific-application-18-2",
+              "question": "Describe a scenario where applying the concept of Organic Compounds Containing Halogens Specific Application 18 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "organic-compounds-containing-halogens-specific-application-18",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "organic-compounds-containing-halogens-specific-application-18",
+                "conceptSlug": "trap-organic-compounds-containing-halogens-specific-application-18",
+                "microskillSlug": "avoid-organic-compounds-containing-halogens-specific-application-18"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-haloalkanes-haloarenes-organic-compounds-containing-halogens-specific-application-19-19",
+          "title": "Organic Compounds Containing Halogens Specific Application 19",
+          "conceptTags": [
+            "haloalkanes-haloarenes",
+            "organic-compounds-containing-halogens-specific-application-19"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Organic Compounds Containing Halogens, Section detailing Organic Compounds Containing Halogens Specific Application 19"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Organic Compounds Containing Halogens Specific Application 19 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Organic Compounds Containing Halogens Specific Application 19 correctly is essential for solving complex multi-step problems in Organic Compounds Containing Halogens."
+          ],
+          "reactions": [
+            {
+              "name": "Typical Organic Compounds Containing Halogens Specific Application 19 Reaction",
+              "equation": "Reactant -> Product",
+              "reagentConditions": [
+                "Specific catalyst/temperature"
+              ],
+              "mechanismTags": [
+                "Characteristic mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Organic Compounds Containing Halogens Specific Application 19 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Organic Compounds Containing Halogens Specific Application 19."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Organic Compounds Containing Halogens Specific Application 19.",
+            "Successfully avoids common pitfalls when Organic Compounds Containing Halogens Specific Application 19 is integrated with other concepts in Organic Compounds Containing Halogens."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Organic Compounds Containing Halogens Specific Application 19 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "haloalkanes-haloarenes-q-organic-compounds-containing-halogens-specific-application-19-1",
+              "question": "What are the critical factors or principles governing Organic Compounds Containing Halogens Specific Application 19?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "organic-compounds-containing-halogens-specific-application-19"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "organic-compounds-containing-halogens-specific-application-19",
+                "conceptSlug": "core-organic-compounds-containing-halogens-specific-application-19",
+                "microskillSlug": "understand-organic-compounds-containing-halogens-specific-application-19"
+              }
+            },
+            {
+              "id": "haloalkanes-haloarenes-q-organic-compounds-containing-halogens-specific-application-19-2",
+              "question": "Describe a scenario where applying the concept of Organic Compounds Containing Halogens Specific Application 19 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "haloalkanes-haloarenes",
+                "organic-compounds-containing-halogens-specific-application-19",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "haloalkanes-haloarenes",
+                "chapterSlug": "haloalkanes-haloarenes",
+                "topicSlug": "haloalkanes-haloarenes",
+                "subtopicSlug": "organic-compounds-containing-halogens-specific-application-19",
+                "conceptSlug": "trap-organic-compounds-containing-halogens-specific-application-19",
+                "microskillSlug": "avoid-organic-compounds-containing-halogens-specific-application-19"
               }
             }
           ]

@@ -2,851 +2,359 @@
   "missions": [
     {
       "id": "m-d-and-f-block-elements-1",
-      "title": "d- and f-Block Elements - Section 1",
-      "description": "Comprehensive analysis covering Generic subtopic 0, Generic subtopic 1, Generic subtopic 2 and more.",
+      "title": "Mastery Module 1: Transition elements position in periodic table and Related Concepts",
+      "description": "Comprehensive analysis covering transition elements position in periodic table, electronic configuration of d-block, general properties of transition elements and advanced applications.",
       "conceptTags": [
         "d-and-f-block-elements",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-0",
-          "title": "Generic subtopic 0",
+          "id": "mt-d-and-f-block-elements-transition-elements-position-in-periodic-table-0",
+          "title": "Transition elements position in periodic table",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-0"
+            "transition-elements-position-in-periodic-table"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 0"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Transition elements position in periodic table"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 0 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 0 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 0",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 0",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Transition elements position in periodic table is heavily tested in recent NEET papers.",
+            "Applying the core principles of Transition elements position in periodic table correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 0 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 0."
+            "Misinterpreting the subtle edge cases of Transition elements position in periodic table during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Transition elements position in periodic table."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 0."
+            "Can accurately solve numericals or identify biological structures related specifically to Transition elements position in periodic table.",
+            "Successfully avoids common pitfalls when Transition elements position in periodic table is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 0."
+            "Past year questions frequently test the application of Transition elements position in periodic table in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-0-1",
-              "question": "Explain the core concept behind Generic subtopic 0.",
+              "id": "d-and-f-block-elements-q-transition-elements-position-in-periodic-table-1",
+              "question": "What are the critical factors or principles governing Transition elements position in periodic table?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-0"
+                "d-and-f-block-elements",
+                "transition-elements-position-in-periodic-table"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "core-generic-subtopic-0",
-                "microskillSlug": "understand-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "transition-elements-position-in-periodic-table",
+                "conceptSlug": "core-transition-elements-position-in-periodic-table",
+                "microskillSlug": "understand-transition-elements-position-in-periodic-table"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-0-2",
-              "question": "What is a common trap associated with Generic subtopic 0?",
+              "id": "d-and-f-block-elements-q-transition-elements-position-in-periodic-table-2",
+              "question": "Describe a scenario where applying the concept of Transition elements position in periodic table can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-0",
+                "d-and-f-block-elements",
+                "transition-elements-position-in-periodic-table",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "trap-generic-subtopic-0",
-                "microskillSlug": "avoid-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "transition-elements-position-in-periodic-table",
+                "conceptSlug": "trap-transition-elements-position-in-periodic-table",
+                "microskillSlug": "avoid-transition-elements-position-in-periodic-table"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-1",
-          "title": "Generic subtopic 1",
+          "id": "mt-d-and-f-block-elements-electronic-configuration-of-d-block-1",
+          "title": "Electronic configuration of d-block",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-1"
+            "electronic-configuration-of-d-block"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 1"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Electronic configuration of d-block"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 1 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 1 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 1",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 1",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electronic configuration of d-block is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electronic configuration of d-block correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 1 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 1."
+            "Misinterpreting the subtle edge cases of Electronic configuration of d-block during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electronic configuration of d-block."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 1."
+            "Can accurately solve numericals or identify biological structures related specifically to Electronic configuration of d-block.",
+            "Successfully avoids common pitfalls when Electronic configuration of d-block is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 1."
+            "Past year questions frequently test the application of Electronic configuration of d-block in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-1-1",
-              "question": "Explain the core concept behind Generic subtopic 1.",
+              "id": "d-and-f-block-elements-q-electronic-configuration-of-d-block-1",
+              "question": "What are the critical factors or principles governing Electronic configuration of d-block?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-1"
+                "d-and-f-block-elements",
+                "electronic-configuration-of-d-block"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "core-generic-subtopic-1",
-                "microskillSlug": "understand-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "electronic-configuration-of-d-block",
+                "conceptSlug": "core-electronic-configuration-of-d-block",
+                "microskillSlug": "understand-electronic-configuration-of-d-block"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-1-2",
-              "question": "What is a common trap associated with Generic subtopic 1?",
+              "id": "d-and-f-block-elements-q-electronic-configuration-of-d-block-2",
+              "question": "Describe a scenario where applying the concept of Electronic configuration of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-1",
+                "d-and-f-block-elements",
+                "electronic-configuration-of-d-block",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "trap-generic-subtopic-1",
-                "microskillSlug": "avoid-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "electronic-configuration-of-d-block",
+                "conceptSlug": "trap-electronic-configuration-of-d-block",
+                "microskillSlug": "avoid-electronic-configuration-of-d-block"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-2",
-          "title": "Generic subtopic 2",
+          "id": "mt-d-and-f-block-elements-general-properties-of-transition-elements-2",
+          "title": "General properties of transition elements",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-2"
+            "general-properties-of-transition-elements"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 2"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing General properties of transition elements"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 2 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 2 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 2",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 2",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of General properties of transition elements is heavily tested in recent NEET papers.",
+            "Applying the core principles of General properties of transition elements correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 2 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 2."
+            "Misinterpreting the subtle edge cases of General properties of transition elements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with General properties of transition elements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 2."
+            "Can accurately solve numericals or identify biological structures related specifically to General properties of transition elements.",
+            "Successfully avoids common pitfalls when General properties of transition elements is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 2."
+            "Past year questions frequently test the application of General properties of transition elements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-2-1",
-              "question": "Explain the core concept behind Generic subtopic 2.",
+              "id": "d-and-f-block-elements-q-general-properties-of-transition-elements-1",
+              "question": "What are the critical factors or principles governing General properties of transition elements?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-2"
+                "d-and-f-block-elements",
+                "general-properties-of-transition-elements"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "core-generic-subtopic-2",
-                "microskillSlug": "understand-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "general-properties-of-transition-elements",
+                "conceptSlug": "core-general-properties-of-transition-elements",
+                "microskillSlug": "understand-general-properties-of-transition-elements"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-2-2",
-              "question": "What is a common trap associated with Generic subtopic 2?",
+              "id": "d-and-f-block-elements-q-general-properties-of-transition-elements-2",
+              "question": "Describe a scenario where applying the concept of General properties of transition elements can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-2",
+                "d-and-f-block-elements",
+                "general-properties-of-transition-elements",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "trap-generic-subtopic-2",
-                "microskillSlug": "avoid-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "general-properties-of-transition-elements",
+                "conceptSlug": "trap-general-properties-of-transition-elements",
+                "microskillSlug": "avoid-general-properties-of-transition-elements"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-3",
-          "title": "Generic subtopic 3",
+          "id": "mt-d-and-f-block-elements-atomic-and-ionic-radii-of-d-block-3",
+          "title": "Atomic and ionic radii of d-block",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-3"
+            "atomic-and-ionic-radii-of-d-block"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 3"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Atomic and ionic radii of d-block"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 3 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 3 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 3",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 3",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Atomic and ionic radii of d-block is heavily tested in recent NEET papers.",
+            "Applying the core principles of Atomic and ionic radii of d-block correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 3 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 3."
+            "Misinterpreting the subtle edge cases of Atomic and ionic radii of d-block during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Atomic and ionic radii of d-block."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 3."
+            "Can accurately solve numericals or identify biological structures related specifically to Atomic and ionic radii of d-block.",
+            "Successfully avoids common pitfalls when Atomic and ionic radii of d-block is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 3."
+            "Past year questions frequently test the application of Atomic and ionic radii of d-block in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-3-1",
-              "question": "Explain the core concept behind Generic subtopic 3.",
+              "id": "d-and-f-block-elements-q-atomic-and-ionic-radii-of-d-block-1",
+              "question": "What are the critical factors or principles governing Atomic and ionic radii of d-block?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-3"
+                "d-and-f-block-elements",
+                "atomic-and-ionic-radii-of-d-block"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "core-generic-subtopic-3",
-                "microskillSlug": "understand-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "atomic-and-ionic-radii-of-d-block",
+                "conceptSlug": "core-atomic-and-ionic-radii-of-d-block",
+                "microskillSlug": "understand-atomic-and-ionic-radii-of-d-block"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-3-2",
-              "question": "What is a common trap associated with Generic subtopic 3?",
+              "id": "d-and-f-block-elements-q-atomic-and-ionic-radii-of-d-block-2",
+              "question": "Describe a scenario where applying the concept of Atomic and ionic radii of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-3",
+                "d-and-f-block-elements",
+                "atomic-and-ionic-radii-of-d-block",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "trap-generic-subtopic-3",
-                "microskillSlug": "avoid-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-4",
-          "title": "Generic subtopic 4",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-4"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 4"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 4 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 4 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 4",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 4",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 4 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 4."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 4."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 4."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-4-1",
-              "question": "Explain the core concept behind Generic subtopic 4.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-4"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "d-and-f-block-elements",
                 "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "core-generic-subtopic-4",
-                "microskillSlug": "understand-generic-subtopic-4",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-4-2",
-              "question": "What is a common trap associated with Generic subtopic 4?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-4",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "trap-generic-subtopic-4",
-                "microskillSlug": "avoid-generic-subtopic-4",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-5",
-          "title": "Generic subtopic 5",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-5"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 5"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 5 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 5 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 5",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 5",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 5 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 5."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 5."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 5."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-5-1",
-              "question": "Explain the core concept behind Generic subtopic 5.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "core-generic-subtopic-5",
-                "microskillSlug": "understand-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-5-2",
-              "question": "What is a common trap associated with Generic subtopic 5?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "trap-generic-subtopic-5",
-                "microskillSlug": "avoid-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-6",
-          "title": "Generic subtopic 6",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-6"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 6"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 6 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 6 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 6",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 6",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 6 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 6."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 6."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 6."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-6-1",
-              "question": "Explain the core concept behind Generic subtopic 6.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "core-generic-subtopic-6",
-                "microskillSlug": "understand-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-6-2",
-              "question": "What is a common trap associated with Generic subtopic 6?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "trap-generic-subtopic-6",
-                "microskillSlug": "avoid-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-7",
-          "title": "Generic subtopic 7",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-7"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 7"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 7 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 7 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 7",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 7",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 7 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 7."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 7."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 7."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-7-1",
-              "question": "Explain the core concept behind Generic subtopic 7.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "core-generic-subtopic-7",
-                "microskillSlug": "understand-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-7-2",
-              "question": "What is a common trap associated with Generic subtopic 7?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "trap-generic-subtopic-7",
-                "microskillSlug": "avoid-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "subtopicSlug": "atomic-and-ionic-radii-of-d-block",
+                "conceptSlug": "trap-atomic-and-ionic-radii-of-d-block",
+                "microskillSlug": "avoid-atomic-and-ionic-radii-of-d-block"
               }
             }
           ]
@@ -855,851 +363,359 @@
     },
     {
       "id": "m-d-and-f-block-elements-2",
-      "title": "d- and f-Block Elements - Section 2",
-      "description": "Comprehensive analysis covering Generic subtopic 8, Generic subtopic 9, Generic subtopic 10 and more.",
+      "title": "Mastery Module 2: Ionisation enthalpies of d-block and Related Concepts",
+      "description": "Comprehensive analysis covering ionisation enthalpies of d-block, oxidation states of d-block elements, coloured ions formation and advanced applications.",
       "conceptTags": [
         "d-and-f-block-elements",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-8",
-          "title": "Generic subtopic 8",
+          "id": "mt-d-and-f-block-elements-ionisation-enthalpies-of-d-block-4",
+          "title": "Ionisation enthalpies of d-block",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-8"
+            "ionisation-enthalpies-of-d-block"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 8"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Ionisation enthalpies of d-block"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 8 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 8 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 8",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 8",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Ionisation enthalpies of d-block is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ionisation enthalpies of d-block correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 8 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 8."
+            "Misinterpreting the subtle edge cases of Ionisation enthalpies of d-block during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ionisation enthalpies of d-block."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 8."
+            "Can accurately solve numericals or identify biological structures related specifically to Ionisation enthalpies of d-block.",
+            "Successfully avoids common pitfalls when Ionisation enthalpies of d-block is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 8."
+            "Past year questions frequently test the application of Ionisation enthalpies of d-block in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-8-1",
-              "question": "Explain the core concept behind Generic subtopic 8.",
+              "id": "d-and-f-block-elements-q-ionisation-enthalpies-of-d-block-1",
+              "question": "What are the critical factors or principles governing Ionisation enthalpies of d-block?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-8"
+                "d-and-f-block-elements",
+                "ionisation-enthalpies-of-d-block"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "core-generic-subtopic-8",
-                "microskillSlug": "understand-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "ionisation-enthalpies-of-d-block",
+                "conceptSlug": "core-ionisation-enthalpies-of-d-block",
+                "microskillSlug": "understand-ionisation-enthalpies-of-d-block"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-8-2",
-              "question": "What is a common trap associated with Generic subtopic 8?",
+              "id": "d-and-f-block-elements-q-ionisation-enthalpies-of-d-block-2",
+              "question": "Describe a scenario where applying the concept of Ionisation enthalpies of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-8",
+                "d-and-f-block-elements",
+                "ionisation-enthalpies-of-d-block",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "trap-generic-subtopic-8",
-                "microskillSlug": "avoid-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "ionisation-enthalpies-of-d-block",
+                "conceptSlug": "trap-ionisation-enthalpies-of-d-block",
+                "microskillSlug": "avoid-ionisation-enthalpies-of-d-block"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-9",
-          "title": "Generic subtopic 9",
+          "id": "mt-d-and-f-block-elements-oxidation-states-of-d-block-elements-5",
+          "title": "Oxidation states of d-block elements",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-9"
+            "oxidation-states-of-d-block-elements"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 9"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Oxidation states of d-block elements"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 9 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 9 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 9",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 9",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Oxidation states of d-block elements is heavily tested in recent NEET papers.",
+            "Applying the core principles of Oxidation states of d-block elements correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 9 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 9."
+            "Misinterpreting the subtle edge cases of Oxidation states of d-block elements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Oxidation states of d-block elements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 9."
+            "Can accurately solve numericals or identify biological structures related specifically to Oxidation states of d-block elements.",
+            "Successfully avoids common pitfalls when Oxidation states of d-block elements is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 9."
+            "Past year questions frequently test the application of Oxidation states of d-block elements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-9-1",
-              "question": "Explain the core concept behind Generic subtopic 9.",
+              "id": "d-and-f-block-elements-q-oxidation-states-of-d-block-elements-1",
+              "question": "What are the critical factors or principles governing Oxidation states of d-block elements?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-9"
+                "d-and-f-block-elements",
+                "oxidation-states-of-d-block-elements"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "core-generic-subtopic-9",
-                "microskillSlug": "understand-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "oxidation-states-of-d-block-elements",
+                "conceptSlug": "core-oxidation-states-of-d-block-elements",
+                "microskillSlug": "understand-oxidation-states-of-d-block-elements"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-9-2",
-              "question": "What is a common trap associated with Generic subtopic 9?",
+              "id": "d-and-f-block-elements-q-oxidation-states-of-d-block-elements-2",
+              "question": "Describe a scenario where applying the concept of Oxidation states of d-block elements can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-9",
+                "d-and-f-block-elements",
+                "oxidation-states-of-d-block-elements",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "trap-generic-subtopic-9",
-                "microskillSlug": "avoid-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "oxidation-states-of-d-block-elements",
+                "conceptSlug": "trap-oxidation-states-of-d-block-elements",
+                "microskillSlug": "avoid-oxidation-states-of-d-block-elements"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-10",
-          "title": "Generic subtopic 10",
+          "id": "mt-d-and-f-block-elements-coloured-ions-formation-6",
+          "title": "Coloured ions formation",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-10"
+            "coloured-ions-formation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 10"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Coloured ions formation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 10 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 10 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 10",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 10",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Coloured ions formation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Coloured ions formation correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 10 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 10."
+            "Misinterpreting the subtle edge cases of Coloured ions formation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Coloured ions formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 10."
+            "Can accurately solve numericals or identify biological structures related specifically to Coloured ions formation.",
+            "Successfully avoids common pitfalls when Coloured ions formation is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 10."
+            "Past year questions frequently test the application of Coloured ions formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-10-1",
-              "question": "Explain the core concept behind Generic subtopic 10.",
+              "id": "d-and-f-block-elements-q-coloured-ions-formation-1",
+              "question": "What are the critical factors or principles governing Coloured ions formation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-10"
+                "d-and-f-block-elements",
+                "coloured-ions-formation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "core-generic-subtopic-10",
-                "microskillSlug": "understand-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "coloured-ions-formation",
+                "conceptSlug": "core-coloured-ions-formation",
+                "microskillSlug": "understand-coloured-ions-formation"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-10-2",
-              "question": "What is a common trap associated with Generic subtopic 10?",
+              "id": "d-and-f-block-elements-q-coloured-ions-formation-2",
+              "question": "Describe a scenario where applying the concept of Coloured ions formation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-10",
+                "d-and-f-block-elements",
+                "coloured-ions-formation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "trap-generic-subtopic-10",
-                "microskillSlug": "avoid-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "coloured-ions-formation",
+                "conceptSlug": "trap-coloured-ions-formation",
+                "microskillSlug": "avoid-coloured-ions-formation"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-11",
-          "title": "Generic subtopic 11",
+          "id": "mt-d-and-f-block-elements-magnetic-properties-of-transition-metals-7",
+          "title": "Magnetic properties of transition metals",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-11"
+            "magnetic-properties-of-transition-metals"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 11"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Magnetic properties of transition metals"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 11 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 11 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 11",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 11",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Magnetic properties of transition metals is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic properties of transition metals correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 11 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 11."
+            "Misinterpreting the subtle edge cases of Magnetic properties of transition metals during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic properties of transition metals."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 11."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic properties of transition metals.",
+            "Successfully avoids common pitfalls when Magnetic properties of transition metals is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 11."
+            "Past year questions frequently test the application of Magnetic properties of transition metals in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-11-1",
-              "question": "Explain the core concept behind Generic subtopic 11.",
+              "id": "d-and-f-block-elements-q-magnetic-properties-of-transition-metals-1",
+              "question": "What are the critical factors or principles governing Magnetic properties of transition metals?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-11"
+                "d-and-f-block-elements",
+                "magnetic-properties-of-transition-metals"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "core-generic-subtopic-11",
-                "microskillSlug": "understand-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "magnetic-properties-of-transition-metals",
+                "conceptSlug": "core-magnetic-properties-of-transition-metals",
+                "microskillSlug": "understand-magnetic-properties-of-transition-metals"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-11-2",
-              "question": "What is a common trap associated with Generic subtopic 11?",
+              "id": "d-and-f-block-elements-q-magnetic-properties-of-transition-metals-2",
+              "question": "Describe a scenario where applying the concept of Magnetic properties of transition metals can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-11",
+                "d-and-f-block-elements",
+                "magnetic-properties-of-transition-metals",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "trap-generic-subtopic-11",
-                "microskillSlug": "avoid-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-12",
-          "title": "Generic subtopic 12",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-12"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 12"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 12 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 12 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 12",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 12",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 12 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 12."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 12."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 12."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-12-1",
-              "question": "Explain the core concept behind Generic subtopic 12.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-12"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "d-and-f-block-elements",
                 "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "core-generic-subtopic-12",
-                "microskillSlug": "understand-generic-subtopic-12",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-12-2",
-              "question": "What is a common trap associated with Generic subtopic 12?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-12",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "trap-generic-subtopic-12",
-                "microskillSlug": "avoid-generic-subtopic-12",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-13",
-          "title": "Generic subtopic 13",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-13"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 13"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 13 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 13 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 13",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 13",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 13 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 13."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 13."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 13."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-13-1",
-              "question": "Explain the core concept behind Generic subtopic 13.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "core-generic-subtopic-13",
-                "microskillSlug": "understand-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-13-2",
-              "question": "What is a common trap associated with Generic subtopic 13?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "trap-generic-subtopic-13",
-                "microskillSlug": "avoid-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-14",
-          "title": "Generic subtopic 14",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-14"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 14"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 14 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 14 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 14",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 14",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 14 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 14."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 14."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 14."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-14-1",
-              "question": "Explain the core concept behind Generic subtopic 14.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "core-generic-subtopic-14",
-                "microskillSlug": "understand-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-14-2",
-              "question": "What is a common trap associated with Generic subtopic 14?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "trap-generic-subtopic-14",
-                "microskillSlug": "avoid-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-15",
-          "title": "Generic subtopic 15",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-15"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 15"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 15 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 15 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 15",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 15",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 15 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 15."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 15."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 15."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-15-1",
-              "question": "Explain the core concept behind Generic subtopic 15.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "core-generic-subtopic-15",
-                "microskillSlug": "understand-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-15-2",
-              "question": "What is a common trap associated with Generic subtopic 15?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "trap-generic-subtopic-15",
-                "microskillSlug": "avoid-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "subtopicSlug": "magnetic-properties-of-transition-metals",
+                "conceptSlug": "trap-magnetic-properties-of-transition-metals",
+                "microskillSlug": "avoid-magnetic-properties-of-transition-metals"
               }
             }
           ]
@@ -1708,851 +724,359 @@
     },
     {
       "id": "m-d-and-f-block-elements-3",
-      "title": "d- and f-Block Elements - Section 3",
-      "description": "Comprehensive analysis covering Generic subtopic 16, Generic subtopic 17, Generic subtopic 18 and more.",
+      "title": "Mastery Module 3: Catalytic properties of d-block and Related Concepts",
+      "description": "Comprehensive analysis covering catalytic properties of d-block, complex compound formation, interstitial compounds and advanced applications.",
       "conceptTags": [
         "d-and-f-block-elements",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-16",
-          "title": "Generic subtopic 16",
+          "id": "mt-d-and-f-block-elements-catalytic-properties-of-d-block-8",
+          "title": "Catalytic properties of d-block",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-16"
+            "catalytic-properties-of-d-block"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 16"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Catalytic properties of d-block"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 16 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 16 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 16",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 16",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Catalytic properties of d-block is heavily tested in recent NEET papers.",
+            "Applying the core principles of Catalytic properties of d-block correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 16 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 16."
+            "Misinterpreting the subtle edge cases of Catalytic properties of d-block during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Catalytic properties of d-block."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 16."
+            "Can accurately solve numericals or identify biological structures related specifically to Catalytic properties of d-block.",
+            "Successfully avoids common pitfalls when Catalytic properties of d-block is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 16."
+            "Past year questions frequently test the application of Catalytic properties of d-block in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-16-1",
-              "question": "Explain the core concept behind Generic subtopic 16.",
+              "id": "d-and-f-block-elements-q-catalytic-properties-of-d-block-1",
+              "question": "What are the critical factors or principles governing Catalytic properties of d-block?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-16"
+                "d-and-f-block-elements",
+                "catalytic-properties-of-d-block"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "core-generic-subtopic-16",
-                "microskillSlug": "understand-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "catalytic-properties-of-d-block",
+                "conceptSlug": "core-catalytic-properties-of-d-block",
+                "microskillSlug": "understand-catalytic-properties-of-d-block"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-16-2",
-              "question": "What is a common trap associated with Generic subtopic 16?",
+              "id": "d-and-f-block-elements-q-catalytic-properties-of-d-block-2",
+              "question": "Describe a scenario where applying the concept of Catalytic properties of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-16",
+                "d-and-f-block-elements",
+                "catalytic-properties-of-d-block",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "trap-generic-subtopic-16",
-                "microskillSlug": "avoid-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "catalytic-properties-of-d-block",
+                "conceptSlug": "trap-catalytic-properties-of-d-block",
+                "microskillSlug": "avoid-catalytic-properties-of-d-block"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-17",
-          "title": "Generic subtopic 17",
+          "id": "mt-d-and-f-block-elements-complex-compound-formation-9",
+          "title": "Complex compound formation",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-17"
+            "complex-compound-formation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 17"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Complex compound formation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 17 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 17 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 17",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 17",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Complex compound formation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Complex compound formation correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 17 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 17."
+            "Misinterpreting the subtle edge cases of Complex compound formation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Complex compound formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 17."
+            "Can accurately solve numericals or identify biological structures related specifically to Complex compound formation.",
+            "Successfully avoids common pitfalls when Complex compound formation is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 17."
+            "Past year questions frequently test the application of Complex compound formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-17-1",
-              "question": "Explain the core concept behind Generic subtopic 17.",
+              "id": "d-and-f-block-elements-q-complex-compound-formation-1",
+              "question": "What are the critical factors or principles governing Complex compound formation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-17"
+                "d-and-f-block-elements",
+                "complex-compound-formation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "core-generic-subtopic-17",
-                "microskillSlug": "understand-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "complex-compound-formation",
+                "conceptSlug": "core-complex-compound-formation",
+                "microskillSlug": "understand-complex-compound-formation"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-17-2",
-              "question": "What is a common trap associated with Generic subtopic 17?",
+              "id": "d-and-f-block-elements-q-complex-compound-formation-2",
+              "question": "Describe a scenario where applying the concept of Complex compound formation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-17",
+                "d-and-f-block-elements",
+                "complex-compound-formation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "trap-generic-subtopic-17",
-                "microskillSlug": "avoid-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "complex-compound-formation",
+                "conceptSlug": "trap-complex-compound-formation",
+                "microskillSlug": "avoid-complex-compound-formation"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-18",
-          "title": "Generic subtopic 18",
+          "id": "mt-d-and-f-block-elements-interstitial-compounds-10",
+          "title": "Interstitial compounds",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-18"
+            "interstitial-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 18"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Interstitial compounds"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 18 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 18 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 18",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 18",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Interstitial compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Interstitial compounds correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 18 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 18."
+            "Misinterpreting the subtle edge cases of Interstitial compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Interstitial compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 18."
+            "Can accurately solve numericals or identify biological structures related specifically to Interstitial compounds.",
+            "Successfully avoids common pitfalls when Interstitial compounds is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 18."
+            "Past year questions frequently test the application of Interstitial compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-18-1",
-              "question": "Explain the core concept behind Generic subtopic 18.",
+              "id": "d-and-f-block-elements-q-interstitial-compounds-1",
+              "question": "What are the critical factors or principles governing Interstitial compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-18"
+                "d-and-f-block-elements",
+                "interstitial-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "core-generic-subtopic-18",
-                "microskillSlug": "understand-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "interstitial-compounds",
+                "conceptSlug": "core-interstitial-compounds",
+                "microskillSlug": "understand-interstitial-compounds"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-18-2",
-              "question": "What is a common trap associated with Generic subtopic 18?",
+              "id": "d-and-f-block-elements-q-interstitial-compounds-2",
+              "question": "Describe a scenario where applying the concept of Interstitial compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-18",
+                "d-and-f-block-elements",
+                "interstitial-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "trap-generic-subtopic-18",
-                "microskillSlug": "avoid-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "interstitial-compounds",
+                "conceptSlug": "trap-interstitial-compounds",
+                "microskillSlug": "avoid-interstitial-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-19",
-          "title": "Generic subtopic 19",
+          "id": "mt-d-and-f-block-elements-alloy-formation-11",
+          "title": "Alloy formation",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-19"
+            "alloy-formation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 19"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Alloy formation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 19 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 19 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 19",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 19",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Alloy formation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Alloy formation correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 19 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 19."
+            "Misinterpreting the subtle edge cases of Alloy formation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Alloy formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 19."
+            "Can accurately solve numericals or identify biological structures related specifically to Alloy formation.",
+            "Successfully avoids common pitfalls when Alloy formation is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 19."
+            "Past year questions frequently test the application of Alloy formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-19-1",
-              "question": "Explain the core concept behind Generic subtopic 19.",
+              "id": "d-and-f-block-elements-q-alloy-formation-1",
+              "question": "What are the critical factors or principles governing Alloy formation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-19"
+                "d-and-f-block-elements",
+                "alloy-formation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "core-generic-subtopic-19",
-                "microskillSlug": "understand-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "alloy-formation",
+                "conceptSlug": "core-alloy-formation",
+                "microskillSlug": "understand-alloy-formation"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-19-2",
-              "question": "What is a common trap associated with Generic subtopic 19?",
+              "id": "d-and-f-block-elements-q-alloy-formation-2",
+              "question": "Describe a scenario where applying the concept of Alloy formation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-19",
+                "d-and-f-block-elements",
+                "alloy-formation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "trap-generic-subtopic-19",
-                "microskillSlug": "avoid-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-20",
-          "title": "Generic subtopic 20",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-20"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 20"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 20 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 20 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 20",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 20",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 20 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 20."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 20."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 20."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-20-1",
-              "question": "Explain the core concept behind Generic subtopic 20.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-20"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "d-and-f-block-elements",
                 "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "core-generic-subtopic-20",
-                "microskillSlug": "understand-generic-subtopic-20",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-20-2",
-              "question": "What is a common trap associated with Generic subtopic 20?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-20",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "trap-generic-subtopic-20",
-                "microskillSlug": "avoid-generic-subtopic-20",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-21",
-          "title": "Generic subtopic 21",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-21"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 21"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 21 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 21 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 21",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 21",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 21 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 21."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 21."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 21."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-21-1",
-              "question": "Explain the core concept behind Generic subtopic 21.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "core-generic-subtopic-21",
-                "microskillSlug": "understand-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-21-2",
-              "question": "What is a common trap associated with Generic subtopic 21?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "trap-generic-subtopic-21",
-                "microskillSlug": "avoid-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-22",
-          "title": "Generic subtopic 22",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-22"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 22"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 22 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 22 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 22",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 22",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 22 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 22."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 22."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 22."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-22-1",
-              "question": "Explain the core concept behind Generic subtopic 22.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "core-generic-subtopic-22",
-                "microskillSlug": "understand-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-22-2",
-              "question": "What is a common trap associated with Generic subtopic 22?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "trap-generic-subtopic-22",
-                "microskillSlug": "avoid-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-23",
-          "title": "Generic subtopic 23",
-          "conceptTags": [
-            "d-and-f-block-elements",
-            "generic-subtopic-23"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 23"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 23 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 23 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 23",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 23",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 23 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 23."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 23."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 23."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-23-1",
-              "question": "Explain the core concept behind Generic subtopic 23.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "core-generic-subtopic-23",
-                "microskillSlug": "understand-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
-              }
-            },
-            {
-              "id": "d-and-f-block-elements-q-generic-subtopic-23-2",
-              "question": "What is a common trap associated with Generic subtopic 23?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "trap-generic-subtopic-23",
-                "microskillSlug": "avoid-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "subtopicSlug": "alloy-formation",
+                "conceptSlug": "trap-alloy-formation",
+                "microskillSlug": "avoid-alloy-formation"
               }
             }
           ]
@@ -2561,641 +1085,720 @@
     },
     {
       "id": "m-d-and-f-block-elements-4",
-      "title": "d- and f-Block Elements - Section 4",
-      "description": "Comprehensive analysis covering Generic subtopic 24, Generic subtopic 25, Generic subtopic 26 and more.",
+      "title": "Mastery Module 4: Potassium dichromate preparation and properties and Related Concepts",
+      "description": "Comprehensive analysis covering potassium dichromate preparation and properties, potassium permanganate preparation and properties, lanthanoids electronic configuration and advanced applications.",
       "conceptTags": [
         "d-and-f-block-elements",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-24",
-          "title": "Generic subtopic 24",
+          "id": "mt-d-and-f-block-elements-potassium-dichromate-preparation-and-properties-12",
+          "title": "Potassium dichromate preparation and properties",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-24"
+            "potassium-dichromate-preparation-and-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 24"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Potassium dichromate preparation and properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 24 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 24 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 24",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 24",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Potassium dichromate preparation and properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potassium dichromate preparation and properties correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 24 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 24."
+            "Misinterpreting the subtle edge cases of Potassium dichromate preparation and properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potassium dichromate preparation and properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 24."
+            "Can accurately solve numericals or identify biological structures related specifically to Potassium dichromate preparation and properties.",
+            "Successfully avoids common pitfalls when Potassium dichromate preparation and properties is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 24."
+            "Past year questions frequently test the application of Potassium dichromate preparation and properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-24-1",
-              "question": "Explain the core concept behind Generic subtopic 24.",
+              "id": "d-and-f-block-elements-q-potassium-dichromate-preparation-and-properties-1",
+              "question": "What are the critical factors or principles governing Potassium dichromate preparation and properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-24"
+                "d-and-f-block-elements",
+                "potassium-dichromate-preparation-and-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "core-generic-subtopic-24",
-                "microskillSlug": "understand-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "potassium-dichromate-preparation-and-properties",
+                "conceptSlug": "core-potassium-dichromate-preparation-and-properties",
+                "microskillSlug": "understand-potassium-dichromate-preparation-and-properties"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-24-2",
-              "question": "What is a common trap associated with Generic subtopic 24?",
+              "id": "d-and-f-block-elements-q-potassium-dichromate-preparation-and-properties-2",
+              "question": "Describe a scenario where applying the concept of Potassium dichromate preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-24",
+                "d-and-f-block-elements",
+                "potassium-dichromate-preparation-and-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "trap-generic-subtopic-24",
-                "microskillSlug": "avoid-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "potassium-dichromate-preparation-and-properties",
+                "conceptSlug": "trap-potassium-dichromate-preparation-and-properties",
+                "microskillSlug": "avoid-potassium-dichromate-preparation-and-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-25",
-          "title": "Generic subtopic 25",
+          "id": "mt-d-and-f-block-elements-potassium-permanganate-preparation-and-properties-13",
+          "title": "Potassium permanganate preparation and properties",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-25"
+            "potassium-permanganate-preparation-and-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 25"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Potassium permanganate preparation and properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 25 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 25 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 25",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 25",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Potassium permanganate preparation and properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potassium permanganate preparation and properties correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 25 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 25."
+            "Misinterpreting the subtle edge cases of Potassium permanganate preparation and properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potassium permanganate preparation and properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 25."
+            "Can accurately solve numericals or identify biological structures related specifically to Potassium permanganate preparation and properties.",
+            "Successfully avoids common pitfalls when Potassium permanganate preparation and properties is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 25."
+            "Past year questions frequently test the application of Potassium permanganate preparation and properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-25-1",
-              "question": "Explain the core concept behind Generic subtopic 25.",
+              "id": "d-and-f-block-elements-q-potassium-permanganate-preparation-and-properties-1",
+              "question": "What are the critical factors or principles governing Potassium permanganate preparation and properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-25"
+                "d-and-f-block-elements",
+                "potassium-permanganate-preparation-and-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "core-generic-subtopic-25",
-                "microskillSlug": "understand-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "potassium-permanganate-preparation-and-properties",
+                "conceptSlug": "core-potassium-permanganate-preparation-and-properties",
+                "microskillSlug": "understand-potassium-permanganate-preparation-and-properties"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-25-2",
-              "question": "What is a common trap associated with Generic subtopic 25?",
+              "id": "d-and-f-block-elements-q-potassium-permanganate-preparation-and-properties-2",
+              "question": "Describe a scenario where applying the concept of Potassium permanganate preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-25",
+                "d-and-f-block-elements",
+                "potassium-permanganate-preparation-and-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "trap-generic-subtopic-25",
-                "microskillSlug": "avoid-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "potassium-permanganate-preparation-and-properties",
+                "conceptSlug": "trap-potassium-permanganate-preparation-and-properties",
+                "microskillSlug": "avoid-potassium-permanganate-preparation-and-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-26",
-          "title": "Generic subtopic 26",
+          "id": "mt-d-and-f-block-elements-lanthanoids-electronic-configuration-14",
+          "title": "Lanthanoids electronic configuration",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-26"
+            "lanthanoids-electronic-configuration"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 26"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Lanthanoids electronic configuration"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 26 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 26 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 26",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 26",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Lanthanoids electronic configuration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lanthanoids electronic configuration correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 26 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 26."
+            "Misinterpreting the subtle edge cases of Lanthanoids electronic configuration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lanthanoids electronic configuration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 26."
+            "Can accurately solve numericals or identify biological structures related specifically to Lanthanoids electronic configuration.",
+            "Successfully avoids common pitfalls when Lanthanoids electronic configuration is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 26."
+            "Past year questions frequently test the application of Lanthanoids electronic configuration in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-26-1",
-              "question": "Explain the core concept behind Generic subtopic 26.",
+              "id": "d-and-f-block-elements-q-lanthanoids-electronic-configuration-1",
+              "question": "What are the critical factors or principles governing Lanthanoids electronic configuration?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-26"
+                "d-and-f-block-elements",
+                "lanthanoids-electronic-configuration"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "core-generic-subtopic-26",
-                "microskillSlug": "understand-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "lanthanoids-electronic-configuration",
+                "conceptSlug": "core-lanthanoids-electronic-configuration",
+                "microskillSlug": "understand-lanthanoids-electronic-configuration"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-26-2",
-              "question": "What is a common trap associated with Generic subtopic 26?",
+              "id": "d-and-f-block-elements-q-lanthanoids-electronic-configuration-2",
+              "question": "Describe a scenario where applying the concept of Lanthanoids electronic configuration can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-26",
+                "d-and-f-block-elements",
+                "lanthanoids-electronic-configuration",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "trap-generic-subtopic-26",
-                "microskillSlug": "avoid-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "lanthanoids-electronic-configuration",
+                "conceptSlug": "trap-lanthanoids-electronic-configuration",
+                "microskillSlug": "avoid-lanthanoids-electronic-configuration"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-27",
-          "title": "Generic subtopic 27",
+          "id": "mt-d-and-f-block-elements-lanthanoid-contraction-and-consequences-15",
+          "title": "Lanthanoid contraction and consequences",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-27"
+            "lanthanoid-contraction-and-consequences"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 27"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Lanthanoid contraction and consequences"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 27 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 27 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 27",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 27",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Lanthanoid contraction and consequences is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lanthanoid contraction and consequences correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 27 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 27."
+            "Misinterpreting the subtle edge cases of Lanthanoid contraction and consequences during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lanthanoid contraction and consequences."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 27."
+            "Can accurately solve numericals or identify biological structures related specifically to Lanthanoid contraction and consequences.",
+            "Successfully avoids common pitfalls when Lanthanoid contraction and consequences is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 27."
+            "Past year questions frequently test the application of Lanthanoid contraction and consequences in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-27-1",
-              "question": "Explain the core concept behind Generic subtopic 27.",
+              "id": "d-and-f-block-elements-q-lanthanoid-contraction-and-consequences-1",
+              "question": "What are the critical factors or principles governing Lanthanoid contraction and consequences?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-27"
+                "d-and-f-block-elements",
+                "lanthanoid-contraction-and-consequences"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "core-generic-subtopic-27",
-                "microskillSlug": "understand-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "lanthanoid-contraction-and-consequences",
+                "conceptSlug": "core-lanthanoid-contraction-and-consequences",
+                "microskillSlug": "understand-lanthanoid-contraction-and-consequences"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-27-2",
-              "question": "What is a common trap associated with Generic subtopic 27?",
+              "id": "d-and-f-block-elements-q-lanthanoid-contraction-and-consequences-2",
+              "question": "Describe a scenario where applying the concept of Lanthanoid contraction and consequences can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-27",
+                "d-and-f-block-elements",
+                "lanthanoid-contraction-and-consequences",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "trap-generic-subtopic-27",
-                "microskillSlug": "avoid-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "lanthanoid-contraction-and-consequences",
+                "conceptSlug": "trap-lanthanoid-contraction-and-consequences",
+                "microskillSlug": "avoid-lanthanoid-contraction-and-consequences"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-d-and-f-block-elements-5",
+      "title": "Mastery Module 5: Oxidation states of lanthanoids and Related Concepts",
+      "description": "Comprehensive analysis covering oxidation states of lanthanoids, actinoids electronic configuration, actinoid contraction and advanced applications.",
+      "conceptTags": [
+        "d-and-f-block-elements",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-d-and-f-block-elements-oxidation-states-of-lanthanoids-16",
+          "title": "Oxidation states of lanthanoids",
+          "conceptTags": [
+            "d-and-f-block-elements",
+            "oxidation-states-of-lanthanoids"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Oxidation states of lanthanoids"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Oxidation states of lanthanoids is heavily tested in recent NEET papers.",
+            "Applying the core principles of Oxidation states of lanthanoids correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Oxidation states of lanthanoids during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Oxidation states of lanthanoids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Oxidation states of lanthanoids.",
+            "Successfully avoids common pitfalls when Oxidation states of lanthanoids is integrated with other concepts in d- and f-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Oxidation states of lanthanoids in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "d-and-f-block-elements-q-oxidation-states-of-lanthanoids-1",
+              "question": "What are the critical factors or principles governing Oxidation states of lanthanoids?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "d-and-f-block-elements",
+                "oxidation-states-of-lanthanoids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "d-and-f-block-elements",
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "oxidation-states-of-lanthanoids",
+                "conceptSlug": "core-oxidation-states-of-lanthanoids",
+                "microskillSlug": "understand-oxidation-states-of-lanthanoids"
+              }
+            },
+            {
+              "id": "d-and-f-block-elements-q-oxidation-states-of-lanthanoids-2",
+              "question": "Describe a scenario where applying the concept of Oxidation states of lanthanoids can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "d-and-f-block-elements",
+                "oxidation-states-of-lanthanoids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "d-and-f-block-elements",
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "oxidation-states-of-lanthanoids",
+                "conceptSlug": "trap-oxidation-states-of-lanthanoids",
+                "microskillSlug": "avoid-oxidation-states-of-lanthanoids"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-28",
-          "title": "Generic subtopic 28",
+          "id": "mt-d-and-f-block-elements-actinoids-electronic-configuration-17",
+          "title": "Actinoids electronic configuration",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-28"
+            "actinoids-electronic-configuration"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 28"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Actinoids electronic configuration"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 28 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 28 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 28",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 28",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Actinoids electronic configuration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Actinoids electronic configuration correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 28 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 28."
+            "Misinterpreting the subtle edge cases of Actinoids electronic configuration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Actinoids electronic configuration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 28."
+            "Can accurately solve numericals or identify biological structures related specifically to Actinoids electronic configuration.",
+            "Successfully avoids common pitfalls when Actinoids electronic configuration is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 28."
+            "Past year questions frequently test the application of Actinoids electronic configuration in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-28-1",
-              "question": "Explain the core concept behind Generic subtopic 28.",
+              "id": "d-and-f-block-elements-q-actinoids-electronic-configuration-1",
+              "question": "What are the critical factors or principles governing Actinoids electronic configuration?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-28"
+                "d-and-f-block-elements",
+                "actinoids-electronic-configuration"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "core-generic-subtopic-28",
-                "microskillSlug": "understand-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "actinoids-electronic-configuration",
+                "conceptSlug": "core-actinoids-electronic-configuration",
+                "microskillSlug": "understand-actinoids-electronic-configuration"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-28-2",
-              "question": "What is a common trap associated with Generic subtopic 28?",
+              "id": "d-and-f-block-elements-q-actinoids-electronic-configuration-2",
+              "question": "Describe a scenario where applying the concept of Actinoids electronic configuration can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-28",
+                "d-and-f-block-elements",
+                "actinoids-electronic-configuration",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "trap-generic-subtopic-28",
-                "microskillSlug": "avoid-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "actinoids-electronic-configuration",
+                "conceptSlug": "trap-actinoids-electronic-configuration",
+                "microskillSlug": "avoid-actinoids-electronic-configuration"
               }
             }
           ]
         },
         {
-          "id": "mt-d-and-f-block-elements-generic-subtopic-29",
-          "title": "Generic subtopic 29",
+          "id": "mt-d-and-f-block-elements-actinoid-contraction-18",
+          "title": "Actinoid contraction",
           "conceptTags": [
             "d-and-f-block-elements",
-            "generic-subtopic-29"
+            "actinoid-contraction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Generic subtopic 29"
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Actinoid contraction"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 29 is a fundamental subtopic of d- and f-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 29 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 29",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 29",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Actinoid contraction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Actinoid contraction correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 29 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 29."
+            "Misinterpreting the subtle edge cases of Actinoid contraction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Actinoid contraction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 29."
+            "Can accurately solve numericals or identify biological structures related specifically to Actinoid contraction.",
+            "Successfully avoids common pitfalls when Actinoid contraction is integrated with other concepts in d- and f-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 29."
+            "Past year questions frequently test the application of Actinoid contraction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-29-1",
-              "question": "Explain the core concept behind Generic subtopic 29.",
+              "id": "d-and-f-block-elements-q-actinoid-contraction-1",
+              "question": "What are the critical factors or principles governing Actinoid contraction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-29"
+                "d-and-f-block-elements",
+                "actinoid-contraction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "core-generic-subtopic-29",
-                "microskillSlug": "understand-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "actinoid-contraction",
+                "conceptSlug": "core-actinoid-contraction",
+                "microskillSlug": "understand-actinoid-contraction"
               }
             },
             {
-              "id": "d-and-f-block-elements-q-generic-subtopic-29-2",
-              "question": "What is a common trap associated with Generic subtopic 29?",
+              "id": "d-and-f-block-elements-q-actinoid-contraction-2",
+              "question": "Describe a scenario where applying the concept of Actinoid contraction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-29",
+                "d-and-f-block-elements",
+                "actinoid-contraction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "trap-generic-subtopic-29",
-                "microskillSlug": "avoid-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements"
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "actinoid-contraction",
+                "conceptSlug": "trap-actinoid-contraction",
+                "microskillSlug": "avoid-actinoid-contraction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-d-and-f-block-elements-comparison-of-lanthanoids-and-actinoids-19",
+          "title": "Comparison of lanthanoids and actinoids",
+          "conceptTags": [
+            "d-and-f-block-elements",
+            "comparison-of-lanthanoids-and-actinoids"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: d- and f-Block Elements, Section detailing Comparison of lanthanoids and actinoids"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Comparison of lanthanoids and actinoids is heavily tested in recent NEET papers.",
+            "Applying the core principles of Comparison of lanthanoids and actinoids correctly is essential for solving complex multi-step problems in d- and f-Block Elements."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Comparison of lanthanoids and actinoids during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Comparison of lanthanoids and actinoids."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Comparison of lanthanoids and actinoids.",
+            "Successfully avoids common pitfalls when Comparison of lanthanoids and actinoids is integrated with other concepts in d- and f-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Comparison of lanthanoids and actinoids in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "d-and-f-block-elements-q-comparison-of-lanthanoids-and-actinoids-1",
+              "question": "What are the critical factors or principles governing Comparison of lanthanoids and actinoids?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "d-and-f-block-elements",
+                "comparison-of-lanthanoids-and-actinoids"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "d-and-f-block-elements",
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "comparison-of-lanthanoids-and-actinoids",
+                "conceptSlug": "core-comparison-of-lanthanoids-and-actinoids",
+                "microskillSlug": "understand-comparison-of-lanthanoids-and-actinoids"
+              }
+            },
+            {
+              "id": "d-and-f-block-elements-q-comparison-of-lanthanoids-and-actinoids-2",
+              "question": "Describe a scenario where applying the concept of Comparison of lanthanoids and actinoids can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "d-and-f-block-elements",
+                "comparison-of-lanthanoids-and-actinoids",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "d-and-f-block-elements",
+                "chapterSlug": "d-and-f-block-elements",
+                "topicSlug": "d-and-f-block-elements",
+                "subtopicSlug": "comparison-of-lanthanoids-and-actinoids",
+                "conceptSlug": "trap-comparison-of-lanthanoids-and-actinoids",
+                "microskillSlug": "avoid-comparison-of-lanthanoids-and-actinoids"
               }
             }
           ]

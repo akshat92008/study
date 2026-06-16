@@ -2,851 +2,446 @@
   "missions": [
     {
       "id": "m-p-block-elements-1",
-      "title": "p-Block Elements - Section 1",
-      "description": "Comprehensive analysis covering Generic subtopic 0, Generic subtopic 1, Generic subtopic 2 and more.",
+      "title": "Mastery Module 1: Group 13 elements general properties and Related Concepts",
+      "description": "Comprehensive analysis covering group 13 elements general properties, boron anomalous properties, boron compounds and advanced applications.",
       "conceptTags": [
         "p-block-elements",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-p-block-elements-generic-subtopic-0",
-          "title": "Generic subtopic 0",
+          "id": "mt-p-block-elements-group-13-elements-general-properties-0",
+          "title": "Group 13 elements general properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-0"
+            "group-13-elements-general-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 0"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 13 elements general properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 0 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 0 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 0",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 0",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Group 13 elements general properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 13 elements general properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 0 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 0."
+            "Misinterpreting the subtle edge cases of Group 13 elements general properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 13 elements general properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 0."
+            "Can accurately solve numericals or identify biological structures related specifically to Group 13 elements general properties.",
+            "Successfully avoids common pitfalls when Group 13 elements general properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 0."
+            "Past year questions frequently test the application of Group 13 elements general properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-0-1",
-              "question": "Explain the core concept behind Generic subtopic 0.",
+              "id": "p-block-elements-q-group-13-elements-general-properties-1",
+              "question": "What are the critical factors or principles governing Group 13 elements general properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-0"
+                "p-block-elements",
+                "group-13-elements-general-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "core-generic-subtopic-0",
-                "microskillSlug": "understand-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-13-elements-general-properties",
+                "conceptSlug": "core-group-13-elements-general-properties",
+                "microskillSlug": "understand-group-13-elements-general-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-0-2",
-              "question": "What is a common trap associated with Generic subtopic 0?",
+              "id": "p-block-elements-q-group-13-elements-general-properties-2",
+              "question": "Describe a scenario where applying the concept of Group 13 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-0",
+                "p-block-elements",
+                "group-13-elements-general-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "trap-generic-subtopic-0",
-                "microskillSlug": "avoid-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-13-elements-general-properties",
+                "conceptSlug": "trap-group-13-elements-general-properties",
+                "microskillSlug": "avoid-group-13-elements-general-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-1",
-          "title": "Generic subtopic 1",
+          "id": "mt-p-block-elements-boron-anomalous-properties-1",
+          "title": "Boron anomalous properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-1"
+            "boron-anomalous-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 1"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Boron anomalous properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 1 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 1 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 1",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 1",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Boron anomalous properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Boron anomalous properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 1 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 1."
+            "Misinterpreting the subtle edge cases of Boron anomalous properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Boron anomalous properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 1."
+            "Can accurately solve numericals or identify biological structures related specifically to Boron anomalous properties.",
+            "Successfully avoids common pitfalls when Boron anomalous properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 1."
+            "Past year questions frequently test the application of Boron anomalous properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-1-1",
-              "question": "Explain the core concept behind Generic subtopic 1.",
+              "id": "p-block-elements-q-boron-anomalous-properties-1",
+              "question": "What are the critical factors or principles governing Boron anomalous properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-1"
+                "p-block-elements",
+                "boron-anomalous-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "core-generic-subtopic-1",
-                "microskillSlug": "understand-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "boron-anomalous-properties",
+                "conceptSlug": "core-boron-anomalous-properties",
+                "microskillSlug": "understand-boron-anomalous-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-1-2",
-              "question": "What is a common trap associated with Generic subtopic 1?",
+              "id": "p-block-elements-q-boron-anomalous-properties-2",
+              "question": "Describe a scenario where applying the concept of Boron anomalous properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-1",
+                "p-block-elements",
+                "boron-anomalous-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "trap-generic-subtopic-1",
-                "microskillSlug": "avoid-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "boron-anomalous-properties",
+                "conceptSlug": "trap-boron-anomalous-properties",
+                "microskillSlug": "avoid-boron-anomalous-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-2",
-          "title": "Generic subtopic 2",
+          "id": "mt-p-block-elements-boron-compounds-2",
+          "title": "Boron compounds",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-2"
+            "boron-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 2"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Boron compounds"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 2 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 2 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 2",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 2",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Boron compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Boron compounds correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 2 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 2."
+            "Misinterpreting the subtle edge cases of Boron compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Boron compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 2."
+            "Can accurately solve numericals or identify biological structures related specifically to Boron compounds.",
+            "Successfully avoids common pitfalls when Boron compounds is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 2."
+            "Past year questions frequently test the application of Boron compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-2-1",
-              "question": "Explain the core concept behind Generic subtopic 2.",
+              "id": "p-block-elements-q-boron-compounds-1",
+              "question": "What are the critical factors or principles governing Boron compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-2"
+                "p-block-elements",
+                "boron-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "core-generic-subtopic-2",
-                "microskillSlug": "understand-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "boron-compounds",
+                "conceptSlug": "core-boron-compounds",
+                "microskillSlug": "understand-boron-compounds"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-2-2",
-              "question": "What is a common trap associated with Generic subtopic 2?",
+              "id": "p-block-elements-q-boron-compounds-2",
+              "question": "Describe a scenario where applying the concept of Boron compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-2",
+                "p-block-elements",
+                "boron-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "trap-generic-subtopic-2",
-                "microskillSlug": "avoid-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "boron-compounds",
+                "conceptSlug": "trap-boron-compounds",
+                "microskillSlug": "avoid-boron-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-3",
-          "title": "Generic subtopic 3",
+          "id": "mt-p-block-elements-aluminium-compounds-3",
+          "title": "Aluminium compounds",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-3"
+            "aluminium-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 3"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Aluminium compounds"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 3 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 3 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 3",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 3",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Aluminium compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Aluminium compounds correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 3 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 3."
+            "Misinterpreting the subtle edge cases of Aluminium compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Aluminium compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 3."
+            "Can accurately solve numericals or identify biological structures related specifically to Aluminium compounds.",
+            "Successfully avoids common pitfalls when Aluminium compounds is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 3."
+            "Past year questions frequently test the application of Aluminium compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-3-1",
-              "question": "Explain the core concept behind Generic subtopic 3.",
+              "id": "p-block-elements-q-aluminium-compounds-1",
+              "question": "What are the critical factors or principles governing Aluminium compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-3"
+                "p-block-elements",
+                "aluminium-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "core-generic-subtopic-3",
-                "microskillSlug": "understand-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "aluminium-compounds",
+                "conceptSlug": "core-aluminium-compounds",
+                "microskillSlug": "understand-aluminium-compounds"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-3-2",
-              "question": "What is a common trap associated with Generic subtopic 3?",
+              "id": "p-block-elements-q-aluminium-compounds-2",
+              "question": "Describe a scenario where applying the concept of Aluminium compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-3",
+                "p-block-elements",
+                "aluminium-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "trap-generic-subtopic-3",
-                "microskillSlug": "avoid-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "aluminium-compounds",
+                "conceptSlug": "trap-aluminium-compounds",
+                "microskillSlug": "avoid-aluminium-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-4",
-          "title": "Generic subtopic 4",
+          "id": "mt-p-block-elements-group-14-elements-general-properties-4",
+          "title": "Group 14 elements general properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-4"
+            "group-14-elements-general-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 4"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 14 elements general properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 4 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 4 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 4",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 4",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Group 14 elements general properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 14 elements general properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 4 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 4."
+            "Misinterpreting the subtle edge cases of Group 14 elements general properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 14 elements general properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 4."
+            "Can accurately solve numericals or identify biological structures related specifically to Group 14 elements general properties.",
+            "Successfully avoids common pitfalls when Group 14 elements general properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 4."
+            "Past year questions frequently test the application of Group 14 elements general properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-4-1",
-              "question": "Explain the core concept behind Generic subtopic 4.",
+              "id": "p-block-elements-q-group-14-elements-general-properties-1",
+              "question": "What are the critical factors or principles governing Group 14 elements general properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-4"
+                "p-block-elements",
+                "group-14-elements-general-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "core-generic-subtopic-4",
-                "microskillSlug": "understand-generic-subtopic-4",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-14-elements-general-properties",
+                "conceptSlug": "core-group-14-elements-general-properties",
+                "microskillSlug": "understand-group-14-elements-general-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-4-2",
-              "question": "What is a common trap associated with Generic subtopic 4?",
+              "id": "p-block-elements-q-group-14-elements-general-properties-2",
+              "question": "Describe a scenario where applying the concept of Group 14 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-4",
+                "p-block-elements",
+                "group-14-elements-general-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "trap-generic-subtopic-4",
-                "microskillSlug": "avoid-generic-subtopic-4",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-5",
-          "title": "Generic subtopic 5",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-5"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 5"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 5 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 5 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 5",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 5",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 5 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 5."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 5."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 5."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-5-1",
-              "question": "Explain the core concept behind Generic subtopic 5.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "p-block-elements",
                 "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "core-generic-subtopic-5",
-                "microskillSlug": "understand-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-5-2",
-              "question": "What is a common trap associated with Generic subtopic 5?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "trap-generic-subtopic-5",
-                "microskillSlug": "avoid-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-6",
-          "title": "Generic subtopic 6",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-6"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 6"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 6 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 6 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 6",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 6",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 6 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 6."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 6."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 6."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-6-1",
-              "question": "Explain the core concept behind Generic subtopic 6.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "core-generic-subtopic-6",
-                "microskillSlug": "understand-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-6-2",
-              "question": "What is a common trap associated with Generic subtopic 6?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "trap-generic-subtopic-6",
-                "microskillSlug": "avoid-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-7",
-          "title": "Generic subtopic 7",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-7"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 7"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 7 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 7 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 7",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 7",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 7 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 7."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 7."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 7."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-7-1",
-              "question": "Explain the core concept behind Generic subtopic 7.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "core-generic-subtopic-7",
-                "microskillSlug": "understand-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-7-2",
-              "question": "What is a common trap associated with Generic subtopic 7?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "trap-generic-subtopic-7",
-                "microskillSlug": "avoid-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "subtopicSlug": "group-14-elements-general-properties",
+                "conceptSlug": "trap-group-14-elements-general-properties",
+                "microskillSlug": "avoid-group-14-elements-general-properties"
               }
             }
           ]
@@ -855,851 +450,446 @@
     },
     {
       "id": "m-p-block-elements-2",
-      "title": "p-Block Elements - Section 2",
-      "description": "Comprehensive analysis covering Generic subtopic 8, Generic subtopic 9, Generic subtopic 10 and more.",
+      "title": "Mastery Module 2: Carbon anomalous properties and Related Concepts",
+      "description": "Comprehensive analysis covering carbon anomalous properties, allotropes of carbon, silicon compounds and advanced applications.",
       "conceptTags": [
         "p-block-elements",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-p-block-elements-generic-subtopic-8",
-          "title": "Generic subtopic 8",
+          "id": "mt-p-block-elements-carbon-anomalous-properties-5",
+          "title": "Carbon anomalous properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-8"
+            "carbon-anomalous-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 8"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Carbon anomalous properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 8 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 8 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 8",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 8",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Carbon anomalous properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carbon anomalous properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 8 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 8."
+            "Misinterpreting the subtle edge cases of Carbon anomalous properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carbon anomalous properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 8."
+            "Can accurately solve numericals or identify biological structures related specifically to Carbon anomalous properties.",
+            "Successfully avoids common pitfalls when Carbon anomalous properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 8."
+            "Past year questions frequently test the application of Carbon anomalous properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-8-1",
-              "question": "Explain the core concept behind Generic subtopic 8.",
+              "id": "p-block-elements-q-carbon-anomalous-properties-1",
+              "question": "What are the critical factors or principles governing Carbon anomalous properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-8"
+                "p-block-elements",
+                "carbon-anomalous-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "core-generic-subtopic-8",
-                "microskillSlug": "understand-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "carbon-anomalous-properties",
+                "conceptSlug": "core-carbon-anomalous-properties",
+                "microskillSlug": "understand-carbon-anomalous-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-8-2",
-              "question": "What is a common trap associated with Generic subtopic 8?",
+              "id": "p-block-elements-q-carbon-anomalous-properties-2",
+              "question": "Describe a scenario where applying the concept of Carbon anomalous properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-8",
+                "p-block-elements",
+                "carbon-anomalous-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "trap-generic-subtopic-8",
-                "microskillSlug": "avoid-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "carbon-anomalous-properties",
+                "conceptSlug": "trap-carbon-anomalous-properties",
+                "microskillSlug": "avoid-carbon-anomalous-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-9",
-          "title": "Generic subtopic 9",
+          "id": "mt-p-block-elements-allotropes-of-carbon-6",
+          "title": "Allotropes of carbon",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-9"
+            "allotropes-of-carbon"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 9"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Allotropes of carbon"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 9 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 9 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 9",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 9",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Allotropes of carbon is heavily tested in recent NEET papers.",
+            "Applying the core principles of Allotropes of carbon correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 9 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 9."
+            "Misinterpreting the subtle edge cases of Allotropes of carbon during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Allotropes of carbon."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 9."
+            "Can accurately solve numericals or identify biological structures related specifically to Allotropes of carbon.",
+            "Successfully avoids common pitfalls when Allotropes of carbon is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 9."
+            "Past year questions frequently test the application of Allotropes of carbon in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-9-1",
-              "question": "Explain the core concept behind Generic subtopic 9.",
+              "id": "p-block-elements-q-allotropes-of-carbon-1",
+              "question": "What are the critical factors or principles governing Allotropes of carbon?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-9"
+                "p-block-elements",
+                "allotropes-of-carbon"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "core-generic-subtopic-9",
-                "microskillSlug": "understand-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "allotropes-of-carbon",
+                "conceptSlug": "core-allotropes-of-carbon",
+                "microskillSlug": "understand-allotropes-of-carbon"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-9-2",
-              "question": "What is a common trap associated with Generic subtopic 9?",
+              "id": "p-block-elements-q-allotropes-of-carbon-2",
+              "question": "Describe a scenario where applying the concept of Allotropes of carbon can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-9",
+                "p-block-elements",
+                "allotropes-of-carbon",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "trap-generic-subtopic-9",
-                "microskillSlug": "avoid-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "allotropes-of-carbon",
+                "conceptSlug": "trap-allotropes-of-carbon",
+                "microskillSlug": "avoid-allotropes-of-carbon"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-10",
-          "title": "Generic subtopic 10",
+          "id": "mt-p-block-elements-silicon-compounds-7",
+          "title": "Silicon compounds",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-10"
+            "silicon-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 10"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Silicon compounds"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 10 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 10 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 10",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 10",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Silicon compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Silicon compounds correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 10 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 10."
+            "Misinterpreting the subtle edge cases of Silicon compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Silicon compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 10."
+            "Can accurately solve numericals or identify biological structures related specifically to Silicon compounds.",
+            "Successfully avoids common pitfalls when Silicon compounds is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 10."
+            "Past year questions frequently test the application of Silicon compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-10-1",
-              "question": "Explain the core concept behind Generic subtopic 10.",
+              "id": "p-block-elements-q-silicon-compounds-1",
+              "question": "What are the critical factors or principles governing Silicon compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-10"
+                "p-block-elements",
+                "silicon-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "core-generic-subtopic-10",
-                "microskillSlug": "understand-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "silicon-compounds",
+                "conceptSlug": "core-silicon-compounds",
+                "microskillSlug": "understand-silicon-compounds"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-10-2",
-              "question": "What is a common trap associated with Generic subtopic 10?",
+              "id": "p-block-elements-q-silicon-compounds-2",
+              "question": "Describe a scenario where applying the concept of Silicon compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-10",
+                "p-block-elements",
+                "silicon-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "trap-generic-subtopic-10",
-                "microskillSlug": "avoid-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "silicon-compounds",
+                "conceptSlug": "trap-silicon-compounds",
+                "microskillSlug": "avoid-silicon-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-11",
-          "title": "Generic subtopic 11",
+          "id": "mt-p-block-elements-group-15-elements-general-properties-8",
+          "title": "Group 15 elements general properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-11"
+            "group-15-elements-general-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 11"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 15 elements general properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 11 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 11 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 11",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 11",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Group 15 elements general properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 15 elements general properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 11 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 11."
+            "Misinterpreting the subtle edge cases of Group 15 elements general properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 15 elements general properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 11."
+            "Can accurately solve numericals or identify biological structures related specifically to Group 15 elements general properties.",
+            "Successfully avoids common pitfalls when Group 15 elements general properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 11."
+            "Past year questions frequently test the application of Group 15 elements general properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-11-1",
-              "question": "Explain the core concept behind Generic subtopic 11.",
+              "id": "p-block-elements-q-group-15-elements-general-properties-1",
+              "question": "What are the critical factors or principles governing Group 15 elements general properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-11"
+                "p-block-elements",
+                "group-15-elements-general-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "core-generic-subtopic-11",
-                "microskillSlug": "understand-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-15-elements-general-properties",
+                "conceptSlug": "core-group-15-elements-general-properties",
+                "microskillSlug": "understand-group-15-elements-general-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-11-2",
-              "question": "What is a common trap associated with Generic subtopic 11?",
+              "id": "p-block-elements-q-group-15-elements-general-properties-2",
+              "question": "Describe a scenario where applying the concept of Group 15 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-11",
+                "p-block-elements",
+                "group-15-elements-general-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "trap-generic-subtopic-11",
-                "microskillSlug": "avoid-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-15-elements-general-properties",
+                "conceptSlug": "trap-group-15-elements-general-properties",
+                "microskillSlug": "avoid-group-15-elements-general-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-12",
-          "title": "Generic subtopic 12",
+          "id": "mt-p-block-elements-nitrogen-anomalous-properties-9",
+          "title": "Nitrogen anomalous properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-12"
+            "nitrogen-anomalous-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 12"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Nitrogen anomalous properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 12 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 12 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 12",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 12",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Nitrogen anomalous properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nitrogen anomalous properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 12 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 12."
+            "Misinterpreting the subtle edge cases of Nitrogen anomalous properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nitrogen anomalous properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 12."
+            "Can accurately solve numericals or identify biological structures related specifically to Nitrogen anomalous properties.",
+            "Successfully avoids common pitfalls when Nitrogen anomalous properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 12."
+            "Past year questions frequently test the application of Nitrogen anomalous properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-12-1",
-              "question": "Explain the core concept behind Generic subtopic 12.",
+              "id": "p-block-elements-q-nitrogen-anomalous-properties-1",
+              "question": "What are the critical factors or principles governing Nitrogen anomalous properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-12"
+                "p-block-elements",
+                "nitrogen-anomalous-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "core-generic-subtopic-12",
-                "microskillSlug": "understand-generic-subtopic-12",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "nitrogen-anomalous-properties",
+                "conceptSlug": "core-nitrogen-anomalous-properties",
+                "microskillSlug": "understand-nitrogen-anomalous-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-12-2",
-              "question": "What is a common trap associated with Generic subtopic 12?",
+              "id": "p-block-elements-q-nitrogen-anomalous-properties-2",
+              "question": "Describe a scenario where applying the concept of Nitrogen anomalous properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-12",
+                "p-block-elements",
+                "nitrogen-anomalous-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "trap-generic-subtopic-12",
-                "microskillSlug": "avoid-generic-subtopic-12",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-13",
-          "title": "Generic subtopic 13",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-13"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 13"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 13 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 13 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 13",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 13",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 13 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 13."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 13."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 13."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-13-1",
-              "question": "Explain the core concept behind Generic subtopic 13.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "p-block-elements",
                 "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "core-generic-subtopic-13",
-                "microskillSlug": "understand-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-13-2",
-              "question": "What is a common trap associated with Generic subtopic 13?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "trap-generic-subtopic-13",
-                "microskillSlug": "avoid-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-14",
-          "title": "Generic subtopic 14",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-14"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 14"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 14 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 14 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 14",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 14",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 14 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 14."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 14."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 14."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-14-1",
-              "question": "Explain the core concept behind Generic subtopic 14.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "core-generic-subtopic-14",
-                "microskillSlug": "understand-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-14-2",
-              "question": "What is a common trap associated with Generic subtopic 14?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "trap-generic-subtopic-14",
-                "microskillSlug": "avoid-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-15",
-          "title": "Generic subtopic 15",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-15"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 15"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 15 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 15 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 15",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 15",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 15 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 15."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 15."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 15."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-15-1",
-              "question": "Explain the core concept behind Generic subtopic 15.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "core-generic-subtopic-15",
-                "microskillSlug": "understand-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-15-2",
-              "question": "What is a common trap associated with Generic subtopic 15?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "trap-generic-subtopic-15",
-                "microskillSlug": "avoid-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "subtopicSlug": "nitrogen-anomalous-properties",
+                "conceptSlug": "trap-nitrogen-anomalous-properties",
+                "microskillSlug": "avoid-nitrogen-anomalous-properties"
               }
             }
           ]
@@ -1708,851 +898,446 @@
     },
     {
       "id": "m-p-block-elements-3",
-      "title": "p-Block Elements - Section 3",
-      "description": "Comprehensive analysis covering Generic subtopic 16, Generic subtopic 17, Generic subtopic 18 and more.",
+      "title": "Mastery Module 3: Preparation and properties of dinitrogen and Related Concepts",
+      "description": "Comprehensive analysis covering preparation and properties of dinitrogen, ammonia preparation and properties, oxides of nitrogen and advanced applications.",
       "conceptTags": [
         "p-block-elements",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-p-block-elements-generic-subtopic-16",
-          "title": "Generic subtopic 16",
+          "id": "mt-p-block-elements-preparation-and-properties-of-dinitrogen-10",
+          "title": "Preparation and properties of dinitrogen",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-16"
+            "preparation-and-properties-of-dinitrogen"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 16"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Preparation and properties of dinitrogen"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 16 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 16 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 16",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 16",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Preparation and properties of dinitrogen is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation and properties of dinitrogen correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 16 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 16."
+            "Misinterpreting the subtle edge cases of Preparation and properties of dinitrogen during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation and properties of dinitrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 16."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation and properties of dinitrogen.",
+            "Successfully avoids common pitfalls when Preparation and properties of dinitrogen is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 16."
+            "Past year questions frequently test the application of Preparation and properties of dinitrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-16-1",
-              "question": "Explain the core concept behind Generic subtopic 16.",
+              "id": "p-block-elements-q-preparation-and-properties-of-dinitrogen-1",
+              "question": "What are the critical factors or principles governing Preparation and properties of dinitrogen?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-16"
+                "p-block-elements",
+                "preparation-and-properties-of-dinitrogen"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "core-generic-subtopic-16",
-                "microskillSlug": "understand-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "preparation-and-properties-of-dinitrogen",
+                "conceptSlug": "core-preparation-and-properties-of-dinitrogen",
+                "microskillSlug": "understand-preparation-and-properties-of-dinitrogen"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-16-2",
-              "question": "What is a common trap associated with Generic subtopic 16?",
+              "id": "p-block-elements-q-preparation-and-properties-of-dinitrogen-2",
+              "question": "Describe a scenario where applying the concept of Preparation and properties of dinitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-16",
+                "p-block-elements",
+                "preparation-and-properties-of-dinitrogen",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "trap-generic-subtopic-16",
-                "microskillSlug": "avoid-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "preparation-and-properties-of-dinitrogen",
+                "conceptSlug": "trap-preparation-and-properties-of-dinitrogen",
+                "microskillSlug": "avoid-preparation-and-properties-of-dinitrogen"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-17",
-          "title": "Generic subtopic 17",
+          "id": "mt-p-block-elements-ammonia-preparation-and-properties-11",
+          "title": "Ammonia preparation and properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-17"
+            "ammonia-preparation-and-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 17"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Ammonia preparation and properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 17 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 17 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 17",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 17",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Ammonia preparation and properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ammonia preparation and properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 17 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 17."
+            "Misinterpreting the subtle edge cases of Ammonia preparation and properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ammonia preparation and properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 17."
+            "Can accurately solve numericals or identify biological structures related specifically to Ammonia preparation and properties.",
+            "Successfully avoids common pitfalls when Ammonia preparation and properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 17."
+            "Past year questions frequently test the application of Ammonia preparation and properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-17-1",
-              "question": "Explain the core concept behind Generic subtopic 17.",
+              "id": "p-block-elements-q-ammonia-preparation-and-properties-1",
+              "question": "What are the critical factors or principles governing Ammonia preparation and properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-17"
+                "p-block-elements",
+                "ammonia-preparation-and-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "core-generic-subtopic-17",
-                "microskillSlug": "understand-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "ammonia-preparation-and-properties",
+                "conceptSlug": "core-ammonia-preparation-and-properties",
+                "microskillSlug": "understand-ammonia-preparation-and-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-17-2",
-              "question": "What is a common trap associated with Generic subtopic 17?",
+              "id": "p-block-elements-q-ammonia-preparation-and-properties-2",
+              "question": "Describe a scenario where applying the concept of Ammonia preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-17",
+                "p-block-elements",
+                "ammonia-preparation-and-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "trap-generic-subtopic-17",
-                "microskillSlug": "avoid-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "ammonia-preparation-and-properties",
+                "conceptSlug": "trap-ammonia-preparation-and-properties",
+                "microskillSlug": "avoid-ammonia-preparation-and-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-18",
-          "title": "Generic subtopic 18",
+          "id": "mt-p-block-elements-oxides-of-nitrogen-12",
+          "title": "Oxides of nitrogen",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-18"
+            "oxides-of-nitrogen"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 18"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Oxides of nitrogen"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 18 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 18 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 18",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 18",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Oxides of nitrogen is heavily tested in recent NEET papers.",
+            "Applying the core principles of Oxides of nitrogen correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 18 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 18."
+            "Misinterpreting the subtle edge cases of Oxides of nitrogen during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Oxides of nitrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 18."
+            "Can accurately solve numericals or identify biological structures related specifically to Oxides of nitrogen.",
+            "Successfully avoids common pitfalls when Oxides of nitrogen is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 18."
+            "Past year questions frequently test the application of Oxides of nitrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-18-1",
-              "question": "Explain the core concept behind Generic subtopic 18.",
+              "id": "p-block-elements-q-oxides-of-nitrogen-1",
+              "question": "What are the critical factors or principles governing Oxides of nitrogen?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-18"
+                "p-block-elements",
+                "oxides-of-nitrogen"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "core-generic-subtopic-18",
-                "microskillSlug": "understand-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "oxides-of-nitrogen",
+                "conceptSlug": "core-oxides-of-nitrogen",
+                "microskillSlug": "understand-oxides-of-nitrogen"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-18-2",
-              "question": "What is a common trap associated with Generic subtopic 18?",
+              "id": "p-block-elements-q-oxides-of-nitrogen-2",
+              "question": "Describe a scenario where applying the concept of Oxides of nitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-18",
+                "p-block-elements",
+                "oxides-of-nitrogen",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "trap-generic-subtopic-18",
-                "microskillSlug": "avoid-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "oxides-of-nitrogen",
+                "conceptSlug": "trap-oxides-of-nitrogen",
+                "microskillSlug": "avoid-oxides-of-nitrogen"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-19",
-          "title": "Generic subtopic 19",
+          "id": "mt-p-block-elements-nitric-acid-13",
+          "title": "Nitric acid",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-19"
+            "nitric-acid"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 19"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Nitric acid"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 19 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 19 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 19",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 19",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Nitric acid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nitric acid correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 19 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 19."
+            "Misinterpreting the subtle edge cases of Nitric acid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nitric acid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 19."
+            "Can accurately solve numericals or identify biological structures related specifically to Nitric acid.",
+            "Successfully avoids common pitfalls when Nitric acid is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 19."
+            "Past year questions frequently test the application of Nitric acid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-19-1",
-              "question": "Explain the core concept behind Generic subtopic 19.",
+              "id": "p-block-elements-q-nitric-acid-1",
+              "question": "What are the critical factors or principles governing Nitric acid?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-19"
+                "p-block-elements",
+                "nitric-acid"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "core-generic-subtopic-19",
-                "microskillSlug": "understand-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "nitric-acid",
+                "conceptSlug": "core-nitric-acid",
+                "microskillSlug": "understand-nitric-acid"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-19-2",
-              "question": "What is a common trap associated with Generic subtopic 19?",
+              "id": "p-block-elements-q-nitric-acid-2",
+              "question": "Describe a scenario where applying the concept of Nitric acid can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-19",
+                "p-block-elements",
+                "nitric-acid",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "trap-generic-subtopic-19",
-                "microskillSlug": "avoid-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "nitric-acid",
+                "conceptSlug": "trap-nitric-acid",
+                "microskillSlug": "avoid-nitric-acid"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-20",
-          "title": "Generic subtopic 20",
+          "id": "mt-p-block-elements-phosphorus-allotropes-and-compounds-14",
+          "title": "Phosphorus allotropes and compounds",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-20"
+            "phosphorus-allotropes-and-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 20"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Phosphorus allotropes and compounds"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 20 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 20 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 20",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 20",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Phosphorus allotropes and compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Phosphorus allotropes and compounds correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 20 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 20."
+            "Misinterpreting the subtle edge cases of Phosphorus allotropes and compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Phosphorus allotropes and compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 20."
+            "Can accurately solve numericals or identify biological structures related specifically to Phosphorus allotropes and compounds.",
+            "Successfully avoids common pitfalls when Phosphorus allotropes and compounds is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 20."
+            "Past year questions frequently test the application of Phosphorus allotropes and compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-20-1",
-              "question": "Explain the core concept behind Generic subtopic 20.",
+              "id": "p-block-elements-q-phosphorus-allotropes-and-compounds-1",
+              "question": "What are the critical factors or principles governing Phosphorus allotropes and compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-20"
+                "p-block-elements",
+                "phosphorus-allotropes-and-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "core-generic-subtopic-20",
-                "microskillSlug": "understand-generic-subtopic-20",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "phosphorus-allotropes-and-compounds",
+                "conceptSlug": "core-phosphorus-allotropes-and-compounds",
+                "microskillSlug": "understand-phosphorus-allotropes-and-compounds"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-20-2",
-              "question": "What is a common trap associated with Generic subtopic 20?",
+              "id": "p-block-elements-q-phosphorus-allotropes-and-compounds-2",
+              "question": "Describe a scenario where applying the concept of Phosphorus allotropes and compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-20",
+                "p-block-elements",
+                "phosphorus-allotropes-and-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "trap-generic-subtopic-20",
-                "microskillSlug": "avoid-generic-subtopic-20",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-21",
-          "title": "Generic subtopic 21",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-21"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 21"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 21 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 21 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 21",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 21",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 21 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 21."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 21."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 21."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-21-1",
-              "question": "Explain the core concept behind Generic subtopic 21.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "p-block-elements",
                 "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "core-generic-subtopic-21",
-                "microskillSlug": "understand-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-21-2",
-              "question": "What is a common trap associated with Generic subtopic 21?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "trap-generic-subtopic-21",
-                "microskillSlug": "avoid-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-22",
-          "title": "Generic subtopic 22",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-22"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 22"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 22 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 22 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 22",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 22",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 22 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 22."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 22."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 22."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-22-1",
-              "question": "Explain the core concept behind Generic subtopic 22.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "core-generic-subtopic-22",
-                "microskillSlug": "understand-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-22-2",
-              "question": "What is a common trap associated with Generic subtopic 22?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "trap-generic-subtopic-22",
-                "microskillSlug": "avoid-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-p-block-elements-generic-subtopic-23",
-          "title": "Generic subtopic 23",
-          "conceptTags": [
-            "p-block-elements",
-            "generic-subtopic-23"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 23"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 23 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 23 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 23",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 23",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 23 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 23."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 23."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 23."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-generic-subtopic-23-1",
-              "question": "Explain the core concept behind Generic subtopic 23.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "core-generic-subtopic-23",
-                "microskillSlug": "understand-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
-              }
-            },
-            {
-              "id": "p-block-elements-q-generic-subtopic-23-2",
-              "question": "What is a common trap associated with Generic subtopic 23?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "trap-generic-subtopic-23",
-                "microskillSlug": "avoid-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "subtopicSlug": "phosphorus-allotropes-and-compounds",
+                "conceptSlug": "trap-phosphorus-allotropes-and-compounds",
+                "microskillSlug": "avoid-phosphorus-allotropes-and-compounds"
               }
             }
           ]
@@ -2561,641 +1346,906 @@
     },
     {
       "id": "m-p-block-elements-4",
-      "title": "p-Block Elements - Section 4",
-      "description": "Comprehensive analysis covering Generic subtopic 24, Generic subtopic 25, Generic subtopic 26 and more.",
+      "title": "Mastery Module 4: Group 16 elements general properties and Related Concepts",
+      "description": "Comprehensive analysis covering group 16 elements general properties, dioxygen preparation and properties, ozone and advanced applications.",
       "conceptTags": [
         "p-block-elements",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-p-block-elements-generic-subtopic-24",
-          "title": "Generic subtopic 24",
+          "id": "mt-p-block-elements-group-16-elements-general-properties-15",
+          "title": "Group 16 elements general properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-24"
+            "group-16-elements-general-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 24"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 16 elements general properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 24 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 24 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 24",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 24",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Group 16 elements general properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 16 elements general properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 24 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 24."
+            "Misinterpreting the subtle edge cases of Group 16 elements general properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 16 elements general properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 24."
+            "Can accurately solve numericals or identify biological structures related specifically to Group 16 elements general properties.",
+            "Successfully avoids common pitfalls when Group 16 elements general properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 24."
+            "Past year questions frequently test the application of Group 16 elements general properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-24-1",
-              "question": "Explain the core concept behind Generic subtopic 24.",
+              "id": "p-block-elements-q-group-16-elements-general-properties-1",
+              "question": "What are the critical factors or principles governing Group 16 elements general properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-24"
+                "p-block-elements",
+                "group-16-elements-general-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "core-generic-subtopic-24",
-                "microskillSlug": "understand-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-16-elements-general-properties",
+                "conceptSlug": "core-group-16-elements-general-properties",
+                "microskillSlug": "understand-group-16-elements-general-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-24-2",
-              "question": "What is a common trap associated with Generic subtopic 24?",
+              "id": "p-block-elements-q-group-16-elements-general-properties-2",
+              "question": "Describe a scenario where applying the concept of Group 16 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-24",
+                "p-block-elements",
+                "group-16-elements-general-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "trap-generic-subtopic-24",
-                "microskillSlug": "avoid-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-16-elements-general-properties",
+                "conceptSlug": "trap-group-16-elements-general-properties",
+                "microskillSlug": "avoid-group-16-elements-general-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-25",
-          "title": "Generic subtopic 25",
+          "id": "mt-p-block-elements-dioxygen-preparation-and-properties-16",
+          "title": "Dioxygen preparation and properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-25"
+            "dioxygen-preparation-and-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 25"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Dioxygen preparation and properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 25 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 25 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 25",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 25",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Dioxygen preparation and properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dioxygen preparation and properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 25 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 25."
+            "Misinterpreting the subtle edge cases of Dioxygen preparation and properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dioxygen preparation and properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 25."
+            "Can accurately solve numericals or identify biological structures related specifically to Dioxygen preparation and properties.",
+            "Successfully avoids common pitfalls when Dioxygen preparation and properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 25."
+            "Past year questions frequently test the application of Dioxygen preparation and properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-25-1",
-              "question": "Explain the core concept behind Generic subtopic 25.",
+              "id": "p-block-elements-q-dioxygen-preparation-and-properties-1",
+              "question": "What are the critical factors or principles governing Dioxygen preparation and properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-25"
+                "p-block-elements",
+                "dioxygen-preparation-and-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "core-generic-subtopic-25",
-                "microskillSlug": "understand-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "dioxygen-preparation-and-properties",
+                "conceptSlug": "core-dioxygen-preparation-and-properties",
+                "microskillSlug": "understand-dioxygen-preparation-and-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-25-2",
-              "question": "What is a common trap associated with Generic subtopic 25?",
+              "id": "p-block-elements-q-dioxygen-preparation-and-properties-2",
+              "question": "Describe a scenario where applying the concept of Dioxygen preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-25",
+                "p-block-elements",
+                "dioxygen-preparation-and-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "trap-generic-subtopic-25",
-                "microskillSlug": "avoid-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "dioxygen-preparation-and-properties",
+                "conceptSlug": "trap-dioxygen-preparation-and-properties",
+                "microskillSlug": "avoid-dioxygen-preparation-and-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-26",
-          "title": "Generic subtopic 26",
+          "id": "mt-p-block-elements-ozone-17",
+          "title": "Ozone",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-26"
+            "ozone"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 26"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Ozone"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 26 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 26 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 26",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 26",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Ozone is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ozone correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 26 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 26."
+            "Misinterpreting the subtle edge cases of Ozone during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ozone."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 26."
+            "Can accurately solve numericals or identify biological structures related specifically to Ozone.",
+            "Successfully avoids common pitfalls when Ozone is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 26."
+            "Past year questions frequently test the application of Ozone in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-26-1",
-              "question": "Explain the core concept behind Generic subtopic 26.",
+              "id": "p-block-elements-q-ozone-1",
+              "question": "What are the critical factors or principles governing Ozone?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-26"
+                "p-block-elements",
+                "ozone"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "core-generic-subtopic-26",
-                "microskillSlug": "understand-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "ozone",
+                "conceptSlug": "core-ozone",
+                "microskillSlug": "understand-ozone"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-26-2",
-              "question": "What is a common trap associated with Generic subtopic 26?",
+              "id": "p-block-elements-q-ozone-2",
+              "question": "Describe a scenario where applying the concept of Ozone can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-26",
+                "p-block-elements",
+                "ozone",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "trap-generic-subtopic-26",
-                "microskillSlug": "avoid-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "ozone",
+                "conceptSlug": "trap-ozone",
+                "microskillSlug": "avoid-ozone"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-27",
-          "title": "Generic subtopic 27",
+          "id": "mt-p-block-elements-sulphur-allotropes-18",
+          "title": "Sulphur allotropes",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-27"
+            "sulphur-allotropes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 27"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Sulphur allotropes"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 27 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 27 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 27",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 27",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Sulphur allotropes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Sulphur allotropes correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 27 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 27."
+            "Misinterpreting the subtle edge cases of Sulphur allotropes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Sulphur allotropes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 27."
+            "Can accurately solve numericals or identify biological structures related specifically to Sulphur allotropes.",
+            "Successfully avoids common pitfalls when Sulphur allotropes is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 27."
+            "Past year questions frequently test the application of Sulphur allotropes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-27-1",
-              "question": "Explain the core concept behind Generic subtopic 27.",
+              "id": "p-block-elements-q-sulphur-allotropes-1",
+              "question": "What are the critical factors or principles governing Sulphur allotropes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-27"
+                "p-block-elements",
+                "sulphur-allotropes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "core-generic-subtopic-27",
-                "microskillSlug": "understand-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "sulphur-allotropes",
+                "conceptSlug": "core-sulphur-allotropes",
+                "microskillSlug": "understand-sulphur-allotropes"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-27-2",
-              "question": "What is a common trap associated with Generic subtopic 27?",
+              "id": "p-block-elements-q-sulphur-allotropes-2",
+              "question": "Describe a scenario where applying the concept of Sulphur allotropes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-27",
+                "p-block-elements",
+                "sulphur-allotropes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "trap-generic-subtopic-27",
-                "microskillSlug": "avoid-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "sulphur-allotropes",
+                "conceptSlug": "trap-sulphur-allotropes",
+                "microskillSlug": "avoid-sulphur-allotropes"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-28",
-          "title": "Generic subtopic 28",
+          "id": "mt-p-block-elements-sulphur-dioxide-and-sulphuric-acid-19",
+          "title": "Sulphur dioxide and sulphuric acid",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-28"
+            "sulphur-dioxide-and-sulphuric-acid"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 28"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Sulphur dioxide and sulphuric acid"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 28 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 28 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 28",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 28",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Sulphur dioxide and sulphuric acid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Sulphur dioxide and sulphuric acid correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 28 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 28."
+            "Misinterpreting the subtle edge cases of Sulphur dioxide and sulphuric acid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Sulphur dioxide and sulphuric acid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 28."
+            "Can accurately solve numericals or identify biological structures related specifically to Sulphur dioxide and sulphuric acid.",
+            "Successfully avoids common pitfalls when Sulphur dioxide and sulphuric acid is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 28."
+            "Past year questions frequently test the application of Sulphur dioxide and sulphuric acid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-28-1",
-              "question": "Explain the core concept behind Generic subtopic 28.",
+              "id": "p-block-elements-q-sulphur-dioxide-and-sulphuric-acid-1",
+              "question": "What are the critical factors or principles governing Sulphur dioxide and sulphuric acid?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-28"
+                "p-block-elements",
+                "sulphur-dioxide-and-sulphuric-acid"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "core-generic-subtopic-28",
-                "microskillSlug": "understand-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "sulphur-dioxide-and-sulphuric-acid",
+                "conceptSlug": "core-sulphur-dioxide-and-sulphuric-acid",
+                "microskillSlug": "understand-sulphur-dioxide-and-sulphuric-acid"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-28-2",
-              "question": "What is a common trap associated with Generic subtopic 28?",
+              "id": "p-block-elements-q-sulphur-dioxide-and-sulphuric-acid-2",
+              "question": "Describe a scenario where applying the concept of Sulphur dioxide and sulphuric acid can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-28",
+                "p-block-elements",
+                "sulphur-dioxide-and-sulphuric-acid",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "trap-generic-subtopic-28",
-                "microskillSlug": "avoid-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "sulphur-dioxide-and-sulphuric-acid",
+                "conceptSlug": "trap-sulphur-dioxide-and-sulphuric-acid",
+                "microskillSlug": "avoid-sulphur-dioxide-and-sulphuric-acid"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-p-block-elements-5",
+      "title": "Mastery Module 5: Group 17 elements properties and Related Concepts",
+      "description": "Comprehensive analysis covering group 17 elements properties, chlorine preparation and properties, hydrogen chloride and advanced applications.",
+      "conceptTags": [
+        "p-block-elements",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-p-block-elements-group-17-elements-properties-20",
+          "title": "Group 17 elements properties",
+          "conceptTags": [
+            "p-block-elements",
+            "group-17-elements-properties"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 17 elements properties"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Group 17 elements properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 17 elements properties correctly is essential for solving complex multi-step problems in p-Block Elements."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Group 17 elements properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 17 elements properties."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Group 17 elements properties.",
+            "Successfully avoids common pitfalls when Group 17 elements properties is integrated with other concepts in p-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Group 17 elements properties in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "p-block-elements-q-group-17-elements-properties-1",
+              "question": "What are the critical factors or principles governing Group 17 elements properties?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "group-17-elements-properties"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-17-elements-properties",
+                "conceptSlug": "core-group-17-elements-properties",
+                "microskillSlug": "understand-group-17-elements-properties"
+              }
+            },
+            {
+              "id": "p-block-elements-q-group-17-elements-properties-2",
+              "question": "Describe a scenario where applying the concept of Group 17 elements properties can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "group-17-elements-properties",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-17-elements-properties",
+                "conceptSlug": "trap-group-17-elements-properties",
+                "microskillSlug": "avoid-group-17-elements-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-p-block-elements-generic-subtopic-29",
-          "title": "Generic subtopic 29",
+          "id": "mt-p-block-elements-chlorine-preparation-and-properties-21",
+          "title": "Chlorine preparation and properties",
           "conceptTags": [
             "p-block-elements",
-            "generic-subtopic-29"
+            "chlorine-preparation-and-properties"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Generic subtopic 29"
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Chlorine preparation and properties"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 29 is a fundamental subtopic of p-Block Elements.",
-            "Crucial to understand the principles governing Generic subtopic 29 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 29",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 29",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Chlorine preparation and properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Chlorine preparation and properties correctly is essential for solving complex multi-step problems in p-Block Elements."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 29 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 29."
+            "Misinterpreting the subtle edge cases of Chlorine preparation and properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Chlorine preparation and properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 29."
+            "Can accurately solve numericals or identify biological structures related specifically to Chlorine preparation and properties.",
+            "Successfully avoids common pitfalls when Chlorine preparation and properties is integrated with other concepts in p-Block Elements."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 29."
+            "Past year questions frequently test the application of Chlorine preparation and properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-generic-subtopic-29-1",
-              "question": "Explain the core concept behind Generic subtopic 29.",
+              "id": "p-block-elements-q-chlorine-preparation-and-properties-1",
+              "question": "What are the critical factors or principles governing Chlorine preparation and properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-29"
+                "p-block-elements",
+                "chlorine-preparation-and-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "core-generic-subtopic-29",
-                "microskillSlug": "understand-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "chlorine-preparation-and-properties",
+                "conceptSlug": "core-chlorine-preparation-and-properties",
+                "microskillSlug": "understand-chlorine-preparation-and-properties"
               }
             },
             {
-              "id": "p-block-elements-q-generic-subtopic-29-2",
-              "question": "What is a common trap associated with Generic subtopic 29?",
+              "id": "p-block-elements-q-chlorine-preparation-and-properties-2",
+              "question": "Describe a scenario where applying the concept of Chlorine preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-29",
+                "p-block-elements",
+                "chlorine-preparation-and-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "trap-generic-subtopic-29",
-                "microskillSlug": "avoid-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements"
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "chlorine-preparation-and-properties",
+                "conceptSlug": "trap-chlorine-preparation-and-properties",
+                "microskillSlug": "avoid-chlorine-preparation-and-properties"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-p-block-elements-hydrogen-chloride-22",
+          "title": "Hydrogen chloride",
+          "conceptTags": [
+            "p-block-elements",
+            "hydrogen-chloride"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Hydrogen chloride"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Hydrogen chloride is heavily tested in recent NEET papers.",
+            "Applying the core principles of Hydrogen chloride correctly is essential for solving complex multi-step problems in p-Block Elements."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Hydrogen chloride during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Hydrogen chloride."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Hydrogen chloride.",
+            "Successfully avoids common pitfalls when Hydrogen chloride is integrated with other concepts in p-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Hydrogen chloride in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "p-block-elements-q-hydrogen-chloride-1",
+              "question": "What are the critical factors or principles governing Hydrogen chloride?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "hydrogen-chloride"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "hydrogen-chloride",
+                "conceptSlug": "core-hydrogen-chloride",
+                "microskillSlug": "understand-hydrogen-chloride"
+              }
+            },
+            {
+              "id": "p-block-elements-q-hydrogen-chloride-2",
+              "question": "Describe a scenario where applying the concept of Hydrogen chloride can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "hydrogen-chloride",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "hydrogen-chloride",
+                "conceptSlug": "trap-hydrogen-chloride",
+                "microskillSlug": "avoid-hydrogen-chloride"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-p-block-elements-interhalogen-compounds-23",
+          "title": "Interhalogen compounds",
+          "conceptTags": [
+            "p-block-elements",
+            "interhalogen-compounds"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Interhalogen compounds"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Interhalogen compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Interhalogen compounds correctly is essential for solving complex multi-step problems in p-Block Elements."
+          ],
+          "reactions": [
+            {
+              "name": "Typical interhalogen compounds Reaction",
+              "equation": "Reactant -> Product",
+              "reagentConditions": [
+                "Specific catalyst/temperature"
+              ],
+              "mechanismTags": [
+                "Characteristic mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Interhalogen compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Interhalogen compounds."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Interhalogen compounds.",
+            "Successfully avoids common pitfalls when Interhalogen compounds is integrated with other concepts in p-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Interhalogen compounds in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "p-block-elements-q-interhalogen-compounds-1",
+              "question": "What are the critical factors or principles governing Interhalogen compounds?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "interhalogen-compounds"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "interhalogen-compounds",
+                "conceptSlug": "core-interhalogen-compounds",
+                "microskillSlug": "understand-interhalogen-compounds"
+              }
+            },
+            {
+              "id": "p-block-elements-q-interhalogen-compounds-2",
+              "question": "Describe a scenario where applying the concept of Interhalogen compounds can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "interhalogen-compounds",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "interhalogen-compounds",
+                "conceptSlug": "trap-interhalogen-compounds",
+                "microskillSlug": "avoid-interhalogen-compounds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-p-block-elements-group-18-elements-properties-and-uses-24",
+          "title": "Group 18 elements properties and uses",
+          "conceptTags": [
+            "p-block-elements",
+            "group-18-elements-properties-and-uses"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: p-Block Elements, Section detailing Group 18 elements properties and uses"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Group 18 elements properties and uses is heavily tested in recent NEET papers.",
+            "Applying the core principles of Group 18 elements properties and uses correctly is essential for solving complex multi-step problems in p-Block Elements."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Group 18 elements properties and uses during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Group 18 elements properties and uses."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Group 18 elements properties and uses.",
+            "Successfully avoids common pitfalls when Group 18 elements properties and uses is integrated with other concepts in p-Block Elements."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Group 18 elements properties and uses in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "p-block-elements-q-group-18-elements-properties-and-uses-1",
+              "question": "What are the critical factors or principles governing Group 18 elements properties and uses?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "group-18-elements-properties-and-uses"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-18-elements-properties-and-uses",
+                "conceptSlug": "core-group-18-elements-properties-and-uses",
+                "microskillSlug": "understand-group-18-elements-properties-and-uses"
+              }
+            },
+            {
+              "id": "p-block-elements-q-group-18-elements-properties-and-uses-2",
+              "question": "Describe a scenario where applying the concept of Group 18 elements properties and uses can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "p-block-elements",
+                "group-18-elements-properties-and-uses",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "p-block-elements",
+                "chapterSlug": "p-block-elements",
+                "topicSlug": "p-block-elements",
+                "subtopicSlug": "group-18-elements-properties-and-uses",
+                "conceptSlug": "trap-group-18-elements-properties-and-uses",
+                "microskillSlug": "avoid-group-18-elements-properties-and-uses"
               }
             }
           ]

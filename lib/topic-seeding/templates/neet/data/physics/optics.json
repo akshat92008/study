@@ -2,648 +2,605 @@
   "missions": [
     {
       "id": "m-optics-1",
-      "title": "Optics - Section 1",
-      "description": "Comprehensive analysis covering reflection, spherical mirrors, mirror formula and more.",
+      "title": "Mastery Module 1: Reflection of light and Related Concepts",
+      "description": "Comprehensive analysis covering reflection of light, spherical mirrors, mirror formula and advanced applications.",
       "conceptTags": [
         "optics",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-optics-reflection",
-          "title": "Reflection",
+          "id": "mt-optics-reflection-of-light-0",
+          "title": "Reflection of light",
           "conceptTags": [
             "optics",
-            "reflection"
+            "reflection-of-light"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Reflection"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Reflection of light"
           ],
           "mustKnowFacts": [
-            "Reflection is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Reflection for NEET."
+            "A thorough understanding of Reflection of light is heavily tested in recent NEET papers.",
+            "Applying the core principles of Reflection of light correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for reflection",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Reflection during complex MCQs.",
-            "Failing to apply the correct logic for Reflection."
+            "Misinterpreting the subtle edge cases of Reflection of light during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Reflection of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Reflection."
+            "Can accurately solve numericals or identify biological structures related specifically to Reflection of light.",
+            "Successfully avoids common pitfalls when Reflection of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Reflection."
+            "Past year questions frequently test the application of Reflection of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-reflection-1",
-              "question": "Explain the core concept behind Reflection.",
+              "id": "optics-q-reflection-of-light-1",
+              "question": "What are the critical factors or principles governing Reflection of light?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "reflection"
+                "optics",
+                "reflection-of-light"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "reflection",
-                "conceptSlug": "core-reflection",
-                "microskillSlug": "understand-reflection",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "reflection-of-light",
+                "conceptSlug": "core-reflection-of-light",
+                "microskillSlug": "understand-reflection-of-light"
               }
             },
             {
-              "id": "optics-q-reflection-2",
-              "question": "What is a common trap associated with Reflection?",
+              "id": "optics-q-reflection-of-light-2",
+              "question": "Describe a scenario where applying the concept of Reflection of light can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "reflection",
+                "optics",
+                "reflection-of-light",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "reflection",
-                "conceptSlug": "trap-reflection",
-                "microskillSlug": "avoid-reflection",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "reflection-of-light",
+                "conceptSlug": "trap-reflection-of-light",
+                "microskillSlug": "avoid-reflection-of-light"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-spherical-mirrors",
+          "id": "mt-optics-spherical-mirrors-1",
           "title": "Spherical mirrors",
           "conceptTags": [
             "optics",
             "spherical-mirrors"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Spherical mirrors"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Spherical mirrors"
           ],
           "mustKnowFacts": [
-            "Spherical mirrors is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Spherical mirrors for NEET."
+            "A thorough understanding of Spherical mirrors is heavily tested in recent NEET papers.",
+            "Applying the core principles of Spherical mirrors correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for spherical mirrors",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Spherical mirrors during complex MCQs.",
-            "Failing to apply the correct logic for Spherical mirrors."
+            "Misinterpreting the subtle edge cases of Spherical mirrors during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Spherical mirrors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Spherical mirrors."
+            "Can accurately solve numericals or identify biological structures related specifically to Spherical mirrors.",
+            "Successfully avoids common pitfalls when Spherical mirrors is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Spherical mirrors."
+            "Past year questions frequently test the application of Spherical mirrors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-spherical-mirrors-1",
-              "question": "Explain the core concept behind Spherical mirrors.",
+              "question": "What are the critical factors or principles governing Spherical mirrors?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "spherical-mirrors"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "spherical-mirrors",
                 "conceptSlug": "core-spherical-mirrors",
-                "microskillSlug": "understand-spherical-mirrors",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-spherical-mirrors"
               }
             },
             {
               "id": "optics-q-spherical-mirrors-2",
-              "question": "What is a common trap associated with Spherical mirrors?",
+              "question": "Describe a scenario where applying the concept of Spherical mirrors can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "spherical-mirrors",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "spherical-mirrors",
                 "conceptSlug": "trap-spherical-mirrors",
-                "microskillSlug": "avoid-spherical-mirrors",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-spherical-mirrors"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-mirror-formula",
+          "id": "mt-optics-mirror-formula-2",
           "title": "Mirror formula",
           "conceptTags": [
             "optics",
             "mirror-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Mirror formula"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Mirror formula"
           ],
           "mustKnowFacts": [
-            "Mirror formula is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Mirror formula for NEET."
+            "A thorough understanding of Mirror formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mirror formula correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for mirror formula",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mirror formula during complex MCQs.",
-            "Failing to apply the correct logic for Mirror formula."
+            "Misinterpreting the subtle edge cases of Mirror formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mirror formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mirror formula."
+            "Can accurately solve numericals or identify biological structures related specifically to Mirror formula.",
+            "Successfully avoids common pitfalls when Mirror formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mirror formula."
+            "Past year questions frequently test the application of Mirror formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-mirror-formula-1",
-              "question": "Explain the core concept behind Mirror formula.",
+              "question": "What are the critical factors or principles governing Mirror formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "mirror-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "mirror-formula",
                 "conceptSlug": "core-mirror-formula",
-                "microskillSlug": "understand-mirror-formula",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-mirror-formula"
               }
             },
             {
               "id": "optics-q-mirror-formula-2",
-              "question": "What is a common trap associated with Mirror formula?",
+              "question": "Describe a scenario where applying the concept of Mirror formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "mirror-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "mirror-formula",
                 "conceptSlug": "trap-mirror-formula",
-                "microskillSlug": "avoid-mirror-formula",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-mirror-formula"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-magnification",
-          "title": "Magnification",
+          "id": "mt-optics-linear-magnification-3",
+          "title": "Linear magnification",
           "conceptTags": [
             "optics",
-            "magnification"
+            "linear-magnification"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Magnification"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Linear magnification"
           ],
           "mustKnowFacts": [
-            "Magnification is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Magnification for NEET."
+            "A thorough understanding of Linear magnification is heavily tested in recent NEET papers.",
+            "Applying the core principles of Linear magnification correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for magnification",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Magnification during complex MCQs.",
-            "Failing to apply the correct logic for Magnification."
+            "Misinterpreting the subtle edge cases of Linear magnification during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Linear magnification."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Magnification."
+            "Can accurately solve numericals or identify biological structures related specifically to Linear magnification.",
+            "Successfully avoids common pitfalls when Linear magnification is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Magnification."
+            "Past year questions frequently test the application of Linear magnification in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-magnification-1",
-              "question": "Explain the core concept behind Magnification.",
+              "id": "optics-q-linear-magnification-1",
+              "question": "What are the critical factors or principles governing Linear magnification?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "magnification"
+                "optics",
+                "linear-magnification"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "magnification",
-                "conceptSlug": "core-magnification",
-                "microskillSlug": "understand-magnification",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "linear-magnification",
+                "conceptSlug": "core-linear-magnification",
+                "microskillSlug": "understand-linear-magnification"
               }
             },
             {
-              "id": "optics-q-magnification-2",
-              "question": "What is a common trap associated with Magnification?",
+              "id": "optics-q-linear-magnification-2",
+              "question": "Describe a scenario where applying the concept of Linear magnification can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "magnification",
+                "optics",
+                "linear-magnification",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "magnification",
-                "conceptSlug": "trap-magnification",
-                "microskillSlug": "avoid-magnification",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "linear-magnification",
+                "conceptSlug": "trap-linear-magnification",
+                "microskillSlug": "avoid-linear-magnification"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-refraction",
-          "title": "Refraction",
+          "id": "mt-optics-refraction-of-light-4",
+          "title": "Refraction of light",
           "conceptTags": [
             "optics",
-            "refraction"
+            "refraction-of-light"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Refraction"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction of light"
           ],
           "mustKnowFacts": [
-            "Refraction is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Refraction for NEET."
+            "A thorough understanding of Refraction of light is heavily tested in recent NEET papers.",
+            "Applying the core principles of Refraction of light correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for refraction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Refraction during complex MCQs.",
-            "Failing to apply the correct logic for Refraction."
+            "Misinterpreting the subtle edge cases of Refraction of light during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Refraction of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Refraction."
+            "Can accurately solve numericals or identify biological structures related specifically to Refraction of light.",
+            "Successfully avoids common pitfalls when Refraction of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Refraction."
+            "Past year questions frequently test the application of Refraction of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-refraction-1",
-              "question": "Explain the core concept behind Refraction.",
+              "id": "optics-q-refraction-of-light-1",
+              "question": "What are the critical factors or principles governing Refraction of light?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "refraction"
+                "optics",
+                "refraction-of-light"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "refraction",
-                "conceptSlug": "core-refraction",
-                "microskillSlug": "understand-refraction",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-of-light",
+                "conceptSlug": "core-refraction-of-light",
+                "microskillSlug": "understand-refraction-of-light"
               }
             },
             {
-              "id": "optics-q-refraction-2",
-              "question": "What is a common trap associated with Refraction?",
+              "id": "optics-q-refraction-of-light-2",
+              "question": "Describe a scenario where applying the concept of Refraction of light can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "refraction",
+                "optics",
+                "refraction-of-light",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "refraction",
-                "conceptSlug": "trap-refraction",
-                "microskillSlug": "avoid-refraction",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-of-light",
+                "conceptSlug": "trap-refraction-of-light",
+                "microskillSlug": "avoid-refraction-of-light"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-snell-law",
-          "title": "Snell law",
+          "id": "mt-optics-snell-s-law-5",
+          "title": "Snell’s law",
           "conceptTags": [
             "optics",
-            "snell-law"
+            "snell-s-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Snell law"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Snell’s law"
           ],
           "mustKnowFacts": [
-            "Snell law is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Snell law for NEET."
+            "A thorough understanding of Snell’s law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Snell’s law correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for Snell law",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Snell law during complex MCQs.",
-            "Failing to apply the correct logic for Snell law."
+            "Misinterpreting the subtle edge cases of Snell’s law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Snell’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Snell law."
+            "Can accurately solve numericals or identify biological structures related specifically to Snell’s law.",
+            "Successfully avoids common pitfalls when Snell’s law is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Snell law."
+            "Past year questions frequently test the application of Snell’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-snell-law-1",
-              "question": "Explain the core concept behind Snell law.",
+              "id": "optics-q-snell-s-law-1",
+              "question": "What are the critical factors or principles governing Snell’s law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "snell-law"
+                "optics",
+                "snell-s-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "snell-law",
-                "conceptSlug": "core-snell-law",
-                "microskillSlug": "understand-snell-law",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "snell-s-law",
+                "conceptSlug": "core-snell-s-law",
+                "microskillSlug": "understand-snell-s-law"
               }
             },
             {
-              "id": "optics-q-snell-law-2",
-              "question": "What is a common trap associated with Snell law?",
+              "id": "optics-q-snell-s-law-2",
+              "question": "Describe a scenario where applying the concept of Snell’s law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "snell-law",
+                "optics",
+                "snell-s-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "snell-law",
-                "conceptSlug": "trap-snell-law",
-                "microskillSlug": "avoid-snell-law",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-optics-total-internal-reflection",
-          "title": "Total internal reflection",
-          "conceptTags": [
-            "optics",
-            "total-internal-reflection"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Total internal reflection"
-          ],
-          "mustKnowFacts": [
-            "Total internal reflection is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Total internal reflection for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for total internal reflection",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Total internal reflection during complex MCQs.",
-            "Failing to apply the correct logic for Total internal reflection."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Total internal reflection."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Total internal reflection."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "optics-q-total-internal-reflection-1",
-              "question": "Explain the core concept behind Total internal reflection.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "total-internal-reflection"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
-                "subtopicSlug": "total-internal-reflection",
-                "conceptSlug": "core-total-internal-reflection",
-                "microskillSlug": "understand-total-internal-reflection",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            },
-            {
-              "id": "optics-q-total-internal-reflection-2",
-              "question": "What is a common trap associated with Total internal reflection?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "total-internal-reflection",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "total-internal-reflection",
-                "conceptSlug": "trap-total-internal-reflection",
-                "microskillSlug": "avoid-total-internal-reflection",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "subtopicSlug": "snell-s-law",
+                "conceptSlug": "trap-snell-s-law",
+                "microskillSlug": "avoid-snell-s-law"
               }
             }
           ]
@@ -652,648 +609,603 @@
     },
     {
       "id": "m-optics-2",
-      "title": "Optics - Section 2",
-      "description": "Comprehensive analysis covering critical angle, optical fibre, refraction at spherical surface and more.",
+      "title": "Mastery Module 2: Total internal reflection and Related Concepts",
+      "description": "Comprehensive analysis covering total internal reflection, critical angle, optical fibres application and advanced applications.",
       "conceptTags": [
         "optics",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-optics-critical-angle",
+          "id": "mt-optics-total-internal-reflection-6",
+          "title": "Total internal reflection",
+          "conceptTags": [
+            "optics",
+            "total-internal-reflection"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Total internal reflection"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Total internal reflection is heavily tested in recent NEET papers.",
+            "Applying the core principles of Total internal reflection correctly is essential for solving complex multi-step problems in Optics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Total internal reflection during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Total internal reflection."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Total internal reflection.",
+            "Successfully avoids common pitfalls when Total internal reflection is integrated with other concepts in Optics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Total internal reflection in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-total-internal-reflection-1",
+              "question": "What are the critical factors or principles governing Total internal reflection?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "optics",
+                "total-internal-reflection"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "total-internal-reflection",
+                "conceptSlug": "core-total-internal-reflection",
+                "microskillSlug": "understand-total-internal-reflection"
+              }
+            },
+            {
+              "id": "optics-q-total-internal-reflection-2",
+              "question": "Describe a scenario where applying the concept of Total internal reflection can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "optics",
+                "total-internal-reflection",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "total-internal-reflection",
+                "conceptSlug": "trap-total-internal-reflection",
+                "microskillSlug": "avoid-total-internal-reflection"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-critical-angle-7",
           "title": "Critical angle",
           "conceptTags": [
             "optics",
             "critical-angle"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Critical angle"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Critical angle"
           ],
           "mustKnowFacts": [
-            "Critical angle is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Critical angle for NEET."
+            "A thorough understanding of Critical angle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Critical angle correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for critical angle",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Critical angle during complex MCQs.",
-            "Failing to apply the correct logic for Critical angle."
+            "Misinterpreting the subtle edge cases of Critical angle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Critical angle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Critical angle."
+            "Can accurately solve numericals or identify biological structures related specifically to Critical angle.",
+            "Successfully avoids common pitfalls when Critical angle is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Critical angle."
+            "Past year questions frequently test the application of Critical angle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-critical-angle-1",
-              "question": "Explain the core concept behind Critical angle.",
+              "question": "What are the critical factors or principles governing Critical angle?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "critical-angle"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "critical-angle",
                 "conceptSlug": "core-critical-angle",
-                "microskillSlug": "understand-critical-angle",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-critical-angle"
               }
             },
             {
               "id": "optics-q-critical-angle-2",
-              "question": "What is a common trap associated with Critical angle?",
+              "question": "Describe a scenario where applying the concept of Critical angle can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "critical-angle",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "critical-angle",
                 "conceptSlug": "trap-critical-angle",
-                "microskillSlug": "avoid-critical-angle",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-critical-angle"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-optical-fibre",
-          "title": "Optical fibre",
+          "id": "mt-optics-optical-fibres-application-8",
+          "title": "Optical fibres application",
           "conceptTags": [
             "optics",
-            "optical-fibre"
+            "optical-fibres-application"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Optical fibre"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Optical fibres application"
           ],
           "mustKnowFacts": [
-            "Optical fibre is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Optical fibre for NEET."
+            "A thorough understanding of Optical fibres application is heavily tested in recent NEET papers.",
+            "Applying the core principles of Optical fibres application correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for optical fibre",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Optical fibre during complex MCQs.",
-            "Failing to apply the correct logic for Optical fibre."
+            "Misinterpreting the subtle edge cases of Optical fibres application during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Optical fibres application."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Optical fibre."
+            "Can accurately solve numericals or identify biological structures related specifically to Optical fibres application.",
+            "Successfully avoids common pitfalls when Optical fibres application is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Optical fibre."
+            "Past year questions frequently test the application of Optical fibres application in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-optical-fibre-1",
-              "question": "Explain the core concept behind Optical fibre.",
+              "id": "optics-q-optical-fibres-application-1",
+              "question": "What are the critical factors or principles governing Optical fibres application?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "optical-fibre"
+                "optics",
+                "optical-fibres-application"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "optical-fibre",
-                "conceptSlug": "core-optical-fibre",
-                "microskillSlug": "understand-optical-fibre",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "optical-fibres-application",
+                "conceptSlug": "core-optical-fibres-application",
+                "microskillSlug": "understand-optical-fibres-application"
               }
             },
             {
-              "id": "optics-q-optical-fibre-2",
-              "question": "What is a common trap associated with Optical fibre?",
+              "id": "optics-q-optical-fibres-application-2",
+              "question": "Describe a scenario where applying the concept of Optical fibres application can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "optical-fibre",
+                "optics",
+                "optical-fibres-application",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "optical-fibre",
-                "conceptSlug": "trap-optical-fibre",
-                "microskillSlug": "avoid-optical-fibre",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "optical-fibres-application",
+                "conceptSlug": "trap-optical-fibres-application",
+                "microskillSlug": "avoid-optical-fibres-application"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-refraction-at-spherical-surface",
+          "id": "mt-optics-refraction-at-spherical-surface-9",
           "title": "Refraction at spherical surface",
           "conceptTags": [
             "optics",
             "refraction-at-spherical-surface"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Refraction at spherical surface"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction at spherical surface"
           ],
           "mustKnowFacts": [
-            "Refraction at spherical surface is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Refraction at spherical surface for NEET."
+            "A thorough understanding of Refraction at spherical surface is heavily tested in recent NEET papers.",
+            "Applying the core principles of Refraction at spherical surface correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for refraction at spherical surface",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Refraction at spherical surface during complex MCQs.",
-            "Failing to apply the correct logic for Refraction at spherical surface."
+            "Misinterpreting the subtle edge cases of Refraction at spherical surface during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Refraction at spherical surface."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Refraction at spherical surface."
+            "Can accurately solve numericals or identify biological structures related specifically to Refraction at spherical surface.",
+            "Successfully avoids common pitfalls when Refraction at spherical surface is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Refraction at spherical surface."
+            "Past year questions frequently test the application of Refraction at spherical surface in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-refraction-at-spherical-surface-1",
-              "question": "Explain the core concept behind Refraction at spherical surface.",
+              "question": "What are the critical factors or principles governing Refraction at spherical surface?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "refraction-at-spherical-surface"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "refraction-at-spherical-surface",
                 "conceptSlug": "core-refraction-at-spherical-surface",
-                "microskillSlug": "understand-refraction-at-spherical-surface",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-refraction-at-spherical-surface"
               }
             },
             {
               "id": "optics-q-refraction-at-spherical-surface-2",
-              "question": "What is a common trap associated with Refraction at spherical surface?",
+              "question": "Describe a scenario where applying the concept of Refraction at spherical surface can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "refraction-at-spherical-surface",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "refraction-at-spherical-surface",
                 "conceptSlug": "trap-refraction-at-spherical-surface",
-                "microskillSlug": "avoid-refraction-at-spherical-surface",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-refraction-at-spherical-surface"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-lens-formula",
+          "id": "mt-optics-lens-formula-10",
           "title": "Lens formula",
           "conceptTags": [
             "optics",
             "lens-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Lens formula"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Lens formula"
           ],
           "mustKnowFacts": [
-            "Lens formula is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Lens formula for NEET."
+            "A thorough understanding of Lens formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lens formula correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for lens formula",
-              "expression": "F = m a",
+              "name": "Lens Formula",
+              "expression": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "f",
+                "v",
+                "u"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Lens formula during complex MCQs.",
-            "Failing to apply the correct logic for Lens formula."
+            "Misinterpreting the subtle edge cases of Lens formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lens formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Lens formula."
+            "Can accurately solve numericals or identify biological structures related specifically to Lens formula.",
+            "Successfully avoids common pitfalls when Lens formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Lens formula."
+            "Past year questions frequently test the application of Lens formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-lens-formula-1",
-              "question": "Explain the core concept behind Lens formula.",
+              "question": "What are the critical factors or principles governing Lens formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "lens-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "lens-formula",
                 "conceptSlug": "core-lens-formula",
-                "microskillSlug": "understand-lens-formula",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-lens-formula"
               }
             },
             {
               "id": "optics-q-lens-formula-2",
-              "question": "What is a common trap associated with Lens formula?",
+              "question": "Describe a scenario where applying the concept of Lens formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "lens-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "lens-formula",
                 "conceptSlug": "trap-lens-formula",
-                "microskillSlug": "avoid-lens-formula",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-lens-formula"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-lens-maker-formula",
-          "title": "Lens maker formula",
+          "id": "mt-optics-lens-maker-s-formula-11",
+          "title": "Lens maker’s formula",
           "conceptTags": [
             "optics",
-            "lens-maker-formula"
+            "lens-maker-s-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Lens maker formula"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Lens maker’s formula"
           ],
           "mustKnowFacts": [
-            "Lens maker formula is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Lens maker formula for NEET."
+            "A thorough understanding of Lens maker’s formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lens maker’s formula correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for lens maker formula",
-              "expression": "F = m a",
+              "name": "Lens Formula",
+              "expression": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "f",
+                "v",
+                "u"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Lens maker formula during complex MCQs.",
-            "Failing to apply the correct logic for Lens maker formula."
+            "Misinterpreting the subtle edge cases of Lens maker’s formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lens maker’s formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Lens maker formula."
+            "Can accurately solve numericals or identify biological structures related specifically to Lens maker’s formula.",
+            "Successfully avoids common pitfalls when Lens maker’s formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Lens maker formula."
+            "Past year questions frequently test the application of Lens maker’s formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-lens-maker-formula-1",
-              "question": "Explain the core concept behind Lens maker formula.",
+              "id": "optics-q-lens-maker-s-formula-1",
+              "question": "What are the critical factors or principles governing Lens maker’s formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "lens-maker-formula"
+                "optics",
+                "lens-maker-s-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "lens-maker-formula",
-                "conceptSlug": "core-lens-maker-formula",
-                "microskillSlug": "understand-lens-maker-formula",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "lens-maker-s-formula",
+                "conceptSlug": "core-lens-maker-s-formula",
+                "microskillSlug": "understand-lens-maker-s-formula"
               }
             },
             {
-              "id": "optics-q-lens-maker-formula-2",
-              "question": "What is a common trap associated with Lens maker formula?",
+              "id": "optics-q-lens-maker-s-formula-2",
+              "question": "Describe a scenario where applying the concept of Lens maker’s formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "lens-maker-formula",
+                "optics",
+                "lens-maker-s-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "lens-maker-formula",
-                "conceptSlug": "trap-lens-maker-formula",
-                "microskillSlug": "avoid-lens-maker-formula",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-optics-power-of-lens",
-          "title": "Power of lens",
-          "conceptTags": [
-            "optics",
-            "power-of-lens"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Power of lens"
-          ],
-          "mustKnowFacts": [
-            "Power of lens is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Power of lens for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for power of lens",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Power of lens during complex MCQs.",
-            "Failing to apply the correct logic for Power of lens."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Power of lens."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Power of lens."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "optics-q-power-of-lens-1",
-              "question": "Explain the core concept behind Power of lens.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "power-of-lens"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
-                "subtopicSlug": "power-of-lens",
-                "conceptSlug": "core-power-of-lens",
-                "microskillSlug": "understand-power-of-lens",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            },
-            {
-              "id": "optics-q-power-of-lens-2",
-              "question": "What is a common trap associated with Power of lens?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "power-of-lens",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "power-of-lens",
-                "conceptSlug": "trap-power-of-lens",
-                "microskillSlug": "avoid-power-of-lens",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-optics-combination-of-lenses",
-          "title": "Combination of lenses",
-          "conceptTags": [
-            "optics",
-            "combination-of-lenses"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Combination of lenses"
-          ],
-          "mustKnowFacts": [
-            "Combination of lenses is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Combination of lenses for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for combination of lenses",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Combination of lenses during complex MCQs.",
-            "Failing to apply the correct logic for Combination of lenses."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Combination of lenses."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Combination of lenses."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "optics-q-combination-of-lenses-1",
-              "question": "Explain the core concept behind Combination of lenses.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "combination-of-lenses"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "combination-of-lenses",
-                "conceptSlug": "core-combination-of-lenses",
-                "microskillSlug": "understand-combination-of-lenses",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            },
-            {
-              "id": "optics-q-combination-of-lenses-2",
-              "question": "What is a common trap associated with Combination of lenses?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "combination-of-lenses",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "combination-of-lenses",
-                "conceptSlug": "trap-combination-of-lenses",
-                "microskillSlug": "avoid-combination-of-lenses",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "subtopicSlug": "lens-maker-s-formula",
+                "conceptSlug": "trap-lens-maker-s-formula",
+                "microskillSlug": "avoid-lens-maker-s-formula"
               }
             }
           ]
@@ -1302,648 +1214,603 @@
     },
     {
       "id": "m-optics-3",
-      "title": "Optics - Section 3",
-      "description": "Comprehensive analysis covering prism, dispersion, microscope and more.",
+      "title": "Mastery Module 3: Power of a lens and Related Concepts",
+      "description": "Comprehensive analysis covering power of a lens, combination of thin lenses, refraction through prism and advanced applications.",
       "conceptTags": [
         "optics",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-optics-prism",
-          "title": "Prism",
+          "id": "mt-optics-power-of-a-lens-12",
+          "title": "Power of a lens",
           "conceptTags": [
             "optics",
-            "prism"
+            "power-of-a-lens"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Prism"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Power of a lens"
           ],
           "mustKnowFacts": [
-            "Prism is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Prism for NEET."
+            "A thorough understanding of Power of a lens is heavily tested in recent NEET papers.",
+            "Applying the core principles of Power of a lens correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for prism",
-              "expression": "F = m a",
+              "name": "Lens Formula",
+              "expression": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "f",
+                "v",
+                "u"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Prism during complex MCQs.",
-            "Failing to apply the correct logic for Prism."
+            "Misinterpreting the subtle edge cases of Power of a lens during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Power of a lens."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Prism."
+            "Can accurately solve numericals or identify biological structures related specifically to Power of a lens.",
+            "Successfully avoids common pitfalls when Power of a lens is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Prism."
+            "Past year questions frequently test the application of Power of a lens in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-prism-1",
-              "question": "Explain the core concept behind Prism.",
+              "id": "optics-q-power-of-a-lens-1",
+              "question": "What are the critical factors or principles governing Power of a lens?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "prism"
+                "optics",
+                "power-of-a-lens"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "prism",
-                "conceptSlug": "core-prism",
-                "microskillSlug": "understand-prism",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "power-of-a-lens",
+                "conceptSlug": "core-power-of-a-lens",
+                "microskillSlug": "understand-power-of-a-lens"
               }
             },
             {
-              "id": "optics-q-prism-2",
-              "question": "What is a common trap associated with Prism?",
+              "id": "optics-q-power-of-a-lens-2",
+              "question": "Describe a scenario where applying the concept of Power of a lens can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "prism",
+                "optics",
+                "power-of-a-lens",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "prism",
-                "conceptSlug": "trap-prism",
-                "microskillSlug": "avoid-prism",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "power-of-a-lens",
+                "conceptSlug": "trap-power-of-a-lens",
+                "microskillSlug": "avoid-power-of-a-lens"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-dispersion",
-          "title": "Dispersion",
+          "id": "mt-optics-combination-of-thin-lenses-13",
+          "title": "Combination of thin lenses",
           "conceptTags": [
             "optics",
-            "dispersion"
+            "combination-of-thin-lenses"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dispersion"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Combination of thin lenses"
           ],
           "mustKnowFacts": [
-            "Dispersion is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Dispersion for NEET."
+            "A thorough understanding of Combination of thin lenses is heavily tested in recent NEET papers.",
+            "Applying the core principles of Combination of thin lenses correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for dispersion",
-              "expression": "F = m a",
+              "name": "Lens Formula",
+              "expression": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "f",
+                "v",
+                "u"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dispersion during complex MCQs.",
-            "Failing to apply the correct logic for Dispersion."
+            "Misinterpreting the subtle edge cases of Combination of thin lenses during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Combination of thin lenses."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dispersion."
+            "Can accurately solve numericals or identify biological structures related specifically to Combination of thin lenses.",
+            "Successfully avoids common pitfalls when Combination of thin lenses is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dispersion."
+            "Past year questions frequently test the application of Combination of thin lenses in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-dispersion-1",
-              "question": "Explain the core concept behind Dispersion.",
+              "id": "optics-q-combination-of-thin-lenses-1",
+              "question": "What are the critical factors or principles governing Combination of thin lenses?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dispersion"
+                "optics",
+                "combination-of-thin-lenses"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "dispersion",
-                "conceptSlug": "core-dispersion",
-                "microskillSlug": "understand-dispersion",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "combination-of-thin-lenses",
+                "conceptSlug": "core-combination-of-thin-lenses",
+                "microskillSlug": "understand-combination-of-thin-lenses"
               }
             },
             {
-              "id": "optics-q-dispersion-2",
-              "question": "What is a common trap associated with Dispersion?",
+              "id": "optics-q-combination-of-thin-lenses-2",
+              "question": "Describe a scenario where applying the concept of Combination of thin lenses can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dispersion",
+                "optics",
+                "combination-of-thin-lenses",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "dispersion",
-                "conceptSlug": "trap-dispersion",
-                "microskillSlug": "avoid-dispersion",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "combination-of-thin-lenses",
+                "conceptSlug": "trap-combination-of-thin-lenses",
+                "microskillSlug": "avoid-combination-of-thin-lenses"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-microscope",
-          "title": "Microscope",
+          "id": "mt-optics-refraction-through-prism-14",
+          "title": "Refraction through prism",
           "conceptTags": [
             "optics",
-            "microscope"
+            "refraction-through-prism"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Microscope"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction through prism"
           ],
           "mustKnowFacts": [
-            "Microscope is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Microscope for NEET."
+            "A thorough understanding of Refraction through prism is heavily tested in recent NEET papers.",
+            "Applying the core principles of Refraction through prism correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for microscope",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Microscope during complex MCQs.",
-            "Failing to apply the correct logic for Microscope."
+            "Misinterpreting the subtle edge cases of Refraction through prism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Refraction through prism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Microscope."
+            "Can accurately solve numericals or identify biological structures related specifically to Refraction through prism.",
+            "Successfully avoids common pitfalls when Refraction through prism is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Microscope."
+            "Past year questions frequently test the application of Refraction through prism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-microscope-1",
-              "question": "Explain the core concept behind Microscope.",
+              "id": "optics-q-refraction-through-prism-1",
+              "question": "What are the critical factors or principles governing Refraction through prism?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "microscope"
+                "optics",
+                "refraction-through-prism"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "microscope",
-                "conceptSlug": "core-microscope",
-                "microskillSlug": "understand-microscope",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-through-prism",
+                "conceptSlug": "core-refraction-through-prism",
+                "microskillSlug": "understand-refraction-through-prism"
               }
             },
             {
-              "id": "optics-q-microscope-2",
-              "question": "What is a common trap associated with Microscope?",
+              "id": "optics-q-refraction-through-prism-2",
+              "question": "Describe a scenario where applying the concept of Refraction through prism can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "microscope",
+                "optics",
+                "refraction-through-prism",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "microscope",
-                "conceptSlug": "trap-microscope",
-                "microskillSlug": "avoid-microscope",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "refraction-through-prism",
+                "conceptSlug": "trap-refraction-through-prism",
+                "microskillSlug": "avoid-refraction-through-prism"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-telescope",
-          "title": "Telescope",
+          "id": "mt-optics-dispersion-of-light-15",
+          "title": "Dispersion of light",
           "conceptTags": [
             "optics",
-            "telescope"
+            "dispersion-of-light"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Telescope"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Dispersion of light"
           ],
           "mustKnowFacts": [
-            "Telescope is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Telescope for NEET."
+            "A thorough understanding of Dispersion of light is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dispersion of light correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for telescope",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Telescope during complex MCQs.",
-            "Failing to apply the correct logic for Telescope."
+            "Misinterpreting the subtle edge cases of Dispersion of light during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dispersion of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Telescope."
+            "Can accurately solve numericals or identify biological structures related specifically to Dispersion of light.",
+            "Successfully avoids common pitfalls when Dispersion of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Telescope."
+            "Past year questions frequently test the application of Dispersion of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-telescope-1",
-              "question": "Explain the core concept behind Telescope.",
+              "id": "optics-q-dispersion-of-light-1",
+              "question": "What are the critical factors or principles governing Dispersion of light?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "telescope"
+                "optics",
+                "dispersion-of-light"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "telescope",
-                "conceptSlug": "core-telescope",
-                "microskillSlug": "understand-telescope",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "dispersion-of-light",
+                "conceptSlug": "core-dispersion-of-light",
+                "microskillSlug": "understand-dispersion-of-light"
               }
             },
             {
-              "id": "optics-q-telescope-2",
-              "question": "What is a common trap associated with Telescope?",
+              "id": "optics-q-dispersion-of-light-2",
+              "question": "Describe a scenario where applying the concept of Dispersion of light can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "telescope",
+                "optics",
+                "dispersion-of-light",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "telescope",
-                "conceptSlug": "trap-telescope",
-                "microskillSlug": "avoid-telescope",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "dispersion-of-light",
+                "conceptSlug": "trap-dispersion-of-light",
+                "microskillSlug": "avoid-dispersion-of-light"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-wavefront",
-          "title": "Wavefront",
+          "id": "mt-optics-simple-microscope-16",
+          "title": "Simple microscope",
           "conceptTags": [
             "optics",
-            "wavefront"
+            "simple-microscope"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Wavefront"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Simple microscope"
           ],
           "mustKnowFacts": [
-            "Wavefront is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Wavefront for NEET."
+            "A thorough understanding of Simple microscope is heavily tested in recent NEET papers.",
+            "Applying the core principles of Simple microscope correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for wavefront",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Wavefront during complex MCQs.",
-            "Failing to apply the correct logic for Wavefront."
+            "Misinterpreting the subtle edge cases of Simple microscope during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Simple microscope."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Wavefront."
+            "Can accurately solve numericals or identify biological structures related specifically to Simple microscope.",
+            "Successfully avoids common pitfalls when Simple microscope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Wavefront."
+            "Past year questions frequently test the application of Simple microscope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-wavefront-1",
-              "question": "Explain the core concept behind Wavefront.",
+              "id": "optics-q-simple-microscope-1",
+              "question": "What are the critical factors or principles governing Simple microscope?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "wavefront"
+                "optics",
+                "simple-microscope"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "wavefront",
-                "conceptSlug": "core-wavefront",
-                "microskillSlug": "understand-wavefront",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "simple-microscope",
+                "conceptSlug": "core-simple-microscope",
+                "microskillSlug": "understand-simple-microscope"
               }
             },
             {
-              "id": "optics-q-wavefront-2",
-              "question": "What is a common trap associated with Wavefront?",
+              "id": "optics-q-simple-microscope-2",
+              "question": "Describe a scenario where applying the concept of Simple microscope can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "wavefront",
+                "optics",
+                "simple-microscope",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "wavefront",
-                "conceptSlug": "trap-wavefront",
-                "microskillSlug": "avoid-wavefront",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "simple-microscope",
+                "conceptSlug": "trap-simple-microscope",
+                "microskillSlug": "avoid-simple-microscope"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-huygens-principle",
-          "title": "Huygens principle",
+          "id": "mt-optics-compound-microscope-17",
+          "title": "Compound microscope",
           "conceptTags": [
             "optics",
-            "huygens-principle"
+            "compound-microscope"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Huygens principle"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Compound microscope"
           ],
           "mustKnowFacts": [
-            "Huygens principle is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Huygens principle for NEET."
+            "A thorough understanding of Compound microscope is heavily tested in recent NEET papers.",
+            "Applying the core principles of Compound microscope correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for Huygens principle",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Huygens principle during complex MCQs.",
-            "Failing to apply the correct logic for Huygens principle."
+            "Misinterpreting the subtle edge cases of Compound microscope during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Compound microscope."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Huygens principle."
+            "Can accurately solve numericals or identify biological structures related specifically to Compound microscope.",
+            "Successfully avoids common pitfalls when Compound microscope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Huygens principle."
+            "Past year questions frequently test the application of Compound microscope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-huygens-principle-1",
-              "question": "Explain the core concept behind Huygens principle.",
+              "id": "optics-q-compound-microscope-1",
+              "question": "What are the critical factors or principles governing Compound microscope?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "huygens-principle"
+                "optics",
+                "compound-microscope"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "huygens-principle",
-                "conceptSlug": "core-huygens-principle",
-                "microskillSlug": "understand-huygens-principle",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "compound-microscope",
+                "conceptSlug": "core-compound-microscope",
+                "microskillSlug": "understand-compound-microscope"
               }
             },
             {
-              "id": "optics-q-huygens-principle-2",
-              "question": "What is a common trap associated with Huygens principle?",
+              "id": "optics-q-compound-microscope-2",
+              "question": "Describe a scenario where applying the concept of Compound microscope can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "huygens-principle",
+                "optics",
+                "compound-microscope",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "huygens-principle",
-                "conceptSlug": "trap-huygens-principle",
-                "microskillSlug": "avoid-huygens-principle",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-optics-ydse",
-          "title": "YDSE",
-          "conceptTags": [
-            "optics",
-            "ydse"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, YDSE"
-          ],
-          "mustKnowFacts": [
-            "YDSE is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing YDSE for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for YDSE",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret YDSE during complex MCQs.",
-            "Failing to apply the correct logic for YDSE."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to YDSE."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about YDSE."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "optics-q-ydse-1",
-              "question": "Explain the core concept behind YDSE.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "ydse"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
-                "subtopicSlug": "ydse",
-                "conceptSlug": "core-ydse",
-                "microskillSlug": "understand-ydse",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
-              }
-            },
-            {
-              "id": "optics-q-ydse-2",
-              "question": "What is a common trap associated with YDSE?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "ydse",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "ydse",
-                "conceptSlug": "trap-ydse",
-                "microskillSlug": "avoid-ydse",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "subtopicSlug": "compound-microscope",
+                "conceptSlug": "trap-compound-microscope",
+                "microskillSlug": "avoid-compound-microscope"
               }
             }
           ]
@@ -1952,375 +1819,815 @@
     },
     {
       "id": "m-optics-4",
-      "title": "Optics - Section 4",
-      "description": "Comprehensive analysis covering fringe width, coherent sources, diffraction and more.",
+      "title": "Mastery Module 4: Astronomical telescope and Related Concepts",
+      "description": "Comprehensive analysis covering astronomical telescope, wavefront concept, Huygens principle and advanced applications.",
       "conceptTags": [
         "optics",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-optics-fringe-width",
-          "title": "Fringe width",
+          "id": "mt-optics-astronomical-telescope-18",
+          "title": "Astronomical telescope",
           "conceptTags": [
             "optics",
-            "fringe-width"
+            "astronomical-telescope"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Fringe width"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Astronomical telescope"
           ],
           "mustKnowFacts": [
-            "Fringe width is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Fringe width for NEET."
+            "A thorough understanding of Astronomical telescope is heavily tested in recent NEET papers.",
+            "Applying the core principles of Astronomical telescope correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for fringe width",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Fringe width during complex MCQs.",
-            "Failing to apply the correct logic for Fringe width."
+            "Misinterpreting the subtle edge cases of Astronomical telescope during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Astronomical telescope."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Fringe width."
+            "Can accurately solve numericals or identify biological structures related specifically to Astronomical telescope.",
+            "Successfully avoids common pitfalls when Astronomical telescope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Fringe width."
+            "Past year questions frequently test the application of Astronomical telescope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-fringe-width-1",
-              "question": "Explain the core concept behind Fringe width.",
+              "id": "optics-q-astronomical-telescope-1",
+              "question": "What are the critical factors or principles governing Astronomical telescope?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "fringe-width"
+                "optics",
+                "astronomical-telescope"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "fringe-width",
-                "conceptSlug": "core-fringe-width",
-                "microskillSlug": "understand-fringe-width",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "astronomical-telescope",
+                "conceptSlug": "core-astronomical-telescope",
+                "microskillSlug": "understand-astronomical-telescope"
               }
             },
             {
-              "id": "optics-q-fringe-width-2",
-              "question": "What is a common trap associated with Fringe width?",
+              "id": "optics-q-astronomical-telescope-2",
+              "question": "Describe a scenario where applying the concept of Astronomical telescope can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "fringe-width",
+                "optics",
+                "astronomical-telescope",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "fringe-width",
-                "conceptSlug": "trap-fringe-width",
-                "microskillSlug": "avoid-fringe-width",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "astronomical-telescope",
+                "conceptSlug": "trap-astronomical-telescope",
+                "microskillSlug": "avoid-astronomical-telescope"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-coherent-sources",
+          "id": "mt-optics-wavefront-concept-19",
+          "title": "Wavefront concept",
+          "conceptTags": [
+            "optics",
+            "wavefront-concept"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Wavefront concept"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Wavefront concept is heavily tested in recent NEET papers.",
+            "Applying the core principles of Wavefront concept correctly is essential for solving complex multi-step problems in Optics."
+          ],
+          "formulas": [
+            {
+              "name": "Wave Speed",
+              "expression": "v = f \\lambda",
+              "variables": [
+                "v",
+                "f",
+                "\\lambda"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Wavefront concept during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Wavefront concept."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Wavefront concept.",
+            "Successfully avoids common pitfalls when Wavefront concept is integrated with other concepts in Optics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Wavefront concept in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-wavefront-concept-1",
+              "question": "What are the critical factors or principles governing Wavefront concept?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "optics",
+                "wavefront-concept"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "wavefront-concept",
+                "conceptSlug": "core-wavefront-concept",
+                "microskillSlug": "understand-wavefront-concept"
+              }
+            },
+            {
+              "id": "optics-q-wavefront-concept-2",
+              "question": "Describe a scenario where applying the concept of Wavefront concept can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "optics",
+                "wavefront-concept",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "wavefront-concept",
+                "conceptSlug": "trap-wavefront-concept",
+                "microskillSlug": "avoid-wavefront-concept"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-huygens-principle-20",
+          "title": "Huygens principle",
+          "conceptTags": [
+            "optics",
+            "huygens-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Huygens principle"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Huygens principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Huygens principle correctly is essential for solving complex multi-step problems in Optics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Huygens principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Huygens principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Huygens principle.",
+            "Successfully avoids common pitfalls when Huygens principle is integrated with other concepts in Optics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Huygens principle in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-huygens-principle-1",
+              "question": "What are the critical factors or principles governing Huygens principle?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "optics",
+                "huygens-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "huygens-principle",
+                "conceptSlug": "core-huygens-principle",
+                "microskillSlug": "understand-huygens-principle"
+              }
+            },
+            {
+              "id": "optics-q-huygens-principle-2",
+              "question": "Describe a scenario where applying the concept of Huygens principle can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "optics",
+                "huygens-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "huygens-principle",
+                "conceptSlug": "trap-huygens-principle",
+                "microskillSlug": "avoid-huygens-principle"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-young-s-double-slit-experiment-21",
+          "title": "Young's double slit experiment",
+          "conceptTags": [
+            "optics",
+            "young-s-double-slit-experiment"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Young's double slit experiment"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Young's double slit experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Young's double slit experiment correctly is essential for solving complex multi-step problems in Optics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Young's double slit experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Young's double slit experiment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Young's double slit experiment.",
+            "Successfully avoids common pitfalls when Young's double slit experiment is integrated with other concepts in Optics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Young's double slit experiment in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-young-s-double-slit-experiment-1",
+              "question": "What are the critical factors or principles governing Young's double slit experiment?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "optics",
+                "young-s-double-slit-experiment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "young-s-double-slit-experiment",
+                "conceptSlug": "core-young-s-double-slit-experiment",
+                "microskillSlug": "understand-young-s-double-slit-experiment"
+              }
+            },
+            {
+              "id": "optics-q-young-s-double-slit-experiment-2",
+              "question": "Describe a scenario where applying the concept of Young's double slit experiment can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "optics",
+                "young-s-double-slit-experiment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "young-s-double-slit-experiment",
+                "conceptSlug": "trap-young-s-double-slit-experiment",
+                "microskillSlug": "avoid-young-s-double-slit-experiment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-optics-coherent-sources-22",
           "title": "Coherent sources",
           "conceptTags": [
             "optics",
             "coherent-sources"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Coherent sources"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Coherent sources"
           ],
           "mustKnowFacts": [
-            "Coherent sources is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Coherent sources for NEET."
+            "A thorough understanding of Coherent sources is heavily tested in recent NEET papers.",
+            "Applying the core principles of Coherent sources correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for coherent sources",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Coherent sources during complex MCQs.",
-            "Failing to apply the correct logic for Coherent sources."
+            "Misinterpreting the subtle edge cases of Coherent sources during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Coherent sources."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Coherent sources."
+            "Can accurately solve numericals or identify biological structures related specifically to Coherent sources.",
+            "Successfully avoids common pitfalls when Coherent sources is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Coherent sources."
+            "Past year questions frequently test the application of Coherent sources in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-coherent-sources-1",
-              "question": "Explain the core concept behind Coherent sources.",
+              "question": "What are the critical factors or principles governing Coherent sources?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "optics",
                 "coherent-sources"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "coherent-sources",
                 "conceptSlug": "core-coherent-sources",
-                "microskillSlug": "understand-coherent-sources",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "understand-coherent-sources"
               }
             },
             {
               "id": "optics-q-coherent-sources-2",
-              "question": "What is a common trap associated with Coherent sources?",
+              "question": "Describe a scenario where applying the concept of Coherent sources can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "optics",
                 "coherent-sources",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
                 "topicSlug": "optics",
                 "subtopicSlug": "coherent-sources",
                 "conceptSlug": "trap-coherent-sources",
-                "microskillSlug": "avoid-coherent-sources",
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "microskillSlug": "avoid-coherent-sources"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-diffraction",
-          "title": "Diffraction",
+          "id": "mt-optics-diffraction-of-light-at-single-slit-23",
+          "title": "Diffraction of light at single slit",
           "conceptTags": [
             "optics",
-            "diffraction"
+            "diffraction-of-light-at-single-slit"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Diffraction"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Diffraction of light at single slit"
           ],
           "mustKnowFacts": [
-            "Diffraction is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Diffraction for NEET."
+            "A thorough understanding of Diffraction of light at single slit is heavily tested in recent NEET papers.",
+            "Applying the core principles of Diffraction of light at single slit correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for diffraction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Diffraction during complex MCQs.",
-            "Failing to apply the correct logic for Diffraction."
+            "Misinterpreting the subtle edge cases of Diffraction of light at single slit during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Diffraction of light at single slit."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Diffraction."
+            "Can accurately solve numericals or identify biological structures related specifically to Diffraction of light at single slit.",
+            "Successfully avoids common pitfalls when Diffraction of light at single slit is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Diffraction."
+            "Past year questions frequently test the application of Diffraction of light at single slit in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-diffraction-1",
-              "question": "Explain the core concept behind Diffraction.",
+              "id": "optics-q-diffraction-of-light-at-single-slit-1",
+              "question": "What are the critical factors or principles governing Diffraction of light at single slit?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "diffraction"
+                "optics",
+                "diffraction-of-light-at-single-slit"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "diffraction",
-                "conceptSlug": "core-diffraction",
-                "microskillSlug": "understand-diffraction",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "diffraction-of-light-at-single-slit",
+                "conceptSlug": "core-diffraction-of-light-at-single-slit",
+                "microskillSlug": "understand-diffraction-of-light-at-single-slit"
               }
             },
             {
-              "id": "optics-q-diffraction-2",
-              "question": "What is a common trap associated with Diffraction?",
+              "id": "optics-q-diffraction-of-light-at-single-slit-2",
+              "question": "Describe a scenario where applying the concept of Diffraction of light at single slit can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "diffraction",
+                "optics",
+                "diffraction-of-light-at-single-slit",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "diffraction",
-                "conceptSlug": "trap-diffraction",
-                "microskillSlug": "avoid-diffraction",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "diffraction-of-light-at-single-slit",
+                "conceptSlug": "trap-diffraction-of-light-at-single-slit",
+                "microskillSlug": "avoid-diffraction-of-light-at-single-slit"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-optics-5",
+      "title": "Mastery Module 5: Resolving power of optical instruments and Related Concepts",
+      "description": "Comprehensive analysis covering resolving power of optical instruments, polarisation of light and advanced applications.",
+      "conceptTags": [
+        "optics",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-optics-resolving-power-of-optical-instruments-24",
+          "title": "Resolving power of optical instruments",
+          "conceptTags": [
+            "optics",
+            "resolving-power-of-optical-instruments"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Resolving power of optical instruments"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Resolving power of optical instruments is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resolving power of optical instruments correctly is essential for solving complex multi-step problems in Optics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Resolving power of optical instruments during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resolving power of optical instruments."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Resolving power of optical instruments.",
+            "Successfully avoids common pitfalls when Resolving power of optical instruments is integrated with other concepts in Optics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Resolving power of optical instruments in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "optics-q-resolving-power-of-optical-instruments-1",
+              "question": "What are the critical factors or principles governing Resolving power of optical instruments?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "optics",
+                "resolving-power-of-optical-instruments"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "resolving-power-of-optical-instruments",
+                "conceptSlug": "core-resolving-power-of-optical-instruments",
+                "microskillSlug": "understand-resolving-power-of-optical-instruments"
+              }
+            },
+            {
+              "id": "optics-q-resolving-power-of-optical-instruments-2",
+              "question": "Describe a scenario where applying the concept of Resolving power of optical instruments can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "optics",
+                "resolving-power-of-optical-instruments",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "optics",
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "resolving-power-of-optical-instruments",
+                "conceptSlug": "trap-resolving-power-of-optical-instruments",
+                "microskillSlug": "avoid-resolving-power-of-optical-instruments"
               }
             }
           ]
         },
         {
-          "id": "mt-optics-polarisation",
-          "title": "Polarisation",
+          "id": "mt-optics-polarisation-of-light-25",
+          "title": "Polarisation of light",
           "conceptTags": [
             "optics",
-            "polarisation"
+            "polarisation-of-light"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Polarisation"
+            "NCERT Physics Class 12, Chapter: Optics, Section detailing Polarisation of light"
           ],
           "mustKnowFacts": [
-            "Polarisation is a fundamental subtopic of Optics.",
-            "Crucial to understand the principles governing Polarisation for NEET."
+            "A thorough understanding of Polarisation of light is heavily tested in recent NEET papers.",
+            "Applying the core principles of Polarisation of light correctly is essential for solving complex multi-step problems in Optics."
           ],
           "formulas": [
             {
-              "name": "Formula for polarisation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Polarisation during complex MCQs.",
-            "Failing to apply the correct logic for Polarisation."
+            "Misinterpreting the subtle edge cases of Polarisation of light during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Polarisation of light."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Polarisation."
+            "Can accurately solve numericals or identify biological structures related specifically to Polarisation of light.",
+            "Successfully avoids common pitfalls when Polarisation of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Polarisation."
+            "Past year questions frequently test the application of Polarisation of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-polarisation-1",
-              "question": "Explain the core concept behind Polarisation.",
+              "id": "optics-q-polarisation-of-light-1",
+              "question": "What are the critical factors or principles governing Polarisation of light?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "polarisation"
+                "optics",
+                "polarisation-of-light"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "polarisation",
-                "conceptSlug": "core-polarisation",
-                "microskillSlug": "understand-polarisation",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "polarisation-of-light",
+                "conceptSlug": "core-polarisation-of-light",
+                "microskillSlug": "understand-polarisation-of-light"
               }
             },
             {
-              "id": "optics-q-polarisation-2",
-              "question": "What is a common trap associated with Polarisation?",
+              "id": "optics-q-polarisation-of-light-2",
+              "question": "Describe a scenario where applying the concept of Polarisation of light can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "polarisation",
+                "optics",
+                "polarisation-of-light",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "optics",
-                "subtopicSlug": "polarisation",
-                "conceptSlug": "trap-polarisation",
-                "microskillSlug": "avoid-polarisation",
                 "subject": "Physics",
                 "unitSlug": "optics",
-                "chapterSlug": "optics"
+                "chapterSlug": "optics",
+                "topicSlug": "optics",
+                "subtopicSlug": "polarisation-of-light",
+                "conceptSlug": "trap-polarisation-of-light",
+                "microskillSlug": "avoid-polarisation-of-light"
               }
             }
           ]

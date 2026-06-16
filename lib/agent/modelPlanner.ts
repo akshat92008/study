@@ -67,6 +67,7 @@ export interface AgentPlanOutput {
   confidence: number;
   risk_flags: string[];
   plan_source: 'model' | 'deterministic';
+  final_response_instruction?: string;
 }
 
 interface ModelPlannerInput {
@@ -273,6 +274,7 @@ export async function buildModelPlan(input: ModelPlannerInput): Promise<AgentPla
           confidence: plan.confidence,
           risk_flags: plan.risk_flags,
           plan_source: 'model',
+          final_response_instruction: plan.final_response_instruction,
         };
       } else {
         const errors = parsed.error.issues.map((i: any) => `${i.path.join('.')}: ${i.message}`);
@@ -305,6 +307,7 @@ export async function buildModelPlan(input: ModelPlannerInput): Promise<AgentPla
                 confidence: plan.confidence,
                 risk_flags: plan.risk_flags,
                 plan_source: 'model',
+                final_response_instruction: plan.final_response_instruction,
               };
             }
           }

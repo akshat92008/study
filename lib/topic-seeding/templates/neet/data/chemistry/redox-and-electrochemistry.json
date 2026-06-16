@@ -2,641 +2,446 @@
   "missions": [
     {
       "id": "m-redox-and-electrochemistry-1",
-      "title": "Redox Reactions and Electrochemistry - Section 1",
-      "description": "Comprehensive analysis covering oxidation/reduction, oxidation number rules, redox balancing and more.",
+      "title": "Mastery Module 1: Oxidation and reduction concepts and Related Concepts",
+      "description": "Comprehensive analysis covering oxidation and reduction concepts, oxidation number rules, balancing redox reactions by oxidation number method and advanced applications.",
       "conceptTags": [
         "redox-and-electrochemistry",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-redox-and-electrochemistry-oxidation-reduction",
-          "title": "Oxidation/reduction",
+          "id": "mt-redox-and-electrochemistry-oxidation-and-reduction-concepts-0",
+          "title": "Oxidation and reduction concepts",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "oxidation-reduction"
+            "oxidation-and-reduction-concepts"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Oxidation/reduction"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Oxidation and reduction concepts"
           ],
           "mustKnowFacts": [
-            "Oxidation/reduction is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Oxidation/reduction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for oxidation/reduction",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving oxidation/reduction",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Oxidation and reduction concepts is heavily tested in recent NEET papers.",
+            "Applying the core principles of Oxidation and reduction concepts correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Oxidation/reduction during complex MCQs.",
-            "Failing to apply the correct logic for Oxidation/reduction."
+            "Misinterpreting the subtle edge cases of Oxidation and reduction concepts during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Oxidation and reduction concepts."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Oxidation/reduction."
+            "Can accurately solve numericals or identify biological structures related specifically to Oxidation and reduction concepts.",
+            "Successfully avoids common pitfalls when Oxidation and reduction concepts is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Oxidation/reduction."
+            "Past year questions frequently test the application of Oxidation and reduction concepts in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-oxidation-reduction-1",
-              "question": "Explain the core concept behind Oxidation/reduction.",
+              "id": "redox-and-electrochemistry-q-oxidation-and-reduction-concepts-1",
+              "question": "What are the critical factors or principles governing Oxidation and reduction concepts?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "oxidation-reduction"
+                "redox-and-electrochemistry",
+                "oxidation-and-reduction-concepts"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "oxidation-reduction",
-                "conceptSlug": "core-oxidation-reduction",
-                "microskillSlug": "understand-oxidation-reduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "oxidation-and-reduction-concepts",
+                "conceptSlug": "core-oxidation-and-reduction-concepts",
+                "microskillSlug": "understand-oxidation-and-reduction-concepts"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-oxidation-reduction-2",
-              "question": "What is a common trap associated with Oxidation/reduction?",
+              "id": "redox-and-electrochemistry-q-oxidation-and-reduction-concepts-2",
+              "question": "Describe a scenario where applying the concept of Oxidation and reduction concepts can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "oxidation-reduction",
+                "redox-and-electrochemistry",
+                "oxidation-and-reduction-concepts",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "oxidation-reduction",
-                "conceptSlug": "trap-oxidation-reduction",
-                "microskillSlug": "avoid-oxidation-reduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "oxidation-and-reduction-concepts",
+                "conceptSlug": "trap-oxidation-and-reduction-concepts",
+                "microskillSlug": "avoid-oxidation-and-reduction-concepts"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-oxidation-number-rules",
+          "id": "mt-redox-and-electrochemistry-oxidation-number-rules-1",
           "title": "Oxidation number rules",
           "conceptTags": [
             "redox-and-electrochemistry",
             "oxidation-number-rules"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Oxidation number rules"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Oxidation number rules"
           ],
           "mustKnowFacts": [
-            "Oxidation number rules is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Oxidation number rules for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for oxidation number rules",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving oxidation number rules",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Oxidation number rules is heavily tested in recent NEET papers.",
+            "Applying the core principles of Oxidation number rules correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Oxidation number rules during complex MCQs.",
-            "Failing to apply the correct logic for Oxidation number rules."
+            "Misinterpreting the subtle edge cases of Oxidation number rules during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Oxidation number rules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Oxidation number rules."
+            "Can accurately solve numericals or identify biological structures related specifically to Oxidation number rules.",
+            "Successfully avoids common pitfalls when Oxidation number rules is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Oxidation number rules."
+            "Past year questions frequently test the application of Oxidation number rules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "redox-and-electrochemistry-q-oxidation-number-rules-1",
-              "question": "Explain the core concept behind Oxidation number rules.",
+              "question": "What are the critical factors or principles governing Oxidation number rules?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "redox-and-electrochemistry",
                 "oxidation-number-rules"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
                 "subtopicSlug": "oxidation-number-rules",
                 "conceptSlug": "core-oxidation-number-rules",
-                "microskillSlug": "understand-oxidation-number-rules",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "microskillSlug": "understand-oxidation-number-rules"
               }
             },
             {
               "id": "redox-and-electrochemistry-q-oxidation-number-rules-2",
-              "question": "What is a common trap associated with Oxidation number rules?",
+              "question": "Describe a scenario where applying the concept of Oxidation number rules can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "redox-and-electrochemistry",
                 "oxidation-number-rules",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
                 "subtopicSlug": "oxidation-number-rules",
                 "conceptSlug": "trap-oxidation-number-rules",
-                "microskillSlug": "avoid-oxidation-number-rules",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "microskillSlug": "avoid-oxidation-number-rules"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-redox-balancing",
-          "title": "Redox balancing",
+          "id": "mt-redox-and-electrochemistry-balancing-redox-reactions-by-oxidation-number-method-2",
+          "title": "Balancing redox reactions by oxidation number method",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "redox-balancing"
+            "balancing-redox-reactions-by-oxidation-number-method"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Redox balancing"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Balancing redox reactions by oxidation number method"
           ],
           "mustKnowFacts": [
-            "Redox balancing is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Redox balancing for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for redox balancing",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving redox balancing",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Balancing redox reactions by oxidation number method is heavily tested in recent NEET papers.",
+            "Applying the core principles of Balancing redox reactions by oxidation number method correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Redox balancing during complex MCQs.",
-            "Failing to apply the correct logic for Redox balancing."
+            "Misinterpreting the subtle edge cases of Balancing redox reactions by oxidation number method during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Balancing redox reactions by oxidation number method."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Redox balancing."
+            "Can accurately solve numericals or identify biological structures related specifically to Balancing redox reactions by oxidation number method.",
+            "Successfully avoids common pitfalls when Balancing redox reactions by oxidation number method is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Redox balancing."
+            "Past year questions frequently test the application of Balancing redox reactions by oxidation number method in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-redox-balancing-1",
-              "question": "Explain the core concept behind Redox balancing.",
+              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-oxidation-number-method-1",
+              "question": "What are the critical factors or principles governing Balancing redox reactions by oxidation number method?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "redox-balancing"
+                "redox-and-electrochemistry",
+                "balancing-redox-reactions-by-oxidation-number-method"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "redox-balancing",
-                "conceptSlug": "core-redox-balancing",
-                "microskillSlug": "understand-redox-balancing",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "balancing-redox-reactions-by-oxidation-number-method",
+                "conceptSlug": "core-balancing-redox-reactions-by-oxidation-number-method",
+                "microskillSlug": "understand-balancing-redox-reactions-by-oxidation-number-method"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-redox-balancing-2",
-              "question": "What is a common trap associated with Redox balancing?",
+              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-oxidation-number-method-2",
+              "question": "Describe a scenario where applying the concept of Balancing redox reactions by oxidation number method can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "redox-balancing",
+                "redox-and-electrochemistry",
+                "balancing-redox-reactions-by-oxidation-number-method",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "redox-balancing",
-                "conceptSlug": "trap-redox-balancing",
-                "microskillSlug": "avoid-redox-balancing",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "balancing-redox-reactions-by-oxidation-number-method",
+                "conceptSlug": "trap-balancing-redox-reactions-by-oxidation-number-method",
+                "microskillSlug": "avoid-balancing-redox-reactions-by-oxidation-number-method"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-electrolytic-conduction",
-          "title": "Electrolytic conduction",
+          "id": "mt-redox-and-electrochemistry-balancing-redox-reactions-by-ion-electron-method-3",
+          "title": "Balancing redox reactions by ion-electron method",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "electrolytic-conduction"
+            "balancing-redox-reactions-by-ion-electron-method"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Electrolytic conduction"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Balancing redox reactions by ion-electron method"
           ],
           "mustKnowFacts": [
-            "Electrolytic conduction is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Electrolytic conduction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electrolytic conduction",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electrolytic conduction",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Balancing redox reactions by ion-electron method is heavily tested in recent NEET papers.",
+            "Applying the core principles of Balancing redox reactions by ion-electron method correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Electrolytic conduction during complex MCQs.",
-            "Failing to apply the correct logic for Electrolytic conduction."
+            "Misinterpreting the subtle edge cases of Balancing redox reactions by ion-electron method during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Balancing redox reactions by ion-electron method."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrolytic conduction."
+            "Can accurately solve numericals or identify biological structures related specifically to Balancing redox reactions by ion-electron method.",
+            "Successfully avoids common pitfalls when Balancing redox reactions by ion-electron method is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electrolytic conduction."
+            "Past year questions frequently test the application of Balancing redox reactions by ion-electron method in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrolytic-conduction-1",
-              "question": "Explain the core concept behind Electrolytic conduction.",
+              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-ion-electron-method-1",
+              "question": "What are the critical factors or principles governing Balancing redox reactions by ion-electron method?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electrolytic-conduction"
+                "redox-and-electrochemistry",
+                "balancing-redox-reactions-by-ion-electron-method"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-conduction",
-                "conceptSlug": "core-electrolytic-conduction",
-                "microskillSlug": "understand-electrolytic-conduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "balancing-redox-reactions-by-ion-electron-method",
+                "conceptSlug": "core-balancing-redox-reactions-by-ion-electron-method",
+                "microskillSlug": "understand-balancing-redox-reactions-by-ion-electron-method"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-electrolytic-conduction-2",
-              "question": "What is a common trap associated with Electrolytic conduction?",
+              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-ion-electron-method-2",
+              "question": "Describe a scenario where applying the concept of Balancing redox reactions by ion-electron method can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electrolytic-conduction",
+                "redox-and-electrochemistry",
+                "balancing-redox-reactions-by-ion-electron-method",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-conduction",
-                "conceptSlug": "trap-electrolytic-conduction",
-                "microskillSlug": "avoid-electrolytic-conduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "balancing-redox-reactions-by-ion-electron-method",
+                "conceptSlug": "trap-balancing-redox-reactions-by-ion-electron-method",
+                "microskillSlug": "avoid-balancing-redox-reactions-by-ion-electron-method"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-metallic-conduction",
-          "title": "Metallic conduction",
+          "id": "mt-redox-and-electrochemistry-types-of-redox-reactions-4",
+          "title": "Types of redox reactions",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "metallic-conduction"
+            "types-of-redox-reactions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Metallic conduction"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Types of redox reactions"
           ],
           "mustKnowFacts": [
-            "Metallic conduction is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Metallic conduction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for metallic conduction",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving metallic conduction",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Types of redox reactions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Types of redox reactions correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Metallic conduction during complex MCQs.",
-            "Failing to apply the correct logic for Metallic conduction."
+            "Misinterpreting the subtle edge cases of Types of redox reactions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Types of redox reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Metallic conduction."
+            "Can accurately solve numericals or identify biological structures related specifically to Types of redox reactions.",
+            "Successfully avoids common pitfalls when Types of redox reactions is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Metallic conduction."
+            "Past year questions frequently test the application of Types of redox reactions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-metallic-conduction-1",
-              "question": "Explain the core concept behind Metallic conduction.",
+              "id": "redox-and-electrochemistry-q-types-of-redox-reactions-1",
+              "question": "What are the critical factors or principles governing Types of redox reactions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "metallic-conduction"
+                "redox-and-electrochemistry",
+                "types-of-redox-reactions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "metallic-conduction",
-                "conceptSlug": "core-metallic-conduction",
-                "microskillSlug": "understand-metallic-conduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "types-of-redox-reactions",
+                "conceptSlug": "core-types-of-redox-reactions",
+                "microskillSlug": "understand-types-of-redox-reactions"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-metallic-conduction-2",
-              "question": "What is a common trap associated with Metallic conduction?",
+              "id": "redox-and-electrochemistry-q-types-of-redox-reactions-2",
+              "question": "Describe a scenario where applying the concept of Types of redox reactions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "metallic-conduction",
+                "redox-and-electrochemistry",
+                "types-of-redox-reactions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "metallic-conduction",
-                "conceptSlug": "trap-metallic-conduction",
-                "microskillSlug": "avoid-metallic-conduction",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-redox-and-electrochemistry-conductance",
-          "title": "Conductance",
-          "conceptTags": [
-            "redox-and-electrochemistry",
-            "conductance"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Conductance"
-          ],
-          "mustKnowFacts": [
-            "Conductance is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Conductance for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for conductance",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving conductance",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Conductance during complex MCQs.",
-            "Failing to apply the correct logic for Conductance."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conductance."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Conductance."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-conductance-1",
-              "question": "Explain the core concept behind Conductance.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "conductance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "conductance",
-                "conceptSlug": "core-conductance",
-                "microskillSlug": "understand-conductance",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            },
-            {
-              "id": "redox-and-electrochemistry-q-conductance-2",
-              "question": "What is a common trap associated with Conductance?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "conductance",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "conductance",
-                "conceptSlug": "trap-conductance",
-                "microskillSlug": "avoid-conductance",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "subtopicSlug": "types-of-redox-reactions",
+                "conceptSlug": "trap-types-of-redox-reactions",
+                "microskillSlug": "avoid-types-of-redox-reactions"
               }
             }
           ]
@@ -645,641 +450,457 @@
     },
     {
       "id": "m-redox-and-electrochemistry-2",
-      "title": "Redox Reactions and Electrochemistry - Section 2",
-      "description": "Comprehensive analysis covering conductivity, molar conductivity, Kohlrausch law and more.",
+      "title": "Mastery Module 2: Electrolytic and metallic conduction and Related Concepts",
+      "description": "Comprehensive analysis covering electrolytic and metallic conduction, conductance in electrolytic solutions, specific and molar conductivity and advanced applications.",
       "conceptTags": [
         "redox-and-electrochemistry",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-redox-and-electrochemistry-conductivity",
-          "title": "Conductivity",
+          "id": "mt-redox-and-electrochemistry-electrolytic-and-metallic-conduction-5",
+          "title": "Electrolytic and metallic conduction",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "conductivity"
+            "electrolytic-and-metallic-conduction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Conductivity"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Electrolytic and metallic conduction"
           ],
           "mustKnowFacts": [
-            "Conductivity is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Conductivity for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for conductivity",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving conductivity",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electrolytic and metallic conduction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrolytic and metallic conduction correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Conductivity during complex MCQs.",
-            "Failing to apply the correct logic for Conductivity."
+            "Misinterpreting the subtle edge cases of Electrolytic and metallic conduction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrolytic and metallic conduction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conductivity."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrolytic and metallic conduction.",
+            "Successfully avoids common pitfalls when Electrolytic and metallic conduction is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conductivity."
+            "Past year questions frequently test the application of Electrolytic and metallic conduction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-conductivity-1",
-              "question": "Explain the core concept behind Conductivity.",
+              "id": "redox-and-electrochemistry-q-electrolytic-and-metallic-conduction-1",
+              "question": "What are the critical factors or principles governing Electrolytic and metallic conduction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "conductivity"
+                "redox-and-electrochemistry",
+                "electrolytic-and-metallic-conduction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "conductivity",
-                "conceptSlug": "core-conductivity",
-                "microskillSlug": "understand-conductivity",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolytic-and-metallic-conduction",
+                "conceptSlug": "core-electrolytic-and-metallic-conduction",
+                "microskillSlug": "understand-electrolytic-and-metallic-conduction"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-conductivity-2",
-              "question": "What is a common trap associated with Conductivity?",
+              "id": "redox-and-electrochemistry-q-electrolytic-and-metallic-conduction-2",
+              "question": "Describe a scenario where applying the concept of Electrolytic and metallic conduction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "conductivity",
+                "redox-and-electrochemistry",
+                "electrolytic-and-metallic-conduction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "conductivity",
-                "conceptSlug": "trap-conductivity",
-                "microskillSlug": "avoid-conductivity",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolytic-and-metallic-conduction",
+                "conceptSlug": "trap-electrolytic-and-metallic-conduction",
+                "microskillSlug": "avoid-electrolytic-and-metallic-conduction"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-molar-conductivity",
-          "title": "Molar conductivity",
+          "id": "mt-redox-and-electrochemistry-conductance-in-electrolytic-solutions-6",
+          "title": "Conductance in electrolytic solutions",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "molar-conductivity"
+            "conductance-in-electrolytic-solutions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Molar conductivity"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Conductance in electrolytic solutions"
           ],
           "mustKnowFacts": [
-            "Molar conductivity is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Molar conductivity for NEET."
+            "A thorough understanding of Conductance in electrolytic solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conductance in electrolytic solutions correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for molar conductivity",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molar conductivity",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Molar conductivity during complex MCQs.",
-            "Failing to apply the correct logic for Molar conductivity."
+            "Misinterpreting the subtle edge cases of Conductance in electrolytic solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conductance in electrolytic solutions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molar conductivity."
+            "Can accurately solve numericals or identify biological structures related specifically to Conductance in electrolytic solutions.",
+            "Successfully avoids common pitfalls when Conductance in electrolytic solutions is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molar conductivity."
+            "Past year questions frequently test the application of Conductance in electrolytic solutions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-molar-conductivity-1",
-              "question": "Explain the core concept behind Molar conductivity.",
+              "id": "redox-and-electrochemistry-q-conductance-in-electrolytic-solutions-1",
+              "question": "What are the critical factors or principles governing Conductance in electrolytic solutions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molar-conductivity"
+                "redox-and-electrochemistry",
+                "conductance-in-electrolytic-solutions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "molar-conductivity",
-                "conceptSlug": "core-molar-conductivity",
-                "microskillSlug": "understand-molar-conductivity",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "conductance-in-electrolytic-solutions",
+                "conceptSlug": "core-conductance-in-electrolytic-solutions",
+                "microskillSlug": "understand-conductance-in-electrolytic-solutions"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-molar-conductivity-2",
-              "question": "What is a common trap associated with Molar conductivity?",
+              "id": "redox-and-electrochemistry-q-conductance-in-electrolytic-solutions-2",
+              "question": "Describe a scenario where applying the concept of Conductance in electrolytic solutions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molar-conductivity",
+                "redox-and-electrochemistry",
+                "conductance-in-electrolytic-solutions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "molar-conductivity",
-                "conceptSlug": "trap-molar-conductivity",
-                "microskillSlug": "avoid-molar-conductivity",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "conductance-in-electrolytic-solutions",
+                "conceptSlug": "trap-conductance-in-electrolytic-solutions",
+                "microskillSlug": "avoid-conductance-in-electrolytic-solutions"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-kohlrausch-law",
-          "title": "Kohlrausch law",
+          "id": "mt-redox-and-electrochemistry-specific-and-molar-conductivity-7",
+          "title": "Specific and molar conductivity",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "kohlrausch-law"
+            "specific-and-molar-conductivity"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Kohlrausch law"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Specific and molar conductivity"
           ],
           "mustKnowFacts": [
-            "Kohlrausch law is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Kohlrausch law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Kohlrausch law",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Kohlrausch law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Specific and molar conductivity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Specific and molar conductivity correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Kohlrausch law during complex MCQs.",
-            "Failing to apply the correct logic for Kohlrausch law."
+            "Misinterpreting the subtle edge cases of Specific and molar conductivity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Specific and molar conductivity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Kohlrausch law."
+            "Can accurately solve numericals or identify biological structures related specifically to Specific and molar conductivity.",
+            "Successfully avoids common pitfalls when Specific and molar conductivity is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Kohlrausch law."
+            "Past year questions frequently test the application of Specific and molar conductivity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-kohlrausch-law-1",
-              "question": "Explain the core concept behind Kohlrausch law.",
+              "id": "redox-and-electrochemistry-q-specific-and-molar-conductivity-1",
+              "question": "What are the critical factors or principles governing Specific and molar conductivity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "kohlrausch-law"
+                "redox-and-electrochemistry",
+                "specific-and-molar-conductivity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "kohlrausch-law",
-                "conceptSlug": "core-kohlrausch-law",
-                "microskillSlug": "understand-kohlrausch-law",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "specific-and-molar-conductivity",
+                "conceptSlug": "core-specific-and-molar-conductivity",
+                "microskillSlug": "understand-specific-and-molar-conductivity"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-kohlrausch-law-2",
-              "question": "What is a common trap associated with Kohlrausch law?",
+              "id": "redox-and-electrochemistry-q-specific-and-molar-conductivity-2",
+              "question": "Describe a scenario where applying the concept of Specific and molar conductivity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "kohlrausch-law",
+                "redox-and-electrochemistry",
+                "specific-and-molar-conductivity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "kohlrausch-law",
-                "conceptSlug": "trap-kohlrausch-law",
-                "microskillSlug": "avoid-kohlrausch-law",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "specific-and-molar-conductivity",
+                "conceptSlug": "trap-specific-and-molar-conductivity",
+                "microskillSlug": "avoid-specific-and-molar-conductivity"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-galvanic-cell",
-          "title": "Galvanic cell",
+          "id": "mt-redox-and-electrochemistry-variation-of-conductivity-with-concentration-8",
+          "title": "Variation of conductivity with concentration",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "galvanic-cell"
+            "variation-of-conductivity-with-concentration"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Galvanic cell"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Variation of conductivity with concentration"
           ],
           "mustKnowFacts": [
-            "Galvanic cell is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Galvanic cell for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for galvanic cell",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving galvanic cell",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Variation of conductivity with concentration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Variation of conductivity with concentration correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Galvanic cell during complex MCQs.",
-            "Failing to apply the correct logic for Galvanic cell."
+            "Misinterpreting the subtle edge cases of Variation of conductivity with concentration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Variation of conductivity with concentration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Galvanic cell."
+            "Can accurately solve numericals or identify biological structures related specifically to Variation of conductivity with concentration.",
+            "Successfully avoids common pitfalls when Variation of conductivity with concentration is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Galvanic cell."
+            "Past year questions frequently test the application of Variation of conductivity with concentration in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-galvanic-cell-1",
-              "question": "Explain the core concept behind Galvanic cell.",
+              "id": "redox-and-electrochemistry-q-variation-of-conductivity-with-concentration-1",
+              "question": "What are the critical factors or principles governing Variation of conductivity with concentration?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "galvanic-cell"
+                "redox-and-electrochemistry",
+                "variation-of-conductivity-with-concentration"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "galvanic-cell",
-                "conceptSlug": "core-galvanic-cell",
-                "microskillSlug": "understand-galvanic-cell",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "variation-of-conductivity-with-concentration",
+                "conceptSlug": "core-variation-of-conductivity-with-concentration",
+                "microskillSlug": "understand-variation-of-conductivity-with-concentration"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-galvanic-cell-2",
-              "question": "What is a common trap associated with Galvanic cell?",
+              "id": "redox-and-electrochemistry-q-variation-of-conductivity-with-concentration-2",
+              "question": "Describe a scenario where applying the concept of Variation of conductivity with concentration can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "galvanic-cell",
+                "redox-and-electrochemistry",
+                "variation-of-conductivity-with-concentration",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "galvanic-cell",
-                "conceptSlug": "trap-galvanic-cell",
-                "microskillSlug": "avoid-galvanic-cell",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "variation-of-conductivity-with-concentration",
+                "conceptSlug": "trap-variation-of-conductivity-with-concentration",
+                "microskillSlug": "avoid-variation-of-conductivity-with-concentration"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-electrolytic-cell",
-          "title": "Electrolytic cell",
+          "id": "mt-redox-and-electrochemistry-kohlrausch-s-law-of-independent-migration-of-ions-9",
+          "title": "Kohlrausch’s law of independent migration of ions",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "electrolytic-cell"
+            "kohlrausch-s-law-of-independent-migration-of-ions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Electrolytic cell"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Kohlrausch’s law of independent migration of ions"
           ],
           "mustKnowFacts": [
-            "Electrolytic cell is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Electrolytic cell for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electrolytic cell",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electrolytic cell",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Kohlrausch’s law of independent migration of ions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kohlrausch’s law of independent migration of ions correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Electrolytic cell during complex MCQs.",
-            "Failing to apply the correct logic for Electrolytic cell."
+            "Misinterpreting the subtle edge cases of Kohlrausch’s law of independent migration of ions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kohlrausch’s law of independent migration of ions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrolytic cell."
+            "Can accurately solve numericals or identify biological structures related specifically to Kohlrausch’s law of independent migration of ions.",
+            "Successfully avoids common pitfalls when Kohlrausch’s law of independent migration of ions is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electrolytic cell."
+            "Past year questions frequently test the application of Kohlrausch’s law of independent migration of ions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrolytic-cell-1",
-              "question": "Explain the core concept behind Electrolytic cell.",
+              "id": "redox-and-electrochemistry-q-kohlrausch-s-law-of-independent-migration-of-ions-1",
+              "question": "What are the critical factors or principles governing Kohlrausch’s law of independent migration of ions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electrolytic-cell"
+                "redox-and-electrochemistry",
+                "kohlrausch-s-law-of-independent-migration-of-ions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-cell",
-                "conceptSlug": "core-electrolytic-cell",
-                "microskillSlug": "understand-electrolytic-cell",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "kohlrausch-s-law-of-independent-migration-of-ions",
+                "conceptSlug": "core-kohlrausch-s-law-of-independent-migration-of-ions",
+                "microskillSlug": "understand-kohlrausch-s-law-of-independent-migration-of-ions"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-electrolytic-cell-2",
-              "question": "What is a common trap associated with Electrolytic cell?",
+              "id": "redox-and-electrochemistry-q-kohlrausch-s-law-of-independent-migration-of-ions-2",
+              "question": "Describe a scenario where applying the concept of Kohlrausch’s law of independent migration of ions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electrolytic-cell",
+                "redox-and-electrochemistry",
+                "kohlrausch-s-law-of-independent-migration-of-ions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-cell",
-                "conceptSlug": "trap-electrolytic-cell",
-                "microskillSlug": "avoid-electrolytic-cell",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-redox-and-electrochemistry-electrode-potential",
-          "title": "Electrode potential",
-          "conceptTags": [
-            "redox-and-electrochemistry",
-            "electrode-potential"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Electrode potential"
-          ],
-          "mustKnowFacts": [
-            "Electrode potential is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Electrode potential for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electrode potential",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electrode potential",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Electrode potential during complex MCQs.",
-            "Failing to apply the correct logic for Electrode potential."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrode potential."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Electrode potential."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-electrode-potential-1",
-              "question": "Explain the core concept behind Electrode potential.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "electrode-potential"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrode-potential",
-                "conceptSlug": "core-electrode-potential",
-                "microskillSlug": "understand-electrode-potential",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            },
-            {
-              "id": "redox-and-electrochemistry-q-electrode-potential-2",
-              "question": "What is a common trap associated with Electrode potential?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "electrode-potential",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrode-potential",
-                "conceptSlug": "trap-electrode-potential",
-                "microskillSlug": "avoid-electrode-potential",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "subtopicSlug": "kohlrausch-s-law-of-independent-migration-of-ions",
+                "conceptSlug": "trap-kohlrausch-s-law-of-independent-migration-of-ions",
+                "microskillSlug": "avoid-kohlrausch-s-law-of-independent-migration-of-ions"
               }
             }
           ]
@@ -1288,641 +909,446 @@
     },
     {
       "id": "m-redox-and-electrochemistry-3",
-      "title": "Redox Reactions and Electrochemistry - Section 3",
-      "description": "Comprehensive analysis covering SHE, cell notation, Nernst equation and more.",
+      "title": "Mastery Module 3: Galvanic cells functioning and Related Concepts",
+      "description": "Comprehensive analysis covering galvanic cells functioning, electrolytic cells, electrode potential and standard electrode potential and advanced applications.",
       "conceptTags": [
         "redox-and-electrochemistry",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-redox-and-electrochemistry-she",
-          "title": "SHE",
+          "id": "mt-redox-and-electrochemistry-galvanic-cells-functioning-10",
+          "title": "Galvanic cells functioning",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "she"
+            "galvanic-cells-functioning"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, SHE"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Galvanic cells functioning"
           ],
           "mustKnowFacts": [
-            "SHE is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing SHE for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for SHE",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving SHE",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Galvanic cells functioning is heavily tested in recent NEET papers.",
+            "Applying the core principles of Galvanic cells functioning correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret SHE during complex MCQs.",
-            "Failing to apply the correct logic for SHE."
+            "Misinterpreting the subtle edge cases of Galvanic cells functioning during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Galvanic cells functioning."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to SHE."
+            "Can accurately solve numericals or identify biological structures related specifically to Galvanic cells functioning.",
+            "Successfully avoids common pitfalls when Galvanic cells functioning is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about SHE."
+            "Past year questions frequently test the application of Galvanic cells functioning in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-she-1",
-              "question": "Explain the core concept behind SHE.",
+              "id": "redox-and-electrochemistry-q-galvanic-cells-functioning-1",
+              "question": "What are the critical factors or principles governing Galvanic cells functioning?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "she"
+                "redox-and-electrochemistry",
+                "galvanic-cells-functioning"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "she",
-                "conceptSlug": "core-she",
-                "microskillSlug": "understand-she",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "galvanic-cells-functioning",
+                "conceptSlug": "core-galvanic-cells-functioning",
+                "microskillSlug": "understand-galvanic-cells-functioning"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-she-2",
-              "question": "What is a common trap associated with SHE?",
+              "id": "redox-and-electrochemistry-q-galvanic-cells-functioning-2",
+              "question": "Describe a scenario where applying the concept of Galvanic cells functioning can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "she",
+                "redox-and-electrochemistry",
+                "galvanic-cells-functioning",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "she",
-                "conceptSlug": "trap-she",
-                "microskillSlug": "avoid-she",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "galvanic-cells-functioning",
+                "conceptSlug": "trap-galvanic-cells-functioning",
+                "microskillSlug": "avoid-galvanic-cells-functioning"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-cell-notation",
-          "title": "Cell notation",
+          "id": "mt-redox-and-electrochemistry-electrolytic-cells-11",
+          "title": "Electrolytic cells",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "cell-notation"
+            "electrolytic-cells"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Cell notation"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Electrolytic cells"
           ],
           "mustKnowFacts": [
-            "Cell notation is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Cell notation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for cell notation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving cell notation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electrolytic cells is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrolytic cells correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Cell notation during complex MCQs.",
-            "Failing to apply the correct logic for Cell notation."
+            "Misinterpreting the subtle edge cases of Electrolytic cells during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrolytic cells."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Cell notation."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrolytic cells.",
+            "Successfully avoids common pitfalls when Electrolytic cells is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Cell notation."
+            "Past year questions frequently test the application of Electrolytic cells in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-cell-notation-1",
-              "question": "Explain the core concept behind Cell notation.",
+              "id": "redox-and-electrochemistry-q-electrolytic-cells-1",
+              "question": "What are the critical factors or principles governing Electrolytic cells?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "cell-notation"
+                "redox-and-electrochemistry",
+                "electrolytic-cells"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "cell-notation",
-                "conceptSlug": "core-cell-notation",
-                "microskillSlug": "understand-cell-notation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolytic-cells",
+                "conceptSlug": "core-electrolytic-cells",
+                "microskillSlug": "understand-electrolytic-cells"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-cell-notation-2",
-              "question": "What is a common trap associated with Cell notation?",
+              "id": "redox-and-electrochemistry-q-electrolytic-cells-2",
+              "question": "Describe a scenario where applying the concept of Electrolytic cells can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "cell-notation",
+                "redox-and-electrochemistry",
+                "electrolytic-cells",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "cell-notation",
-                "conceptSlug": "trap-cell-notation",
-                "microskillSlug": "avoid-cell-notation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolytic-cells",
+                "conceptSlug": "trap-electrolytic-cells",
+                "microskillSlug": "avoid-electrolytic-cells"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-nernst-equation",
-          "title": "Nernst equation",
+          "id": "mt-redox-and-electrochemistry-electrode-potential-and-standard-electrode-potential-12",
+          "title": "Electrode potential and standard electrode potential",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "nernst-equation"
+            "electrode-potential-and-standard-electrode-potential"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Nernst equation"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Electrode potential and standard electrode potential"
           ],
           "mustKnowFacts": [
-            "Nernst equation is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Nernst equation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Nernst equation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Nernst equation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electrode potential and standard electrode potential is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrode potential and standard electrode potential correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Nernst equation during complex MCQs.",
-            "Failing to apply the correct logic for Nernst equation."
+            "Misinterpreting the subtle edge cases of Electrode potential and standard electrode potential during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrode potential and standard electrode potential."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nernst equation."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrode potential and standard electrode potential.",
+            "Successfully avoids common pitfalls when Electrode potential and standard electrode potential is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nernst equation."
+            "Past year questions frequently test the application of Electrode potential and standard electrode potential in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-nernst-equation-1",
-              "question": "Explain the core concept behind Nernst equation.",
+              "id": "redox-and-electrochemistry-q-electrode-potential-and-standard-electrode-potential-1",
+              "question": "What are the critical factors or principles governing Electrode potential and standard electrode potential?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "nernst-equation"
+                "redox-and-electrochemistry",
+                "electrode-potential-and-standard-electrode-potential"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "nernst-equation",
-                "conceptSlug": "core-nernst-equation",
-                "microskillSlug": "understand-nernst-equation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrode-potential-and-standard-electrode-potential",
+                "conceptSlug": "core-electrode-potential-and-standard-electrode-potential",
+                "microskillSlug": "understand-electrode-potential-and-standard-electrode-potential"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-nernst-equation-2",
-              "question": "What is a common trap associated with Nernst equation?",
+              "id": "redox-and-electrochemistry-q-electrode-potential-and-standard-electrode-potential-2",
+              "question": "Describe a scenario where applying the concept of Electrode potential and standard electrode potential can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "nernst-equation",
+                "redox-and-electrochemistry",
+                "electrode-potential-and-standard-electrode-potential",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "nernst-equation",
-                "conceptSlug": "trap-nernst-equation",
-                "microskillSlug": "avoid-nernst-equation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrode-potential-and-standard-electrode-potential",
+                "conceptSlug": "trap-electrode-potential-and-standard-electrode-potential",
+                "microskillSlug": "avoid-electrode-potential-and-standard-electrode-potential"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-gibbs-energy-relation",
-          "title": "Gibbs energy relation",
+          "id": "mt-redox-and-electrochemistry-standard-hydrogen-electrode-she-13",
+          "title": "Standard hydrogen electrode (SHE)",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "gibbs-energy-relation"
+            "standard-hydrogen-electrode-she"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Gibbs energy relation"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Standard hydrogen electrode (SHE)"
           ],
           "mustKnowFacts": [
-            "Gibbs energy relation is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Gibbs energy relation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Gibbs energy relation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Gibbs energy relation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Standard hydrogen electrode (SHE) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Standard hydrogen electrode (SHE) correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Gibbs energy relation during complex MCQs.",
-            "Failing to apply the correct logic for Gibbs energy relation."
+            "Misinterpreting the subtle edge cases of Standard hydrogen electrode (SHE) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Standard hydrogen electrode (SHE)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gibbs energy relation."
+            "Can accurately solve numericals or identify biological structures related specifically to Standard hydrogen electrode (SHE).",
+            "Successfully avoids common pitfalls when Standard hydrogen electrode (SHE) is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gibbs energy relation."
+            "Past year questions frequently test the application of Standard hydrogen electrode (SHE) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-gibbs-energy-relation-1",
-              "question": "Explain the core concept behind Gibbs energy relation.",
+              "id": "redox-and-electrochemistry-q-standard-hydrogen-electrode-she-1",
+              "question": "What are the critical factors or principles governing Standard hydrogen electrode (SHE)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "gibbs-energy-relation"
+                "redox-and-electrochemistry",
+                "standard-hydrogen-electrode-she"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "gibbs-energy-relation",
-                "conceptSlug": "core-gibbs-energy-relation",
-                "microskillSlug": "understand-gibbs-energy-relation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "standard-hydrogen-electrode-she",
+                "conceptSlug": "core-standard-hydrogen-electrode-she",
+                "microskillSlug": "understand-standard-hydrogen-electrode-she"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-gibbs-energy-relation-2",
-              "question": "What is a common trap associated with Gibbs energy relation?",
+              "id": "redox-and-electrochemistry-q-standard-hydrogen-electrode-she-2",
+              "question": "Describe a scenario where applying the concept of Standard hydrogen electrode (SHE) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "gibbs-energy-relation",
+                "redox-and-electrochemistry",
+                "standard-hydrogen-electrode-she",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "gibbs-energy-relation",
-                "conceptSlug": "trap-gibbs-energy-relation",
-                "microskillSlug": "avoid-gibbs-energy-relation",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "standard-hydrogen-electrode-she",
+                "conceptSlug": "trap-standard-hydrogen-electrode-she",
+                "microskillSlug": "avoid-standard-hydrogen-electrode-she"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-electrolysis",
-          "title": "Electrolysis",
+          "id": "mt-redox-and-electrochemistry-electrochemical-cell-notation-14",
+          "title": "Electrochemical cell notation",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "electrolysis"
+            "electrochemical-cell-notation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Electrolysis"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Electrochemical cell notation"
           ],
           "mustKnowFacts": [
-            "Electrolysis is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Electrolysis for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electrolysis",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electrolysis",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electrochemical cell notation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrochemical cell notation correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Electrolysis during complex MCQs.",
-            "Failing to apply the correct logic for Electrolysis."
+            "Misinterpreting the subtle edge cases of Electrochemical cell notation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrochemical cell notation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrolysis."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrochemical cell notation.",
+            "Successfully avoids common pitfalls when Electrochemical cell notation is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electrolysis."
+            "Past year questions frequently test the application of Electrochemical cell notation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrolysis-1",
-              "question": "Explain the core concept behind Electrolysis.",
+              "id": "redox-and-electrochemistry-q-electrochemical-cell-notation-1",
+              "question": "What are the critical factors or principles governing Electrochemical cell notation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electrolysis"
+                "redox-and-electrochemistry",
+                "electrochemical-cell-notation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolysis",
-                "conceptSlug": "core-electrolysis",
-                "microskillSlug": "understand-electrolysis",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrochemical-cell-notation",
+                "conceptSlug": "core-electrochemical-cell-notation",
+                "microskillSlug": "understand-electrochemical-cell-notation"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-electrolysis-2",
-              "question": "What is a common trap associated with Electrolysis?",
+              "id": "redox-and-electrochemistry-q-electrochemical-cell-notation-2",
+              "question": "Describe a scenario where applying the concept of Electrochemical cell notation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electrolysis",
+                "redox-and-electrochemistry",
+                "electrochemical-cell-notation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolysis",
-                "conceptSlug": "trap-electrolysis",
-                "microskillSlug": "avoid-electrolysis",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-redox-and-electrochemistry-faraday-laws",
-          "title": "Faraday laws",
-          "conceptTags": [
-            "redox-and-electrochemistry",
-            "faraday-laws"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Faraday laws"
-          ],
-          "mustKnowFacts": [
-            "Faraday laws is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Faraday laws for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Faraday laws",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Faraday laws",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Faraday laws during complex MCQs.",
-            "Failing to apply the correct logic for Faraday laws."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Faraday laws."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Faraday laws."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-faraday-laws-1",
-              "question": "Explain the core concept behind Faraday laws.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "faraday-laws"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "faraday-laws",
-                "conceptSlug": "core-faraday-laws",
-                "microskillSlug": "understand-faraday-laws",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
-              }
-            },
-            {
-              "id": "redox-and-electrochemistry-q-faraday-laws-2",
-              "question": "What is a common trap associated with Faraday laws?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "faraday-laws",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "faraday-laws",
-                "conceptSlug": "trap-faraday-laws",
-                "microskillSlug": "avoid-faraday-laws",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "subtopicSlug": "electrochemical-cell-notation",
+                "conceptSlug": "trap-electrochemical-cell-notation",
+                "microskillSlug": "avoid-electrochemical-cell-notation"
               }
             }
           ]
@@ -1931,326 +1357,735 @@
     },
     {
       "id": "m-redox-and-electrochemistry-4",
-      "title": "Redox Reactions and Electrochemistry - Section 4",
-      "description": "Comprehensive analysis covering batteries, fuel cells, corrosion and more.",
+      "title": "Mastery Module 4: Nernst equation/electrochemistry and Related Concepts",
+      "description": "Comprehensive analysis covering Nernst equation/electrochemistry, relation between cell potential and Gibbs energy, electrolysis products and advanced applications.",
       "conceptTags": [
         "redox-and-electrochemistry",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-redox-and-electrochemistry-batteries",
-          "title": "Batteries",
+          "id": "mt-redox-and-electrochemistry-nernst-equation-electrochemistry-15",
+          "title": "Nernst equation/electrochemistry",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "batteries"
+            "nernst-equation-electrochemistry"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Batteries"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Nernst equation/electrochemistry"
           ],
           "mustKnowFacts": [
-            "Batteries is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Batteries for NEET."
+            "A thorough understanding of Nernst equation/electrochemistry is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nernst equation/electrochemistry correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for batteries",
-              "expression": "PV = nRT",
+              "name": "Nernst Equation",
+              "expression": "E = E^0 - \\frac{0.0591}{n} \\log Q",
               "variables": [
-                "P",
-                "V",
+                "E",
+                "E^0",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving batteries",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "Q"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Batteries during complex MCQs.",
-            "Failing to apply the correct logic for Batteries."
+            "Misinterpreting the subtle edge cases of Nernst equation/electrochemistry during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nernst equation/electrochemistry."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Batteries."
+            "Can accurately solve numericals or identify biological structures related specifically to Nernst equation/electrochemistry.",
+            "Successfully avoids common pitfalls when Nernst equation/electrochemistry is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Batteries."
+            "Past year questions frequently test the application of Nernst equation/electrochemistry in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-batteries-1",
-              "question": "Explain the core concept behind Batteries.",
+              "id": "redox-and-electrochemistry-q-nernst-equation-electrochemistry-1",
+              "question": "What are the critical factors or principles governing Nernst equation/electrochemistry?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "batteries"
+                "redox-and-electrochemistry",
+                "nernst-equation-electrochemistry"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "batteries",
-                "conceptSlug": "core-batteries",
-                "microskillSlug": "understand-batteries",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "nernst-equation-electrochemistry",
+                "conceptSlug": "core-nernst-equation-electrochemistry",
+                "microskillSlug": "understand-nernst-equation-electrochemistry"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-batteries-2",
-              "question": "What is a common trap associated with Batteries?",
+              "id": "redox-and-electrochemistry-q-nernst-equation-electrochemistry-2",
+              "question": "Describe a scenario where applying the concept of Nernst equation/electrochemistry can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "batteries",
+                "redox-and-electrochemistry",
+                "nernst-equation-electrochemistry",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "batteries",
-                "conceptSlug": "trap-batteries",
-                "microskillSlug": "avoid-batteries",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "nernst-equation-electrochemistry",
+                "conceptSlug": "trap-nernst-equation-electrochemistry",
+                "microskillSlug": "avoid-nernst-equation-electrochemistry"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-fuel-cells",
+          "id": "mt-redox-and-electrochemistry-relation-between-cell-potential-and-gibbs-energy-16",
+          "title": "Relation between cell potential and Gibbs energy",
+          "conceptTags": [
+            "redox-and-electrochemistry",
+            "relation-between-cell-potential-and-gibbs-energy"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Relation between cell potential and Gibbs energy"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Relation between cell potential and Gibbs energy is heavily tested in recent NEET papers.",
+            "Applying the core principles of Relation between cell potential and Gibbs energy correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Relation between cell potential and Gibbs energy during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Relation between cell potential and Gibbs energy."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Relation between cell potential and Gibbs energy.",
+            "Successfully avoids common pitfalls when Relation between cell potential and Gibbs energy is integrated with other concepts in Redox Reactions and Electrochemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Relation between cell potential and Gibbs energy in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "redox-and-electrochemistry-q-relation-between-cell-potential-and-gibbs-energy-1",
+              "question": "What are the critical factors or principles governing Relation between cell potential and Gibbs energy?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "relation-between-cell-potential-and-gibbs-energy"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "relation-between-cell-potential-and-gibbs-energy",
+                "conceptSlug": "core-relation-between-cell-potential-and-gibbs-energy",
+                "microskillSlug": "understand-relation-between-cell-potential-and-gibbs-energy"
+              }
+            },
+            {
+              "id": "redox-and-electrochemistry-q-relation-between-cell-potential-and-gibbs-energy-2",
+              "question": "Describe a scenario where applying the concept of Relation between cell potential and Gibbs energy can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "relation-between-cell-potential-and-gibbs-energy",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "relation-between-cell-potential-and-gibbs-energy",
+                "conceptSlug": "trap-relation-between-cell-potential-and-gibbs-energy",
+                "microskillSlug": "avoid-relation-between-cell-potential-and-gibbs-energy"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-redox-and-electrochemistry-electrolysis-products-17",
+          "title": "Electrolysis products",
+          "conceptTags": [
+            "redox-and-electrochemistry",
+            "electrolysis-products"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Electrolysis products"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Electrolysis products is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrolysis products correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Electrolysis products during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrolysis products."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Electrolysis products.",
+            "Successfully avoids common pitfalls when Electrolysis products is integrated with other concepts in Redox Reactions and Electrochemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Electrolysis products in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "redox-and-electrochemistry-q-electrolysis-products-1",
+              "question": "What are the critical factors or principles governing Electrolysis products?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "electrolysis-products"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolysis-products",
+                "conceptSlug": "core-electrolysis-products",
+                "microskillSlug": "understand-electrolysis-products"
+              }
+            },
+            {
+              "id": "redox-and-electrochemistry-q-electrolysis-products-2",
+              "question": "Describe a scenario where applying the concept of Electrolysis products can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "electrolysis-products",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "electrolysis-products",
+                "conceptSlug": "trap-electrolysis-products",
+                "microskillSlug": "avoid-electrolysis-products"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-redox-and-electrochemistry-faraday-s-laws-of-electrolysis-18",
+          "title": "Faraday’s laws of electrolysis",
+          "conceptTags": [
+            "redox-and-electrochemistry",
+            "faraday-s-laws-of-electrolysis"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Faraday’s laws of electrolysis"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Faraday’s laws of electrolysis is heavily tested in recent NEET papers.",
+            "Applying the core principles of Faraday’s laws of electrolysis correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Faraday’s laws of electrolysis during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Faraday’s laws of electrolysis."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Faraday’s laws of electrolysis.",
+            "Successfully avoids common pitfalls when Faraday’s laws of electrolysis is integrated with other concepts in Redox Reactions and Electrochemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Faraday’s laws of electrolysis in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "redox-and-electrochemistry-q-faraday-s-laws-of-electrolysis-1",
+              "question": "What are the critical factors or principles governing Faraday’s laws of electrolysis?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "faraday-s-laws-of-electrolysis"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "faraday-s-laws-of-electrolysis",
+                "conceptSlug": "core-faraday-s-laws-of-electrolysis",
+                "microskillSlug": "understand-faraday-s-laws-of-electrolysis"
+              }
+            },
+            {
+              "id": "redox-and-electrochemistry-q-faraday-s-laws-of-electrolysis-2",
+              "question": "Describe a scenario where applying the concept of Faraday’s laws of electrolysis can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "faraday-s-laws-of-electrolysis",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "faraday-s-laws-of-electrolysis",
+                "conceptSlug": "trap-faraday-s-laws-of-electrolysis",
+                "microskillSlug": "avoid-faraday-s-laws-of-electrolysis"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-redox-and-electrochemistry-primary-batteries-19",
+          "title": "Primary batteries",
+          "conceptTags": [
+            "redox-and-electrochemistry",
+            "primary-batteries"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Primary batteries"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Primary batteries is heavily tested in recent NEET papers.",
+            "Applying the core principles of Primary batteries correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Primary batteries during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Primary batteries."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Primary batteries.",
+            "Successfully avoids common pitfalls when Primary batteries is integrated with other concepts in Redox Reactions and Electrochemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Primary batteries in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "redox-and-electrochemistry-q-primary-batteries-1",
+              "question": "What are the critical factors or principles governing Primary batteries?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "primary-batteries"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "primary-batteries",
+                "conceptSlug": "core-primary-batteries",
+                "microskillSlug": "understand-primary-batteries"
+              }
+            },
+            {
+              "id": "redox-and-electrochemistry-q-primary-batteries-2",
+              "question": "Describe a scenario where applying the concept of Primary batteries can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "primary-batteries",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "primary-batteries",
+                "conceptSlug": "trap-primary-batteries",
+                "microskillSlug": "avoid-primary-batteries"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-redox-and-electrochemistry-5",
+      "title": "Mastery Module 5: Secondary batteries (lead storage) and Related Concepts",
+      "description": "Comprehensive analysis covering secondary batteries (lead storage), fuel cells, corrosion mechanism and advanced applications.",
+      "conceptTags": [
+        "redox-and-electrochemistry",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-redox-and-electrochemistry-secondary-batteries-lead-storage-20",
+          "title": "Secondary batteries (lead storage)",
+          "conceptTags": [
+            "redox-and-electrochemistry",
+            "secondary-batteries-lead-storage"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Secondary batteries (lead storage)"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Secondary batteries (lead storage) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Secondary batteries (lead storage) correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Secondary batteries (lead storage) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Secondary batteries (lead storage)."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Secondary batteries (lead storage).",
+            "Successfully avoids common pitfalls when Secondary batteries (lead storage) is integrated with other concepts in Redox Reactions and Electrochemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Secondary batteries (lead storage) in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "redox-and-electrochemistry-q-secondary-batteries-lead-storage-1",
+              "question": "What are the critical factors or principles governing Secondary batteries (lead storage)?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "secondary-batteries-lead-storage"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "secondary-batteries-lead-storage",
+                "conceptSlug": "core-secondary-batteries-lead-storage",
+                "microskillSlug": "understand-secondary-batteries-lead-storage"
+              }
+            },
+            {
+              "id": "redox-and-electrochemistry-q-secondary-batteries-lead-storage-2",
+              "question": "Describe a scenario where applying the concept of Secondary batteries (lead storage) can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "redox-and-electrochemistry",
+                "secondary-batteries-lead-storage",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "secondary-batteries-lead-storage",
+                "conceptSlug": "trap-secondary-batteries-lead-storage",
+                "microskillSlug": "avoid-secondary-batteries-lead-storage"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-redox-and-electrochemistry-fuel-cells-21",
           "title": "Fuel cells",
           "conceptTags": [
             "redox-and-electrochemistry",
             "fuel-cells"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Fuel cells"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Fuel cells"
           ],
           "mustKnowFacts": [
-            "Fuel cells is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Fuel cells for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for fuel cells",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving fuel cells",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Fuel cells is heavily tested in recent NEET papers.",
+            "Applying the core principles of Fuel cells correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Fuel cells during complex MCQs.",
-            "Failing to apply the correct logic for Fuel cells."
+            "Misinterpreting the subtle edge cases of Fuel cells during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Fuel cells."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Fuel cells."
+            "Can accurately solve numericals or identify biological structures related specifically to Fuel cells.",
+            "Successfully avoids common pitfalls when Fuel cells is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Fuel cells."
+            "Past year questions frequently test the application of Fuel cells in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "redox-and-electrochemistry-q-fuel-cells-1",
-              "question": "Explain the core concept behind Fuel cells.",
+              "question": "What are the critical factors or principles governing Fuel cells?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "redox-and-electrochemistry",
                 "fuel-cells"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
                 "subtopicSlug": "fuel-cells",
                 "conceptSlug": "core-fuel-cells",
-                "microskillSlug": "understand-fuel-cells",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "microskillSlug": "understand-fuel-cells"
               }
             },
             {
               "id": "redox-and-electrochemistry-q-fuel-cells-2",
-              "question": "What is a common trap associated with Fuel cells?",
+              "question": "Describe a scenario where applying the concept of Fuel cells can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "redox-and-electrochemistry",
                 "fuel-cells",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "redox-and-electrochemistry",
+                "chapterSlug": "redox-and-electrochemistry",
                 "topicSlug": "redox-and-electrochemistry",
                 "subtopicSlug": "fuel-cells",
                 "conceptSlug": "trap-fuel-cells",
-                "microskillSlug": "avoid-fuel-cells",
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "microskillSlug": "avoid-fuel-cells"
               }
             }
           ]
         },
         {
-          "id": "mt-redox-and-electrochemistry-corrosion",
-          "title": "Corrosion",
+          "id": "mt-redox-and-electrochemistry-corrosion-mechanism-22",
+          "title": "Corrosion mechanism",
           "conceptTags": [
             "redox-and-electrochemistry",
-            "corrosion"
+            "corrosion-mechanism",
+            "mechanism"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Corrosion"
+            "NCERT Chemistry Class mixed, Chapter: Redox Reactions and Electrochemistry, Section detailing Corrosion mechanism"
           ],
           "mustKnowFacts": [
-            "Corrosion is a fundamental subtopic of Redox Reactions and Electrochemistry.",
-            "Crucial to understand the principles governing Corrosion for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for corrosion",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving corrosion",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Corrosion mechanism is heavily tested in recent NEET papers.",
+            "Applying the core principles of Corrosion mechanism correctly is essential for solving complex multi-step problems in Redox Reactions and Electrochemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Corrosion during complex MCQs.",
-            "Failing to apply the correct logic for Corrosion."
+            "Misinterpreting the subtle edge cases of Corrosion mechanism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Corrosion mechanism."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Corrosion."
+            "Can accurately solve numericals or identify biological structures related specifically to Corrosion mechanism.",
+            "Successfully avoids common pitfalls when Corrosion mechanism is integrated with other concepts in Redox Reactions and Electrochemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Corrosion."
+            "Past year questions frequently test the application of Corrosion mechanism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-corrosion-1",
-              "question": "Explain the core concept behind Corrosion.",
+              "id": "redox-and-electrochemistry-q-corrosion-mechanism-1",
+              "question": "What are the critical factors or principles governing Corrosion mechanism?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "corrosion"
+                "redox-and-electrochemistry",
+                "corrosion-mechanism",
+                "mechanism"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "corrosion",
-                "conceptSlug": "core-corrosion",
-                "microskillSlug": "understand-corrosion",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "corrosion-mechanism",
+                "conceptSlug": "core-corrosion-mechanism",
+                "microskillSlug": "understand-corrosion-mechanism"
               }
             },
             {
-              "id": "redox-and-electrochemistry-q-corrosion-2",
-              "question": "What is a common trap associated with Corrosion?",
+              "id": "redox-and-electrochemistry-q-corrosion-mechanism-2",
+              "question": "Describe a scenario where applying the concept of Corrosion mechanism can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "corrosion",
+                "redox-and-electrochemistry",
+                "corrosion-mechanism",
+                "mechanism",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "corrosion",
-                "conceptSlug": "trap-corrosion",
-                "microskillSlug": "avoid-corrosion",
                 "subject": "Chemistry",
                 "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry"
+                "chapterSlug": "redox-and-electrochemistry",
+                "topicSlug": "redox-and-electrochemistry",
+                "subtopicSlug": "corrosion-mechanism",
+                "conceptSlug": "trap-corrosion-mechanism",
+                "microskillSlug": "avoid-corrosion-mechanism"
               }
             }
           ]

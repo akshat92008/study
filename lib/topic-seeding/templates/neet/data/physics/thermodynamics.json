@@ -2,557 +2,503 @@
   "missions": [
     {
       "id": "m-thermodynamics-1",
-      "title": "Thermodynamics - Section 1",
-      "description": "Comprehensive analysis covering system/surrounding, state functions, extensive/intensive and more.",
+      "title": "Mastery Module 1: Thermal equilibrium and Related Concepts",
+      "description": "Comprehensive analysis covering thermal equilibrium, zeroth law of thermodynamics, concept of temperature and advanced applications.",
       "conceptTags": [
         "thermodynamics",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-thermodynamics-system-surrounding",
-          "title": "System/surrounding",
+          "id": "mt-thermodynamics-thermal-equilibrium-0",
+          "title": "Thermal equilibrium",
           "conceptTags": [
             "thermodynamics",
-            "system-surrounding"
+            "thermal-equilibrium"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, System/surrounding"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Thermal equilibrium"
           ],
           "mustKnowFacts": [
-            "System/surrounding is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing System/surrounding for NEET."
+            "A thorough understanding of Thermal equilibrium is heavily tested in recent NEET papers.",
+            "Applying the core principles of Thermal equilibrium correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for system/surrounding",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret System/surrounding during complex MCQs.",
-            "Failing to apply the correct logic for System/surrounding."
+            "Misinterpreting the subtle edge cases of Thermal equilibrium during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Thermal equilibrium."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to System/surrounding."
+            "Can accurately solve numericals or identify biological structures related specifically to Thermal equilibrium.",
+            "Successfully avoids common pitfalls when Thermal equilibrium is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about System/surrounding."
+            "Past year questions frequently test the application of Thermal equilibrium in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-system-surrounding-1",
-              "question": "Explain the core concept behind System/surrounding.",
+              "id": "thermodynamics-q-thermal-equilibrium-1",
+              "question": "What are the critical factors or principles governing Thermal equilibrium?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "system-surrounding"
+                "thermodynamics",
+                "thermal-equilibrium"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "system-surrounding",
-                "conceptSlug": "core-system-surrounding",
-                "microskillSlug": "understand-system-surrounding",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "thermal-equilibrium",
+                "conceptSlug": "core-thermal-equilibrium",
+                "microskillSlug": "understand-thermal-equilibrium"
               }
             },
             {
-              "id": "thermodynamics-q-system-surrounding-2",
-              "question": "What is a common trap associated with System/surrounding?",
+              "id": "thermodynamics-q-thermal-equilibrium-2",
+              "question": "Describe a scenario where applying the concept of Thermal equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "system-surrounding",
+                "thermodynamics",
+                "thermal-equilibrium",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "system-surrounding",
-                "conceptSlug": "trap-system-surrounding",
-                "microskillSlug": "avoid-system-surrounding",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "thermal-equilibrium",
+                "conceptSlug": "trap-thermal-equilibrium",
+                "microskillSlug": "avoid-thermal-equilibrium"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-state-functions",
-          "title": "State functions",
+          "id": "mt-thermodynamics-zeroth-law-of-thermodynamics-1",
+          "title": "Zeroth law of thermodynamics",
           "conceptTags": [
             "thermodynamics",
-            "state-functions"
+            "zeroth-law-of-thermodynamics"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, State functions"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Zeroth law of thermodynamics"
           ],
           "mustKnowFacts": [
-            "State functions is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing State functions for NEET."
+            "A thorough understanding of Zeroth law of thermodynamics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Zeroth law of thermodynamics correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for state functions",
-              "expression": "F = m a",
+              "name": "First Law of Thermodynamics",
+              "expression": "\\Delta Q = \\Delta U + \\Delta W",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "Q",
+                "U",
+                "W"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret State functions during complex MCQs.",
-            "Failing to apply the correct logic for State functions."
+            "Misinterpreting the subtle edge cases of Zeroth law of thermodynamics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Zeroth law of thermodynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to State functions."
+            "Can accurately solve numericals or identify biological structures related specifically to Zeroth law of thermodynamics.",
+            "Successfully avoids common pitfalls when Zeroth law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about State functions."
+            "Past year questions frequently test the application of Zeroth law of thermodynamics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-state-functions-1",
-              "question": "Explain the core concept behind State functions.",
+              "id": "thermodynamics-q-zeroth-law-of-thermodynamics-1",
+              "question": "What are the critical factors or principles governing Zeroth law of thermodynamics?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "state-functions"
+                "thermodynamics",
+                "zeroth-law-of-thermodynamics"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "state-functions",
-                "conceptSlug": "core-state-functions",
-                "microskillSlug": "understand-state-functions",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "zeroth-law-of-thermodynamics",
+                "conceptSlug": "core-zeroth-law-of-thermodynamics",
+                "microskillSlug": "understand-zeroth-law-of-thermodynamics"
               }
             },
             {
-              "id": "thermodynamics-q-state-functions-2",
-              "question": "What is a common trap associated with State functions?",
+              "id": "thermodynamics-q-zeroth-law-of-thermodynamics-2",
+              "question": "Describe a scenario where applying the concept of Zeroth law of thermodynamics can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "state-functions",
+                "thermodynamics",
+                "zeroth-law-of-thermodynamics",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "state-functions",
-                "conceptSlug": "trap-state-functions",
-                "microskillSlug": "avoid-state-functions",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "zeroth-law-of-thermodynamics",
+                "conceptSlug": "trap-zeroth-law-of-thermodynamics",
+                "microskillSlug": "avoid-zeroth-law-of-thermodynamics"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-extensive-intensive",
-          "title": "Extensive/intensive",
+          "id": "mt-thermodynamics-concept-of-temperature-2",
+          "title": "Concept of temperature",
           "conceptTags": [
             "thermodynamics",
-            "extensive-intensive"
+            "concept-of-temperature"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Extensive/intensive"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Concept of temperature"
           ],
           "mustKnowFacts": [
-            "Extensive/intensive is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Extensive/intensive for NEET."
+            "A thorough understanding of Concept of temperature is heavily tested in recent NEET papers.",
+            "Applying the core principles of Concept of temperature correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for extensive/intensive",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Extensive/intensive during complex MCQs.",
-            "Failing to apply the correct logic for Extensive/intensive."
+            "Misinterpreting the subtle edge cases of Concept of temperature during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Concept of temperature."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Extensive/intensive."
+            "Can accurately solve numericals or identify biological structures related specifically to Concept of temperature.",
+            "Successfully avoids common pitfalls when Concept of temperature is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Extensive/intensive."
+            "Past year questions frequently test the application of Concept of temperature in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-extensive-intensive-1",
-              "question": "Explain the core concept behind Extensive/intensive.",
+              "id": "thermodynamics-q-concept-of-temperature-1",
+              "question": "What are the critical factors or principles governing Concept of temperature?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "extensive-intensive"
+                "thermodynamics",
+                "concept-of-temperature"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "extensive-intensive",
-                "conceptSlug": "core-extensive-intensive",
-                "microskillSlug": "understand-extensive-intensive",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "concept-of-temperature",
+                "conceptSlug": "core-concept-of-temperature",
+                "microskillSlug": "understand-concept-of-temperature"
               }
             },
             {
-              "id": "thermodynamics-q-extensive-intensive-2",
-              "question": "What is a common trap associated with Extensive/intensive?",
+              "id": "thermodynamics-q-concept-of-temperature-2",
+              "question": "Describe a scenario where applying the concept of Concept of temperature can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "extensive-intensive",
+                "thermodynamics",
+                "concept-of-temperature",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "extensive-intensive",
-                "conceptSlug": "trap-extensive-intensive",
-                "microskillSlug": "avoid-extensive-intensive",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "concept-of-temperature",
+                "conceptSlug": "trap-concept-of-temperature",
+                "microskillSlug": "avoid-concept-of-temperature"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-types-of-processes",
-          "title": "Types of processes",
+          "id": "mt-thermodynamics-heat-and-work-as-path-functions-3",
+          "title": "Heat and work as path functions",
           "conceptTags": [
             "thermodynamics",
-            "types-of-processes"
+            "heat-and-work-as-path-functions"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Types of processes"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat and work as path functions"
           ],
           "mustKnowFacts": [
-            "Types of processes is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Types of processes for NEET."
+            "A thorough understanding of Heat and work as path functions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Heat and work as path functions correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for types of processes",
-              "expression": "F = m a",
+              "name": "Work Done",
+              "expression": "W = \\int \\vec{F} \\cdot d\\vec{r}",
               "variables": [
+                "W",
                 "F",
-                "m",
-                "a"
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Types of processes during complex MCQs.",
-            "Failing to apply the correct logic for Types of processes."
+            "Misinterpreting the subtle edge cases of Heat and work as path functions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Heat and work as path functions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Types of processes."
+            "Can accurately solve numericals or identify biological structures related specifically to Heat and work as path functions.",
+            "Successfully avoids common pitfalls when Heat and work as path functions is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Types of processes."
+            "Past year questions frequently test the application of Heat and work as path functions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-types-of-processes-1",
-              "question": "Explain the core concept behind Types of processes.",
+              "id": "thermodynamics-q-heat-and-work-as-path-functions-1",
+              "question": "What are the critical factors or principles governing Heat and work as path functions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "types-of-processes"
+                "thermodynamics",
+                "heat-and-work-as-path-functions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "types-of-processes",
-                "conceptSlug": "core-types-of-processes",
-                "microskillSlug": "understand-types-of-processes",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-and-work-as-path-functions",
+                "conceptSlug": "core-heat-and-work-as-path-functions",
+                "microskillSlug": "understand-heat-and-work-as-path-functions"
               }
             },
             {
-              "id": "thermodynamics-q-types-of-processes-2",
-              "question": "What is a common trap associated with Types of processes?",
+              "id": "thermodynamics-q-heat-and-work-as-path-functions-2",
+              "question": "Describe a scenario where applying the concept of Heat and work as path functions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "types-of-processes",
+                "thermodynamics",
+                "heat-and-work-as-path-functions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "types-of-processes",
-                "conceptSlug": "trap-types-of-processes",
-                "microskillSlug": "avoid-types-of-processes",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-and-work-as-path-functions",
+                "conceptSlug": "trap-heat-and-work-as-path-functions",
+                "microskillSlug": "avoid-heat-and-work-as-path-functions"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-work",
-          "title": "Work",
+          "id": "mt-thermodynamics-internal-energy-as-state-function-4",
+          "title": "Internal energy as state function",
           "conceptTags": [
             "thermodynamics",
-            "work"
+            "internal-energy-as-state-function"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Work"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Internal energy as state function"
           ],
           "mustKnowFacts": [
-            "Work is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Work for NEET."
+            "A thorough understanding of Internal energy as state function is heavily tested in recent NEET papers.",
+            "Applying the core principles of Internal energy as state function correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for work",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Work during complex MCQs.",
-            "Failing to apply the correct logic for Work."
+            "Misinterpreting the subtle edge cases of Internal energy as state function during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Internal energy as state function."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Work."
+            "Can accurately solve numericals or identify biological structures related specifically to Internal energy as state function.",
+            "Successfully avoids common pitfalls when Internal energy as state function is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Work."
+            "Past year questions frequently test the application of Internal energy as state function in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-work-1",
-              "question": "Explain the core concept behind Work.",
+              "id": "thermodynamics-q-internal-energy-as-state-function-1",
+              "question": "What are the critical factors or principles governing Internal energy as state function?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "work"
+                "thermodynamics",
+                "internal-energy-as-state-function"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "work",
-                "conceptSlug": "core-work",
-                "microskillSlug": "understand-work",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "internal-energy-as-state-function",
+                "conceptSlug": "core-internal-energy-as-state-function",
+                "microskillSlug": "understand-internal-energy-as-state-function"
               }
             },
             {
-              "id": "thermodynamics-q-work-2",
-              "question": "What is a common trap associated with Work?",
+              "id": "thermodynamics-q-internal-energy-as-state-function-2",
+              "question": "Describe a scenario where applying the concept of Internal energy as state function can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "work",
+                "thermodynamics",
+                "internal-energy-as-state-function",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "work",
-                "conceptSlug": "trap-work",
-                "microskillSlug": "avoid-work",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-thermodynamics-heat",
-          "title": "Heat",
-          "conceptTags": [
-            "thermodynamics",
-            "heat"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Heat"
-          ],
-          "mustKnowFacts": [
-            "Heat is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Heat for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for heat",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Heat during complex MCQs.",
-            "Failing to apply the correct logic for Heat."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Heat."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Heat."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-heat-1",
-              "question": "Explain the core concept behind Heat.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "heat"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "thermodynamics",
                 "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat",
-                "conceptSlug": "core-heat",
-                "microskillSlug": "understand-heat",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            },
-            {
-              "id": "thermodynamics-q-heat-2",
-              "question": "What is a common trap associated with Heat?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "heat",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat",
-                "conceptSlug": "trap-heat",
-                "microskillSlug": "avoid-heat",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "subtopicSlug": "internal-energy-as-state-function",
+                "conceptSlug": "trap-internal-energy-as-state-function",
+                "microskillSlug": "avoid-internal-energy-as-state-function"
               }
             }
           ]
@@ -561,557 +507,504 @@
     },
     {
       "id": "m-thermodynamics-2",
-      "title": "Thermodynamics - Section 2",
-      "description": "Comprehensive analysis covering internal energy, enthalpy, first law and more.",
+      "title": "Mastery Module 2: First law of thermodynamics and Related Concepts",
+      "description": "Comprehensive analysis covering first law of thermodynamics, thermodynamic sign convention, isothermal process and advanced applications.",
       "conceptTags": [
         "thermodynamics",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-thermodynamics-internal-energy",
-          "title": "Internal energy",
+          "id": "mt-thermodynamics-first-law-of-thermodynamics-5",
+          "title": "First law of thermodynamics",
           "conceptTags": [
             "thermodynamics",
-            "internal-energy"
+            "first-law-of-thermodynamics"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Internal energy"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing First law of thermodynamics"
           ],
           "mustKnowFacts": [
-            "Internal energy is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Internal energy for NEET."
+            "A thorough understanding of First law of thermodynamics is heavily tested in recent NEET papers.",
+            "Applying the core principles of First law of thermodynamics correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for internal energy",
-              "expression": "F = m a",
+              "name": "First Law of Thermodynamics",
+              "expression": "\\Delta Q = \\Delta U + \\Delta W",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "Q",
+                "U",
+                "W"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Internal energy during complex MCQs.",
-            "Failing to apply the correct logic for Internal energy."
+            "Misinterpreting the subtle edge cases of First law of thermodynamics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with First law of thermodynamics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Internal energy."
+            "Can accurately solve numericals or identify biological structures related specifically to First law of thermodynamics.",
+            "Successfully avoids common pitfalls when First law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Internal energy."
+            "Past year questions frequently test the application of First law of thermodynamics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-internal-energy-1",
-              "question": "Explain the core concept behind Internal energy.",
+              "id": "thermodynamics-q-first-law-of-thermodynamics-1",
+              "question": "What are the critical factors or principles governing First law of thermodynamics?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "internal-energy"
+                "thermodynamics",
+                "first-law-of-thermodynamics"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "internal-energy",
-                "conceptSlug": "core-internal-energy",
-                "microskillSlug": "understand-internal-energy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "first-law-of-thermodynamics",
+                "conceptSlug": "core-first-law-of-thermodynamics",
+                "microskillSlug": "understand-first-law-of-thermodynamics"
               }
             },
             {
-              "id": "thermodynamics-q-internal-energy-2",
-              "question": "What is a common trap associated with Internal energy?",
+              "id": "thermodynamics-q-first-law-of-thermodynamics-2",
+              "question": "Describe a scenario where applying the concept of First law of thermodynamics can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "internal-energy",
+                "thermodynamics",
+                "first-law-of-thermodynamics",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "internal-energy",
-                "conceptSlug": "trap-internal-energy",
-                "microskillSlug": "avoid-internal-energy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "first-law-of-thermodynamics",
+                "conceptSlug": "trap-first-law-of-thermodynamics",
+                "microskillSlug": "avoid-first-law-of-thermodynamics"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-enthalpy",
-          "title": "Enthalpy",
+          "id": "mt-thermodynamics-thermodynamic-sign-convention-6",
+          "title": "Thermodynamic sign convention",
           "conceptTags": [
             "thermodynamics",
-            "enthalpy"
+            "thermodynamic-sign-convention"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Enthalpy"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Thermodynamic sign convention"
           ],
           "mustKnowFacts": [
-            "Enthalpy is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Enthalpy for NEET."
+            "A thorough understanding of Thermodynamic sign convention is heavily tested in recent NEET papers.",
+            "Applying the core principles of Thermodynamic sign convention correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for enthalpy",
-              "expression": "F = m a",
+              "name": "First Law of Thermodynamics",
+              "expression": "\\Delta Q = \\Delta U + \\Delta W",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "Q",
+                "U",
+                "W"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Enthalpy during complex MCQs.",
-            "Failing to apply the correct logic for Enthalpy."
+            "Misinterpreting the subtle edge cases of Thermodynamic sign convention during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Thermodynamic sign convention."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Enthalpy."
+            "Can accurately solve numericals or identify biological structures related specifically to Thermodynamic sign convention.",
+            "Successfully avoids common pitfalls when Thermodynamic sign convention is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Enthalpy."
+            "Past year questions frequently test the application of Thermodynamic sign convention in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-enthalpy-1",
-              "question": "Explain the core concept behind Enthalpy.",
+              "id": "thermodynamics-q-thermodynamic-sign-convention-1",
+              "question": "What are the critical factors or principles governing Thermodynamic sign convention?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "enthalpy"
+                "thermodynamics",
+                "thermodynamic-sign-convention"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "enthalpy",
-                "conceptSlug": "core-enthalpy",
-                "microskillSlug": "understand-enthalpy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "thermodynamic-sign-convention",
+                "conceptSlug": "core-thermodynamic-sign-convention",
+                "microskillSlug": "understand-thermodynamic-sign-convention"
               }
             },
             {
-              "id": "thermodynamics-q-enthalpy-2",
-              "question": "What is a common trap associated with Enthalpy?",
+              "id": "thermodynamics-q-thermodynamic-sign-convention-2",
+              "question": "Describe a scenario where applying the concept of Thermodynamic sign convention can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "enthalpy",
+                "thermodynamics",
+                "thermodynamic-sign-convention",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "enthalpy",
-                "conceptSlug": "trap-enthalpy",
-                "microskillSlug": "avoid-enthalpy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "thermodynamic-sign-convention",
+                "conceptSlug": "trap-thermodynamic-sign-convention",
+                "microskillSlug": "avoid-thermodynamic-sign-convention"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-first-law",
-          "title": "First law",
+          "id": "mt-thermodynamics-isothermal-process-7",
+          "title": "Isothermal process",
           "conceptTags": [
             "thermodynamics",
-            "first-law"
+            "isothermal-process"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, First law"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isothermal process"
           ],
           "mustKnowFacts": [
-            "First law is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing First law for NEET."
+            "A thorough understanding of Isothermal process is heavily tested in recent NEET papers.",
+            "Applying the core principles of Isothermal process correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for first law",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret First law during complex MCQs.",
-            "Failing to apply the correct logic for First law."
+            "Misinterpreting the subtle edge cases of Isothermal process during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Isothermal process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to First law."
+            "Can accurately solve numericals or identify biological structures related specifically to Isothermal process.",
+            "Successfully avoids common pitfalls when Isothermal process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about First law."
+            "Past year questions frequently test the application of Isothermal process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-first-law-1",
-              "question": "Explain the core concept behind First law.",
+              "id": "thermodynamics-q-isothermal-process-1",
+              "question": "What are the critical factors or principles governing Isothermal process?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "first-law"
+                "thermodynamics",
+                "isothermal-process"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "first-law",
-                "conceptSlug": "core-first-law",
-                "microskillSlug": "understand-first-law",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "isothermal-process",
+                "conceptSlug": "core-isothermal-process",
+                "microskillSlug": "understand-isothermal-process"
               }
             },
             {
-              "id": "thermodynamics-q-first-law-2",
-              "question": "What is a common trap associated with First law?",
+              "id": "thermodynamics-q-isothermal-process-2",
+              "question": "Describe a scenario where applying the concept of Isothermal process can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "first-law",
+                "thermodynamics",
+                "isothermal-process",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "first-law",
-                "conceptSlug": "trap-first-law",
-                "microskillSlug": "avoid-first-law",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "isothermal-process",
+                "conceptSlug": "trap-isothermal-process",
+                "microskillSlug": "avoid-isothermal-process"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-heat-capacity",
-          "title": "Heat capacity",
+          "id": "mt-thermodynamics-adiabatic-process-8",
+          "title": "Adiabatic process",
           "conceptTags": [
             "thermodynamics",
-            "heat-capacity"
+            "adiabatic-process"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Heat capacity"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Adiabatic process"
           ],
           "mustKnowFacts": [
-            "Heat capacity is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Heat capacity for NEET."
+            "A thorough understanding of Adiabatic process is heavily tested in recent NEET papers.",
+            "Applying the core principles of Adiabatic process correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for heat capacity",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Heat capacity during complex MCQs.",
-            "Failing to apply the correct logic for Heat capacity."
+            "Misinterpreting the subtle edge cases of Adiabatic process during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Adiabatic process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Heat capacity."
+            "Can accurately solve numericals or identify biological structures related specifically to Adiabatic process.",
+            "Successfully avoids common pitfalls when Adiabatic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Heat capacity."
+            "Past year questions frequently test the application of Adiabatic process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-heat-capacity-1",
-              "question": "Explain the core concept behind Heat capacity.",
+              "id": "thermodynamics-q-adiabatic-process-1",
+              "question": "What are the critical factors or principles governing Adiabatic process?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "heat-capacity"
+                "thermodynamics",
+                "adiabatic-process"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat-capacity",
-                "conceptSlug": "core-heat-capacity",
-                "microskillSlug": "understand-heat-capacity",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "adiabatic-process",
+                "conceptSlug": "core-adiabatic-process",
+                "microskillSlug": "understand-adiabatic-process"
               }
             },
             {
-              "id": "thermodynamics-q-heat-capacity-2",
-              "question": "What is a common trap associated with Heat capacity?",
+              "id": "thermodynamics-q-adiabatic-process-2",
+              "question": "Describe a scenario where applying the concept of Adiabatic process can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "heat-capacity",
+                "thermodynamics",
+                "adiabatic-process",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat-capacity",
-                "conceptSlug": "trap-heat-capacity",
-                "microskillSlug": "avoid-heat-capacity",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "adiabatic-process",
+                "conceptSlug": "trap-adiabatic-process",
+                "microskillSlug": "avoid-adiabatic-process"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-hess-law",
-          "title": "Hess law",
+          "id": "mt-thermodynamics-isochoric-process-9",
+          "title": "Isochoric process",
           "conceptTags": [
             "thermodynamics",
-            "hess-law"
+            "isochoric-process"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Hess law"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isochoric process"
           ],
           "mustKnowFacts": [
-            "Hess law is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Hess law for NEET."
+            "A thorough understanding of Isochoric process is heavily tested in recent NEET papers.",
+            "Applying the core principles of Isochoric process correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for Hess law",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Hess law during complex MCQs.",
-            "Failing to apply the correct logic for Hess law."
+            "Misinterpreting the subtle edge cases of Isochoric process during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Isochoric process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Hess law."
+            "Can accurately solve numericals or identify biological structures related specifically to Isochoric process.",
+            "Successfully avoids common pitfalls when Isochoric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Hess law."
+            "Past year questions frequently test the application of Isochoric process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-hess-law-1",
-              "question": "Explain the core concept behind Hess law.",
+              "id": "thermodynamics-q-isochoric-process-1",
+              "question": "What are the critical factors or principles governing Isochoric process?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "hess-law"
+                "thermodynamics",
+                "isochoric-process"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "hess-law",
-                "conceptSlug": "core-hess-law",
-                "microskillSlug": "understand-hess-law",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "isochoric-process",
+                "conceptSlug": "core-isochoric-process",
+                "microskillSlug": "understand-isochoric-process"
               }
             },
             {
-              "id": "thermodynamics-q-hess-law-2",
-              "question": "What is a common trap associated with Hess law?",
+              "id": "thermodynamics-q-isochoric-process-2",
+              "question": "Describe a scenario where applying the concept of Isochoric process can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "hess-law",
+                "thermodynamics",
+                "isochoric-process",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "hess-law",
-                "conceptSlug": "trap-hess-law",
-                "microskillSlug": "avoid-hess-law",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-thermodynamics-enthalpy-of-formation",
-          "title": "Enthalpy of formation",
-          "conceptTags": [
-            "thermodynamics",
-            "enthalpy-of-formation"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Enthalpy of formation"
-          ],
-          "mustKnowFacts": [
-            "Enthalpy of formation is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Enthalpy of formation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for enthalpy of formation",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Enthalpy of formation during complex MCQs.",
-            "Failing to apply the correct logic for Enthalpy of formation."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Enthalpy of formation."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Enthalpy of formation."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-enthalpy-of-formation-1",
-              "question": "Explain the core concept behind Enthalpy of formation.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "enthalpy-of-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "thermodynamics",
                 "topicSlug": "thermodynamics",
-                "subtopicSlug": "enthalpy-of-formation",
-                "conceptSlug": "core-enthalpy-of-formation",
-                "microskillSlug": "understand-enthalpy-of-formation",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            },
-            {
-              "id": "thermodynamics-q-enthalpy-of-formation-2",
-              "question": "What is a common trap associated with Enthalpy of formation?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "enthalpy-of-formation",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "enthalpy-of-formation",
-                "conceptSlug": "trap-enthalpy-of-formation",
-                "microskillSlug": "avoid-enthalpy-of-formation",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "subtopicSlug": "isochoric-process",
+                "conceptSlug": "trap-isochoric-process",
+                "microskillSlug": "avoid-isochoric-process"
               }
             }
           ]
@@ -1120,557 +1013,505 @@
     },
     {
       "id": "m-thermodynamics-3",
-      "title": "Thermodynamics - Section 3",
-      "description": "Comprehensive analysis covering combustion, atomisation, bond dissociation and more.",
+      "title": "Mastery Module 3: Isobaric process and Related Concepts",
+      "description": "Comprehensive analysis covering isobaric process, cyclic process, PV graph work calculation and advanced applications.",
       "conceptTags": [
         "thermodynamics",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-thermodynamics-combustion",
-          "title": "Combustion",
+          "id": "mt-thermodynamics-isobaric-process-10",
+          "title": "Isobaric process",
           "conceptTags": [
             "thermodynamics",
-            "combustion"
+            "isobaric-process"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Combustion"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isobaric process"
           ],
           "mustKnowFacts": [
-            "Combustion is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Combustion for NEET."
+            "A thorough understanding of Isobaric process is heavily tested in recent NEET papers.",
+            "Applying the core principles of Isobaric process correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for combustion",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Combustion during complex MCQs.",
-            "Failing to apply the correct logic for Combustion."
+            "Misinterpreting the subtle edge cases of Isobaric process during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Isobaric process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Combustion."
+            "Can accurately solve numericals or identify biological structures related specifically to Isobaric process.",
+            "Successfully avoids common pitfalls when Isobaric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Combustion."
+            "Past year questions frequently test the application of Isobaric process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-combustion-1",
-              "question": "Explain the core concept behind Combustion.",
+              "id": "thermodynamics-q-isobaric-process-1",
+              "question": "What are the critical factors or principles governing Isobaric process?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "combustion"
+                "thermodynamics",
+                "isobaric-process"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "combustion",
-                "conceptSlug": "core-combustion",
-                "microskillSlug": "understand-combustion",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "isobaric-process",
+                "conceptSlug": "core-isobaric-process",
+                "microskillSlug": "understand-isobaric-process"
               }
             },
             {
-              "id": "thermodynamics-q-combustion-2",
-              "question": "What is a common trap associated with Combustion?",
+              "id": "thermodynamics-q-isobaric-process-2",
+              "question": "Describe a scenario where applying the concept of Isobaric process can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "combustion",
+                "thermodynamics",
+                "isobaric-process",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "combustion",
-                "conceptSlug": "trap-combustion",
-                "microskillSlug": "avoid-combustion",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "isobaric-process",
+                "conceptSlug": "trap-isobaric-process",
+                "microskillSlug": "avoid-isobaric-process"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-atomisation",
-          "title": "Atomisation",
+          "id": "mt-thermodynamics-cyclic-process-11",
+          "title": "Cyclic process",
           "conceptTags": [
             "thermodynamics",
-            "atomisation"
+            "cyclic-process"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Atomisation"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Cyclic process"
           ],
           "mustKnowFacts": [
-            "Atomisation is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Atomisation for NEET."
+            "A thorough understanding of Cyclic process is heavily tested in recent NEET papers.",
+            "Applying the core principles of Cyclic process correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for atomisation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Atomisation during complex MCQs.",
-            "Failing to apply the correct logic for Atomisation."
+            "Misinterpreting the subtle edge cases of Cyclic process during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Cyclic process."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Atomisation."
+            "Can accurately solve numericals or identify biological structures related specifically to Cyclic process.",
+            "Successfully avoids common pitfalls when Cyclic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Atomisation."
+            "Past year questions frequently test the application of Cyclic process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-atomisation-1",
-              "question": "Explain the core concept behind Atomisation.",
+              "id": "thermodynamics-q-cyclic-process-1",
+              "question": "What are the critical factors or principles governing Cyclic process?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "atomisation"
+                "thermodynamics",
+                "cyclic-process"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "atomisation",
-                "conceptSlug": "core-atomisation",
-                "microskillSlug": "understand-atomisation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "cyclic-process",
+                "conceptSlug": "core-cyclic-process",
+                "microskillSlug": "understand-cyclic-process"
               }
             },
             {
-              "id": "thermodynamics-q-atomisation-2",
-              "question": "What is a common trap associated with Atomisation?",
+              "id": "thermodynamics-q-cyclic-process-2",
+              "question": "Describe a scenario where applying the concept of Cyclic process can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "atomisation",
+                "thermodynamics",
+                "cyclic-process",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "atomisation",
-                "conceptSlug": "trap-atomisation",
-                "microskillSlug": "avoid-atomisation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "cyclic-process",
+                "conceptSlug": "trap-cyclic-process",
+                "microskillSlug": "avoid-cyclic-process"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-bond-dissociation",
-          "title": "Bond dissociation",
+          "id": "mt-thermodynamics-pv-graph-work-calculation-12",
+          "title": "PV graph work calculation",
           "conceptTags": [
             "thermodynamics",
-            "bond-dissociation"
+            "pv-graph-work-calculation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Bond dissociation"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing PV graph work calculation"
           ],
           "mustKnowFacts": [
-            "Bond dissociation is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Bond dissociation for NEET."
+            "A thorough understanding of PV graph work calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of PV graph work calculation correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for bond dissociation",
-              "expression": "F = m a",
+              "name": "Work Done",
+              "expression": "W = \\int \\vec{F} \\cdot d\\vec{r}",
               "variables": [
+                "W",
                 "F",
-                "m",
-                "a"
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Bond dissociation during complex MCQs.",
-            "Failing to apply the correct logic for Bond dissociation."
+            "Misinterpreting the subtle edge cases of PV graph work calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with PV graph work calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Bond dissociation."
+            "Can accurately solve numericals or identify biological structures related specifically to PV graph work calculation.",
+            "Successfully avoids common pitfalls when PV graph work calculation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Bond dissociation."
+            "Past year questions frequently test the application of PV graph work calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-bond-dissociation-1",
-              "question": "Explain the core concept behind Bond dissociation.",
+              "id": "thermodynamics-q-pv-graph-work-calculation-1",
+              "question": "What are the critical factors or principles governing PV graph work calculation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "bond-dissociation"
+                "thermodynamics",
+                "pv-graph-work-calculation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "bond-dissociation",
-                "conceptSlug": "core-bond-dissociation",
-                "microskillSlug": "understand-bond-dissociation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "pv-graph-work-calculation",
+                "conceptSlug": "core-pv-graph-work-calculation",
+                "microskillSlug": "understand-pv-graph-work-calculation"
               }
             },
             {
-              "id": "thermodynamics-q-bond-dissociation-2",
-              "question": "What is a common trap associated with Bond dissociation?",
+              "id": "thermodynamics-q-pv-graph-work-calculation-2",
+              "question": "Describe a scenario where applying the concept of PV graph work calculation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "bond-dissociation",
+                "thermodynamics",
+                "pv-graph-work-calculation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "bond-dissociation",
-                "conceptSlug": "trap-bond-dissociation",
-                "microskillSlug": "avoid-bond-dissociation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "pv-graph-work-calculation",
+                "conceptSlug": "trap-pv-graph-work-calculation",
+                "microskillSlug": "avoid-pv-graph-work-calculation"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-sublimation",
-          "title": "Sublimation",
+          "id": "mt-thermodynamics-heat-engine-efficiency-13",
+          "title": "Heat engine efficiency",
           "conceptTags": [
             "thermodynamics",
-            "sublimation"
+            "heat-engine-efficiency"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Sublimation"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat engine efficiency"
           ],
           "mustKnowFacts": [
-            "Sublimation is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Sublimation for NEET."
+            "A thorough understanding of Heat engine efficiency is heavily tested in recent NEET papers.",
+            "Applying the core principles of Heat engine efficiency correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for sublimation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Sublimation during complex MCQs.",
-            "Failing to apply the correct logic for Sublimation."
+            "Misinterpreting the subtle edge cases of Heat engine efficiency during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Heat engine efficiency."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Sublimation."
+            "Can accurately solve numericals or identify biological structures related specifically to Heat engine efficiency.",
+            "Successfully avoids common pitfalls when Heat engine efficiency is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Sublimation."
+            "Past year questions frequently test the application of Heat engine efficiency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-sublimation-1",
-              "question": "Explain the core concept behind Sublimation.",
+              "id": "thermodynamics-q-heat-engine-efficiency-1",
+              "question": "What are the critical factors or principles governing Heat engine efficiency?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "sublimation"
+                "thermodynamics",
+                "heat-engine-efficiency"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "sublimation",
-                "conceptSlug": "core-sublimation",
-                "microskillSlug": "understand-sublimation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-engine-efficiency",
+                "conceptSlug": "core-heat-engine-efficiency",
+                "microskillSlug": "understand-heat-engine-efficiency"
               }
             },
             {
-              "id": "thermodynamics-q-sublimation-2",
-              "question": "What is a common trap associated with Sublimation?",
+              "id": "thermodynamics-q-heat-engine-efficiency-2",
+              "question": "Describe a scenario where applying the concept of Heat engine efficiency can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "sublimation",
+                "thermodynamics",
+                "heat-engine-efficiency",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "sublimation",
-                "conceptSlug": "trap-sublimation",
-                "microskillSlug": "avoid-sublimation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-engine-efficiency",
+                "conceptSlug": "trap-heat-engine-efficiency",
+                "microskillSlug": "avoid-heat-engine-efficiency"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-phase-transition",
-          "title": "Phase transition",
+          "id": "mt-thermodynamics-refrigerator-coefficient-of-performance-14",
+          "title": "Refrigerator coefficient of performance",
           "conceptTags": [
             "thermodynamics",
-            "phase-transition"
+            "refrigerator-coefficient-of-performance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Phase transition"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Refrigerator coefficient of performance"
           ],
           "mustKnowFacts": [
-            "Phase transition is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Phase transition for NEET."
+            "A thorough understanding of Refrigerator coefficient of performance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Refrigerator coefficient of performance correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for phase transition",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Phase transition during complex MCQs.",
-            "Failing to apply the correct logic for Phase transition."
+            "Misinterpreting the subtle edge cases of Refrigerator coefficient of performance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Refrigerator coefficient of performance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Phase transition."
+            "Can accurately solve numericals or identify biological structures related specifically to Refrigerator coefficient of performance.",
+            "Successfully avoids common pitfalls when Refrigerator coefficient of performance is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Phase transition."
+            "Past year questions frequently test the application of Refrigerator coefficient of performance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-phase-transition-1",
-              "question": "Explain the core concept behind Phase transition.",
+              "id": "thermodynamics-q-refrigerator-coefficient-of-performance-1",
+              "question": "What are the critical factors or principles governing Refrigerator coefficient of performance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "phase-transition"
+                "thermodynamics",
+                "refrigerator-coefficient-of-performance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "phase-transition",
-                "conceptSlug": "core-phase-transition",
-                "microskillSlug": "understand-phase-transition",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "refrigerator-coefficient-of-performance",
+                "conceptSlug": "core-refrigerator-coefficient-of-performance",
+                "microskillSlug": "understand-refrigerator-coefficient-of-performance"
               }
             },
             {
-              "id": "thermodynamics-q-phase-transition-2",
-              "question": "What is a common trap associated with Phase transition?",
+              "id": "thermodynamics-q-refrigerator-coefficient-of-performance-2",
+              "question": "Describe a scenario where applying the concept of Refrigerator coefficient of performance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "phase-transition",
+                "thermodynamics",
+                "refrigerator-coefficient-of-performance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "phase-transition",
-                "conceptSlug": "trap-phase-transition",
-                "microskillSlug": "avoid-phase-transition",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-thermodynamics-hydration",
-          "title": "Hydration",
-          "conceptTags": [
-            "thermodynamics",
-            "hydration"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Hydration"
-          ],
-          "mustKnowFacts": [
-            "Hydration is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Hydration for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for hydration",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Hydration during complex MCQs.",
-            "Failing to apply the correct logic for Hydration."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Hydration."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Hydration."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-hydration-1",
-              "question": "Explain the core concept behind Hydration.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "hydration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "thermodynamics",
                 "topicSlug": "thermodynamics",
-                "subtopicSlug": "hydration",
-                "conceptSlug": "core-hydration",
-                "microskillSlug": "understand-hydration",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
-              }
-            },
-            {
-              "id": "thermodynamics-q-hydration-2",
-              "question": "What is a common trap associated with Hydration?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "hydration",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "hydration",
-                "conceptSlug": "trap-hydration",
-                "microskillSlug": "avoid-hydration",
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "subtopicSlug": "refrigerator-coefficient-of-performance",
+                "conceptSlug": "trap-refrigerator-coefficient-of-performance",
+                "microskillSlug": "avoid-refrigerator-coefficient-of-performance"
               }
             }
           ]
@@ -1679,557 +1520,617 @@
     },
     {
       "id": "m-thermodynamics-4",
-      "title": "Thermodynamics - Section 4",
-      "description": "Comprehensive analysis covering ionisation, solution, entropy and more.",
+      "title": "Mastery Module 4: Second law of thermodynamics statements and Related Concepts",
+      "description": "Comprehensive analysis covering second law of thermodynamics statements, reversible and irreversible processes, Carnot cycle steps and advanced applications.",
       "conceptTags": [
         "thermodynamics",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-thermodynamics-ionisation",
-          "title": "Ionisation",
+          "id": "mt-thermodynamics-second-law-of-thermodynamics-statements-15",
+          "title": "Second law of thermodynamics statements",
           "conceptTags": [
             "thermodynamics",
-            "ionisation"
+            "second-law-of-thermodynamics-statements"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Ionisation"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Second law of thermodynamics statements"
           ],
           "mustKnowFacts": [
-            "Ionisation is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Ionisation for NEET."
+            "A thorough understanding of Second law of thermodynamics statements is heavily tested in recent NEET papers.",
+            "Applying the core principles of Second law of thermodynamics statements correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for ionisation",
-              "expression": "F = m a",
+              "name": "First Law of Thermodynamics",
+              "expression": "\\Delta Q = \\Delta U + \\Delta W",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "Q",
+                "U",
+                "W"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Ionisation during complex MCQs.",
-            "Failing to apply the correct logic for Ionisation."
+            "Misinterpreting the subtle edge cases of Second law of thermodynamics statements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Second law of thermodynamics statements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ionisation."
+            "Can accurately solve numericals or identify biological structures related specifically to Second law of thermodynamics statements.",
+            "Successfully avoids common pitfalls when Second law of thermodynamics statements is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Ionisation."
+            "Past year questions frequently test the application of Second law of thermodynamics statements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-ionisation-1",
-              "question": "Explain the core concept behind Ionisation.",
+              "id": "thermodynamics-q-second-law-of-thermodynamics-statements-1",
+              "question": "What are the critical factors or principles governing Second law of thermodynamics statements?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ionisation"
+                "thermodynamics",
+                "second-law-of-thermodynamics-statements"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "ionisation",
-                "conceptSlug": "core-ionisation",
-                "microskillSlug": "understand-ionisation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "second-law-of-thermodynamics-statements",
+                "conceptSlug": "core-second-law-of-thermodynamics-statements",
+                "microskillSlug": "understand-second-law-of-thermodynamics-statements"
               }
             },
             {
-              "id": "thermodynamics-q-ionisation-2",
-              "question": "What is a common trap associated with Ionisation?",
+              "id": "thermodynamics-q-second-law-of-thermodynamics-statements-2",
+              "question": "Describe a scenario where applying the concept of Second law of thermodynamics statements can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ionisation",
+                "thermodynamics",
+                "second-law-of-thermodynamics-statements",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "ionisation",
-                "conceptSlug": "trap-ionisation",
-                "microskillSlug": "avoid-ionisation",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "second-law-of-thermodynamics-statements",
+                "conceptSlug": "trap-second-law-of-thermodynamics-statements",
+                "microskillSlug": "avoid-second-law-of-thermodynamics-statements"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-solution",
-          "title": "Solution",
+          "id": "mt-thermodynamics-reversible-and-irreversible-processes-16",
+          "title": "Reversible and irreversible processes",
           "conceptTags": [
             "thermodynamics",
-            "solution"
+            "reversible-and-irreversible-processes"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Solution"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Reversible and irreversible processes"
           ],
           "mustKnowFacts": [
-            "Solution is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Solution for NEET."
+            "A thorough understanding of Reversible and irreversible processes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Reversible and irreversible processes correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for solution",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Solution during complex MCQs.",
-            "Failing to apply the correct logic for Solution."
+            "Misinterpreting the subtle edge cases of Reversible and irreversible processes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Reversible and irreversible processes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Solution."
+            "Can accurately solve numericals or identify biological structures related specifically to Reversible and irreversible processes.",
+            "Successfully avoids common pitfalls when Reversible and irreversible processes is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Solution."
+            "Past year questions frequently test the application of Reversible and irreversible processes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-solution-1",
-              "question": "Explain the core concept behind Solution.",
+              "id": "thermodynamics-q-reversible-and-irreversible-processes-1",
+              "question": "What are the critical factors or principles governing Reversible and irreversible processes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "solution"
+                "thermodynamics",
+                "reversible-and-irreversible-processes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "solution",
-                "conceptSlug": "core-solution",
-                "microskillSlug": "understand-solution",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "reversible-and-irreversible-processes",
+                "conceptSlug": "core-reversible-and-irreversible-processes",
+                "microskillSlug": "understand-reversible-and-irreversible-processes"
               }
             },
             {
-              "id": "thermodynamics-q-solution-2",
-              "question": "What is a common trap associated with Solution?",
+              "id": "thermodynamics-q-reversible-and-irreversible-processes-2",
+              "question": "Describe a scenario where applying the concept of Reversible and irreversible processes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "solution",
+                "thermodynamics",
+                "reversible-and-irreversible-processes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "solution",
-                "conceptSlug": "trap-solution",
-                "microskillSlug": "avoid-solution",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "reversible-and-irreversible-processes",
+                "conceptSlug": "trap-reversible-and-irreversible-processes",
+                "microskillSlug": "avoid-reversible-and-irreversible-processes"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-entropy",
-          "title": "Entropy",
+          "id": "mt-thermodynamics-carnot-cycle-steps-17",
+          "title": "Carnot cycle steps",
           "conceptTags": [
             "thermodynamics",
-            "entropy"
+            "carnot-cycle-steps"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Entropy"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Carnot cycle steps"
           ],
           "mustKnowFacts": [
-            "Entropy is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Entropy for NEET."
+            "A thorough understanding of Carnot cycle steps is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carnot cycle steps correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for entropy",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Entropy during complex MCQs.",
-            "Failing to apply the correct logic for Entropy."
+            "Misinterpreting the subtle edge cases of Carnot cycle steps during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carnot cycle steps."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Entropy."
+            "Can accurately solve numericals or identify biological structures related specifically to Carnot cycle steps.",
+            "Successfully avoids common pitfalls when Carnot cycle steps is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Entropy."
+            "Past year questions frequently test the application of Carnot cycle steps in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-entropy-1",
-              "question": "Explain the core concept behind Entropy.",
+              "id": "thermodynamics-q-carnot-cycle-steps-1",
+              "question": "What are the critical factors or principles governing Carnot cycle steps?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "entropy"
+                "thermodynamics",
+                "carnot-cycle-steps"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "entropy",
-                "conceptSlug": "core-entropy",
-                "microskillSlug": "understand-entropy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "carnot-cycle-steps",
+                "conceptSlug": "core-carnot-cycle-steps",
+                "microskillSlug": "understand-carnot-cycle-steps"
               }
             },
             {
-              "id": "thermodynamics-q-entropy-2",
-              "question": "What is a common trap associated with Entropy?",
+              "id": "thermodynamics-q-carnot-cycle-steps-2",
+              "question": "Describe a scenario where applying the concept of Carnot cycle steps can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "entropy",
+                "thermodynamics",
+                "carnot-cycle-steps",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "entropy",
-                "conceptSlug": "trap-entropy",
-                "microskillSlug": "avoid-entropy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "carnot-cycle-steps",
+                "conceptSlug": "trap-carnot-cycle-steps",
+                "microskillSlug": "avoid-carnot-cycle-steps"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-gibbs-energy",
-          "title": "Gibbs energy",
+          "id": "mt-thermodynamics-carnot-efficiency-formula-18",
+          "title": "Carnot efficiency formula",
           "conceptTags": [
             "thermodynamics",
-            "gibbs-energy"
+            "carnot-efficiency-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Gibbs energy"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Carnot efficiency formula"
           ],
           "mustKnowFacts": [
-            "Gibbs energy is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Gibbs energy for NEET."
+            "A thorough understanding of Carnot efficiency formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carnot efficiency formula correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for Gibbs energy",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Gibbs energy during complex MCQs.",
-            "Failing to apply the correct logic for Gibbs energy."
+            "Misinterpreting the subtle edge cases of Carnot efficiency formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carnot efficiency formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gibbs energy."
+            "Can accurately solve numericals or identify biological structures related specifically to Carnot efficiency formula.",
+            "Successfully avoids common pitfalls when Carnot efficiency formula is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gibbs energy."
+            "Past year questions frequently test the application of Carnot efficiency formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-gibbs-energy-1",
-              "question": "Explain the core concept behind Gibbs energy.",
+              "id": "thermodynamics-q-carnot-efficiency-formula-1",
+              "question": "What are the critical factors or principles governing Carnot efficiency formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "gibbs-energy"
+                "thermodynamics",
+                "carnot-efficiency-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "gibbs-energy",
-                "conceptSlug": "core-gibbs-energy",
-                "microskillSlug": "understand-gibbs-energy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "carnot-efficiency-formula",
+                "conceptSlug": "core-carnot-efficiency-formula",
+                "microskillSlug": "understand-carnot-efficiency-formula"
               }
             },
             {
-              "id": "thermodynamics-q-gibbs-energy-2",
-              "question": "What is a common trap associated with Gibbs energy?",
+              "id": "thermodynamics-q-carnot-efficiency-formula-2",
+              "question": "Describe a scenario where applying the concept of Carnot efficiency formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "gibbs-energy",
+                "thermodynamics",
+                "carnot-efficiency-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "gibbs-energy",
-                "conceptSlug": "trap-gibbs-energy",
-                "microskillSlug": "avoid-gibbs-energy",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "carnot-efficiency-formula",
+                "conceptSlug": "trap-carnot-efficiency-formula",
+                "microskillSlug": "avoid-carnot-efficiency-formula"
               }
             }
           ]
         },
         {
-          "id": "mt-thermodynamics-spontaneity",
-          "title": "Spontaneity",
+          "id": "mt-thermodynamics-specific-heat-of-gases-relation-19",
+          "title": "Specific heat of gases relation",
           "conceptTags": [
             "thermodynamics",
-            "spontaneity"
+            "specific-heat-of-gases-relation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Spontaneity"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Specific heat of gases relation"
           ],
           "mustKnowFacts": [
-            "Spontaneity is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Spontaneity for NEET."
+            "A thorough understanding of Specific heat of gases relation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Specific heat of gases relation correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for spontaneity",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Spontaneity during complex MCQs.",
-            "Failing to apply the correct logic for Spontaneity."
+            "Misinterpreting the subtle edge cases of Specific heat of gases relation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Specific heat of gases relation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Spontaneity."
+            "Can accurately solve numericals or identify biological structures related specifically to Specific heat of gases relation.",
+            "Successfully avoids common pitfalls when Specific heat of gases relation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Spontaneity."
+            "Past year questions frequently test the application of Specific heat of gases relation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-spontaneity-1",
-              "question": "Explain the core concept behind Spontaneity.",
+              "id": "thermodynamics-q-specific-heat-of-gases-relation-1",
+              "question": "What are the critical factors or principles governing Specific heat of gases relation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "spontaneity"
+                "thermodynamics",
+                "specific-heat-of-gases-relation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "spontaneity",
-                "conceptSlug": "core-spontaneity",
-                "microskillSlug": "understand-spontaneity",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "specific-heat-of-gases-relation",
+                "conceptSlug": "core-specific-heat-of-gases-relation",
+                "microskillSlug": "understand-specific-heat-of-gases-relation"
               }
             },
             {
-              "id": "thermodynamics-q-spontaneity-2",
-              "question": "What is a common trap associated with Spontaneity?",
+              "id": "thermodynamics-q-specific-heat-of-gases-relation-2",
+              "question": "Describe a scenario where applying the concept of Specific heat of gases relation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "spontaneity",
+                "thermodynamics",
+                "specific-heat-of-gases-relation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "spontaneity",
-                "conceptSlug": "trap-spontaneity",
-                "microskillSlug": "avoid-spontaneity",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "specific-heat-of-gases-relation",
+                "conceptSlug": "trap-specific-heat-of-gases-relation",
+                "microskillSlug": "avoid-specific-heat-of-gases-relation"
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "m-thermodynamics-5",
+      "title": "Mastery Module 5: Heat pump principle and Related Concepts",
+      "description": "Comprehensive analysis covering heat pump principle and advanced applications.",
+      "conceptTags": [
+        "thermodynamics",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
         {
-          "id": "mt-thermodynamics-relation-between-delta-g-and-equilibrium-constant",
-          "title": "Relation between delta G and equilibrium constant",
+          "id": "mt-thermodynamics-heat-pump-principle-20",
+          "title": "Heat pump principle",
           "conceptTags": [
             "thermodynamics",
-            "relation-between-delta-g-and-equilibrium-constant"
+            "heat-pump-principle"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Relation between delta G and equilibrium constant"
+            "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat pump principle"
           ],
           "mustKnowFacts": [
-            "Relation between delta G and equilibrium constant is a fundamental subtopic of Thermodynamics.",
-            "Crucial to understand the principles governing Relation between delta G and equilibrium constant for NEET."
+            "A thorough understanding of Heat pump principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Heat pump principle correctly is essential for solving complex multi-step problems in Thermodynamics."
           ],
           "formulas": [
             {
-              "name": "Formula for relation between delta G and equilibrium constant",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Relation between delta G and equilibrium constant during complex MCQs.",
-            "Failing to apply the correct logic for Relation between delta G and equilibrium constant."
+            "Misinterpreting the subtle edge cases of Heat pump principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Heat pump principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Relation between delta G and equilibrium constant."
+            "Can accurately solve numericals or identify biological structures related specifically to Heat pump principle.",
+            "Successfully avoids common pitfalls when Heat pump principle is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Relation between delta G and equilibrium constant."
+            "Past year questions frequently test the application of Heat pump principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-relation-between-delta-g-and-equilibrium-constant-1",
-              "question": "Explain the core concept behind Relation between delta G and equilibrium constant.",
+              "id": "thermodynamics-q-heat-pump-principle-1",
+              "question": "What are the critical factors or principles governing Heat pump principle?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "relation-between-delta-g-and-equilibrium-constant"
+                "thermodynamics",
+                "heat-pump-principle"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "relation-between-delta-g-and-equilibrium-constant",
-                "conceptSlug": "core-relation-between-delta-g-and-equilibrium-constant",
-                "microskillSlug": "understand-relation-between-delta-g-and-equilibrium-constant",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-pump-principle",
+                "conceptSlug": "core-heat-pump-principle",
+                "microskillSlug": "understand-heat-pump-principle"
               }
             },
             {
-              "id": "thermodynamics-q-relation-between-delta-g-and-equilibrium-constant-2",
-              "question": "What is a common trap associated with Relation between delta G and equilibrium constant?",
+              "id": "thermodynamics-q-heat-pump-principle-2",
+              "question": "Describe a scenario where applying the concept of Heat pump principle can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "relation-between-delta-g-and-equilibrium-constant",
+                "thermodynamics",
+                "heat-pump-principle",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "relation-between-delta-g-and-equilibrium-constant",
-                "conceptSlug": "trap-relation-between-delta-g-and-equilibrium-constant",
-                "microskillSlug": "avoid-relation-between-delta-g-and-equilibrium-constant",
                 "subject": "Physics",
                 "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics"
+                "chapterSlug": "thermodynamics",
+                "topicSlug": "thermodynamics",
+                "subtopicSlug": "heat-pump-principle",
+                "conceptSlug": "trap-heat-pump-principle",
+                "microskillSlug": "avoid-heat-pump-principle"
               }
             }
           ]

@@ -2,851 +2,359 @@
   "missions": [
     {
       "id": "m-purification-characterisation-organic-1",
-      "title": "Purification and Characterisation of Organic Compounds - Section 1",
-      "description": "Comprehensive analysis covering Generic subtopic 0, Generic subtopic 1, Generic subtopic 2 and more.",
+      "title": "Mastery Module 1: Purification by crystallisation and Related Concepts",
+      "description": "Comprehensive analysis covering purification by crystallisation, purification by sublimation, simple distillation technique and advanced applications.",
       "conceptTags": [
         "purification-characterisation-organic",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-0",
-          "title": "Generic subtopic 0",
+          "id": "mt-purification-characterisation-organic-purification-by-crystallisation-0",
+          "title": "Purification by crystallisation",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-0"
+            "purification-by-crystallisation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 0"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Purification by crystallisation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 0 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 0 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 0",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 0",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Purification by crystallisation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Purification by crystallisation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 0 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 0."
+            "Misinterpreting the subtle edge cases of Purification by crystallisation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Purification by crystallisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 0."
+            "Can accurately solve numericals or identify biological structures related specifically to Purification by crystallisation.",
+            "Successfully avoids common pitfalls when Purification by crystallisation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 0."
+            "Past year questions frequently test the application of Purification by crystallisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-0-1",
-              "question": "Explain the core concept behind Generic subtopic 0.",
+              "id": "purification-characterisation-organic-q-purification-by-crystallisation-1",
+              "question": "What are the critical factors or principles governing Purification by crystallisation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-0"
+                "purification-characterisation-organic",
+                "purification-by-crystallisation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "core-generic-subtopic-0",
-                "microskillSlug": "understand-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "purification-by-crystallisation",
+                "conceptSlug": "core-purification-by-crystallisation",
+                "microskillSlug": "understand-purification-by-crystallisation"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-0-2",
-              "question": "What is a common trap associated with Generic subtopic 0?",
+              "id": "purification-characterisation-organic-q-purification-by-crystallisation-2",
+              "question": "Describe a scenario where applying the concept of Purification by crystallisation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-0",
+                "purification-characterisation-organic",
+                "purification-by-crystallisation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-0",
-                "conceptSlug": "trap-generic-subtopic-0",
-                "microskillSlug": "avoid-generic-subtopic-0",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "purification-by-crystallisation",
+                "conceptSlug": "trap-purification-by-crystallisation",
+                "microskillSlug": "avoid-purification-by-crystallisation"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-1",
-          "title": "Generic subtopic 1",
+          "id": "mt-purification-characterisation-organic-purification-by-sublimation-1",
+          "title": "Purification by sublimation",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-1"
+            "purification-by-sublimation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 1"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Purification by sublimation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 1 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 1 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 1",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 1",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Purification by sublimation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Purification by sublimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 1 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 1."
+            "Misinterpreting the subtle edge cases of Purification by sublimation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Purification by sublimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 1."
+            "Can accurately solve numericals or identify biological structures related specifically to Purification by sublimation.",
+            "Successfully avoids common pitfalls when Purification by sublimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 1."
+            "Past year questions frequently test the application of Purification by sublimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-1-1",
-              "question": "Explain the core concept behind Generic subtopic 1.",
+              "id": "purification-characterisation-organic-q-purification-by-sublimation-1",
+              "question": "What are the critical factors or principles governing Purification by sublimation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-1"
+                "purification-characterisation-organic",
+                "purification-by-sublimation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "core-generic-subtopic-1",
-                "microskillSlug": "understand-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "purification-by-sublimation",
+                "conceptSlug": "core-purification-by-sublimation",
+                "microskillSlug": "understand-purification-by-sublimation"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-1-2",
-              "question": "What is a common trap associated with Generic subtopic 1?",
+              "id": "purification-characterisation-organic-q-purification-by-sublimation-2",
+              "question": "Describe a scenario where applying the concept of Purification by sublimation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-1",
+                "purification-characterisation-organic",
+                "purification-by-sublimation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-1",
-                "conceptSlug": "trap-generic-subtopic-1",
-                "microskillSlug": "avoid-generic-subtopic-1",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "purification-by-sublimation",
+                "conceptSlug": "trap-purification-by-sublimation",
+                "microskillSlug": "avoid-purification-by-sublimation"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-2",
-          "title": "Generic subtopic 2",
+          "id": "mt-purification-characterisation-organic-simple-distillation-technique-2",
+          "title": "Simple distillation technique",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-2"
+            "simple-distillation-technique"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 2"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Simple distillation technique"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 2 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 2 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 2",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 2",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Simple distillation technique is heavily tested in recent NEET papers.",
+            "Applying the core principles of Simple distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 2 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 2."
+            "Misinterpreting the subtle edge cases of Simple distillation technique during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Simple distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 2."
+            "Can accurately solve numericals or identify biological structures related specifically to Simple distillation technique.",
+            "Successfully avoids common pitfalls when Simple distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 2."
+            "Past year questions frequently test the application of Simple distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-2-1",
-              "question": "Explain the core concept behind Generic subtopic 2.",
+              "id": "purification-characterisation-organic-q-simple-distillation-technique-1",
+              "question": "What are the critical factors or principles governing Simple distillation technique?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-2"
+                "purification-characterisation-organic",
+                "simple-distillation-technique"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "core-generic-subtopic-2",
-                "microskillSlug": "understand-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "simple-distillation-technique",
+                "conceptSlug": "core-simple-distillation-technique",
+                "microskillSlug": "understand-simple-distillation-technique"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-2-2",
-              "question": "What is a common trap associated with Generic subtopic 2?",
+              "id": "purification-characterisation-organic-q-simple-distillation-technique-2",
+              "question": "Describe a scenario where applying the concept of Simple distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-2",
+                "purification-characterisation-organic",
+                "simple-distillation-technique",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-2",
-                "conceptSlug": "trap-generic-subtopic-2",
-                "microskillSlug": "avoid-generic-subtopic-2",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "simple-distillation-technique",
+                "conceptSlug": "trap-simple-distillation-technique",
+                "microskillSlug": "avoid-simple-distillation-technique"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-3",
-          "title": "Generic subtopic 3",
+          "id": "mt-purification-characterisation-organic-fractional-distillation-technique-3",
+          "title": "Fractional distillation technique",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-3"
+            "fractional-distillation-technique"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 3"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Fractional distillation technique"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 3 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 3 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 3",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 3",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Fractional distillation technique is heavily tested in recent NEET papers.",
+            "Applying the core principles of Fractional distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 3 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 3."
+            "Misinterpreting the subtle edge cases of Fractional distillation technique during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Fractional distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 3."
+            "Can accurately solve numericals or identify biological structures related specifically to Fractional distillation technique.",
+            "Successfully avoids common pitfalls when Fractional distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 3."
+            "Past year questions frequently test the application of Fractional distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-3-1",
-              "question": "Explain the core concept behind Generic subtopic 3.",
+              "id": "purification-characterisation-organic-q-fractional-distillation-technique-1",
+              "question": "What are the critical factors or principles governing Fractional distillation technique?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-3"
+                "purification-characterisation-organic",
+                "fractional-distillation-technique"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "core-generic-subtopic-3",
-                "microskillSlug": "understand-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "fractional-distillation-technique",
+                "conceptSlug": "core-fractional-distillation-technique",
+                "microskillSlug": "understand-fractional-distillation-technique"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-3-2",
-              "question": "What is a common trap associated with Generic subtopic 3?",
+              "id": "purification-characterisation-organic-q-fractional-distillation-technique-2",
+              "question": "Describe a scenario where applying the concept of Fractional distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-3",
+                "purification-characterisation-organic",
+                "fractional-distillation-technique",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-3",
-                "conceptSlug": "trap-generic-subtopic-3",
-                "microskillSlug": "avoid-generic-subtopic-3",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-4",
-          "title": "Generic subtopic 4",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-4"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 4"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 4 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 4 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 4",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 4",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 4 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 4."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 4."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 4."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-4-1",
-              "question": "Explain the core concept behind Generic subtopic 4.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-4"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "purification-characterisation-organic",
                 "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "core-generic-subtopic-4",
-                "microskillSlug": "understand-generic-subtopic-4",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-4-2",
-              "question": "What is a common trap associated with Generic subtopic 4?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-4",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-4",
-                "conceptSlug": "trap-generic-subtopic-4",
-                "microskillSlug": "avoid-generic-subtopic-4",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-5",
-          "title": "Generic subtopic 5",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-5"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 5"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 5 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 5 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 5",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 5",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 5 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 5."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 5."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 5."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-5-1",
-              "question": "Explain the core concept behind Generic subtopic 5.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "core-generic-subtopic-5",
-                "microskillSlug": "understand-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-5-2",
-              "question": "What is a common trap associated with Generic subtopic 5?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-5",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-5",
-                "conceptSlug": "trap-generic-subtopic-5",
-                "microskillSlug": "avoid-generic-subtopic-5",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-6",
-          "title": "Generic subtopic 6",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-6"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 6"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 6 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 6 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 6",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 6",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 6 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 6."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 6."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 6."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-6-1",
-              "question": "Explain the core concept behind Generic subtopic 6.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "core-generic-subtopic-6",
-                "microskillSlug": "understand-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-6-2",
-              "question": "What is a common trap associated with Generic subtopic 6?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-6",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-6",
-                "conceptSlug": "trap-generic-subtopic-6",
-                "microskillSlug": "avoid-generic-subtopic-6",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-7",
-          "title": "Generic subtopic 7",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-7"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 7"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 7 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 7 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 7",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 7",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 7 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 7."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 7."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 7."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-7-1",
-              "question": "Explain the core concept behind Generic subtopic 7.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "core-generic-subtopic-7",
-                "microskillSlug": "understand-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-7-2",
-              "question": "What is a common trap associated with Generic subtopic 7?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-7",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-7",
-                "conceptSlug": "trap-generic-subtopic-7",
-                "microskillSlug": "avoid-generic-subtopic-7",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "subtopicSlug": "fractional-distillation-technique",
+                "conceptSlug": "trap-fractional-distillation-technique",
+                "microskillSlug": "avoid-fractional-distillation-technique"
               }
             }
           ]
@@ -855,851 +363,359 @@
     },
     {
       "id": "m-purification-characterisation-organic-2",
-      "title": "Purification and Characterisation of Organic Compounds - Section 2",
-      "description": "Comprehensive analysis covering Generic subtopic 8, Generic subtopic 9, Generic subtopic 10 and more.",
+      "title": "Mastery Module 2: Steam distillation technique and Related Concepts",
+      "description": "Comprehensive analysis covering steam distillation technique, distillation under reduced pressure, differential extraction and advanced applications.",
       "conceptTags": [
         "purification-characterisation-organic",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-8",
-          "title": "Generic subtopic 8",
+          "id": "mt-purification-characterisation-organic-steam-distillation-technique-4",
+          "title": "Steam distillation technique",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-8"
+            "steam-distillation-technique"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 8"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Steam distillation technique"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 8 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 8 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 8",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 8",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Steam distillation technique is heavily tested in recent NEET papers.",
+            "Applying the core principles of Steam distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 8 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 8."
+            "Misinterpreting the subtle edge cases of Steam distillation technique during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Steam distillation technique."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 8."
+            "Can accurately solve numericals or identify biological structures related specifically to Steam distillation technique.",
+            "Successfully avoids common pitfalls when Steam distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 8."
+            "Past year questions frequently test the application of Steam distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-8-1",
-              "question": "Explain the core concept behind Generic subtopic 8.",
+              "id": "purification-characterisation-organic-q-steam-distillation-technique-1",
+              "question": "What are the critical factors or principles governing Steam distillation technique?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-8"
+                "purification-characterisation-organic",
+                "steam-distillation-technique"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "core-generic-subtopic-8",
-                "microskillSlug": "understand-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "steam-distillation-technique",
+                "conceptSlug": "core-steam-distillation-technique",
+                "microskillSlug": "understand-steam-distillation-technique"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-8-2",
-              "question": "What is a common trap associated with Generic subtopic 8?",
+              "id": "purification-characterisation-organic-q-steam-distillation-technique-2",
+              "question": "Describe a scenario where applying the concept of Steam distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-8",
+                "purification-characterisation-organic",
+                "steam-distillation-technique",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-8",
-                "conceptSlug": "trap-generic-subtopic-8",
-                "microskillSlug": "avoid-generic-subtopic-8",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "steam-distillation-technique",
+                "conceptSlug": "trap-steam-distillation-technique",
+                "microskillSlug": "avoid-steam-distillation-technique"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-9",
-          "title": "Generic subtopic 9",
+          "id": "mt-purification-characterisation-organic-distillation-under-reduced-pressure-5",
+          "title": "Distillation under reduced pressure",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-9"
+            "distillation-under-reduced-pressure"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 9"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Distillation under reduced pressure"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 9 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 9 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 9",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 9",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Distillation under reduced pressure is heavily tested in recent NEET papers.",
+            "Applying the core principles of Distillation under reduced pressure correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 9 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 9."
+            "Misinterpreting the subtle edge cases of Distillation under reduced pressure during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Distillation under reduced pressure."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 9."
+            "Can accurately solve numericals or identify biological structures related specifically to Distillation under reduced pressure.",
+            "Successfully avoids common pitfalls when Distillation under reduced pressure is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 9."
+            "Past year questions frequently test the application of Distillation under reduced pressure in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-9-1",
-              "question": "Explain the core concept behind Generic subtopic 9.",
+              "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-1",
+              "question": "What are the critical factors or principles governing Distillation under reduced pressure?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-9"
+                "purification-characterisation-organic",
+                "distillation-under-reduced-pressure"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "core-generic-subtopic-9",
-                "microskillSlug": "understand-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "distillation-under-reduced-pressure",
+                "conceptSlug": "core-distillation-under-reduced-pressure",
+                "microskillSlug": "understand-distillation-under-reduced-pressure"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-9-2",
-              "question": "What is a common trap associated with Generic subtopic 9?",
+              "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-2",
+              "question": "Describe a scenario where applying the concept of Distillation under reduced pressure can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-9",
+                "purification-characterisation-organic",
+                "distillation-under-reduced-pressure",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-9",
-                "conceptSlug": "trap-generic-subtopic-9",
-                "microskillSlug": "avoid-generic-subtopic-9",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "distillation-under-reduced-pressure",
+                "conceptSlug": "trap-distillation-under-reduced-pressure",
+                "microskillSlug": "avoid-distillation-under-reduced-pressure"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-10",
-          "title": "Generic subtopic 10",
+          "id": "mt-purification-characterisation-organic-differential-extraction-6",
+          "title": "Differential extraction",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-10"
+            "differential-extraction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 10"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Differential extraction"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 10 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 10 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 10",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 10",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Differential extraction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Differential extraction correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 10 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 10."
+            "Misinterpreting the subtle edge cases of Differential extraction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Differential extraction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 10."
+            "Can accurately solve numericals or identify biological structures related specifically to Differential extraction.",
+            "Successfully avoids common pitfalls when Differential extraction is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 10."
+            "Past year questions frequently test the application of Differential extraction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-10-1",
-              "question": "Explain the core concept behind Generic subtopic 10.",
+              "id": "purification-characterisation-organic-q-differential-extraction-1",
+              "question": "What are the critical factors or principles governing Differential extraction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-10"
+                "purification-characterisation-organic",
+                "differential-extraction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "core-generic-subtopic-10",
-                "microskillSlug": "understand-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "differential-extraction",
+                "conceptSlug": "core-differential-extraction",
+                "microskillSlug": "understand-differential-extraction"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-10-2",
-              "question": "What is a common trap associated with Generic subtopic 10?",
+              "id": "purification-characterisation-organic-q-differential-extraction-2",
+              "question": "Describe a scenario where applying the concept of Differential extraction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-10",
+                "purification-characterisation-organic",
+                "differential-extraction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-10",
-                "conceptSlug": "trap-generic-subtopic-10",
-                "microskillSlug": "avoid-generic-subtopic-10",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "differential-extraction",
+                "conceptSlug": "trap-differential-extraction",
+                "microskillSlug": "avoid-differential-extraction"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-11",
-          "title": "Generic subtopic 11",
+          "id": "mt-purification-characterisation-organic-chromatography-principles-7",
+          "title": "Chromatography principles",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-11"
+            "chromatography-principles"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 11"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Chromatography principles"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 11 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 11 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 11",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 11",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Chromatography principles is heavily tested in recent NEET papers.",
+            "Applying the core principles of Chromatography principles correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 11 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 11."
+            "Misinterpreting the subtle edge cases of Chromatography principles during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Chromatography principles."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 11."
+            "Can accurately solve numericals or identify biological structures related specifically to Chromatography principles.",
+            "Successfully avoids common pitfalls when Chromatography principles is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 11."
+            "Past year questions frequently test the application of Chromatography principles in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-11-1",
-              "question": "Explain the core concept behind Generic subtopic 11.",
+              "id": "purification-characterisation-organic-q-chromatography-principles-1",
+              "question": "What are the critical factors or principles governing Chromatography principles?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-11"
+                "purification-characterisation-organic",
+                "chromatography-principles"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "core-generic-subtopic-11",
-                "microskillSlug": "understand-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "chromatography-principles",
+                "conceptSlug": "core-chromatography-principles",
+                "microskillSlug": "understand-chromatography-principles"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-11-2",
-              "question": "What is a common trap associated with Generic subtopic 11?",
+              "id": "purification-characterisation-organic-q-chromatography-principles-2",
+              "question": "Describe a scenario where applying the concept of Chromatography principles can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-11",
+                "purification-characterisation-organic",
+                "chromatography-principles",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-11",
-                "conceptSlug": "trap-generic-subtopic-11",
-                "microskillSlug": "avoid-generic-subtopic-11",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-12",
-          "title": "Generic subtopic 12",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-12"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 12"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 12 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 12 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 12",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 12",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 12 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 12."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 12."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 12."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-12-1",
-              "question": "Explain the core concept behind Generic subtopic 12.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-12"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "purification-characterisation-organic",
                 "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "core-generic-subtopic-12",
-                "microskillSlug": "understand-generic-subtopic-12",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-12-2",
-              "question": "What is a common trap associated with Generic subtopic 12?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-12",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-12",
-                "conceptSlug": "trap-generic-subtopic-12",
-                "microskillSlug": "avoid-generic-subtopic-12",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-13",
-          "title": "Generic subtopic 13",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-13"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 13"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 13 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 13 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 13",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 13",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 13 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 13."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 13."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 13."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-13-1",
-              "question": "Explain the core concept behind Generic subtopic 13.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "core-generic-subtopic-13",
-                "microskillSlug": "understand-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-13-2",
-              "question": "What is a common trap associated with Generic subtopic 13?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-13",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-13",
-                "conceptSlug": "trap-generic-subtopic-13",
-                "microskillSlug": "avoid-generic-subtopic-13",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-14",
-          "title": "Generic subtopic 14",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-14"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 14"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 14 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 14 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 14",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 14",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 14 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 14."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 14."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 14."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-14-1",
-              "question": "Explain the core concept behind Generic subtopic 14.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "core-generic-subtopic-14",
-                "microskillSlug": "understand-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-14-2",
-              "question": "What is a common trap associated with Generic subtopic 14?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-14",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-14",
-                "conceptSlug": "trap-generic-subtopic-14",
-                "microskillSlug": "avoid-generic-subtopic-14",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-15",
-          "title": "Generic subtopic 15",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-15"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 15"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 15 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 15 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 15",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 15",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 15 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 15."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 15."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 15."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-15-1",
-              "question": "Explain the core concept behind Generic subtopic 15.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "core-generic-subtopic-15",
-                "microskillSlug": "understand-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-15-2",
-              "question": "What is a common trap associated with Generic subtopic 15?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-15",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-15",
-                "conceptSlug": "trap-generic-subtopic-15",
-                "microskillSlug": "avoid-generic-subtopic-15",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "subtopicSlug": "chromatography-principles",
+                "conceptSlug": "trap-chromatography-principles",
+                "microskillSlug": "avoid-chromatography-principles"
               }
             }
           ]
@@ -1708,851 +724,371 @@
     },
     {
       "id": "m-purification-characterisation-organic-3",
-      "title": "Purification and Characterisation of Organic Compounds - Section 3",
-      "description": "Comprehensive analysis covering Generic subtopic 16, Generic subtopic 17, Generic subtopic 18 and more.",
+      "title": "Mastery Module 3: Lassaigne’s test for nitrogen and Related Concepts",
+      "description": "Comprehensive analysis covering Lassaigne’s test for nitrogen, Lassaigne’s test for sulphur, Lassaigne’s test for halogens and advanced applications.",
       "conceptTags": [
         "purification-characterisation-organic",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-16",
-          "title": "Generic subtopic 16",
+          "id": "mt-purification-characterisation-organic-lassaigne-s-test-for-nitrogen-8",
+          "title": "Lassaigne’s test for nitrogen",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-16"
+            "lassaigne-s-test-for-nitrogen"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 16"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for nitrogen"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 16 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 16 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 16",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 16",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Lassaigne’s test for nitrogen is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lassaigne’s test for nitrogen correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 16 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 16."
+            "Misinterpreting the subtle edge cases of Lassaigne’s test for nitrogen during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for nitrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 16."
+            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for nitrogen.",
+            "Successfully avoids common pitfalls when Lassaigne’s test for nitrogen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 16."
+            "Past year questions frequently test the application of Lassaigne’s test for nitrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-16-1",
-              "question": "Explain the core concept behind Generic subtopic 16.",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-1",
+              "question": "What are the critical factors or principles governing Lassaigne’s test for nitrogen?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-16"
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-nitrogen"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "core-generic-subtopic-16",
-                "microskillSlug": "understand-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-nitrogen",
+                "conceptSlug": "core-lassaigne-s-test-for-nitrogen",
+                "microskillSlug": "understand-lassaigne-s-test-for-nitrogen"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-16-2",
-              "question": "What is a common trap associated with Generic subtopic 16?",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-2",
+              "question": "Describe a scenario where applying the concept of Lassaigne’s test for nitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-16",
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-nitrogen",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-16",
-                "conceptSlug": "trap-generic-subtopic-16",
-                "microskillSlug": "avoid-generic-subtopic-16",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-nitrogen",
+                "conceptSlug": "trap-lassaigne-s-test-for-nitrogen",
+                "microskillSlug": "avoid-lassaigne-s-test-for-nitrogen"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-17",
-          "title": "Generic subtopic 17",
+          "id": "mt-purification-characterisation-organic-lassaigne-s-test-for-sulphur-9",
+          "title": "Lassaigne’s test for sulphur",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-17"
+            "lassaigne-s-test-for-sulphur"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 17"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for sulphur"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 17 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 17 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 17",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 17",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Lassaigne’s test for sulphur is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lassaigne’s test for sulphur correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 17 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 17."
+            "Misinterpreting the subtle edge cases of Lassaigne’s test for sulphur during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for sulphur."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 17."
+            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for sulphur.",
+            "Successfully avoids common pitfalls when Lassaigne’s test for sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 17."
+            "Past year questions frequently test the application of Lassaigne’s test for sulphur in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-17-1",
-              "question": "Explain the core concept behind Generic subtopic 17.",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-1",
+              "question": "What are the critical factors or principles governing Lassaigne’s test for sulphur?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-17"
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-sulphur"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "core-generic-subtopic-17",
-                "microskillSlug": "understand-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-sulphur",
+                "conceptSlug": "core-lassaigne-s-test-for-sulphur",
+                "microskillSlug": "understand-lassaigne-s-test-for-sulphur"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-17-2",
-              "question": "What is a common trap associated with Generic subtopic 17?",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-2",
+              "question": "Describe a scenario where applying the concept of Lassaigne’s test for sulphur can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-17",
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-sulphur",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-17",
-                "conceptSlug": "trap-generic-subtopic-17",
-                "microskillSlug": "avoid-generic-subtopic-17",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-sulphur",
+                "conceptSlug": "trap-lassaigne-s-test-for-sulphur",
+                "microskillSlug": "avoid-lassaigne-s-test-for-sulphur"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-18",
-          "title": "Generic subtopic 18",
+          "id": "mt-purification-characterisation-organic-lassaigne-s-test-for-halogens-10",
+          "title": "Lassaigne’s test for halogens",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-18"
+            "lassaigne-s-test-for-halogens"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 18"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for halogens"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 18 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 18 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 18",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Lassaigne’s test for halogens is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lassaigne’s test for halogens correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "reactions": [
             {
-              "name": "Reaction involving Generic subtopic 18",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical Lassaigne’s test for halogens Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 18 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 18."
+            "Misinterpreting the subtle edge cases of Lassaigne’s test for halogens during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for halogens."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 18."
+            "Can accurately solve numericals or identify biological structures related specifically to Lassaigne’s test for halogens.",
+            "Successfully avoids common pitfalls when Lassaigne’s test for halogens is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 18."
+            "Past year questions frequently test the application of Lassaigne’s test for halogens in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-18-1",
-              "question": "Explain the core concept behind Generic subtopic 18.",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-1",
+              "question": "What are the critical factors or principles governing Lassaigne’s test for halogens?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-18"
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-halogens"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "core-generic-subtopic-18",
-                "microskillSlug": "understand-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-halogens",
+                "conceptSlug": "core-lassaigne-s-test-for-halogens",
+                "microskillSlug": "understand-lassaigne-s-test-for-halogens"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-18-2",
-              "question": "What is a common trap associated with Generic subtopic 18?",
+              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-2",
+              "question": "Describe a scenario where applying the concept of Lassaigne’s test for halogens can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-18",
+                "purification-characterisation-organic",
+                "lassaigne-s-test-for-halogens",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-18",
-                "conceptSlug": "trap-generic-subtopic-18",
-                "microskillSlug": "avoid-generic-subtopic-18",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "lassaigne-s-test-for-halogens",
+                "conceptSlug": "trap-lassaigne-s-test-for-halogens",
+                "microskillSlug": "avoid-lassaigne-s-test-for-halogens"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-19",
-          "title": "Generic subtopic 19",
+          "id": "mt-purification-characterisation-organic-test-for-phosphorus-11",
+          "title": "Test for phosphorus",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-19"
+            "test-for-phosphorus"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 19"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Test for phosphorus"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 19 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 19 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 19",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 19",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Test for phosphorus is heavily tested in recent NEET papers.",
+            "Applying the core principles of Test for phosphorus correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 19 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 19."
+            "Misinterpreting the subtle edge cases of Test for phosphorus during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Test for phosphorus."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 19."
+            "Can accurately solve numericals or identify biological structures related specifically to Test for phosphorus.",
+            "Successfully avoids common pitfalls when Test for phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 19."
+            "Past year questions frequently test the application of Test for phosphorus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-19-1",
-              "question": "Explain the core concept behind Generic subtopic 19.",
+              "id": "purification-characterisation-organic-q-test-for-phosphorus-1",
+              "question": "What are the critical factors or principles governing Test for phosphorus?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-19"
+                "purification-characterisation-organic",
+                "test-for-phosphorus"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "core-generic-subtopic-19",
-                "microskillSlug": "understand-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "test-for-phosphorus",
+                "conceptSlug": "core-test-for-phosphorus",
+                "microskillSlug": "understand-test-for-phosphorus"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-19-2",
-              "question": "What is a common trap associated with Generic subtopic 19?",
+              "id": "purification-characterisation-organic-q-test-for-phosphorus-2",
+              "question": "Describe a scenario where applying the concept of Test for phosphorus can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-19",
+                "purification-characterisation-organic",
+                "test-for-phosphorus",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-19",
-                "conceptSlug": "trap-generic-subtopic-19",
-                "microskillSlug": "avoid-generic-subtopic-19",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-20",
-          "title": "Generic subtopic 20",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-20"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 20"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 20 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 20 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 20",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 20",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 20 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 20."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 20."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 20."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-20-1",
-              "question": "Explain the core concept behind Generic subtopic 20.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-20"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "purification-characterisation-organic",
                 "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "core-generic-subtopic-20",
-                "microskillSlug": "understand-generic-subtopic-20",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-20-2",
-              "question": "What is a common trap associated with Generic subtopic 20?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-20",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-20",
-                "conceptSlug": "trap-generic-subtopic-20",
-                "microskillSlug": "avoid-generic-subtopic-20",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-21",
-          "title": "Generic subtopic 21",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-21"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 21"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 21 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 21 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 21",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 21",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 21 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 21."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 21."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 21."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-21-1",
-              "question": "Explain the core concept behind Generic subtopic 21.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "core-generic-subtopic-21",
-                "microskillSlug": "understand-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-21-2",
-              "question": "What is a common trap associated with Generic subtopic 21?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-21",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-21",
-                "conceptSlug": "trap-generic-subtopic-21",
-                "microskillSlug": "avoid-generic-subtopic-21",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-22",
-          "title": "Generic subtopic 22",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-22"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 22"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 22 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 22 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 22",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 22",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 22 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 22."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 22."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 22."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-22-1",
-              "question": "Explain the core concept behind Generic subtopic 22.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "core-generic-subtopic-22",
-                "microskillSlug": "understand-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-22-2",
-              "question": "What is a common trap associated with Generic subtopic 22?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-22",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-22",
-                "conceptSlug": "trap-generic-subtopic-22",
-                "microskillSlug": "avoid-generic-subtopic-22",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-23",
-          "title": "Generic subtopic 23",
-          "conceptTags": [
-            "purification-characterisation-organic",
-            "generic-subtopic-23"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 23"
-          ],
-          "mustKnowFacts": [
-            "Generic subtopic 23 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 23 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 23",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 23",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Generic subtopic 23 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 23."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 23."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 23."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-23-1",
-              "question": "Explain the core concept behind Generic subtopic 23.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "core-generic-subtopic-23",
-                "microskillSlug": "understand-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
-              }
-            },
-            {
-              "id": "purification-characterisation-organic-q-generic-subtopic-23-2",
-              "question": "What is a common trap associated with Generic subtopic 23?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "generic-subtopic-23",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-23",
-                "conceptSlug": "trap-generic-subtopic-23",
-                "microskillSlug": "avoid-generic-subtopic-23",
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "subtopicSlug": "test-for-phosphorus",
+                "conceptSlug": "trap-test-for-phosphorus",
+                "microskillSlug": "avoid-test-for-phosphorus"
               }
             }
           ]
@@ -2561,641 +1097,743 @@
     },
     {
       "id": "m-purification-characterisation-organic-4",
-      "title": "Purification and Characterisation of Organic Compounds - Section 4",
-      "description": "Comprehensive analysis covering Generic subtopic 24, Generic subtopic 25, Generic subtopic 26 and more.",
+      "title": "Mastery Module 4: Dumas method for nitrogen estimation and Related Concepts",
+      "description": "Comprehensive analysis covering Dumas method for nitrogen estimation, Kjeldahl method for nitrogen estimation, Carius method for halogen estimation and advanced applications.",
       "conceptTags": [
         "purification-characterisation-organic",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-24",
-          "title": "Generic subtopic 24",
+          "id": "mt-purification-characterisation-organic-dumas-method-for-nitrogen-estimation-12",
+          "title": "Dumas method for nitrogen estimation",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-24"
+            "dumas-method-for-nitrogen-estimation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 24"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Dumas method for nitrogen estimation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 24 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 24 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 24",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 24",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Dumas method for nitrogen estimation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dumas method for nitrogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 24 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 24."
+            "Misinterpreting the subtle edge cases of Dumas method for nitrogen estimation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dumas method for nitrogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 24."
+            "Can accurately solve numericals or identify biological structures related specifically to Dumas method for nitrogen estimation.",
+            "Successfully avoids common pitfalls when Dumas method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 24."
+            "Past year questions frequently test the application of Dumas method for nitrogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-24-1",
-              "question": "Explain the core concept behind Generic subtopic 24.",
+              "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-1",
+              "question": "What are the critical factors or principles governing Dumas method for nitrogen estimation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-24"
+                "purification-characterisation-organic",
+                "dumas-method-for-nitrogen-estimation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "core-generic-subtopic-24",
-                "microskillSlug": "understand-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "dumas-method-for-nitrogen-estimation",
+                "conceptSlug": "core-dumas-method-for-nitrogen-estimation",
+                "microskillSlug": "understand-dumas-method-for-nitrogen-estimation"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-24-2",
-              "question": "What is a common trap associated with Generic subtopic 24?",
+              "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-2",
+              "question": "Describe a scenario where applying the concept of Dumas method for nitrogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-24",
+                "purification-characterisation-organic",
+                "dumas-method-for-nitrogen-estimation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-24",
-                "conceptSlug": "trap-generic-subtopic-24",
-                "microskillSlug": "avoid-generic-subtopic-24",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "dumas-method-for-nitrogen-estimation",
+                "conceptSlug": "trap-dumas-method-for-nitrogen-estimation",
+                "microskillSlug": "avoid-dumas-method-for-nitrogen-estimation"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-25",
-          "title": "Generic subtopic 25",
+          "id": "mt-purification-characterisation-organic-kjeldahl-method-for-nitrogen-estimation-13",
+          "title": "Kjeldahl method for nitrogen estimation",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-25"
+            "kjeldahl-method-for-nitrogen-estimation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 25"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Kjeldahl method for nitrogen estimation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 25 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 25 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 25",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 25",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Kjeldahl method for nitrogen estimation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kjeldahl method for nitrogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 25 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 25."
+            "Misinterpreting the subtle edge cases of Kjeldahl method for nitrogen estimation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kjeldahl method for nitrogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 25."
+            "Can accurately solve numericals or identify biological structures related specifically to Kjeldahl method for nitrogen estimation.",
+            "Successfully avoids common pitfalls when Kjeldahl method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 25."
+            "Past year questions frequently test the application of Kjeldahl method for nitrogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-25-1",
-              "question": "Explain the core concept behind Generic subtopic 25.",
+              "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-1",
+              "question": "What are the critical factors or principles governing Kjeldahl method for nitrogen estimation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-25"
+                "purification-characterisation-organic",
+                "kjeldahl-method-for-nitrogen-estimation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "core-generic-subtopic-25",
-                "microskillSlug": "understand-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "kjeldahl-method-for-nitrogen-estimation",
+                "conceptSlug": "core-kjeldahl-method-for-nitrogen-estimation",
+                "microskillSlug": "understand-kjeldahl-method-for-nitrogen-estimation"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-25-2",
-              "question": "What is a common trap associated with Generic subtopic 25?",
+              "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-2",
+              "question": "Describe a scenario where applying the concept of Kjeldahl method for nitrogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-25",
+                "purification-characterisation-organic",
+                "kjeldahl-method-for-nitrogen-estimation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-25",
-                "conceptSlug": "trap-generic-subtopic-25",
-                "microskillSlug": "avoid-generic-subtopic-25",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "kjeldahl-method-for-nitrogen-estimation",
+                "conceptSlug": "trap-kjeldahl-method-for-nitrogen-estimation",
+                "microskillSlug": "avoid-kjeldahl-method-for-nitrogen-estimation"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-26",
-          "title": "Generic subtopic 26",
+          "id": "mt-purification-characterisation-organic-carius-method-for-halogen-estimation-14",
+          "title": "Carius method for halogen estimation",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-26"
+            "carius-method-for-halogen-estimation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 26"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Carius method for halogen estimation"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 26 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 26 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 26",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of Carius method for halogen estimation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carius method for halogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "reactions": [
             {
-              "name": "Reaction involving Generic subtopic 26",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical Carius method for halogen estimation Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 26 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 26."
+            "Misinterpreting the subtle edge cases of Carius method for halogen estimation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carius method for halogen estimation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 26."
+            "Can accurately solve numericals or identify biological structures related specifically to Carius method for halogen estimation.",
+            "Successfully avoids common pitfalls when Carius method for halogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 26."
+            "Past year questions frequently test the application of Carius method for halogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-26-1",
-              "question": "Explain the core concept behind Generic subtopic 26.",
+              "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-1",
+              "question": "What are the critical factors or principles governing Carius method for halogen estimation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-26"
+                "purification-characterisation-organic",
+                "carius-method-for-halogen-estimation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "core-generic-subtopic-26",
-                "microskillSlug": "understand-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "carius-method-for-halogen-estimation",
+                "conceptSlug": "core-carius-method-for-halogen-estimation",
+                "microskillSlug": "understand-carius-method-for-halogen-estimation"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-26-2",
-              "question": "What is a common trap associated with Generic subtopic 26?",
+              "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-2",
+              "question": "Describe a scenario where applying the concept of Carius method for halogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-26",
+                "purification-characterisation-organic",
+                "carius-method-for-halogen-estimation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-26",
-                "conceptSlug": "trap-generic-subtopic-26",
-                "microskillSlug": "avoid-generic-subtopic-26",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "carius-method-for-halogen-estimation",
+                "conceptSlug": "trap-carius-method-for-halogen-estimation",
+                "microskillSlug": "avoid-carius-method-for-halogen-estimation"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-27",
-          "title": "Generic subtopic 27",
+          "id": "mt-purification-characterisation-organic-estimation-of-sulphur-15",
+          "title": "Estimation of sulphur",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-27"
+            "estimation-of-sulphur"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 27"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of sulphur"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 27 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 27 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 27",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 27",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Estimation of sulphur is heavily tested in recent NEET papers.",
+            "Applying the core principles of Estimation of sulphur correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 27 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 27."
+            "Misinterpreting the subtle edge cases of Estimation of sulphur during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Estimation of sulphur."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 27."
+            "Can accurately solve numericals or identify biological structures related specifically to Estimation of sulphur.",
+            "Successfully avoids common pitfalls when Estimation of sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 27."
+            "Past year questions frequently test the application of Estimation of sulphur in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-27-1",
-              "question": "Explain the core concept behind Generic subtopic 27.",
+              "id": "purification-characterisation-organic-q-estimation-of-sulphur-1",
+              "question": "What are the critical factors or principles governing Estimation of sulphur?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-27"
+                "purification-characterisation-organic",
+                "estimation-of-sulphur"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "core-generic-subtopic-27",
-                "microskillSlug": "understand-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-sulphur",
+                "conceptSlug": "core-estimation-of-sulphur",
+                "microskillSlug": "understand-estimation-of-sulphur"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-27-2",
-              "question": "What is a common trap associated with Generic subtopic 27?",
+              "id": "purification-characterisation-organic-q-estimation-of-sulphur-2",
+              "question": "Describe a scenario where applying the concept of Estimation of sulphur can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-27",
+                "purification-characterisation-organic",
+                "estimation-of-sulphur",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-27",
-                "conceptSlug": "trap-generic-subtopic-27",
-                "microskillSlug": "avoid-generic-subtopic-27",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-sulphur",
+                "conceptSlug": "trap-estimation-of-sulphur",
+                "microskillSlug": "avoid-estimation-of-sulphur"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-purification-characterisation-organic-5",
+      "title": "Mastery Module 5: Estimation of phosphorus and Related Concepts",
+      "description": "Comprehensive analysis covering estimation of phosphorus, estimation of oxygen, calculation of empirical formula and advanced applications.",
+      "conceptTags": [
+        "purification-characterisation-organic",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-purification-characterisation-organic-estimation-of-phosphorus-16",
+          "title": "Estimation of phosphorus",
+          "conceptTags": [
+            "purification-characterisation-organic",
+            "estimation-of-phosphorus"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of phosphorus"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Estimation of phosphorus is heavily tested in recent NEET papers.",
+            "Applying the core principles of Estimation of phosphorus correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Estimation of phosphorus during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Estimation of phosphorus."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Estimation of phosphorus.",
+            "Successfully avoids common pitfalls when Estimation of phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Estimation of phosphorus in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "purification-characterisation-organic-q-estimation-of-phosphorus-1",
+              "question": "What are the critical factors or principles governing Estimation of phosphorus?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "purification-characterisation-organic",
+                "estimation-of-phosphorus"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "purification-characterisation-organic",
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-phosphorus",
+                "conceptSlug": "core-estimation-of-phosphorus",
+                "microskillSlug": "understand-estimation-of-phosphorus"
+              }
+            },
+            {
+              "id": "purification-characterisation-organic-q-estimation-of-phosphorus-2",
+              "question": "Describe a scenario where applying the concept of Estimation of phosphorus can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "purification-characterisation-organic",
+                "estimation-of-phosphorus",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "purification-characterisation-organic",
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-phosphorus",
+                "conceptSlug": "trap-estimation-of-phosphorus",
+                "microskillSlug": "avoid-estimation-of-phosphorus"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-28",
-          "title": "Generic subtopic 28",
+          "id": "mt-purification-characterisation-organic-estimation-of-oxygen-17",
+          "title": "Estimation of oxygen",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-28"
+            "estimation-of-oxygen"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 28"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of oxygen"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 28 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 28 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 28",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 28",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Estimation of oxygen is heavily tested in recent NEET papers.",
+            "Applying the core principles of Estimation of oxygen correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 28 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 28."
+            "Misinterpreting the subtle edge cases of Estimation of oxygen during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Estimation of oxygen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 28."
+            "Can accurately solve numericals or identify biological structures related specifically to Estimation of oxygen.",
+            "Successfully avoids common pitfalls when Estimation of oxygen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 28."
+            "Past year questions frequently test the application of Estimation of oxygen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-28-1",
-              "question": "Explain the core concept behind Generic subtopic 28.",
+              "id": "purification-characterisation-organic-q-estimation-of-oxygen-1",
+              "question": "What are the critical factors or principles governing Estimation of oxygen?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-28"
+                "purification-characterisation-organic",
+                "estimation-of-oxygen"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "core-generic-subtopic-28",
-                "microskillSlug": "understand-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-oxygen",
+                "conceptSlug": "core-estimation-of-oxygen",
+                "microskillSlug": "understand-estimation-of-oxygen"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-28-2",
-              "question": "What is a common trap associated with Generic subtopic 28?",
+              "id": "purification-characterisation-organic-q-estimation-of-oxygen-2",
+              "question": "Describe a scenario where applying the concept of Estimation of oxygen can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-28",
+                "purification-characterisation-organic",
+                "estimation-of-oxygen",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-28",
-                "conceptSlug": "trap-generic-subtopic-28",
-                "microskillSlug": "avoid-generic-subtopic-28",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "estimation-of-oxygen",
+                "conceptSlug": "trap-estimation-of-oxygen",
+                "microskillSlug": "avoid-estimation-of-oxygen"
               }
             }
           ]
         },
         {
-          "id": "mt-purification-characterisation-organic-generic-subtopic-29",
-          "title": "Generic subtopic 29",
+          "id": "mt-purification-characterisation-organic-calculation-of-empirical-formula-18",
+          "title": "Calculation of empirical formula",
           "conceptTags": [
             "purification-characterisation-organic",
-            "generic-subtopic-29"
+            "calculation-of-empirical-formula"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Generic subtopic 29"
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Calculation of empirical formula"
           ],
           "mustKnowFacts": [
-            "Generic subtopic 29 is a fundamental subtopic of Purification and Characterisation of Organic Compounds.",
-            "Crucial to understand the principles governing Generic subtopic 29 for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Generic subtopic 29",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Generic subtopic 29",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Calculation of empirical formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Calculation of empirical formula correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Students often misinterpret Generic subtopic 29 during complex MCQs.",
-            "Failing to apply the correct logic for Generic subtopic 29."
+            "Misinterpreting the subtle edge cases of Calculation of empirical formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Calculation of empirical formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Generic subtopic 29."
+            "Can accurately solve numericals or identify biological structures related specifically to Calculation of empirical formula.",
+            "Successfully avoids common pitfalls when Calculation of empirical formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Generic subtopic 29."
+            "Past year questions frequently test the application of Calculation of empirical formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-29-1",
-              "question": "Explain the core concept behind Generic subtopic 29.",
+              "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-1",
+              "question": "What are the critical factors or principles governing Calculation of empirical formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "generic-subtopic-29"
+                "purification-characterisation-organic",
+                "calculation-of-empirical-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "core-generic-subtopic-29",
-                "microskillSlug": "understand-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "calculation-of-empirical-formula",
+                "conceptSlug": "core-calculation-of-empirical-formula",
+                "microskillSlug": "understand-calculation-of-empirical-formula"
               }
             },
             {
-              "id": "purification-characterisation-organic-q-generic-subtopic-29-2",
-              "question": "What is a common trap associated with Generic subtopic 29?",
+              "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-2",
+              "question": "Describe a scenario where applying the concept of Calculation of empirical formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "generic-subtopic-29",
+                "purification-characterisation-organic",
+                "calculation-of-empirical-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "generic-subtopic-29",
-                "conceptSlug": "trap-generic-subtopic-29",
-                "microskillSlug": "avoid-generic-subtopic-29",
                 "subject": "Chemistry",
                 "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic"
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "calculation-of-empirical-formula",
+                "conceptSlug": "trap-calculation-of-empirical-formula",
+                "microskillSlug": "avoid-calculation-of-empirical-formula"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-purification-characterisation-organic-calculation-of-molecular-formula-19",
+          "title": "Calculation of molecular formula",
+          "conceptTags": [
+            "purification-characterisation-organic",
+            "calculation-of-molecular-formula"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Calculation of molecular formula"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Calculation of molecular formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Calculation of molecular formula correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+          ],
+          "formulas": [
+            {
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
+              "variables": [
+                "n",
+                "m",
+                "M"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Calculation of molecular formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Calculation of molecular formula."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Calculation of molecular formula.",
+            "Successfully avoids common pitfalls when Calculation of molecular formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Calculation of molecular formula in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-1",
+              "question": "What are the critical factors or principles governing Calculation of molecular formula?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "purification-characterisation-organic",
+                "calculation-of-molecular-formula"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "purification-characterisation-organic",
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "calculation-of-molecular-formula",
+                "conceptSlug": "core-calculation-of-molecular-formula",
+                "microskillSlug": "understand-calculation-of-molecular-formula"
+              }
+            },
+            {
+              "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-2",
+              "question": "Describe a scenario where applying the concept of Calculation of molecular formula can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "purification-characterisation-organic",
+                "calculation-of-molecular-formula",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "purification-characterisation-organic",
+                "chapterSlug": "purification-characterisation-organic",
+                "topicSlug": "purification-characterisation-organic",
+                "subtopicSlug": "calculation-of-molecular-formula",
+                "conceptSlug": "trap-calculation-of-molecular-formula",
+                "microskillSlug": "avoid-calculation-of-molecular-formula"
               }
             }
           ]

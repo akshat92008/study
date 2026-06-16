@@ -2,648 +2,600 @@
   "missions": [
     {
       "id": "m-laws-of-motion-1",
-      "title": "Laws of Motion - Section 1",
-      "description": "Comprehensive analysis covering force, inertia, Newton’s first law and more.",
+      "title": "Mastery Module 1: Concept of force and Related Concepts",
+      "description": "Comprehensive analysis covering concept of force, inertia of rest, inertia of motion and advanced applications.",
       "conceptTags": [
         "laws-of-motion",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-laws-of-motion-force",
-          "title": "Force",
+          "id": "mt-laws-of-motion-concept-of-force-0",
+          "title": "Concept of force",
           "conceptTags": [
             "laws-of-motion",
-            "force"
+            "concept-of-force"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Force"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Concept of force"
           ],
           "mustKnowFacts": [
-            "Force is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Force for NEET."
+            "A thorough understanding of Concept of force is heavily tested in recent NEET papers.",
+            "Applying the core principles of Concept of force correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for force",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Force during complex MCQs.",
-            "Failing to apply the correct logic for Force."
+            "Misinterpreting the subtle edge cases of Concept of force during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Concept of force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Force."
+            "Can accurately solve numericals or identify biological structures related specifically to Concept of force.",
+            "Successfully avoids common pitfalls when Concept of force is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Force."
+            "Past year questions frequently test the application of Concept of force in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-force-1",
-              "question": "Explain the core concept behind Force.",
+              "id": "laws-of-motion-q-concept-of-force-1",
+              "question": "What are the critical factors or principles governing Concept of force?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "force"
+                "laws-of-motion",
+                "concept-of-force"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "force",
-                "conceptSlug": "core-force",
-                "microskillSlug": "understand-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "concept-of-force",
+                "conceptSlug": "core-concept-of-force",
+                "microskillSlug": "understand-concept-of-force"
               }
             },
             {
-              "id": "laws-of-motion-q-force-2",
-              "question": "What is a common trap associated with Force?",
+              "id": "laws-of-motion-q-concept-of-force-2",
+              "question": "Describe a scenario where applying the concept of Concept of force can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "force",
+                "laws-of-motion",
+                "concept-of-force",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "force",
-                "conceptSlug": "trap-force",
-                "microskillSlug": "avoid-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "concept-of-force",
+                "conceptSlug": "trap-concept-of-force",
+                "microskillSlug": "avoid-concept-of-force"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-inertia",
-          "title": "Inertia",
+          "id": "mt-laws-of-motion-inertia-of-rest-1",
+          "title": "Inertia of rest",
           "conceptTags": [
             "laws-of-motion",
-            "inertia"
+            "inertia-of-rest"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Inertia"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Inertia of rest"
           ],
           "mustKnowFacts": [
-            "Inertia is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Inertia for NEET."
+            "A thorough understanding of Inertia of rest is heavily tested in recent NEET papers.",
+            "Applying the core principles of Inertia of rest correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for inertia",
-              "expression": "F = m a",
+              "name": "Moment of Inertia",
+              "expression": "I = \\sum m_i r_i^2",
               "variables": [
-                "F",
+                "I",
                 "m",
-                "a"
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Inertia during complex MCQs.",
-            "Failing to apply the correct logic for Inertia."
+            "Misinterpreting the subtle edge cases of Inertia of rest during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Inertia of rest."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Inertia."
+            "Can accurately solve numericals or identify biological structures related specifically to Inertia of rest.",
+            "Successfully avoids common pitfalls when Inertia of rest is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Inertia."
+            "Past year questions frequently test the application of Inertia of rest in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-inertia-1",
-              "question": "Explain the core concept behind Inertia.",
+              "id": "laws-of-motion-q-inertia-of-rest-1",
+              "question": "What are the critical factors or principles governing Inertia of rest?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "inertia"
+                "laws-of-motion",
+                "inertia-of-rest"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "inertia",
-                "conceptSlug": "core-inertia",
-                "microskillSlug": "understand-inertia",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "inertia-of-rest",
+                "conceptSlug": "core-inertia-of-rest",
+                "microskillSlug": "understand-inertia-of-rest"
               }
             },
             {
-              "id": "laws-of-motion-q-inertia-2",
-              "question": "What is a common trap associated with Inertia?",
+              "id": "laws-of-motion-q-inertia-of-rest-2",
+              "question": "Describe a scenario where applying the concept of Inertia of rest can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "inertia",
+                "laws-of-motion",
+                "inertia-of-rest",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "inertia",
-                "conceptSlug": "trap-inertia",
-                "microskillSlug": "avoid-inertia",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "inertia-of-rest",
+                "conceptSlug": "trap-inertia-of-rest",
+                "microskillSlug": "avoid-inertia-of-rest"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-newton-s-first-law",
+          "id": "mt-laws-of-motion-inertia-of-motion-2",
+          "title": "Inertia of motion",
+          "conceptTags": [
+            "laws-of-motion",
+            "inertia-of-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Inertia of motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Inertia of motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Inertia of motion correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Moment of Inertia",
+              "expression": "I = \\sum m_i r_i^2",
+              "variables": [
+                "I",
+                "m",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Inertia of motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Inertia of motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Inertia of motion.",
+            "Successfully avoids common pitfalls when Inertia of motion is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Inertia of motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-inertia-of-motion-1",
+              "question": "What are the critical factors or principles governing Inertia of motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "inertia-of-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "inertia-of-motion",
+                "conceptSlug": "core-inertia-of-motion",
+                "microskillSlug": "understand-inertia-of-motion"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-inertia-of-motion-2",
+              "question": "Describe a scenario where applying the concept of Inertia of motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "inertia-of-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "inertia-of-motion",
+                "conceptSlug": "trap-inertia-of-motion",
+                "microskillSlug": "avoid-inertia-of-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-newton-s-first-law-3",
           "title": "Newton’s first law",
           "conceptTags": [
             "laws-of-motion",
             "newton-s-first-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Newton’s first law"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Newton’s first law"
           ],
           "mustKnowFacts": [
-            "Newton’s first law is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Newton’s first law for NEET."
+            "A thorough understanding of Newton’s first law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Newton’s first law correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for Newton’s first law",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Newton’s first law during complex MCQs.",
-            "Failing to apply the correct logic for Newton’s first law."
+            "Misinterpreting the subtle edge cases of Newton’s first law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Newton’s first law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Newton’s first law."
+            "Can accurately solve numericals or identify biological structures related specifically to Newton’s first law.",
+            "Successfully avoids common pitfalls when Newton’s first law is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Newton’s first law."
+            "Past year questions frequently test the application of Newton’s first law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-newton-s-first-law-1",
-              "question": "Explain the core concept behind Newton’s first law.",
+              "question": "What are the critical factors or principles governing Newton’s first law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "newton-s-first-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "newton-s-first-law",
                 "conceptSlug": "core-newton-s-first-law",
-                "microskillSlug": "understand-newton-s-first-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-newton-s-first-law"
               }
             },
             {
               "id": "laws-of-motion-q-newton-s-first-law-2",
-              "question": "What is a common trap associated with Newton’s first law?",
+              "question": "Describe a scenario where applying the concept of Newton’s first law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "newton-s-first-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "newton-s-first-law",
                 "conceptSlug": "trap-newton-s-first-law",
-                "microskillSlug": "avoid-newton-s-first-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-newton-s-first-law"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-momentum",
-          "title": "Momentum",
+          "id": "mt-laws-of-motion-momentum-definition-4",
+          "title": "Momentum definition",
           "conceptTags": [
             "laws-of-motion",
-            "momentum"
+            "momentum-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Momentum"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Momentum definition"
           ],
           "mustKnowFacts": [
-            "Momentum is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Momentum for NEET."
+            "A thorough understanding of Momentum definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Momentum definition correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for momentum",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Momentum during complex MCQs.",
-            "Failing to apply the correct logic for Momentum."
+            "Misinterpreting the subtle edge cases of Momentum definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Momentum definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Momentum."
+            "Can accurately solve numericals or identify biological structures related specifically to Momentum definition.",
+            "Successfully avoids common pitfalls when Momentum definition is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Momentum."
+            "Past year questions frequently test the application of Momentum definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-momentum-1",
-              "question": "Explain the core concept behind Momentum.",
+              "id": "laws-of-motion-q-momentum-definition-1",
+              "question": "What are the critical factors or principles governing Momentum definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "momentum"
+                "laws-of-motion",
+                "momentum-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "momentum",
-                "conceptSlug": "core-momentum",
-                "microskillSlug": "understand-momentum",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "momentum-definition",
+                "conceptSlug": "core-momentum-definition",
+                "microskillSlug": "understand-momentum-definition"
               }
             },
             {
-              "id": "laws-of-motion-q-momentum-2",
-              "question": "What is a common trap associated with Momentum?",
+              "id": "laws-of-motion-q-momentum-definition-2",
+              "question": "Describe a scenario where applying the concept of Momentum definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "momentum",
+                "laws-of-motion",
+                "momentum-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "momentum",
-                "conceptSlug": "trap-momentum",
-                "microskillSlug": "avoid-momentum",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "momentum-definition",
+                "conceptSlug": "trap-momentum-definition",
+                "microskillSlug": "avoid-momentum-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-impulse",
-          "title": "Impulse",
+          "id": "mt-laws-of-motion-impulse-and-impulsive-force-5",
+          "title": "Impulse and impulsive force",
           "conceptTags": [
             "laws-of-motion",
-            "impulse"
+            "impulse-and-impulsive-force"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Impulse"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Impulse and impulsive force"
           ],
           "mustKnowFacts": [
-            "Impulse is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Impulse for NEET."
+            "A thorough understanding of Impulse and impulsive force is heavily tested in recent NEET papers.",
+            "Applying the core principles of Impulse and impulsive force correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for impulse",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Impulse during complex MCQs.",
-            "Failing to apply the correct logic for Impulse."
+            "Misinterpreting the subtle edge cases of Impulse and impulsive force during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Impulse and impulsive force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Impulse."
+            "Can accurately solve numericals or identify biological structures related specifically to Impulse and impulsive force.",
+            "Successfully avoids common pitfalls when Impulse and impulsive force is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Impulse."
+            "Past year questions frequently test the application of Impulse and impulsive force in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-impulse-1",
-              "question": "Explain the core concept behind Impulse.",
+              "id": "laws-of-motion-q-impulse-and-impulsive-force-1",
+              "question": "What are the critical factors or principles governing Impulse and impulsive force?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "impulse"
+                "laws-of-motion",
+                "impulse-and-impulsive-force"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "impulse",
-                "conceptSlug": "core-impulse",
-                "microskillSlug": "understand-impulse",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "impulse-and-impulsive-force",
+                "conceptSlug": "core-impulse-and-impulsive-force",
+                "microskillSlug": "understand-impulse-and-impulsive-force"
               }
             },
             {
-              "id": "laws-of-motion-q-impulse-2",
-              "question": "What is a common trap associated with Impulse?",
+              "id": "laws-of-motion-q-impulse-and-impulsive-force-2",
+              "question": "Describe a scenario where applying the concept of Impulse and impulsive force can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "impulse",
+                "laws-of-motion",
+                "impulse-and-impulsive-force",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "impulse",
-                "conceptSlug": "trap-impulse",
-                "microskillSlug": "avoid-impulse",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-newton-s-second-law",
-          "title": "Newton’s second law",
-          "conceptTags": [
-            "laws-of-motion",
-            "newton-s-second-law"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Newton’s second law"
-          ],
-          "mustKnowFacts": [
-            "Newton’s second law is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Newton’s second law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for Newton’s second law",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Newton’s second law during complex MCQs.",
-            "Failing to apply the correct logic for Newton’s second law."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Newton’s second law."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Newton’s second law."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-newton-s-second-law-1",
-              "question": "Explain the core concept behind Newton’s second law.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "newton-s-second-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-second-law",
-                "conceptSlug": "core-newton-s-second-law",
-                "microskillSlug": "understand-newton-s-second-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-newton-s-second-law-2",
-              "question": "What is a common trap associated with Newton’s second law?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "newton-s-second-law",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-second-law",
-                "conceptSlug": "trap-newton-s-second-law",
-                "microskillSlug": "avoid-newton-s-second-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-newton-s-third-law",
-          "title": "Newton’s third law",
-          "conceptTags": [
-            "laws-of-motion",
-            "newton-s-third-law"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Newton’s third law"
-          ],
-          "mustKnowFacts": [
-            "Newton’s third law is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Newton’s third law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for Newton’s third law",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Newton’s third law during complex MCQs.",
-            "Failing to apply the correct logic for Newton’s third law."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Newton’s third law."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Newton’s third law."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-newton-s-third-law-1",
-              "question": "Explain the core concept behind Newton’s third law.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "newton-s-third-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-third-law",
-                "conceptSlug": "core-newton-s-third-law",
-                "microskillSlug": "understand-newton-s-third-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-newton-s-third-law-2",
-              "question": "What is a common trap associated with Newton’s third law?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "newton-s-third-law",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-third-law",
-                "conceptSlug": "trap-newton-s-third-law",
-                "microskillSlug": "avoid-newton-s-third-law",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "subtopicSlug": "impulse-and-impulsive-force",
+                "conceptSlug": "trap-impulse-and-impulsive-force",
+                "microskillSlug": "avoid-impulse-and-impulsive-force"
               }
             }
           ]
@@ -652,648 +604,600 @@
     },
     {
       "id": "m-laws-of-motion-2",
-      "title": "Laws of Motion - Section 2",
-      "description": "Comprehensive analysis covering free body diagrams, conservation of linear momentum, recoil and more.",
+      "title": "Mastery Module 2: Newton’s second law and Related Concepts",
+      "description": "Comprehensive analysis covering Newton’s second law, Newton’s third law, free body diagram/Newton laws and advanced applications.",
       "conceptTags": [
         "laws-of-motion",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-laws-of-motion-free-body-diagrams",
-          "title": "Free body diagrams",
+          "id": "mt-laws-of-motion-newton-s-second-law-6",
+          "title": "Newton’s second law",
           "conceptTags": [
             "laws-of-motion",
-            "free-body-diagrams"
+            "newton-s-second-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Free body diagrams"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Newton’s second law"
           ],
           "mustKnowFacts": [
-            "Free body diagrams is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Free body diagrams for NEET."
+            "A thorough understanding of Newton’s second law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Newton’s second law correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for free body diagrams",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Free body diagrams during complex MCQs.",
-            "Failing to apply the correct logic for Free body diagrams."
+            "Misinterpreting the subtle edge cases of Newton’s second law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Newton’s second law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Free body diagrams."
+            "Can accurately solve numericals or identify biological structures related specifically to Newton’s second law.",
+            "Successfully avoids common pitfalls when Newton’s second law is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Free body diagrams."
+            "Past year questions frequently test the application of Newton’s second law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-free-body-diagrams-1",
-              "question": "Explain the core concept behind Free body diagrams.",
+              "id": "laws-of-motion-q-newton-s-second-law-1",
+              "question": "What are the critical factors or principles governing Newton’s second law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "free-body-diagrams"
+                "laws-of-motion",
+                "newton-s-second-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "free-body-diagrams",
-                "conceptSlug": "core-free-body-diagrams",
-                "microskillSlug": "understand-free-body-diagrams",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "newton-s-second-law",
+                "conceptSlug": "core-newton-s-second-law",
+                "microskillSlug": "understand-newton-s-second-law"
               }
             },
             {
-              "id": "laws-of-motion-q-free-body-diagrams-2",
-              "question": "What is a common trap associated with Free body diagrams?",
+              "id": "laws-of-motion-q-newton-s-second-law-2",
+              "question": "Describe a scenario where applying the concept of Newton’s second law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "free-body-diagrams",
+                "laws-of-motion",
+                "newton-s-second-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "free-body-diagrams",
-                "conceptSlug": "trap-free-body-diagrams",
-                "microskillSlug": "avoid-free-body-diagrams",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "newton-s-second-law",
+                "conceptSlug": "trap-newton-s-second-law",
+                "microskillSlug": "avoid-newton-s-second-law"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-conservation-of-linear-momentum",
+          "id": "mt-laws-of-motion-newton-s-third-law-7",
+          "title": "Newton’s third law",
+          "conceptTags": [
+            "laws-of-motion",
+            "newton-s-third-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Newton’s third law"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Newton’s third law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Newton’s third law correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
+              "variables": [
+                "F",
+                "p",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Newton’s third law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Newton’s third law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Newton’s third law.",
+            "Successfully avoids common pitfalls when Newton’s third law is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Newton’s third law in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-newton-s-third-law-1",
+              "question": "What are the critical factors or principles governing Newton’s third law?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "newton-s-third-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "newton-s-third-law",
+                "conceptSlug": "core-newton-s-third-law",
+                "microskillSlug": "understand-newton-s-third-law"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-newton-s-third-law-2",
+              "question": "Describe a scenario where applying the concept of Newton’s third law can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "newton-s-third-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "newton-s-third-law",
+                "conceptSlug": "trap-newton-s-third-law",
+                "microskillSlug": "avoid-newton-s-third-law"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-free-body-diagram-newton-laws-8",
+          "title": "Free body diagram/Newton laws",
+          "conceptTags": [
+            "laws-of-motion",
+            "free-body-diagram-newton-laws"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Free body diagram/Newton laws"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Free body diagram/Newton laws is heavily tested in recent NEET papers.",
+            "Applying the core principles of Free body diagram/Newton laws correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
+              "variables": [
+                "F",
+                "p",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Free body diagram/Newton laws during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Free body diagram/Newton laws."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Free body diagram/Newton laws.",
+            "Successfully avoids common pitfalls when Free body diagram/Newton laws is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Free body diagram/Newton laws in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-free-body-diagram-newton-laws-1",
+              "question": "What are the critical factors or principles governing Free body diagram/Newton laws?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "free-body-diagram-newton-laws"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "free-body-diagram-newton-laws",
+                "conceptSlug": "core-free-body-diagram-newton-laws",
+                "microskillSlug": "understand-free-body-diagram-newton-laws"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-free-body-diagram-newton-laws-2",
+              "question": "Describe a scenario where applying the concept of Free body diagram/Newton laws can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "free-body-diagram-newton-laws",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "free-body-diagram-newton-laws",
+                "conceptSlug": "trap-free-body-diagram-newton-laws",
+                "microskillSlug": "avoid-free-body-diagram-newton-laws"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-conservation-of-linear-momentum-9",
           "title": "Conservation of linear momentum",
           "conceptTags": [
             "laws-of-motion",
             "conservation-of-linear-momentum"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Conservation of linear momentum"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Conservation of linear momentum"
           ],
           "mustKnowFacts": [
-            "Conservation of linear momentum is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Conservation of linear momentum for NEET."
+            "A thorough understanding of Conservation of linear momentum is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conservation of linear momentum correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for conservation of linear momentum",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Conservation of linear momentum during complex MCQs.",
-            "Failing to apply the correct logic for Conservation of linear momentum."
+            "Misinterpreting the subtle edge cases of Conservation of linear momentum during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conservation of linear momentum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conservation of linear momentum."
+            "Can accurately solve numericals or identify biological structures related specifically to Conservation of linear momentum.",
+            "Successfully avoids common pitfalls when Conservation of linear momentum is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conservation of linear momentum."
+            "Past year questions frequently test the application of Conservation of linear momentum in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-conservation-of-linear-momentum-1",
-              "question": "Explain the core concept behind Conservation of linear momentum.",
+              "question": "What are the critical factors or principles governing Conservation of linear momentum?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "conservation-of-linear-momentum"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "conservation-of-linear-momentum",
                 "conceptSlug": "core-conservation-of-linear-momentum",
-                "microskillSlug": "understand-conservation-of-linear-momentum",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-conservation-of-linear-momentum"
               }
             },
             {
               "id": "laws-of-motion-q-conservation-of-linear-momentum-2",
-              "question": "What is a common trap associated with Conservation of linear momentum?",
+              "question": "Describe a scenario where applying the concept of Conservation of linear momentum can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "conservation-of-linear-momentum",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "conservation-of-linear-momentum",
                 "conceptSlug": "trap-conservation-of-linear-momentum",
-                "microskillSlug": "avoid-conservation-of-linear-momentum",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-conservation-of-linear-momentum"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-recoil",
-          "title": "Recoil",
+          "id": "mt-laws-of-motion-recoil-of-gun-10",
+          "title": "Recoil of gun",
           "conceptTags": [
             "laws-of-motion",
-            "recoil"
+            "recoil-of-gun"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Recoil"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Recoil of gun"
           ],
           "mustKnowFacts": [
-            "Recoil is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Recoil for NEET."
+            "A thorough understanding of Recoil of gun is heavily tested in recent NEET papers.",
+            "Applying the core principles of Recoil of gun correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for recoil",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Recoil during complex MCQs.",
-            "Failing to apply the correct logic for Recoil."
+            "Misinterpreting the subtle edge cases of Recoil of gun during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Recoil of gun."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Recoil."
+            "Can accurately solve numericals or identify biological structures related specifically to Recoil of gun.",
+            "Successfully avoids common pitfalls when Recoil of gun is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Recoil."
+            "Past year questions frequently test the application of Recoil of gun in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-recoil-1",
-              "question": "Explain the core concept behind Recoil.",
+              "id": "laws-of-motion-q-recoil-of-gun-1",
+              "question": "What are the critical factors or principles governing Recoil of gun?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "recoil"
+                "laws-of-motion",
+                "recoil-of-gun"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "recoil",
-                "conceptSlug": "core-recoil",
-                "microskillSlug": "understand-recoil",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "recoil-of-gun",
+                "conceptSlug": "core-recoil-of-gun",
+                "microskillSlug": "understand-recoil-of-gun"
               }
             },
             {
-              "id": "laws-of-motion-q-recoil-2",
-              "question": "What is a common trap associated with Recoil?",
+              "id": "laws-of-motion-q-recoil-of-gun-2",
+              "question": "Describe a scenario where applying the concept of Recoil of gun can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "recoil",
+                "laws-of-motion",
+                "recoil-of-gun",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "recoil",
-                "conceptSlug": "trap-recoil",
-                "microskillSlug": "avoid-recoil",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "recoil-of-gun",
+                "conceptSlug": "trap-recoil-of-gun",
+                "microskillSlug": "avoid-recoil-of-gun"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-equilibrium-of-concurrent-forces",
+          "id": "mt-laws-of-motion-equilibrium-of-concurrent-forces-11",
           "title": "Equilibrium of concurrent forces",
           "conceptTags": [
             "laws-of-motion",
             "equilibrium-of-concurrent-forces"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Equilibrium of concurrent forces"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Equilibrium of concurrent forces"
           ],
           "mustKnowFacts": [
-            "Equilibrium of concurrent forces is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Equilibrium of concurrent forces for NEET."
+            "A thorough understanding of Equilibrium of concurrent forces is heavily tested in recent NEET papers.",
+            "Applying the core principles of Equilibrium of concurrent forces correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for equilibrium of concurrent forces",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Equilibrium of concurrent forces during complex MCQs.",
-            "Failing to apply the correct logic for Equilibrium of concurrent forces."
+            "Misinterpreting the subtle edge cases of Equilibrium of concurrent forces during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Equilibrium of concurrent forces."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Equilibrium of concurrent forces."
+            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium of concurrent forces.",
+            "Successfully avoids common pitfalls when Equilibrium of concurrent forces is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Equilibrium of concurrent forces."
+            "Past year questions frequently test the application of Equilibrium of concurrent forces in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-equilibrium-of-concurrent-forces-1",
-              "question": "Explain the core concept behind Equilibrium of concurrent forces.",
+              "question": "What are the critical factors or principles governing Equilibrium of concurrent forces?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "equilibrium-of-concurrent-forces"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "equilibrium-of-concurrent-forces",
                 "conceptSlug": "core-equilibrium-of-concurrent-forces",
-                "microskillSlug": "understand-equilibrium-of-concurrent-forces",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-equilibrium-of-concurrent-forces"
               }
             },
             {
               "id": "laws-of-motion-q-equilibrium-of-concurrent-forces-2",
-              "question": "What is a common trap associated with Equilibrium of concurrent forces?",
+              "question": "Describe a scenario where applying the concept of Equilibrium of concurrent forces can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "equilibrium-of-concurrent-forces",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "equilibrium-of-concurrent-forces",
                 "conceptSlug": "trap-equilibrium-of-concurrent-forces",
-                "microskillSlug": "avoid-equilibrium-of-concurrent-forces",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-friction-types",
-          "title": "Friction types",
-          "conceptTags": [
-            "laws-of-motion",
-            "friction-types"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Friction types"
-          ],
-          "mustKnowFacts": [
-            "Friction types is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Friction types for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for friction types",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Friction types during complex MCQs.",
-            "Failing to apply the correct logic for Friction types."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Friction types."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Friction types."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-friction-types-1",
-              "question": "Explain the core concept behind Friction types.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "friction-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "friction-types",
-                "conceptSlug": "core-friction-types",
-                "microskillSlug": "understand-friction-types",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-friction-types-2",
-              "question": "What is a common trap associated with Friction types?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "friction-types",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "friction-types",
-                "conceptSlug": "trap-friction-types",
-                "microskillSlug": "avoid-friction-types",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-limiting-friction",
-          "title": "Limiting friction",
-          "conceptTags": [
-            "laws-of-motion",
-            "limiting-friction"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Limiting friction"
-          ],
-          "mustKnowFacts": [
-            "Limiting friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Limiting friction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for limiting friction",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Limiting friction during complex MCQs.",
-            "Failing to apply the correct logic for Limiting friction."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Limiting friction."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Limiting friction."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-limiting-friction-1",
-              "question": "Explain the core concept behind Limiting friction.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "limiting-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "limiting-friction",
-                "conceptSlug": "core-limiting-friction",
-                "microskillSlug": "understand-limiting-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-limiting-friction-2",
-              "question": "What is a common trap associated with Limiting friction?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "limiting-friction",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "limiting-friction",
-                "conceptSlug": "trap-limiting-friction",
-                "microskillSlug": "avoid-limiting-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-static-friction",
-          "title": "Static friction",
-          "conceptTags": [
-            "laws-of-motion",
-            "static-friction"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Static friction"
-          ],
-          "mustKnowFacts": [
-            "Static friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Static friction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for static friction",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Static friction during complex MCQs.",
-            "Failing to apply the correct logic for Static friction."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Static friction."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Static friction."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-static-friction-1",
-              "question": "Explain the core concept behind Static friction.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "static-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "static-friction",
-                "conceptSlug": "core-static-friction",
-                "microskillSlug": "understand-static-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-static-friction-2",
-              "question": "What is a common trap associated with Static friction?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "static-friction",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "static-friction",
-                "conceptSlug": "trap-static-friction",
-                "microskillSlug": "avoid-static-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-equilibrium-of-concurrent-forces"
               }
             }
           ]
@@ -1302,648 +1206,605 @@
     },
     {
       "id": "m-laws-of-motion-3",
-      "title": "Laws of Motion - Section 3",
-      "description": "Comprehensive analysis covering kinetic friction, coefficient of friction, angle of friction and more.",
+      "title": "Mastery Module 3: Types of friction and Related Concepts",
+      "description": "Comprehensive analysis covering types of friction, limiting friction, static friction and advanced applications.",
       "conceptTags": [
         "laws-of-motion",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-laws-of-motion-kinetic-friction",
+          "id": "mt-laws-of-motion-types-of-friction-12",
+          "title": "Types of friction",
+          "conceptTags": [
+            "laws-of-motion",
+            "types-of-friction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Types of friction"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Types of friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Types of friction correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Types of friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Types of friction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Types of friction.",
+            "Successfully avoids common pitfalls when Types of friction is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Types of friction in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-types-of-friction-1",
+              "question": "What are the critical factors or principles governing Types of friction?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "types-of-friction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "types-of-friction",
+                "conceptSlug": "core-types-of-friction",
+                "microskillSlug": "understand-types-of-friction"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-types-of-friction-2",
+              "question": "Describe a scenario where applying the concept of Types of friction can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "types-of-friction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "types-of-friction",
+                "conceptSlug": "trap-types-of-friction",
+                "microskillSlug": "avoid-types-of-friction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-limiting-friction-13",
+          "title": "Limiting friction",
+          "conceptTags": [
+            "laws-of-motion",
+            "limiting-friction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Limiting friction"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Limiting friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Limiting friction correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Limiting friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Limiting friction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Limiting friction.",
+            "Successfully avoids common pitfalls when Limiting friction is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Limiting friction in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-limiting-friction-1",
+              "question": "What are the critical factors or principles governing Limiting friction?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "limiting-friction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "limiting-friction",
+                "conceptSlug": "core-limiting-friction",
+                "microskillSlug": "understand-limiting-friction"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-limiting-friction-2",
+              "question": "Describe a scenario where applying the concept of Limiting friction can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "limiting-friction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "limiting-friction",
+                "conceptSlug": "trap-limiting-friction",
+                "microskillSlug": "avoid-limiting-friction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-static-friction-14",
+          "title": "Static friction",
+          "conceptTags": [
+            "laws-of-motion",
+            "static-friction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Static friction"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Static friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Static friction correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Static friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Static friction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Static friction.",
+            "Successfully avoids common pitfalls when Static friction is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Static friction in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-static-friction-1",
+              "question": "What are the critical factors or principles governing Static friction?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "static-friction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "static-friction",
+                "conceptSlug": "core-static-friction",
+                "microskillSlug": "understand-static-friction"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-static-friction-2",
+              "question": "Describe a scenario where applying the concept of Static friction can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "static-friction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "static-friction",
+                "conceptSlug": "trap-static-friction",
+                "microskillSlug": "avoid-static-friction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-kinetic-friction-15",
           "title": "Kinetic friction",
           "conceptTags": [
             "laws-of-motion",
             "kinetic-friction"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Kinetic friction"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Kinetic friction"
           ],
           "mustKnowFacts": [
-            "Kinetic friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Kinetic friction for NEET."
+            "A thorough understanding of Kinetic friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kinetic friction correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for kinetic friction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Kinetic friction during complex MCQs.",
-            "Failing to apply the correct logic for Kinetic friction."
+            "Misinterpreting the subtle edge cases of Kinetic friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kinetic friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Kinetic friction."
+            "Can accurately solve numericals or identify biological structures related specifically to Kinetic friction.",
+            "Successfully avoids common pitfalls when Kinetic friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Kinetic friction."
+            "Past year questions frequently test the application of Kinetic friction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-kinetic-friction-1",
-              "question": "Explain the core concept behind Kinetic friction.",
+              "question": "What are the critical factors or principles governing Kinetic friction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "kinetic-friction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "kinetic-friction",
                 "conceptSlug": "core-kinetic-friction",
-                "microskillSlug": "understand-kinetic-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-kinetic-friction"
               }
             },
             {
               "id": "laws-of-motion-q-kinetic-friction-2",
-              "question": "What is a common trap associated with Kinetic friction?",
+              "question": "Describe a scenario where applying the concept of Kinetic friction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "kinetic-friction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "kinetic-friction",
                 "conceptSlug": "trap-kinetic-friction",
-                "microskillSlug": "avoid-kinetic-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-kinetic-friction"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-coefficient-of-friction",
+          "id": "mt-laws-of-motion-coefficient-of-friction-16",
           "title": "Coefficient of friction",
           "conceptTags": [
             "laws-of-motion",
             "coefficient-of-friction"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Coefficient of friction"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Coefficient of friction"
           ],
           "mustKnowFacts": [
-            "Coefficient of friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Coefficient of friction for NEET."
+            "A thorough understanding of Coefficient of friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Coefficient of friction correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for coefficient of friction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Coefficient of friction during complex MCQs.",
-            "Failing to apply the correct logic for Coefficient of friction."
+            "Misinterpreting the subtle edge cases of Coefficient of friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Coefficient of friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Coefficient of friction."
+            "Can accurately solve numericals or identify biological structures related specifically to Coefficient of friction.",
+            "Successfully avoids common pitfalls when Coefficient of friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Coefficient of friction."
+            "Past year questions frequently test the application of Coefficient of friction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-coefficient-of-friction-1",
-              "question": "Explain the core concept behind Coefficient of friction.",
+              "question": "What are the critical factors or principles governing Coefficient of friction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "coefficient-of-friction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "coefficient-of-friction",
                 "conceptSlug": "core-coefficient-of-friction",
-                "microskillSlug": "understand-coefficient-of-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-coefficient-of-friction"
               }
             },
             {
               "id": "laws-of-motion-q-coefficient-of-friction-2",
-              "question": "What is a common trap associated with Coefficient of friction?",
+              "question": "Describe a scenario where applying the concept of Coefficient of friction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "coefficient-of-friction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "coefficient-of-friction",
                 "conceptSlug": "trap-coefficient-of-friction",
-                "microskillSlug": "avoid-coefficient-of-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-coefficient-of-friction"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-angle-of-friction",
+          "id": "mt-laws-of-motion-angle-of-friction-17",
           "title": "Angle of friction",
           "conceptTags": [
             "laws-of-motion",
             "angle-of-friction"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Angle of friction"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Angle of friction"
           ],
           "mustKnowFacts": [
-            "Angle of friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Angle of friction for NEET."
+            "A thorough understanding of Angle of friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angle of friction correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for angle of friction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Angle of friction during complex MCQs.",
-            "Failing to apply the correct logic for Angle of friction."
+            "Misinterpreting the subtle edge cases of Angle of friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angle of friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angle of friction."
+            "Can accurately solve numericals or identify biological structures related specifically to Angle of friction.",
+            "Successfully avoids common pitfalls when Angle of friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Angle of friction."
+            "Past year questions frequently test the application of Angle of friction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-angle-of-friction-1",
-              "question": "Explain the core concept behind Angle of friction.",
+              "question": "What are the critical factors or principles governing Angle of friction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "angle-of-friction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "angle-of-friction",
                 "conceptSlug": "core-angle-of-friction",
-                "microskillSlug": "understand-angle-of-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-angle-of-friction"
               }
             },
             {
               "id": "laws-of-motion-q-angle-of-friction-2",
-              "question": "What is a common trap associated with Angle of friction?",
+              "question": "Describe a scenario where applying the concept of Angle of friction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "angle-of-friction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "angle-of-friction",
                 "conceptSlug": "trap-angle-of-friction",
-                "microskillSlug": "avoid-angle-of-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-angle-of-repose",
-          "title": "Angle of repose",
-          "conceptTags": [
-            "laws-of-motion",
-            "angle-of-repose"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Angle of repose"
-          ],
-          "mustKnowFacts": [
-            "Angle of repose is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Angle of repose for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for angle of repose",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Angle of repose during complex MCQs.",
-            "Failing to apply the correct logic for Angle of repose."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angle of repose."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Angle of repose."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-angle-of-repose-1",
-              "question": "Explain the core concept behind Angle of repose.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "angle-of-repose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "angle-of-repose",
-                "conceptSlug": "core-angle-of-repose",
-                "microskillSlug": "understand-angle-of-repose",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-angle-of-repose-2",
-              "question": "What is a common trap associated with Angle of repose?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "angle-of-repose",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "angle-of-repose",
-                "conceptSlug": "trap-angle-of-repose",
-                "microskillSlug": "avoid-angle-of-repose",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-rolling-friction",
-          "title": "Rolling friction",
-          "conceptTags": [
-            "laws-of-motion",
-            "rolling-friction"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Rolling friction"
-          ],
-          "mustKnowFacts": [
-            "Rolling friction is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Rolling friction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for rolling friction",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Rolling friction during complex MCQs.",
-            "Failing to apply the correct logic for Rolling friction."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rolling friction."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Rolling friction."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-rolling-friction-1",
-              "question": "Explain the core concept behind Rolling friction.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "rolling-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "rolling-friction",
-                "conceptSlug": "core-rolling-friction",
-                "microskillSlug": "understand-rolling-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-rolling-friction-2",
-              "question": "What is a common trap associated with Rolling friction?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "rolling-friction",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "rolling-friction",
-                "conceptSlug": "trap-rolling-friction",
-                "microskillSlug": "avoid-rolling-friction",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-connected-bodies",
-          "title": "Connected bodies",
-          "conceptTags": [
-            "laws-of-motion",
-            "connected-bodies"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Connected bodies"
-          ],
-          "mustKnowFacts": [
-            "Connected bodies is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Connected bodies for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for connected bodies",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Connected bodies during complex MCQs.",
-            "Failing to apply the correct logic for Connected bodies."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Connected bodies."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Connected bodies."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-connected-bodies-1",
-              "question": "Explain the core concept behind Connected bodies.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "connected-bodies"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "connected-bodies",
-                "conceptSlug": "core-connected-bodies",
-                "microskillSlug": "understand-connected-bodies",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-connected-bodies-2",
-              "question": "What is a common trap associated with Connected bodies?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "connected-bodies",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "connected-bodies",
-                "conceptSlug": "trap-connected-bodies",
-                "microskillSlug": "avoid-connected-bodies",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-laws-of-motion-pulley-systems",
-          "title": "Pulley systems",
-          "conceptTags": [
-            "laws-of-motion",
-            "pulley-systems"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Pulley systems"
-          ],
-          "mustKnowFacts": [
-            "Pulley systems is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Pulley systems for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for pulley systems",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Pulley systems during complex MCQs.",
-            "Failing to apply the correct logic for Pulley systems."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Pulley systems."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Pulley systems."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-pulley-systems-1",
-              "question": "Explain the core concept behind Pulley systems.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "pulley-systems"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pulley-systems",
-                "conceptSlug": "core-pulley-systems",
-                "microskillSlug": "understand-pulley-systems",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
-              }
-            },
-            {
-              "id": "laws-of-motion-q-pulley-systems-2",
-              "question": "What is a common trap associated with Pulley systems?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "pulley-systems",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pulley-systems",
-                "conceptSlug": "trap-pulley-systems",
-                "microskillSlug": "avoid-pulley-systems",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "avoid-angle-of-friction"
               }
             }
           ]
@@ -1952,375 +1813,914 @@
     },
     {
       "id": "m-laws-of-motion-4",
-      "title": "Laws of Motion - Section 4",
-      "description": "Comprehensive analysis covering pseudo force, circular motion force, vehicle on level road and more.",
+      "title": "Mastery Module 4: Angle of repose and Related Concepts",
+      "description": "Comprehensive analysis covering angle of repose, rolling friction, motion of connected bodies and advanced applications.",
       "conceptTags": [
         "laws-of-motion",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-laws-of-motion-pseudo-force",
-          "title": "Pseudo force",
+          "id": "mt-laws-of-motion-angle-of-repose-18",
+          "title": "Angle of repose",
           "conceptTags": [
             "laws-of-motion",
-            "pseudo-force"
+            "angle-of-repose"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Pseudo force"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Angle of repose"
           ],
           "mustKnowFacts": [
-            "Pseudo force is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Pseudo force for NEET."
+            "A thorough understanding of Angle of repose is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angle of repose correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for pseudo force",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Pseudo force during complex MCQs.",
-            "Failing to apply the correct logic for Pseudo force."
+            "Misinterpreting the subtle edge cases of Angle of repose during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angle of repose."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Pseudo force."
+            "Can accurately solve numericals or identify biological structures related specifically to Angle of repose.",
+            "Successfully avoids common pitfalls when Angle of repose is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Pseudo force."
+            "Past year questions frequently test the application of Angle of repose in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-pseudo-force-1",
-              "question": "Explain the core concept behind Pseudo force.",
+              "id": "laws-of-motion-q-angle-of-repose-1",
+              "question": "What are the critical factors or principles governing Angle of repose?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "pseudo-force"
+                "laws-of-motion",
+                "angle-of-repose"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pseudo-force",
-                "conceptSlug": "core-pseudo-force",
-                "microskillSlug": "understand-pseudo-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "angle-of-repose",
+                "conceptSlug": "core-angle-of-repose",
+                "microskillSlug": "understand-angle-of-repose"
               }
             },
             {
-              "id": "laws-of-motion-q-pseudo-force-2",
-              "question": "What is a common trap associated with Pseudo force?",
+              "id": "laws-of-motion-q-angle-of-repose-2",
+              "question": "Describe a scenario where applying the concept of Angle of repose can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "pseudo-force",
+                "laws-of-motion",
+                "angle-of-repose",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pseudo-force",
-                "conceptSlug": "trap-pseudo-force",
-                "microskillSlug": "avoid-pseudo-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "angle-of-repose",
+                "conceptSlug": "trap-angle-of-repose",
+                "microskillSlug": "avoid-angle-of-repose"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-circular-motion-force",
-          "title": "Circular motion force",
+          "id": "mt-laws-of-motion-rolling-friction-19",
+          "title": "Rolling friction",
           "conceptTags": [
             "laws-of-motion",
-            "circular-motion-force"
+            "rolling-friction"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Circular motion force"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Rolling friction"
           ],
           "mustKnowFacts": [
-            "Circular motion force is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Circular motion force for NEET."
+            "A thorough understanding of Rolling friction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rolling friction correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for circular motion force",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Circular motion force during complex MCQs.",
-            "Failing to apply the correct logic for Circular motion force."
+            "Misinterpreting the subtle edge cases of Rolling friction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rolling friction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Circular motion force."
+            "Can accurately solve numericals or identify biological structures related specifically to Rolling friction.",
+            "Successfully avoids common pitfalls when Rolling friction is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Circular motion force."
+            "Past year questions frequently test the application of Rolling friction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-circular-motion-force-1",
-              "question": "Explain the core concept behind Circular motion force.",
+              "id": "laws-of-motion-q-rolling-friction-1",
+              "question": "What are the critical factors or principles governing Rolling friction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "circular-motion-force"
+                "laws-of-motion",
+                "rolling-friction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "circular-motion-force",
-                "conceptSlug": "core-circular-motion-force",
-                "microskillSlug": "understand-circular-motion-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "rolling-friction",
+                "conceptSlug": "core-rolling-friction",
+                "microskillSlug": "understand-rolling-friction"
               }
             },
             {
-              "id": "laws-of-motion-q-circular-motion-force-2",
-              "question": "What is a common trap associated with Circular motion force?",
+              "id": "laws-of-motion-q-rolling-friction-2",
+              "question": "Describe a scenario where applying the concept of Rolling friction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "circular-motion-force",
+                "laws-of-motion",
+                "rolling-friction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "circular-motion-force",
-                "conceptSlug": "trap-circular-motion-force",
-                "microskillSlug": "avoid-circular-motion-force",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "rolling-friction",
+                "conceptSlug": "trap-rolling-friction",
+                "microskillSlug": "avoid-rolling-friction"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-vehicle-on-level-road",
-          "title": "Vehicle on level road",
+          "id": "mt-laws-of-motion-motion-of-connected-bodies-20",
+          "title": "Motion of connected bodies",
           "conceptTags": [
             "laws-of-motion",
-            "vehicle-on-level-road"
+            "motion-of-connected-bodies"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Vehicle on level road"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Motion of connected bodies"
           ],
           "mustKnowFacts": [
-            "Vehicle on level road is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Vehicle on level road for NEET."
+            "A thorough understanding of Motion of connected bodies is heavily tested in recent NEET papers.",
+            "Applying the core principles of Motion of connected bodies correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for vehicle on level road",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Vehicle on level road during complex MCQs.",
-            "Failing to apply the correct logic for Vehicle on level road."
+            "Misinterpreting the subtle edge cases of Motion of connected bodies during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Motion of connected bodies."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Vehicle on level road."
+            "Can accurately solve numericals or identify biological structures related specifically to Motion of connected bodies.",
+            "Successfully avoids common pitfalls when Motion of connected bodies is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Vehicle on level road."
+            "Past year questions frequently test the application of Motion of connected bodies in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-vehicle-on-level-road-1",
-              "question": "Explain the core concept behind Vehicle on level road.",
+              "id": "laws-of-motion-q-motion-of-connected-bodies-1",
+              "question": "What are the critical factors or principles governing Motion of connected bodies?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "vehicle-on-level-road"
+                "laws-of-motion",
+                "motion-of-connected-bodies"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "vehicle-on-level-road",
-                "conceptSlug": "core-vehicle-on-level-road",
-                "microskillSlug": "understand-vehicle-on-level-road",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "motion-of-connected-bodies",
+                "conceptSlug": "core-motion-of-connected-bodies",
+                "microskillSlug": "understand-motion-of-connected-bodies"
               }
             },
             {
-              "id": "laws-of-motion-q-vehicle-on-level-road-2",
-              "question": "What is a common trap associated with Vehicle on level road?",
+              "id": "laws-of-motion-q-motion-of-connected-bodies-2",
+              "question": "Describe a scenario where applying the concept of Motion of connected bodies can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "vehicle-on-level-road",
+                "laws-of-motion",
+                "motion-of-connected-bodies",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "vehicle-on-level-road",
-                "conceptSlug": "trap-vehicle-on-level-road",
-                "microskillSlug": "avoid-vehicle-on-level-road",
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "motion-of-connected-bodies",
+                "conceptSlug": "trap-motion-of-connected-bodies",
+                "microskillSlug": "avoid-motion-of-connected-bodies"
               }
             }
           ]
         },
         {
-          "id": "mt-laws-of-motion-banking-of-roads",
+          "id": "mt-laws-of-motion-pulley-systems-21",
+          "title": "Pulley systems",
+          "conceptTags": [
+            "laws-of-motion",
+            "pulley-systems"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Pulley systems"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Pulley systems is heavily tested in recent NEET papers.",
+            "Applying the core principles of Pulley systems correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Pulley systems during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Pulley systems."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Pulley systems.",
+            "Successfully avoids common pitfalls when Pulley systems is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Pulley systems in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-pulley-systems-1",
+              "question": "What are the critical factors or principles governing Pulley systems?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "pulley-systems"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "pulley-systems",
+                "conceptSlug": "core-pulley-systems",
+                "microskillSlug": "understand-pulley-systems"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-pulley-systems-2",
+              "question": "Describe a scenario where applying the concept of Pulley systems can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "pulley-systems",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "pulley-systems",
+                "conceptSlug": "trap-pulley-systems",
+                "microskillSlug": "avoid-pulley-systems"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-pseudo-force-applications-22",
+          "title": "Pseudo force applications",
+          "conceptTags": [
+            "laws-of-motion",
+            "pseudo-force-applications"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Pseudo force applications"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Pseudo force applications is heavily tested in recent NEET papers.",
+            "Applying the core principles of Pseudo force applications correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
+              "variables": [
+                "F",
+                "p",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Pseudo force applications during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Pseudo force applications."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Pseudo force applications.",
+            "Successfully avoids common pitfalls when Pseudo force applications is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Pseudo force applications in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-pseudo-force-applications-1",
+              "question": "What are the critical factors or principles governing Pseudo force applications?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "pseudo-force-applications"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "pseudo-force-applications",
+                "conceptSlug": "core-pseudo-force-applications",
+                "microskillSlug": "understand-pseudo-force-applications"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-pseudo-force-applications-2",
+              "question": "Describe a scenario where applying the concept of Pseudo force applications can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "pseudo-force-applications",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "pseudo-force-applications",
+                "conceptSlug": "trap-pseudo-force-applications",
+                "microskillSlug": "avoid-pseudo-force-applications"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-circular-motion-dynamics-23",
+          "title": "Circular motion dynamics",
+          "conceptTags": [
+            "laws-of-motion",
+            "circular-motion-dynamics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Circular motion dynamics"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Circular motion dynamics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Circular motion dynamics correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Circular motion dynamics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Circular motion dynamics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Circular motion dynamics.",
+            "Successfully avoids common pitfalls when Circular motion dynamics is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Circular motion dynamics in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-circular-motion-dynamics-1",
+              "question": "What are the critical factors or principles governing Circular motion dynamics?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "circular-motion-dynamics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "circular-motion-dynamics",
+                "conceptSlug": "core-circular-motion-dynamics",
+                "microskillSlug": "understand-circular-motion-dynamics"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-circular-motion-dynamics-2",
+              "question": "Describe a scenario where applying the concept of Circular motion dynamics can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "circular-motion-dynamics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "circular-motion-dynamics",
+                "conceptSlug": "trap-circular-motion-dynamics",
+                "microskillSlug": "avoid-circular-motion-dynamics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-laws-of-motion-5",
+      "title": "Mastery Module 5: Vehicle on level circular road and Related Concepts",
+      "description": "Comprehensive analysis covering vehicle on level circular road, banking of roads, bending of cyclist and advanced applications.",
+      "conceptTags": [
+        "laws-of-motion",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-laws-of-motion-vehicle-on-level-circular-road-24",
+          "title": "Vehicle on level circular road",
+          "conceptTags": [
+            "laws-of-motion",
+            "vehicle-on-level-circular-road"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Vehicle on level circular road"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Vehicle on level circular road is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vehicle on level circular road correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Vehicle on level circular road during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vehicle on level circular road."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Vehicle on level circular road.",
+            "Successfully avoids common pitfalls when Vehicle on level circular road is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Vehicle on level circular road in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-vehicle-on-level-circular-road-1",
+              "question": "What are the critical factors or principles governing Vehicle on level circular road?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "vehicle-on-level-circular-road"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "vehicle-on-level-circular-road",
+                "conceptSlug": "core-vehicle-on-level-circular-road",
+                "microskillSlug": "understand-vehicle-on-level-circular-road"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-vehicle-on-level-circular-road-2",
+              "question": "Describe a scenario where applying the concept of Vehicle on level circular road can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "vehicle-on-level-circular-road",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "vehicle-on-level-circular-road",
+                "conceptSlug": "trap-vehicle-on-level-circular-road",
+                "microskillSlug": "avoid-vehicle-on-level-circular-road"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-banking-of-roads-25",
           "title": "Banking of roads",
           "conceptTags": [
             "laws-of-motion",
             "banking-of-roads"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Banking of roads"
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Banking of roads"
           ],
           "mustKnowFacts": [
-            "Banking of roads is a fundamental subtopic of Laws of Motion.",
-            "Crucial to understand the principles governing Banking of roads for NEET."
+            "A thorough understanding of Banking of roads is heavily tested in recent NEET papers.",
+            "Applying the core principles of Banking of roads correctly is essential for solving complex multi-step problems in Laws of Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for banking of roads",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Banking of roads during complex MCQs.",
-            "Failing to apply the correct logic for Banking of roads."
+            "Misinterpreting the subtle edge cases of Banking of roads during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Banking of roads."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Banking of roads."
+            "Can accurately solve numericals or identify biological structures related specifically to Banking of roads.",
+            "Successfully avoids common pitfalls when Banking of roads is integrated with other concepts in Laws of Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Banking of roads."
+            "Past year questions frequently test the application of Banking of roads in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "laws-of-motion-q-banking-of-roads-1",
-              "question": "Explain the core concept behind Banking of roads.",
+              "question": "What are the critical factors or principles governing Banking of roads?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "banking-of-roads"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "banking-of-roads",
                 "conceptSlug": "core-banking-of-roads",
-                "microskillSlug": "understand-banking-of-roads",
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "microskillSlug": "understand-banking-of-roads"
               }
             },
             {
               "id": "laws-of-motion-q-banking-of-roads-2",
-              "question": "What is a common trap associated with Banking of roads?",
+              "question": "Describe a scenario where applying the concept of Banking of roads can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "laws-of-motion",
                 "banking-of-roads",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
                 "topicSlug": "laws-of-motion",
                 "subtopicSlug": "banking-of-roads",
                 "conceptSlug": "trap-banking-of-roads",
-                "microskillSlug": "avoid-banking-of-roads",
+                "microskillSlug": "avoid-banking-of-roads"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-laws-of-motion-bending-of-cyclist-26",
+          "title": "Bending of cyclist",
+          "conceptTags": [
+            "laws-of-motion",
+            "bending-of-cyclist"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Laws of Motion, Section detailing Bending of cyclist"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Bending of cyclist is heavily tested in recent NEET papers.",
+            "Applying the core principles of Bending of cyclist correctly is essential for solving complex multi-step problems in Laws of Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Bending of cyclist during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Bending of cyclist."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Bending of cyclist.",
+            "Successfully avoids common pitfalls when Bending of cyclist is integrated with other concepts in Laws of Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Bending of cyclist in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "laws-of-motion-q-bending-of-cyclist-1",
+              "question": "What are the critical factors or principles governing Bending of cyclist?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "bending-of-cyclist"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
                 "subject": "Physics",
                 "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion"
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "bending-of-cyclist",
+                "conceptSlug": "core-bending-of-cyclist",
+                "microskillSlug": "understand-bending-of-cyclist"
+              }
+            },
+            {
+              "id": "laws-of-motion-q-bending-of-cyclist-2",
+              "question": "Describe a scenario where applying the concept of Bending of cyclist can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "laws-of-motion",
+                "bending-of-cyclist",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "laws-of-motion",
+                "chapterSlug": "laws-of-motion",
+                "topicSlug": "laws-of-motion",
+                "subtopicSlug": "bending-of-cyclist",
+                "conceptSlug": "trap-bending-of-cyclist",
+                "microskillSlug": "avoid-bending-of-cyclist"
               }
             }
           ]

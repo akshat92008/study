@@ -2,536 +2,359 @@
   "missions": [
     {
       "id": "m-chemical-kinetics-1",
-      "title": "Chemical Kinetics - Section 1",
-      "description": "Comprehensive analysis covering rate of reaction, average/instantaneous rate, factors affecting rate and more.",
+      "title": "Mastery Module 1: Rate of a chemical reaction and Related Concepts",
+      "description": "Comprehensive analysis covering rate of a chemical reaction, average and instantaneous rate, factors affecting reaction rate and advanced applications.",
       "conceptTags": [
         "chemical-kinetics",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-chemical-kinetics-rate-of-reaction",
-          "title": "Rate of reaction",
+          "id": "mt-chemical-kinetics-rate-of-a-chemical-reaction-0",
+          "title": "Rate of a chemical reaction",
           "conceptTags": [
             "chemical-kinetics",
-            "rate-of-reaction"
+            "rate-of-a-chemical-reaction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Rate of reaction"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Rate of a chemical reaction"
           ],
           "mustKnowFacts": [
-            "Rate of reaction is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Rate of reaction for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for rate of reaction",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving rate of reaction",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Rate of a chemical reaction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rate of a chemical reaction correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Rate of reaction during complex MCQs.",
-            "Failing to apply the correct logic for Rate of reaction."
+            "Misinterpreting the subtle edge cases of Rate of a chemical reaction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rate of a chemical reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rate of reaction."
+            "Can accurately solve numericals or identify biological structures related specifically to Rate of a chemical reaction.",
+            "Successfully avoids common pitfalls when Rate of a chemical reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rate of reaction."
+            "Past year questions frequently test the application of Rate of a chemical reaction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-rate-of-reaction-1",
-              "question": "Explain the core concept behind Rate of reaction.",
+              "id": "chemical-kinetics-q-rate-of-a-chemical-reaction-1",
+              "question": "What are the critical factors or principles governing Rate of a chemical reaction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rate-of-reaction"
+                "chemical-kinetics",
+                "rate-of-a-chemical-reaction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-of-reaction",
-                "conceptSlug": "core-rate-of-reaction",
-                "microskillSlug": "understand-rate-of-reaction",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "rate-of-a-chemical-reaction",
+                "conceptSlug": "core-rate-of-a-chemical-reaction",
+                "microskillSlug": "understand-rate-of-a-chemical-reaction"
               }
             },
             {
-              "id": "chemical-kinetics-q-rate-of-reaction-2",
-              "question": "What is a common trap associated with Rate of reaction?",
+              "id": "chemical-kinetics-q-rate-of-a-chemical-reaction-2",
+              "question": "Describe a scenario where applying the concept of Rate of a chemical reaction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rate-of-reaction",
+                "chemical-kinetics",
+                "rate-of-a-chemical-reaction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-of-reaction",
-                "conceptSlug": "trap-rate-of-reaction",
-                "microskillSlug": "avoid-rate-of-reaction",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "rate-of-a-chemical-reaction",
+                "conceptSlug": "trap-rate-of-a-chemical-reaction",
+                "microskillSlug": "avoid-rate-of-a-chemical-reaction"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-average-instantaneous-rate",
-          "title": "Average/instantaneous rate",
+          "id": "mt-chemical-kinetics-average-and-instantaneous-rate-1",
+          "title": "Average and instantaneous rate",
           "conceptTags": [
             "chemical-kinetics",
-            "average-instantaneous-rate"
+            "average-and-instantaneous-rate"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Average/instantaneous rate"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Average and instantaneous rate"
           ],
           "mustKnowFacts": [
-            "Average/instantaneous rate is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Average/instantaneous rate for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for average/instantaneous rate",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving average/instantaneous rate",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Average and instantaneous rate is heavily tested in recent NEET papers.",
+            "Applying the core principles of Average and instantaneous rate correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Average/instantaneous rate during complex MCQs.",
-            "Failing to apply the correct logic for Average/instantaneous rate."
+            "Misinterpreting the subtle edge cases of Average and instantaneous rate during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Average and instantaneous rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Average/instantaneous rate."
+            "Can accurately solve numericals or identify biological structures related specifically to Average and instantaneous rate.",
+            "Successfully avoids common pitfalls when Average and instantaneous rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Average/instantaneous rate."
+            "Past year questions frequently test the application of Average and instantaneous rate in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-average-instantaneous-rate-1",
-              "question": "Explain the core concept behind Average/instantaneous rate.",
+              "id": "chemical-kinetics-q-average-and-instantaneous-rate-1",
+              "question": "What are the critical factors or principles governing Average and instantaneous rate?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "average-instantaneous-rate"
+                "chemical-kinetics",
+                "average-and-instantaneous-rate"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "average-instantaneous-rate",
-                "conceptSlug": "core-average-instantaneous-rate",
-                "microskillSlug": "understand-average-instantaneous-rate",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "average-and-instantaneous-rate",
+                "conceptSlug": "core-average-and-instantaneous-rate",
+                "microskillSlug": "understand-average-and-instantaneous-rate"
               }
             },
             {
-              "id": "chemical-kinetics-q-average-instantaneous-rate-2",
-              "question": "What is a common trap associated with Average/instantaneous rate?",
+              "id": "chemical-kinetics-q-average-and-instantaneous-rate-2",
+              "question": "Describe a scenario where applying the concept of Average and instantaneous rate can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "average-instantaneous-rate",
+                "chemical-kinetics",
+                "average-and-instantaneous-rate",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "average-instantaneous-rate",
-                "conceptSlug": "trap-average-instantaneous-rate",
-                "microskillSlug": "avoid-average-instantaneous-rate",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "average-and-instantaneous-rate",
+                "conceptSlug": "trap-average-and-instantaneous-rate",
+                "microskillSlug": "avoid-average-and-instantaneous-rate"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-factors-affecting-rate",
-          "title": "Factors affecting rate",
+          "id": "mt-chemical-kinetics-factors-affecting-reaction-rate-2",
+          "title": "Factors affecting reaction rate",
           "conceptTags": [
             "chemical-kinetics",
-            "factors-affecting-rate"
+            "factors-affecting-reaction-rate"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Factors affecting rate"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Factors affecting reaction rate"
           ],
           "mustKnowFacts": [
-            "Factors affecting rate is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Factors affecting rate for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for factors affecting rate",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving factors affecting rate",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Factors affecting reaction rate is heavily tested in recent NEET papers.",
+            "Applying the core principles of Factors affecting reaction rate correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Factors affecting rate during complex MCQs.",
-            "Failing to apply the correct logic for Factors affecting rate."
+            "Misinterpreting the subtle edge cases of Factors affecting reaction rate during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Factors affecting reaction rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Factors affecting rate."
+            "Can accurately solve numericals or identify biological structures related specifically to Factors affecting reaction rate.",
+            "Successfully avoids common pitfalls when Factors affecting reaction rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Factors affecting rate."
+            "Past year questions frequently test the application of Factors affecting reaction rate in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-factors-affecting-rate-1",
-              "question": "Explain the core concept behind Factors affecting rate.",
+              "id": "chemical-kinetics-q-factors-affecting-reaction-rate-1",
+              "question": "What are the critical factors or principles governing Factors affecting reaction rate?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "factors-affecting-rate"
+                "chemical-kinetics",
+                "factors-affecting-reaction-rate"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "factors-affecting-rate",
-                "conceptSlug": "core-factors-affecting-rate",
-                "microskillSlug": "understand-factors-affecting-rate",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "factors-affecting-reaction-rate",
+                "conceptSlug": "core-factors-affecting-reaction-rate",
+                "microskillSlug": "understand-factors-affecting-reaction-rate"
               }
             },
             {
-              "id": "chemical-kinetics-q-factors-affecting-rate-2",
-              "question": "What is a common trap associated with Factors affecting rate?",
+              "id": "chemical-kinetics-q-factors-affecting-reaction-rate-2",
+              "question": "Describe a scenario where applying the concept of Factors affecting reaction rate can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "factors-affecting-rate",
+                "chemical-kinetics",
+                "factors-affecting-reaction-rate",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "factors-affecting-rate",
-                "conceptSlug": "trap-factors-affecting-rate",
-                "microskillSlug": "avoid-factors-affecting-rate",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "factors-affecting-reaction-rate",
+                "conceptSlug": "trap-factors-affecting-reaction-rate",
+                "microskillSlug": "avoid-factors-affecting-reaction-rate"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-elementary-complex-reactions",
-          "title": "Elementary/complex reactions",
+          "id": "mt-chemical-kinetics-elementary-and-complex-reactions-3",
+          "title": "Elementary and complex reactions",
           "conceptTags": [
             "chemical-kinetics",
-            "elementary-complex-reactions"
+            "elementary-and-complex-reactions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Elementary/complex reactions"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Elementary and complex reactions"
           ],
           "mustKnowFacts": [
-            "Elementary/complex reactions is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Elementary/complex reactions for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for elementary/complex reactions",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving elementary/complex reactions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Elementary and complex reactions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Elementary and complex reactions correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Elementary/complex reactions during complex MCQs.",
-            "Failing to apply the correct logic for Elementary/complex reactions."
+            "Misinterpreting the subtle edge cases of Elementary and complex reactions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Elementary and complex reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Elementary/complex reactions."
+            "Can accurately solve numericals or identify biological structures related specifically to Elementary and complex reactions.",
+            "Successfully avoids common pitfalls when Elementary and complex reactions is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Elementary/complex reactions."
+            "Past year questions frequently test the application of Elementary and complex reactions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-elementary-complex-reactions-1",
-              "question": "Explain the core concept behind Elementary/complex reactions.",
+              "id": "chemical-kinetics-q-elementary-and-complex-reactions-1",
+              "question": "What are the critical factors or principles governing Elementary and complex reactions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "elementary-complex-reactions"
+                "chemical-kinetics",
+                "elementary-and-complex-reactions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "elementary-complex-reactions",
-                "conceptSlug": "core-elementary-complex-reactions",
-                "microskillSlug": "understand-elementary-complex-reactions",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "elementary-and-complex-reactions",
+                "conceptSlug": "core-elementary-and-complex-reactions",
+                "microskillSlug": "understand-elementary-and-complex-reactions"
               }
             },
             {
-              "id": "chemical-kinetics-q-elementary-complex-reactions-2",
-              "question": "What is a common trap associated with Elementary/complex reactions?",
+              "id": "chemical-kinetics-q-elementary-and-complex-reactions-2",
+              "question": "Describe a scenario where applying the concept of Elementary and complex reactions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "elementary-complex-reactions",
+                "chemical-kinetics",
+                "elementary-and-complex-reactions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "elementary-complex-reactions",
-                "conceptSlug": "trap-elementary-complex-reactions",
-                "microskillSlug": "avoid-elementary-complex-reactions",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-chemical-kinetics-order",
-          "title": "Order",
-          "conceptTags": [
-            "chemical-kinetics",
-            "order"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Order"
-          ],
-          "mustKnowFacts": [
-            "Order is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Order for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for order",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving order",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Order during complex MCQs.",
-            "Failing to apply the correct logic for Order."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Order."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Order."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-order-1",
-              "question": "Explain the core concept behind Order.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "chemical-kinetics",
                 "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "order",
-                "conceptSlug": "core-order",
-                "microskillSlug": "understand-order",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            },
-            {
-              "id": "chemical-kinetics-q-order-2",
-              "question": "What is a common trap associated with Order?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "order",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "order",
-                "conceptSlug": "trap-order",
-                "microskillSlug": "avoid-order",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "subtopicSlug": "elementary-and-complex-reactions",
+                "conceptSlug": "trap-elementary-and-complex-reactions",
+                "microskillSlug": "avoid-elementary-and-complex-reactions"
               }
             }
           ]
@@ -540,536 +363,370 @@
     },
     {
       "id": "m-chemical-kinetics-2",
-      "title": "Chemical Kinetics - Section 2",
-      "description": "Comprehensive analysis covering molecularity, rate law, rate constant units and more.",
+      "title": "Mastery Module 2: Order of a reaction and Related Concepts",
+      "description": "Comprehensive analysis covering order of a reaction, molecularity of a reaction, rate law expression and advanced applications.",
       "conceptTags": [
         "chemical-kinetics",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-chemical-kinetics-molecularity",
-          "title": "Molecularity",
+          "id": "mt-chemical-kinetics-order-of-a-reaction-4",
+          "title": "Order of a reaction",
           "conceptTags": [
             "chemical-kinetics",
-            "molecularity"
+            "order-of-a-reaction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Molecularity"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Order of a reaction"
           ],
           "mustKnowFacts": [
-            "Molecularity is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Molecularity for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for molecularity",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molecularity",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Order of a reaction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Order of a reaction correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Molecularity during complex MCQs.",
-            "Failing to apply the correct logic for Molecularity."
+            "Misinterpreting the subtle edge cases of Order of a reaction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Order of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molecularity."
+            "Can accurately solve numericals or identify biological structures related specifically to Order of a reaction.",
+            "Successfully avoids common pitfalls when Order of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molecularity."
+            "Past year questions frequently test the application of Order of a reaction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-molecularity-1",
-              "question": "Explain the core concept behind Molecularity.",
+              "id": "chemical-kinetics-q-order-of-a-reaction-1",
+              "question": "What are the critical factors or principles governing Order of a reaction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molecularity"
+                "chemical-kinetics",
+                "order-of-a-reaction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "molecularity",
-                "conceptSlug": "core-molecularity",
-                "microskillSlug": "understand-molecularity",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "order-of-a-reaction",
+                "conceptSlug": "core-order-of-a-reaction",
+                "microskillSlug": "understand-order-of-a-reaction"
               }
             },
             {
-              "id": "chemical-kinetics-q-molecularity-2",
-              "question": "What is a common trap associated with Molecularity?",
+              "id": "chemical-kinetics-q-order-of-a-reaction-2",
+              "question": "Describe a scenario where applying the concept of Order of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molecularity",
+                "chemical-kinetics",
+                "order-of-a-reaction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "molecularity",
-                "conceptSlug": "trap-molecularity",
-                "microskillSlug": "avoid-molecularity",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "order-of-a-reaction",
+                "conceptSlug": "trap-order-of-a-reaction",
+                "microskillSlug": "avoid-order-of-a-reaction"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-rate-law",
-          "title": "Rate law",
+          "id": "mt-chemical-kinetics-molecularity-of-a-reaction-5",
+          "title": "Molecularity of a reaction",
           "conceptTags": [
             "chemical-kinetics",
-            "rate-law"
+            "molecularity-of-a-reaction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Rate law"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Molecularity of a reaction"
           ],
           "mustKnowFacts": [
-            "Rate law is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Rate law for NEET."
+            "A thorough understanding of Molecularity of a reaction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molecularity of a reaction correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "formulas": [
             {
-              "name": "Relation for rate law",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving rate law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Rate law during complex MCQs.",
-            "Failing to apply the correct logic for Rate law."
+            "Misinterpreting the subtle edge cases of Molecularity of a reaction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molecularity of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rate law."
+            "Can accurately solve numericals or identify biological structures related specifically to Molecularity of a reaction.",
+            "Successfully avoids common pitfalls when Molecularity of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rate law."
+            "Past year questions frequently test the application of Molecularity of a reaction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-rate-law-1",
-              "question": "Explain the core concept behind Rate law.",
+              "id": "chemical-kinetics-q-molecularity-of-a-reaction-1",
+              "question": "What are the critical factors or principles governing Molecularity of a reaction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rate-law"
+                "chemical-kinetics",
+                "molecularity-of-a-reaction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-law",
-                "conceptSlug": "core-rate-law",
-                "microskillSlug": "understand-rate-law",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "molecularity-of-a-reaction",
+                "conceptSlug": "core-molecularity-of-a-reaction",
+                "microskillSlug": "understand-molecularity-of-a-reaction"
               }
             },
             {
-              "id": "chemical-kinetics-q-rate-law-2",
-              "question": "What is a common trap associated with Rate law?",
+              "id": "chemical-kinetics-q-molecularity-of-a-reaction-2",
+              "question": "Describe a scenario where applying the concept of Molecularity of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rate-law",
+                "chemical-kinetics",
+                "molecularity-of-a-reaction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-law",
-                "conceptSlug": "trap-rate-law",
-                "microskillSlug": "avoid-rate-law",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "molecularity-of-a-reaction",
+                "conceptSlug": "trap-molecularity-of-a-reaction",
+                "microskillSlug": "avoid-molecularity-of-a-reaction"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-rate-constant-units",
-          "title": "Rate constant units",
+          "id": "mt-chemical-kinetics-rate-law-expression-6",
+          "title": "Rate law expression",
           "conceptTags": [
             "chemical-kinetics",
-            "rate-constant-units"
+            "rate-law-expression"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Rate constant units"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Rate law expression"
           ],
           "mustKnowFacts": [
-            "Rate constant units is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Rate constant units for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for rate constant units",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving rate constant units",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Rate law expression is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rate law expression correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Rate constant units during complex MCQs.",
-            "Failing to apply the correct logic for Rate constant units."
+            "Misinterpreting the subtle edge cases of Rate law expression during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rate law expression."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rate constant units."
+            "Can accurately solve numericals or identify biological structures related specifically to Rate law expression.",
+            "Successfully avoids common pitfalls when Rate law expression is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rate constant units."
+            "Past year questions frequently test the application of Rate law expression in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-rate-constant-units-1",
-              "question": "Explain the core concept behind Rate constant units.",
+              "id": "chemical-kinetics-q-rate-law-expression-1",
+              "question": "What are the critical factors or principles governing Rate law expression?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rate-constant-units"
+                "chemical-kinetics",
+                "rate-law-expression"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-constant-units",
-                "conceptSlug": "core-rate-constant-units",
-                "microskillSlug": "understand-rate-constant-units",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "rate-law-expression",
+                "conceptSlug": "core-rate-law-expression",
+                "microskillSlug": "understand-rate-law-expression"
               }
             },
             {
-              "id": "chemical-kinetics-q-rate-constant-units-2",
-              "question": "What is a common trap associated with Rate constant units?",
+              "id": "chemical-kinetics-q-rate-law-expression-2",
+              "question": "Describe a scenario where applying the concept of Rate law expression can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rate-constant-units",
+                "chemical-kinetics",
+                "rate-law-expression",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-constant-units",
-                "conceptSlug": "trap-rate-constant-units",
-                "microskillSlug": "avoid-rate-constant-units",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "rate-law-expression",
+                "conceptSlug": "trap-rate-law-expression",
+                "microskillSlug": "avoid-rate-law-expression"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-zero-order-integrated-law",
-          "title": "Zero order integrated law",
+          "id": "mt-chemical-kinetics-rate-constant-and-its-units-7",
+          "title": "Rate constant and its units",
           "conceptTags": [
             "chemical-kinetics",
-            "zero-order-integrated-law"
+            "rate-constant-and-its-units"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Zero order integrated law"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Rate constant and its units"
           ],
           "mustKnowFacts": [
-            "Zero order integrated law is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Zero order integrated law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for zero order integrated law",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving zero order integrated law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Rate constant and its units is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rate constant and its units correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Zero order integrated law during complex MCQs.",
-            "Failing to apply the correct logic for Zero order integrated law."
+            "Misinterpreting the subtle edge cases of Rate constant and its units during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rate constant and its units."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Zero order integrated law."
+            "Can accurately solve numericals or identify biological structures related specifically to Rate constant and its units.",
+            "Successfully avoids common pitfalls when Rate constant and its units is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Zero order integrated law."
+            "Past year questions frequently test the application of Rate constant and its units in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-zero-order-integrated-law-1",
-              "question": "Explain the core concept behind Zero order integrated law.",
+              "id": "chemical-kinetics-q-rate-constant-and-its-units-1",
+              "question": "What are the critical factors or principles governing Rate constant and its units?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "zero-order-integrated-law"
+                "chemical-kinetics",
+                "rate-constant-and-its-units"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "zero-order-integrated-law",
-                "conceptSlug": "core-zero-order-integrated-law",
-                "microskillSlug": "understand-zero-order-integrated-law",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "rate-constant-and-its-units",
+                "conceptSlug": "core-rate-constant-and-its-units",
+                "microskillSlug": "understand-rate-constant-and-its-units"
               }
             },
             {
-              "id": "chemical-kinetics-q-zero-order-integrated-law-2",
-              "question": "What is a common trap associated with Zero order integrated law?",
+              "id": "chemical-kinetics-q-rate-constant-and-its-units-2",
+              "question": "Describe a scenario where applying the concept of Rate constant and its units can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "zero-order-integrated-law",
+                "chemical-kinetics",
+                "rate-constant-and-its-units",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "zero-order-integrated-law",
-                "conceptSlug": "trap-zero-order-integrated-law",
-                "microskillSlug": "avoid-zero-order-integrated-law",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-chemical-kinetics-first-order-integrated-law",
-          "title": "First order integrated law",
-          "conceptTags": [
-            "chemical-kinetics",
-            "first-order-integrated-law"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, First order integrated law"
-          ],
-          "mustKnowFacts": [
-            "First order integrated law is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing First order integrated law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for first order integrated law",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving first order integrated law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret First order integrated law during complex MCQs.",
-            "Failing to apply the correct logic for First order integrated law."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to First order integrated law."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about First order integrated law."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-first-order-integrated-law-1",
-              "question": "Explain the core concept behind First order integrated law.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "first-order-integrated-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "chemical-kinetics",
                 "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "first-order-integrated-law",
-                "conceptSlug": "core-first-order-integrated-law",
-                "microskillSlug": "understand-first-order-integrated-law",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            },
-            {
-              "id": "chemical-kinetics-q-first-order-integrated-law-2",
-              "question": "What is a common trap associated with First order integrated law?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "first-order-integrated-law",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "first-order-integrated-law",
-                "conceptSlug": "trap-first-order-integrated-law",
-                "microskillSlug": "avoid-first-order-integrated-law",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "subtopicSlug": "rate-constant-and-its-units",
+                "conceptSlug": "trap-rate-constant-and-its-units",
+                "microskillSlug": "avoid-rate-constant-and-its-units"
               }
             }
           ]
@@ -1078,536 +735,359 @@
     },
     {
       "id": "m-chemical-kinetics-3",
-      "title": "Chemical Kinetics - Section 3",
-      "description": "Comprehensive analysis covering half-life, pseudo-first order, Arrhenius equation and more.",
+      "title": "Mastery Module 3: Integrated rate equation for zero order and Related Concepts",
+      "description": "Comprehensive analysis covering integrated rate equation for zero order, integrated rate equation for first order, half-life of a reaction and advanced applications.",
       "conceptTags": [
         "chemical-kinetics",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-chemical-kinetics-half-life",
-          "title": "Half-life",
+          "id": "mt-chemical-kinetics-integrated-rate-equation-for-zero-order-8",
+          "title": "Integrated rate equation for zero order",
           "conceptTags": [
             "chemical-kinetics",
-            "half-life"
+            "integrated-rate-equation-for-zero-order"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Half-life"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Integrated rate equation for zero order"
           ],
           "mustKnowFacts": [
-            "Half-life is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Half-life for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for half-life",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving half-life",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Integrated rate equation for zero order is heavily tested in recent NEET papers.",
+            "Applying the core principles of Integrated rate equation for zero order correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Half-life during complex MCQs.",
-            "Failing to apply the correct logic for Half-life."
+            "Misinterpreting the subtle edge cases of Integrated rate equation for zero order during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Integrated rate equation for zero order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Half-life."
+            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate equation for zero order.",
+            "Successfully avoids common pitfalls when Integrated rate equation for zero order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Half-life."
+            "Past year questions frequently test the application of Integrated rate equation for zero order in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-half-life-1",
-              "question": "Explain the core concept behind Half-life.",
+              "id": "chemical-kinetics-q-integrated-rate-equation-for-zero-order-1",
+              "question": "What are the critical factors or principles governing Integrated rate equation for zero order?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "half-life"
+                "chemical-kinetics",
+                "integrated-rate-equation-for-zero-order"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "half-life",
-                "conceptSlug": "core-half-life",
-                "microskillSlug": "understand-half-life",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-equation-for-zero-order",
+                "conceptSlug": "core-integrated-rate-equation-for-zero-order",
+                "microskillSlug": "understand-integrated-rate-equation-for-zero-order"
               }
             },
             {
-              "id": "chemical-kinetics-q-half-life-2",
-              "question": "What is a common trap associated with Half-life?",
+              "id": "chemical-kinetics-q-integrated-rate-equation-for-zero-order-2",
+              "question": "Describe a scenario where applying the concept of Integrated rate equation for zero order can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "half-life",
+                "chemical-kinetics",
+                "integrated-rate-equation-for-zero-order",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "half-life",
-                "conceptSlug": "trap-half-life",
-                "microskillSlug": "avoid-half-life",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-equation-for-zero-order",
+                "conceptSlug": "trap-integrated-rate-equation-for-zero-order",
+                "microskillSlug": "avoid-integrated-rate-equation-for-zero-order"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-pseudo-first-order",
-          "title": "Pseudo-first order",
+          "id": "mt-chemical-kinetics-integrated-rate-equation-for-first-order-9",
+          "title": "Integrated rate equation for first order",
           "conceptTags": [
             "chemical-kinetics",
-            "pseudo-first-order"
+            "integrated-rate-equation-for-first-order"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Pseudo-first order"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Integrated rate equation for first order"
           ],
           "mustKnowFacts": [
-            "Pseudo-first order is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Pseudo-first order for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for pseudo-first order",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving pseudo-first order",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Integrated rate equation for first order is heavily tested in recent NEET papers.",
+            "Applying the core principles of Integrated rate equation for first order correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Pseudo-first order during complex MCQs.",
-            "Failing to apply the correct logic for Pseudo-first order."
+            "Misinterpreting the subtle edge cases of Integrated rate equation for first order during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Integrated rate equation for first order."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Pseudo-first order."
+            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate equation for first order.",
+            "Successfully avoids common pitfalls when Integrated rate equation for first order is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Pseudo-first order."
+            "Past year questions frequently test the application of Integrated rate equation for first order in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-pseudo-first-order-1",
-              "question": "Explain the core concept behind Pseudo-first order.",
+              "id": "chemical-kinetics-q-integrated-rate-equation-for-first-order-1",
+              "question": "What are the critical factors or principles governing Integrated rate equation for first order?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "pseudo-first-order"
+                "chemical-kinetics",
+                "integrated-rate-equation-for-first-order"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "pseudo-first-order",
-                "conceptSlug": "core-pseudo-first-order",
-                "microskillSlug": "understand-pseudo-first-order",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-equation-for-first-order",
+                "conceptSlug": "core-integrated-rate-equation-for-first-order",
+                "microskillSlug": "understand-integrated-rate-equation-for-first-order"
               }
             },
             {
-              "id": "chemical-kinetics-q-pseudo-first-order-2",
-              "question": "What is a common trap associated with Pseudo-first order?",
+              "id": "chemical-kinetics-q-integrated-rate-equation-for-first-order-2",
+              "question": "Describe a scenario where applying the concept of Integrated rate equation for first order can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "pseudo-first-order",
+                "chemical-kinetics",
+                "integrated-rate-equation-for-first-order",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "pseudo-first-order",
-                "conceptSlug": "trap-pseudo-first-order",
-                "microskillSlug": "avoid-pseudo-first-order",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-equation-for-first-order",
+                "conceptSlug": "trap-integrated-rate-equation-for-first-order",
+                "microskillSlug": "avoid-integrated-rate-equation-for-first-order"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-arrhenius-equation",
-          "title": "Arrhenius equation",
+          "id": "mt-chemical-kinetics-half-life-of-a-reaction-10",
+          "title": "Half-life of a reaction",
           "conceptTags": [
             "chemical-kinetics",
-            "arrhenius-equation"
+            "half-life-of-a-reaction"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Arrhenius equation"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Half-life of a reaction"
           ],
           "mustKnowFacts": [
-            "Arrhenius equation is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Arrhenius equation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Arrhenius equation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Arrhenius equation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Half-life of a reaction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Half-life of a reaction correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Arrhenius equation during complex MCQs.",
-            "Failing to apply the correct logic for Arrhenius equation."
+            "Misinterpreting the subtle edge cases of Half-life of a reaction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Half-life of a reaction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Arrhenius equation."
+            "Can accurately solve numericals or identify biological structures related specifically to Half-life of a reaction.",
+            "Successfully avoids common pitfalls when Half-life of a reaction is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Arrhenius equation."
+            "Past year questions frequently test the application of Half-life of a reaction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-arrhenius-equation-1",
-              "question": "Explain the core concept behind Arrhenius equation.",
+              "id": "chemical-kinetics-q-half-life-of-a-reaction-1",
+              "question": "What are the critical factors or principles governing Half-life of a reaction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "arrhenius-equation"
+                "chemical-kinetics",
+                "half-life-of-a-reaction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "arrhenius-equation",
-                "conceptSlug": "core-arrhenius-equation",
-                "microskillSlug": "understand-arrhenius-equation",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "half-life-of-a-reaction",
+                "conceptSlug": "core-half-life-of-a-reaction",
+                "microskillSlug": "understand-half-life-of-a-reaction"
               }
             },
             {
-              "id": "chemical-kinetics-q-arrhenius-equation-2",
-              "question": "What is a common trap associated with Arrhenius equation?",
+              "id": "chemical-kinetics-q-half-life-of-a-reaction-2",
+              "question": "Describe a scenario where applying the concept of Half-life of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "arrhenius-equation",
+                "chemical-kinetics",
+                "half-life-of-a-reaction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "arrhenius-equation",
-                "conceptSlug": "trap-arrhenius-equation",
-                "microskillSlug": "avoid-arrhenius-equation",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "half-life-of-a-reaction",
+                "conceptSlug": "trap-half-life-of-a-reaction",
+                "microskillSlug": "avoid-half-life-of-a-reaction"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-activation-energy",
-          "title": "Activation energy",
+          "id": "mt-chemical-kinetics-pseudo-first-order-reactions-11",
+          "title": "Pseudo-first order reactions",
           "conceptTags": [
             "chemical-kinetics",
-            "activation-energy"
+            "pseudo-first-order-reactions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Activation energy"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Pseudo-first order reactions"
           ],
           "mustKnowFacts": [
-            "Activation energy is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Activation energy for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for activation energy",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving activation energy",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Pseudo-first order reactions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Pseudo-first order reactions correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Activation energy during complex MCQs.",
-            "Failing to apply the correct logic for Activation energy."
+            "Misinterpreting the subtle edge cases of Pseudo-first order reactions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Pseudo-first order reactions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Activation energy."
+            "Can accurately solve numericals or identify biological structures related specifically to Pseudo-first order reactions.",
+            "Successfully avoids common pitfalls when Pseudo-first order reactions is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Activation energy."
+            "Past year questions frequently test the application of Pseudo-first order reactions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-activation-energy-1",
-              "question": "Explain the core concept behind Activation energy.",
+              "id": "chemical-kinetics-q-pseudo-first-order-reactions-1",
+              "question": "What are the critical factors or principles governing Pseudo-first order reactions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "activation-energy"
+                "chemical-kinetics",
+                "pseudo-first-order-reactions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "activation-energy",
-                "conceptSlug": "core-activation-energy",
-                "microskillSlug": "understand-activation-energy",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "pseudo-first-order-reactions",
+                "conceptSlug": "core-pseudo-first-order-reactions",
+                "microskillSlug": "understand-pseudo-first-order-reactions"
               }
             },
             {
-              "id": "chemical-kinetics-q-activation-energy-2",
-              "question": "What is a common trap associated with Activation energy?",
+              "id": "chemical-kinetics-q-pseudo-first-order-reactions-2",
+              "question": "Describe a scenario where applying the concept of Pseudo-first order reactions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "activation-energy",
+                "chemical-kinetics",
+                "pseudo-first-order-reactions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "activation-energy",
-                "conceptSlug": "trap-activation-energy",
-                "microskillSlug": "avoid-activation-energy",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-chemical-kinetics-collision-theory",
-          "title": "Collision theory",
-          "conceptTags": [
-            "chemical-kinetics",
-            "collision-theory"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Collision theory"
-          ],
-          "mustKnowFacts": [
-            "Collision theory is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Collision theory for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for collision theory",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving collision theory",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Collision theory during complex MCQs.",
-            "Failing to apply the correct logic for Collision theory."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Collision theory."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Collision theory."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-collision-theory-1",
-              "question": "Explain the core concept behind Collision theory.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "collision-theory"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "chemical-kinetics",
                 "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "collision-theory",
-                "conceptSlug": "core-collision-theory",
-                "microskillSlug": "understand-collision-theory",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
-              }
-            },
-            {
-              "id": "chemical-kinetics-q-collision-theory-2",
-              "question": "What is a common trap associated with Collision theory?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "collision-theory",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "collision-theory",
-                "conceptSlug": "trap-collision-theory",
-                "microskillSlug": "avoid-collision-theory",
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "subtopicSlug": "pseudo-first-order-reactions",
+                "conceptSlug": "trap-pseudo-first-order-reactions",
+                "microskillSlug": "avoid-pseudo-first-order-reactions"
               }
             }
           ]
@@ -1616,221 +1096,732 @@
     },
     {
       "id": "m-chemical-kinetics-4",
-      "title": "Chemical Kinetics - Section 4",
-      "description": "Comprehensive analysis covering temperature coefficient, graph-based rate analysis and more.",
+      "title": "Mastery Module 4: Temperature dependence of rate and Related Concepts",
+      "description": "Comprehensive analysis covering temperature dependence of rate, Arrhenius equation applications, activation energy concept and advanced applications.",
       "conceptTags": [
         "chemical-kinetics",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-chemical-kinetics-temperature-coefficient",
-          "title": "Temperature coefficient",
+          "id": "mt-chemical-kinetics-temperature-dependence-of-rate-12",
+          "title": "Temperature dependence of rate",
           "conceptTags": [
             "chemical-kinetics",
-            "temperature-coefficient"
+            "temperature-dependence-of-rate"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Temperature coefficient"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Temperature dependence of rate"
           ],
           "mustKnowFacts": [
-            "Temperature coefficient is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Temperature coefficient for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for temperature coefficient",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving temperature coefficient",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Temperature dependence of rate is heavily tested in recent NEET papers.",
+            "Applying the core principles of Temperature dependence of rate correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Temperature coefficient during complex MCQs.",
-            "Failing to apply the correct logic for Temperature coefficient."
+            "Misinterpreting the subtle edge cases of Temperature dependence of rate during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Temperature dependence of rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Temperature coefficient."
+            "Can accurately solve numericals or identify biological structures related specifically to Temperature dependence of rate.",
+            "Successfully avoids common pitfalls when Temperature dependence of rate is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Temperature coefficient."
+            "Past year questions frequently test the application of Temperature dependence of rate in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-temperature-coefficient-1",
-              "question": "Explain the core concept behind Temperature coefficient.",
+              "id": "chemical-kinetics-q-temperature-dependence-of-rate-1",
+              "question": "What are the critical factors or principles governing Temperature dependence of rate?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "temperature-coefficient"
+                "chemical-kinetics",
+                "temperature-dependence-of-rate"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "temperature-coefficient",
-                "conceptSlug": "core-temperature-coefficient",
-                "microskillSlug": "understand-temperature-coefficient",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "temperature-dependence-of-rate",
+                "conceptSlug": "core-temperature-dependence-of-rate",
+                "microskillSlug": "understand-temperature-dependence-of-rate"
               }
             },
             {
-              "id": "chemical-kinetics-q-temperature-coefficient-2",
-              "question": "What is a common trap associated with Temperature coefficient?",
+              "id": "chemical-kinetics-q-temperature-dependence-of-rate-2",
+              "question": "Describe a scenario where applying the concept of Temperature dependence of rate can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "temperature-coefficient",
+                "chemical-kinetics",
+                "temperature-dependence-of-rate",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "temperature-coefficient",
-                "conceptSlug": "trap-temperature-coefficient",
-                "microskillSlug": "avoid-temperature-coefficient",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "temperature-dependence-of-rate",
+                "conceptSlug": "trap-temperature-dependence-of-rate",
+                "microskillSlug": "avoid-temperature-dependence-of-rate"
               }
             }
           ]
         },
         {
-          "id": "mt-chemical-kinetics-graph-based-rate-analysis",
-          "title": "Graph-based rate analysis",
+          "id": "mt-chemical-kinetics-arrhenius-equation-applications-13",
+          "title": "Arrhenius equation applications",
           "conceptTags": [
             "chemical-kinetics",
-            "graph-based-rate-analysis"
+            "arrhenius-equation-applications"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Graph-based rate analysis"
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Arrhenius equation applications"
           ],
           "mustKnowFacts": [
-            "Graph-based rate analysis is a fundamental subtopic of Chemical Kinetics.",
-            "Crucial to understand the principles governing Graph-based rate analysis for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for graph-based rate analysis",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving graph-based rate analysis",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Arrhenius equation applications is heavily tested in recent NEET papers.",
+            "Applying the core principles of Arrhenius equation applications correctly is essential for solving complex multi-step problems in Chemical Kinetics."
           ],
           "commonTraps": [
-            "Students often misinterpret Graph-based rate analysis during complex MCQs.",
-            "Failing to apply the correct logic for Graph-based rate analysis."
+            "Misinterpreting the subtle edge cases of Arrhenius equation applications during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Arrhenius equation applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Graph-based rate analysis."
+            "Can accurately solve numericals or identify biological structures related specifically to Arrhenius equation applications.",
+            "Successfully avoids common pitfalls when Arrhenius equation applications is integrated with other concepts in Chemical Kinetics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Graph-based rate analysis."
+            "Past year questions frequently test the application of Arrhenius equation applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-graph-based-rate-analysis-1",
-              "question": "Explain the core concept behind Graph-based rate analysis.",
+              "id": "chemical-kinetics-q-arrhenius-equation-applications-1",
+              "question": "What are the critical factors or principles governing Arrhenius equation applications?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "graph-based-rate-analysis"
+                "chemical-kinetics",
+                "arrhenius-equation-applications"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "graph-based-rate-analysis",
-                "conceptSlug": "core-graph-based-rate-analysis",
-                "microskillSlug": "understand-graph-based-rate-analysis",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "arrhenius-equation-applications",
+                "conceptSlug": "core-arrhenius-equation-applications",
+                "microskillSlug": "understand-arrhenius-equation-applications"
               }
             },
             {
-              "id": "chemical-kinetics-q-graph-based-rate-analysis-2",
-              "question": "What is a common trap associated with Graph-based rate analysis?",
+              "id": "chemical-kinetics-q-arrhenius-equation-applications-2",
+              "question": "Describe a scenario where applying the concept of Arrhenius equation applications can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "graph-based-rate-analysis",
+                "chemical-kinetics",
+                "arrhenius-equation-applications",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "graph-based-rate-analysis",
-                "conceptSlug": "trap-graph-based-rate-analysis",
-                "microskillSlug": "avoid-graph-based-rate-analysis",
                 "subject": "Chemistry",
                 "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics"
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "arrhenius-equation-applications",
+                "conceptSlug": "trap-arrhenius-equation-applications",
+                "microskillSlug": "avoid-arrhenius-equation-applications"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-kinetics-activation-energy-concept-14",
+          "title": "Activation energy concept",
+          "conceptTags": [
+            "chemical-kinetics",
+            "activation-energy-concept"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Activation energy concept"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Activation energy concept is heavily tested in recent NEET papers.",
+            "Applying the core principles of Activation energy concept correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Activation energy concept during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Activation energy concept."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Activation energy concept.",
+            "Successfully avoids common pitfalls when Activation energy concept is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Activation energy concept in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-activation-energy-concept-1",
+              "question": "What are the critical factors or principles governing Activation energy concept?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "activation-energy-concept"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "activation-energy-concept",
+                "conceptSlug": "core-activation-energy-concept",
+                "microskillSlug": "understand-activation-energy-concept"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-activation-energy-concept-2",
+              "question": "Describe a scenario where applying the concept of Activation energy concept can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "activation-energy-concept",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "activation-energy-concept",
+                "conceptSlug": "trap-activation-energy-concept",
+                "microskillSlug": "avoid-activation-energy-concept"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-kinetics-collision-theory-of-chemical-kinetics-15",
+          "title": "Collision theory of chemical kinetics",
+          "conceptTags": [
+            "chemical-kinetics",
+            "collision-theory-of-chemical-kinetics"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Collision theory of chemical kinetics"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Collision theory of chemical kinetics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Collision theory of chemical kinetics correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "formulas": [
+            {
+              "name": "First Order Rate",
+              "expression": "k = \\frac{2.303}{t} \\log\\frac{[A_0]}{[A]}",
+              "variables": [
+                "k",
+                "t",
+                "A_0",
+                "A"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Collision theory of chemical kinetics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Collision theory of chemical kinetics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Collision theory of chemical kinetics.",
+            "Successfully avoids common pitfalls when Collision theory of chemical kinetics is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Collision theory of chemical kinetics in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-collision-theory-of-chemical-kinetics-1",
+              "question": "What are the critical factors or principles governing Collision theory of chemical kinetics?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "collision-theory-of-chemical-kinetics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "collision-theory-of-chemical-kinetics",
+                "conceptSlug": "core-collision-theory-of-chemical-kinetics",
+                "microskillSlug": "understand-collision-theory-of-chemical-kinetics"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-collision-theory-of-chemical-kinetics-2",
+              "question": "Describe a scenario where applying the concept of Collision theory of chemical kinetics can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "collision-theory-of-chemical-kinetics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "collision-theory-of-chemical-kinetics",
+                "conceptSlug": "trap-collision-theory-of-chemical-kinetics",
+                "microskillSlug": "avoid-collision-theory-of-chemical-kinetics"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-chemical-kinetics-5",
+      "title": "Mastery Module 5: Effect of catalyst on reaction rate and Related Concepts",
+      "description": "Comprehensive analysis covering effect of catalyst on reaction rate, graphical analysis of zero order, graphical analysis of first order and advanced applications.",
+      "conceptTags": [
+        "chemical-kinetics",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-chemical-kinetics-effect-of-catalyst-on-reaction-rate-16",
+          "title": "Effect of catalyst on reaction rate",
+          "conceptTags": [
+            "chemical-kinetics",
+            "effect-of-catalyst-on-reaction-rate"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Effect of catalyst on reaction rate"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Effect of catalyst on reaction rate is heavily tested in recent NEET papers.",
+            "Applying the core principles of Effect of catalyst on reaction rate correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Effect of catalyst on reaction rate during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Effect of catalyst on reaction rate."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Effect of catalyst on reaction rate.",
+            "Successfully avoids common pitfalls when Effect of catalyst on reaction rate is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Effect of catalyst on reaction rate in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-effect-of-catalyst-on-reaction-rate-1",
+              "question": "What are the critical factors or principles governing Effect of catalyst on reaction rate?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "effect-of-catalyst-on-reaction-rate"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "effect-of-catalyst-on-reaction-rate",
+                "conceptSlug": "core-effect-of-catalyst-on-reaction-rate",
+                "microskillSlug": "understand-effect-of-catalyst-on-reaction-rate"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-effect-of-catalyst-on-reaction-rate-2",
+              "question": "Describe a scenario where applying the concept of Effect of catalyst on reaction rate can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "effect-of-catalyst-on-reaction-rate",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "effect-of-catalyst-on-reaction-rate",
+                "conceptSlug": "trap-effect-of-catalyst-on-reaction-rate",
+                "microskillSlug": "avoid-effect-of-catalyst-on-reaction-rate"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-kinetics-graphical-analysis-of-zero-order-17",
+          "title": "Graphical analysis of zero order",
+          "conceptTags": [
+            "chemical-kinetics",
+            "graphical-analysis-of-zero-order"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Graphical analysis of zero order"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Graphical analysis of zero order is heavily tested in recent NEET papers.",
+            "Applying the core principles of Graphical analysis of zero order correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Graphical analysis of zero order during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Graphical analysis of zero order."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Graphical analysis of zero order.",
+            "Successfully avoids common pitfalls when Graphical analysis of zero order is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Graphical analysis of zero order in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-graphical-analysis-of-zero-order-1",
+              "question": "What are the critical factors or principles governing Graphical analysis of zero order?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "graphical-analysis-of-zero-order"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "graphical-analysis-of-zero-order",
+                "conceptSlug": "core-graphical-analysis-of-zero-order",
+                "microskillSlug": "understand-graphical-analysis-of-zero-order"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-graphical-analysis-of-zero-order-2",
+              "question": "Describe a scenario where applying the concept of Graphical analysis of zero order can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "graphical-analysis-of-zero-order",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "graphical-analysis-of-zero-order",
+                "conceptSlug": "trap-graphical-analysis-of-zero-order",
+                "microskillSlug": "avoid-graphical-analysis-of-zero-order"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-kinetics-graphical-analysis-of-first-order-18",
+          "title": "Graphical analysis of first order",
+          "conceptTags": [
+            "chemical-kinetics",
+            "graphical-analysis-of-first-order"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Graphical analysis of first order"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Graphical analysis of first order is heavily tested in recent NEET papers.",
+            "Applying the core principles of Graphical analysis of first order correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Graphical analysis of first order during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Graphical analysis of first order."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Graphical analysis of first order.",
+            "Successfully avoids common pitfalls when Graphical analysis of first order is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Graphical analysis of first order in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-graphical-analysis-of-first-order-1",
+              "question": "What are the critical factors or principles governing Graphical analysis of first order?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "graphical-analysis-of-first-order"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "graphical-analysis-of-first-order",
+                "conceptSlug": "core-graphical-analysis-of-first-order",
+                "microskillSlug": "understand-graphical-analysis-of-first-order"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-graphical-analysis-of-first-order-2",
+              "question": "Describe a scenario where applying the concept of Graphical analysis of first order can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "graphical-analysis-of-first-order",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "graphical-analysis-of-first-order",
+                "conceptSlug": "trap-graphical-analysis-of-first-order",
+                "microskillSlug": "avoid-graphical-analysis-of-first-order"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-chemical-kinetics-integrated-rate-graphs-for-complex-reactions-19",
+          "title": "Integrated rate graphs for complex reactions",
+          "conceptTags": [
+            "chemical-kinetics",
+            "integrated-rate-graphs-for-complex-reactions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Chemical Kinetics, Section detailing Integrated rate graphs for complex reactions"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Integrated rate graphs for complex reactions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Integrated rate graphs for complex reactions correctly is essential for solving complex multi-step problems in Chemical Kinetics."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Integrated rate graphs for complex reactions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Integrated rate graphs for complex reactions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Integrated rate graphs for complex reactions.",
+            "Successfully avoids common pitfalls when Integrated rate graphs for complex reactions is integrated with other concepts in Chemical Kinetics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Integrated rate graphs for complex reactions in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "chemical-kinetics-q-integrated-rate-graphs-for-complex-reactions-1",
+              "question": "What are the critical factors or principles governing Integrated rate graphs for complex reactions?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "integrated-rate-graphs-for-complex-reactions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-graphs-for-complex-reactions",
+                "conceptSlug": "core-integrated-rate-graphs-for-complex-reactions",
+                "microskillSlug": "understand-integrated-rate-graphs-for-complex-reactions"
+              }
+            },
+            {
+              "id": "chemical-kinetics-q-integrated-rate-graphs-for-complex-reactions-2",
+              "question": "Describe a scenario where applying the concept of Integrated rate graphs for complex reactions can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "chemical-kinetics",
+                "integrated-rate-graphs-for-complex-reactions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "chemical-kinetics",
+                "chapterSlug": "chemical-kinetics",
+                "topicSlug": "chemical-kinetics",
+                "subtopicSlug": "integrated-rate-graphs-for-complex-reactions",
+                "conceptSlug": "trap-integrated-rate-graphs-for-complex-reactions",
+                "microskillSlug": "avoid-integrated-rate-graphs-for-complex-reactions"
               }
             }
           ]

@@ -2,466 +2,504 @@
   "missions": [
     {
       "id": "m-emi-and-ac-1",
-      "title": "Electromagnetic Induction and Alternating Currents - Section 1",
-      "description": "Comprehensive analysis covering magnetic flux, Faraday law, Lenz law and more.",
+      "title": "Mastery Module 1: Magnetic flux definition and Related Concepts",
+      "description": "Comprehensive analysis covering magnetic flux definition, electromagnetic induction (Lenz law), motional emf and advanced applications.",
       "conceptTags": [
         "emi-and-ac",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-emi-and-ac-magnetic-flux",
-          "title": "Magnetic flux",
+          "id": "mt-emi-and-ac-magnetic-flux-definition-0",
+          "title": "Magnetic flux definition",
           "conceptTags": [
             "emi-and-ac",
-            "magnetic-flux"
+            "magnetic-flux-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Magnetic flux"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Magnetic flux definition"
           ],
           "mustKnowFacts": [
-            "Magnetic flux is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Magnetic flux for NEET."
+            "A thorough understanding of Magnetic flux definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic flux definition correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for magnetic flux",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Magnetic flux during complex MCQs.",
-            "Failing to apply the correct logic for Magnetic flux."
+            "Misinterpreting the subtle edge cases of Magnetic flux definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic flux definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Magnetic flux."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic flux definition.",
+            "Successfully avoids common pitfalls when Magnetic flux definition is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Magnetic flux."
+            "Past year questions frequently test the application of Magnetic flux definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-magnetic-flux-1",
-              "question": "Explain the core concept behind Magnetic flux.",
+              "id": "emi-and-ac-q-magnetic-flux-definition-1",
+              "question": "What are the critical factors or principles governing Magnetic flux definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "magnetic-flux"
+                "emi-and-ac",
+                "magnetic-flux-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "magnetic-flux",
-                "conceptSlug": "core-magnetic-flux",
-                "microskillSlug": "understand-magnetic-flux",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "magnetic-flux-definition",
+                "conceptSlug": "core-magnetic-flux-definition",
+                "microskillSlug": "understand-magnetic-flux-definition"
               }
             },
             {
-              "id": "emi-and-ac-q-magnetic-flux-2",
-              "question": "What is a common trap associated with Magnetic flux?",
+              "id": "emi-and-ac-q-magnetic-flux-definition-2",
+              "question": "Describe a scenario where applying the concept of Magnetic flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "magnetic-flux",
+                "emi-and-ac",
+                "magnetic-flux-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "magnetic-flux",
-                "conceptSlug": "trap-magnetic-flux",
-                "microskillSlug": "avoid-magnetic-flux",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "magnetic-flux-definition",
+                "conceptSlug": "trap-magnetic-flux-definition",
+                "microskillSlug": "avoid-magnetic-flux-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-faraday-law",
-          "title": "Faraday law",
+          "id": "mt-emi-and-ac-electromagnetic-induction-lenz-law-1",
+          "title": "Electromagnetic induction (Lenz law)",
           "conceptTags": [
             "emi-and-ac",
-            "faraday-law"
+            "electromagnetic-induction-lenz-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Faraday law"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Electromagnetic induction (Lenz law)"
           ],
           "mustKnowFacts": [
-            "Faraday law is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Faraday law for NEET."
+            "A thorough understanding of Electromagnetic induction (Lenz law) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electromagnetic induction (Lenz law) correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for Faraday law",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Faraday law during complex MCQs.",
-            "Failing to apply the correct logic for Faraday law."
+            "Misinterpreting the subtle edge cases of Electromagnetic induction (Lenz law) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electromagnetic induction (Lenz law)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Faraday law."
+            "Can accurately solve numericals or identify biological structures related specifically to Electromagnetic induction (Lenz law).",
+            "Successfully avoids common pitfalls when Electromagnetic induction (Lenz law) is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Faraday law."
+            "Past year questions frequently test the application of Electromagnetic induction (Lenz law) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-faraday-law-1",
-              "question": "Explain the core concept behind Faraday law.",
+              "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-1",
+              "question": "What are the critical factors or principles governing Electromagnetic induction (Lenz law)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "faraday-law"
+                "emi-and-ac",
+                "electromagnetic-induction-lenz-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "faraday-law",
-                "conceptSlug": "core-faraday-law",
-                "microskillSlug": "understand-faraday-law",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "electromagnetic-induction-lenz-law",
+                "conceptSlug": "core-electromagnetic-induction-lenz-law",
+                "microskillSlug": "understand-electromagnetic-induction-lenz-law"
               }
             },
             {
-              "id": "emi-and-ac-q-faraday-law-2",
-              "question": "What is a common trap associated with Faraday law?",
+              "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-2",
+              "question": "Describe a scenario where applying the concept of Electromagnetic induction (Lenz law) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "faraday-law",
+                "emi-and-ac",
+                "electromagnetic-induction-lenz-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "faraday-law",
-                "conceptSlug": "trap-faraday-law",
-                "microskillSlug": "avoid-faraday-law",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "electromagnetic-induction-lenz-law",
+                "conceptSlug": "trap-electromagnetic-induction-lenz-law",
+                "microskillSlug": "avoid-electromagnetic-induction-lenz-law"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-lenz-law",
-          "title": "Lenz law",
-          "conceptTags": [
-            "emi-and-ac",
-            "lenz-law"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Lenz law"
-          ],
-          "mustKnowFacts": [
-            "Lenz law is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Lenz law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for Lenz law",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Lenz law during complex MCQs.",
-            "Failing to apply the correct logic for Lenz law."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Lenz law."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Lenz law."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-lenz-law-1",
-              "question": "Explain the core concept behind Lenz law.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "lenz-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "lenz-law",
-                "conceptSlug": "core-lenz-law",
-                "microskillSlug": "understand-lenz-law",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
-              }
-            },
-            {
-              "id": "emi-and-ac-q-lenz-law-2",
-              "question": "What is a common trap associated with Lenz law?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "lenz-law",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "lenz-law",
-                "conceptSlug": "trap-lenz-law",
-                "microskillSlug": "avoid-lenz-law",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-emi-and-ac-motional-emf",
+          "id": "mt-emi-and-ac-motional-emf-2",
           "title": "Motional emf",
           "conceptTags": [
             "emi-and-ac",
             "motional-emf"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Motional emf"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Motional emf"
           ],
           "mustKnowFacts": [
-            "Motional emf is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Motional emf for NEET."
+            "A thorough understanding of Motional emf is heavily tested in recent NEET papers.",
+            "Applying the core principles of Motional emf correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for motional emf",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Motional emf during complex MCQs.",
-            "Failing to apply the correct logic for Motional emf."
+            "Misinterpreting the subtle edge cases of Motional emf during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Motional emf."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Motional emf."
+            "Can accurately solve numericals or identify biological structures related specifically to Motional emf.",
+            "Successfully avoids common pitfalls when Motional emf is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Motional emf."
+            "Past year questions frequently test the application of Motional emf in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-motional-emf-1",
-              "question": "Explain the core concept behind Motional emf.",
+              "question": "What are the critical factors or principles governing Motional emf?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "motional-emf"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "motional-emf",
                 "conceptSlug": "core-motional-emf",
-                "microskillSlug": "understand-motional-emf",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-motional-emf"
               }
             },
             {
               "id": "emi-and-ac-q-motional-emf-2",
-              "question": "What is a common trap associated with Motional emf?",
+              "question": "Describe a scenario where applying the concept of Motional emf can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "motional-emf",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "motional-emf",
                 "conceptSlug": "trap-motional-emf",
-                "microskillSlug": "avoid-motional-emf",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-motional-emf"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-induced-current",
-          "title": "Induced current",
+          "id": "mt-emi-and-ac-induced-current-calculation-3",
+          "title": "Induced current calculation",
           "conceptTags": [
             "emi-and-ac",
-            "induced-current"
+            "induced-current-calculation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Induced current"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Induced current calculation"
           ],
           "mustKnowFacts": [
-            "Induced current is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Induced current for NEET."
+            "A thorough understanding of Induced current calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Induced current calculation correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for induced current",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Induced current during complex MCQs.",
-            "Failing to apply the correct logic for Induced current."
+            "Misinterpreting the subtle edge cases of Induced current calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Induced current calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Induced current."
+            "Can accurately solve numericals or identify biological structures related specifically to Induced current calculation.",
+            "Successfully avoids common pitfalls when Induced current calculation is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Induced current."
+            "Past year questions frequently test the application of Induced current calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-induced-current-1",
-              "question": "Explain the core concept behind Induced current.",
+              "id": "emi-and-ac-q-induced-current-calculation-1",
+              "question": "What are the critical factors or principles governing Induced current calculation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "induced-current"
+                "emi-and-ac",
+                "induced-current-calculation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "induced-current",
-                "conceptSlug": "core-induced-current",
-                "microskillSlug": "understand-induced-current",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "induced-current-calculation",
+                "conceptSlug": "core-induced-current-calculation",
+                "microskillSlug": "understand-induced-current-calculation"
               }
             },
             {
-              "id": "emi-and-ac-q-induced-current-2",
-              "question": "What is a common trap associated with Induced current?",
+              "id": "emi-and-ac-q-induced-current-calculation-2",
+              "question": "Describe a scenario where applying the concept of Induced current calculation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "induced-current",
+                "emi-and-ac",
+                "induced-current-calculation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "induced-current",
-                "conceptSlug": "trap-induced-current",
-                "microskillSlug": "avoid-induced-current",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "induced-current-calculation",
+                "conceptSlug": "trap-induced-current-calculation",
+                "microskillSlug": "avoid-induced-current-calculation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-emi-and-ac-eddy-currents-4",
+          "title": "Eddy currents",
+          "conceptTags": [
+            "emi-and-ac",
+            "eddy-currents"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Eddy currents"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Eddy currents is heavily tested in recent NEET papers.",
+            "Applying the core principles of Eddy currents correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+          ],
+          "formulas": [
+            {
+              "name": "Ohm Law",
+              "expression": "V = I R",
+              "variables": [
+                "V",
+                "I",
+                "R"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Eddy currents during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Eddy currents."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Eddy currents.",
+            "Successfully avoids common pitfalls when Eddy currents is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Eddy currents in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "emi-and-ac-q-eddy-currents-1",
+              "question": "What are the critical factors or principles governing Eddy currents?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "eddy-currents"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "eddy-currents",
+                "conceptSlug": "core-eddy-currents",
+                "microskillSlug": "understand-eddy-currents"
+              }
+            },
+            {
+              "id": "emi-and-ac-q-eddy-currents-2",
+              "question": "Describe a scenario where applying the concept of Eddy currents can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "eddy-currents",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "eddy-currents",
+                "conceptSlug": "trap-eddy-currents",
+                "microskillSlug": "avoid-eddy-currents"
               }
             }
           ]
@@ -470,466 +508,504 @@
     },
     {
       "id": "m-emi-and-ac-2",
-      "title": "Electromagnetic Induction and Alternating Currents - Section 2",
-      "description": "Comprehensive analysis covering eddy currents, self inductance, mutual inductance and more.",
+      "title": "Mastery Module 2: Self inductance and Related Concepts",
+      "description": "Comprehensive analysis covering self inductance, mutual inductance, energy stored in inductor and advanced applications.",
       "conceptTags": [
         "emi-and-ac",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-emi-and-ac-eddy-currents",
-          "title": "Eddy currents",
-          "conceptTags": [
-            "emi-and-ac",
-            "eddy-currents"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Eddy currents"
-          ],
-          "mustKnowFacts": [
-            "Eddy currents is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Eddy currents for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for eddy currents",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Eddy currents during complex MCQs.",
-            "Failing to apply the correct logic for Eddy currents."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Eddy currents."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Eddy currents."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-eddy-currents-1",
-              "question": "Explain the core concept behind Eddy currents.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "eddy-currents"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "eddy-currents",
-                "conceptSlug": "core-eddy-currents",
-                "microskillSlug": "understand-eddy-currents",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
-              }
-            },
-            {
-              "id": "emi-and-ac-q-eddy-currents-2",
-              "question": "What is a common trap associated with Eddy currents?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "eddy-currents",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "eddy-currents",
-                "conceptSlug": "trap-eddy-currents",
-                "microskillSlug": "avoid-eddy-currents",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-emi-and-ac-self-inductance",
+          "id": "mt-emi-and-ac-self-inductance-5",
           "title": "Self inductance",
           "conceptTags": [
             "emi-and-ac",
             "self-inductance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Self inductance"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Self inductance"
           ],
           "mustKnowFacts": [
-            "Self inductance is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Self inductance for NEET."
+            "A thorough understanding of Self inductance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Self inductance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for self inductance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Self inductance during complex MCQs.",
-            "Failing to apply the correct logic for Self inductance."
+            "Misinterpreting the subtle edge cases of Self inductance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Self inductance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Self inductance."
+            "Can accurately solve numericals or identify biological structures related specifically to Self inductance.",
+            "Successfully avoids common pitfalls when Self inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Self inductance."
+            "Past year questions frequently test the application of Self inductance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-self-inductance-1",
-              "question": "Explain the core concept behind Self inductance.",
+              "question": "What are the critical factors or principles governing Self inductance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "self-inductance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "self-inductance",
                 "conceptSlug": "core-self-inductance",
-                "microskillSlug": "understand-self-inductance",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-self-inductance"
               }
             },
             {
               "id": "emi-and-ac-q-self-inductance-2",
-              "question": "What is a common trap associated with Self inductance?",
+              "question": "Describe a scenario where applying the concept of Self inductance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "self-inductance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "self-inductance",
                 "conceptSlug": "trap-self-inductance",
-                "microskillSlug": "avoid-self-inductance",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-self-inductance"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-mutual-inductance",
+          "id": "mt-emi-and-ac-mutual-inductance-6",
           "title": "Mutual inductance",
           "conceptTags": [
             "emi-and-ac",
             "mutual-inductance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Mutual inductance"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Mutual inductance"
           ],
           "mustKnowFacts": [
-            "Mutual inductance is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Mutual inductance for NEET."
+            "A thorough understanding of Mutual inductance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mutual inductance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for mutual inductance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mutual inductance during complex MCQs.",
-            "Failing to apply the correct logic for Mutual inductance."
+            "Misinterpreting the subtle edge cases of Mutual inductance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mutual inductance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mutual inductance."
+            "Can accurately solve numericals or identify biological structures related specifically to Mutual inductance.",
+            "Successfully avoids common pitfalls when Mutual inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mutual inductance."
+            "Past year questions frequently test the application of Mutual inductance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-mutual-inductance-1",
-              "question": "Explain the core concept behind Mutual inductance.",
+              "question": "What are the critical factors or principles governing Mutual inductance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "mutual-inductance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "mutual-inductance",
                 "conceptSlug": "core-mutual-inductance",
-                "microskillSlug": "understand-mutual-inductance",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-mutual-inductance"
               }
             },
             {
               "id": "emi-and-ac-q-mutual-inductance-2",
-              "question": "What is a common trap associated with Mutual inductance?",
+              "question": "Describe a scenario where applying the concept of Mutual inductance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "mutual-inductance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "mutual-inductance",
                 "conceptSlug": "trap-mutual-inductance",
-                "microskillSlug": "avoid-mutual-inductance",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-mutual-inductance"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-energy-in-inductor",
-          "title": "Energy in inductor",
+          "id": "mt-emi-and-ac-energy-stored-in-inductor-7",
+          "title": "Energy stored in inductor",
           "conceptTags": [
             "emi-and-ac",
-            "energy-in-inductor"
+            "energy-stored-in-inductor"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Energy in inductor"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Energy stored in inductor"
           ],
           "mustKnowFacts": [
-            "Energy in inductor is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Energy in inductor for NEET."
+            "A thorough understanding of Energy stored in inductor is heavily tested in recent NEET papers.",
+            "Applying the core principles of Energy stored in inductor correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for energy in inductor",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Energy in inductor during complex MCQs.",
-            "Failing to apply the correct logic for Energy in inductor."
+            "Misinterpreting the subtle edge cases of Energy stored in inductor during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Energy stored in inductor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Energy in inductor."
+            "Can accurately solve numericals or identify biological structures related specifically to Energy stored in inductor.",
+            "Successfully avoids common pitfalls when Energy stored in inductor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Energy in inductor."
+            "Past year questions frequently test the application of Energy stored in inductor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-energy-in-inductor-1",
-              "question": "Explain the core concept behind Energy in inductor.",
+              "id": "emi-and-ac-q-energy-stored-in-inductor-1",
+              "question": "What are the critical factors or principles governing Energy stored in inductor?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "energy-in-inductor"
+                "emi-and-ac",
+                "energy-stored-in-inductor"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "energy-in-inductor",
-                "conceptSlug": "core-energy-in-inductor",
-                "microskillSlug": "understand-energy-in-inductor",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "energy-stored-in-inductor",
+                "conceptSlug": "core-energy-stored-in-inductor",
+                "microskillSlug": "understand-energy-stored-in-inductor"
               }
             },
             {
-              "id": "emi-and-ac-q-energy-in-inductor-2",
-              "question": "What is a common trap associated with Energy in inductor?",
+              "id": "emi-and-ac-q-energy-stored-in-inductor-2",
+              "question": "Describe a scenario where applying the concept of Energy stored in inductor can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "energy-in-inductor",
+                "emi-and-ac",
+                "energy-stored-in-inductor",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "energy-in-inductor",
-                "conceptSlug": "trap-energy-in-inductor",
-                "microskillSlug": "avoid-energy-in-inductor",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "energy-stored-in-inductor",
+                "conceptSlug": "trap-energy-stored-in-inductor",
+                "microskillSlug": "avoid-energy-stored-in-inductor"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-ac-basics",
-          "title": "AC basics",
+          "id": "mt-emi-and-ac-alternating-current-basics-8",
+          "title": "Alternating current basics",
           "conceptTags": [
             "emi-and-ac",
-            "ac-basics"
+            "alternating-current-basics"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, AC basics"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Alternating current basics"
           ],
           "mustKnowFacts": [
-            "AC basics is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing AC basics for NEET."
+            "A thorough understanding of Alternating current basics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Alternating current basics correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for AC basics",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret AC basics during complex MCQs.",
-            "Failing to apply the correct logic for AC basics."
+            "Misinterpreting the subtle edge cases of Alternating current basics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Alternating current basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to AC basics."
+            "Can accurately solve numericals or identify biological structures related specifically to Alternating current basics.",
+            "Successfully avoids common pitfalls when Alternating current basics is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about AC basics."
+            "Past year questions frequently test the application of Alternating current basics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-ac-basics-1",
-              "question": "Explain the core concept behind AC basics.",
+              "id": "emi-and-ac-q-alternating-current-basics-1",
+              "question": "What are the critical factors or principles governing Alternating current basics?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ac-basics"
+                "emi-and-ac",
+                "alternating-current-basics"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "ac-basics",
-                "conceptSlug": "core-ac-basics",
-                "microskillSlug": "understand-ac-basics",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "alternating-current-basics",
+                "conceptSlug": "core-alternating-current-basics",
+                "microskillSlug": "understand-alternating-current-basics"
               }
             },
             {
-              "id": "emi-and-ac-q-ac-basics-2",
-              "question": "What is a common trap associated with AC basics?",
+              "id": "emi-and-ac-q-alternating-current-basics-2",
+              "question": "Describe a scenario where applying the concept of Alternating current basics can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ac-basics",
+                "emi-and-ac",
+                "alternating-current-basics",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "ac-basics",
-                "conceptSlug": "trap-ac-basics",
-                "microskillSlug": "avoid-ac-basics",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "alternating-current-basics",
+                "conceptSlug": "trap-alternating-current-basics",
+                "microskillSlug": "avoid-alternating-current-basics"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-emi-and-ac-peak-value-of-ac-9",
+          "title": "Peak value of AC",
+          "conceptTags": [
+            "emi-and-ac",
+            "peak-value-of-ac"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Peak value of AC"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Peak value of AC is heavily tested in recent NEET papers.",
+            "Applying the core principles of Peak value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Peak value of AC during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Peak value of AC."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Peak value of AC.",
+            "Successfully avoids common pitfalls when Peak value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Peak value of AC in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "emi-and-ac-q-peak-value-of-ac-1",
+              "question": "What are the critical factors or principles governing Peak value of AC?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "peak-value-of-ac"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "peak-value-of-ac",
+                "conceptSlug": "core-peak-value-of-ac",
+                "microskillSlug": "understand-peak-value-of-ac"
+              }
+            },
+            {
+              "id": "emi-and-ac-q-peak-value-of-ac-2",
+              "question": "Describe a scenario where applying the concept of Peak value of AC can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "peak-value-of-ac",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "peak-value-of-ac",
+                "conceptSlug": "trap-peak-value-of-ac",
+                "microskillSlug": "avoid-peak-value-of-ac"
               }
             }
           ]
@@ -938,466 +1014,506 @@
     },
     {
       "id": "m-emi-and-ac-3",
-      "title": "Electromagnetic Induction and Alternating Currents - Section 3",
-      "description": "Comprehensive analysis covering peak/rms/average, reactance, impedance and more.",
+      "title": "Mastery Module 3: Rms value of AC and Related Concepts",
+      "description": "Comprehensive analysis covering rms value of AC, average value of AC, inductive reactance and advanced applications.",
       "conceptTags": [
         "emi-and-ac",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-emi-and-ac-peak-rms-average",
-          "title": "Peak/rms/average",
+          "id": "mt-emi-and-ac-rms-value-of-ac-10",
+          "title": "Rms value of AC",
           "conceptTags": [
             "emi-and-ac",
-            "peak-rms-average"
+            "rms-value-of-ac"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Peak/rms/average"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Rms value of AC"
           ],
           "mustKnowFacts": [
-            "Peak/rms/average is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Peak/rms/average for NEET."
+            "A thorough understanding of Rms value of AC is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rms value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for peak/rms/average",
-              "expression": "F = m a",
+              "name": "RMS Speed",
+              "expression": "v_{rms} = \\sqrt{\\frac{3RT}{M}}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v_{rms}",
+                "R",
+                "T",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Peak/rms/average during complex MCQs.",
-            "Failing to apply the correct logic for Peak/rms/average."
+            "Misinterpreting the subtle edge cases of Rms value of AC during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rms value of AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Peak/rms/average."
+            "Can accurately solve numericals or identify biological structures related specifically to Rms value of AC.",
+            "Successfully avoids common pitfalls when Rms value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Peak/rms/average."
+            "Past year questions frequently test the application of Rms value of AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-peak-rms-average-1",
-              "question": "Explain the core concept behind Peak/rms/average.",
+              "id": "emi-and-ac-q-rms-value-of-ac-1",
+              "question": "What are the critical factors or principles governing Rms value of AC?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "peak-rms-average"
+                "emi-and-ac",
+                "rms-value-of-ac"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "peak-rms-average",
-                "conceptSlug": "core-peak-rms-average",
-                "microskillSlug": "understand-peak-rms-average",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "rms-value-of-ac",
+                "conceptSlug": "core-rms-value-of-ac",
+                "microskillSlug": "understand-rms-value-of-ac"
               }
             },
             {
-              "id": "emi-and-ac-q-peak-rms-average-2",
-              "question": "What is a common trap associated with Peak/rms/average?",
+              "id": "emi-and-ac-q-rms-value-of-ac-2",
+              "question": "Describe a scenario where applying the concept of Rms value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "peak-rms-average",
+                "emi-and-ac",
+                "rms-value-of-ac",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "peak-rms-average",
-                "conceptSlug": "trap-peak-rms-average",
-                "microskillSlug": "avoid-peak-rms-average",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "rms-value-of-ac",
+                "conceptSlug": "trap-rms-value-of-ac",
+                "microskillSlug": "avoid-rms-value-of-ac"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-reactance",
-          "title": "Reactance",
+          "id": "mt-emi-and-ac-average-value-of-ac-11",
+          "title": "Average value of AC",
           "conceptTags": [
             "emi-and-ac",
-            "reactance"
+            "average-value-of-ac"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Reactance"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Average value of AC"
           ],
           "mustKnowFacts": [
-            "Reactance is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Reactance for NEET."
+            "A thorough understanding of Average value of AC is heavily tested in recent NEET papers.",
+            "Applying the core principles of Average value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for reactance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Reactance during complex MCQs.",
-            "Failing to apply the correct logic for Reactance."
+            "Misinterpreting the subtle edge cases of Average value of AC during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Average value of AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Reactance."
+            "Can accurately solve numericals or identify biological structures related specifically to Average value of AC.",
+            "Successfully avoids common pitfalls when Average value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Reactance."
+            "Past year questions frequently test the application of Average value of AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-reactance-1",
-              "question": "Explain the core concept behind Reactance.",
+              "id": "emi-and-ac-q-average-value-of-ac-1",
+              "question": "What are the critical factors or principles governing Average value of AC?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "reactance"
+                "emi-and-ac",
+                "average-value-of-ac"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "reactance",
-                "conceptSlug": "core-reactance",
-                "microskillSlug": "understand-reactance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "average-value-of-ac",
+                "conceptSlug": "core-average-value-of-ac",
+                "microskillSlug": "understand-average-value-of-ac"
               }
             },
             {
-              "id": "emi-and-ac-q-reactance-2",
-              "question": "What is a common trap associated with Reactance?",
+              "id": "emi-and-ac-q-average-value-of-ac-2",
+              "question": "Describe a scenario where applying the concept of Average value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "reactance",
+                "emi-and-ac",
+                "average-value-of-ac",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "reactance",
-                "conceptSlug": "trap-reactance",
-                "microskillSlug": "avoid-reactance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "average-value-of-ac",
+                "conceptSlug": "trap-average-value-of-ac",
+                "microskillSlug": "avoid-average-value-of-ac"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-impedance",
-          "title": "Impedance",
+          "id": "mt-emi-and-ac-inductive-reactance-12",
+          "title": "Inductive reactance",
           "conceptTags": [
             "emi-and-ac",
-            "impedance"
+            "inductive-reactance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Impedance"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Inductive reactance"
           ],
           "mustKnowFacts": [
-            "Impedance is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Impedance for NEET."
+            "A thorough understanding of Inductive reactance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Inductive reactance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for impedance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Impedance during complex MCQs.",
-            "Failing to apply the correct logic for Impedance."
+            "Misinterpreting the subtle edge cases of Inductive reactance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Inductive reactance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Impedance."
+            "Can accurately solve numericals or identify biological structures related specifically to Inductive reactance.",
+            "Successfully avoids common pitfalls when Inductive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Impedance."
+            "Past year questions frequently test the application of Inductive reactance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-impedance-1",
-              "question": "Explain the core concept behind Impedance.",
+              "id": "emi-and-ac-q-inductive-reactance-1",
+              "question": "What are the critical factors or principles governing Inductive reactance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "impedance"
+                "emi-and-ac",
+                "inductive-reactance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "impedance",
-                "conceptSlug": "core-impedance",
-                "microskillSlug": "understand-impedance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "inductive-reactance",
+                "conceptSlug": "core-inductive-reactance",
+                "microskillSlug": "understand-inductive-reactance"
               }
             },
             {
-              "id": "emi-and-ac-q-impedance-2",
-              "question": "What is a common trap associated with Impedance?",
+              "id": "emi-and-ac-q-inductive-reactance-2",
+              "question": "Describe a scenario where applying the concept of Inductive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "impedance",
+                "emi-and-ac",
+                "inductive-reactance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "impedance",
-                "conceptSlug": "trap-impedance",
-                "microskillSlug": "avoid-impedance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "inductive-reactance",
+                "conceptSlug": "trap-inductive-reactance",
+                "microskillSlug": "avoid-inductive-reactance"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-lcr-circuit",
-          "title": "LCR circuit",
+          "id": "mt-emi-and-ac-capacitive-reactance-13",
+          "title": "Capacitive reactance",
           "conceptTags": [
             "emi-and-ac",
-            "lcr-circuit"
+            "capacitive-reactance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, LCR circuit"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Capacitive reactance"
           ],
           "mustKnowFacts": [
-            "LCR circuit is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing LCR circuit for NEET."
+            "A thorough understanding of Capacitive reactance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Capacitive reactance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for LCR circuit",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret LCR circuit during complex MCQs.",
-            "Failing to apply the correct logic for LCR circuit."
+            "Misinterpreting the subtle edge cases of Capacitive reactance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Capacitive reactance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to LCR circuit."
+            "Can accurately solve numericals or identify biological structures related specifically to Capacitive reactance.",
+            "Successfully avoids common pitfalls when Capacitive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about LCR circuit."
+            "Past year questions frequently test the application of Capacitive reactance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-lcr-circuit-1",
-              "question": "Explain the core concept behind LCR circuit.",
+              "id": "emi-and-ac-q-capacitive-reactance-1",
+              "question": "What are the critical factors or principles governing Capacitive reactance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "lcr-circuit"
+                "emi-and-ac",
+                "capacitive-reactance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "lcr-circuit",
-                "conceptSlug": "core-lcr-circuit",
-                "microskillSlug": "understand-lcr-circuit",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "capacitive-reactance",
+                "conceptSlug": "core-capacitive-reactance",
+                "microskillSlug": "understand-capacitive-reactance"
               }
             },
             {
-              "id": "emi-and-ac-q-lcr-circuit-2",
-              "question": "What is a common trap associated with LCR circuit?",
+              "id": "emi-and-ac-q-capacitive-reactance-2",
+              "question": "Describe a scenario where applying the concept of Capacitive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "lcr-circuit",
+                "emi-and-ac",
+                "capacitive-reactance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "lcr-circuit",
-                "conceptSlug": "trap-lcr-circuit",
-                "microskillSlug": "avoid-lcr-circuit",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "capacitive-reactance",
+                "conceptSlug": "trap-capacitive-reactance",
+                "microskillSlug": "avoid-capacitive-reactance"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-resonance",
-          "title": "Resonance",
+          "id": "mt-emi-and-ac-impedance-in-ac-14",
+          "title": "Impedance in AC",
           "conceptTags": [
             "emi-and-ac",
-            "resonance"
+            "impedance-in-ac"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Resonance"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Impedance in AC"
           ],
           "mustKnowFacts": [
-            "Resonance is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Resonance for NEET."
+            "A thorough understanding of Impedance in AC is heavily tested in recent NEET papers.",
+            "Applying the core principles of Impedance in AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for resonance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Resonance during complex MCQs.",
-            "Failing to apply the correct logic for Resonance."
+            "Misinterpreting the subtle edge cases of Impedance in AC during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Impedance in AC."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Resonance."
+            "Can accurately solve numericals or identify biological structures related specifically to Impedance in AC.",
+            "Successfully avoids common pitfalls when Impedance in AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Resonance."
+            "Past year questions frequently test the application of Impedance in AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-resonance-1",
-              "question": "Explain the core concept behind Resonance.",
+              "id": "emi-and-ac-q-impedance-in-ac-1",
+              "question": "What are the critical factors or principles governing Impedance in AC?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "resonance"
+                "emi-and-ac",
+                "impedance-in-ac"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "resonance",
-                "conceptSlug": "core-resonance",
-                "microskillSlug": "understand-resonance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "impedance-in-ac",
+                "conceptSlug": "core-impedance-in-ac",
+                "microskillSlug": "understand-impedance-in-ac"
               }
             },
             {
-              "id": "emi-and-ac-q-resonance-2",
-              "question": "What is a common trap associated with Resonance?",
+              "id": "emi-and-ac-q-impedance-in-ac-2",
+              "question": "Describe a scenario where applying the concept of Impedance in AC can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "resonance",
+                "emi-and-ac",
+                "impedance-in-ac",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "resonance",
-                "conceptSlug": "trap-resonance",
-                "microskillSlug": "avoid-resonance",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "impedance-in-ac",
+                "conceptSlug": "trap-impedance-in-ac",
+                "microskillSlug": "avoid-impedance-in-ac"
               }
             }
           ]
@@ -1406,375 +1522,716 @@
     },
     {
       "id": "m-emi-and-ac-4",
-      "title": "Electromagnetic Induction and Alternating Currents - Section 4",
-      "description": "Comprehensive analysis covering power factor, wattless current, transformer and more.",
+      "title": "Mastery Module 4: AC resonance/LCR and Related Concepts",
+      "description": "Comprehensive analysis covering AC resonance/LCR, power in AC circuits, power factor and advanced applications.",
       "conceptTags": [
         "emi-and-ac",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-emi-and-ac-power-factor",
+          "id": "mt-emi-and-ac-ac-resonance-lcr-15",
+          "title": "AC resonance/LCR",
+          "conceptTags": [
+            "emi-and-ac",
+            "ac-resonance-lcr"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing AC resonance/LCR"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of AC resonance/LCR is heavily tested in recent NEET papers.",
+            "Applying the core principles of AC resonance/LCR correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of AC resonance/LCR during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with AC resonance/LCR."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to AC resonance/LCR.",
+            "Successfully avoids common pitfalls when AC resonance/LCR is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of AC resonance/LCR in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "emi-and-ac-q-ac-resonance-lcr-1",
+              "question": "What are the critical factors or principles governing AC resonance/LCR?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "ac-resonance-lcr"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "ac-resonance-lcr",
+                "conceptSlug": "core-ac-resonance-lcr",
+                "microskillSlug": "understand-ac-resonance-lcr"
+              }
+            },
+            {
+              "id": "emi-and-ac-q-ac-resonance-lcr-2",
+              "question": "Describe a scenario where applying the concept of AC resonance/LCR can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "ac-resonance-lcr",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "ac-resonance-lcr",
+                "conceptSlug": "trap-ac-resonance-lcr",
+                "microskillSlug": "avoid-ac-resonance-lcr"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-emi-and-ac-power-in-ac-circuits-16",
+          "title": "Power in AC circuits",
+          "conceptTags": [
+            "emi-and-ac",
+            "power-in-ac-circuits"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Power in AC circuits"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Power in AC circuits is heavily tested in recent NEET papers.",
+            "Applying the core principles of Power in AC circuits correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Power in AC circuits during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Power in AC circuits."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Power in AC circuits.",
+            "Successfully avoids common pitfalls when Power in AC circuits is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Power in AC circuits in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "emi-and-ac-q-power-in-ac-circuits-1",
+              "question": "What are the critical factors or principles governing Power in AC circuits?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "power-in-ac-circuits"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "power-in-ac-circuits",
+                "conceptSlug": "core-power-in-ac-circuits",
+                "microskillSlug": "understand-power-in-ac-circuits"
+              }
+            },
+            {
+              "id": "emi-and-ac-q-power-in-ac-circuits-2",
+              "question": "Describe a scenario where applying the concept of Power in AC circuits can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "power-in-ac-circuits",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "power-in-ac-circuits",
+                "conceptSlug": "trap-power-in-ac-circuits",
+                "microskillSlug": "avoid-power-in-ac-circuits"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-emi-and-ac-power-factor-17",
           "title": "Power factor",
           "conceptTags": [
             "emi-and-ac",
             "power-factor"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Power factor"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Power factor"
           ],
           "mustKnowFacts": [
-            "Power factor is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Power factor for NEET."
+            "A thorough understanding of Power factor is heavily tested in recent NEET papers.",
+            "Applying the core principles of Power factor correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for power factor",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Power factor during complex MCQs.",
-            "Failing to apply the correct logic for Power factor."
+            "Misinterpreting the subtle edge cases of Power factor during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Power factor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Power factor."
+            "Can accurately solve numericals or identify biological structures related specifically to Power factor.",
+            "Successfully avoids common pitfalls when Power factor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Power factor."
+            "Past year questions frequently test the application of Power factor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-power-factor-1",
-              "question": "Explain the core concept behind Power factor.",
+              "question": "What are the critical factors or principles governing Power factor?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "power-factor"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "power-factor",
                 "conceptSlug": "core-power-factor",
-                "microskillSlug": "understand-power-factor",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-power-factor"
               }
             },
             {
               "id": "emi-and-ac-q-power-factor-2",
-              "question": "What is a common trap associated with Power factor?",
+              "question": "Describe a scenario where applying the concept of Power factor can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "power-factor",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "power-factor",
                 "conceptSlug": "trap-power-factor",
-                "microskillSlug": "avoid-power-factor",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-power-factor"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-wattless-current",
+          "id": "mt-emi-and-ac-wattless-current-18",
           "title": "Wattless current",
           "conceptTags": [
             "emi-and-ac",
             "wattless-current"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Wattless current"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Wattless current"
           ],
           "mustKnowFacts": [
-            "Wattless current is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Wattless current for NEET."
+            "A thorough understanding of Wattless current is heavily tested in recent NEET papers.",
+            "Applying the core principles of Wattless current correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for wattless current",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Wattless current during complex MCQs.",
-            "Failing to apply the correct logic for Wattless current."
+            "Misinterpreting the subtle edge cases of Wattless current during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Wattless current."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Wattless current."
+            "Can accurately solve numericals or identify biological structures related specifically to Wattless current.",
+            "Successfully avoids common pitfalls when Wattless current is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Wattless current."
+            "Past year questions frequently test the application of Wattless current in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-wattless-current-1",
-              "question": "Explain the core concept behind Wattless current.",
+              "question": "What are the critical factors or principles governing Wattless current?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "wattless-current"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "wattless-current",
                 "conceptSlug": "core-wattless-current",
-                "microskillSlug": "understand-wattless-current",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-wattless-current"
               }
             },
             {
               "id": "emi-and-ac-q-wattless-current-2",
-              "question": "What is a common trap associated with Wattless current?",
+              "question": "Describe a scenario where applying the concept of Wattless current can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "wattless-current",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "wattless-current",
                 "conceptSlug": "trap-wattless-current",
-                "microskillSlug": "avoid-wattless-current",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-wattless-current"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-transformer",
-          "title": "Transformer",
+          "id": "mt-emi-and-ac-transformer-principle-19",
+          "title": "Transformer principle",
           "conceptTags": [
             "emi-and-ac",
-            "transformer"
+            "transformer-principle"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Transformer"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Transformer principle"
           ],
           "mustKnowFacts": [
-            "Transformer is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing Transformer for NEET."
+            "A thorough understanding of Transformer principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Transformer principle correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for transformer",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Transformer during complex MCQs.",
-            "Failing to apply the correct logic for Transformer."
+            "Misinterpreting the subtle edge cases of Transformer principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Transformer principle."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Transformer."
+            "Can accurately solve numericals or identify biological structures related specifically to Transformer principle.",
+            "Successfully avoids common pitfalls when Transformer principle is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Transformer."
+            "Past year questions frequently test the application of Transformer principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-transformer-1",
-              "question": "Explain the core concept behind Transformer.",
+              "id": "emi-and-ac-q-transformer-principle-1",
+              "question": "What are the critical factors or principles governing Transformer principle?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "transformer"
+                "emi-and-ac",
+                "transformer-principle"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "transformer",
-                "conceptSlug": "core-transformer",
-                "microskillSlug": "understand-transformer",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "transformer-principle",
+                "conceptSlug": "core-transformer-principle",
+                "microskillSlug": "understand-transformer-principle"
               }
             },
             {
-              "id": "emi-and-ac-q-transformer-2",
-              "question": "What is a common trap associated with Transformer?",
+              "id": "emi-and-ac-q-transformer-principle-2",
+              "question": "Describe a scenario where applying the concept of Transformer principle can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "transformer",
+                "emi-and-ac",
+                "transformer-principle",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "transformer",
-                "conceptSlug": "trap-transformer",
-                "microskillSlug": "avoid-transformer",
                 "subject": "Physics",
                 "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "transformer-principle",
+                "conceptSlug": "trap-transformer-principle",
+                "microskillSlug": "avoid-transformer-principle"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-emi-and-ac-5",
+      "title": "Mastery Module 5: Step-up and step-down transformers and Related Concepts",
+      "description": "Comprehensive analysis covering step-up and step-down transformers, AC generator and advanced applications.",
+      "conceptTags": [
+        "emi-and-ac",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-emi-and-ac-step-up-and-step-down-transformers-20",
+          "title": "Step-up and step-down transformers",
+          "conceptTags": [
+            "emi-and-ac",
+            "step-up-and-step-down-transformers"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Step-up and step-down transformers"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Step-up and step-down transformers is heavily tested in recent NEET papers.",
+            "Applying the core principles of Step-up and step-down transformers correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Step-up and step-down transformers during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Step-up and step-down transformers."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Step-up and step-down transformers.",
+            "Successfully avoids common pitfalls when Step-up and step-down transformers is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Step-up and step-down transformers in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "emi-and-ac-q-step-up-and-step-down-transformers-1",
+              "question": "What are the critical factors or principles governing Step-up and step-down transformers?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "step-up-and-step-down-transformers"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "step-up-and-step-down-transformers",
+                "conceptSlug": "core-step-up-and-step-down-transformers",
+                "microskillSlug": "understand-step-up-and-step-down-transformers"
+              }
+            },
+            {
+              "id": "emi-and-ac-q-step-up-and-step-down-transformers-2",
+              "question": "Describe a scenario where applying the concept of Step-up and step-down transformers can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "emi-and-ac",
+                "step-up-and-step-down-transformers",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
+                "topicSlug": "emi-and-ac",
+                "subtopicSlug": "step-up-and-step-down-transformers",
+                "conceptSlug": "trap-step-up-and-step-down-transformers",
+                "microskillSlug": "avoid-step-up-and-step-down-transformers"
               }
             }
           ]
         },
         {
-          "id": "mt-emi-and-ac-ac-generator",
+          "id": "mt-emi-and-ac-ac-generator-21",
           "title": "AC generator",
           "conceptTags": [
             "emi-and-ac",
             "ac-generator"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, AC generator"
+            "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing AC generator"
           ],
           "mustKnowFacts": [
-            "AC generator is a fundamental subtopic of Electromagnetic Induction and Alternating Currents.",
-            "Crucial to understand the principles governing AC generator for NEET."
+            "A thorough understanding of AC generator is heavily tested in recent NEET papers.",
+            "Applying the core principles of AC generator correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
-              "name": "Formula for AC generator",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret AC generator during complex MCQs.",
-            "Failing to apply the correct logic for AC generator."
+            "Misinterpreting the subtle edge cases of AC generator during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with AC generator."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to AC generator."
+            "Can accurately solve numericals or identify biological structures related specifically to AC generator.",
+            "Successfully avoids common pitfalls when AC generator is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about AC generator."
+            "Past year questions frequently test the application of AC generator in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-ac-generator-1",
-              "question": "Explain the core concept behind AC generator.",
+              "question": "What are the critical factors or principles governing AC generator?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "ac-generator"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "ac-generator",
                 "conceptSlug": "core-ac-generator",
-                "microskillSlug": "understand-ac-generator",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "understand-ac-generator"
               }
             },
             {
               "id": "emi-and-ac-q-ac-generator-2",
-              "question": "What is a common trap associated with AC generator?",
+              "question": "Describe a scenario where applying the concept of AC generator can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "emi-and-ac",
                 "ac-generator",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "emi-and-ac",
+                "chapterSlug": "emi-and-ac",
                 "topicSlug": "emi-and-ac",
                 "subtopicSlug": "ac-generator",
                 "conceptSlug": "trap-ac-generator",
-                "microskillSlug": "avoid-ac-generator",
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac"
+                "microskillSlug": "avoid-ac-generator"
               }
             }
           ]

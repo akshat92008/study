@@ -2,431 +2,359 @@
   "missions": [
     {
       "id": "m-practical-chemistry-1",
-      "title": "Principles Related to Practical Chemistry - Section 1",
-      "description": "Comprehensive analysis covering detection of N/S/halogens, functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine, Mohr salt and more.",
+      "title": "Mastery Module 1: Qualitative analysis of functional groups and Related Concepts",
+      "description": "Comprehensive analysis covering qualitative analysis of functional groups, tests for carbohydrates, tests for proteins and amino acids and advanced applications.",
       "conceptTags": [
         "practical-chemistry",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-practical-chemistry-detection-of-n-s-halogens",
-          "title": "Detection of N/S/halogens",
+          "id": "mt-practical-chemistry-qualitative-analysis-of-functional-groups-0",
+          "title": "Qualitative analysis of functional groups",
           "conceptTags": [
             "practical-chemistry",
-            "detection-of-n-s-halogens"
+            "qualitative-analysis-of-functional-groups"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Detection of N/S/halogens"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Qualitative analysis of functional groups"
           ],
           "mustKnowFacts": [
-            "Detection of N/S/halogens is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Detection of N/S/halogens for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for detection of N/S/halogens",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving detection of N/S/halogens",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Qualitative analysis of functional groups is heavily tested in recent NEET papers.",
+            "Applying the core principles of Qualitative analysis of functional groups correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Detection of N/S/halogens during complex MCQs.",
-            "Failing to apply the correct logic for Detection of N/S/halogens."
+            "Misinterpreting the subtle edge cases of Qualitative analysis of functional groups during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Qualitative analysis of functional groups."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Detection of N/S/halogens."
+            "Can accurately solve numericals or identify biological structures related specifically to Qualitative analysis of functional groups.",
+            "Successfully avoids common pitfalls when Qualitative analysis of functional groups is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Detection of N/S/halogens."
+            "Past year questions frequently test the application of Qualitative analysis of functional groups in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-detection-of-n-s-halogens-1",
-              "question": "Explain the core concept behind Detection of N/S/halogens.",
+              "id": "practical-chemistry-q-qualitative-analysis-of-functional-groups-1",
+              "question": "What are the critical factors or principles governing Qualitative analysis of functional groups?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "detection-of-n-s-halogens"
+                "practical-chemistry",
+                "qualitative-analysis-of-functional-groups"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "detection-of-n-s-halogens",
-                "conceptSlug": "core-detection-of-n-s-halogens",
-                "microskillSlug": "understand-detection-of-n-s-halogens",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-analysis-of-functional-groups",
+                "conceptSlug": "core-qualitative-analysis-of-functional-groups",
+                "microskillSlug": "understand-qualitative-analysis-of-functional-groups"
               }
             },
             {
-              "id": "practical-chemistry-q-detection-of-n-s-halogens-2",
-              "question": "What is a common trap associated with Detection of N/S/halogens?",
+              "id": "practical-chemistry-q-qualitative-analysis-of-functional-groups-2",
+              "question": "Describe a scenario where applying the concept of Qualitative analysis of functional groups can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "detection-of-n-s-halogens",
+                "practical-chemistry",
+                "qualitative-analysis-of-functional-groups",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "detection-of-n-s-halogens",
-                "conceptSlug": "trap-detection-of-n-s-halogens",
-                "microskillSlug": "avoid-detection-of-n-s-halogens",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-analysis-of-functional-groups",
+                "conceptSlug": "trap-qualitative-analysis-of-functional-groups",
+                "microskillSlug": "avoid-qualitative-analysis-of-functional-groups"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
-          "title": "Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
+          "id": "mt-practical-chemistry-tests-for-carbohydrates-1",
+          "title": "Tests for carbohydrates",
           "conceptTags": [
             "practical-chemistry",
-            "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine"
+            "tests-for-carbohydrates"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Tests for carbohydrates"
           ],
           "mustKnowFacts": [
-            "Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Tests for carbohydrates is heavily tested in recent NEET papers.",
+            "Applying the core principles of Tests for carbohydrates correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine during complex MCQs.",
-            "Failing to apply the correct logic for Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+            "Misinterpreting the subtle edge cases of Tests for carbohydrates during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Tests for carbohydrates."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+            "Can accurately solve numericals or identify biological structures related specifically to Tests for carbohydrates.",
+            "Successfully avoids common pitfalls when Tests for carbohydrates is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine."
+            "Past year questions frequently test the application of Tests for carbohydrates in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine-1",
-              "question": "Explain the core concept behind Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine.",
+              "id": "practical-chemistry-q-tests-for-carbohydrates-1",
+              "question": "What are the critical factors or principles governing Tests for carbohydrates?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine"
+                "practical-chemistry",
+                "tests-for-carbohydrates"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
-                "conceptSlug": "core-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
-                "microskillSlug": "understand-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-carbohydrates",
+                "conceptSlug": "core-tests-for-carbohydrates",
+                "microskillSlug": "understand-tests-for-carbohydrates"
               }
             },
             {
-              "id": "practical-chemistry-q-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine-2",
-              "question": "What is a common trap associated with Functional group tests for alcohol/phenol/aldehyde/ketone/carboxylic acid/amine?",
+              "id": "practical-chemistry-q-tests-for-carbohydrates-2",
+              "question": "Describe a scenario where applying the concept of Tests for carbohydrates can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
+                "practical-chemistry",
+                "tests-for-carbohydrates",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
-                "conceptSlug": "trap-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
-                "microskillSlug": "avoid-functional-group-tests-for-alcohol-phenol-aldehyde-ketone-carboxylic-acid-amine",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-carbohydrates",
+                "conceptSlug": "trap-tests-for-carbohydrates",
+                "microskillSlug": "avoid-tests-for-carbohydrates"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-mohr-salt",
-          "title": "Mohr salt",
+          "id": "mt-practical-chemistry-tests-for-proteins-and-amino-acids-2",
+          "title": "Tests for proteins and amino acids",
           "conceptTags": [
             "practical-chemistry",
-            "mohr-salt"
+            "tests-for-proteins-and-amino-acids"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Mohr salt"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Tests for proteins and amino acids"
           ],
           "mustKnowFacts": [
-            "Mohr salt is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Mohr salt for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Mohr salt",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Mohr salt",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Tests for proteins and amino acids is heavily tested in recent NEET papers.",
+            "Applying the core principles of Tests for proteins and amino acids correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Mohr salt during complex MCQs.",
-            "Failing to apply the correct logic for Mohr salt."
+            "Misinterpreting the subtle edge cases of Tests for proteins and amino acids during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Tests for proteins and amino acids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mohr salt."
+            "Can accurately solve numericals or identify biological structures related specifically to Tests for proteins and amino acids.",
+            "Successfully avoids common pitfalls when Tests for proteins and amino acids is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mohr salt."
+            "Past year questions frequently test the application of Tests for proteins and amino acids in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-mohr-salt-1",
-              "question": "Explain the core concept behind Mohr salt.",
+              "id": "practical-chemistry-q-tests-for-proteins-and-amino-acids-1",
+              "question": "What are the critical factors or principles governing Tests for proteins and amino acids?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "mohr-salt"
+                "practical-chemistry",
+                "tests-for-proteins-and-amino-acids"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "mohr-salt",
-                "conceptSlug": "core-mohr-salt",
-                "microskillSlug": "understand-mohr-salt",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-proteins-and-amino-acids",
+                "conceptSlug": "core-tests-for-proteins-and-amino-acids",
+                "microskillSlug": "understand-tests-for-proteins-and-amino-acids"
               }
             },
             {
-              "id": "practical-chemistry-q-mohr-salt-2",
-              "question": "What is a common trap associated with Mohr salt?",
+              "id": "practical-chemistry-q-tests-for-proteins-and-amino-acids-2",
+              "question": "Describe a scenario where applying the concept of Tests for proteins and amino acids can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "mohr-salt",
+                "practical-chemistry",
+                "tests-for-proteins-and-amino-acids",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "mohr-salt",
-                "conceptSlug": "trap-mohr-salt",
-                "microskillSlug": "avoid-mohr-salt",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-proteins-and-amino-acids",
+                "conceptSlug": "trap-tests-for-proteins-and-amino-acids",
+                "microskillSlug": "avoid-tests-for-proteins-and-amino-acids"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-potash-alum",
-          "title": "Potash alum",
+          "id": "mt-practical-chemistry-tests-for-fats-and-oils-3",
+          "title": "Tests for fats and oils",
           "conceptTags": [
             "practical-chemistry",
-            "potash-alum"
+            "tests-for-fats-and-oils"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Potash alum"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Tests for fats and oils"
           ],
           "mustKnowFacts": [
-            "Potash alum is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Potash alum for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for potash alum",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving potash alum",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Tests for fats and oils is heavily tested in recent NEET papers.",
+            "Applying the core principles of Tests for fats and oils correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Potash alum during complex MCQs.",
-            "Failing to apply the correct logic for Potash alum."
+            "Misinterpreting the subtle edge cases of Tests for fats and oils during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Tests for fats and oils."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potash alum."
+            "Can accurately solve numericals or identify biological structures related specifically to Tests for fats and oils.",
+            "Successfully avoids common pitfalls when Tests for fats and oils is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Potash alum."
+            "Past year questions frequently test the application of Tests for fats and oils in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-potash-alum-1",
-              "question": "Explain the core concept behind Potash alum.",
+              "id": "practical-chemistry-q-tests-for-fats-and-oils-1",
+              "question": "What are the critical factors or principles governing Tests for fats and oils?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "potash-alum"
+                "practical-chemistry",
+                "tests-for-fats-and-oils"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "potash-alum",
-                "conceptSlug": "core-potash-alum",
-                "microskillSlug": "understand-potash-alum",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-fats-and-oils",
+                "conceptSlug": "core-tests-for-fats-and-oils",
+                "microskillSlug": "understand-tests-for-fats-and-oils"
               }
             },
             {
-              "id": "practical-chemistry-q-potash-alum-2",
-              "question": "What is a common trap associated with Potash alum?",
+              "id": "practical-chemistry-q-tests-for-fats-and-oils-2",
+              "question": "Describe a scenario where applying the concept of Tests for fats and oils can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "potash-alum",
+                "practical-chemistry",
+                "tests-for-fats-and-oils",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "potash-alum",
-                "conceptSlug": "trap-potash-alum",
-                "microskillSlug": "avoid-potash-alum",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "tests-for-fats-and-oils",
+                "conceptSlug": "trap-tests-for-fats-and-oils",
+                "microskillSlug": "avoid-tests-for-fats-and-oils"
               }
             }
           ]
@@ -435,431 +363,359 @@
     },
     {
       "id": "m-practical-chemistry-2",
-      "title": "Principles Related to Practical Chemistry - Section 2",
-      "description": "Comprehensive analysis covering acetanilide, p-nitroacetanilide, aniline yellow and more.",
+      "title": "Mastery Module 2: Preparation of inorganic compounds (Mohr salt alum) and Related Concepts",
+      "description": "Comprehensive analysis covering preparation of inorganic compounds (Mohr salt alum), preparation of organic compounds (acetanilide p-nitroacetanilide), titrimetric exercises (acid-base) and advanced applications.",
       "conceptTags": [
         "practical-chemistry",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-practical-chemistry-acetanilide",
-          "title": "Acetanilide",
+          "id": "mt-practical-chemistry-preparation-of-inorganic-compounds-mohr-salt-alum-4",
+          "title": "Preparation of inorganic compounds (Mohr salt alum)",
           "conceptTags": [
             "practical-chemistry",
-            "acetanilide"
+            "preparation-of-inorganic-compounds-mohr-salt-alum"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Acetanilide"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Preparation of inorganic compounds (Mohr salt alum)"
           ],
           "mustKnowFacts": [
-            "Acetanilide is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Acetanilide for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for acetanilide",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving acetanilide",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Preparation of inorganic compounds (Mohr salt alum) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of inorganic compounds (Mohr salt alum) correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Acetanilide during complex MCQs.",
-            "Failing to apply the correct logic for Acetanilide."
+            "Misinterpreting the subtle edge cases of Preparation of inorganic compounds (Mohr salt alum) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of inorganic compounds (Mohr salt alum)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Acetanilide."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of inorganic compounds (Mohr salt alum).",
+            "Successfully avoids common pitfalls when Preparation of inorganic compounds (Mohr salt alum) is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Acetanilide."
+            "Past year questions frequently test the application of Preparation of inorganic compounds (Mohr salt alum) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-acetanilide-1",
-              "question": "Explain the core concept behind Acetanilide.",
+              "id": "practical-chemistry-q-preparation-of-inorganic-compounds-mohr-salt-alum-1",
+              "question": "What are the critical factors or principles governing Preparation of inorganic compounds (Mohr salt alum)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "acetanilide"
+                "practical-chemistry",
+                "preparation-of-inorganic-compounds-mohr-salt-alum"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "acetanilide",
-                "conceptSlug": "core-acetanilide",
-                "microskillSlug": "understand-acetanilide",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-inorganic-compounds-mohr-salt-alum",
+                "conceptSlug": "core-preparation-of-inorganic-compounds-mohr-salt-alum",
+                "microskillSlug": "understand-preparation-of-inorganic-compounds-mohr-salt-alum"
               }
             },
             {
-              "id": "practical-chemistry-q-acetanilide-2",
-              "question": "What is a common trap associated with Acetanilide?",
+              "id": "practical-chemistry-q-preparation-of-inorganic-compounds-mohr-salt-alum-2",
+              "question": "Describe a scenario where applying the concept of Preparation of inorganic compounds (Mohr salt alum) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "acetanilide",
+                "practical-chemistry",
+                "preparation-of-inorganic-compounds-mohr-salt-alum",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "acetanilide",
-                "conceptSlug": "trap-acetanilide",
-                "microskillSlug": "avoid-acetanilide",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-inorganic-compounds-mohr-salt-alum",
+                "conceptSlug": "trap-preparation-of-inorganic-compounds-mohr-salt-alum",
+                "microskillSlug": "avoid-preparation-of-inorganic-compounds-mohr-salt-alum"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-p-nitroacetanilide",
-          "title": "P-nitroacetanilide",
+          "id": "mt-practical-chemistry-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide-5",
+          "title": "Preparation of organic compounds (acetanilide p-nitroacetanilide)",
           "conceptTags": [
             "practical-chemistry",
-            "p-nitroacetanilide"
+            "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, P-nitroacetanilide"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Preparation of organic compounds (acetanilide p-nitroacetanilide)"
           ],
           "mustKnowFacts": [
-            "P-nitroacetanilide is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing P-nitroacetanilide for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for p-nitroacetanilide",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving p-nitroacetanilide",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Preparation of organic compounds (acetanilide p-nitroacetanilide) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of organic compounds (acetanilide p-nitroacetanilide) correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret P-nitroacetanilide during complex MCQs.",
-            "Failing to apply the correct logic for P-nitroacetanilide."
+            "Misinterpreting the subtle edge cases of Preparation of organic compounds (acetanilide p-nitroacetanilide) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of organic compounds (acetanilide p-nitroacetanilide)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to P-nitroacetanilide."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of organic compounds (acetanilide p-nitroacetanilide).",
+            "Successfully avoids common pitfalls when Preparation of organic compounds (acetanilide p-nitroacetanilide) is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about P-nitroacetanilide."
+            "Past year questions frequently test the application of Preparation of organic compounds (acetanilide p-nitroacetanilide) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-p-nitroacetanilide-1",
-              "question": "Explain the core concept behind P-nitroacetanilide.",
+              "id": "practical-chemistry-q-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide-1",
+              "question": "What are the critical factors or principles governing Preparation of organic compounds (acetanilide p-nitroacetanilide)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "p-nitroacetanilide"
+                "practical-chemistry",
+                "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "p-nitroacetanilide",
-                "conceptSlug": "core-p-nitroacetanilide",
-                "microskillSlug": "understand-p-nitroacetanilide",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
+                "conceptSlug": "core-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
+                "microskillSlug": "understand-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
               }
             },
             {
-              "id": "practical-chemistry-q-p-nitroacetanilide-2",
-              "question": "What is a common trap associated with P-nitroacetanilide?",
+              "id": "practical-chemistry-q-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide-2",
+              "question": "Describe a scenario where applying the concept of Preparation of organic compounds (acetanilide p-nitroacetanilide) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "p-nitroacetanilide",
+                "practical-chemistry",
+                "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "p-nitroacetanilide",
-                "conceptSlug": "trap-p-nitroacetanilide",
-                "microskillSlug": "avoid-p-nitroacetanilide",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
+                "conceptSlug": "trap-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
+                "microskillSlug": "avoid-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-aniline-yellow",
-          "title": "Aniline yellow",
+          "id": "mt-practical-chemistry-titrimetric-exercises-acid-base-6",
+          "title": "Titrimetric exercises (acid-base)",
           "conceptTags": [
             "practical-chemistry",
-            "aniline-yellow"
+            "titrimetric-exercises-acid-base"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Aniline yellow"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Titrimetric exercises (acid-base)"
           ],
           "mustKnowFacts": [
-            "Aniline yellow is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Aniline yellow for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for aniline yellow",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving aniline yellow",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Titrimetric exercises (acid-base) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Titrimetric exercises (acid-base) correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Aniline yellow during complex MCQs.",
-            "Failing to apply the correct logic for Aniline yellow."
+            "Misinterpreting the subtle edge cases of Titrimetric exercises (acid-base) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Titrimetric exercises (acid-base)."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Aniline yellow."
+            "Can accurately solve numericals or identify biological structures related specifically to Titrimetric exercises (acid-base).",
+            "Successfully avoids common pitfalls when Titrimetric exercises (acid-base) is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Aniline yellow."
+            "Past year questions frequently test the application of Titrimetric exercises (acid-base) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-aniline-yellow-1",
-              "question": "Explain the core concept behind Aniline yellow.",
+              "id": "practical-chemistry-q-titrimetric-exercises-acid-base-1",
+              "question": "What are the critical factors or principles governing Titrimetric exercises (acid-base)?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "aniline-yellow"
+                "practical-chemistry",
+                "titrimetric-exercises-acid-base"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "aniline-yellow",
-                "conceptSlug": "core-aniline-yellow",
-                "microskillSlug": "understand-aniline-yellow",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "titrimetric-exercises-acid-base",
+                "conceptSlug": "core-titrimetric-exercises-acid-base",
+                "microskillSlug": "understand-titrimetric-exercises-acid-base"
               }
             },
             {
-              "id": "practical-chemistry-q-aniline-yellow-2",
-              "question": "What is a common trap associated with Aniline yellow?",
+              "id": "practical-chemistry-q-titrimetric-exercises-acid-base-2",
+              "question": "Describe a scenario where applying the concept of Titrimetric exercises (acid-base) can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "aniline-yellow",
+                "practical-chemistry",
+                "titrimetric-exercises-acid-base",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "aniline-yellow",
-                "conceptSlug": "trap-aniline-yellow",
-                "microskillSlug": "avoid-aniline-yellow",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "titrimetric-exercises-acid-base",
+                "conceptSlug": "trap-titrimetric-exercises-acid-base",
+                "microskillSlug": "avoid-titrimetric-exercises-acid-base"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-iodoform",
-          "title": "Iodoform",
+          "id": "mt-practical-chemistry-potassium-permanganate-titrations-7",
+          "title": "Potassium permanganate titrations",
           "conceptTags": [
             "practical-chemistry",
-            "iodoform"
+            "potassium-permanganate-titrations"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Iodoform"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Potassium permanganate titrations"
           ],
           "mustKnowFacts": [
-            "Iodoform is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Iodoform for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for iodoform",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving iodoform",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Potassium permanganate titrations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potassium permanganate titrations correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Iodoform during complex MCQs.",
-            "Failing to apply the correct logic for Iodoform."
+            "Misinterpreting the subtle edge cases of Potassium permanganate titrations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potassium permanganate titrations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Iodoform."
+            "Can accurately solve numericals or identify biological structures related specifically to Potassium permanganate titrations.",
+            "Successfully avoids common pitfalls when Potassium permanganate titrations is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Iodoform."
+            "Past year questions frequently test the application of Potassium permanganate titrations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-iodoform-1",
-              "question": "Explain the core concept behind Iodoform.",
+              "id": "practical-chemistry-q-potassium-permanganate-titrations-1",
+              "question": "What are the critical factors or principles governing Potassium permanganate titrations?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "iodoform"
+                "practical-chemistry",
+                "potassium-permanganate-titrations"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "iodoform",
-                "conceptSlug": "core-iodoform",
-                "microskillSlug": "understand-iodoform",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "potassium-permanganate-titrations",
+                "conceptSlug": "core-potassium-permanganate-titrations",
+                "microskillSlug": "understand-potassium-permanganate-titrations"
               }
             },
             {
-              "id": "practical-chemistry-q-iodoform-2",
-              "question": "What is a common trap associated with Iodoform?",
+              "id": "practical-chemistry-q-potassium-permanganate-titrations-2",
+              "question": "Describe a scenario where applying the concept of Potassium permanganate titrations can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "iodoform",
+                "practical-chemistry",
+                "potassium-permanganate-titrations",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "iodoform",
-                "conceptSlug": "trap-iodoform",
-                "microskillSlug": "avoid-iodoform",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "potassium-permanganate-titrations",
+                "conceptSlug": "trap-potassium-permanganate-titrations",
+                "microskillSlug": "avoid-potassium-permanganate-titrations"
               }
             }
           ]
@@ -868,431 +724,370 @@
     },
     {
       "id": "m-practical-chemistry-3",
-      "title": "Principles Related to Practical Chemistry - Section 3",
-      "description": "Comprehensive analysis covering acid-base titration, KMnO4 titration, salt analysis cations/anions and more.",
+      "title": "Mastery Module 3: Qualitative salt analysis cations and Related Concepts",
+      "description": "Comprehensive analysis covering qualitative salt analysis cations, qualitative salt analysis anions, enthalpy of dissolution experiment and advanced applications.",
       "conceptTags": [
         "practical-chemistry",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-practical-chemistry-acid-base-titration",
-          "title": "Acid-base titration",
+          "id": "mt-practical-chemistry-qualitative-salt-analysis-cations-8",
+          "title": "Qualitative salt analysis cations",
           "conceptTags": [
             "practical-chemistry",
-            "acid-base-titration"
+            "qualitative-salt-analysis-cations"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Acid-base titration"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Qualitative salt analysis cations"
           ],
           "mustKnowFacts": [
-            "Acid-base titration is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Acid-base titration for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for acid-base titration",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving acid-base titration",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Qualitative salt analysis cations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Qualitative salt analysis cations correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Acid-base titration during complex MCQs.",
-            "Failing to apply the correct logic for Acid-base titration."
+            "Misinterpreting the subtle edge cases of Qualitative salt analysis cations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Qualitative salt analysis cations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Acid-base titration."
+            "Can accurately solve numericals or identify biological structures related specifically to Qualitative salt analysis cations.",
+            "Successfully avoids common pitfalls when Qualitative salt analysis cations is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Acid-base titration."
+            "Past year questions frequently test the application of Qualitative salt analysis cations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-acid-base-titration-1",
-              "question": "Explain the core concept behind Acid-base titration.",
+              "id": "practical-chemistry-q-qualitative-salt-analysis-cations-1",
+              "question": "What are the critical factors or principles governing Qualitative salt analysis cations?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "acid-base-titration"
+                "practical-chemistry",
+                "qualitative-salt-analysis-cations"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "acid-base-titration",
-                "conceptSlug": "core-acid-base-titration",
-                "microskillSlug": "understand-acid-base-titration",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-salt-analysis-cations",
+                "conceptSlug": "core-qualitative-salt-analysis-cations",
+                "microskillSlug": "understand-qualitative-salt-analysis-cations"
               }
             },
             {
-              "id": "practical-chemistry-q-acid-base-titration-2",
-              "question": "What is a common trap associated with Acid-base titration?",
+              "id": "practical-chemistry-q-qualitative-salt-analysis-cations-2",
+              "question": "Describe a scenario where applying the concept of Qualitative salt analysis cations can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "acid-base-titration",
+                "practical-chemistry",
+                "qualitative-salt-analysis-cations",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "acid-base-titration",
-                "conceptSlug": "trap-acid-base-titration",
-                "microskillSlug": "avoid-acid-base-titration",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-salt-analysis-cations",
+                "conceptSlug": "trap-qualitative-salt-analysis-cations",
+                "microskillSlug": "avoid-qualitative-salt-analysis-cations"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-kmno4-titration",
-          "title": "KMnO4 titration",
+          "id": "mt-practical-chemistry-qualitative-salt-analysis-anions-9",
+          "title": "Qualitative salt analysis anions",
           "conceptTags": [
             "practical-chemistry",
-            "kmno4-titration"
+            "qualitative-salt-analysis-anions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, KMnO4 titration"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Qualitative salt analysis anions"
           ],
           "mustKnowFacts": [
-            "KMnO4 titration is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing KMnO4 titration for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for KMnO4 titration",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving KMnO4 titration",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Qualitative salt analysis anions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Qualitative salt analysis anions correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret KMnO4 titration during complex MCQs.",
-            "Failing to apply the correct logic for KMnO4 titration."
+            "Misinterpreting the subtle edge cases of Qualitative salt analysis anions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Qualitative salt analysis anions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to KMnO4 titration."
+            "Can accurately solve numericals or identify biological structures related specifically to Qualitative salt analysis anions.",
+            "Successfully avoids common pitfalls when Qualitative salt analysis anions is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about KMnO4 titration."
+            "Past year questions frequently test the application of Qualitative salt analysis anions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-kmno4-titration-1",
-              "question": "Explain the core concept behind KMnO4 titration.",
+              "id": "practical-chemistry-q-qualitative-salt-analysis-anions-1",
+              "question": "What are the critical factors or principles governing Qualitative salt analysis anions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "kmno4-titration"
+                "practical-chemistry",
+                "qualitative-salt-analysis-anions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "kmno4-titration",
-                "conceptSlug": "core-kmno4-titration",
-                "microskillSlug": "understand-kmno4-titration",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-salt-analysis-anions",
+                "conceptSlug": "core-qualitative-salt-analysis-anions",
+                "microskillSlug": "understand-qualitative-salt-analysis-anions"
               }
             },
             {
-              "id": "practical-chemistry-q-kmno4-titration-2",
-              "question": "What is a common trap associated with KMnO4 titration?",
+              "id": "practical-chemistry-q-qualitative-salt-analysis-anions-2",
+              "question": "Describe a scenario where applying the concept of Qualitative salt analysis anions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "kmno4-titration",
+                "practical-chemistry",
+                "qualitative-salt-analysis-anions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "kmno4-titration",
-                "conceptSlug": "trap-kmno4-titration",
-                "microskillSlug": "avoid-kmno4-titration",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "qualitative-salt-analysis-anions",
+                "conceptSlug": "trap-qualitative-salt-analysis-anions",
+                "microskillSlug": "avoid-qualitative-salt-analysis-anions"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-salt-analysis-cations-anions",
-          "title": "Salt analysis cations/anions",
+          "id": "mt-practical-chemistry-enthalpy-of-dissolution-experiment-10",
+          "title": "Enthalpy of dissolution experiment",
           "conceptTags": [
             "practical-chemistry",
-            "salt-analysis-cations-anions"
+            "enthalpy-of-dissolution-experiment"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Salt analysis cations/anions"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Enthalpy of dissolution experiment"
           ],
           "mustKnowFacts": [
-            "Salt analysis cations/anions is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Salt analysis cations/anions for NEET."
+            "A thorough understanding of Enthalpy of dissolution experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Enthalpy of dissolution experiment correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for salt analysis cations/anions",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving salt analysis cations/anions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Salt analysis cations/anions during complex MCQs.",
-            "Failing to apply the correct logic for Salt analysis cations/anions."
+            "Misinterpreting the subtle edge cases of Enthalpy of dissolution experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Enthalpy of dissolution experiment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Salt analysis cations/anions."
+            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy of dissolution experiment.",
+            "Successfully avoids common pitfalls when Enthalpy of dissolution experiment is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Salt analysis cations/anions."
+            "Past year questions frequently test the application of Enthalpy of dissolution experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-salt-analysis-cations-anions-1",
-              "question": "Explain the core concept behind Salt analysis cations/anions.",
+              "id": "practical-chemistry-q-enthalpy-of-dissolution-experiment-1",
+              "question": "What are the critical factors or principles governing Enthalpy of dissolution experiment?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "salt-analysis-cations-anions"
+                "practical-chemistry",
+                "enthalpy-of-dissolution-experiment"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "salt-analysis-cations-anions",
-                "conceptSlug": "core-salt-analysis-cations-anions",
-                "microskillSlug": "understand-salt-analysis-cations-anions",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-of-dissolution-experiment",
+                "conceptSlug": "core-enthalpy-of-dissolution-experiment",
+                "microskillSlug": "understand-enthalpy-of-dissolution-experiment"
               }
             },
             {
-              "id": "practical-chemistry-q-salt-analysis-cations-anions-2",
-              "question": "What is a common trap associated with Salt analysis cations/anions?",
+              "id": "practical-chemistry-q-enthalpy-of-dissolution-experiment-2",
+              "question": "Describe a scenario where applying the concept of Enthalpy of dissolution experiment can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "salt-analysis-cations-anions",
+                "practical-chemistry",
+                "enthalpy-of-dissolution-experiment",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "salt-analysis-cations-anions",
-                "conceptSlug": "trap-salt-analysis-cations-anions",
-                "microskillSlug": "avoid-salt-analysis-cations-anions",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-of-dissolution-experiment",
+                "conceptSlug": "trap-enthalpy-of-dissolution-experiment",
+                "microskillSlug": "avoid-enthalpy-of-dissolution-experiment"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-enthalpy-experiments",
-          "title": "Enthalpy experiments",
+          "id": "mt-practical-chemistry-enthalpy-of-neutralisation-experiment-11",
+          "title": "Enthalpy of neutralisation experiment",
           "conceptTags": [
             "practical-chemistry",
-            "enthalpy-experiments"
+            "enthalpy-of-neutralisation-experiment"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Enthalpy experiments"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Enthalpy of neutralisation experiment"
           ],
           "mustKnowFacts": [
-            "Enthalpy experiments is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Enthalpy experiments for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for enthalpy experiments",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving enthalpy experiments",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Enthalpy of neutralisation experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Enthalpy of neutralisation experiment correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Enthalpy experiments during complex MCQs.",
-            "Failing to apply the correct logic for Enthalpy experiments."
+            "Misinterpreting the subtle edge cases of Enthalpy of neutralisation experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Enthalpy of neutralisation experiment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Enthalpy experiments."
+            "Can accurately solve numericals or identify biological structures related specifically to Enthalpy of neutralisation experiment.",
+            "Successfully avoids common pitfalls when Enthalpy of neutralisation experiment is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Enthalpy experiments."
+            "Past year questions frequently test the application of Enthalpy of neutralisation experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-enthalpy-experiments-1",
-              "question": "Explain the core concept behind Enthalpy experiments.",
+              "id": "practical-chemistry-q-enthalpy-of-neutralisation-experiment-1",
+              "question": "What are the critical factors or principles governing Enthalpy of neutralisation experiment?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "enthalpy-experiments"
+                "practical-chemistry",
+                "enthalpy-of-neutralisation-experiment"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "enthalpy-experiments",
-                "conceptSlug": "core-enthalpy-experiments",
-                "microskillSlug": "understand-enthalpy-experiments",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-of-neutralisation-experiment",
+                "conceptSlug": "core-enthalpy-of-neutralisation-experiment",
+                "microskillSlug": "understand-enthalpy-of-neutralisation-experiment"
               }
             },
             {
-              "id": "practical-chemistry-q-enthalpy-experiments-2",
-              "question": "What is a common trap associated with Enthalpy experiments?",
+              "id": "practical-chemistry-q-enthalpy-of-neutralisation-experiment-2",
+              "question": "Describe a scenario where applying the concept of Enthalpy of neutralisation experiment can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "enthalpy-experiments",
+                "practical-chemistry",
+                "enthalpy-of-neutralisation-experiment",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "enthalpy-experiments",
-                "conceptSlug": "trap-enthalpy-experiments",
-                "microskillSlug": "avoid-enthalpy-experiments",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "enthalpy-of-neutralisation-experiment",
+                "conceptSlug": "trap-enthalpy-of-neutralisation-experiment",
+                "microskillSlug": "avoid-enthalpy-of-neutralisation-experiment"
               }
             }
           ]
@@ -1301,221 +1096,720 @@
     },
     {
       "id": "m-practical-chemistry-4",
-      "title": "Principles Related to Practical Chemistry - Section 4",
-      "description": "Comprehensive analysis covering sols, kinetic experiment and more.",
+      "title": "Mastery Module 4: Preparation of lyophilic and lyophobic sols and Related Concepts",
+      "description": "Comprehensive analysis covering preparation of lyophilic and lyophobic sols, kinetic study of reaction rate, chromatography separation techniques and advanced applications.",
       "conceptTags": [
         "practical-chemistry",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-practical-chemistry-sols",
-          "title": "Sols",
+          "id": "mt-practical-chemistry-preparation-of-lyophilic-and-lyophobic-sols-12",
+          "title": "Preparation of lyophilic and lyophobic sols",
           "conceptTags": [
             "practical-chemistry",
-            "sols"
+            "preparation-of-lyophilic-and-lyophobic-sols"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Sols"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Preparation of lyophilic and lyophobic sols"
           ],
           "mustKnowFacts": [
-            "Sols is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Sols for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for sols",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving sols",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Preparation of lyophilic and lyophobic sols is heavily tested in recent NEET papers.",
+            "Applying the core principles of Preparation of lyophilic and lyophobic sols correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Sols during complex MCQs.",
-            "Failing to apply the correct logic for Sols."
+            "Misinterpreting the subtle edge cases of Preparation of lyophilic and lyophobic sols during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Preparation of lyophilic and lyophobic sols."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Sols."
+            "Can accurately solve numericals or identify biological structures related specifically to Preparation of lyophilic and lyophobic sols.",
+            "Successfully avoids common pitfalls when Preparation of lyophilic and lyophobic sols is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Sols."
+            "Past year questions frequently test the application of Preparation of lyophilic and lyophobic sols in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-sols-1",
-              "question": "Explain the core concept behind Sols.",
+              "id": "practical-chemistry-q-preparation-of-lyophilic-and-lyophobic-sols-1",
+              "question": "What are the critical factors or principles governing Preparation of lyophilic and lyophobic sols?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "sols"
+                "practical-chemistry",
+                "preparation-of-lyophilic-and-lyophobic-sols"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "sols",
-                "conceptSlug": "core-sols",
-                "microskillSlug": "understand-sols",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-lyophilic-and-lyophobic-sols",
+                "conceptSlug": "core-preparation-of-lyophilic-and-lyophobic-sols",
+                "microskillSlug": "understand-preparation-of-lyophilic-and-lyophobic-sols"
               }
             },
             {
-              "id": "practical-chemistry-q-sols-2",
-              "question": "What is a common trap associated with Sols?",
+              "id": "practical-chemistry-q-preparation-of-lyophilic-and-lyophobic-sols-2",
+              "question": "Describe a scenario where applying the concept of Preparation of lyophilic and lyophobic sols can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "sols",
+                "practical-chemistry",
+                "preparation-of-lyophilic-and-lyophobic-sols",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "sols",
-                "conceptSlug": "trap-sols",
-                "microskillSlug": "avoid-sols",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "preparation-of-lyophilic-and-lyophobic-sols",
+                "conceptSlug": "trap-preparation-of-lyophilic-and-lyophobic-sols",
+                "microskillSlug": "avoid-preparation-of-lyophilic-and-lyophobic-sols"
               }
             }
           ]
         },
         {
-          "id": "mt-practical-chemistry-kinetic-experiment",
-          "title": "Kinetic experiment",
+          "id": "mt-practical-chemistry-kinetic-study-of-reaction-rate-13",
+          "title": "Kinetic study of reaction rate",
           "conceptTags": [
             "practical-chemistry",
-            "kinetic-experiment"
+            "kinetic-study-of-reaction-rate"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class mixed, Kinetic experiment"
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Kinetic study of reaction rate"
           ],
           "mustKnowFacts": [
-            "Kinetic experiment is a fundamental subtopic of Principles Related to Practical Chemistry.",
-            "Crucial to understand the principles governing Kinetic experiment for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for kinetic experiment",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving kinetic experiment",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Kinetic study of reaction rate is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kinetic study of reaction rate correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Kinetic experiment during complex MCQs.",
-            "Failing to apply the correct logic for Kinetic experiment."
+            "Misinterpreting the subtle edge cases of Kinetic study of reaction rate during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kinetic study of reaction rate."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Kinetic experiment."
+            "Can accurately solve numericals or identify biological structures related specifically to Kinetic study of reaction rate.",
+            "Successfully avoids common pitfalls when Kinetic study of reaction rate is integrated with other concepts in Principles Related to Practical Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Kinetic experiment."
+            "Past year questions frequently test the application of Kinetic study of reaction rate in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-kinetic-experiment-1",
-              "question": "Explain the core concept behind Kinetic experiment.",
+              "id": "practical-chemistry-q-kinetic-study-of-reaction-rate-1",
+              "question": "What are the critical factors or principles governing Kinetic study of reaction rate?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "kinetic-experiment"
+                "practical-chemistry",
+                "kinetic-study-of-reaction-rate"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "kinetic-experiment",
-                "conceptSlug": "core-kinetic-experiment",
-                "microskillSlug": "understand-kinetic-experiment",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kinetic-study-of-reaction-rate",
+                "conceptSlug": "core-kinetic-study-of-reaction-rate",
+                "microskillSlug": "understand-kinetic-study-of-reaction-rate"
               }
             },
             {
-              "id": "practical-chemistry-q-kinetic-experiment-2",
-              "question": "What is a common trap associated with Kinetic experiment?",
+              "id": "practical-chemistry-q-kinetic-study-of-reaction-rate-2",
+              "question": "Describe a scenario where applying the concept of Kinetic study of reaction rate can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "kinetic-experiment",
+                "practical-chemistry",
+                "kinetic-study-of-reaction-rate",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "kinetic-experiment",
-                "conceptSlug": "trap-kinetic-experiment",
-                "microskillSlug": "avoid-kinetic-experiment",
                 "subject": "Chemistry",
                 "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry"
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "kinetic-study-of-reaction-rate",
+                "conceptSlug": "trap-kinetic-study-of-reaction-rate",
+                "microskillSlug": "avoid-kinetic-study-of-reaction-rate"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-chromatography-separation-techniques-14",
+          "title": "Chromatography separation techniques",
+          "conceptTags": [
+            "practical-chemistry",
+            "chromatography-separation-techniques"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Chromatography separation techniques"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Chromatography separation techniques is heavily tested in recent NEET papers.",
+            "Applying the core principles of Chromatography separation techniques correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Chromatography separation techniques during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Chromatography separation techniques."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Chromatography separation techniques.",
+            "Successfully avoids common pitfalls when Chromatography separation techniques is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Chromatography separation techniques in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-chromatography-separation-techniques-1",
+              "question": "What are the critical factors or principles governing Chromatography separation techniques?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "chromatography-separation-techniques"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "chromatography-separation-techniques",
+                "conceptSlug": "core-chromatography-separation-techniques",
+                "microskillSlug": "understand-chromatography-separation-techniques"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-chromatography-separation-techniques-2",
+              "question": "Describe a scenario where applying the concept of Chromatography separation techniques can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "chromatography-separation-techniques",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "chromatography-separation-techniques",
+                "conceptSlug": "trap-chromatography-separation-techniques",
+                "microskillSlug": "avoid-chromatography-separation-techniques"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-determination-of-melting-point-15",
+          "title": "Determination of melting point",
+          "conceptTags": [
+            "practical-chemistry",
+            "determination-of-melting-point"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Determination of melting point"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Determination of melting point is heavily tested in recent NEET papers.",
+            "Applying the core principles of Determination of melting point correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Determination of melting point during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Determination of melting point."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Determination of melting point.",
+            "Successfully avoids common pitfalls when Determination of melting point is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Determination of melting point in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-determination-of-melting-point-1",
+              "question": "What are the critical factors or principles governing Determination of melting point?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "determination-of-melting-point"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "determination-of-melting-point",
+                "conceptSlug": "core-determination-of-melting-point",
+                "microskillSlug": "understand-determination-of-melting-point"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-determination-of-melting-point-2",
+              "question": "Describe a scenario where applying the concept of Determination of melting point can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "determination-of-melting-point",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "determination-of-melting-point",
+                "conceptSlug": "trap-determination-of-melting-point",
+                "microskillSlug": "avoid-determination-of-melting-point"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-practical-chemistry-5",
+      "title": "Mastery Module 5: Determination of boiling point and Related Concepts",
+      "description": "Comprehensive analysis covering determination of boiling point, Principles Related to Practical Chemistry Specific Application 17, Principles Related to Practical Chemistry Specific Application 18 and advanced applications.",
+      "conceptTags": [
+        "practical-chemistry",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-practical-chemistry-determination-of-boiling-point-16",
+          "title": "Determination of boiling point",
+          "conceptTags": [
+            "practical-chemistry",
+            "determination-of-boiling-point"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Determination of boiling point"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Determination of boiling point is heavily tested in recent NEET papers.",
+            "Applying the core principles of Determination of boiling point correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Determination of boiling point during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Determination of boiling point."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Determination of boiling point.",
+            "Successfully avoids common pitfalls when Determination of boiling point is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Determination of boiling point in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-determination-of-boiling-point-1",
+              "question": "What are the critical factors or principles governing Determination of boiling point?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "determination-of-boiling-point"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "determination-of-boiling-point",
+                "conceptSlug": "core-determination-of-boiling-point",
+                "microskillSlug": "understand-determination-of-boiling-point"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-determination-of-boiling-point-2",
+              "question": "Describe a scenario where applying the concept of Determination of boiling point can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "determination-of-boiling-point",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "determination-of-boiling-point",
+                "conceptSlug": "trap-determination-of-boiling-point",
+                "microskillSlug": "avoid-determination-of-boiling-point"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-principles-related-to-practical-chemistry-specific-application-17-17",
+          "title": "Principles Related to Practical Chemistry Specific Application 17",
+          "conceptTags": [
+            "practical-chemistry",
+            "principles-related-to-practical-chemistry-specific-application-17"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Principles Related to Practical Chemistry Specific Application 17"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Principles Related to Practical Chemistry Specific Application 17 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Principles Related to Practical Chemistry Specific Application 17 correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Principles Related to Practical Chemistry Specific Application 17 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Principles Related to Practical Chemistry Specific Application 17."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Principles Related to Practical Chemistry Specific Application 17.",
+            "Successfully avoids common pitfalls when Principles Related to Practical Chemistry Specific Application 17 is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Principles Related to Practical Chemistry Specific Application 17 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-17-1",
+              "question": "What are the critical factors or principles governing Principles Related to Practical Chemistry Specific Application 17?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-17"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-17",
+                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-17",
+                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-17"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-17-2",
+              "question": "Describe a scenario where applying the concept of Principles Related to Practical Chemistry Specific Application 17 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-17",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-17",
+                "conceptSlug": "trap-principles-related-to-practical-chemistry-specific-application-17",
+                "microskillSlug": "avoid-principles-related-to-practical-chemistry-specific-application-17"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-principles-related-to-practical-chemistry-specific-application-18-18",
+          "title": "Principles Related to Practical Chemistry Specific Application 18",
+          "conceptTags": [
+            "practical-chemistry",
+            "principles-related-to-practical-chemistry-specific-application-18"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Principles Related to Practical Chemistry Specific Application 18"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Principles Related to Practical Chemistry Specific Application 18 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Principles Related to Practical Chemistry Specific Application 18 correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Principles Related to Practical Chemistry Specific Application 18 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Principles Related to Practical Chemistry Specific Application 18."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Principles Related to Practical Chemistry Specific Application 18.",
+            "Successfully avoids common pitfalls when Principles Related to Practical Chemistry Specific Application 18 is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Principles Related to Practical Chemistry Specific Application 18 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-18-1",
+              "question": "What are the critical factors or principles governing Principles Related to Practical Chemistry Specific Application 18?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-18"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-18",
+                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-18",
+                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-18"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-18-2",
+              "question": "Describe a scenario where applying the concept of Principles Related to Practical Chemistry Specific Application 18 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-18",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-18",
+                "conceptSlug": "trap-principles-related-to-practical-chemistry-specific-application-18",
+                "microskillSlug": "avoid-principles-related-to-practical-chemistry-specific-application-18"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-practical-chemistry-principles-related-to-practical-chemistry-specific-application-19-19",
+          "title": "Principles Related to Practical Chemistry Specific Application 19",
+          "conceptTags": [
+            "practical-chemistry",
+            "principles-related-to-practical-chemistry-specific-application-19"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class mixed, Chapter: Principles Related to Practical Chemistry, Section detailing Principles Related to Practical Chemistry Specific Application 19"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Principles Related to Practical Chemistry Specific Application 19 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Principles Related to Practical Chemistry Specific Application 19 correctly is essential for solving complex multi-step problems in Principles Related to Practical Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Principles Related to Practical Chemistry Specific Application 19 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Principles Related to Practical Chemistry Specific Application 19."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Principles Related to Practical Chemistry Specific Application 19.",
+            "Successfully avoids common pitfalls when Principles Related to Practical Chemistry Specific Application 19 is integrated with other concepts in Principles Related to Practical Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Principles Related to Practical Chemistry Specific Application 19 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-19-1",
+              "question": "What are the critical factors or principles governing Principles Related to Practical Chemistry Specific Application 19?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-19"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-19",
+                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-19",
+                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-19"
+              }
+            },
+            {
+              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-19-2",
+              "question": "Describe a scenario where applying the concept of Principles Related to Practical Chemistry Specific Application 19 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "practical-chemistry",
+                "principles-related-to-practical-chemistry-specific-application-19",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "practical-chemistry",
+                "chapterSlug": "practical-chemistry",
+                "topicSlug": "practical-chemistry",
+                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-19",
+                "conceptSlug": "trap-principles-related-to-practical-chemistry-specific-application-19",
+                "microskillSlug": "avoid-principles-related-to-practical-chemistry-specific-application-19"
               }
             }
           ]

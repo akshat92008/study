@@ -95,7 +95,7 @@ vi.mock('@/lib/utils/logger', () => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 
-describe.skip('EventWorkerService Stale Routes', () => {
+describe('EventWorkerService Stale Routes', () => {
   beforeEach(() => {
     for (const key of Object.keys(state.inserts)) delete state.inserts[key];
     for (const key of Object.keys(state.updates)) delete state.updates[key];

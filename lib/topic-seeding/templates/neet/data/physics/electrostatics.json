@@ -2,557 +2,603 @@
   "missions": [
     {
       "id": "m-electrostatics-1",
-      "title": "Electrostatics - Section 1",
-      "description": "Comprehensive analysis covering charge, conservation of charge, quantisation and more.",
+      "title": "Mastery Module 1: Electric charge properties and Related Concepts",
+      "description": "Comprehensive analysis covering electric charge properties, conservation of charge, quantisation of charge and advanced applications.",
       "conceptTags": [
         "electrostatics",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electrostatics-charge",
-          "title": "Charge",
+          "id": "mt-electrostatics-electric-charge-properties-0",
+          "title": "Electric charge properties",
           "conceptTags": [
             "electrostatics",
-            "charge"
+            "electric-charge-properties"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Charge"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric charge properties"
           ],
           "mustKnowFacts": [
-            "Charge is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Charge for NEET."
+            "A thorough understanding of Electric charge properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric charge properties correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for charge",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Charge during complex MCQs.",
-            "Failing to apply the correct logic for Charge."
+            "Misinterpreting the subtle edge cases of Electric charge properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric charge properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Charge."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric charge properties.",
+            "Successfully avoids common pitfalls when Electric charge properties is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Charge."
+            "Past year questions frequently test the application of Electric charge properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-charge-1",
-              "question": "Explain the core concept behind Charge.",
+              "id": "electrostatics-q-electric-charge-properties-1",
+              "question": "What are the critical factors or principles governing Electric charge properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "charge"
+                "electrostatics",
+                "electric-charge-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "charge",
-                "conceptSlug": "core-charge",
-                "microskillSlug": "understand-charge",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-charge-properties",
+                "conceptSlug": "core-electric-charge-properties",
+                "microskillSlug": "understand-electric-charge-properties"
               }
             },
             {
-              "id": "electrostatics-q-charge-2",
-              "question": "What is a common trap associated with Charge?",
+              "id": "electrostatics-q-electric-charge-properties-2",
+              "question": "Describe a scenario where applying the concept of Electric charge properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "charge",
+                "electrostatics",
+                "electric-charge-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "charge",
-                "conceptSlug": "trap-charge",
-                "microskillSlug": "avoid-charge",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-charge-properties",
+                "conceptSlug": "trap-electric-charge-properties",
+                "microskillSlug": "avoid-electric-charge-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-conservation-of-charge",
+          "id": "mt-electrostatics-conservation-of-charge-1",
           "title": "Conservation of charge",
           "conceptTags": [
             "electrostatics",
             "conservation-of-charge"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Conservation of charge"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Conservation of charge"
           ],
           "mustKnowFacts": [
-            "Conservation of charge is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Conservation of charge for NEET."
+            "A thorough understanding of Conservation of charge is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conservation of charge correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for conservation of charge",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Conservation of charge during complex MCQs.",
-            "Failing to apply the correct logic for Conservation of charge."
+            "Misinterpreting the subtle edge cases of Conservation of charge during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conservation of charge."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conservation of charge."
+            "Can accurately solve numericals or identify biological structures related specifically to Conservation of charge.",
+            "Successfully avoids common pitfalls when Conservation of charge is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conservation of charge."
+            "Past year questions frequently test the application of Conservation of charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-conservation-of-charge-1",
-              "question": "Explain the core concept behind Conservation of charge.",
+              "question": "What are the critical factors or principles governing Conservation of charge?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "electrostatics",
                 "conservation-of-charge"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
                 "topicSlug": "electrostatics",
                 "subtopicSlug": "conservation-of-charge",
                 "conceptSlug": "core-conservation-of-charge",
-                "microskillSlug": "understand-conservation-of-charge",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "microskillSlug": "understand-conservation-of-charge"
               }
             },
             {
               "id": "electrostatics-q-conservation-of-charge-2",
-              "question": "What is a common trap associated with Conservation of charge?",
+              "question": "Describe a scenario where applying the concept of Conservation of charge can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "electrostatics",
                 "conservation-of-charge",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
                 "topicSlug": "electrostatics",
                 "subtopicSlug": "conservation-of-charge",
                 "conceptSlug": "trap-conservation-of-charge",
-                "microskillSlug": "avoid-conservation-of-charge",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "microskillSlug": "avoid-conservation-of-charge"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-quantisation",
-          "title": "Quantisation",
+          "id": "mt-electrostatics-quantisation-of-charge-2",
+          "title": "Quantisation of charge",
           "conceptTags": [
             "electrostatics",
-            "quantisation"
+            "quantisation-of-charge"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Quantisation"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Quantisation of charge"
           ],
           "mustKnowFacts": [
-            "Quantisation is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Quantisation for NEET."
+            "A thorough understanding of Quantisation of charge is heavily tested in recent NEET papers.",
+            "Applying the core principles of Quantisation of charge correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for quantisation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Quantisation during complex MCQs.",
-            "Failing to apply the correct logic for Quantisation."
+            "Misinterpreting the subtle edge cases of Quantisation of charge during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Quantisation of charge."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Quantisation."
+            "Can accurately solve numericals or identify biological structures related specifically to Quantisation of charge.",
+            "Successfully avoids common pitfalls when Quantisation of charge is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Quantisation."
+            "Past year questions frequently test the application of Quantisation of charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-quantisation-1",
-              "question": "Explain the core concept behind Quantisation.",
+              "id": "electrostatics-q-quantisation-of-charge-1",
+              "question": "What are the critical factors or principles governing Quantisation of charge?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "quantisation"
+                "electrostatics",
+                "quantisation-of-charge"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "quantisation",
-                "conceptSlug": "core-quantisation",
-                "microskillSlug": "understand-quantisation",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "quantisation-of-charge",
+                "conceptSlug": "core-quantisation-of-charge",
+                "microskillSlug": "understand-quantisation-of-charge"
               }
             },
             {
-              "id": "electrostatics-q-quantisation-2",
-              "question": "What is a common trap associated with Quantisation?",
+              "id": "electrostatics-q-quantisation-of-charge-2",
+              "question": "Describe a scenario where applying the concept of Quantisation of charge can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "quantisation",
+                "electrostatics",
+                "quantisation-of-charge",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "quantisation",
-                "conceptSlug": "trap-quantisation",
-                "microskillSlug": "avoid-quantisation",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "quantisation-of-charge",
+                "conceptSlug": "trap-quantisation-of-charge",
+                "microskillSlug": "avoid-quantisation-of-charge"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-coulomb-law",
-          "title": "Coulomb law",
+          "id": "mt-electrostatics-coulomb-s-law-3",
+          "title": "Coulomb’s law",
           "conceptTags": [
             "electrostatics",
-            "coulomb-law"
+            "coulomb-s-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Coulomb law"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Coulomb’s law"
           ],
           "mustKnowFacts": [
-            "Coulomb law is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Coulomb law for NEET."
+            "A thorough understanding of Coulomb’s law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Coulomb’s law correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for Coulomb law",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Coulomb law during complex MCQs.",
-            "Failing to apply the correct logic for Coulomb law."
+            "Misinterpreting the subtle edge cases of Coulomb’s law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Coulomb’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Coulomb law."
+            "Can accurately solve numericals or identify biological structures related specifically to Coulomb’s law.",
+            "Successfully avoids common pitfalls when Coulomb’s law is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Coulomb law."
+            "Past year questions frequently test the application of Coulomb’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-coulomb-law-1",
-              "question": "Explain the core concept behind Coulomb law.",
+              "id": "electrostatics-q-coulomb-s-law-1",
+              "question": "What are the critical factors or principles governing Coulomb’s law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "coulomb-law"
+                "electrostatics",
+                "coulomb-s-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "coulomb-law",
-                "conceptSlug": "core-coulomb-law",
-                "microskillSlug": "understand-coulomb-law",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "coulomb-s-law",
+                "conceptSlug": "core-coulomb-s-law",
+                "microskillSlug": "understand-coulomb-s-law"
               }
             },
             {
-              "id": "electrostatics-q-coulomb-law-2",
-              "question": "What is a common trap associated with Coulomb law?",
+              "id": "electrostatics-q-coulomb-s-law-2",
+              "question": "Describe a scenario where applying the concept of Coulomb’s law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "coulomb-law",
+                "electrostatics",
+                "coulomb-s-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "coulomb-law",
-                "conceptSlug": "trap-coulomb-law",
-                "microskillSlug": "avoid-coulomb-law",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "coulomb-s-law",
+                "conceptSlug": "trap-coulomb-s-law",
+                "microskillSlug": "avoid-coulomb-s-law"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-superposition",
-          "title": "Superposition",
+          "id": "mt-electrostatics-superposition-principle-for-forces-4",
+          "title": "Superposition principle for forces",
           "conceptTags": [
             "electrostatics",
-            "superposition"
+            "superposition-principle-for-forces"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Superposition"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Superposition principle for forces"
           ],
           "mustKnowFacts": [
-            "Superposition is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Superposition for NEET."
+            "A thorough understanding of Superposition principle for forces is heavily tested in recent NEET papers.",
+            "Applying the core principles of Superposition principle for forces correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for superposition",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Superposition during complex MCQs.",
-            "Failing to apply the correct logic for Superposition."
+            "Misinterpreting the subtle edge cases of Superposition principle for forces during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Superposition principle for forces."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Superposition."
+            "Can accurately solve numericals or identify biological structures related specifically to Superposition principle for forces.",
+            "Successfully avoids common pitfalls when Superposition principle for forces is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Superposition."
+            "Past year questions frequently test the application of Superposition principle for forces in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-superposition-1",
-              "question": "Explain the core concept behind Superposition.",
+              "id": "electrostatics-q-superposition-principle-for-forces-1",
+              "question": "What are the critical factors or principles governing Superposition principle for forces?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "superposition"
+                "electrostatics",
+                "superposition-principle-for-forces"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "superposition",
-                "conceptSlug": "core-superposition",
-                "microskillSlug": "understand-superposition",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "superposition-principle-for-forces",
+                "conceptSlug": "core-superposition-principle-for-forces",
+                "microskillSlug": "understand-superposition-principle-for-forces"
               }
             },
             {
-              "id": "electrostatics-q-superposition-2",
-              "question": "What is a common trap associated with Superposition?",
+              "id": "electrostatics-q-superposition-principle-for-forces-2",
+              "question": "Describe a scenario where applying the concept of Superposition principle for forces can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "superposition",
+                "electrostatics",
+                "superposition-principle-for-forces",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "superposition",
-                "conceptSlug": "trap-superposition",
-                "microskillSlug": "avoid-superposition",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "superposition-principle-for-forces",
+                "conceptSlug": "trap-superposition-principle-for-forces",
+                "microskillSlug": "avoid-superposition-principle-for-forces"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-electric-field",
-          "title": "Electric field",
+          "id": "mt-electrostatics-electric-field-intensity-5",
+          "title": "Electric field intensity",
           "conceptTags": [
             "electrostatics",
-            "electric-field"
+            "electric-field-intensity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Electric field"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field intensity"
           ],
           "mustKnowFacts": [
-            "Electric field is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Electric field for NEET."
+            "A thorough understanding of Electric field intensity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field intensity correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for electric field",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Electric field during complex MCQs.",
-            "Failing to apply the correct logic for Electric field."
+            "Misinterpreting the subtle edge cases of Electric field intensity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field intensity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electric field."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field intensity.",
+            "Successfully avoids common pitfalls when Electric field intensity is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electric field."
+            "Past year questions frequently test the application of Electric field intensity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-field-1",
-              "question": "Explain the core concept behind Electric field.",
+              "id": "electrostatics-q-electric-field-intensity-1",
+              "question": "What are the critical factors or principles governing Electric field intensity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electric-field"
+                "electrostatics",
+                "electric-field-intensity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field",
-                "conceptSlug": "core-electric-field",
-                "microskillSlug": "understand-electric-field",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-intensity",
+                "conceptSlug": "core-electric-field-intensity",
+                "microskillSlug": "understand-electric-field-intensity"
               }
             },
             {
-              "id": "electrostatics-q-electric-field-2",
-              "question": "What is a common trap associated with Electric field?",
+              "id": "electrostatics-q-electric-field-intensity-2",
+              "question": "Describe a scenario where applying the concept of Electric field intensity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electric-field",
+                "electrostatics",
+                "electric-field-intensity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field",
-                "conceptSlug": "trap-electric-field",
-                "microskillSlug": "avoid-electric-field",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-intensity",
+                "conceptSlug": "trap-electric-field-intensity",
+                "microskillSlug": "avoid-electric-field-intensity"
               }
             }
           ]
@@ -561,557 +607,604 @@
     },
     {
       "id": "m-electrostatics-2",
-      "title": "Electrostatics - Section 2",
-      "description": "Comprehensive analysis covering field lines, dipole, dipole field and more.",
+      "title": "Mastery Module 2: Electric field lines properties and Related Concepts",
+      "description": "Comprehensive analysis covering electric field lines properties, electric dipole, electric field due to dipole and advanced applications.",
       "conceptTags": [
         "electrostatics",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electrostatics-field-lines",
-          "title": "Field lines",
+          "id": "mt-electrostatics-electric-field-lines-properties-6",
+          "title": "Electric field lines properties",
           "conceptTags": [
             "electrostatics",
-            "field-lines"
+            "electric-field-lines-properties"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Field lines"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field lines properties"
           ],
           "mustKnowFacts": [
-            "Field lines is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Field lines for NEET."
+            "A thorough understanding of Electric field lines properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field lines properties correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for field lines",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Field lines during complex MCQs.",
-            "Failing to apply the correct logic for Field lines."
+            "Misinterpreting the subtle edge cases of Electric field lines properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field lines properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Field lines."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field lines properties.",
+            "Successfully avoids common pitfalls when Electric field lines properties is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Field lines."
+            "Past year questions frequently test the application of Electric field lines properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-field-lines-1",
-              "question": "Explain the core concept behind Field lines.",
+              "id": "electrostatics-q-electric-field-lines-properties-1",
+              "question": "What are the critical factors or principles governing Electric field lines properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "field-lines"
+                "electrostatics",
+                "electric-field-lines-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "field-lines",
-                "conceptSlug": "core-field-lines",
-                "microskillSlug": "understand-field-lines",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-lines-properties",
+                "conceptSlug": "core-electric-field-lines-properties",
+                "microskillSlug": "understand-electric-field-lines-properties"
               }
             },
             {
-              "id": "electrostatics-q-field-lines-2",
-              "question": "What is a common trap associated with Field lines?",
+              "id": "electrostatics-q-electric-field-lines-properties-2",
+              "question": "Describe a scenario where applying the concept of Electric field lines properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "field-lines",
+                "electrostatics",
+                "electric-field-lines-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "field-lines",
-                "conceptSlug": "trap-field-lines",
-                "microskillSlug": "avoid-field-lines",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-lines-properties",
+                "conceptSlug": "trap-electric-field-lines-properties",
+                "microskillSlug": "avoid-electric-field-lines-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-dipole",
-          "title": "Dipole",
+          "id": "mt-electrostatics-electric-dipole-7",
+          "title": "Electric dipole",
           "conceptTags": [
             "electrostatics",
-            "dipole"
+            "electric-dipole"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dipole"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric dipole"
           ],
           "mustKnowFacts": [
-            "Dipole is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Dipole for NEET."
+            "A thorough understanding of Electric dipole is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric dipole correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for dipole",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dipole during complex MCQs.",
-            "Failing to apply the correct logic for Dipole."
+            "Misinterpreting the subtle edge cases of Electric dipole during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric dipole."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dipole."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric dipole.",
+            "Successfully avoids common pitfalls when Electric dipole is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dipole."
+            "Past year questions frequently test the application of Electric dipole in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-dipole-1",
-              "question": "Explain the core concept behind Dipole.",
+              "id": "electrostatics-q-electric-dipole-1",
+              "question": "What are the critical factors or principles governing Electric dipole?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dipole"
+                "electrostatics",
+                "electric-dipole"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dipole",
-                "conceptSlug": "core-dipole",
-                "microskillSlug": "understand-dipole",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-dipole",
+                "conceptSlug": "core-electric-dipole",
+                "microskillSlug": "understand-electric-dipole"
               }
             },
             {
-              "id": "electrostatics-q-dipole-2",
-              "question": "What is a common trap associated with Dipole?",
+              "id": "electrostatics-q-electric-dipole-2",
+              "question": "Describe a scenario where applying the concept of Electric dipole can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dipole",
+                "electrostatics",
+                "electric-dipole",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dipole",
-                "conceptSlug": "trap-dipole",
-                "microskillSlug": "avoid-dipole",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-dipole",
+                "conceptSlug": "trap-electric-dipole",
+                "microskillSlug": "avoid-electric-dipole"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-dipole-field",
-          "title": "Dipole field",
+          "id": "mt-electrostatics-electric-field-due-to-dipole-8",
+          "title": "Electric field due to dipole",
           "conceptTags": [
             "electrostatics",
-            "dipole-field"
+            "electric-field-due-to-dipole"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dipole field"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field due to dipole"
           ],
           "mustKnowFacts": [
-            "Dipole field is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Dipole field for NEET."
+            "A thorough understanding of Electric field due to dipole is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field due to dipole correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for dipole field",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dipole field during complex MCQs.",
-            "Failing to apply the correct logic for Dipole field."
+            "Misinterpreting the subtle edge cases of Electric field due to dipole during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field due to dipole."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dipole field."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field due to dipole.",
+            "Successfully avoids common pitfalls when Electric field due to dipole is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dipole field."
+            "Past year questions frequently test the application of Electric field due to dipole in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-dipole-field-1",
-              "question": "Explain the core concept behind Dipole field.",
+              "id": "electrostatics-q-electric-field-due-to-dipole-1",
+              "question": "What are the critical factors or principles governing Electric field due to dipole?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dipole-field"
+                "electrostatics",
+                "electric-field-due-to-dipole"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dipole-field",
-                "conceptSlug": "core-dipole-field",
-                "microskillSlug": "understand-dipole-field",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-due-to-dipole",
+                "conceptSlug": "core-electric-field-due-to-dipole",
+                "microskillSlug": "understand-electric-field-due-to-dipole"
               }
             },
             {
-              "id": "electrostatics-q-dipole-field-2",
-              "question": "What is a common trap associated with Dipole field?",
+              "id": "electrostatics-q-electric-field-due-to-dipole-2",
+              "question": "Describe a scenario where applying the concept of Electric field due to dipole can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dipole-field",
+                "electrostatics",
+                "electric-field-due-to-dipole",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dipole-field",
-                "conceptSlug": "trap-dipole-field",
-                "microskillSlug": "avoid-dipole-field",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-due-to-dipole",
+                "conceptSlug": "trap-electric-field-due-to-dipole",
+                "microskillSlug": "avoid-electric-field-due-to-dipole"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-torque-on-dipole",
-          "title": "Torque on dipole",
+          "id": "mt-electrostatics-torque-on-dipole-in-uniform-field-9",
+          "title": "Torque on dipole in uniform field",
           "conceptTags": [
             "electrostatics",
-            "torque-on-dipole"
+            "torque-on-dipole-in-uniform-field"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Torque on dipole"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Torque on dipole in uniform field"
           ],
           "mustKnowFacts": [
-            "Torque on dipole is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Torque on dipole for NEET."
+            "A thorough understanding of Torque on dipole in uniform field is heavily tested in recent NEET papers.",
+            "Applying the core principles of Torque on dipole in uniform field correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for torque on dipole",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Torque on dipole during complex MCQs.",
-            "Failing to apply the correct logic for Torque on dipole."
+            "Misinterpreting the subtle edge cases of Torque on dipole in uniform field during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Torque on dipole in uniform field."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Torque on dipole."
+            "Can accurately solve numericals or identify biological structures related specifically to Torque on dipole in uniform field.",
+            "Successfully avoids common pitfalls when Torque on dipole in uniform field is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Torque on dipole."
+            "Past year questions frequently test the application of Torque on dipole in uniform field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-torque-on-dipole-1",
-              "question": "Explain the core concept behind Torque on dipole.",
+              "id": "electrostatics-q-torque-on-dipole-in-uniform-field-1",
+              "question": "What are the critical factors or principles governing Torque on dipole in uniform field?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "torque-on-dipole"
+                "electrostatics",
+                "torque-on-dipole-in-uniform-field"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "torque-on-dipole",
-                "conceptSlug": "core-torque-on-dipole",
-                "microskillSlug": "understand-torque-on-dipole",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "torque-on-dipole-in-uniform-field",
+                "conceptSlug": "core-torque-on-dipole-in-uniform-field",
+                "microskillSlug": "understand-torque-on-dipole-in-uniform-field"
               }
             },
             {
-              "id": "electrostatics-q-torque-on-dipole-2",
-              "question": "What is a common trap associated with Torque on dipole?",
+              "id": "electrostatics-q-torque-on-dipole-in-uniform-field-2",
+              "question": "Describe a scenario where applying the concept of Torque on dipole in uniform field can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "torque-on-dipole",
+                "electrostatics",
+                "torque-on-dipole-in-uniform-field",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "torque-on-dipole",
-                "conceptSlug": "trap-torque-on-dipole",
-                "microskillSlug": "avoid-torque-on-dipole",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "torque-on-dipole-in-uniform-field",
+                "conceptSlug": "trap-torque-on-dipole-in-uniform-field",
+                "microskillSlug": "avoid-torque-on-dipole-in-uniform-field"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-flux",
-          "title": "Flux",
+          "id": "mt-electrostatics-electric-flux-definition-10",
+          "title": "Electric flux definition",
           "conceptTags": [
             "electrostatics",
-            "flux"
+            "electric-flux-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Flux"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric flux definition"
           ],
           "mustKnowFacts": [
-            "Flux is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Flux for NEET."
+            "A thorough understanding of Electric flux definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric flux definition correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for flux",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Flux during complex MCQs.",
-            "Failing to apply the correct logic for Flux."
+            "Misinterpreting the subtle edge cases of Electric flux definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric flux definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Flux."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric flux definition.",
+            "Successfully avoids common pitfalls when Electric flux definition is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Flux."
+            "Past year questions frequently test the application of Electric flux definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-flux-1",
-              "question": "Explain the core concept behind Flux.",
+              "id": "electrostatics-q-electric-flux-definition-1",
+              "question": "What are the critical factors or principles governing Electric flux definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "flux"
+                "electrostatics",
+                "electric-flux-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "flux",
-                "conceptSlug": "core-flux",
-                "microskillSlug": "understand-flux",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-flux-definition",
+                "conceptSlug": "core-electric-flux-definition",
+                "microskillSlug": "understand-electric-flux-definition"
               }
             },
             {
-              "id": "electrostatics-q-flux-2",
-              "question": "What is a common trap associated with Flux?",
+              "id": "electrostatics-q-electric-flux-definition-2",
+              "question": "Describe a scenario where applying the concept of Electric flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "flux",
+                "electrostatics",
+                "electric-flux-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "flux",
-                "conceptSlug": "trap-flux",
-                "microskillSlug": "avoid-flux",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-flux-definition",
+                "conceptSlug": "trap-electric-flux-definition",
+                "microskillSlug": "avoid-electric-flux-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-gauss-law",
-          "title": "Gauss law",
+          "id": "mt-electrostatics-gauss-law-applications-11",
+          "title": "Gauss law applications",
           "conceptTags": [
             "electrostatics",
-            "gauss-law"
+            "gauss-law-applications"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Gauss law"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Gauss law applications"
           ],
           "mustKnowFacts": [
-            "Gauss law is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Gauss law for NEET."
+            "A thorough understanding of Gauss law applications is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gauss law applications correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for Gauss law",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Gauss law during complex MCQs.",
-            "Failing to apply the correct logic for Gauss law."
+            "Misinterpreting the subtle edge cases of Gauss law applications during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gauss law applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gauss law."
+            "Can accurately solve numericals or identify biological structures related specifically to Gauss law applications.",
+            "Successfully avoids common pitfalls when Gauss law applications is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gauss law."
+            "Past year questions frequently test the application of Gauss law applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-gauss-law-1",
-              "question": "Explain the core concept behind Gauss law.",
+              "id": "electrostatics-q-gauss-law-applications-1",
+              "question": "What are the critical factors or principles governing Gauss law applications?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "gauss-law"
+                "electrostatics",
+                "gauss-law-applications"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "gauss-law",
-                "conceptSlug": "core-gauss-law",
-                "microskillSlug": "understand-gauss-law",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "gauss-law-applications",
+                "conceptSlug": "core-gauss-law-applications",
+                "microskillSlug": "understand-gauss-law-applications"
               }
             },
             {
-              "id": "electrostatics-q-gauss-law-2",
-              "question": "What is a common trap associated with Gauss law?",
+              "id": "electrostatics-q-gauss-law-applications-2",
+              "question": "Describe a scenario where applying the concept of Gauss law applications can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "gauss-law",
+                "electrostatics",
+                "gauss-law-applications",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "gauss-law",
-                "conceptSlug": "trap-gauss-law",
-                "microskillSlug": "avoid-gauss-law",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "gauss-law-applications",
+                "conceptSlug": "trap-gauss-law-applications",
+                "microskillSlug": "avoid-gauss-law-applications"
               }
             }
           ]
@@ -1120,557 +1213,605 @@
     },
     {
       "id": "m-electrostatics-3",
-      "title": "Electrostatics - Section 3",
-      "description": "Comprehensive analysis covering field due to wire/sheet/shell, potential, potential difference and more.",
+      "title": "Mastery Module 3: Electric field of straight wire and Related Concepts",
+      "description": "Comprehensive analysis covering electric field of straight wire, electric field of infinite sheet, electric field of spherical shell and advanced applications.",
       "conceptTags": [
         "electrostatics",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electrostatics-field-due-to-wire-sheet-shell",
-          "title": "Field due to wire/sheet/shell",
+          "id": "mt-electrostatics-electric-field-of-straight-wire-12",
+          "title": "Electric field of straight wire",
           "conceptTags": [
             "electrostatics",
-            "field-due-to-wire-sheet-shell"
+            "electric-field-of-straight-wire"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Field due to wire/sheet/shell"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of straight wire"
           ],
           "mustKnowFacts": [
-            "Field due to wire/sheet/shell is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Field due to wire/sheet/shell for NEET."
+            "A thorough understanding of Electric field of straight wire is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field of straight wire correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for field due to wire/sheet/shell",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Field due to wire/sheet/shell during complex MCQs.",
-            "Failing to apply the correct logic for Field due to wire/sheet/shell."
+            "Misinterpreting the subtle edge cases of Electric field of straight wire during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field of straight wire."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Field due to wire/sheet/shell."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field of straight wire.",
+            "Successfully avoids common pitfalls when Electric field of straight wire is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Field due to wire/sheet/shell."
+            "Past year questions frequently test the application of Electric field of straight wire in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-field-due-to-wire-sheet-shell-1",
-              "question": "Explain the core concept behind Field due to wire/sheet/shell.",
+              "id": "electrostatics-q-electric-field-of-straight-wire-1",
+              "question": "What are the critical factors or principles governing Electric field of straight wire?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "field-due-to-wire-sheet-shell"
+                "electrostatics",
+                "electric-field-of-straight-wire"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "field-due-to-wire-sheet-shell",
-                "conceptSlug": "core-field-due-to-wire-sheet-shell",
-                "microskillSlug": "understand-field-due-to-wire-sheet-shell",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-straight-wire",
+                "conceptSlug": "core-electric-field-of-straight-wire",
+                "microskillSlug": "understand-electric-field-of-straight-wire"
               }
             },
             {
-              "id": "electrostatics-q-field-due-to-wire-sheet-shell-2",
-              "question": "What is a common trap associated with Field due to wire/sheet/shell?",
+              "id": "electrostatics-q-electric-field-of-straight-wire-2",
+              "question": "Describe a scenario where applying the concept of Electric field of straight wire can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "field-due-to-wire-sheet-shell",
+                "electrostatics",
+                "electric-field-of-straight-wire",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "field-due-to-wire-sheet-shell",
-                "conceptSlug": "trap-field-due-to-wire-sheet-shell",
-                "microskillSlug": "avoid-field-due-to-wire-sheet-shell",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-straight-wire",
+                "conceptSlug": "trap-electric-field-of-straight-wire",
+                "microskillSlug": "avoid-electric-field-of-straight-wire"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-potential",
-          "title": "Potential",
+          "id": "mt-electrostatics-electric-field-of-infinite-sheet-13",
+          "title": "Electric field of infinite sheet",
           "conceptTags": [
             "electrostatics",
-            "potential"
+            "electric-field-of-infinite-sheet"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Potential"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of infinite sheet"
           ],
           "mustKnowFacts": [
-            "Potential is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Potential for NEET."
+            "A thorough understanding of Electric field of infinite sheet is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field of infinite sheet correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for potential",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Potential during complex MCQs.",
-            "Failing to apply the correct logic for Potential."
+            "Misinterpreting the subtle edge cases of Electric field of infinite sheet during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field of infinite sheet."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potential."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field of infinite sheet.",
+            "Successfully avoids common pitfalls when Electric field of infinite sheet is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Potential."
+            "Past year questions frequently test the application of Electric field of infinite sheet in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-potential-1",
-              "question": "Explain the core concept behind Potential.",
+              "id": "electrostatics-q-electric-field-of-infinite-sheet-1",
+              "question": "What are the critical factors or principles governing Electric field of infinite sheet?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "potential"
+                "electrostatics",
+                "electric-field-of-infinite-sheet"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "potential",
-                "conceptSlug": "core-potential",
-                "microskillSlug": "understand-potential",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-infinite-sheet",
+                "conceptSlug": "core-electric-field-of-infinite-sheet",
+                "microskillSlug": "understand-electric-field-of-infinite-sheet"
               }
             },
             {
-              "id": "electrostatics-q-potential-2",
-              "question": "What is a common trap associated with Potential?",
+              "id": "electrostatics-q-electric-field-of-infinite-sheet-2",
+              "question": "Describe a scenario where applying the concept of Electric field of infinite sheet can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "potential",
+                "electrostatics",
+                "electric-field-of-infinite-sheet",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "potential",
-                "conceptSlug": "trap-potential",
-                "microskillSlug": "avoid-potential",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-infinite-sheet",
+                "conceptSlug": "trap-electric-field-of-infinite-sheet",
+                "microskillSlug": "avoid-electric-field-of-infinite-sheet"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-potential-difference",
+          "id": "mt-electrostatics-electric-field-of-spherical-shell-14",
+          "title": "Electric field of spherical shell",
+          "conceptTags": [
+            "electrostatics",
+            "electric-field-of-spherical-shell"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of spherical shell"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Electric field of spherical shell is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric field of spherical shell correctly is essential for solving complex multi-step problems in Electrostatics."
+          ],
+          "formulas": [
+            {
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
+              "variables": [
+                "F",
+                "q_1",
+                "q_2",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Electric field of spherical shell during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric field of spherical shell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Electric field of spherical shell.",
+            "Successfully avoids common pitfalls when Electric field of spherical shell is integrated with other concepts in Electrostatics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Electric field of spherical shell in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electrostatics-q-electric-field-of-spherical-shell-1",
+              "question": "What are the critical factors or principles governing Electric field of spherical shell?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "electric-field-of-spherical-shell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-spherical-shell",
+                "conceptSlug": "core-electric-field-of-spherical-shell",
+                "microskillSlug": "understand-electric-field-of-spherical-shell"
+              }
+            },
+            {
+              "id": "electrostatics-q-electric-field-of-spherical-shell-2",
+              "question": "Describe a scenario where applying the concept of Electric field of spherical shell can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "electric-field-of-spherical-shell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-field-of-spherical-shell",
+                "conceptSlug": "trap-electric-field-of-spherical-shell",
+                "microskillSlug": "avoid-electric-field-of-spherical-shell"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electrostatics-electric-potential-15",
+          "title": "Electric potential",
+          "conceptTags": [
+            "electrostatics",
+            "electric-potential"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric potential"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Electric potential is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric potential correctly is essential for solving complex multi-step problems in Electrostatics."
+          ],
+          "formulas": [
+            {
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
+              "variables": [
+                "F",
+                "q_1",
+                "q_2",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Electric potential during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric potential."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Electric potential.",
+            "Successfully avoids common pitfalls when Electric potential is integrated with other concepts in Electrostatics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Electric potential in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electrostatics-q-electric-potential-1",
+              "question": "What are the critical factors or principles governing Electric potential?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "electric-potential"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-potential",
+                "conceptSlug": "core-electric-potential",
+                "microskillSlug": "understand-electric-potential"
+              }
+            },
+            {
+              "id": "electrostatics-q-electric-potential-2",
+              "question": "Describe a scenario where applying the concept of Electric potential can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "electric-potential",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-potential",
+                "conceptSlug": "trap-electric-potential",
+                "microskillSlug": "avoid-electric-potential"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electrostatics-potential-difference-16",
           "title": "Potential difference",
           "conceptTags": [
             "electrostatics",
             "potential-difference"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Potential difference"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Potential difference"
           ],
           "mustKnowFacts": [
-            "Potential difference is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Potential difference for NEET."
+            "A thorough understanding of Potential difference is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potential difference correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for potential difference",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Potential difference during complex MCQs.",
-            "Failing to apply the correct logic for Potential difference."
+            "Misinterpreting the subtle edge cases of Potential difference during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potential difference."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potential difference."
+            "Can accurately solve numericals or identify biological structures related specifically to Potential difference.",
+            "Successfully avoids common pitfalls when Potential difference is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Potential difference."
+            "Past year questions frequently test the application of Potential difference in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-potential-difference-1",
-              "question": "Explain the core concept behind Potential difference.",
+              "question": "What are the critical factors or principles governing Potential difference?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "electrostatics",
                 "potential-difference"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
                 "topicSlug": "electrostatics",
                 "subtopicSlug": "potential-difference",
                 "conceptSlug": "core-potential-difference",
-                "microskillSlug": "understand-potential-difference",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "microskillSlug": "understand-potential-difference"
               }
             },
             {
               "id": "electrostatics-q-potential-difference-2",
-              "question": "What is a common trap associated with Potential difference?",
+              "question": "Describe a scenario where applying the concept of Potential difference can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "electrostatics",
                 "potential-difference",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
                 "topicSlug": "electrostatics",
                 "subtopicSlug": "potential-difference",
                 "conceptSlug": "trap-potential-difference",
-                "microskillSlug": "avoid-potential-difference",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "microskillSlug": "avoid-potential-difference"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-equipotential-surface",
-          "title": "Equipotential surface",
+          "id": "mt-electrostatics-equipotential-surfaces-17",
+          "title": "Equipotential surfaces",
           "conceptTags": [
             "electrostatics",
-            "equipotential-surface"
+            "equipotential-surfaces"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Equipotential surface"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Equipotential surfaces"
           ],
           "mustKnowFacts": [
-            "Equipotential surface is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Equipotential surface for NEET."
+            "A thorough understanding of Equipotential surfaces is heavily tested in recent NEET papers.",
+            "Applying the core principles of Equipotential surfaces correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for equipotential surface",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Equipotential surface during complex MCQs.",
-            "Failing to apply the correct logic for Equipotential surface."
+            "Misinterpreting the subtle edge cases of Equipotential surfaces during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Equipotential surfaces."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Equipotential surface."
+            "Can accurately solve numericals or identify biological structures related specifically to Equipotential surfaces.",
+            "Successfully avoids common pitfalls when Equipotential surfaces is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Equipotential surface."
+            "Past year questions frequently test the application of Equipotential surfaces in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-equipotential-surface-1",
-              "question": "Explain the core concept behind Equipotential surface.",
+              "id": "electrostatics-q-equipotential-surfaces-1",
+              "question": "What are the critical factors or principles governing Equipotential surfaces?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "equipotential-surface"
+                "electrostatics",
+                "equipotential-surfaces"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "equipotential-surface",
-                "conceptSlug": "core-equipotential-surface",
-                "microskillSlug": "understand-equipotential-surface",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "equipotential-surfaces",
+                "conceptSlug": "core-equipotential-surfaces",
+                "microskillSlug": "understand-equipotential-surfaces"
               }
             },
             {
-              "id": "electrostatics-q-equipotential-surface-2",
-              "question": "What is a common trap associated with Equipotential surface?",
+              "id": "electrostatics-q-equipotential-surfaces-2",
+              "question": "Describe a scenario where applying the concept of Equipotential surfaces can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "equipotential-surface",
+                "electrostatics",
+                "equipotential-surfaces",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "equipotential-surface",
-                "conceptSlug": "trap-equipotential-surface",
-                "microskillSlug": "avoid-equipotential-surface",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-electrostatics-potential-energy",
-          "title": "Potential energy",
-          "conceptTags": [
-            "electrostatics",
-            "potential-energy"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Potential energy"
-          ],
-          "mustKnowFacts": [
-            "Potential energy is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Potential energy for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for potential energy",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Potential energy during complex MCQs.",
-            "Failing to apply the correct logic for Potential energy."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potential energy."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Potential energy."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-potential-energy-1",
-              "question": "Explain the core concept behind Potential energy.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "potential-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "electrostatics",
                 "topicSlug": "electrostatics",
-                "subtopicSlug": "potential-energy",
-                "conceptSlug": "core-potential-energy",
-                "microskillSlug": "understand-potential-energy",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
-              }
-            },
-            {
-              "id": "electrostatics-q-potential-energy-2",
-              "question": "What is a common trap associated with Potential energy?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "potential-energy",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "potential-energy",
-                "conceptSlug": "trap-potential-energy",
-                "microskillSlug": "avoid-potential-energy",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-electrostatics-conductor",
-          "title": "Conductor",
-          "conceptTags": [
-            "electrostatics",
-            "conductor"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Conductor"
-          ],
-          "mustKnowFacts": [
-            "Conductor is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Conductor for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for conductor",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Conductor during complex MCQs.",
-            "Failing to apply the correct logic for Conductor."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conductor."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Conductor."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-conductor-1",
-              "question": "Explain the core concept behind Conductor.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "conductor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "conductor",
-                "conceptSlug": "core-conductor",
-                "microskillSlug": "understand-conductor",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
-              }
-            },
-            {
-              "id": "electrostatics-q-conductor-2",
-              "question": "What is a common trap associated with Conductor?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "conductor",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "conductor",
-                "conceptSlug": "trap-conductor",
-                "microskillSlug": "avoid-conductor",
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "subtopicSlug": "equipotential-surfaces",
+                "conceptSlug": "trap-equipotential-surfaces",
+                "microskillSlug": "avoid-equipotential-surfaces"
               }
             }
           ]
@@ -1679,557 +1820,814 @@
     },
     {
       "id": "m-electrostatics-4",
-      "title": "Electrostatics - Section 4",
-      "description": "Comprehensive analysis covering dielectric, polarisation, capacitance and more.",
+      "title": "Mastery Module 4: Electric potential energy and Related Concepts",
+      "description": "Comprehensive analysis covering electric potential energy, conductors and insulators, dielectrics and polarisation and advanced applications.",
       "conceptTags": [
         "electrostatics",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electrostatics-dielectric",
-          "title": "Dielectric",
+          "id": "mt-electrostatics-electric-potential-energy-18",
+          "title": "Electric potential energy",
           "conceptTags": [
             "electrostatics",
-            "dielectric"
+            "electric-potential-energy"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dielectric"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric potential energy"
           ],
           "mustKnowFacts": [
-            "Dielectric is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Dielectric for NEET."
+            "A thorough understanding of Electric potential energy is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric potential energy correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for dielectric",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dielectric during complex MCQs.",
-            "Failing to apply the correct logic for Dielectric."
+            "Misinterpreting the subtle edge cases of Electric potential energy during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric potential energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dielectric."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric potential energy.",
+            "Successfully avoids common pitfalls when Electric potential energy is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dielectric."
+            "Past year questions frequently test the application of Electric potential energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-dielectric-1",
-              "question": "Explain the core concept behind Dielectric.",
+              "id": "electrostatics-q-electric-potential-energy-1",
+              "question": "What are the critical factors or principles governing Electric potential energy?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dielectric"
+                "electrostatics",
+                "electric-potential-energy"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dielectric",
-                "conceptSlug": "core-dielectric",
-                "microskillSlug": "understand-dielectric",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-potential-energy",
+                "conceptSlug": "core-electric-potential-energy",
+                "microskillSlug": "understand-electric-potential-energy"
               }
             },
             {
-              "id": "electrostatics-q-dielectric-2",
-              "question": "What is a common trap associated with Dielectric?",
+              "id": "electrostatics-q-electric-potential-energy-2",
+              "question": "Describe a scenario where applying the concept of Electric potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dielectric",
+                "electrostatics",
+                "electric-potential-energy",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dielectric",
-                "conceptSlug": "trap-dielectric",
-                "microskillSlug": "avoid-dielectric",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "electric-potential-energy",
+                "conceptSlug": "trap-electric-potential-energy",
+                "microskillSlug": "avoid-electric-potential-energy"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-polarisation",
-          "title": "Polarisation",
+          "id": "mt-electrostatics-conductors-and-insulators-19",
+          "title": "Conductors and insulators",
           "conceptTags": [
             "electrostatics",
-            "polarisation"
+            "conductors-and-insulators"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Polarisation"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Conductors and insulators"
           ],
           "mustKnowFacts": [
-            "Polarisation is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Polarisation for NEET."
+            "A thorough understanding of Conductors and insulators is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conductors and insulators correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for polarisation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Polarisation during complex MCQs.",
-            "Failing to apply the correct logic for Polarisation."
+            "Misinterpreting the subtle edge cases of Conductors and insulators during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conductors and insulators."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Polarisation."
+            "Can accurately solve numericals or identify biological structures related specifically to Conductors and insulators.",
+            "Successfully avoids common pitfalls when Conductors and insulators is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Polarisation."
+            "Past year questions frequently test the application of Conductors and insulators in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-polarisation-1",
-              "question": "Explain the core concept behind Polarisation.",
+              "id": "electrostatics-q-conductors-and-insulators-1",
+              "question": "What are the critical factors or principles governing Conductors and insulators?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "polarisation"
+                "electrostatics",
+                "conductors-and-insulators"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "polarisation",
-                "conceptSlug": "core-polarisation",
-                "microskillSlug": "understand-polarisation",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "conductors-and-insulators",
+                "conceptSlug": "core-conductors-and-insulators",
+                "microskillSlug": "understand-conductors-and-insulators"
               }
             },
             {
-              "id": "electrostatics-q-polarisation-2",
-              "question": "What is a common trap associated with Polarisation?",
+              "id": "electrostatics-q-conductors-and-insulators-2",
+              "question": "Describe a scenario where applying the concept of Conductors and insulators can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "polarisation",
+                "electrostatics",
+                "conductors-and-insulators",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "polarisation",
-                "conceptSlug": "trap-polarisation",
-                "microskillSlug": "avoid-polarisation",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "conductors-and-insulators",
+                "conceptSlug": "trap-conductors-and-insulators",
+                "microskillSlug": "avoid-conductors-and-insulators"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-capacitance",
-          "title": "Capacitance",
+          "id": "mt-electrostatics-dielectrics-and-polarisation-20",
+          "title": "Dielectrics and polarisation",
           "conceptTags": [
             "electrostatics",
-            "capacitance"
+            "dielectrics-and-polarisation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Capacitance"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Dielectrics and polarisation"
           ],
           "mustKnowFacts": [
-            "Capacitance is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Capacitance for NEET."
+            "A thorough understanding of Dielectrics and polarisation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dielectrics and polarisation correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for capacitance",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Capacitance during complex MCQs.",
-            "Failing to apply the correct logic for Capacitance."
+            "Misinterpreting the subtle edge cases of Dielectrics and polarisation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dielectrics and polarisation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Capacitance."
+            "Can accurately solve numericals or identify biological structures related specifically to Dielectrics and polarisation.",
+            "Successfully avoids common pitfalls when Dielectrics and polarisation is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Capacitance."
+            "Past year questions frequently test the application of Dielectrics and polarisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-capacitance-1",
-              "question": "Explain the core concept behind Capacitance.",
+              "id": "electrostatics-q-dielectrics-and-polarisation-1",
+              "question": "What are the critical factors or principles governing Dielectrics and polarisation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "capacitance"
+                "electrostatics",
+                "dielectrics-and-polarisation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitance",
-                "conceptSlug": "core-capacitance",
-                "microskillSlug": "understand-capacitance",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "dielectrics-and-polarisation",
+                "conceptSlug": "core-dielectrics-and-polarisation",
+                "microskillSlug": "understand-dielectrics-and-polarisation"
               }
             },
             {
-              "id": "electrostatics-q-capacitance-2",
-              "question": "What is a common trap associated with Capacitance?",
+              "id": "electrostatics-q-dielectrics-and-polarisation-2",
+              "question": "Describe a scenario where applying the concept of Dielectrics and polarisation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "capacitance",
+                "electrostatics",
+                "dielectrics-and-polarisation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitance",
-                "conceptSlug": "trap-capacitance",
-                "microskillSlug": "avoid-capacitance",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "dielectrics-and-polarisation",
+                "conceptSlug": "trap-dielectrics-and-polarisation",
+                "microskillSlug": "avoid-dielectrics-and-polarisation"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-capacitors-series-parallel",
-          "title": "Capacitors series/parallel",
+          "id": "mt-electrostatics-capacitance-definition-21",
+          "title": "Capacitance definition",
           "conceptTags": [
             "electrostatics",
-            "capacitors-series-parallel"
+            "capacitance-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Capacitors series/parallel"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Capacitance definition"
           ],
           "mustKnowFacts": [
-            "Capacitors series/parallel is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Capacitors series/parallel for NEET."
+            "A thorough understanding of Capacitance definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Capacitance definition correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for capacitors series/parallel",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Capacitors series/parallel during complex MCQs.",
-            "Failing to apply the correct logic for Capacitors series/parallel."
+            "Misinterpreting the subtle edge cases of Capacitance definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Capacitance definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Capacitors series/parallel."
+            "Can accurately solve numericals or identify biological structures related specifically to Capacitance definition.",
+            "Successfully avoids common pitfalls when Capacitance definition is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Capacitors series/parallel."
+            "Past year questions frequently test the application of Capacitance definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-capacitors-series-parallel-1",
-              "question": "Explain the core concept behind Capacitors series/parallel.",
+              "id": "electrostatics-q-capacitance-definition-1",
+              "question": "What are the critical factors or principles governing Capacitance definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "capacitors-series-parallel"
+                "electrostatics",
+                "capacitance-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitors-series-parallel",
-                "conceptSlug": "core-capacitors-series-parallel",
-                "microskillSlug": "understand-capacitors-series-parallel",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "capacitance-definition",
+                "conceptSlug": "core-capacitance-definition",
+                "microskillSlug": "understand-capacitance-definition"
               }
             },
             {
-              "id": "electrostatics-q-capacitors-series-parallel-2",
-              "question": "What is a common trap associated with Capacitors series/parallel?",
+              "id": "electrostatics-q-capacitance-definition-2",
+              "question": "Describe a scenario where applying the concept of Capacitance definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "capacitors-series-parallel",
+                "electrostatics",
+                "capacitance-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitors-series-parallel",
-                "conceptSlug": "trap-capacitors-series-parallel",
-                "microskillSlug": "avoid-capacitors-series-parallel",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "capacitance-definition",
+                "conceptSlug": "trap-capacitance-definition",
+                "microskillSlug": "avoid-capacitance-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-parallel-plate-capacitor-with-without-dielectric",
-          "title": "Parallel plate capacitor with/without dielectric",
+          "id": "mt-electrostatics-capacitors-in-series-and-parallel-22",
+          "title": "Capacitors in series and parallel",
           "conceptTags": [
             "electrostatics",
-            "parallel-plate-capacitor-with-without-dielectric"
+            "capacitors-in-series-and-parallel"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Parallel plate capacitor with/without dielectric"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Capacitors in series and parallel"
           ],
           "mustKnowFacts": [
-            "Parallel plate capacitor with/without dielectric is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Parallel plate capacitor with/without dielectric for NEET."
+            "A thorough understanding of Capacitors in series and parallel is heavily tested in recent NEET papers.",
+            "Applying the core principles of Capacitors in series and parallel correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for parallel plate capacitor with/without dielectric",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Parallel plate capacitor with/without dielectric during complex MCQs.",
-            "Failing to apply the correct logic for Parallel plate capacitor with/without dielectric."
+            "Misinterpreting the subtle edge cases of Capacitors in series and parallel during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Capacitors in series and parallel."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Parallel plate capacitor with/without dielectric."
+            "Can accurately solve numericals or identify biological structures related specifically to Capacitors in series and parallel.",
+            "Successfully avoids common pitfalls when Capacitors in series and parallel is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Parallel plate capacitor with/without dielectric."
+            "Past year questions frequently test the application of Capacitors in series and parallel in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-parallel-plate-capacitor-with-without-dielectric-1",
-              "question": "Explain the core concept behind Parallel plate capacitor with/without dielectric.",
+              "id": "electrostatics-q-capacitors-in-series-and-parallel-1",
+              "question": "What are the critical factors or principles governing Capacitors in series and parallel?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "parallel-plate-capacitor-with-without-dielectric"
+                "electrostatics",
+                "capacitors-in-series-and-parallel"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "parallel-plate-capacitor-with-without-dielectric",
-                "conceptSlug": "core-parallel-plate-capacitor-with-without-dielectric",
-                "microskillSlug": "understand-parallel-plate-capacitor-with-without-dielectric",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "capacitors-in-series-and-parallel",
+                "conceptSlug": "core-capacitors-in-series-and-parallel",
+                "microskillSlug": "understand-capacitors-in-series-and-parallel"
               }
             },
             {
-              "id": "electrostatics-q-parallel-plate-capacitor-with-without-dielectric-2",
-              "question": "What is a common trap associated with Parallel plate capacitor with/without dielectric?",
+              "id": "electrostatics-q-capacitors-in-series-and-parallel-2",
+              "question": "Describe a scenario where applying the concept of Capacitors in series and parallel can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "parallel-plate-capacitor-with-without-dielectric",
+                "electrostatics",
+                "capacitors-in-series-and-parallel",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "parallel-plate-capacitor-with-without-dielectric",
-                "conceptSlug": "trap-parallel-plate-capacitor-with-without-dielectric",
-                "microskillSlug": "avoid-parallel-plate-capacitor-with-without-dielectric",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "capacitors-in-series-and-parallel",
+                "conceptSlug": "trap-capacitors-in-series-and-parallel",
+                "microskillSlug": "avoid-capacitors-in-series-and-parallel"
               }
             }
           ]
         },
         {
-          "id": "mt-electrostatics-energy-stored",
-          "title": "Energy stored",
+          "id": "mt-electrostatics-parallel-plate-capacitor-formula-23",
+          "title": "Parallel plate capacitor formula",
           "conceptTags": [
             "electrostatics",
-            "energy-stored"
+            "parallel-plate-capacitor-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Energy stored"
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Parallel plate capacitor formula"
           ],
           "mustKnowFacts": [
-            "Energy stored is a fundamental subtopic of Electrostatics.",
-            "Crucial to understand the principles governing Energy stored for NEET."
+            "A thorough understanding of Parallel plate capacitor formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Parallel plate capacitor formula correctly is essential for solving complex multi-step problems in Electrostatics."
           ],
           "formulas": [
             {
-              "name": "Formula for energy stored",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Energy stored during complex MCQs.",
-            "Failing to apply the correct logic for Energy stored."
+            "Misinterpreting the subtle edge cases of Parallel plate capacitor formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Parallel plate capacitor formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Energy stored."
+            "Can accurately solve numericals or identify biological structures related specifically to Parallel plate capacitor formula.",
+            "Successfully avoids common pitfalls when Parallel plate capacitor formula is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Energy stored."
+            "Past year questions frequently test the application of Parallel plate capacitor formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-energy-stored-1",
-              "question": "Explain the core concept behind Energy stored.",
+              "id": "electrostatics-q-parallel-plate-capacitor-formula-1",
+              "question": "What are the critical factors or principles governing Parallel plate capacitor formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "energy-stored"
+                "electrostatics",
+                "parallel-plate-capacitor-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "energy-stored",
-                "conceptSlug": "core-energy-stored",
-                "microskillSlug": "understand-energy-stored",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "parallel-plate-capacitor-formula",
+                "conceptSlug": "core-parallel-plate-capacitor-formula",
+                "microskillSlug": "understand-parallel-plate-capacitor-formula"
               }
             },
             {
-              "id": "electrostatics-q-energy-stored-2",
-              "question": "What is a common trap associated with Energy stored?",
+              "id": "electrostatics-q-parallel-plate-capacitor-formula-2",
+              "question": "Describe a scenario where applying the concept of Parallel plate capacitor formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "energy-stored",
+                "electrostatics",
+                "parallel-plate-capacitor-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "energy-stored",
-                "conceptSlug": "trap-energy-stored",
-                "microskillSlug": "avoid-energy-stored",
                 "subject": "Physics",
                 "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics"
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "parallel-plate-capacitor-formula",
+                "conceptSlug": "trap-parallel-plate-capacitor-formula",
+                "microskillSlug": "avoid-parallel-plate-capacitor-formula"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electrostatics-5",
+      "title": "Mastery Module 5: Effect of dielectric on capacitance and Related Concepts",
+      "description": "Comprehensive analysis covering effect of dielectric on capacitance, energy stored in capacitor and advanced applications.",
+      "conceptTags": [
+        "electrostatics",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electrostatics-effect-of-dielectric-on-capacitance-24",
+          "title": "Effect of dielectric on capacitance",
+          "conceptTags": [
+            "electrostatics",
+            "effect-of-dielectric-on-capacitance"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Effect of dielectric on capacitance"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Effect of dielectric on capacitance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Effect of dielectric on capacitance correctly is essential for solving complex multi-step problems in Electrostatics."
+          ],
+          "formulas": [
+            {
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
+              "variables": [
+                "F",
+                "q_1",
+                "q_2",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Effect of dielectric on capacitance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Effect of dielectric on capacitance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Effect of dielectric on capacitance.",
+            "Successfully avoids common pitfalls when Effect of dielectric on capacitance is integrated with other concepts in Electrostatics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Effect of dielectric on capacitance in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electrostatics-q-effect-of-dielectric-on-capacitance-1",
+              "question": "What are the critical factors or principles governing Effect of dielectric on capacitance?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "effect-of-dielectric-on-capacitance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "effect-of-dielectric-on-capacitance",
+                "conceptSlug": "core-effect-of-dielectric-on-capacitance",
+                "microskillSlug": "understand-effect-of-dielectric-on-capacitance"
+              }
+            },
+            {
+              "id": "electrostatics-q-effect-of-dielectric-on-capacitance-2",
+              "question": "Describe a scenario where applying the concept of Effect of dielectric on capacitance can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "effect-of-dielectric-on-capacitance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "effect-of-dielectric-on-capacitance",
+                "conceptSlug": "trap-effect-of-dielectric-on-capacitance",
+                "microskillSlug": "avoid-effect-of-dielectric-on-capacitance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electrostatics-energy-stored-in-capacitor-25",
+          "title": "Energy stored in capacitor",
+          "conceptTags": [
+            "electrostatics",
+            "energy-stored-in-capacitor"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Energy stored in capacitor"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Energy stored in capacitor is heavily tested in recent NEET papers.",
+            "Applying the core principles of Energy stored in capacitor correctly is essential for solving complex multi-step problems in Electrostatics."
+          ],
+          "formulas": [
+            {
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
+              "variables": [
+                "E",
+                "K",
+                "U"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Energy stored in capacitor during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Energy stored in capacitor."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Energy stored in capacitor.",
+            "Successfully avoids common pitfalls when Energy stored in capacitor is integrated with other concepts in Electrostatics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Energy stored in capacitor in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electrostatics-q-energy-stored-in-capacitor-1",
+              "question": "What are the critical factors or principles governing Energy stored in capacitor?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "energy-stored-in-capacitor"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "energy-stored-in-capacitor",
+                "conceptSlug": "core-energy-stored-in-capacitor",
+                "microskillSlug": "understand-energy-stored-in-capacitor"
+              }
+            },
+            {
+              "id": "electrostatics-q-energy-stored-in-capacitor-2",
+              "question": "Describe a scenario where applying the concept of Energy stored in capacitor can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electrostatics",
+                "energy-stored-in-capacitor",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electrostatics",
+                "chapterSlug": "electrostatics",
+                "topicSlug": "electrostatics",
+                "subtopicSlug": "energy-stored-in-capacitor",
+                "conceptSlug": "trap-energy-stored-in-capacitor",
+                "microskillSlug": "avoid-energy-stored-in-capacitor"
               }
             }
           ]

@@ -1,0 +1,1950 @@
+{
+  "missions": [
+    {
+      "id": "m-goc-1",
+      "title": "GOC Mastery",
+      "description": "Master all electronic effects, intermediates, acidity/basicity, and stereochemistry.",
+      "conceptTags": [
+        "goc",
+        "organic"
+      ],
+      "estimatedMinutes": 800,
+      "difficulty": "hard",
+      "microtargets": [
+        {
+          "id": "mt-goc-inductive-effect",
+          "title": "Inductive effect",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "inductive-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - inductive effect"
+          ],
+          "mustKnowFacts": [
+            "The precise application of inductive effect determines reaction pathways.",
+            "Electronic displacement in inductive effect plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in inductive effect with exceptions.",
+            "Misapplying the rules of inductive effect in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on inductive effect."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of inductive effect."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-inductive-effect-1",
+              "question": "How does inductive effect influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "inductive-effect"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "inductive-effect",
+                "microskillSlug": "apply-inductive-effect",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-resonance-effect",
+          "title": "Resonance effect",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "resonance-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - resonance effect"
+          ],
+          "mustKnowFacts": [
+            "The precise application of resonance effect determines reaction pathways.",
+            "Electronic displacement in resonance effect plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in resonance effect with exceptions.",
+            "Misapplying the rules of resonance effect in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on resonance effect."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of resonance effect."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-resonance-effect-1",
+              "question": "How does resonance effect influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "resonance-effect"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "resonance-effect",
+                "microskillSlug": "apply-resonance-effect",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-mesomeric-effect",
+          "title": "Mesomeric effect",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "mesomeric-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - mesomeric effect"
+          ],
+          "mustKnowFacts": [
+            "The precise application of mesomeric effect determines reaction pathways.",
+            "Electronic displacement in mesomeric effect plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in mesomeric effect with exceptions.",
+            "Misapplying the rules of mesomeric effect in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on mesomeric effect."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of mesomeric effect."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-mesomeric-effect-1",
+              "question": "How does mesomeric effect influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "mesomeric-effect"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "mesomeric-effect",
+                "microskillSlug": "apply-mesomeric-effect",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-hyperconjugation",
+          "title": "Hyperconjugation",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "hyperconjugation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - hyperconjugation"
+          ],
+          "mustKnowFacts": [
+            "The precise application of hyperconjugation determines reaction pathways.",
+            "Electronic displacement in hyperconjugation plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in hyperconjugation with exceptions.",
+            "Misapplying the rules of hyperconjugation in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on hyperconjugation."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of hyperconjugation."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-hyperconjugation-1",
+              "question": "How does hyperconjugation influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "hyperconjugation"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "hyperconjugation",
+                "microskillSlug": "apply-hyperconjugation",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-electromeric-effect",
+          "title": "Electromeric effect",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "electromeric-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - electromeric effect"
+          ],
+          "mustKnowFacts": [
+            "The precise application of electromeric effect determines reaction pathways.",
+            "Electronic displacement in electromeric effect plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in electromeric effect with exceptions.",
+            "Misapplying the rules of electromeric effect in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on electromeric effect."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of electromeric effect."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-electromeric-effect-1",
+              "question": "How does electromeric effect influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "electromeric-effect"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "electromeric-effect",
+                "microskillSlug": "apply-electromeric-effect",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-carbocation-stability",
+          "title": "Carbocation stability",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "carbocation-stability"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - carbocation stability"
+          ],
+          "mustKnowFacts": [
+            "The precise application of carbocation stability determines reaction pathways.",
+            "Electronic displacement in carbocation stability plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in carbocation stability with exceptions.",
+            "Misapplying the rules of carbocation stability in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on carbocation stability."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of carbocation stability."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-carbocation-stability-1",
+              "question": "How does carbocation stability influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "carbocation-stability"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "carbocation-stability",
+                "microskillSlug": "apply-carbocation-stability",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-carbanion-stability",
+          "title": "Carbanion stability",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "carbanion-stability"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - carbanion stability"
+          ],
+          "mustKnowFacts": [
+            "The precise application of carbanion stability determines reaction pathways.",
+            "Electronic displacement in carbanion stability plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in carbanion stability with exceptions.",
+            "Misapplying the rules of carbanion stability in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on carbanion stability."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of carbanion stability."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-carbanion-stability-1",
+              "question": "How does carbanion stability influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "carbanion-stability"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "carbanion-stability",
+                "microskillSlug": "apply-carbanion-stability",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-free-radical-stability",
+          "title": "Free radical stability",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "free-radical-stability"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - free radical stability"
+          ],
+          "mustKnowFacts": [
+            "The precise application of free radical stability determines reaction pathways.",
+            "Electronic displacement in free radical stability plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in free radical stability with exceptions.",
+            "Misapplying the rules of free radical stability in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on free radical stability."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of free radical stability."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-free-radical-stability-1",
+              "question": "How does free radical stability influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "free-radical-stability"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "free-radical-stability",
+                "microskillSlug": "apply-free-radical-stability",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-carbene-intermediate",
+          "title": "Carbene intermediate",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "carbene-intermediate"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - carbene intermediate"
+          ],
+          "mustKnowFacts": [
+            "The precise application of carbene intermediate determines reaction pathways.",
+            "Electronic displacement in carbene intermediate plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in carbene intermediate with exceptions.",
+            "Misapplying the rules of carbene intermediate in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on carbene intermediate."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of carbene intermediate."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-carbene-intermediate-1",
+              "question": "How does carbene intermediate influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "carbene-intermediate"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "carbene-intermediate",
+                "microskillSlug": "apply-carbene-intermediate",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-nitrene-intermediate",
+          "title": "Nitrene intermediate",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "nitrene-intermediate"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - nitrene intermediate"
+          ],
+          "mustKnowFacts": [
+            "The precise application of nitrene intermediate determines reaction pathways.",
+            "Electronic displacement in nitrene intermediate plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in nitrene intermediate with exceptions.",
+            "Misapplying the rules of nitrene intermediate in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on nitrene intermediate."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of nitrene intermediate."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-nitrene-intermediate-1",
+              "question": "How does nitrene intermediate influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "nitrene-intermediate"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "nitrene-intermediate",
+                "microskillSlug": "apply-nitrene-intermediate",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-acidity-of-carboxylic-acids",
+          "title": "Acidity of carboxylic acids",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "acidity-of-carboxylic-acids"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - acidity of carboxylic acids"
+          ],
+          "mustKnowFacts": [
+            "The precise application of acidity of carboxylic acids determines reaction pathways.",
+            "Electronic displacement in acidity of carboxylic acids plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in acidity of carboxylic acids with exceptions.",
+            "Misapplying the rules of acidity of carboxylic acids in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on acidity of carboxylic acids."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of acidity of carboxylic acids."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-acidity-of-carboxylic-acids-1",
+              "question": "How does acidity of carboxylic acids influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "acidity-of-carboxylic-acids"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "acidity-of-carboxylic-acids",
+                "microskillSlug": "apply-acidity-of-carboxylic-acids",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-acidity-of-phenols",
+          "title": "Acidity of phenols",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "acidity-of-phenols"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - acidity of phenols"
+          ],
+          "mustKnowFacts": [
+            "The precise application of acidity of phenols determines reaction pathways.",
+            "Electronic displacement in acidity of phenols plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in acidity of phenols with exceptions.",
+            "Misapplying the rules of acidity of phenols in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on acidity of phenols."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of acidity of phenols."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-acidity-of-phenols-1",
+              "question": "How does acidity of phenols influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "acidity-of-phenols"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "acidity-of-phenols",
+                "microskillSlug": "apply-acidity-of-phenols",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-acidity-of-alcohols",
+          "title": "Acidity of alcohols",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "acidity-of-alcohols"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - acidity of alcohols"
+          ],
+          "mustKnowFacts": [
+            "The precise application of acidity of alcohols determines reaction pathways.",
+            "Electronic displacement in acidity of alcohols plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in acidity of alcohols with exceptions.",
+            "Misapplying the rules of acidity of alcohols in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on acidity of alcohols."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of acidity of alcohols."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-acidity-of-alcohols-1",
+              "question": "How does acidity of alcohols influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "acidity-of-alcohols"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "acidity-of-alcohols",
+                "microskillSlug": "apply-acidity-of-alcohols",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-acidity-of-alkynes",
+          "title": "Acidity of alkynes",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "acidity-of-alkynes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - acidity of alkynes"
+          ],
+          "mustKnowFacts": [
+            "The precise application of acidity of alkynes determines reaction pathways.",
+            "Electronic displacement in acidity of alkynes plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in acidity of alkynes with exceptions.",
+            "Misapplying the rules of acidity of alkynes in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on acidity of alkynes."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of acidity of alkynes."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-acidity-of-alkynes-1",
+              "question": "How does acidity of alkynes influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "acidity-of-alkynes"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "acidity-of-alkynes",
+                "microskillSlug": "apply-acidity-of-alkynes",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-basicity-of-amines-in-aqueous-phase",
+          "title": "Basicity of amines in aqueous phase",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "basicity-of-amines-in-aqueous-phase"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - basicity of amines in aqueous phase"
+          ],
+          "mustKnowFacts": [
+            "The precise application of basicity of amines in aqueous phase determines reaction pathways.",
+            "Electronic displacement in basicity of amines in aqueous phase plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in basicity of amines in aqueous phase with exceptions.",
+            "Misapplying the rules of basicity of amines in aqueous phase in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on basicity of amines in aqueous phase."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of basicity of amines in aqueous phase."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-basicity-of-amines-in-aqueous-phase-1",
+              "question": "How does basicity of amines in aqueous phase influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "basicity-of-amines-in-aqueous-phase"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "basicity-of-amines-in-aqueous-phase",
+                "microskillSlug": "apply-basicity-of-amines-in-aqueous-phase",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-basicity-of-amines-in-gas-phase",
+          "title": "Basicity of amines in gas phase",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "basicity-of-amines-in-gas-phase"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - basicity of amines in gas phase"
+          ],
+          "mustKnowFacts": [
+            "The precise application of basicity of amines in gas phase determines reaction pathways.",
+            "Electronic displacement in basicity of amines in gas phase plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in basicity of amines in gas phase with exceptions.",
+            "Misapplying the rules of basicity of amines in gas phase in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on basicity of amines in gas phase."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of basicity of amines in gas phase."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-basicity-of-amines-in-gas-phase-1",
+              "question": "How does basicity of amines in gas phase influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "basicity-of-amines-in-gas-phase"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "basicity-of-amines-in-gas-phase",
+                "microskillSlug": "apply-basicity-of-amines-in-gas-phase",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-basicity-of-amides",
+          "title": "Basicity of amides",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "basicity-of-amides"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - basicity of amides"
+          ],
+          "mustKnowFacts": [
+            "The precise application of basicity of amides determines reaction pathways.",
+            "Electronic displacement in basicity of amides plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in basicity of amides with exceptions.",
+            "Misapplying the rules of basicity of amides in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on basicity of amides."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of basicity of amides."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-basicity-of-amides-1",
+              "question": "How does basicity of amides influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "basicity-of-amides"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "basicity-of-amides",
+                "microskillSlug": "apply-basicity-of-amides",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-nucleophile-vs-base",
+          "title": "Nucleophile vs base",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "nucleophile-vs-base"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - nucleophile vs base"
+          ],
+          "mustKnowFacts": [
+            "The precise application of nucleophile vs base determines reaction pathways.",
+            "Electronic displacement in nucleophile vs base plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in nucleophile vs base with exceptions.",
+            "Misapplying the rules of nucleophile vs base in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on nucleophile vs base."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of nucleophile vs base."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-nucleophile-vs-base-1",
+              "question": "How does nucleophile vs base influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "nucleophile-vs-base"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "nucleophile-vs-base",
+                "microskillSlug": "apply-nucleophile-vs-base",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-electrophile-types",
+          "title": "Electrophile types",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "electrophile-types"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - electrophile types"
+          ],
+          "mustKnowFacts": [
+            "The precise application of electrophile types determines reaction pathways.",
+            "Electronic displacement in electrophile types plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in electrophile types with exceptions.",
+            "Misapplying the rules of electrophile types in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on electrophile types."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of electrophile types."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-electrophile-types-1",
+              "question": "How does electrophile types influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "electrophile-types"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "electrophile-types",
+                "microskillSlug": "apply-electrophile-types",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-sn1-mechanism",
+          "title": "SN1 mechanism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "sn1-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - SN1 mechanism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of SN1 mechanism determines reaction pathways.",
+            "Electronic displacement in SN1 mechanism plays a major role in stability."
+          ],
+          "reactions": [
+            {
+              "name": "Mechanism of SN1 mechanism",
+              "equation": "Substrate + Reagent -> Product + Leaving Group",
+              "reagentConditions": [
+                "Solvent",
+                "Temperature"
+              ],
+              "mechanismTags": [
+                "sn1-mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in SN1 mechanism with exceptions.",
+            "Misapplying the rules of SN1 mechanism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on SN1 mechanism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of SN1 mechanism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-sn1-mechanism-1",
+              "question": "How does SN1 mechanism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "sn1-mechanism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "sn1-mechanism",
+                "microskillSlug": "apply-sn1-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-sn2-mechanism",
+          "title": "SN2 mechanism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "sn2-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - SN2 mechanism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of SN2 mechanism determines reaction pathways.",
+            "Electronic displacement in SN2 mechanism plays a major role in stability."
+          ],
+          "reactions": [
+            {
+              "name": "Mechanism of SN2 mechanism",
+              "equation": "Substrate + Reagent -> Product + Leaving Group",
+              "reagentConditions": [
+                "Solvent",
+                "Temperature"
+              ],
+              "mechanismTags": [
+                "sn2-mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in SN2 mechanism with exceptions.",
+            "Misapplying the rules of SN2 mechanism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on SN2 mechanism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of SN2 mechanism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-sn2-mechanism-1",
+              "question": "How does SN2 mechanism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "sn2-mechanism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "sn2-mechanism",
+                "microskillSlug": "apply-sn2-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-e1-mechanism",
+          "title": "E1 mechanism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "e1-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - E1 mechanism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of E1 mechanism determines reaction pathways.",
+            "Electronic displacement in E1 mechanism plays a major role in stability."
+          ],
+          "reactions": [
+            {
+              "name": "Mechanism of E1 mechanism",
+              "equation": "Substrate + Reagent -> Product + Leaving Group",
+              "reagentConditions": [
+                "Solvent",
+                "Temperature"
+              ],
+              "mechanismTags": [
+                "e1-mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in E1 mechanism with exceptions.",
+            "Misapplying the rules of E1 mechanism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on E1 mechanism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of E1 mechanism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-e1-mechanism-1",
+              "question": "How does E1 mechanism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "e1-mechanism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "e1-mechanism",
+                "microskillSlug": "apply-e1-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-e2-mechanism",
+          "title": "E2 mechanism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "e2-mechanism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - E2 mechanism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of E2 mechanism determines reaction pathways.",
+            "Electronic displacement in E2 mechanism plays a major role in stability."
+          ],
+          "reactions": [
+            {
+              "name": "Mechanism of E2 mechanism",
+              "equation": "Substrate + Reagent -> Product + Leaving Group",
+              "reagentConditions": [
+                "Solvent",
+                "Temperature"
+              ],
+              "mechanismTags": [
+                "e2-mechanism"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in E2 mechanism with exceptions.",
+            "Misapplying the rules of E2 mechanism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on E2 mechanism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of E2 mechanism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-e2-mechanism-1",
+              "question": "How does E2 mechanism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "e2-mechanism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "e2-mechanism",
+                "microskillSlug": "apply-e2-mechanism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-isomerism-basics",
+          "title": "Isomerism basics",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "isomerism-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - isomerism basics"
+          ],
+          "mustKnowFacts": [
+            "The precise application of isomerism basics determines reaction pathways.",
+            "Electronic displacement in isomerism basics plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in isomerism basics with exceptions.",
+            "Misapplying the rules of isomerism basics in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on isomerism basics."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of isomerism basics."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-isomerism-basics-1",
+              "question": "How does isomerism basics influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "isomerism-basics"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "isomerism-basics",
+                "microskillSlug": "apply-isomerism-basics",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-structural-isomerism",
+          "title": "Structural isomerism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "structural-isomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - structural isomerism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of structural isomerism determines reaction pathways.",
+            "Electronic displacement in structural isomerism plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in structural isomerism with exceptions.",
+            "Misapplying the rules of structural isomerism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on structural isomerism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of structural isomerism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-structural-isomerism-1",
+              "question": "How does structural isomerism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "structural-isomerism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "structural-isomerism",
+                "microskillSlug": "apply-structural-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-geometrical-isomerism",
+          "title": "Geometrical isomerism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "geometrical-isomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - geometrical isomerism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of geometrical isomerism determines reaction pathways.",
+            "Electronic displacement in geometrical isomerism plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in geometrical isomerism with exceptions.",
+            "Misapplying the rules of geometrical isomerism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on geometrical isomerism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of geometrical isomerism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-geometrical-isomerism-1",
+              "question": "How does geometrical isomerism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "geometrical-isomerism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "geometrical-isomerism",
+                "microskillSlug": "apply-geometrical-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-optical-isomerism",
+          "title": "Optical isomerism",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "optical-isomerism"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - optical isomerism"
+          ],
+          "mustKnowFacts": [
+            "The precise application of optical isomerism determines reaction pathways.",
+            "Electronic displacement in optical isomerism plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in optical isomerism with exceptions.",
+            "Misapplying the rules of optical isomerism in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on optical isomerism."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of optical isomerism."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-optical-isomerism-1",
+              "question": "How does optical isomerism influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "optical-isomerism"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "optical-isomerism",
+                "microskillSlug": "apply-optical-isomerism",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-chirality-and-stereocenters",
+          "title": "Chirality and stereocenters",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "chirality-and-stereocenters"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - chirality and stereocenters"
+          ],
+          "mustKnowFacts": [
+            "The precise application of chirality and stereocenters determines reaction pathways.",
+            "Electronic displacement in chirality and stereocenters plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in chirality and stereocenters with exceptions.",
+            "Misapplying the rules of chirality and stereocenters in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on chirality and stereocenters."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of chirality and stereocenters."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-chirality-and-stereocenters-1",
+              "question": "How does chirality and stereocenters influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "chirality-and-stereocenters"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "chirality-and-stereocenters",
+                "microskillSlug": "apply-chirality-and-stereocenters",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-enantiomers-vs-diastereomers",
+          "title": "Enantiomers vs diastereomers",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "enantiomers-vs-diastereomers"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - enantiomers vs diastereomers"
+          ],
+          "mustKnowFacts": [
+            "The precise application of enantiomers vs diastereomers determines reaction pathways.",
+            "Electronic displacement in enantiomers vs diastereomers plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in enantiomers vs diastereomers with exceptions.",
+            "Misapplying the rules of enantiomers vs diastereomers in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on enantiomers vs diastereomers."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of enantiomers vs diastereomers."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-enantiomers-vs-diastereomers-1",
+              "question": "How does enantiomers vs diastereomers influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "enantiomers-vs-diastereomers"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "enantiomers-vs-diastereomers",
+                "microskillSlug": "apply-enantiomers-vs-diastereomers",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-meso-compounds",
+          "title": "Meso compounds",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "meso-compounds"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - meso compounds"
+          ],
+          "mustKnowFacts": [
+            "The precise application of meso compounds determines reaction pathways.",
+            "Electronic displacement in meso compounds plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in meso compounds with exceptions.",
+            "Misapplying the rules of meso compounds in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on meso compounds."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of meso compounds."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-meso-compounds-1",
+              "question": "How does meso compounds influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "meso-compounds"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "meso-compounds",
+                "microskillSlug": "apply-meso-compounds",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-iupac-nomenclature-rules",
+          "title": "IUPAC nomenclature rules",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "iupac-nomenclature-rules"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - IUPAC nomenclature rules"
+          ],
+          "mustKnowFacts": [
+            "The precise application of IUPAC nomenclature rules determines reaction pathways.",
+            "Electronic displacement in IUPAC nomenclature rules plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in IUPAC nomenclature rules with exceptions.",
+            "Misapplying the rules of IUPAC nomenclature rules in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on IUPAC nomenclature rules."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of IUPAC nomenclature rules."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-iupac-nomenclature-rules-1",
+              "question": "How does IUPAC nomenclature rules influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "iupac-nomenclature-rules"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "iupac-nomenclature-rules",
+                "microskillSlug": "apply-iupac-nomenclature-rules",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-iupac-naming-of-complex-substituents",
+          "title": "IUPAC naming of complex substituents",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "iupac-naming-of-complex-substituents"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - IUPAC naming of complex substituents"
+          ],
+          "mustKnowFacts": [
+            "The precise application of IUPAC naming of complex substituents determines reaction pathways.",
+            "Electronic displacement in IUPAC naming of complex substituents plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in IUPAC naming of complex substituents with exceptions.",
+            "Misapplying the rules of IUPAC naming of complex substituents in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on IUPAC naming of complex substituents."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of IUPAC naming of complex substituents."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-iupac-naming-of-complex-substituents-1",
+              "question": "How does IUPAC naming of complex substituents influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "iupac-naming-of-complex-substituents"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "iupac-naming-of-complex-substituents",
+                "microskillSlug": "apply-iupac-naming-of-complex-substituents",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-iupac-naming-of-functional-groups",
+          "title": "IUPAC naming of functional groups",
+          "conceptTags": [
+            "goc",
+            "organic-chemistry",
+            "iupac-naming-of-functional-groups"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Organic Chemistry - Some Basic Principles and Techniques - IUPAC naming of functional groups"
+          ],
+          "mustKnowFacts": [
+            "The precise application of IUPAC naming of functional groups determines reaction pathways.",
+            "Electronic displacement in IUPAC naming of functional groups plays a major role in stability."
+          ],
+          "commonTraps": [
+            "Confusing the order of stability/strength in IUPAC naming of functional groups with exceptions.",
+            "Misapplying the rules of IUPAC naming of functional groups in conjugated systems."
+          ],
+          "masteryCriteria": [
+            "Can compare multiple organic structures based on IUPAC naming of functional groups."
+          ],
+          "pyqPatterns": [
+            "Arrange in increasing/decreasing order of IUPAC naming of functional groups."
+          ],
+          "estimatedMinutes": 20,
+          "difficulty": "hard",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-iupac-naming-of-functional-groups-1",
+              "question": "How does IUPAC naming of functional groups influence the stability of reactive intermediates?",
+              "expectedAnswerPoints": [
+                "Delocalization of charge",
+                "Steric factors",
+                "Inductive pull/push"
+              ],
+              "acceptedSynonyms": [
+                "charge dispersion",
+                "electronic effect"
+              ],
+              "conceptTags": [
+                "goc",
+                "iupac-naming-of-functional-groups"
+              ],
+              "difficulty": "hard",
+              "taxonomyPath": {
+                "topicSlug": "some-basic-principles-of-organic-chemistry",
+                "subtopicSlug": "electronic-effects",
+                "conceptSlug": "iupac-naming-of-functional-groups",
+                "microskillSlug": "apply-iupac-naming-of-functional-groups",
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-principles-of-organic-chemistry",
+                "chapterSlug": "some-basic-principles-of-organic-chemistry"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,641 +2,490 @@
   "missions": [
     {
       "id": "m-solutions-1",
-      "title": "Solutions - Section 1",
-      "description": "Comprehensive analysis covering types of solutions, molarity, molality and more.",
+      "title": "Mastery Module 1: Types of solutions and Related Concepts",
+      "description": "Comprehensive analysis covering types of solutions, expressing concentration of solutions, mass percentage and volume percentage and advanced applications.",
       "conceptTags": [
         "solutions",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-solutions-types-of-solutions",
+          "id": "mt-solutions-types-of-solutions-0",
           "title": "Types of solutions",
           "conceptTags": [
             "solutions",
             "types-of-solutions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Types of solutions"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Types of solutions"
           ],
           "mustKnowFacts": [
-            "Types of solutions is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Types of solutions for NEET."
+            "A thorough understanding of Types of solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Types of solutions correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "formulas": [
             {
-              "name": "Relation for types of solutions",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving types of solutions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Types of solutions during complex MCQs.",
-            "Failing to apply the correct logic for Types of solutions."
+            "Misinterpreting the subtle edge cases of Types of solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Types of solutions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Types of solutions."
+            "Can accurately solve numericals or identify biological structures related specifically to Types of solutions.",
+            "Successfully avoids common pitfalls when Types of solutions is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Types of solutions."
+            "Past year questions frequently test the application of Types of solutions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "solutions-q-types-of-solutions-1",
-              "question": "Explain the core concept behind Types of solutions.",
+              "question": "What are the critical factors or principles governing Types of solutions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "solutions",
                 "types-of-solutions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "types-of-solutions",
                 "conceptSlug": "core-types-of-solutions",
-                "microskillSlug": "understand-types-of-solutions",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "understand-types-of-solutions"
               }
             },
             {
               "id": "solutions-q-types-of-solutions-2",
-              "question": "What is a common trap associated with Types of solutions?",
+              "question": "Describe a scenario where applying the concept of Types of solutions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "solutions",
                 "types-of-solutions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "types-of-solutions",
                 "conceptSlug": "trap-types-of-solutions",
-                "microskillSlug": "avoid-types-of-solutions",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "avoid-types-of-solutions"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-molarity",
-          "title": "Molarity",
+          "id": "mt-solutions-expressing-concentration-of-solutions-1",
+          "title": "Expressing concentration of solutions",
           "conceptTags": [
             "solutions",
-            "molarity"
+            "expressing-concentration-of-solutions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Molarity"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Expressing concentration of solutions"
           ],
           "mustKnowFacts": [
-            "Molarity is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Molarity for NEET."
+            "A thorough understanding of Expressing concentration of solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Expressing concentration of solutions correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "formulas": [
             {
-              "name": "Relation for molarity",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molarity",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Molarity during complex MCQs.",
-            "Failing to apply the correct logic for Molarity."
+            "Misinterpreting the subtle edge cases of Expressing concentration of solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Expressing concentration of solutions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molarity."
+            "Can accurately solve numericals or identify biological structures related specifically to Expressing concentration of solutions.",
+            "Successfully avoids common pitfalls when Expressing concentration of solutions is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molarity."
+            "Past year questions frequently test the application of Expressing concentration of solutions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-molarity-1",
-              "question": "Explain the core concept behind Molarity.",
+              "id": "solutions-q-expressing-concentration-of-solutions-1",
+              "question": "What are the critical factors or principles governing Expressing concentration of solutions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molarity"
+                "solutions",
+                "expressing-concentration-of-solutions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "molarity",
-                "conceptSlug": "core-molarity",
-                "microskillSlug": "understand-molarity",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "expressing-concentration-of-solutions",
+                "conceptSlug": "core-expressing-concentration-of-solutions",
+                "microskillSlug": "understand-expressing-concentration-of-solutions"
               }
             },
             {
-              "id": "solutions-q-molarity-2",
-              "question": "What is a common trap associated with Molarity?",
+              "id": "solutions-q-expressing-concentration-of-solutions-2",
+              "question": "Describe a scenario where applying the concept of Expressing concentration of solutions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molarity",
+                "solutions",
+                "expressing-concentration-of-solutions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "molarity",
-                "conceptSlug": "trap-molarity",
-                "microskillSlug": "avoid-molarity",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "expressing-concentration-of-solutions",
+                "conceptSlug": "trap-expressing-concentration-of-solutions",
+                "microskillSlug": "avoid-expressing-concentration-of-solutions"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-molality",
-          "title": "Molality",
+          "id": "mt-solutions-mass-percentage-and-volume-percentage-2",
+          "title": "Mass percentage and volume percentage",
           "conceptTags": [
             "solutions",
-            "molality"
+            "mass-percentage-and-volume-percentage"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Molality"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Mass percentage and volume percentage"
           ],
           "mustKnowFacts": [
-            "Molality is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Molality for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for molality",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molality",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Mass percentage and volume percentage is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mass percentage and volume percentage correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Molality during complex MCQs.",
-            "Failing to apply the correct logic for Molality."
+            "Misinterpreting the subtle edge cases of Mass percentage and volume percentage during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mass percentage and volume percentage."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molality."
+            "Can accurately solve numericals or identify biological structures related specifically to Mass percentage and volume percentage.",
+            "Successfully avoids common pitfalls when Mass percentage and volume percentage is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molality."
+            "Past year questions frequently test the application of Mass percentage and volume percentage in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-molality-1",
-              "question": "Explain the core concept behind Molality.",
+              "id": "solutions-q-mass-percentage-and-volume-percentage-1",
+              "question": "What are the critical factors or principles governing Mass percentage and volume percentage?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molality"
+                "solutions",
+                "mass-percentage-and-volume-percentage"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "molality",
-                "conceptSlug": "core-molality",
-                "microskillSlug": "understand-molality",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "mass-percentage-and-volume-percentage",
+                "conceptSlug": "core-mass-percentage-and-volume-percentage",
+                "microskillSlug": "understand-mass-percentage-and-volume-percentage"
               }
             },
             {
-              "id": "solutions-q-molality-2",
-              "question": "What is a common trap associated with Molality?",
+              "id": "solutions-q-mass-percentage-and-volume-percentage-2",
+              "question": "Describe a scenario where applying the concept of Mass percentage and volume percentage can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molality",
+                "solutions",
+                "mass-percentage-and-volume-percentage",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "molality",
-                "conceptSlug": "trap-molality",
-                "microskillSlug": "avoid-molality",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "mass-percentage-and-volume-percentage",
+                "conceptSlug": "trap-mass-percentage-and-volume-percentage",
+                "microskillSlug": "avoid-mass-percentage-and-volume-percentage"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-mole-fraction",
-          "title": "Mole fraction",
+          "id": "mt-solutions-molarity-and-molality-of-solutions-3",
+          "title": "Molarity and molality of solutions",
           "conceptTags": [
             "solutions",
-            "mole-fraction"
+            "molarity-and-molality-of-solutions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Mole fraction"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Molarity and molality of solutions"
           ],
           "mustKnowFacts": [
-            "Mole fraction is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Mole fraction for NEET."
+            "A thorough understanding of Molarity and molality of solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molarity and molality of solutions correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "formulas": [
             {
-              "name": "Relation for mole fraction",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving mole fraction",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mole fraction during complex MCQs.",
-            "Failing to apply the correct logic for Mole fraction."
+            "Misinterpreting the subtle edge cases of Molarity and molality of solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molarity and molality of solutions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mole fraction."
+            "Can accurately solve numericals or identify biological structures related specifically to Molarity and molality of solutions.",
+            "Successfully avoids common pitfalls when Molarity and molality of solutions is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mole fraction."
+            "Past year questions frequently test the application of Molarity and molality of solutions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-mole-fraction-1",
-              "question": "Explain the core concept behind Mole fraction.",
+              "id": "solutions-q-molarity-and-molality-of-solutions-1",
+              "question": "What are the critical factors or principles governing Molarity and molality of solutions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "mole-fraction"
+                "solutions",
+                "molarity-and-molality-of-solutions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "mole-fraction",
-                "conceptSlug": "core-mole-fraction",
-                "microskillSlug": "understand-mole-fraction",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "molarity-and-molality-of-solutions",
+                "conceptSlug": "core-molarity-and-molality-of-solutions",
+                "microskillSlug": "understand-molarity-and-molality-of-solutions"
               }
             },
             {
-              "id": "solutions-q-mole-fraction-2",
-              "question": "What is a common trap associated with Mole fraction?",
+              "id": "solutions-q-molarity-and-molality-of-solutions-2",
+              "question": "Describe a scenario where applying the concept of Molarity and molality of solutions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "mole-fraction",
+                "solutions",
+                "molarity-and-molality-of-solutions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "mole-fraction",
-                "conceptSlug": "trap-mole-fraction",
-                "microskillSlug": "avoid-mole-fraction",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "molarity-and-molality-of-solutions",
+                "conceptSlug": "trap-molarity-and-molality-of-solutions",
+                "microskillSlug": "avoid-molarity-and-molality-of-solutions"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-mass-percentage",
-          "title": "Mass percentage",
+          "id": "mt-solutions-mole-fraction-calculation-4",
+          "title": "Mole fraction calculation",
           "conceptTags": [
             "solutions",
-            "mass-percentage"
+            "mole-fraction-calculation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Mass percentage"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Mole fraction calculation"
           ],
           "mustKnowFacts": [
-            "Mass percentage is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Mass percentage for NEET."
+            "A thorough understanding of Mole fraction calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mole fraction calculation correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "formulas": [
             {
-              "name": "Relation for mass percentage",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving mass percentage",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mass percentage during complex MCQs.",
-            "Failing to apply the correct logic for Mass percentage."
+            "Misinterpreting the subtle edge cases of Mole fraction calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mole fraction calculation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mass percentage."
+            "Can accurately solve numericals or identify biological structures related specifically to Mole fraction calculation.",
+            "Successfully avoids common pitfalls when Mole fraction calculation is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mass percentage."
+            "Past year questions frequently test the application of Mole fraction calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-mass-percentage-1",
-              "question": "Explain the core concept behind Mass percentage.",
+              "id": "solutions-q-mole-fraction-calculation-1",
+              "question": "What are the critical factors or principles governing Mole fraction calculation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "mass-percentage"
+                "solutions",
+                "mole-fraction-calculation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "mass-percentage",
-                "conceptSlug": "core-mass-percentage",
-                "microskillSlug": "understand-mass-percentage",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "mole-fraction-calculation",
+                "conceptSlug": "core-mole-fraction-calculation",
+                "microskillSlug": "understand-mole-fraction-calculation"
               }
             },
             {
-              "id": "solutions-q-mass-percentage-2",
-              "question": "What is a common trap associated with Mass percentage?",
+              "id": "solutions-q-mole-fraction-calculation-2",
+              "question": "Describe a scenario where applying the concept of Mole fraction calculation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "mass-percentage",
+                "solutions",
+                "mole-fraction-calculation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "mass-percentage",
-                "conceptSlug": "trap-mass-percentage",
-                "microskillSlug": "avoid-mass-percentage",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-volume-percentage",
-          "title": "Volume percentage",
-          "conceptTags": [
-            "solutions",
-            "volume-percentage"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Volume percentage"
-          ],
-          "mustKnowFacts": [
-            "Volume percentage is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Volume percentage for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for volume percentage",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving volume percentage",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Volume percentage during complex MCQs.",
-            "Failing to apply the correct logic for Volume percentage."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Volume percentage."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Volume percentage."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-volume-percentage-1",
-              "question": "Explain the core concept behind Volume percentage.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "volume-percentage"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
-                "subtopicSlug": "volume-percentage",
-                "conceptSlug": "core-volume-percentage",
-                "microskillSlug": "understand-volume-percentage",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-volume-percentage-2",
-              "question": "What is a common trap associated with Volume percentage?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "volume-percentage",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "volume-percentage",
-                "conceptSlug": "trap-volume-percentage",
-                "microskillSlug": "avoid-volume-percentage",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "subtopicSlug": "mole-fraction-calculation",
+                "conceptSlug": "trap-mole-fraction-calculation",
+                "microskillSlug": "avoid-mole-fraction-calculation"
               }
             }
           ]
@@ -645,641 +494,457 @@
     },
     {
       "id": "m-solutions-2",
-      "title": "Solutions - Section 2",
-      "description": "Comprehensive analysis covering ppm, solubility, Henry law and more.",
+      "title": "Mastery Module 2: Solubility of solid in liquid and Related Concepts",
+      "description": "Comprehensive analysis covering solubility of solid in liquid, solubility of gas in liquid, Henry’s law and its applications and advanced applications.",
       "conceptTags": [
         "solutions",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-solutions-ppm",
-          "title": "Ppm",
+          "id": "mt-solutions-solubility-of-solid-in-liquid-5",
+          "title": "Solubility of solid in liquid",
           "conceptTags": [
             "solutions",
-            "ppm"
+            "solubility-of-solid-in-liquid"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Ppm"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Solubility of solid in liquid"
           ],
           "mustKnowFacts": [
-            "Ppm is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Ppm for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for ppm",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving ppm",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Solubility of solid in liquid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Solubility of solid in liquid correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Ppm during complex MCQs.",
-            "Failing to apply the correct logic for Ppm."
+            "Misinterpreting the subtle edge cases of Solubility of solid in liquid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Solubility of solid in liquid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ppm."
+            "Can accurately solve numericals or identify biological structures related specifically to Solubility of solid in liquid.",
+            "Successfully avoids common pitfalls when Solubility of solid in liquid is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Ppm."
+            "Past year questions frequently test the application of Solubility of solid in liquid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-ppm-1",
-              "question": "Explain the core concept behind Ppm.",
+              "id": "solutions-q-solubility-of-solid-in-liquid-1",
+              "question": "What are the critical factors or principles governing Solubility of solid in liquid?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ppm"
+                "solutions",
+                "solubility-of-solid-in-liquid"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "ppm",
-                "conceptSlug": "core-ppm",
-                "microskillSlug": "understand-ppm",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "solubility-of-solid-in-liquid",
+                "conceptSlug": "core-solubility-of-solid-in-liquid",
+                "microskillSlug": "understand-solubility-of-solid-in-liquid"
               }
             },
             {
-              "id": "solutions-q-ppm-2",
-              "question": "What is a common trap associated with Ppm?",
+              "id": "solutions-q-solubility-of-solid-in-liquid-2",
+              "question": "Describe a scenario where applying the concept of Solubility of solid in liquid can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ppm",
+                "solutions",
+                "solubility-of-solid-in-liquid",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "ppm",
-                "conceptSlug": "trap-ppm",
-                "microskillSlug": "avoid-ppm",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "solubility-of-solid-in-liquid",
+                "conceptSlug": "trap-solubility-of-solid-in-liquid",
+                "microskillSlug": "avoid-solubility-of-solid-in-liquid"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-solubility",
-          "title": "Solubility",
+          "id": "mt-solutions-solubility-of-gas-in-liquid-6",
+          "title": "Solubility of gas in liquid",
           "conceptTags": [
             "solutions",
-            "solubility"
+            "solubility-of-gas-in-liquid"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Solubility"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Solubility of gas in liquid"
           ],
           "mustKnowFacts": [
-            "Solubility is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Solubility for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for solubility",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving solubility",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Solubility of gas in liquid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Solubility of gas in liquid correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Solubility during complex MCQs.",
-            "Failing to apply the correct logic for Solubility."
+            "Misinterpreting the subtle edge cases of Solubility of gas in liquid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Solubility of gas in liquid."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Solubility."
+            "Can accurately solve numericals or identify biological structures related specifically to Solubility of gas in liquid.",
+            "Successfully avoids common pitfalls when Solubility of gas in liquid is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Solubility."
+            "Past year questions frequently test the application of Solubility of gas in liquid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-solubility-1",
-              "question": "Explain the core concept behind Solubility.",
+              "id": "solutions-q-solubility-of-gas-in-liquid-1",
+              "question": "What are the critical factors or principles governing Solubility of gas in liquid?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "solubility"
+                "solutions",
+                "solubility-of-gas-in-liquid"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "solubility",
-                "conceptSlug": "core-solubility",
-                "microskillSlug": "understand-solubility",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "solubility-of-gas-in-liquid",
+                "conceptSlug": "core-solubility-of-gas-in-liquid",
+                "microskillSlug": "understand-solubility-of-gas-in-liquid"
               }
             },
             {
-              "id": "solutions-q-solubility-2",
-              "question": "What is a common trap associated with Solubility?",
+              "id": "solutions-q-solubility-of-gas-in-liquid-2",
+              "question": "Describe a scenario where applying the concept of Solubility of gas in liquid can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "solubility",
+                "solutions",
+                "solubility-of-gas-in-liquid",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "solubility",
-                "conceptSlug": "trap-solubility",
-                "microskillSlug": "avoid-solubility",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "solubility-of-gas-in-liquid",
+                "conceptSlug": "trap-solubility-of-gas-in-liquid",
+                "microskillSlug": "avoid-solubility-of-gas-in-liquid"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-henry-law",
-          "title": "Henry law",
+          "id": "mt-solutions-henry-s-law-and-its-applications-7",
+          "title": "Henry’s law and its applications",
           "conceptTags": [
             "solutions",
-            "henry-law"
+            "henry-s-law-and-its-applications"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Henry law"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Henry’s law and its applications"
           ],
           "mustKnowFacts": [
-            "Henry law is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Henry law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Henry law",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Henry law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Henry’s law and its applications is heavily tested in recent NEET papers.",
+            "Applying the core principles of Henry’s law and its applications correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Henry law during complex MCQs.",
-            "Failing to apply the correct logic for Henry law."
+            "Misinterpreting the subtle edge cases of Henry’s law and its applications during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Henry’s law and its applications."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Henry law."
+            "Can accurately solve numericals or identify biological structures related specifically to Henry’s law and its applications.",
+            "Successfully avoids common pitfalls when Henry’s law and its applications is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Henry law."
+            "Past year questions frequently test the application of Henry’s law and its applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-henry-law-1",
-              "question": "Explain the core concept behind Henry law.",
+              "id": "solutions-q-henry-s-law-and-its-applications-1",
+              "question": "What are the critical factors or principles governing Henry’s law and its applications?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "henry-law"
+                "solutions",
+                "henry-s-law-and-its-applications"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "henry-law",
-                "conceptSlug": "core-henry-law",
-                "microskillSlug": "understand-henry-law",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "henry-s-law-and-its-applications",
+                "conceptSlug": "core-henry-s-law-and-its-applications",
+                "microskillSlug": "understand-henry-s-law-and-its-applications"
               }
             },
             {
-              "id": "solutions-q-henry-law-2",
-              "question": "What is a common trap associated with Henry law?",
+              "id": "solutions-q-henry-s-law-and-its-applications-2",
+              "question": "Describe a scenario where applying the concept of Henry’s law and its applications can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "henry-law",
+                "solutions",
+                "henry-s-law-and-its-applications",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "henry-law",
-                "conceptSlug": "trap-henry-law",
-                "microskillSlug": "avoid-henry-law",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "henry-s-law-and-its-applications",
+                "conceptSlug": "trap-henry-s-law-and-its-applications",
+                "microskillSlug": "avoid-henry-s-law-and-its-applications"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-vapour-pressure",
-          "title": "Vapour pressure",
+          "id": "mt-solutions-vapour-pressure-of-liquid-solutions-8",
+          "title": "Vapour pressure of liquid solutions",
           "conceptTags": [
             "solutions",
-            "vapour-pressure"
+            "vapour-pressure-of-liquid-solutions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Vapour pressure"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Vapour pressure of liquid solutions"
           ],
           "mustKnowFacts": [
-            "Vapour pressure is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Vapour pressure for NEET."
+            "A thorough understanding of Vapour pressure of liquid solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vapour pressure of liquid solutions correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "formulas": [
             {
-              "name": "Relation for vapour pressure",
-              "expression": "PV = nRT",
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
               "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving vapour pressure",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "P_A",
+                "P_A^0",
+                "x_A"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Vapour pressure during complex MCQs.",
-            "Failing to apply the correct logic for Vapour pressure."
+            "Misinterpreting the subtle edge cases of Vapour pressure of liquid solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vapour pressure of liquid solutions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Vapour pressure."
+            "Can accurately solve numericals or identify biological structures related specifically to Vapour pressure of liquid solutions.",
+            "Successfully avoids common pitfalls when Vapour pressure of liquid solutions is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Vapour pressure."
+            "Past year questions frequently test the application of Vapour pressure of liquid solutions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-vapour-pressure-1",
-              "question": "Explain the core concept behind Vapour pressure.",
+              "id": "solutions-q-vapour-pressure-of-liquid-solutions-1",
+              "question": "What are the critical factors or principles governing Vapour pressure of liquid solutions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "vapour-pressure"
+                "solutions",
+                "vapour-pressure-of-liquid-solutions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "vapour-pressure",
-                "conceptSlug": "core-vapour-pressure",
-                "microskillSlug": "understand-vapour-pressure",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "vapour-pressure-of-liquid-solutions",
+                "conceptSlug": "core-vapour-pressure-of-liquid-solutions",
+                "microskillSlug": "understand-vapour-pressure-of-liquid-solutions"
               }
             },
             {
-              "id": "solutions-q-vapour-pressure-2",
-              "question": "What is a common trap associated with Vapour pressure?",
+              "id": "solutions-q-vapour-pressure-of-liquid-solutions-2",
+              "question": "Describe a scenario where applying the concept of Vapour pressure of liquid solutions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "vapour-pressure",
+                "solutions",
+                "vapour-pressure-of-liquid-solutions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "vapour-pressure",
-                "conceptSlug": "trap-vapour-pressure",
-                "microskillSlug": "avoid-vapour-pressure",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "vapour-pressure-of-liquid-solutions",
+                "conceptSlug": "trap-vapour-pressure-of-liquid-solutions",
+                "microskillSlug": "avoid-vapour-pressure-of-liquid-solutions"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-raoult-law",
-          "title": "Raoult law",
+          "id": "mt-solutions-raoult-s-law-for-volatile-solutes-9",
+          "title": "Raoult’s law for volatile solutes",
           "conceptTags": [
             "solutions",
-            "raoult-law"
+            "raoult-s-law-for-volatile-solutes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Raoult law"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Raoult’s law for volatile solutes"
           ],
           "mustKnowFacts": [
-            "Raoult law is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Raoult law for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Raoult law",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Raoult law",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Raoult’s law for volatile solutes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Raoult’s law for volatile solutes correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Raoult law during complex MCQs.",
-            "Failing to apply the correct logic for Raoult law."
+            "Misinterpreting the subtle edge cases of Raoult’s law for volatile solutes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Raoult’s law for volatile solutes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Raoult law."
+            "Can accurately solve numericals or identify biological structures related specifically to Raoult’s law for volatile solutes.",
+            "Successfully avoids common pitfalls when Raoult’s law for volatile solutes is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Raoult law."
+            "Past year questions frequently test the application of Raoult’s law for volatile solutes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-raoult-law-1",
-              "question": "Explain the core concept behind Raoult law.",
+              "id": "solutions-q-raoult-s-law-for-volatile-solutes-1",
+              "question": "What are the critical factors or principles governing Raoult’s law for volatile solutes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "raoult-law"
+                "solutions",
+                "raoult-s-law-for-volatile-solutes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "raoult-law",
-                "conceptSlug": "core-raoult-law",
-                "microskillSlug": "understand-raoult-law",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "raoult-s-law-for-volatile-solutes",
+                "conceptSlug": "core-raoult-s-law-for-volatile-solutes",
+                "microskillSlug": "understand-raoult-s-law-for-volatile-solutes"
               }
             },
             {
-              "id": "solutions-q-raoult-law-2",
-              "question": "What is a common trap associated with Raoult law?",
+              "id": "solutions-q-raoult-s-law-for-volatile-solutes-2",
+              "question": "Describe a scenario where applying the concept of Raoult’s law for volatile solutes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "raoult-law",
+                "solutions",
+                "raoult-s-law-for-volatile-solutes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "raoult-law",
-                "conceptSlug": "trap-raoult-law",
-                "microskillSlug": "avoid-raoult-law",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-ideal-non-ideal-solutions",
-          "title": "Ideal/non-ideal solutions",
-          "conceptTags": [
-            "solutions",
-            "ideal-non-ideal-solutions"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Ideal/non-ideal solutions"
-          ],
-          "mustKnowFacts": [
-            "Ideal/non-ideal solutions is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Ideal/non-ideal solutions for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for ideal/non-ideal solutions",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving ideal/non-ideal solutions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Ideal/non-ideal solutions during complex MCQs.",
-            "Failing to apply the correct logic for Ideal/non-ideal solutions."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ideal/non-ideal solutions."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Ideal/non-ideal solutions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-ideal-non-ideal-solutions-1",
-              "question": "Explain the core concept behind Ideal/non-ideal solutions.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "ideal-non-ideal-solutions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
-                "subtopicSlug": "ideal-non-ideal-solutions",
-                "conceptSlug": "core-ideal-non-ideal-solutions",
-                "microskillSlug": "understand-ideal-non-ideal-solutions",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-ideal-non-ideal-solutions-2",
-              "question": "What is a common trap associated with Ideal/non-ideal solutions?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "ideal-non-ideal-solutions",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "ideal-non-ideal-solutions",
-                "conceptSlug": "trap-ideal-non-ideal-solutions",
-                "microskillSlug": "avoid-ideal-non-ideal-solutions",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "subtopicSlug": "raoult-s-law-for-volatile-solutes",
+                "conceptSlug": "trap-raoult-s-law-for-volatile-solutes",
+                "microskillSlug": "avoid-raoult-s-law-for-volatile-solutes"
               }
             }
           ]
@@ -1288,641 +953,479 @@
     },
     {
       "id": "m-solutions-3",
-      "title": "Solutions - Section 3",
-      "description": "Comprehensive analysis covering positive/negative deviation, azeotropes, colligative properties and more.",
+      "title": "Mastery Module 3: Raoult’s law for non-volatile solutes and Related Concepts",
+      "description": "Comprehensive analysis covering Raoult’s law for non-volatile solutes, ideal solutions, non-ideal solutions showing positive deviation and advanced applications.",
       "conceptTags": [
         "solutions",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-solutions-positive-negative-deviation",
-          "title": "Positive/negative deviation",
+          "id": "mt-solutions-raoult-s-law-for-non-volatile-solutes-10",
+          "title": "Raoult’s law for non-volatile solutes",
           "conceptTags": [
             "solutions",
-            "positive-negative-deviation"
+            "raoult-s-law-for-non-volatile-solutes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Positive/negative deviation"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Raoult’s law for non-volatile solutes"
           ],
           "mustKnowFacts": [
-            "Positive/negative deviation is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Positive/negative deviation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for positive/negative deviation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving positive/negative deviation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Raoult’s law for non-volatile solutes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Raoult’s law for non-volatile solutes correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Positive/negative deviation during complex MCQs.",
-            "Failing to apply the correct logic for Positive/negative deviation."
+            "Misinterpreting the subtle edge cases of Raoult’s law for non-volatile solutes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Raoult’s law for non-volatile solutes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Positive/negative deviation."
+            "Can accurately solve numericals or identify biological structures related specifically to Raoult’s law for non-volatile solutes.",
+            "Successfully avoids common pitfalls when Raoult’s law for non-volatile solutes is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Positive/negative deviation."
+            "Past year questions frequently test the application of Raoult’s law for non-volatile solutes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-positive-negative-deviation-1",
-              "question": "Explain the core concept behind Positive/negative deviation.",
+              "id": "solutions-q-raoult-s-law-for-non-volatile-solutes-1",
+              "question": "What are the critical factors or principles governing Raoult’s law for non-volatile solutes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "positive-negative-deviation"
+                "solutions",
+                "raoult-s-law-for-non-volatile-solutes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "positive-negative-deviation",
-                "conceptSlug": "core-positive-negative-deviation",
-                "microskillSlug": "understand-positive-negative-deviation",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "raoult-s-law-for-non-volatile-solutes",
+                "conceptSlug": "core-raoult-s-law-for-non-volatile-solutes",
+                "microskillSlug": "understand-raoult-s-law-for-non-volatile-solutes"
               }
             },
             {
-              "id": "solutions-q-positive-negative-deviation-2",
-              "question": "What is a common trap associated with Positive/negative deviation?",
+              "id": "solutions-q-raoult-s-law-for-non-volatile-solutes-2",
+              "question": "Describe a scenario where applying the concept of Raoult’s law for non-volatile solutes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "positive-negative-deviation",
+                "solutions",
+                "raoult-s-law-for-non-volatile-solutes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "positive-negative-deviation",
-                "conceptSlug": "trap-positive-negative-deviation",
-                "microskillSlug": "avoid-positive-negative-deviation",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "raoult-s-law-for-non-volatile-solutes",
+                "conceptSlug": "trap-raoult-s-law-for-non-volatile-solutes",
+                "microskillSlug": "avoid-raoult-s-law-for-non-volatile-solutes"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-azeotropes",
+          "id": "mt-solutions-ideal-solutions-11",
+          "title": "Ideal solutions",
+          "conceptTags": [
+            "solutions",
+            "ideal-solutions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Ideal solutions"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Ideal solutions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ideal solutions correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "formulas": [
+            {
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
+              "variables": [
+                "P_A",
+                "P_A^0",
+                "x_A"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Ideal solutions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ideal solutions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Ideal solutions.",
+            "Successfully avoids common pitfalls when Ideal solutions is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Ideal solutions in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-ideal-solutions-1",
+              "question": "What are the critical factors or principles governing Ideal solutions?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "ideal-solutions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "ideal-solutions",
+                "conceptSlug": "core-ideal-solutions",
+                "microskillSlug": "understand-ideal-solutions"
+              }
+            },
+            {
+              "id": "solutions-q-ideal-solutions-2",
+              "question": "Describe a scenario where applying the concept of Ideal solutions can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "ideal-solutions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "ideal-solutions",
+                "conceptSlug": "trap-ideal-solutions",
+                "microskillSlug": "avoid-ideal-solutions"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-non-ideal-solutions-showing-positive-deviation-12",
+          "title": "Non-ideal solutions showing positive deviation",
+          "conceptTags": [
+            "solutions",
+            "non-ideal-solutions-showing-positive-deviation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Non-ideal solutions showing positive deviation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Non-ideal solutions showing positive deviation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Non-ideal solutions showing positive deviation correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "formulas": [
+            {
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
+              "variables": [
+                "P_A",
+                "P_A^0",
+                "x_A"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Non-ideal solutions showing positive deviation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Non-ideal solutions showing positive deviation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Non-ideal solutions showing positive deviation.",
+            "Successfully avoids common pitfalls when Non-ideal solutions showing positive deviation is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Non-ideal solutions showing positive deviation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-non-ideal-solutions-showing-positive-deviation-1",
+              "question": "What are the critical factors or principles governing Non-ideal solutions showing positive deviation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "non-ideal-solutions-showing-positive-deviation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "non-ideal-solutions-showing-positive-deviation",
+                "conceptSlug": "core-non-ideal-solutions-showing-positive-deviation",
+                "microskillSlug": "understand-non-ideal-solutions-showing-positive-deviation"
+              }
+            },
+            {
+              "id": "solutions-q-non-ideal-solutions-showing-positive-deviation-2",
+              "question": "Describe a scenario where applying the concept of Non-ideal solutions showing positive deviation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "non-ideal-solutions-showing-positive-deviation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "non-ideal-solutions-showing-positive-deviation",
+                "conceptSlug": "trap-non-ideal-solutions-showing-positive-deviation",
+                "microskillSlug": "avoid-non-ideal-solutions-showing-positive-deviation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-non-ideal-solutions-showing-negative-deviation-13",
+          "title": "Non-ideal solutions showing negative deviation",
+          "conceptTags": [
+            "solutions",
+            "non-ideal-solutions-showing-negative-deviation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Non-ideal solutions showing negative deviation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Non-ideal solutions showing negative deviation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Non-ideal solutions showing negative deviation correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "formulas": [
+            {
+              "name": "Raoult Law",
+              "expression": "P_A = P_A^0 x_A",
+              "variables": [
+                "P_A",
+                "P_A^0",
+                "x_A"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Non-ideal solutions showing negative deviation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Non-ideal solutions showing negative deviation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Non-ideal solutions showing negative deviation.",
+            "Successfully avoids common pitfalls when Non-ideal solutions showing negative deviation is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Non-ideal solutions showing negative deviation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-non-ideal-solutions-showing-negative-deviation-1",
+              "question": "What are the critical factors or principles governing Non-ideal solutions showing negative deviation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "non-ideal-solutions-showing-negative-deviation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "non-ideal-solutions-showing-negative-deviation",
+                "conceptSlug": "core-non-ideal-solutions-showing-negative-deviation",
+                "microskillSlug": "understand-non-ideal-solutions-showing-negative-deviation"
+              }
+            },
+            {
+              "id": "solutions-q-non-ideal-solutions-showing-negative-deviation-2",
+              "question": "Describe a scenario where applying the concept of Non-ideal solutions showing negative deviation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "non-ideal-solutions-showing-negative-deviation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "non-ideal-solutions-showing-negative-deviation",
+                "conceptSlug": "trap-non-ideal-solutions-showing-negative-deviation",
+                "microskillSlug": "avoid-non-ideal-solutions-showing-negative-deviation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-azeotropes-14",
           "title": "Azeotropes",
           "conceptTags": [
             "solutions",
             "azeotropes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Azeotropes"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Azeotropes"
           ],
           "mustKnowFacts": [
-            "Azeotropes is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Azeotropes for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for azeotropes",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving azeotropes",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Azeotropes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Azeotropes correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Azeotropes during complex MCQs.",
-            "Failing to apply the correct logic for Azeotropes."
+            "Misinterpreting the subtle edge cases of Azeotropes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Azeotropes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Azeotropes."
+            "Can accurately solve numericals or identify biological structures related specifically to Azeotropes.",
+            "Successfully avoids common pitfalls when Azeotropes is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Azeotropes."
+            "Past year questions frequently test the application of Azeotropes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "solutions-q-azeotropes-1",
-              "question": "Explain the core concept behind Azeotropes.",
+              "question": "What are the critical factors or principles governing Azeotropes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "solutions",
                 "azeotropes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "azeotropes",
                 "conceptSlug": "core-azeotropes",
-                "microskillSlug": "understand-azeotropes",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "understand-azeotropes"
               }
             },
             {
               "id": "solutions-q-azeotropes-2",
-              "question": "What is a common trap associated with Azeotropes?",
+              "question": "Describe a scenario where applying the concept of Azeotropes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "solutions",
                 "azeotropes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "azeotropes",
                 "conceptSlug": "trap-azeotropes",
-                "microskillSlug": "avoid-azeotropes",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-colligative-properties",
-          "title": "Colligative properties",
-          "conceptTags": [
-            "solutions",
-            "colligative-properties"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Colligative properties"
-          ],
-          "mustKnowFacts": [
-            "Colligative properties is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Colligative properties for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for colligative properties",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving colligative properties",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Colligative properties during complex MCQs.",
-            "Failing to apply the correct logic for Colligative properties."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Colligative properties."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Colligative properties."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-colligative-properties-1",
-              "question": "Explain the core concept behind Colligative properties.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "colligative-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "colligative-properties",
-                "conceptSlug": "core-colligative-properties",
-                "microskillSlug": "understand-colligative-properties",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-colligative-properties-2",
-              "question": "What is a common trap associated with Colligative properties?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "colligative-properties",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "colligative-properties",
-                "conceptSlug": "trap-colligative-properties",
-                "microskillSlug": "avoid-colligative-properties",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-relative-lowering-of-vapour-pressure",
-          "title": "Relative lowering of vapour pressure",
-          "conceptTags": [
-            "solutions",
-            "relative-lowering-of-vapour-pressure"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Relative lowering of vapour pressure"
-          ],
-          "mustKnowFacts": [
-            "Relative lowering of vapour pressure is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Relative lowering of vapour pressure for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for relative lowering of vapour pressure",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving relative lowering of vapour pressure",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Relative lowering of vapour pressure during complex MCQs.",
-            "Failing to apply the correct logic for Relative lowering of vapour pressure."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Relative lowering of vapour pressure."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Relative lowering of vapour pressure."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-relative-lowering-of-vapour-pressure-1",
-              "question": "Explain the core concept behind Relative lowering of vapour pressure.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "relative-lowering-of-vapour-pressure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "relative-lowering-of-vapour-pressure",
-                "conceptSlug": "core-relative-lowering-of-vapour-pressure",
-                "microskillSlug": "understand-relative-lowering-of-vapour-pressure",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-relative-lowering-of-vapour-pressure-2",
-              "question": "What is a common trap associated with Relative lowering of vapour pressure?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "relative-lowering-of-vapour-pressure",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "relative-lowering-of-vapour-pressure",
-                "conceptSlug": "trap-relative-lowering-of-vapour-pressure",
-                "microskillSlug": "avoid-relative-lowering-of-vapour-pressure",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-elevation-of-boiling-point",
-          "title": "Elevation of boiling point",
-          "conceptTags": [
-            "solutions",
-            "elevation-of-boiling-point"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Elevation of boiling point"
-          ],
-          "mustKnowFacts": [
-            "Elevation of boiling point is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Elevation of boiling point for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for elevation of boiling point",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving elevation of boiling point",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Elevation of boiling point during complex MCQs.",
-            "Failing to apply the correct logic for Elevation of boiling point."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Elevation of boiling point."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Elevation of boiling point."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-elevation-of-boiling-point-1",
-              "question": "Explain the core concept behind Elevation of boiling point.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "elevation-of-boiling-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "elevation-of-boiling-point",
-                "conceptSlug": "core-elevation-of-boiling-point",
-                "microskillSlug": "understand-elevation-of-boiling-point",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-elevation-of-boiling-point-2",
-              "question": "What is a common trap associated with Elevation of boiling point?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "elevation-of-boiling-point",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "elevation-of-boiling-point",
-                "conceptSlug": "trap-elevation-of-boiling-point",
-                "microskillSlug": "avoid-elevation-of-boiling-point",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-solutions-depression-of-freezing-point",
-          "title": "Depression of freezing point",
-          "conceptTags": [
-            "solutions",
-            "depression-of-freezing-point"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 12, Depression of freezing point"
-          ],
-          "mustKnowFacts": [
-            "Depression of freezing point is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Depression of freezing point for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for depression of freezing point",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving depression of freezing point",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Depression of freezing point during complex MCQs.",
-            "Failing to apply the correct logic for Depression of freezing point."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Depression of freezing point."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Depression of freezing point."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "solutions-q-depression-of-freezing-point-1",
-              "question": "Explain the core concept behind Depression of freezing point.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "depression-of-freezing-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "depression-of-freezing-point",
-                "conceptSlug": "core-depression-of-freezing-point",
-                "microskillSlug": "understand-depression-of-freezing-point",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
-              }
-            },
-            {
-              "id": "solutions-q-depression-of-freezing-point-2",
-              "question": "What is a common trap associated with Depression of freezing point?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "depression-of-freezing-point",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "depression-of-freezing-point",
-                "conceptSlug": "trap-depression-of-freezing-point",
-                "microskillSlug": "avoid-depression-of-freezing-point",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "avoid-azeotropes"
               }
             }
           ]
@@ -1931,326 +1434,546 @@
     },
     {
       "id": "m-solutions-4",
-      "title": "Solutions - Section 4",
-      "description": "Comprehensive analysis covering osmotic pressure, abnormal molar mass, van’t Hoff factor and more.",
+      "title": "Mastery Module 4: Relative lowering of vapour pressure and Related Concepts",
+      "description": "Comprehensive analysis covering relative lowering of vapour pressure, elevation of boiling point, depression of freezing point and advanced applications.",
       "conceptTags": [
         "solutions",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-solutions-osmotic-pressure",
-          "title": "Osmotic pressure",
+          "id": "mt-solutions-relative-lowering-of-vapour-pressure-15",
+          "title": "Relative lowering of vapour pressure",
           "conceptTags": [
             "solutions",
-            "osmotic-pressure"
+            "relative-lowering-of-vapour-pressure"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Osmotic pressure"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Relative lowering of vapour pressure"
           ],
           "mustKnowFacts": [
-            "Osmotic pressure is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Osmotic pressure for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for osmotic pressure",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving osmotic pressure",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Relative lowering of vapour pressure is heavily tested in recent NEET papers.",
+            "Applying the core principles of Relative lowering of vapour pressure correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Osmotic pressure during complex MCQs.",
-            "Failing to apply the correct logic for Osmotic pressure."
+            "Misinterpreting the subtle edge cases of Relative lowering of vapour pressure during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Relative lowering of vapour pressure."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Osmotic pressure."
+            "Can accurately solve numericals or identify biological structures related specifically to Relative lowering of vapour pressure.",
+            "Successfully avoids common pitfalls when Relative lowering of vapour pressure is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Osmotic pressure."
+            "Past year questions frequently test the application of Relative lowering of vapour pressure in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-osmotic-pressure-1",
-              "question": "Explain the core concept behind Osmotic pressure.",
+              "id": "solutions-q-relative-lowering-of-vapour-pressure-1",
+              "question": "What are the critical factors or principles governing Relative lowering of vapour pressure?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "osmotic-pressure"
+                "solutions",
+                "relative-lowering-of-vapour-pressure"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "osmotic-pressure",
-                "conceptSlug": "core-osmotic-pressure",
-                "microskillSlug": "understand-osmotic-pressure",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "relative-lowering-of-vapour-pressure",
+                "conceptSlug": "core-relative-lowering-of-vapour-pressure",
+                "microskillSlug": "understand-relative-lowering-of-vapour-pressure"
               }
             },
             {
-              "id": "solutions-q-osmotic-pressure-2",
-              "question": "What is a common trap associated with Osmotic pressure?",
+              "id": "solutions-q-relative-lowering-of-vapour-pressure-2",
+              "question": "Describe a scenario where applying the concept of Relative lowering of vapour pressure can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "osmotic-pressure",
+                "solutions",
+                "relative-lowering-of-vapour-pressure",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "osmotic-pressure",
-                "conceptSlug": "trap-osmotic-pressure",
-                "microskillSlug": "avoid-osmotic-pressure",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "relative-lowering-of-vapour-pressure",
+                "conceptSlug": "trap-relative-lowering-of-vapour-pressure",
+                "microskillSlug": "avoid-relative-lowering-of-vapour-pressure"
               }
             }
           ]
         },
         {
-          "id": "mt-solutions-abnormal-molar-mass",
+          "id": "mt-solutions-elevation-of-boiling-point-16",
+          "title": "Elevation of boiling point",
+          "conceptTags": [
+            "solutions",
+            "elevation-of-boiling-point"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Elevation of boiling point"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Elevation of boiling point is heavily tested in recent NEET papers.",
+            "Applying the core principles of Elevation of boiling point correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Elevation of boiling point during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Elevation of boiling point."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Elevation of boiling point.",
+            "Successfully avoids common pitfalls when Elevation of boiling point is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Elevation of boiling point in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-elevation-of-boiling-point-1",
+              "question": "What are the critical factors or principles governing Elevation of boiling point?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "elevation-of-boiling-point"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "elevation-of-boiling-point",
+                "conceptSlug": "core-elevation-of-boiling-point",
+                "microskillSlug": "understand-elevation-of-boiling-point"
+              }
+            },
+            {
+              "id": "solutions-q-elevation-of-boiling-point-2",
+              "question": "Describe a scenario where applying the concept of Elevation of boiling point can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "elevation-of-boiling-point",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "elevation-of-boiling-point",
+                "conceptSlug": "trap-elevation-of-boiling-point",
+                "microskillSlug": "avoid-elevation-of-boiling-point"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-depression-of-freezing-point-17",
+          "title": "Depression of freezing point",
+          "conceptTags": [
+            "solutions",
+            "depression-of-freezing-point"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Depression of freezing point"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Depression of freezing point is heavily tested in recent NEET papers.",
+            "Applying the core principles of Depression of freezing point correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Depression of freezing point during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Depression of freezing point."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Depression of freezing point.",
+            "Successfully avoids common pitfalls when Depression of freezing point is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Depression of freezing point in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-depression-of-freezing-point-1",
+              "question": "What are the critical factors or principles governing Depression of freezing point?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "depression-of-freezing-point"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "depression-of-freezing-point",
+                "conceptSlug": "core-depression-of-freezing-point",
+                "microskillSlug": "understand-depression-of-freezing-point"
+              }
+            },
+            {
+              "id": "solutions-q-depression-of-freezing-point-2",
+              "question": "Describe a scenario where applying the concept of Depression of freezing point can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "depression-of-freezing-point",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "depression-of-freezing-point",
+                "conceptSlug": "trap-depression-of-freezing-point",
+                "microskillSlug": "avoid-depression-of-freezing-point"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-osmotic-pressure-calculation-18",
+          "title": "Osmotic pressure calculation",
+          "conceptTags": [
+            "solutions",
+            "osmotic-pressure-calculation"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Osmotic pressure calculation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Osmotic pressure calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Osmotic pressure calculation correctly is essential for solving complex multi-step problems in Solutions."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Osmotic pressure calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Osmotic pressure calculation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Osmotic pressure calculation.",
+            "Successfully avoids common pitfalls when Osmotic pressure calculation is integrated with other concepts in Solutions."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Osmotic pressure calculation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "solutions-q-osmotic-pressure-calculation-1",
+              "question": "What are the critical factors or principles governing Osmotic pressure calculation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "solutions",
+                "osmotic-pressure-calculation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "osmotic-pressure-calculation",
+                "conceptSlug": "core-osmotic-pressure-calculation",
+                "microskillSlug": "understand-osmotic-pressure-calculation"
+              }
+            },
+            {
+              "id": "solutions-q-osmotic-pressure-calculation-2",
+              "question": "Describe a scenario where applying the concept of Osmotic pressure calculation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "solutions",
+                "osmotic-pressure-calculation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "osmotic-pressure-calculation",
+                "conceptSlug": "trap-osmotic-pressure-calculation",
+                "microskillSlug": "avoid-osmotic-pressure-calculation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-solutions-abnormal-molar-mass-19",
           "title": "Abnormal molar mass",
           "conceptTags": [
             "solutions",
             "abnormal-molar-mass"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Abnormal molar mass"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Abnormal molar mass"
           ],
           "mustKnowFacts": [
-            "Abnormal molar mass is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Abnormal molar mass for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for abnormal molar mass",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving abnormal molar mass",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Abnormal molar mass is heavily tested in recent NEET papers.",
+            "Applying the core principles of Abnormal molar mass correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Abnormal molar mass during complex MCQs.",
-            "Failing to apply the correct logic for Abnormal molar mass."
+            "Misinterpreting the subtle edge cases of Abnormal molar mass during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Abnormal molar mass."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Abnormal molar mass."
+            "Can accurately solve numericals or identify biological structures related specifically to Abnormal molar mass.",
+            "Successfully avoids common pitfalls when Abnormal molar mass is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Abnormal molar mass."
+            "Past year questions frequently test the application of Abnormal molar mass in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "solutions-q-abnormal-molar-mass-1",
-              "question": "Explain the core concept behind Abnormal molar mass.",
+              "question": "What are the critical factors or principles governing Abnormal molar mass?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "solutions",
                 "abnormal-molar-mass"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "abnormal-molar-mass",
                 "conceptSlug": "core-abnormal-molar-mass",
-                "microskillSlug": "understand-abnormal-molar-mass",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "understand-abnormal-molar-mass"
               }
             },
             {
               "id": "solutions-q-abnormal-molar-mass-2",
-              "question": "What is a common trap associated with Abnormal molar mass?",
+              "question": "Describe a scenario where applying the concept of Abnormal molar mass can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "solutions",
                 "abnormal-molar-mass",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "solutions",
+                "chapterSlug": "solutions",
                 "topicSlug": "solutions",
                 "subtopicSlug": "abnormal-molar-mass",
                 "conceptSlug": "trap-abnormal-molar-mass",
-                "microskillSlug": "avoid-abnormal-molar-mass",
-                "subject": "Chemistry",
-                "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "microskillSlug": "avoid-abnormal-molar-mass"
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "m-solutions-5",
+      "title": "Mastery Module 5: Van’t Hoff factor for association and dissociation and Related Concepts",
+      "description": "Comprehensive analysis covering van’t Hoff factor for association and dissociation and advanced applications.",
+      "conceptTags": [
+        "solutions",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
         {
-          "id": "mt-solutions-van-t-hoff-factor",
-          "title": "Van’t Hoff factor",
+          "id": "mt-solutions-van-t-hoff-factor-for-association-and-dissociation-20",
+          "title": "Van’t Hoff factor for association and dissociation",
           "conceptTags": [
             "solutions",
-            "van-t-hoff-factor"
+            "van-t-hoff-factor-for-association-and-dissociation"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 12, Van’t Hoff factor"
+            "NCERT Chemistry Class 12, Chapter: Solutions, Section detailing Van’t Hoff factor for association and dissociation"
           ],
           "mustKnowFacts": [
-            "Van’t Hoff factor is a fundamental subtopic of Solutions.",
-            "Crucial to understand the principles governing Van’t Hoff factor for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for van’t Hoff factor",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving van’t Hoff factor",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Van’t Hoff factor for association and dissociation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Van’t Hoff factor for association and dissociation correctly is essential for solving complex multi-step problems in Solutions."
           ],
           "commonTraps": [
-            "Students often misinterpret Van’t Hoff factor during complex MCQs.",
-            "Failing to apply the correct logic for Van’t Hoff factor."
+            "Misinterpreting the subtle edge cases of Van’t Hoff factor for association and dissociation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Van’t Hoff factor for association and dissociation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Van’t Hoff factor."
+            "Can accurately solve numericals or identify biological structures related specifically to Van’t Hoff factor for association and dissociation.",
+            "Successfully avoids common pitfalls when Van’t Hoff factor for association and dissociation is integrated with other concepts in Solutions."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Van’t Hoff factor."
+            "Past year questions frequently test the application of Van’t Hoff factor for association and dissociation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "solutions-q-van-t-hoff-factor-1",
-              "question": "Explain the core concept behind Van’t Hoff factor.",
+              "id": "solutions-q-van-t-hoff-factor-for-association-and-dissociation-1",
+              "question": "What are the critical factors or principles governing Van’t Hoff factor for association and dissociation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "van-t-hoff-factor"
+                "solutions",
+                "van-t-hoff-factor-for-association-and-dissociation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "van-t-hoff-factor",
-                "conceptSlug": "core-van-t-hoff-factor",
-                "microskillSlug": "understand-van-t-hoff-factor",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "van-t-hoff-factor-for-association-and-dissociation",
+                "conceptSlug": "core-van-t-hoff-factor-for-association-and-dissociation",
+                "microskillSlug": "understand-van-t-hoff-factor-for-association-and-dissociation"
               }
             },
             {
-              "id": "solutions-q-van-t-hoff-factor-2",
-              "question": "What is a common trap associated with Van’t Hoff factor?",
+              "id": "solutions-q-van-t-hoff-factor-for-association-and-dissociation-2",
+              "question": "Describe a scenario where applying the concept of Van’t Hoff factor for association and dissociation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "van-t-hoff-factor",
+                "solutions",
+                "van-t-hoff-factor-for-association-and-dissociation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "solutions",
-                "subtopicSlug": "van-t-hoff-factor",
-                "conceptSlug": "trap-van-t-hoff-factor",
-                "microskillSlug": "avoid-van-t-hoff-factor",
                 "subject": "Chemistry",
                 "unitSlug": "solutions",
-                "chapterSlug": "solutions"
+                "chapterSlug": "solutions",
+                "topicSlug": "solutions",
+                "subtopicSlug": "van-t-hoff-factor-for-association-and-dissociation",
+                "conceptSlug": "trap-van-t-hoff-factor-for-association-and-dissociation",
+                "microskillSlug": "avoid-van-t-hoff-factor-for-association-and-dissociation"
               }
             }
           ]

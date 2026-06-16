@@ -1,426 +1,803 @@
 {
   "missions": [
     {
-      "id": "m-kinematics-1d",
-      "title": "Motion in a Straight Line",
-      "description": "Master the fundamentals of 1D motion, including displacement, velocity, acceleration, and kinematic equations.",
+      "id": "m-kinematics-1",
+      "title": "Mastery Module 1: Frame of reference and Related Concepts",
+      "description": "Comprehensive analysis covering frame of reference, rest and motion, position vector and advanced applications.",
       "conceptTags": [
         "kinematics",
-        "1d-motion",
-        "mechanics"
+        "module-1"
       ],
-      "estimatedMinutes": 180,
+      "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-kinematics-distance-displacement",
-          "title": "Distance vs Displacement",
+          "id": "mt-kinematics-frame-of-reference-0",
+          "title": "Frame of reference",
           "conceptTags": [
             "kinematics",
-            "distance",
-            "displacement"
+            "frame-of-reference"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 3: Motion in a Straight Line - 3.2 Position, Path Length and Displacement"
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Frame of reference"
           ],
           "mustKnowFacts": [
-            "Distance is a scalar quantity representing total path length.",
-            "Displacement is a vector quantity representing the shortest distance between initial and final positions.",
-            "Magnitude of displacement is always less than or equal to distance."
+            "A thorough understanding of Frame of reference is heavily tested in recent NEET papers.",
+            "Applying the core principles of Frame of reference correctly is essential for solving complex multi-step problems in Kinematics."
           ],
           "formulas": [
             {
-              "name": "Displacement",
-              "expression": "Δx = x_f - x_i",
-              "variables": [
-                "Δx",
-                "x_f",
-                "x_i"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Assuming displacement and distance are the same for a returning journey (displacement is zero, distance is 2d).",
-            "Forgetting to assign negative signs for displacement in the negative x-direction."
-          ],
-          "masteryCriteria": [
-            "Can calculate distance and displacement for a particle reversing its direction."
-          ],
-          "pyqPatterns": [
-            "Ratio of distance to displacement for a particle moving in a semicircle."
-          ],
-          "estimatedMinutes": 20,
-          "difficulty": "easy",
-          "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-dist-disp",
-              "question": "What is the ratio of distance to displacement for a particle completing half a circle of radius R?",
-              "expectedAnswerPoints": [
-                "Distance is πR",
-                "Displacement is 2R",
-                "Ratio is π/2"
-              ],
-              "acceptedSynonyms": [
-                "pi/2",
-                "π:2"
-              ],
-              "conceptTags": [
-                "distance",
-                "displacement",
-                "ratio"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "1d-motion",
-                "conceptSlug": "distance-displacement",
-                "microskillSlug": "calculate-ratio",
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-straight-line"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-kinematics-avg-inst-velocity",
-          "title": "Average vs Instantaneous Velocity",
-          "conceptTags": [
-            "kinematics",
-            "velocity",
-            "average-velocity",
-            "instantaneous-velocity"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 3: 3.3 Average Velocity and Average Speed, 3.4 Instantaneous Velocity and Speed"
-          ],
-          "mustKnowFacts": [
-            "Average velocity is total displacement divided by total time.",
-            "Average speed is total distance divided by total time.",
-            "Instantaneous velocity is the derivative of position with respect to time (dx/dt).",
-            "For equal distances traveled at speeds v1 and v2, average speed is 2*v1*v2/(v1+v2)."
-          ],
-          "formulas": [
-            {
-              "name": "Average Velocity",
-              "expression": "v_avg = Δx / Δt",
-              "variables": [
-                "v_avg",
-                "Δx",
-                "Δt"
-              ]
-            },
-            {
-              "name": "Instantaneous Velocity",
-              "expression": "v = dx / dt",
-              "variables": [
-                "v",
-                "dx",
-                "dt"
-              ]
-            },
-            {
-              "name": "Harmonic Mean Speed (Equal Distances)",
-              "expression": "v_avg = (2 * v1 * v2) / (v1 + v2)",
-              "variables": [
-                "v_avg",
-                "v1",
-                "v2"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Using arithmetic mean (v1+v2)/2 for average speed when distances are equal instead of harmonic mean.",
-            "Confusing average velocity (vector) with average speed (scalar)."
-          ],
-          "masteryCriteria": [
-            "Can derive average speed for multi-part journeys with different time or distance intervals."
-          ],
-          "pyqPatterns": [
-            "Particle covers first half distance at v1 and second half at v2."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-avg-spd-equal-dist",
-              "question": "A car covers the first half of a distance at 40 km/h and the second half at 60 km/h. What is its average speed?",
-              "expectedAnswerPoints": [
-                "Use harmonic mean formula",
-                "2*40*60 / (40+60)",
-                "48 km/h"
-              ],
-              "acceptedSynonyms": [
-                "48",
-                "48 kmph"
-              ],
-              "conceptTags": [
-                "average-speed",
-                "harmonic-mean"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "1d-motion",
-                "conceptSlug": "average-speed",
-                "microskillSlug": "equal-distances",
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-straight-line"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-kinematics-vt-graph-area",
-          "title": "Velocity-Time Graph Area",
-          "conceptTags": [
-            "kinematics",
-            "graphs",
-            "v-t-graph",
-            "area"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 3: Kinematics Graphs"
-          ],
-          "mustKnowFacts": [
-            "The area under a Velocity-Time (v-t) graph represents Displacement.",
-            "Area above the time axis is positive displacement, area below is negative displacement.",
-            "The total area (sum of absolute values) represents total Distance traveled."
-          ],
-          "formulas": [
-            {
-              "name": "Displacement from v-t Graph",
-              "expression": "Δx = ∫ v dt = Area under v-t curve",
-              "variables": [
-                "Δx",
-                "v",
-                "dt"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Subtracting negative area when calculating total distance.",
-            "Adding negative area when calculating displacement (it must be subtracted)."
-          ],
-          "masteryCriteria": [
-            "Can reliably distinguish between distance and displacement calculated from a v-t graph spanning positive and negative velocities."
-          ],
-          "pyqPatterns": [
-            "Finding distance vs displacement for a triangular v-t graph that dips below the x-axis."
-          ],
-          "estimatedMinutes": 25,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-vt-area",
-              "question": "What does the area under a velocity-time graph represent, and how does it differ for calculating distance vs displacement?",
-              "expectedAnswerPoints": [
-                "Area represents displacement",
-                "For distance, take absolute value of all areas",
-                "For displacement, subtract areas below the time axis"
-              ],
-              "acceptedSynonyms": [
-                "integral of velocity",
-                "total area without sign"
-              ],
-              "conceptTags": [
-                "v-t-graph",
-                "area",
-                "distance",
-                "displacement"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "1d-motion",
-                "conceptSlug": "vt-graph",
-                "microskillSlug": "area-distance-displacement",
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-straight-line"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-kinematics-equations-of-motion",
-          "title": "Equations of Uniformly Accelerated Motion",
-          "conceptTags": [
-            "kinematics",
-            "equations-of-motion",
-            "acceleration"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 3: 3.6 Kinematic Equations for Uniformly Accelerated Motion"
-          ],
-          "mustKnowFacts": [
-            "Equations of motion are ONLY valid when acceleration is constant.",
-            "v = u + at",
-            "s = ut + 1/2 at^2",
-            "v^2 = u^2 + 2as",
-            "Displacement in nth second: Sn = u + a/2 * (2n - 1)"
-          ],
-          "formulas": [
-            {
-              "name": "1st Equation of Motion",
-              "expression": "v = u + a*t",
-              "variables": [
-                "v",
-                "u",
-                "a",
-                "t"
-              ]
-            },
-            {
-              "name": "2nd Equation of Motion",
-              "expression": "s = u*t + (1/2)*a*t^2",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
                 "s",
                 "u",
                 "t",
                 "a"
               ]
-            },
-            {
-              "name": "3rd Equation of Motion",
-              "expression": "v^2 = u^2 + 2*a*s",
-              "variables": [
-                "v",
-                "u",
-                "a",
-                "s"
-              ]
-            },
-            {
-              "name": "Displacement in nth second",
-              "expression": "S_n = u + (a/2)*(2n - 1)",
-              "variables": [
-                "S_n",
-                "u",
-                "a",
-                "n"
-              ]
             }
           ],
           "commonTraps": [
-            "Using v=u+at when acceleration is variable (e.g., a function of time).",
-            "Confusing S_n (displacement in nth second) with S (total displacement in n seconds)."
+            "Misinterpreting the subtle edge cases of Frame of reference during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Frame of reference."
           ],
           "masteryCriteria": [
-            "Can correctly select the appropriate equation based on known and unknown variables."
+            "Can accurately solve numericals or identify biological structures related specifically to Frame of reference.",
+            "Successfully avoids common pitfalls when Frame of reference is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
-            "Stopping distance of a car (s = u^2 / 2a).",
-            "Ratio of distances covered in 1st, 2nd, 3rd seconds (Galileo's law of odd numbers)."
+            "Past year questions frequently test the application of Frame of reference in tricky assertion-reason or statement-based questions."
           ],
-          "estimatedMinutes": 45,
-          "difficulty": "hard",
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-eq-motion-stopping",
-              "question": "If the initial speed of a car is doubled, how does its minimum stopping distance change (assuming constant braking deceleration)?",
+              "id": "kinematics-q-frame-of-reference-1",
+              "question": "What are the critical factors or principles governing Frame of reference?",
               "expectedAnswerPoints": [
-                "Stopping distance is proportional to u squared",
-                "It becomes four times"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
-                "quadruples",
-                "4 times",
-                "increases by factor of 4"
+                "mechanism",
+                "principle",
+                "variables"
               ],
               "conceptTags": [
-                "stopping-distance",
-                "equations-of-motion"
+                "kinematics",
+                "frame-of-reference"
               ],
-              "difficulty": "hard",
+              "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "1d-motion",
-                "conceptSlug": "equations-of-motion",
-                "microskillSlug": "stopping-distance",
                 "subject": "Physics",
                 "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-straight-line"
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "frame-of-reference",
+                "conceptSlug": "core-frame-of-reference",
+                "microskillSlug": "understand-frame-of-reference"
+              }
+            },
+            {
+              "id": "kinematics-q-frame-of-reference-2",
+              "question": "Describe a scenario where applying the concept of Frame of reference can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "frame-of-reference",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "frame-of-reference",
+                "conceptSlug": "trap-frame-of-reference",
+                "microskillSlug": "avoid-frame-of-reference"
               }
             }
           ]
         },
         {
-          "id": "mt-kinematics-free-fall",
-          "title": "Motion Under Gravity (Free Fall)",
+          "id": "mt-kinematics-rest-and-motion-1",
+          "title": "Rest and motion",
           "conceptTags": [
             "kinematics",
-            "free-fall",
-            "gravity"
+            "rest-and-motion"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 3: Motion under Gravity"
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Rest and motion"
           ],
           "mustKnowFacts": [
-            "Acceleration is strictly downward, a = -g (approx -9.8 m/s^2).",
-            "Time of ascent equals time of descent (in absence of air resistance).",
-            "Velocity with which an object is thrown up is equal to velocity with which it returns to the projection point."
+            "A thorough understanding of Rest and motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rest and motion correctly is essential for solving complex multi-step problems in Kinematics."
           ],
           "formulas": [
             {
-              "name": "Maximum Height",
-              "expression": "H = u^2 / (2*g)",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "H",
+                "s",
                 "u",
-                "g"
-              ]
-            },
-            {
-              "name": "Time of Flight (up and down)",
-              "expression": "T = (2*u) / g",
-              "variables": [
-                "T",
-                "u",
-                "g"
+                "t",
+                "a"
               ]
             }
           ],
           "commonTraps": [
-            "Using positive g when the object is moving upwards (if upward is taken as positive).",
-            "Forgetting that displacement is zero when a ball is thrown up and caught at the same level."
+            "Misinterpreting the subtle edge cases of Rest and motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rest and motion."
           ],
           "masteryCriteria": [
-            "Can solve cases where an object is dropped from a rising balloon or moving helicopter."
+            "Can accurately solve numericals or identify biological structures related specifically to Rest and motion.",
+            "Successfully avoids common pitfalls when Rest and motion is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
-            "Ball dropped from a balloon moving upwards at constant velocity.",
-            "Water drops falling at regular time intervals."
+            "Past year questions frequently test the application of Rest and motion in tricky assertion-reason or statement-based questions."
           ],
-          "estimatedMinutes": 35,
-          "difficulty": "hard",
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-free-fall-balloon",
-              "question": "A stone is dropped from a balloon rising upwards with velocity u. What is the initial velocity of the stone relative to the ground?",
+              "id": "kinematics-q-rest-and-motion-1",
+              "question": "What are the critical factors or principles governing Rest and motion?",
               "expectedAnswerPoints": [
-                "The stone inherits the balloon's velocity",
-                "Initial velocity is u upwards"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
-                "u upwards",
-                "+u",
-                "same as balloon"
+                "mechanism",
+                "principle",
+                "variables"
               ],
               "conceptTags": [
-                "free-fall",
-                "relative-motion"
+                "kinematics",
+                "rest-and-motion"
               ],
-              "difficulty": "hard",
+              "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "1d-motion",
-                "conceptSlug": "free-fall",
-                "microskillSlug": "moving-frame-drop",
                 "subject": "Physics",
                 "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-straight-line"
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "rest-and-motion",
+                "conceptSlug": "core-rest-and-motion",
+                "microskillSlug": "understand-rest-and-motion"
+              }
+            },
+            {
+              "id": "kinematics-q-rest-and-motion-2",
+              "question": "Describe a scenario where applying the concept of Rest and motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "rest-and-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "rest-and-motion",
+                "conceptSlug": "trap-rest-and-motion",
+                "microskillSlug": "avoid-rest-and-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-position-vector-2",
+          "title": "Position vector",
+          "conceptTags": [
+            "kinematics",
+            "position-vector"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Position vector"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Position vector is heavily tested in recent NEET papers.",
+            "Applying the core principles of Position vector correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Position vector during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Position vector."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Position vector.",
+            "Successfully avoids common pitfalls when Position vector is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Position vector in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-position-vector-1",
+              "question": "What are the critical factors or principles governing Position vector?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "position-vector"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "position-vector",
+                "conceptSlug": "core-position-vector",
+                "microskillSlug": "understand-position-vector"
+              }
+            },
+            {
+              "id": "kinematics-q-position-vector-2",
+              "question": "Describe a scenario where applying the concept of Position vector can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "position-vector",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "position-vector",
+                "conceptSlug": "trap-position-vector",
+                "microskillSlug": "avoid-position-vector"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-path-length-vs-distance-3",
+          "title": "Path length vs distance",
+          "conceptTags": [
+            "kinematics",
+            "path-length-vs-distance"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Path length vs distance"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Path length vs distance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Path length vs distance correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Path length vs distance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Path length vs distance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Path length vs distance.",
+            "Successfully avoids common pitfalls when Path length vs distance is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Path length vs distance in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-path-length-vs-distance-1",
+              "question": "What are the critical factors or principles governing Path length vs distance?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "path-length-vs-distance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "path-length-vs-distance",
+                "conceptSlug": "core-path-length-vs-distance",
+                "microskillSlug": "understand-path-length-vs-distance"
+              }
+            },
+            {
+              "id": "kinematics-q-path-length-vs-distance-2",
+              "question": "Describe a scenario where applying the concept of Path length vs distance can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "path-length-vs-distance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "path-length-vs-distance",
+                "conceptSlug": "trap-path-length-vs-distance",
+                "microskillSlug": "avoid-path-length-vs-distance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-displacement-definition-4",
+          "title": "Displacement definition",
+          "conceptTags": [
+            "kinematics",
+            "displacement-definition"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Displacement definition"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Displacement definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Displacement definition correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Displacement definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Displacement definition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Displacement definition.",
+            "Successfully avoids common pitfalls when Displacement definition is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Displacement definition in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-displacement-definition-1",
+              "question": "What are the critical factors or principles governing Displacement definition?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "displacement-definition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "displacement-definition",
+                "conceptSlug": "core-displacement-definition",
+                "microskillSlug": "understand-displacement-definition"
+              }
+            },
+            {
+              "id": "kinematics-q-displacement-definition-2",
+              "question": "Describe a scenario where applying the concept of Displacement definition can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "displacement-definition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "displacement-definition",
+                "conceptSlug": "trap-displacement-definition",
+                "microskillSlug": "avoid-displacement-definition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-average-speed-calculation-5",
+          "title": "Average speed calculation",
+          "conceptTags": [
+            "kinematics",
+            "average-speed-calculation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Average speed calculation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Average speed calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Average speed calculation correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Average speed calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Average speed calculation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Average speed calculation.",
+            "Successfully avoids common pitfalls when Average speed calculation is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Average speed calculation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-average-speed-calculation-1",
+              "question": "What are the critical factors or principles governing Average speed calculation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "average-speed-calculation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "average-speed-calculation",
+                "conceptSlug": "core-average-speed-calculation",
+                "microskillSlug": "understand-average-speed-calculation"
+              }
+            },
+            {
+              "id": "kinematics-q-average-speed-calculation-2",
+              "question": "Describe a scenario where applying the concept of Average speed calculation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "average-speed-calculation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "average-speed-calculation",
+                "conceptSlug": "trap-average-speed-calculation",
+                "microskillSlug": "avoid-average-speed-calculation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-average-velocity-calculation-6",
+          "title": "Average velocity calculation",
+          "conceptTags": [
+            "kinematics",
+            "average-velocity-calculation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Average velocity calculation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Average velocity calculation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Average velocity calculation correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Average velocity calculation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Average velocity calculation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Average velocity calculation.",
+            "Successfully avoids common pitfalls when Average velocity calculation is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Average velocity calculation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-average-velocity-calculation-1",
+              "question": "What are the critical factors or principles governing Average velocity calculation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "average-velocity-calculation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "average-velocity-calculation",
+                "conceptSlug": "core-average-velocity-calculation",
+                "microskillSlug": "understand-average-velocity-calculation"
+              }
+            },
+            {
+              "id": "kinematics-q-average-velocity-calculation-2",
+              "question": "Describe a scenario where applying the concept of Average velocity calculation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "average-velocity-calculation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "average-velocity-calculation",
+                "conceptSlug": "trap-average-velocity-calculation",
+                "microskillSlug": "avoid-average-velocity-calculation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-instantaneous-speed-7",
+          "title": "Instantaneous speed",
+          "conceptTags": [
+            "kinematics",
+            "instantaneous-speed"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Instantaneous speed"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Instantaneous speed is heavily tested in recent NEET papers.",
+            "Applying the core principles of Instantaneous speed correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Instantaneous speed during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Instantaneous speed."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Instantaneous speed.",
+            "Successfully avoids common pitfalls when Instantaneous speed is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Instantaneous speed in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-instantaneous-speed-1",
+              "question": "What are the critical factors or principles governing Instantaneous speed?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "instantaneous-speed"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "instantaneous-speed",
+                "conceptSlug": "core-instantaneous-speed",
+                "microskillSlug": "understand-instantaneous-speed"
+              }
+            },
+            {
+              "id": "kinematics-q-instantaneous-speed-2",
+              "question": "Describe a scenario where applying the concept of Instantaneous speed can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "instantaneous-speed",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "instantaneous-speed",
+                "conceptSlug": "trap-instantaneous-speed",
+                "microskillSlug": "avoid-instantaneous-speed"
               }
             }
           ]
@@ -428,202 +805,2926 @@
       ]
     },
     {
-      "id": "m-kinematics-2d",
-      "title": "Motion in a Plane (2D)",
-      "description": "Understand vectors, projectile motion, and relative velocity in two dimensions.",
+      "id": "m-kinematics-2",
+      "title": "Mastery Module 2: Instantaneous velocity and Related Concepts",
+      "description": "Comprehensive analysis covering instantaneous velocity, acceleration, retardation and advanced applications.",
       "conceptTags": [
         "kinematics",
-        "2d-motion",
-        "projectile",
-        "vectors"
+        "module-2"
       ],
-      "estimatedMinutes": 180,
-      "difficulty": "hard",
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-kinematics-projectile-time-range",
-          "title": "Projectile Motion: Time of Flight and Range",
+          "id": "mt-kinematics-instantaneous-velocity-8",
+          "title": "Instantaneous velocity",
           "conceptTags": [
             "kinematics",
-            "projectile",
-            "range",
-            "time-of-flight"
+            "instantaneous-velocity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 4: Motion in a Plane - 4.10 Projectile Motion"
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Instantaneous velocity"
           ],
           "mustKnowFacts": [
-            "Horizontal motion is uniform velocity (ax = 0).",
-            "Vertical motion is uniformly accelerated (ay = -g).",
-            "Horizontal range is maximum when angle of projection is 45 degrees.",
-            "For complementary angles (θ and 90-θ), the horizontal range is the same."
+            "A thorough understanding of Instantaneous velocity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Instantaneous velocity correctly is essential for solving complex multi-step problems in Kinematics."
           ],
           "formulas": [
             {
-              "name": "Time of Flight",
-              "expression": "T = (2*u*sinθ) / g",
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
               "variables": [
-                "T",
-                "u",
-                "θ",
-                "g"
-              ]
-            },
-            {
-              "name": "Horizontal Range",
-              "expression": "R = (u^2 * sin(2θ)) / g",
-              "variables": [
-                "R",
-                "u",
-                "θ",
-                "g"
-              ]
-            },
-            {
-              "name": "Maximum Height",
-              "expression": "H = (u^2 * sin^2(θ)) / (2*g)",
-              "variables": [
-                "H",
-                "u",
-                "θ",
-                "g"
-              ]
-            },
-            {
-              "name": "Equation of Trajectory",
-              "expression": "y = x*tanθ - (g*x^2)/(2*u^2*cos^2(θ))",
-              "variables": [
-                "y",
+                "v",
                 "x",
-                "θ",
-                "g",
-                "u"
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Applying 1D kinematic equations without resolving into horizontal and vertical components.",
-            "Assuming velocity is zero at the highest point (only vertical velocity is zero, horizontal is u*cosθ)."
+            "Misinterpreting the subtle edge cases of Instantaneous velocity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Instantaneous velocity."
           ],
           "masteryCriteria": [
-            "Can calculate range, height, and time of flight, and use the trajectory equation for complex obstacles."
+            "Can accurately solve numericals or identify biological structures related specifically to Instantaneous velocity.",
+            "Successfully avoids common pitfalls when Instantaneous velocity is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
-            "Relation between Range and Maximum Height (R*tanθ = 4H).",
-            "Kinetic energy at the highest point."
+            "Past year questions frequently test the application of Instantaneous velocity in tricky assertion-reason or statement-based questions."
           ],
-          "estimatedMinutes": 40,
-          "difficulty": "hard",
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-projectile-highest-pt",
-              "question": "What is the speed and acceleration of a projectile at its maximum height?",
+              "id": "kinematics-q-instantaneous-velocity-1",
+              "question": "What are the critical factors or principles governing Instantaneous velocity?",
               "expectedAnswerPoints": [
-                "Speed is u*cos(theta) horizontally",
-                "Acceleration is g downwards"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
-                "horizontal velocity only",
-                "u cos theta",
-                "-g"
+                "mechanism",
+                "principle",
+                "variables"
               ],
               "conceptTags": [
-                "projectile",
-                "highest-point",
-                "velocity"
+                "kinematics",
+                "instantaneous-velocity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "instantaneous-velocity",
+                "conceptSlug": "core-instantaneous-velocity",
+                "microskillSlug": "understand-instantaneous-velocity"
+              }
+            },
+            {
+              "id": "kinematics-q-instantaneous-velocity-2",
+              "question": "Describe a scenario where applying the concept of Instantaneous velocity can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "instantaneous-velocity",
+                "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "2d-motion",
-                "conceptSlug": "projectile",
-                "microskillSlug": "highest-point-kinematics",
                 "subject": "Physics",
                 "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-a-plane"
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "instantaneous-velocity",
+                "conceptSlug": "trap-instantaneous-velocity",
+                "microskillSlug": "avoid-instantaneous-velocity"
               }
             }
           ]
         },
         {
-          "id": "mt-kinematics-relative-2d",
-          "title": "Relative Velocity in 2D (Rain-Man, River-Boat)",
+          "id": "mt-kinematics-acceleration-9",
+          "title": "Acceleration",
           "conceptTags": [
             "kinematics",
-            "relative-velocity",
-            "2d-motion",
-            "rain-man",
-            "river-boat"
+            "acceleration"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Chapter 4: 4.11 Relative Velocity in Two Dimensions"
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Acceleration"
           ],
           "mustKnowFacts": [
-            "V_AB = V_A - V_B (Velocity of A with respect to B).",
-            "In river-boat problems, to cross in minimum time, boat should be rowed perpendicular to river flow.",
-            "To cross along the shortest path (straight across), boat must be rowed at an angle upstream.",
-            "In rain-man problems, angle of umbrella is determined by the direction of relative velocity of rain with respect to man."
+            "A thorough understanding of Acceleration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Acceleration correctly is essential for solving complex multi-step problems in Kinematics."
           ],
           "formulas": [
             {
-              "name": "Relative Velocity Vector",
-              "expression": "v_rel = v_A - v_B",
+              "name": "Acceleration",
+              "expression": "a = \\frac{dv}{dt}",
               "variables": [
-                "v_rel",
-                "v_A",
-                "v_B"
-              ]
-            },
-            {
-              "name": "Crossing river in minimum time",
-              "expression": "t_min = d / v_br",
-              "variables": [
-                "t_min",
-                "d",
-                "v_br"
+                "a",
+                "v",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Adding vectors algebraically instead of geometrically.",
-            "Confusing 'velocity of boat in still water' with 'actual velocity of boat relative to ground'."
+            "Misinterpreting the subtle edge cases of Acceleration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Acceleration."
           ],
           "masteryCriteria": [
-            "Can confidently draw vector triangles to solve rain-man and river-boat problems."
+            "Can accurately solve numericals or identify biological structures related specifically to Acceleration.",
+            "Successfully avoids common pitfalls when Acceleration is integrated with other concepts in Kinematics."
           ],
           "pyqPatterns": [
-            "Finding the angle to hold the umbrella when a man is running.",
-            "Finding drift of a boat crossing a river."
+            "Past year questions frequently test the application of Acceleration in tricky assertion-reason or statement-based questions."
           ],
-          "estimatedMinutes": 45,
-          "difficulty": "hard",
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-river-boat-min-time",
-              "question": "In what direction should a swimmer swim to cross a river in the shortest possible time?",
+              "id": "kinematics-q-acceleration-1",
+              "question": "What are the critical factors or principles governing Acceleration?",
               "expectedAnswerPoints": [
-                "Perpendicular to the river flow",
-                "Straight across relative to water"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
-                "90 degrees to flow",
-                "perpendicular",
-                "normal to current"
+                "mechanism",
+                "principle",
+                "variables"
               ],
               "conceptTags": [
-                "river-boat",
-                "relative-velocity",
-                "shortest-time"
+                "kinematics",
+                "acceleration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "acceleration",
+                "conceptSlug": "core-acceleration",
+                "microskillSlug": "understand-acceleration"
+              }
+            },
+            {
+              "id": "kinematics-q-acceleration-2",
+              "question": "Describe a scenario where applying the concept of Acceleration can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "acceleration",
+                "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "kinematics",
-                "subtopicSlug": "2d-motion",
-                "conceptSlug": "relative-velocity",
-                "microskillSlug": "river-boat-shortest-time",
                 "subject": "Physics",
                 "unitSlug": "kinematics",
-                "chapterSlug": "motion-in-a-plane"
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "acceleration",
+                "conceptSlug": "trap-acceleration",
+                "microskillSlug": "avoid-acceleration"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-retardation-10",
+          "title": "Retardation",
+          "conceptTags": [
+            "kinematics",
+            "retardation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Retardation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Retardation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Retardation correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Retardation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Retardation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Retardation.",
+            "Successfully avoids common pitfalls when Retardation is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Retardation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-retardation-1",
+              "question": "What are the critical factors or principles governing Retardation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "retardation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "retardation",
+                "conceptSlug": "core-retardation",
+                "microskillSlug": "understand-retardation"
+              }
+            },
+            {
+              "id": "kinematics-q-retardation-2",
+              "question": "Describe a scenario where applying the concept of Retardation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "retardation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "retardation",
+                "conceptSlug": "trap-retardation",
+                "microskillSlug": "avoid-retardation"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-x-t-graph-slope-11",
+          "title": "X-t graph slope",
+          "conceptTags": [
+            "kinematics",
+            "x-t-graph-slope",
+            "slope"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing X-t graph slope"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of X-t graph slope is heavily tested in recent NEET papers.",
+            "Applying the core principles of X-t graph slope correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of X-t graph slope during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with X-t graph slope."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to X-t graph slope.",
+            "Successfully avoids common pitfalls when X-t graph slope is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of X-t graph slope in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-x-t-graph-slope-1",
+              "question": "What are the critical factors or principles governing X-t graph slope?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "x-t-graph-slope",
+                "slope"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "x-t-graph-slope",
+                "conceptSlug": "core-x-t-graph-slope",
+                "microskillSlug": "understand-x-t-graph-slope"
+              }
+            },
+            {
+              "id": "kinematics-q-x-t-graph-slope-2",
+              "question": "Describe a scenario where applying the concept of X-t graph slope can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "x-t-graph-slope",
+                "slope",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "x-t-graph-slope",
+                "conceptSlug": "trap-x-t-graph-slope",
+                "microskillSlug": "avoid-x-t-graph-slope"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-v-t-graph-slope-12",
+          "title": "V-t graph slope",
+          "conceptTags": [
+            "kinematics",
+            "v-t-graph-slope",
+            "slope"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing V-t graph slope"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of V-t graph slope is heavily tested in recent NEET papers.",
+            "Applying the core principles of V-t graph slope correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of V-t graph slope during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with V-t graph slope."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to V-t graph slope.",
+            "Successfully avoids common pitfalls when V-t graph slope is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of V-t graph slope in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-v-t-graph-slope-1",
+              "question": "What are the critical factors or principles governing V-t graph slope?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "v-t-graph-slope",
+                "slope"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "v-t-graph-slope",
+                "conceptSlug": "core-v-t-graph-slope",
+                "microskillSlug": "understand-v-t-graph-slope"
+              }
+            },
+            {
+              "id": "kinematics-q-v-t-graph-slope-2",
+              "question": "Describe a scenario where applying the concept of V-t graph slope can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "v-t-graph-slope",
+                "slope",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "v-t-graph-slope",
+                "conceptSlug": "trap-v-t-graph-slope",
+                "microskillSlug": "avoid-v-t-graph-slope"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-velocity-time-graph-area-13",
+          "title": "Velocity-time graph area",
+          "conceptTags": [
+            "kinematics",
+            "velocity-time-graph-area",
+            "area"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Velocity-time graph area"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Velocity-time graph area is heavily tested in recent NEET papers.",
+            "Applying the core principles of Velocity-time graph area correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Velocity-time graph area during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Velocity-time graph area."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Velocity-time graph area.",
+            "Successfully avoids common pitfalls when Velocity-time graph area is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Velocity-time graph area in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-velocity-time-graph-area-1",
+              "question": "What are the critical factors or principles governing Velocity-time graph area?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "velocity-time-graph-area",
+                "area"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "velocity-time-graph-area",
+                "conceptSlug": "core-velocity-time-graph-area",
+                "microskillSlug": "understand-velocity-time-graph-area"
+              }
+            },
+            {
+              "id": "kinematics-q-velocity-time-graph-area-2",
+              "question": "Describe a scenario where applying the concept of Velocity-time graph area can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "velocity-time-graph-area",
+                "area",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "velocity-time-graph-area",
+                "conceptSlug": "trap-velocity-time-graph-area",
+                "microskillSlug": "avoid-velocity-time-graph-area"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-a-t-graph-area-14",
+          "title": "A-t graph area",
+          "conceptTags": [
+            "kinematics",
+            "a-t-graph-area",
+            "area"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing A-t graph area"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of A-t graph area is heavily tested in recent NEET papers.",
+            "Applying the core principles of A-t graph area correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of A-t graph area during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with A-t graph area."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to A-t graph area.",
+            "Successfully avoids common pitfalls when A-t graph area is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of A-t graph area in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-a-t-graph-area-1",
+              "question": "What are the critical factors or principles governing A-t graph area?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "a-t-graph-area",
+                "area"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "a-t-graph-area",
+                "conceptSlug": "core-a-t-graph-area",
+                "microskillSlug": "understand-a-t-graph-area"
+              }
+            },
+            {
+              "id": "kinematics-q-a-t-graph-area-2",
+              "question": "Describe a scenario where applying the concept of A-t graph area can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "a-t-graph-area",
+                "area",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "a-t-graph-area",
+                "conceptSlug": "trap-a-t-graph-area",
+                "microskillSlug": "avoid-a-t-graph-area"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-uniform-motion-15",
+          "title": "Uniform motion",
+          "conceptTags": [
+            "kinematics",
+            "uniform-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Uniform motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Uniform motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Uniform motion correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Uniform motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Uniform motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Uniform motion.",
+            "Successfully avoids common pitfalls when Uniform motion is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Uniform motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-uniform-motion-1",
+              "question": "What are the critical factors or principles governing Uniform motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "uniform-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "uniform-motion",
+                "conceptSlug": "core-uniform-motion",
+                "microskillSlug": "understand-uniform-motion"
+              }
+            },
+            {
+              "id": "kinematics-q-uniform-motion-2",
+              "question": "Describe a scenario where applying the concept of Uniform motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "uniform-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "uniform-motion",
+                "conceptSlug": "trap-uniform-motion",
+                "microskillSlug": "avoid-uniform-motion"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-kinematics-3",
+      "title": "Mastery Module 3: Non-uniform motion and Related Concepts",
+      "description": "Comprehensive analysis covering non-uniform motion, equations of motion, free fall and advanced applications.",
+      "conceptTags": [
+        "kinematics",
+        "module-3"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-kinematics-non-uniform-motion-16",
+          "title": "Non-uniform motion",
+          "conceptTags": [
+            "kinematics",
+            "non-uniform-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Non-uniform motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Non-uniform motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Non-uniform motion correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Non-uniform motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Non-uniform motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Non-uniform motion.",
+            "Successfully avoids common pitfalls when Non-uniform motion is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Non-uniform motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-non-uniform-motion-1",
+              "question": "What are the critical factors or principles governing Non-uniform motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "non-uniform-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "non-uniform-motion",
+                "conceptSlug": "core-non-uniform-motion",
+                "microskillSlug": "understand-non-uniform-motion"
+              }
+            },
+            {
+              "id": "kinematics-q-non-uniform-motion-2",
+              "question": "Describe a scenario where applying the concept of Non-uniform motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "non-uniform-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "non-uniform-motion",
+                "conceptSlug": "trap-non-uniform-motion",
+                "microskillSlug": "avoid-non-uniform-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-equations-of-motion-17",
+          "title": "Equations of motion",
+          "conceptTags": [
+            "kinematics",
+            "equations-of-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Equations of motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Equations of motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Equations of motion correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Equations of motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Equations of motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Equations of motion.",
+            "Successfully avoids common pitfalls when Equations of motion is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Equations of motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-equations-of-motion-1",
+              "question": "What are the critical factors or principles governing Equations of motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "equations-of-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "equations-of-motion",
+                "conceptSlug": "core-equations-of-motion",
+                "microskillSlug": "understand-equations-of-motion"
+              }
+            },
+            {
+              "id": "kinematics-q-equations-of-motion-2",
+              "question": "Describe a scenario where applying the concept of Equations of motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "equations-of-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "equations-of-motion",
+                "conceptSlug": "trap-equations-of-motion",
+                "microskillSlug": "avoid-equations-of-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-free-fall-18",
+          "title": "Free fall",
+          "conceptTags": [
+            "kinematics",
+            "free-fall"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Free fall"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Free fall is heavily tested in recent NEET papers.",
+            "Applying the core principles of Free fall correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Free fall during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Free fall."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Free fall.",
+            "Successfully avoids common pitfalls when Free fall is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Free fall in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-free-fall-1",
+              "question": "What are the critical factors or principles governing Free fall?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "free-fall"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "free-fall",
+                "conceptSlug": "core-free-fall",
+                "microskillSlug": "understand-free-fall"
+              }
+            },
+            {
+              "id": "kinematics-q-free-fall-2",
+              "question": "Describe a scenario where applying the concept of Free fall can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "free-fall",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "free-fall",
+                "conceptSlug": "trap-free-fall",
+                "microskillSlug": "avoid-free-fall"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-vertical-motion-sign-convention-19",
+          "title": "Vertical motion sign convention",
+          "conceptTags": [
+            "kinematics",
+            "vertical-motion-sign-convention"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Vertical motion sign convention"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Vertical motion sign convention is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vertical motion sign convention correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Vertical motion sign convention during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vertical motion sign convention."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Vertical motion sign convention.",
+            "Successfully avoids common pitfalls when Vertical motion sign convention is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Vertical motion sign convention in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-vertical-motion-sign-convention-1",
+              "question": "What are the critical factors or principles governing Vertical motion sign convention?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vertical-motion-sign-convention"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vertical-motion-sign-convention",
+                "conceptSlug": "core-vertical-motion-sign-convention",
+                "microskillSlug": "understand-vertical-motion-sign-convention"
+              }
+            },
+            {
+              "id": "kinematics-q-vertical-motion-sign-convention-2",
+              "question": "Describe a scenario where applying the concept of Vertical motion sign convention can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vertical-motion-sign-convention",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vertical-motion-sign-convention",
+                "conceptSlug": "trap-vertical-motion-sign-convention",
+                "microskillSlug": "avoid-vertical-motion-sign-convention"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-scalar-vs-vector-20",
+          "title": "Scalar vs vector",
+          "conceptTags": [
+            "kinematics",
+            "scalar-vs-vector"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Scalar vs vector"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Scalar vs vector is heavily tested in recent NEET papers.",
+            "Applying the core principles of Scalar vs vector correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Scalar vs vector during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Scalar vs vector."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Scalar vs vector.",
+            "Successfully avoids common pitfalls when Scalar vs vector is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Scalar vs vector in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-scalar-vs-vector-1",
+              "question": "What are the critical factors or principles governing Scalar vs vector?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "scalar-vs-vector"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "scalar-vs-vector",
+                "conceptSlug": "core-scalar-vs-vector",
+                "microskillSlug": "understand-scalar-vs-vector"
+              }
+            },
+            {
+              "id": "kinematics-q-scalar-vs-vector-2",
+              "question": "Describe a scenario where applying the concept of Scalar vs vector can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "scalar-vs-vector",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "scalar-vs-vector",
+                "conceptSlug": "trap-scalar-vs-vector",
+                "microskillSlug": "avoid-scalar-vs-vector"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-vector-addition-rules-21",
+          "title": "Vector addition rules",
+          "conceptTags": [
+            "kinematics",
+            "vector-addition-rules"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Vector addition rules"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Vector addition rules is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vector addition rules correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Vector addition rules during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vector addition rules."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Vector addition rules.",
+            "Successfully avoids common pitfalls when Vector addition rules is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Vector addition rules in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-vector-addition-rules-1",
+              "question": "What are the critical factors or principles governing Vector addition rules?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vector-addition-rules"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vector-addition-rules",
+                "conceptSlug": "core-vector-addition-rules",
+                "microskillSlug": "understand-vector-addition-rules"
+              }
+            },
+            {
+              "id": "kinematics-q-vector-addition-rules-2",
+              "question": "Describe a scenario where applying the concept of Vector addition rules can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vector-addition-rules",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vector-addition-rules",
+                "conceptSlug": "trap-vector-addition-rules",
+                "microskillSlug": "avoid-vector-addition-rules"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-vector-subtraction-22",
+          "title": "Vector subtraction",
+          "conceptTags": [
+            "kinematics",
+            "vector-subtraction"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Vector subtraction"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Vector subtraction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vector subtraction correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Vector subtraction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vector subtraction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Vector subtraction.",
+            "Successfully avoids common pitfalls when Vector subtraction is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Vector subtraction in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-vector-subtraction-1",
+              "question": "What are the critical factors or principles governing Vector subtraction?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vector-subtraction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vector-subtraction",
+                "conceptSlug": "core-vector-subtraction",
+                "microskillSlug": "understand-vector-subtraction"
+              }
+            },
+            {
+              "id": "kinematics-q-vector-subtraction-2",
+              "question": "Describe a scenario where applying the concept of Vector subtraction can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "vector-subtraction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "vector-subtraction",
+                "conceptSlug": "trap-vector-subtraction",
+                "microskillSlug": "avoid-vector-subtraction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-unit-vectors-and-resolution-23",
+          "title": "Unit vectors and resolution",
+          "conceptTags": [
+            "kinematics",
+            "unit-vectors-and-resolution"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Unit vectors and resolution"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Unit vectors and resolution is heavily tested in recent NEET papers.",
+            "Applying the core principles of Unit vectors and resolution correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Unit vectors and resolution during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Unit vectors and resolution."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Unit vectors and resolution.",
+            "Successfully avoids common pitfalls when Unit vectors and resolution is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Unit vectors and resolution in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-unit-vectors-and-resolution-1",
+              "question": "What are the critical factors or principles governing Unit vectors and resolution?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "unit-vectors-and-resolution"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "unit-vectors-and-resolution",
+                "conceptSlug": "core-unit-vectors-and-resolution",
+                "microskillSlug": "understand-unit-vectors-and-resolution"
+              }
+            },
+            {
+              "id": "kinematics-q-unit-vectors-and-resolution-2",
+              "question": "Describe a scenario where applying the concept of Unit vectors and resolution can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "unit-vectors-and-resolution",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "unit-vectors-and-resolution",
+                "conceptSlug": "trap-unit-vectors-and-resolution",
+                "microskillSlug": "avoid-unit-vectors-and-resolution"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-kinematics-4",
+      "title": "Mastery Module 4: Dot product and Related Concepts",
+      "description": "Comprehensive analysis covering dot product, cross product, relative velocity in 1D and advanced applications.",
+      "conceptTags": [
+        "kinematics",
+        "module-4"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-kinematics-dot-product-24",
+          "title": "Dot product",
+          "conceptTags": [
+            "kinematics",
+            "dot-product"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Dot product"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Dot product is heavily tested in recent NEET papers.",
+            "Applying the core principles of Dot product correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Dot product during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Dot product."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Dot product.",
+            "Successfully avoids common pitfalls when Dot product is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Dot product in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-dot-product-1",
+              "question": "What are the critical factors or principles governing Dot product?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "dot-product"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "dot-product",
+                "conceptSlug": "core-dot-product",
+                "microskillSlug": "understand-dot-product"
+              }
+            },
+            {
+              "id": "kinematics-q-dot-product-2",
+              "question": "Describe a scenario where applying the concept of Dot product can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "dot-product",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "dot-product",
+                "conceptSlug": "trap-dot-product",
+                "microskillSlug": "avoid-dot-product"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-cross-product-25",
+          "title": "Cross product",
+          "conceptTags": [
+            "kinematics",
+            "cross-product"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Cross product"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Cross product is heavily tested in recent NEET papers.",
+            "Applying the core principles of Cross product correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Cross product during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Cross product."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Cross product.",
+            "Successfully avoids common pitfalls when Cross product is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Cross product in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-cross-product-1",
+              "question": "What are the critical factors or principles governing Cross product?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "cross-product"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "cross-product",
+                "conceptSlug": "core-cross-product",
+                "microskillSlug": "understand-cross-product"
+              }
+            },
+            {
+              "id": "kinematics-q-cross-product-2",
+              "question": "Describe a scenario where applying the concept of Cross product can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "cross-product",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "cross-product",
+                "conceptSlug": "trap-cross-product",
+                "microskillSlug": "avoid-cross-product"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-relative-velocity-in-1d-26",
+          "title": "Relative velocity in 1D",
+          "conceptTags": [
+            "kinematics",
+            "relative-velocity-in-1d"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Relative velocity in 1D"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Relative velocity in 1D is heavily tested in recent NEET papers.",
+            "Applying the core principles of Relative velocity in 1D correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Relative velocity in 1D during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Relative velocity in 1D."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Relative velocity in 1D.",
+            "Successfully avoids common pitfalls when Relative velocity in 1D is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Relative velocity in 1D in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-relative-velocity-in-1d-1",
+              "question": "What are the critical factors or principles governing Relative velocity in 1D?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "relative-velocity-in-1d"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "relative-velocity-in-1d",
+                "conceptSlug": "core-relative-velocity-in-1d",
+                "microskillSlug": "understand-relative-velocity-in-1d"
+              }
+            },
+            {
+              "id": "kinematics-q-relative-velocity-in-1d-2",
+              "question": "Describe a scenario where applying the concept of Relative velocity in 1D can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "relative-velocity-in-1d",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "relative-velocity-in-1d",
+                "conceptSlug": "trap-relative-velocity-in-1d",
+                "microskillSlug": "avoid-relative-velocity-in-1d"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-relative-velocity-in-2d-27",
+          "title": "Relative velocity in 2D",
+          "conceptTags": [
+            "kinematics",
+            "relative-velocity-in-2d"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Relative velocity in 2D"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Relative velocity in 2D is heavily tested in recent NEET papers.",
+            "Applying the core principles of Relative velocity in 2D correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Relative velocity in 2D during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Relative velocity in 2D."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Relative velocity in 2D.",
+            "Successfully avoids common pitfalls when Relative velocity in 2D is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Relative velocity in 2D in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-relative-velocity-in-2d-1",
+              "question": "What are the critical factors or principles governing Relative velocity in 2D?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "relative-velocity-in-2d"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "relative-velocity-in-2d",
+                "conceptSlug": "core-relative-velocity-in-2d",
+                "microskillSlug": "understand-relative-velocity-in-2d"
+              }
+            },
+            {
+              "id": "kinematics-q-relative-velocity-in-2d-2",
+              "question": "Describe a scenario where applying the concept of Relative velocity in 2D can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "relative-velocity-in-2d",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "relative-velocity-in-2d",
+                "conceptSlug": "trap-relative-velocity-in-2d",
+                "microskillSlug": "avoid-relative-velocity-in-2d"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-projectile-motion-parameters-28",
+          "title": "Projectile motion parameters",
+          "conceptTags": [
+            "kinematics",
+            "projectile-motion-parameters"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Projectile motion parameters"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Projectile motion parameters is heavily tested in recent NEET papers.",
+            "Applying the core principles of Projectile motion parameters correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Projectile motion parameters during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Projectile motion parameters."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Projectile motion parameters.",
+            "Successfully avoids common pitfalls when Projectile motion parameters is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Projectile motion parameters in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-projectile-motion-parameters-1",
+              "question": "What are the critical factors or principles governing Projectile motion parameters?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "projectile-motion-parameters"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "projectile-motion-parameters",
+                "conceptSlug": "core-projectile-motion-parameters",
+                "microskillSlug": "understand-projectile-motion-parameters"
+              }
+            },
+            {
+              "id": "kinematics-q-projectile-motion-parameters-2",
+              "question": "Describe a scenario where applying the concept of Projectile motion parameters can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "projectile-motion-parameters",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "projectile-motion-parameters",
+                "conceptSlug": "trap-projectile-motion-parameters",
+                "microskillSlug": "avoid-projectile-motion-parameters"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-time-of-flight-29",
+          "title": "Time of flight",
+          "conceptTags": [
+            "kinematics",
+            "time-of-flight"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Time of flight"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Time of flight is heavily tested in recent NEET papers.",
+            "Applying the core principles of Time of flight correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Time of flight during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Time of flight."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Time of flight.",
+            "Successfully avoids common pitfalls when Time of flight is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Time of flight in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-time-of-flight-1",
+              "question": "What are the critical factors or principles governing Time of flight?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "time-of-flight"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "time-of-flight",
+                "conceptSlug": "core-time-of-flight",
+                "microskillSlug": "understand-time-of-flight"
+              }
+            },
+            {
+              "id": "kinematics-q-time-of-flight-2",
+              "question": "Describe a scenario where applying the concept of Time of flight can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "time-of-flight",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "time-of-flight",
+                "conceptSlug": "trap-time-of-flight",
+                "microskillSlug": "avoid-time-of-flight"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-range-30",
+          "title": "Range",
+          "conceptTags": [
+            "kinematics",
+            "range"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Range"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Range is heavily tested in recent NEET papers.",
+            "Applying the core principles of Range correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Range during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Range."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Range.",
+            "Successfully avoids common pitfalls when Range is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Range in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-range-1",
+              "question": "What are the critical factors or principles governing Range?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "range"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "range",
+                "conceptSlug": "core-range",
+                "microskillSlug": "understand-range"
+              }
+            },
+            {
+              "id": "kinematics-q-range-2",
+              "question": "Describe a scenario where applying the concept of Range can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "range",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "range",
+                "conceptSlug": "trap-range",
+                "microskillSlug": "avoid-range"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-maximum-height-31",
+          "title": "Maximum height",
+          "conceptTags": [
+            "kinematics",
+            "maximum-height"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Maximum height"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Maximum height is heavily tested in recent NEET papers.",
+            "Applying the core principles of Maximum height correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Maximum height during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Maximum height."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Maximum height.",
+            "Successfully avoids common pitfalls when Maximum height is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Maximum height in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-maximum-height-1",
+              "question": "What are the critical factors or principles governing Maximum height?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "maximum-height"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "maximum-height",
+                "conceptSlug": "core-maximum-height",
+                "microskillSlug": "understand-maximum-height"
+              }
+            },
+            {
+              "id": "kinematics-q-maximum-height-2",
+              "question": "Describe a scenario where applying the concept of Maximum height can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "maximum-height",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "maximum-height",
+                "conceptSlug": "trap-maximum-height",
+                "microskillSlug": "avoid-maximum-height"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-kinematics-5",
+      "title": "Mastery Module 5: Projectile motion trajectory and Related Concepts",
+      "description": "Comprehensive analysis covering projectile motion trajectory, uniform circular motion, angular velocity and advanced applications.",
+      "conceptTags": [
+        "kinematics",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-kinematics-projectile-motion-trajectory-32",
+          "title": "Projectile motion trajectory",
+          "conceptTags": [
+            "kinematics",
+            "projectile-motion-trajectory"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Projectile motion trajectory"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Projectile motion trajectory is heavily tested in recent NEET papers.",
+            "Applying the core principles of Projectile motion trajectory correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Projectile motion trajectory during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Projectile motion trajectory."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Projectile motion trajectory.",
+            "Successfully avoids common pitfalls when Projectile motion trajectory is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Projectile motion trajectory in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-projectile-motion-trajectory-1",
+              "question": "What are the critical factors or principles governing Projectile motion trajectory?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "projectile-motion-trajectory"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "projectile-motion-trajectory",
+                "conceptSlug": "core-projectile-motion-trajectory",
+                "microskillSlug": "understand-projectile-motion-trajectory"
+              }
+            },
+            {
+              "id": "kinematics-q-projectile-motion-trajectory-2",
+              "question": "Describe a scenario where applying the concept of Projectile motion trajectory can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "projectile-motion-trajectory",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "projectile-motion-trajectory",
+                "conceptSlug": "trap-projectile-motion-trajectory",
+                "microskillSlug": "avoid-projectile-motion-trajectory"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-uniform-circular-motion-33",
+          "title": "Uniform circular motion",
+          "conceptTags": [
+            "kinematics",
+            "uniform-circular-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Uniform circular motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Uniform circular motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Uniform circular motion correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Uniform circular motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Uniform circular motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Uniform circular motion.",
+            "Successfully avoids common pitfalls when Uniform circular motion is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Uniform circular motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-uniform-circular-motion-1",
+              "question": "What are the critical factors or principles governing Uniform circular motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "uniform-circular-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "uniform-circular-motion",
+                "conceptSlug": "core-uniform-circular-motion",
+                "microskillSlug": "understand-uniform-circular-motion"
+              }
+            },
+            {
+              "id": "kinematics-q-uniform-circular-motion-2",
+              "question": "Describe a scenario where applying the concept of Uniform circular motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "uniform-circular-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "uniform-circular-motion",
+                "conceptSlug": "trap-uniform-circular-motion",
+                "microskillSlug": "avoid-uniform-circular-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-angular-velocity-34",
+          "title": "Angular velocity",
+          "conceptTags": [
+            "kinematics",
+            "angular-velocity"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Angular velocity"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Angular velocity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angular velocity correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Angular velocity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angular velocity."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Angular velocity.",
+            "Successfully avoids common pitfalls when Angular velocity is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Angular velocity in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-angular-velocity-1",
+              "question": "What are the critical factors or principles governing Angular velocity?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "angular-velocity"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "angular-velocity",
+                "conceptSlug": "core-angular-velocity",
+                "microskillSlug": "understand-angular-velocity"
+              }
+            },
+            {
+              "id": "kinematics-q-angular-velocity-2",
+              "question": "Describe a scenario where applying the concept of Angular velocity can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "angular-velocity",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "angular-velocity",
+                "conceptSlug": "trap-angular-velocity",
+                "microskillSlug": "avoid-angular-velocity"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-centripetal-acceleration-35",
+          "title": "Centripetal acceleration",
+          "conceptTags": [
+            "kinematics",
+            "centripetal-acceleration"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Centripetal acceleration"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Centripetal acceleration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Centripetal acceleration correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Acceleration",
+              "expression": "a = \\frac{dv}{dt}",
+              "variables": [
+                "a",
+                "v",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Centripetal acceleration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Centripetal acceleration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Centripetal acceleration.",
+            "Successfully avoids common pitfalls when Centripetal acceleration is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Centripetal acceleration in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-centripetal-acceleration-1",
+              "question": "What are the critical factors or principles governing Centripetal acceleration?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "centripetal-acceleration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "centripetal-acceleration",
+                "conceptSlug": "core-centripetal-acceleration",
+                "microskillSlug": "understand-centripetal-acceleration"
+              }
+            },
+            {
+              "id": "kinematics-q-centripetal-acceleration-2",
+              "question": "Describe a scenario where applying the concept of Centripetal acceleration can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "centripetal-acceleration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "centripetal-acceleration",
+                "conceptSlug": "trap-centripetal-acceleration",
+                "microskillSlug": "avoid-centripetal-acceleration"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-kinematics-tangential-acceleration-36",
+          "title": "Tangential acceleration",
+          "conceptTags": [
+            "kinematics",
+            "tangential-acceleration"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Kinematics, Section detailing Tangential acceleration"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Tangential acceleration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Tangential acceleration correctly is essential for solving complex multi-step problems in Kinematics."
+          ],
+          "formulas": [
+            {
+              "name": "Acceleration",
+              "expression": "a = \\frac{dv}{dt}",
+              "variables": [
+                "a",
+                "v",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Tangential acceleration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Tangential acceleration."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Tangential acceleration.",
+            "Successfully avoids common pitfalls when Tangential acceleration is integrated with other concepts in Kinematics."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Tangential acceleration in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "kinematics-q-tangential-acceleration-1",
+              "question": "What are the critical factors or principles governing Tangential acceleration?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "tangential-acceleration"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "tangential-acceleration",
+                "conceptSlug": "core-tangential-acceleration",
+                "microskillSlug": "understand-tangential-acceleration"
+              }
+            },
+            {
+              "id": "kinematics-q-tangential-acceleration-2",
+              "question": "Describe a scenario where applying the concept of Tangential acceleration can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "kinematics",
+                "tangential-acceleration",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "kinematics",
+                "chapterSlug": "kinematics",
+                "topicSlug": "kinematics",
+                "subtopicSlug": "tangential-acceleration",
+                "conceptSlug": "trap-tangential-acceleration",
+                "microskillSlug": "avoid-tangential-acceleration"
               }
             }
           ]

@@ -99,8 +99,7 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
     features.debug_page = false;
     features.worker_ai = false; // Turn off worker AI if it's not production ready
     features.analytics_ui = false;
-    // features.atlas_ui = false; // Re-enabled for launch — Atlas is production-ready
-    features.atlas_ui = false; // Public launch gate: Atlas UI disabled pending final QA
+    features.atlas_ui = true;
     features.voice_chat = false;
   }
 

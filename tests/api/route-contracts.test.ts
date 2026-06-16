@@ -33,7 +33,7 @@ describe('API Route Contracts', () => {
     
     // We are skipping the test execution for now, just checking for the string literal.
     // In Phase 2/3, we will strictly enforce this.
-    it.skip(`route ${relativePath} should export a ROUTE_CONTRACT`, () => {
+    it(`route ${relativePath} should export a ROUTE_CONTRACT`, () => {
       const content = fs.readFileSync(routeFile, 'utf8');
       
       // Look for `export const ROUTE_CONTRACT`

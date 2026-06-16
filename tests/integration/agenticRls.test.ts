@@ -7,7 +7,7 @@ dotenv.config({ path: '.env.local' });
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const describeLiveSupabase = process.env.RUN_SUPABASE_INTEGRATION_TESTS === 'true' ? describe : describe.skip;
+const describeLiveSupabase = describe;
 
 describeLiveSupabase('Agentic Runtime True RLS', () => {
   let adminClient: any;

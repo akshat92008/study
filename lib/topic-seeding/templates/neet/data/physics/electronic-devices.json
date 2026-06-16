@@ -2,375 +2,406 @@
   "missions": [
     {
       "id": "m-electronic-devices-1",
-      "title": "Electronic Devices - Section 1",
-      "description": "Comprehensive analysis covering intrinsic semiconductor, extrinsic semiconductor, n-type and more.",
+      "title": "Mastery Module 1: Energy bands in solids and Related Concepts",
+      "description": "Comprehensive analysis covering energy bands in solids, conductors insulators semiconductors, band gap and advanced applications.",
       "conceptTags": [
         "electronic-devices",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electronic-devices-intrinsic-semiconductor",
-          "title": "Intrinsic semiconductor",
+          "id": "mt-electronic-devices-energy-bands-in-solids-0",
+          "title": "Energy bands in solids",
           "conceptTags": [
             "electronic-devices",
-            "intrinsic-semiconductor"
+            "energy-bands-in-solids"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Intrinsic semiconductor"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Energy bands in solids"
           ],
           "mustKnowFacts": [
-            "Intrinsic semiconductor is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Intrinsic semiconductor for NEET."
+            "A thorough understanding of Energy bands in solids is heavily tested in recent NEET papers.",
+            "Applying the core principles of Energy bands in solids correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for intrinsic semiconductor",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Intrinsic semiconductor during complex MCQs.",
-            "Failing to apply the correct logic for Intrinsic semiconductor."
+            "Misinterpreting the subtle edge cases of Energy bands in solids during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Energy bands in solids."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Intrinsic semiconductor."
+            "Can accurately solve numericals or identify biological structures related specifically to Energy bands in solids.",
+            "Successfully avoids common pitfalls when Energy bands in solids is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Intrinsic semiconductor."
+            "Past year questions frequently test the application of Energy bands in solids in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-intrinsic-semiconductor-1",
-              "question": "Explain the core concept behind Intrinsic semiconductor.",
+              "id": "electronic-devices-q-energy-bands-in-solids-1",
+              "question": "What are the critical factors or principles governing Energy bands in solids?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "intrinsic-semiconductor"
+                "electronic-devices",
+                "energy-bands-in-solids"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "intrinsic-semiconductor",
-                "conceptSlug": "core-intrinsic-semiconductor",
-                "microskillSlug": "understand-intrinsic-semiconductor",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "energy-bands-in-solids",
+                "conceptSlug": "core-energy-bands-in-solids",
+                "microskillSlug": "understand-energy-bands-in-solids"
               }
             },
             {
-              "id": "electronic-devices-q-intrinsic-semiconductor-2",
-              "question": "What is a common trap associated with Intrinsic semiconductor?",
+              "id": "electronic-devices-q-energy-bands-in-solids-2",
+              "question": "Describe a scenario where applying the concept of Energy bands in solids can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "intrinsic-semiconductor",
+                "electronic-devices",
+                "energy-bands-in-solids",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "intrinsic-semiconductor",
-                "conceptSlug": "trap-intrinsic-semiconductor",
-                "microskillSlug": "avoid-intrinsic-semiconductor",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "energy-bands-in-solids",
+                "conceptSlug": "trap-energy-bands-in-solids",
+                "microskillSlug": "avoid-energy-bands-in-solids"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-extrinsic-semiconductor",
-          "title": "Extrinsic semiconductor",
+          "id": "mt-electronic-devices-conductors-insulators-semiconductors-1",
+          "title": "Conductors insulators semiconductors",
           "conceptTags": [
             "electronic-devices",
-            "extrinsic-semiconductor"
+            "conductors-insulators-semiconductors"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Extrinsic semiconductor"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Conductors insulators semiconductors"
           ],
           "mustKnowFacts": [
-            "Extrinsic semiconductor is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Extrinsic semiconductor for NEET."
+            "A thorough understanding of Conductors insulators semiconductors is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conductors insulators semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for extrinsic semiconductor",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Extrinsic semiconductor during complex MCQs.",
-            "Failing to apply the correct logic for Extrinsic semiconductor."
+            "Misinterpreting the subtle edge cases of Conductors insulators semiconductors during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conductors insulators semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Extrinsic semiconductor."
+            "Can accurately solve numericals or identify biological structures related specifically to Conductors insulators semiconductors.",
+            "Successfully avoids common pitfalls when Conductors insulators semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Extrinsic semiconductor."
+            "Past year questions frequently test the application of Conductors insulators semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-extrinsic-semiconductor-1",
-              "question": "Explain the core concept behind Extrinsic semiconductor.",
+              "id": "electronic-devices-q-conductors-insulators-semiconductors-1",
+              "question": "What are the critical factors or principles governing Conductors insulators semiconductors?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "extrinsic-semiconductor"
+                "electronic-devices",
+                "conductors-insulators-semiconductors"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "extrinsic-semiconductor",
-                "conceptSlug": "core-extrinsic-semiconductor",
-                "microskillSlug": "understand-extrinsic-semiconductor",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "conductors-insulators-semiconductors",
+                "conceptSlug": "core-conductors-insulators-semiconductors",
+                "microskillSlug": "understand-conductors-insulators-semiconductors"
               }
             },
             {
-              "id": "electronic-devices-q-extrinsic-semiconductor-2",
-              "question": "What is a common trap associated with Extrinsic semiconductor?",
+              "id": "electronic-devices-q-conductors-insulators-semiconductors-2",
+              "question": "Describe a scenario where applying the concept of Conductors insulators semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "extrinsic-semiconductor",
+                "electronic-devices",
+                "conductors-insulators-semiconductors",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "extrinsic-semiconductor",
-                "conceptSlug": "trap-extrinsic-semiconductor",
-                "microskillSlug": "avoid-extrinsic-semiconductor",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "conductors-insulators-semiconductors",
+                "conceptSlug": "trap-conductors-insulators-semiconductors",
+                "microskillSlug": "avoid-conductors-insulators-semiconductors"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-n-type",
-          "title": "N-type",
+          "id": "mt-electronic-devices-band-gap-2",
+          "title": "Band gap",
           "conceptTags": [
             "electronic-devices",
-            "n-type"
+            "band-gap"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, N-type"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Band gap"
           ],
           "mustKnowFacts": [
-            "N-type is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing N-type for NEET."
+            "A thorough understanding of Band gap is heavily tested in recent NEET papers.",
+            "Applying the core principles of Band gap correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for n-type",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret N-type during complex MCQs.",
-            "Failing to apply the correct logic for N-type."
+            "Misinterpreting the subtle edge cases of Band gap during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Band gap."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to N-type."
+            "Can accurately solve numericals or identify biological structures related specifically to Band gap.",
+            "Successfully avoids common pitfalls when Band gap is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about N-type."
+            "Past year questions frequently test the application of Band gap in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-n-type-1",
-              "question": "Explain the core concept behind N-type.",
+              "id": "electronic-devices-q-band-gap-1",
+              "question": "What are the critical factors or principles governing Band gap?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "n-type"
+                "electronic-devices",
+                "band-gap"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "n-type",
-                "conceptSlug": "core-n-type",
-                "microskillSlug": "understand-n-type",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "band-gap",
+                "conceptSlug": "core-band-gap",
+                "microskillSlug": "understand-band-gap"
               }
             },
             {
-              "id": "electronic-devices-q-n-type-2",
-              "question": "What is a common trap associated with N-type?",
+              "id": "electronic-devices-q-band-gap-2",
+              "question": "Describe a scenario where applying the concept of Band gap can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "n-type",
+                "electronic-devices",
+                "band-gap",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "n-type",
-                "conceptSlug": "trap-n-type",
-                "microskillSlug": "avoid-n-type",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "band-gap",
+                "conceptSlug": "trap-band-gap",
+                "microskillSlug": "avoid-band-gap"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-p-type",
-          "title": "P-type",
+          "id": "mt-electronic-devices-intrinsic-semiconductors-3",
+          "title": "Intrinsic semiconductors",
           "conceptTags": [
             "electronic-devices",
-            "p-type"
+            "intrinsic-semiconductors"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, P-type"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Intrinsic semiconductors"
           ],
           "mustKnowFacts": [
-            "P-type is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing P-type for NEET."
+            "A thorough understanding of Intrinsic semiconductors is heavily tested in recent NEET papers.",
+            "Applying the core principles of Intrinsic semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for p-type",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret P-type during complex MCQs.",
-            "Failing to apply the correct logic for P-type."
+            "Misinterpreting the subtle edge cases of Intrinsic semiconductors during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Intrinsic semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to P-type."
+            "Can accurately solve numericals or identify biological structures related specifically to Intrinsic semiconductors.",
+            "Successfully avoids common pitfalls when Intrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about P-type."
+            "Past year questions frequently test the application of Intrinsic semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-p-type-1",
-              "question": "Explain the core concept behind P-type.",
+              "id": "electronic-devices-q-intrinsic-semiconductors-1",
+              "question": "What are the critical factors or principles governing Intrinsic semiconductors?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "p-type"
+                "electronic-devices",
+                "intrinsic-semiconductors"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "p-type",
-                "conceptSlug": "core-p-type",
-                "microskillSlug": "understand-p-type",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "intrinsic-semiconductors",
+                "conceptSlug": "core-intrinsic-semiconductors",
+                "microskillSlug": "understand-intrinsic-semiconductors"
               }
             },
             {
-              "id": "electronic-devices-q-p-type-2",
-              "question": "What is a common trap associated with P-type?",
+              "id": "electronic-devices-q-intrinsic-semiconductors-2",
+              "question": "Describe a scenario where applying the concept of Intrinsic semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "p-type",
+                "electronic-devices",
+                "intrinsic-semiconductors",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "p-type",
-                "conceptSlug": "trap-p-type",
-                "microskillSlug": "avoid-p-type",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "intrinsic-semiconductors",
+                "conceptSlug": "trap-intrinsic-semiconductors",
+                "microskillSlug": "avoid-intrinsic-semiconductors"
               }
             }
           ]
@@ -379,375 +410,407 @@
     },
     {
       "id": "m-electronic-devices-2",
-      "title": "Electronic Devices - Section 2",
-      "description": "Comprehensive analysis covering p-n junction, depletion region, forward/reverse bias and more.",
+      "title": "Mastery Module 2: Extrinsic semiconductors and Related Concepts",
+      "description": "Comprehensive analysis covering extrinsic semiconductors, n-type and p-type doping, semiconductor diode/logic gates and advanced applications.",
       "conceptTags": [
         "electronic-devices",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electronic-devices-p-n-junction",
-          "title": "P-n junction",
+          "id": "mt-electronic-devices-extrinsic-semiconductors-4",
+          "title": "Extrinsic semiconductors",
           "conceptTags": [
             "electronic-devices",
-            "p-n-junction"
+            "extrinsic-semiconductors"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, P-n junction"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Extrinsic semiconductors"
           ],
           "mustKnowFacts": [
-            "P-n junction is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing P-n junction for NEET."
+            "A thorough understanding of Extrinsic semiconductors is heavily tested in recent NEET papers.",
+            "Applying the core principles of Extrinsic semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for p-n junction",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret P-n junction during complex MCQs.",
-            "Failing to apply the correct logic for P-n junction."
+            "Misinterpreting the subtle edge cases of Extrinsic semiconductors during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Extrinsic semiconductors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to P-n junction."
+            "Can accurately solve numericals or identify biological structures related specifically to Extrinsic semiconductors.",
+            "Successfully avoids common pitfalls when Extrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about P-n junction."
+            "Past year questions frequently test the application of Extrinsic semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-p-n-junction-1",
-              "question": "Explain the core concept behind P-n junction.",
+              "id": "electronic-devices-q-extrinsic-semiconductors-1",
+              "question": "What are the critical factors or principles governing Extrinsic semiconductors?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "p-n-junction"
+                "electronic-devices",
+                "extrinsic-semiconductors"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "p-n-junction",
-                "conceptSlug": "core-p-n-junction",
-                "microskillSlug": "understand-p-n-junction",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "extrinsic-semiconductors",
+                "conceptSlug": "core-extrinsic-semiconductors",
+                "microskillSlug": "understand-extrinsic-semiconductors"
               }
             },
             {
-              "id": "electronic-devices-q-p-n-junction-2",
-              "question": "What is a common trap associated with P-n junction?",
+              "id": "electronic-devices-q-extrinsic-semiconductors-2",
+              "question": "Describe a scenario where applying the concept of Extrinsic semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "p-n-junction",
+                "electronic-devices",
+                "extrinsic-semiconductors",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "p-n-junction",
-                "conceptSlug": "trap-p-n-junction",
-                "microskillSlug": "avoid-p-n-junction",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "extrinsic-semiconductors",
+                "conceptSlug": "trap-extrinsic-semiconductors",
+                "microskillSlug": "avoid-extrinsic-semiconductors"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-depletion-region",
-          "title": "Depletion region",
+          "id": "mt-electronic-devices-n-type-and-p-type-doping-5",
+          "title": "N-type and p-type doping",
           "conceptTags": [
             "electronic-devices",
-            "depletion-region"
+            "n-type-and-p-type-doping"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Depletion region"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing N-type and p-type doping"
           ],
           "mustKnowFacts": [
-            "Depletion region is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Depletion region for NEET."
+            "A thorough understanding of N-type and p-type doping is heavily tested in recent NEET papers.",
+            "Applying the core principles of N-type and p-type doping correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for depletion region",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Depletion region during complex MCQs.",
-            "Failing to apply the correct logic for Depletion region."
+            "Misinterpreting the subtle edge cases of N-type and p-type doping during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with N-type and p-type doping."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Depletion region."
+            "Can accurately solve numericals or identify biological structures related specifically to N-type and p-type doping.",
+            "Successfully avoids common pitfalls when N-type and p-type doping is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Depletion region."
+            "Past year questions frequently test the application of N-type and p-type doping in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-depletion-region-1",
-              "question": "Explain the core concept behind Depletion region.",
+              "id": "electronic-devices-q-n-type-and-p-type-doping-1",
+              "question": "What are the critical factors or principles governing N-type and p-type doping?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "depletion-region"
+                "electronic-devices",
+                "n-type-and-p-type-doping"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "depletion-region",
-                "conceptSlug": "core-depletion-region",
-                "microskillSlug": "understand-depletion-region",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "n-type-and-p-type-doping",
+                "conceptSlug": "core-n-type-and-p-type-doping",
+                "microskillSlug": "understand-n-type-and-p-type-doping"
               }
             },
             {
-              "id": "electronic-devices-q-depletion-region-2",
-              "question": "What is a common trap associated with Depletion region?",
+              "id": "electronic-devices-q-n-type-and-p-type-doping-2",
+              "question": "Describe a scenario where applying the concept of N-type and p-type doping can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "depletion-region",
+                "electronic-devices",
+                "n-type-and-p-type-doping",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "depletion-region",
-                "conceptSlug": "trap-depletion-region",
-                "microskillSlug": "avoid-depletion-region",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "n-type-and-p-type-doping",
+                "conceptSlug": "trap-n-type-and-p-type-doping",
+                "microskillSlug": "avoid-n-type-and-p-type-doping"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-forward-reverse-bias",
-          "title": "Forward/reverse bias",
+          "id": "mt-electronic-devices-semiconductor-diode-logic-gates-6",
+          "title": "Semiconductor diode/logic gates",
           "conceptTags": [
             "electronic-devices",
-            "forward-reverse-bias"
+            "semiconductor-diode-logic-gates"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Forward/reverse bias"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Semiconductor diode/logic gates"
           ],
           "mustKnowFacts": [
-            "Forward/reverse bias is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Forward/reverse bias for NEET."
+            "A thorough understanding of Semiconductor diode/logic gates is heavily tested in recent NEET papers.",
+            "Applying the core principles of Semiconductor diode/logic gates correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for forward/reverse bias",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Forward/reverse bias during complex MCQs.",
-            "Failing to apply the correct logic for Forward/reverse bias."
+            "Misinterpreting the subtle edge cases of Semiconductor diode/logic gates during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Semiconductor diode/logic gates."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Forward/reverse bias."
+            "Can accurately solve numericals or identify biological structures related specifically to Semiconductor diode/logic gates.",
+            "Successfully avoids common pitfalls when Semiconductor diode/logic gates is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Forward/reverse bias."
+            "Past year questions frequently test the application of Semiconductor diode/logic gates in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-forward-reverse-bias-1",
-              "question": "Explain the core concept behind Forward/reverse bias.",
+              "id": "electronic-devices-q-semiconductor-diode-logic-gates-1",
+              "question": "What are the critical factors or principles governing Semiconductor diode/logic gates?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "forward-reverse-bias"
+                "electronic-devices",
+                "semiconductor-diode-logic-gates"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "forward-reverse-bias",
-                "conceptSlug": "core-forward-reverse-bias",
-                "microskillSlug": "understand-forward-reverse-bias",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "semiconductor-diode-logic-gates",
+                "conceptSlug": "core-semiconductor-diode-logic-gates",
+                "microskillSlug": "understand-semiconductor-diode-logic-gates"
               }
             },
             {
-              "id": "electronic-devices-q-forward-reverse-bias-2",
-              "question": "What is a common trap associated with Forward/reverse bias?",
+              "id": "electronic-devices-q-semiconductor-diode-logic-gates-2",
+              "question": "Describe a scenario where applying the concept of Semiconductor diode/logic gates can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "forward-reverse-bias",
+                "electronic-devices",
+                "semiconductor-diode-logic-gates",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "forward-reverse-bias",
-                "conceptSlug": "trap-forward-reverse-bias",
-                "microskillSlug": "avoid-forward-reverse-bias",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "semiconductor-diode-logic-gates",
+                "conceptSlug": "trap-semiconductor-diode-logic-gates",
+                "microskillSlug": "avoid-semiconductor-diode-logic-gates"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-diode-characteristics",
-          "title": "Diode characteristics",
+          "id": "mt-electronic-devices-p-n-junction-formation-7",
+          "title": "P-n junction formation",
           "conceptTags": [
             "electronic-devices",
-            "diode-characteristics"
+            "p-n-junction-formation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Diode characteristics"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing P-n junction formation"
           ],
           "mustKnowFacts": [
-            "Diode characteristics is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Diode characteristics for NEET."
+            "A thorough understanding of P-n junction formation is heavily tested in recent NEET papers.",
+            "Applying the core principles of P-n junction formation correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for diode characteristics",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Diode characteristics during complex MCQs.",
-            "Failing to apply the correct logic for Diode characteristics."
+            "Misinterpreting the subtle edge cases of P-n junction formation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with P-n junction formation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Diode characteristics."
+            "Can accurately solve numericals or identify biological structures related specifically to P-n junction formation.",
+            "Successfully avoids common pitfalls when P-n junction formation is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Diode characteristics."
+            "Past year questions frequently test the application of P-n junction formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-diode-characteristics-1",
-              "question": "Explain the core concept behind Diode characteristics.",
+              "id": "electronic-devices-q-p-n-junction-formation-1",
+              "question": "What are the critical factors or principles governing P-n junction formation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "diode-characteristics"
+                "electronic-devices",
+                "p-n-junction-formation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "diode-characteristics",
-                "conceptSlug": "core-diode-characteristics",
-                "microskillSlug": "understand-diode-characteristics",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-n-junction-formation",
+                "conceptSlug": "core-p-n-junction-formation",
+                "microskillSlug": "understand-p-n-junction-formation"
               }
             },
             {
-              "id": "electronic-devices-q-diode-characteristics-2",
-              "question": "What is a common trap associated with Diode characteristics?",
+              "id": "electronic-devices-q-p-n-junction-formation-2",
+              "question": "Describe a scenario where applying the concept of P-n junction formation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "diode-characteristics",
+                "electronic-devices",
+                "p-n-junction-formation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "diode-characteristics",
-                "conceptSlug": "trap-diode-characteristics",
-                "microskillSlug": "avoid-diode-characteristics",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "p-n-junction-formation",
+                "conceptSlug": "trap-p-n-junction-formation",
+                "microskillSlug": "avoid-p-n-junction-formation"
               }
             }
           ]
@@ -756,375 +819,406 @@
     },
     {
       "id": "m-electronic-devices-3",
-      "title": "Electronic Devices - Section 3",
-      "description": "Comprehensive analysis covering rectifier, Zener diode, LED/photodiode/solar cell and more.",
+      "title": "Mastery Module 3: Depletion region and Related Concepts",
+      "description": "Comprehensive analysis covering depletion region, forward and reverse bias, V-I characteristics of p-n junction and advanced applications.",
       "conceptTags": [
         "electronic-devices",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electronic-devices-rectifier",
-          "title": "Rectifier",
+          "id": "mt-electronic-devices-depletion-region-8",
+          "title": "Depletion region",
           "conceptTags": [
             "electronic-devices",
-            "rectifier"
+            "depletion-region"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Rectifier"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Depletion region"
           ],
           "mustKnowFacts": [
-            "Rectifier is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Rectifier for NEET."
+            "A thorough understanding of Depletion region is heavily tested in recent NEET papers.",
+            "Applying the core principles of Depletion region correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for rectifier",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Rectifier during complex MCQs.",
-            "Failing to apply the correct logic for Rectifier."
+            "Misinterpreting the subtle edge cases of Depletion region during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Depletion region."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rectifier."
+            "Can accurately solve numericals or identify biological structures related specifically to Depletion region.",
+            "Successfully avoids common pitfalls when Depletion region is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rectifier."
+            "Past year questions frequently test the application of Depletion region in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-rectifier-1",
-              "question": "Explain the core concept behind Rectifier.",
+              "id": "electronic-devices-q-depletion-region-1",
+              "question": "What are the critical factors or principles governing Depletion region?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rectifier"
+                "electronic-devices",
+                "depletion-region"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "rectifier",
-                "conceptSlug": "core-rectifier",
-                "microskillSlug": "understand-rectifier",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "depletion-region",
+                "conceptSlug": "core-depletion-region",
+                "microskillSlug": "understand-depletion-region"
               }
             },
             {
-              "id": "electronic-devices-q-rectifier-2",
-              "question": "What is a common trap associated with Rectifier?",
+              "id": "electronic-devices-q-depletion-region-2",
+              "question": "Describe a scenario where applying the concept of Depletion region can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rectifier",
+                "electronic-devices",
+                "depletion-region",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "rectifier",
-                "conceptSlug": "trap-rectifier",
-                "microskillSlug": "avoid-rectifier",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "depletion-region",
+                "conceptSlug": "trap-depletion-region",
+                "microskillSlug": "avoid-depletion-region"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-zener-diode",
-          "title": "Zener diode",
+          "id": "mt-electronic-devices-forward-and-reverse-bias-9",
+          "title": "Forward and reverse bias",
           "conceptTags": [
             "electronic-devices",
-            "zener-diode"
+            "forward-and-reverse-bias"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Zener diode"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Forward and reverse bias"
           ],
           "mustKnowFacts": [
-            "Zener diode is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Zener diode for NEET."
+            "A thorough understanding of Forward and reverse bias is heavily tested in recent NEET papers.",
+            "Applying the core principles of Forward and reverse bias correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for Zener diode",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Zener diode during complex MCQs.",
-            "Failing to apply the correct logic for Zener diode."
+            "Misinterpreting the subtle edge cases of Forward and reverse bias during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Forward and reverse bias."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Zener diode."
+            "Can accurately solve numericals or identify biological structures related specifically to Forward and reverse bias.",
+            "Successfully avoids common pitfalls when Forward and reverse bias is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Zener diode."
+            "Past year questions frequently test the application of Forward and reverse bias in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-zener-diode-1",
-              "question": "Explain the core concept behind Zener diode.",
+              "id": "electronic-devices-q-forward-and-reverse-bias-1",
+              "question": "What are the critical factors or principles governing Forward and reverse bias?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "zener-diode"
+                "electronic-devices",
+                "forward-and-reverse-bias"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "zener-diode",
-                "conceptSlug": "core-zener-diode",
-                "microskillSlug": "understand-zener-diode",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "forward-and-reverse-bias",
+                "conceptSlug": "core-forward-and-reverse-bias",
+                "microskillSlug": "understand-forward-and-reverse-bias"
               }
             },
             {
-              "id": "electronic-devices-q-zener-diode-2",
-              "question": "What is a common trap associated with Zener diode?",
+              "id": "electronic-devices-q-forward-and-reverse-bias-2",
+              "question": "Describe a scenario where applying the concept of Forward and reverse bias can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "zener-diode",
+                "electronic-devices",
+                "forward-and-reverse-bias",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "zener-diode",
-                "conceptSlug": "trap-zener-diode",
-                "microskillSlug": "avoid-zener-diode",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "forward-and-reverse-bias",
+                "conceptSlug": "trap-forward-and-reverse-bias",
+                "microskillSlug": "avoid-forward-and-reverse-bias"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-led-photodiode-solar-cell",
-          "title": "LED/photodiode/solar cell",
+          "id": "mt-electronic-devices-v-i-characteristics-of-p-n-junction-10",
+          "title": "V-I characteristics of p-n junction",
           "conceptTags": [
             "electronic-devices",
-            "led-photodiode-solar-cell"
+            "v-i-characteristics-of-p-n-junction"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, LED/photodiode/solar cell"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing V-I characteristics of p-n junction"
           ],
           "mustKnowFacts": [
-            "LED/photodiode/solar cell is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing LED/photodiode/solar cell for NEET."
+            "A thorough understanding of V-I characteristics of p-n junction is heavily tested in recent NEET papers.",
+            "Applying the core principles of V-I characteristics of p-n junction correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for LED/photodiode/solar cell",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret LED/photodiode/solar cell during complex MCQs.",
-            "Failing to apply the correct logic for LED/photodiode/solar cell."
+            "Misinterpreting the subtle edge cases of V-I characteristics of p-n junction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with V-I characteristics of p-n junction."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to LED/photodiode/solar cell."
+            "Can accurately solve numericals or identify biological structures related specifically to V-I characteristics of p-n junction.",
+            "Successfully avoids common pitfalls when V-I characteristics of p-n junction is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about LED/photodiode/solar cell."
+            "Past year questions frequently test the application of V-I characteristics of p-n junction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-led-photodiode-solar-cell-1",
-              "question": "Explain the core concept behind LED/photodiode/solar cell.",
+              "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-1",
+              "question": "What are the critical factors or principles governing V-I characteristics of p-n junction?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "led-photodiode-solar-cell"
+                "electronic-devices",
+                "v-i-characteristics-of-p-n-junction"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "led-photodiode-solar-cell",
-                "conceptSlug": "core-led-photodiode-solar-cell",
-                "microskillSlug": "understand-led-photodiode-solar-cell",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "v-i-characteristics-of-p-n-junction",
+                "conceptSlug": "core-v-i-characteristics-of-p-n-junction",
+                "microskillSlug": "understand-v-i-characteristics-of-p-n-junction"
               }
             },
             {
-              "id": "electronic-devices-q-led-photodiode-solar-cell-2",
-              "question": "What is a common trap associated with LED/photodiode/solar cell?",
+              "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-2",
+              "question": "Describe a scenario where applying the concept of V-I characteristics of p-n junction can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "led-photodiode-solar-cell",
+                "electronic-devices",
+                "v-i-characteristics-of-p-n-junction",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "led-photodiode-solar-cell",
-                "conceptSlug": "trap-led-photodiode-solar-cell",
-                "microskillSlug": "avoid-led-photodiode-solar-cell",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "v-i-characteristics-of-p-n-junction",
+                "conceptSlug": "trap-v-i-characteristics-of-p-n-junction",
+                "microskillSlug": "avoid-v-i-characteristics-of-p-n-junction"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-transistor-basics",
-          "title": "Transistor basics",
+          "id": "mt-electronic-devices-half-wave-rectifier-11",
+          "title": "Half wave rectifier",
           "conceptTags": [
             "electronic-devices",
-            "transistor-basics"
+            "half-wave-rectifier"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Transistor basics"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Half wave rectifier"
           ],
           "mustKnowFacts": [
-            "Transistor basics is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Transistor basics for NEET."
+            "A thorough understanding of Half wave rectifier is heavily tested in recent NEET papers.",
+            "Applying the core principles of Half wave rectifier correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for transistor basics",
-              "expression": "F = m a",
+              "name": "Wave Speed",
+              "expression": "v = f \\lambda",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "f",
+                "\\lambda"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Transistor basics during complex MCQs.",
-            "Failing to apply the correct logic for Transistor basics."
+            "Misinterpreting the subtle edge cases of Half wave rectifier during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Half wave rectifier."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Transistor basics."
+            "Can accurately solve numericals or identify biological structures related specifically to Half wave rectifier.",
+            "Successfully avoids common pitfalls when Half wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Transistor basics."
+            "Past year questions frequently test the application of Half wave rectifier in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-transistor-basics-1",
-              "question": "Explain the core concept behind Transistor basics.",
+              "id": "electronic-devices-q-half-wave-rectifier-1",
+              "question": "What are the critical factors or principles governing Half wave rectifier?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "transistor-basics"
+                "electronic-devices",
+                "half-wave-rectifier"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "transistor-basics",
-                "conceptSlug": "core-transistor-basics",
-                "microskillSlug": "understand-transistor-basics",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "half-wave-rectifier",
+                "conceptSlug": "core-half-wave-rectifier",
+                "microskillSlug": "understand-half-wave-rectifier"
               }
             },
             {
-              "id": "electronic-devices-q-transistor-basics-2",
-              "question": "What is a common trap associated with Transistor basics?",
+              "id": "electronic-devices-q-half-wave-rectifier-2",
+              "question": "Describe a scenario where applying the concept of Half wave rectifier can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "transistor-basics",
+                "electronic-devices",
+                "half-wave-rectifier",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "transistor-basics",
-                "conceptSlug": "trap-transistor-basics",
-                "microskillSlug": "avoid-transistor-basics",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "half-wave-rectifier",
+                "conceptSlug": "trap-half-wave-rectifier",
+                "microskillSlug": "avoid-half-wave-rectifier"
               }
             }
           ]
@@ -1133,284 +1227,815 @@
     },
     {
       "id": "m-electronic-devices-4",
-      "title": "Electronic Devices - Section 4",
-      "description": "Comprehensive analysis covering logic gates, energy bands in solids, conductors/insulators/semiconductors comparison and more.",
+      "title": "Mastery Module 4: Full wave rectifier and Related Concepts",
+      "description": "Comprehensive analysis covering full wave rectifier, Zener diode as voltage regulator, light emitting diode and advanced applications.",
       "conceptTags": [
         "electronic-devices",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-electronic-devices-logic-gates",
-          "title": "Logic gates",
+          "id": "mt-electronic-devices-full-wave-rectifier-12",
+          "title": "Full wave rectifier",
           "conceptTags": [
             "electronic-devices",
-            "logic-gates"
+            "full-wave-rectifier"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Logic gates"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Full wave rectifier"
           ],
           "mustKnowFacts": [
-            "Logic gates is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Logic gates for NEET."
+            "A thorough understanding of Full wave rectifier is heavily tested in recent NEET papers.",
+            "Applying the core principles of Full wave rectifier correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for logic gates",
-              "expression": "F = m a",
+              "name": "Wave Speed",
+              "expression": "v = f \\lambda",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "f",
+                "\\lambda"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Logic gates during complex MCQs.",
-            "Failing to apply the correct logic for Logic gates."
+            "Misinterpreting the subtle edge cases of Full wave rectifier during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Full wave rectifier."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Logic gates."
+            "Can accurately solve numericals or identify biological structures related specifically to Full wave rectifier.",
+            "Successfully avoids common pitfalls when Full wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Logic gates."
+            "Past year questions frequently test the application of Full wave rectifier in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-logic-gates-1",
-              "question": "Explain the core concept behind Logic gates.",
+              "id": "electronic-devices-q-full-wave-rectifier-1",
+              "question": "What are the critical factors or principles governing Full wave rectifier?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "logic-gates"
+                "electronic-devices",
+                "full-wave-rectifier"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "logic-gates",
-                "conceptSlug": "core-logic-gates",
-                "microskillSlug": "understand-logic-gates",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "full-wave-rectifier",
+                "conceptSlug": "core-full-wave-rectifier",
+                "microskillSlug": "understand-full-wave-rectifier"
               }
             },
             {
-              "id": "electronic-devices-q-logic-gates-2",
-              "question": "What is a common trap associated with Logic gates?",
+              "id": "electronic-devices-q-full-wave-rectifier-2",
+              "question": "Describe a scenario where applying the concept of Full wave rectifier can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "logic-gates",
+                "electronic-devices",
+                "full-wave-rectifier",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "logic-gates",
-                "conceptSlug": "trap-logic-gates",
-                "microskillSlug": "avoid-logic-gates",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "full-wave-rectifier",
+                "conceptSlug": "trap-full-wave-rectifier",
+                "microskillSlug": "avoid-full-wave-rectifier"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-energy-bands-in-solids",
-          "title": "Energy bands in solids",
+          "id": "mt-electronic-devices-zener-diode-as-voltage-regulator-13",
+          "title": "Zener diode as voltage regulator",
           "conceptTags": [
             "electronic-devices",
-            "energy-bands-in-solids"
+            "zener-diode-as-voltage-regulator"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Energy bands in solids"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Zener diode as voltage regulator"
           ],
           "mustKnowFacts": [
-            "Energy bands in solids is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Energy bands in solids for NEET."
+            "A thorough understanding of Zener diode as voltage regulator is heavily tested in recent NEET papers.",
+            "Applying the core principles of Zener diode as voltage regulator correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for energy bands in solids",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Energy bands in solids during complex MCQs.",
-            "Failing to apply the correct logic for Energy bands in solids."
+            "Misinterpreting the subtle edge cases of Zener diode as voltage regulator during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Zener diode as voltage regulator."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Energy bands in solids."
+            "Can accurately solve numericals or identify biological structures related specifically to Zener diode as voltage regulator.",
+            "Successfully avoids common pitfalls when Zener diode as voltage regulator is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Energy bands in solids."
+            "Past year questions frequently test the application of Zener diode as voltage regulator in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-energy-bands-in-solids-1",
-              "question": "Explain the core concept behind Energy bands in solids.",
+              "id": "electronic-devices-q-zener-diode-as-voltage-regulator-1",
+              "question": "What are the critical factors or principles governing Zener diode as voltage regulator?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "energy-bands-in-solids"
+                "electronic-devices",
+                "zener-diode-as-voltage-regulator"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "energy-bands-in-solids",
-                "conceptSlug": "core-energy-bands-in-solids",
-                "microskillSlug": "understand-energy-bands-in-solids",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "zener-diode-as-voltage-regulator",
+                "conceptSlug": "core-zener-diode-as-voltage-regulator",
+                "microskillSlug": "understand-zener-diode-as-voltage-regulator"
               }
             },
             {
-              "id": "electronic-devices-q-energy-bands-in-solids-2",
-              "question": "What is a common trap associated with Energy bands in solids?",
+              "id": "electronic-devices-q-zener-diode-as-voltage-regulator-2",
+              "question": "Describe a scenario where applying the concept of Zener diode as voltage regulator can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "energy-bands-in-solids",
+                "electronic-devices",
+                "zener-diode-as-voltage-regulator",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "energy-bands-in-solids",
-                "conceptSlug": "trap-energy-bands-in-solids",
-                "microskillSlug": "avoid-energy-bands-in-solids",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "zener-diode-as-voltage-regulator",
+                "conceptSlug": "trap-zener-diode-as-voltage-regulator",
+                "microskillSlug": "avoid-zener-diode-as-voltage-regulator"
               }
             }
           ]
         },
         {
-          "id": "mt-electronic-devices-conductors-insulators-semiconductors-comparison",
-          "title": "Conductors/insulators/semiconductors comparison",
+          "id": "mt-electronic-devices-light-emitting-diode-14",
+          "title": "Light emitting diode",
           "conceptTags": [
             "electronic-devices",
-            "conductors-insulators-semiconductors-comparison"
+            "light-emitting-diode"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Conductors/insulators/semiconductors comparison"
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Light emitting diode"
           ],
           "mustKnowFacts": [
-            "Conductors/insulators/semiconductors comparison is a fundamental subtopic of Electronic Devices.",
-            "Crucial to understand the principles governing Conductors/insulators/semiconductors comparison for NEET."
+            "A thorough understanding of Light emitting diode is heavily tested in recent NEET papers.",
+            "Applying the core principles of Light emitting diode correctly is essential for solving complex multi-step problems in Electronic Devices."
           ],
           "formulas": [
             {
-              "name": "Formula for conductors/insulators/semiconductors comparison",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Conductors/insulators/semiconductors comparison during complex MCQs.",
-            "Failing to apply the correct logic for Conductors/insulators/semiconductors comparison."
+            "Misinterpreting the subtle edge cases of Light emitting diode during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Light emitting diode."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conductors/insulators/semiconductors comparison."
+            "Can accurately solve numericals or identify biological structures related specifically to Light emitting diode.",
+            "Successfully avoids common pitfalls when Light emitting diode is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conductors/insulators/semiconductors comparison."
+            "Past year questions frequently test the application of Light emitting diode in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-conductors-insulators-semiconductors-comparison-1",
-              "question": "Explain the core concept behind Conductors/insulators/semiconductors comparison.",
+              "id": "electronic-devices-q-light-emitting-diode-1",
+              "question": "What are the critical factors or principles governing Light emitting diode?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "conductors-insulators-semiconductors-comparison"
+                "electronic-devices",
+                "light-emitting-diode"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "conductors-insulators-semiconductors-comparison",
-                "conceptSlug": "core-conductors-insulators-semiconductors-comparison",
-                "microskillSlug": "understand-conductors-insulators-semiconductors-comparison",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "light-emitting-diode",
+                "conceptSlug": "core-light-emitting-diode",
+                "microskillSlug": "understand-light-emitting-diode"
               }
             },
             {
-              "id": "electronic-devices-q-conductors-insulators-semiconductors-comparison-2",
-              "question": "What is a common trap associated with Conductors/insulators/semiconductors comparison?",
+              "id": "electronic-devices-q-light-emitting-diode-2",
+              "question": "Describe a scenario where applying the concept of Light emitting diode can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "conductors-insulators-semiconductors-comparison",
+                "electronic-devices",
+                "light-emitting-diode",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "conductors-insulators-semiconductors-comparison",
-                "conceptSlug": "trap-conductors-insulators-semiconductors-comparison",
-                "microskillSlug": "avoid-conductors-insulators-semiconductors-comparison",
                 "subject": "Physics",
                 "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices"
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "light-emitting-diode",
+                "conceptSlug": "trap-light-emitting-diode",
+                "microskillSlug": "avoid-light-emitting-diode"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-photodiode-15",
+          "title": "Photodiode",
+          "conceptTags": [
+            "electronic-devices",
+            "photodiode"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Photodiode"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Photodiode is heavily tested in recent NEET papers.",
+            "Applying the core principles of Photodiode correctly is essential for solving complex multi-step problems in Electronic Devices."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Photodiode during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Photodiode."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Photodiode.",
+            "Successfully avoids common pitfalls when Photodiode is integrated with other concepts in Electronic Devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Photodiode in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-photodiode-1",
+              "question": "What are the critical factors or principles governing Photodiode?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "photodiode"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "photodiode",
+                "conceptSlug": "core-photodiode",
+                "microskillSlug": "understand-photodiode"
+              }
+            },
+            {
+              "id": "electronic-devices-q-photodiode-2",
+              "question": "Describe a scenario where applying the concept of Photodiode can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "photodiode",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "photodiode",
+                "conceptSlug": "trap-photodiode",
+                "microskillSlug": "avoid-photodiode"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-electronic-devices-5",
+      "title": "Mastery Module 5: Solar cell and Related Concepts",
+      "description": "Comprehensive analysis covering solar cell, logic gate OR AND NOT, NAND and NOR gates and advanced applications.",
+      "conceptTags": [
+        "electronic-devices",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-electronic-devices-solar-cell-16",
+          "title": "Solar cell",
+          "conceptTags": [
+            "electronic-devices",
+            "solar-cell"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Solar cell"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Solar cell is heavily tested in recent NEET papers.",
+            "Applying the core principles of Solar cell correctly is essential for solving complex multi-step problems in Electronic Devices."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Solar cell during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Solar cell."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Solar cell.",
+            "Successfully avoids common pitfalls when Solar cell is integrated with other concepts in Electronic Devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Solar cell in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-solar-cell-1",
+              "question": "What are the critical factors or principles governing Solar cell?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "solar-cell"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "solar-cell",
+                "conceptSlug": "core-solar-cell",
+                "microskillSlug": "understand-solar-cell"
+              }
+            },
+            {
+              "id": "electronic-devices-q-solar-cell-2",
+              "question": "Describe a scenario where applying the concept of Solar cell can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "solar-cell",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "solar-cell",
+                "conceptSlug": "trap-solar-cell",
+                "microskillSlug": "avoid-solar-cell"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-logic-gate-or-and-not-17",
+          "title": "Logic gate OR AND NOT",
+          "conceptTags": [
+            "electronic-devices",
+            "logic-gate-or-and-not"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Logic gate OR AND NOT"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Logic gate OR AND NOT is heavily tested in recent NEET papers.",
+            "Applying the core principles of Logic gate OR AND NOT correctly is essential for solving complex multi-step problems in Electronic Devices."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Logic gate OR AND NOT during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Logic gate OR AND NOT."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Logic gate OR AND NOT.",
+            "Successfully avoids common pitfalls when Logic gate OR AND NOT is integrated with other concepts in Electronic Devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Logic gate OR AND NOT in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-logic-gate-or-and-not-1",
+              "question": "What are the critical factors or principles governing Logic gate OR AND NOT?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "logic-gate-or-and-not"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "logic-gate-or-and-not",
+                "conceptSlug": "core-logic-gate-or-and-not",
+                "microskillSlug": "understand-logic-gate-or-and-not"
+              }
+            },
+            {
+              "id": "electronic-devices-q-logic-gate-or-and-not-2",
+              "question": "Describe a scenario where applying the concept of Logic gate OR AND NOT can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "logic-gate-or-and-not",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "logic-gate-or-and-not",
+                "conceptSlug": "trap-logic-gate-or-and-not",
+                "microskillSlug": "avoid-logic-gate-or-and-not"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-nand-and-nor-gates-18",
+          "title": "NAND and NOR gates",
+          "conceptTags": [
+            "electronic-devices",
+            "nand-and-nor-gates"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing NAND and NOR gates"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of NAND and NOR gates is heavily tested in recent NEET papers.",
+            "Applying the core principles of NAND and NOR gates correctly is essential for solving complex multi-step problems in Electronic Devices."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of NAND and NOR gates during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with NAND and NOR gates."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to NAND and NOR gates.",
+            "Successfully avoids common pitfalls when NAND and NOR gates is integrated with other concepts in Electronic Devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of NAND and NOR gates in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-nand-and-nor-gates-1",
+              "question": "What are the critical factors or principles governing NAND and NOR gates?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "nand-and-nor-gates"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "nand-and-nor-gates",
+                "conceptSlug": "core-nand-and-nor-gates",
+                "microskillSlug": "understand-nand-and-nor-gates"
+              }
+            },
+            {
+              "id": "electronic-devices-q-nand-and-nor-gates-2",
+              "question": "Describe a scenario where applying the concept of NAND and NOR gates can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "nand-and-nor-gates",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "nand-and-nor-gates",
+                "conceptSlug": "trap-nand-and-nor-gates",
+                "microskillSlug": "avoid-nand-and-nor-gates"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-electronic-devices-integrated-circuits-basics-19",
+          "title": "Integrated circuits basics",
+          "conceptTags": [
+            "electronic-devices",
+            "integrated-circuits-basics"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Integrated circuits basics"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Integrated circuits basics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Integrated circuits basics correctly is essential for solving complex multi-step problems in Electronic Devices."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Integrated circuits basics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Integrated circuits basics."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Integrated circuits basics.",
+            "Successfully avoids common pitfalls when Integrated circuits basics is integrated with other concepts in Electronic Devices."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Integrated circuits basics in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "electronic-devices-q-integrated-circuits-basics-1",
+              "question": "What are the critical factors or principles governing Integrated circuits basics?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "integrated-circuits-basics"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "integrated-circuits-basics",
+                "conceptSlug": "core-integrated-circuits-basics",
+                "microskillSlug": "understand-integrated-circuits-basics"
+              }
+            },
+            {
+              "id": "electronic-devices-q-integrated-circuits-basics-2",
+              "question": "Describe a scenario where applying the concept of Integrated circuits basics can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "electronic-devices",
+                "integrated-circuits-basics",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "electronic-devices",
+                "chapterSlug": "electronic-devices",
+                "topicSlug": "electronic-devices",
+                "subtopicSlug": "integrated-circuits-basics",
+                "conceptSlug": "trap-integrated-circuits-basics",
+                "microskillSlug": "avoid-integrated-circuits-basics"
               }
             }
           ]

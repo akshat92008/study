@@ -2,557 +2,503 @@
   "missions": [
     {
       "id": "m-current-electricity-1",
-      "title": "Current Electricity - Section 1",
-      "description": "Comprehensive analysis covering electric current, drift velocity, mobility and more.",
+      "title": "Mastery Module 1: Electric current definition and Related Concepts",
+      "description": "Comprehensive analysis covering electric current definition, drift velocity, mobility of charge carriers and advanced applications.",
       "conceptTags": [
         "current-electricity",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-current-electricity-electric-current",
-          "title": "Electric current",
+          "id": "mt-current-electricity-electric-current-definition-0",
+          "title": "Electric current definition",
           "conceptTags": [
             "current-electricity",
-            "electric-current"
+            "electric-current-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Electric current"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electric current definition"
           ],
           "mustKnowFacts": [
-            "Electric current is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Electric current for NEET."
+            "A thorough understanding of Electric current definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electric current definition correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for electric current",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Electric current during complex MCQs.",
-            "Failing to apply the correct logic for Electric current."
+            "Misinterpreting the subtle edge cases of Electric current definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electric current definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electric current."
+            "Can accurately solve numericals or identify biological structures related specifically to Electric current definition.",
+            "Successfully avoids common pitfalls when Electric current definition is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electric current."
+            "Past year questions frequently test the application of Electric current definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electric-current-1",
-              "question": "Explain the core concept behind Electric current.",
+              "id": "current-electricity-q-electric-current-definition-1",
+              "question": "What are the critical factors or principles governing Electric current definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electric-current"
+                "current-electricity",
+                "electric-current-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electric-current",
-                "conceptSlug": "core-electric-current",
-                "microskillSlug": "understand-electric-current",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electric-current-definition",
+                "conceptSlug": "core-electric-current-definition",
+                "microskillSlug": "understand-electric-current-definition"
               }
             },
             {
-              "id": "current-electricity-q-electric-current-2",
-              "question": "What is a common trap associated with Electric current?",
+              "id": "current-electricity-q-electric-current-definition-2",
+              "question": "Describe a scenario where applying the concept of Electric current definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electric-current",
+                "current-electricity",
+                "electric-current-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electric-current",
-                "conceptSlug": "trap-electric-current",
-                "microskillSlug": "avoid-electric-current",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electric-current-definition",
+                "conceptSlug": "trap-electric-current-definition",
+                "microskillSlug": "avoid-electric-current-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-drift-velocity",
+          "id": "mt-current-electricity-drift-velocity-1",
           "title": "Drift velocity",
           "conceptTags": [
             "current-electricity",
             "drift-velocity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Drift velocity"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Drift velocity"
           ],
           "mustKnowFacts": [
-            "Drift velocity is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Drift velocity for NEET."
+            "A thorough understanding of Drift velocity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Drift velocity correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for drift velocity",
-              "expression": "F = m a",
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "x",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Drift velocity during complex MCQs.",
-            "Failing to apply the correct logic for Drift velocity."
+            "Misinterpreting the subtle edge cases of Drift velocity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Drift velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Drift velocity."
+            "Can accurately solve numericals or identify biological structures related specifically to Drift velocity.",
+            "Successfully avoids common pitfalls when Drift velocity is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Drift velocity."
+            "Past year questions frequently test the application of Drift velocity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "current-electricity-q-drift-velocity-1",
-              "question": "Explain the core concept behind Drift velocity.",
+              "question": "What are the critical factors or principles governing Drift velocity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "current-electricity",
                 "drift-velocity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "drift-velocity",
                 "conceptSlug": "core-drift-velocity",
-                "microskillSlug": "understand-drift-velocity",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "understand-drift-velocity"
               }
             },
             {
               "id": "current-electricity-q-drift-velocity-2",
-              "question": "What is a common trap associated with Drift velocity?",
+              "question": "Describe a scenario where applying the concept of Drift velocity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "current-electricity",
                 "drift-velocity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "drift-velocity",
                 "conceptSlug": "trap-drift-velocity",
-                "microskillSlug": "avoid-drift-velocity",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "avoid-drift-velocity"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-mobility",
-          "title": "Mobility",
+          "id": "mt-current-electricity-mobility-of-charge-carriers-2",
+          "title": "Mobility of charge carriers",
           "conceptTags": [
             "current-electricity",
-            "mobility"
+            "mobility-of-charge-carriers"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Mobility"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Mobility of charge carriers"
           ],
           "mustKnowFacts": [
-            "Mobility is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Mobility for NEET."
+            "A thorough understanding of Mobility of charge carriers is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mobility of charge carriers correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for mobility",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mobility during complex MCQs.",
-            "Failing to apply the correct logic for Mobility."
+            "Misinterpreting the subtle edge cases of Mobility of charge carriers during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mobility of charge carriers."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mobility."
+            "Can accurately solve numericals or identify biological structures related specifically to Mobility of charge carriers.",
+            "Successfully avoids common pitfalls when Mobility of charge carriers is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mobility."
+            "Past year questions frequently test the application of Mobility of charge carriers in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-mobility-1",
-              "question": "Explain the core concept behind Mobility.",
+              "id": "current-electricity-q-mobility-of-charge-carriers-1",
+              "question": "What are the critical factors or principles governing Mobility of charge carriers?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "mobility"
+                "current-electricity",
+                "mobility-of-charge-carriers"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "mobility",
-                "conceptSlug": "core-mobility",
-                "microskillSlug": "understand-mobility",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "mobility-of-charge-carriers",
+                "conceptSlug": "core-mobility-of-charge-carriers",
+                "microskillSlug": "understand-mobility-of-charge-carriers"
               }
             },
             {
-              "id": "current-electricity-q-mobility-2",
-              "question": "What is a common trap associated with Mobility?",
+              "id": "current-electricity-q-mobility-of-charge-carriers-2",
+              "question": "Describe a scenario where applying the concept of Mobility of charge carriers can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "mobility",
+                "current-electricity",
+                "mobility-of-charge-carriers",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "mobility",
-                "conceptSlug": "trap-mobility",
-                "microskillSlug": "avoid-mobility",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "mobility-of-charge-carriers",
+                "conceptSlug": "trap-mobility-of-charge-carriers",
+                "microskillSlug": "avoid-mobility-of-charge-carriers"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-current-density-relation",
+          "id": "mt-current-electricity-current-density-relation-3",
           "title": "Current-density relation",
           "conceptTags": [
             "current-electricity",
             "current-density-relation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Current-density relation"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Current-density relation"
           ],
           "mustKnowFacts": [
-            "Current-density relation is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Current-density relation for NEET."
+            "A thorough understanding of Current-density relation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Current-density relation correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for current-density relation",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Current-density relation during complex MCQs.",
-            "Failing to apply the correct logic for Current-density relation."
+            "Misinterpreting the subtle edge cases of Current-density relation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Current-density relation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Current-density relation."
+            "Can accurately solve numericals or identify biological structures related specifically to Current-density relation.",
+            "Successfully avoids common pitfalls when Current-density relation is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Current-density relation."
+            "Past year questions frequently test the application of Current-density relation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "current-electricity-q-current-density-relation-1",
-              "question": "Explain the core concept behind Current-density relation.",
+              "question": "What are the critical factors or principles governing Current-density relation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "current-electricity",
                 "current-density-relation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "current-density-relation",
                 "conceptSlug": "core-current-density-relation",
-                "microskillSlug": "understand-current-density-relation",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "understand-current-density-relation"
               }
             },
             {
               "id": "current-electricity-q-current-density-relation-2",
-              "question": "What is a common trap associated with Current-density relation?",
+              "question": "Describe a scenario where applying the concept of Current-density relation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "current-electricity",
                 "current-density-relation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "current-density-relation",
                 "conceptSlug": "trap-current-density-relation",
-                "microskillSlug": "avoid-current-density-relation",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "avoid-current-density-relation"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-ohm-law",
-          "title": "Ohm law",
+          "id": "mt-current-electricity-ohm-s-law-4",
+          "title": "Ohm’s law",
           "conceptTags": [
             "current-electricity",
-            "ohm-law"
+            "ohm-s-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Ohm law"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Ohm’s law"
           ],
           "mustKnowFacts": [
-            "Ohm law is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Ohm law for NEET."
+            "A thorough understanding of Ohm’s law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ohm’s law correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for Ohm law",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Ohm law during complex MCQs.",
-            "Failing to apply the correct logic for Ohm law."
+            "Misinterpreting the subtle edge cases of Ohm’s law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ohm’s law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ohm law."
+            "Can accurately solve numericals or identify biological structures related specifically to Ohm’s law.",
+            "Successfully avoids common pitfalls when Ohm’s law is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Ohm law."
+            "Past year questions frequently test the application of Ohm’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-ohm-law-1",
-              "question": "Explain the core concept behind Ohm law.",
+              "id": "current-electricity-q-ohm-s-law-1",
+              "question": "What are the critical factors or principles governing Ohm’s law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ohm-law"
+                "current-electricity",
+                "ohm-s-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "ohm-law",
-                "conceptSlug": "core-ohm-law",
-                "microskillSlug": "understand-ohm-law",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "ohm-s-law",
+                "conceptSlug": "core-ohm-s-law",
+                "microskillSlug": "understand-ohm-s-law"
               }
             },
             {
-              "id": "current-electricity-q-ohm-law-2",
-              "question": "What is a common trap associated with Ohm law?",
+              "id": "current-electricity-q-ohm-s-law-2",
+              "question": "Describe a scenario where applying the concept of Ohm’s law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ohm-law",
+                "current-electricity",
+                "ohm-s-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "ohm-law",
-                "conceptSlug": "trap-ohm-law",
-                "microskillSlug": "avoid-ohm-law",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-current-electricity-v-i-graph",
-          "title": "V-I graph",
-          "conceptTags": [
-            "current-electricity",
-            "v-i-graph"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, V-I graph"
-          ],
-          "mustKnowFacts": [
-            "V-I graph is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing V-I graph for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for V-I graph",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret V-I graph during complex MCQs.",
-            "Failing to apply the correct logic for V-I graph."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to V-I graph."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about V-I graph."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-v-i-graph-1",
-              "question": "Explain the core concept behind V-I graph.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "v-i-graph"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
-                "subtopicSlug": "v-i-graph",
-                "conceptSlug": "core-v-i-graph",
-                "microskillSlug": "understand-v-i-graph",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            },
-            {
-              "id": "current-electricity-q-v-i-graph-2",
-              "question": "What is a common trap associated with V-I graph?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "v-i-graph",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "v-i-graph",
-                "conceptSlug": "trap-v-i-graph",
-                "microskillSlug": "avoid-v-i-graph",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "subtopicSlug": "ohm-s-law",
+                "conceptSlug": "trap-ohm-s-law",
+                "microskillSlug": "avoid-ohm-s-law"
               }
             }
           ]
@@ -561,557 +507,506 @@
     },
     {
       "id": "m-current-electricity-2",
-      "title": "Current Electricity - Section 2",
-      "description": "Comprehensive analysis covering resistance, resistivity, conductivity and more.",
+      "title": "Mastery Module 2: V-I characteristics and Related Concepts",
+      "description": "Comprehensive analysis covering V-I characteristics, electrical resistance, resistivity and advanced applications.",
       "conceptTags": [
         "current-electricity",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-current-electricity-resistance",
-          "title": "Resistance",
+          "id": "mt-current-electricity-v-i-characteristics-5",
+          "title": "V-I characteristics",
           "conceptTags": [
             "current-electricity",
-            "resistance"
+            "v-i-characteristics"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Resistance"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing V-I characteristics"
           ],
           "mustKnowFacts": [
-            "Resistance is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Resistance for NEET."
+            "A thorough understanding of V-I characteristics is heavily tested in recent NEET papers.",
+            "Applying the core principles of V-I characteristics correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for resistance",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Resistance during complex MCQs.",
-            "Failing to apply the correct logic for Resistance."
+            "Misinterpreting the subtle edge cases of V-I characteristics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with V-I characteristics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Resistance."
+            "Can accurately solve numericals or identify biological structures related specifically to V-I characteristics.",
+            "Successfully avoids common pitfalls when V-I characteristics is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Resistance."
+            "Past year questions frequently test the application of V-I characteristics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-resistance-1",
-              "question": "Explain the core concept behind Resistance.",
+              "id": "current-electricity-q-v-i-characteristics-1",
+              "question": "What are the critical factors or principles governing V-I characteristics?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "resistance"
+                "current-electricity",
+                "v-i-characteristics"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "resistance",
-                "conceptSlug": "core-resistance",
-                "microskillSlug": "understand-resistance",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "v-i-characteristics",
+                "conceptSlug": "core-v-i-characteristics",
+                "microskillSlug": "understand-v-i-characteristics"
               }
             },
             {
-              "id": "current-electricity-q-resistance-2",
-              "question": "What is a common trap associated with Resistance?",
+              "id": "current-electricity-q-v-i-characteristics-2",
+              "question": "Describe a scenario where applying the concept of V-I characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "resistance",
+                "current-electricity",
+                "v-i-characteristics",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "resistance",
-                "conceptSlug": "trap-resistance",
-                "microskillSlug": "avoid-resistance",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "v-i-characteristics",
+                "conceptSlug": "trap-v-i-characteristics",
+                "microskillSlug": "avoid-v-i-characteristics"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-resistivity",
+          "id": "mt-current-electricity-electrical-resistance-6",
+          "title": "Electrical resistance",
+          "conceptTags": [
+            "current-electricity",
+            "electrical-resistance"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electrical resistance"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Electrical resistance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrical resistance correctly is essential for solving complex multi-step problems in Current Electricity."
+          ],
+          "formulas": [
+            {
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
+              "variables": [
+                "F",
+                "q_1",
+                "q_2",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Electrical resistance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrical resistance."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Electrical resistance.",
+            "Successfully avoids common pitfalls when Electrical resistance is integrated with other concepts in Current Electricity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Electrical resistance in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "current-electricity-q-electrical-resistance-1",
+              "question": "What are the critical factors or principles governing Electrical resistance?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "electrical-resistance"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-resistance",
+                "conceptSlug": "core-electrical-resistance",
+                "microskillSlug": "understand-electrical-resistance"
+              }
+            },
+            {
+              "id": "current-electricity-q-electrical-resistance-2",
+              "question": "Describe a scenario where applying the concept of Electrical resistance can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "electrical-resistance",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-resistance",
+                "conceptSlug": "trap-electrical-resistance",
+                "microskillSlug": "avoid-electrical-resistance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-current-electricity-resistivity-7",
           "title": "Resistivity",
           "conceptTags": [
             "current-electricity",
             "resistivity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Resistivity"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Resistivity"
           ],
           "mustKnowFacts": [
-            "Resistivity is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Resistivity for NEET."
+            "A thorough understanding of Resistivity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resistivity correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for resistivity",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Resistivity during complex MCQs.",
-            "Failing to apply the correct logic for Resistivity."
+            "Misinterpreting the subtle edge cases of Resistivity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resistivity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Resistivity."
+            "Can accurately solve numericals or identify biological structures related specifically to Resistivity.",
+            "Successfully avoids common pitfalls when Resistivity is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Resistivity."
+            "Past year questions frequently test the application of Resistivity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "current-electricity-q-resistivity-1",
-              "question": "Explain the core concept behind Resistivity.",
+              "question": "What are the critical factors or principles governing Resistivity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "current-electricity",
                 "resistivity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "resistivity",
                 "conceptSlug": "core-resistivity",
-                "microskillSlug": "understand-resistivity",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "understand-resistivity"
               }
             },
             {
               "id": "current-electricity-q-resistivity-2",
-              "question": "What is a common trap associated with Resistivity?",
+              "question": "Describe a scenario where applying the concept of Resistivity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "current-electricity",
                 "resistivity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
                 "subtopicSlug": "resistivity",
                 "conceptSlug": "trap-resistivity",
-                "microskillSlug": "avoid-resistivity",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "microskillSlug": "avoid-resistivity"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-conductivity",
-          "title": "Conductivity",
+          "id": "mt-current-electricity-electrical-conductivity-8",
+          "title": "Electrical conductivity",
           "conceptTags": [
             "current-electricity",
-            "conductivity"
+            "electrical-conductivity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Conductivity"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electrical conductivity"
           ],
           "mustKnowFacts": [
-            "Conductivity is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Conductivity for NEET."
+            "A thorough understanding of Electrical conductivity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrical conductivity correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for conductivity",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Conductivity during complex MCQs.",
-            "Failing to apply the correct logic for Conductivity."
+            "Misinterpreting the subtle edge cases of Electrical conductivity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrical conductivity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conductivity."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrical conductivity.",
+            "Successfully avoids common pitfalls when Electrical conductivity is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conductivity."
+            "Past year questions frequently test the application of Electrical conductivity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-conductivity-1",
-              "question": "Explain the core concept behind Conductivity.",
+              "id": "current-electricity-q-electrical-conductivity-1",
+              "question": "What are the critical factors or principles governing Electrical conductivity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "conductivity"
+                "current-electricity",
+                "electrical-conductivity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "conductivity",
-                "conceptSlug": "core-conductivity",
-                "microskillSlug": "understand-conductivity",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-conductivity",
+                "conceptSlug": "core-electrical-conductivity",
+                "microskillSlug": "understand-electrical-conductivity"
               }
             },
             {
-              "id": "current-electricity-q-conductivity-2",
-              "question": "What is a common trap associated with Conductivity?",
+              "id": "current-electricity-q-electrical-conductivity-2",
+              "question": "Describe a scenario where applying the concept of Electrical conductivity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "conductivity",
+                "current-electricity",
+                "electrical-conductivity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "conductivity",
-                "conceptSlug": "trap-conductivity",
-                "microskillSlug": "avoid-conductivity",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-conductivity",
+                "conceptSlug": "trap-electrical-conductivity",
+                "microskillSlug": "avoid-electrical-conductivity"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-temperature-dependence",
-          "title": "Temperature dependence",
+          "id": "mt-current-electricity-temperature-dependence-of-resistance-9",
+          "title": "Temperature dependence of resistance",
           "conceptTags": [
             "current-electricity",
-            "temperature-dependence"
+            "temperature-dependence-of-resistance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Temperature dependence"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Temperature dependence of resistance"
           ],
           "mustKnowFacts": [
-            "Temperature dependence is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Temperature dependence for NEET."
+            "A thorough understanding of Temperature dependence of resistance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Temperature dependence of resistance correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for temperature dependence",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Temperature dependence during complex MCQs.",
-            "Failing to apply the correct logic for Temperature dependence."
+            "Misinterpreting the subtle edge cases of Temperature dependence of resistance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Temperature dependence of resistance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Temperature dependence."
+            "Can accurately solve numericals or identify biological structures related specifically to Temperature dependence of resistance.",
+            "Successfully avoids common pitfalls when Temperature dependence of resistance is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Temperature dependence."
+            "Past year questions frequently test the application of Temperature dependence of resistance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-temperature-dependence-1",
-              "question": "Explain the core concept behind Temperature dependence.",
+              "id": "current-electricity-q-temperature-dependence-of-resistance-1",
+              "question": "What are the critical factors or principles governing Temperature dependence of resistance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "temperature-dependence"
+                "current-electricity",
+                "temperature-dependence-of-resistance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "temperature-dependence",
-                "conceptSlug": "core-temperature-dependence",
-                "microskillSlug": "understand-temperature-dependence",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "temperature-dependence-of-resistance",
+                "conceptSlug": "core-temperature-dependence-of-resistance",
+                "microskillSlug": "understand-temperature-dependence-of-resistance"
               }
             },
             {
-              "id": "current-electricity-q-temperature-dependence-2",
-              "question": "What is a common trap associated with Temperature dependence?",
+              "id": "current-electricity-q-temperature-dependence-of-resistance-2",
+              "question": "Describe a scenario where applying the concept of Temperature dependence of resistance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "temperature-dependence",
+                "current-electricity",
+                "temperature-dependence-of-resistance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "temperature-dependence",
-                "conceptSlug": "trap-temperature-dependence",
-                "microskillSlug": "avoid-temperature-dependence",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-current-electricity-colour-code",
-          "title": "Colour code",
-          "conceptTags": [
-            "current-electricity",
-            "colour-code"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Colour code"
-          ],
-          "mustKnowFacts": [
-            "Colour code is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Colour code for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for colour code",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Colour code during complex MCQs.",
-            "Failing to apply the correct logic for Colour code."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Colour code."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Colour code."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-colour-code-1",
-              "question": "Explain the core concept behind Colour code.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "colour-code"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
-                "subtopicSlug": "colour-code",
-                "conceptSlug": "core-colour-code",
-                "microskillSlug": "understand-colour-code",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            },
-            {
-              "id": "current-electricity-q-colour-code-2",
-              "question": "What is a common trap associated with Colour code?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "colour-code",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "colour-code",
-                "conceptSlug": "trap-colour-code",
-                "microskillSlug": "avoid-colour-code",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-current-electricity-series-parallel-resistors",
-          "title": "Series/parallel resistors",
-          "conceptTags": [
-            "current-electricity",
-            "series-parallel-resistors"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Series/parallel resistors"
-          ],
-          "mustKnowFacts": [
-            "Series/parallel resistors is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Series/parallel resistors for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for series/parallel resistors",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Series/parallel resistors during complex MCQs.",
-            "Failing to apply the correct logic for Series/parallel resistors."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Series/parallel resistors."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Series/parallel resistors."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-series-parallel-resistors-1",
-              "question": "Explain the core concept behind Series/parallel resistors.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "series-parallel-resistors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "series-parallel-resistors",
-                "conceptSlug": "core-series-parallel-resistors",
-                "microskillSlug": "understand-series-parallel-resistors",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            },
-            {
-              "id": "current-electricity-q-series-parallel-resistors-2",
-              "question": "What is a common trap associated with Series/parallel resistors?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "series-parallel-resistors",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "series-parallel-resistors",
-                "conceptSlug": "trap-series-parallel-resistors",
-                "microskillSlug": "avoid-series-parallel-resistors",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "subtopicSlug": "temperature-dependence-of-resistance",
+                "conceptSlug": "trap-temperature-dependence-of-resistance",
+                "microskillSlug": "avoid-temperature-dependence-of-resistance"
               }
             }
           ]
@@ -1120,557 +1015,505 @@
     },
     {
       "id": "m-current-electricity-3",
-      "title": "Current Electricity - Section 3",
-      "description": "Comprehensive analysis covering power, electrical energy, emf and more.",
+      "title": "Mastery Module 3: Colour code for carbon resistors and Related Concepts",
+      "description": "Comprehensive analysis covering colour code for carbon resistors, resistors in series, resistors in parallel and advanced applications.",
       "conceptTags": [
         "current-electricity",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-current-electricity-power",
-          "title": "Power",
+          "id": "mt-current-electricity-colour-code-for-carbon-resistors-10",
+          "title": "Colour code for carbon resistors",
           "conceptTags": [
             "current-electricity",
-            "power"
+            "colour-code-for-carbon-resistors"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Power"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Colour code for carbon resistors"
           ],
           "mustKnowFacts": [
-            "Power is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Power for NEET."
+            "A thorough understanding of Colour code for carbon resistors is heavily tested in recent NEET papers.",
+            "Applying the core principles of Colour code for carbon resistors correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for power",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Power during complex MCQs.",
-            "Failing to apply the correct logic for Power."
+            "Misinterpreting the subtle edge cases of Colour code for carbon resistors during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Colour code for carbon resistors."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Power."
+            "Can accurately solve numericals or identify biological structures related specifically to Colour code for carbon resistors.",
+            "Successfully avoids common pitfalls when Colour code for carbon resistors is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Power."
+            "Past year questions frequently test the application of Colour code for carbon resistors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-power-1",
-              "question": "Explain the core concept behind Power.",
+              "id": "current-electricity-q-colour-code-for-carbon-resistors-1",
+              "question": "What are the critical factors or principles governing Colour code for carbon resistors?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "power"
+                "current-electricity",
+                "colour-code-for-carbon-resistors"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "power",
-                "conceptSlug": "core-power",
-                "microskillSlug": "understand-power",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "colour-code-for-carbon-resistors",
+                "conceptSlug": "core-colour-code-for-carbon-resistors",
+                "microskillSlug": "understand-colour-code-for-carbon-resistors"
               }
             },
             {
-              "id": "current-electricity-q-power-2",
-              "question": "What is a common trap associated with Power?",
+              "id": "current-electricity-q-colour-code-for-carbon-resistors-2",
+              "question": "Describe a scenario where applying the concept of Colour code for carbon resistors can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "power",
+                "current-electricity",
+                "colour-code-for-carbon-resistors",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "power",
-                "conceptSlug": "trap-power",
-                "microskillSlug": "avoid-power",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "colour-code-for-carbon-resistors",
+                "conceptSlug": "trap-colour-code-for-carbon-resistors",
+                "microskillSlug": "avoid-colour-code-for-carbon-resistors"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-electrical-energy",
-          "title": "Electrical energy",
+          "id": "mt-current-electricity-resistors-in-series-11",
+          "title": "Resistors in series",
           "conceptTags": [
             "current-electricity",
-            "electrical-energy"
+            "resistors-in-series"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Electrical energy"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Resistors in series"
           ],
           "mustKnowFacts": [
-            "Electrical energy is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Electrical energy for NEET."
+            "A thorough understanding of Resistors in series is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resistors in series correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for electrical energy",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Electrical energy during complex MCQs.",
-            "Failing to apply the correct logic for Electrical energy."
+            "Misinterpreting the subtle edge cases of Resistors in series during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resistors in series."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrical energy."
+            "Can accurately solve numericals or identify biological structures related specifically to Resistors in series.",
+            "Successfully avoids common pitfalls when Resistors in series is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electrical energy."
+            "Past year questions frequently test the application of Resistors in series in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electrical-energy-1",
-              "question": "Explain the core concept behind Electrical energy.",
+              "id": "current-electricity-q-resistors-in-series-1",
+              "question": "What are the critical factors or principles governing Resistors in series?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electrical-energy"
+                "current-electricity",
+                "resistors-in-series"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-energy",
-                "conceptSlug": "core-electrical-energy",
-                "microskillSlug": "understand-electrical-energy",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "resistors-in-series",
+                "conceptSlug": "core-resistors-in-series",
+                "microskillSlug": "understand-resistors-in-series"
               }
             },
             {
-              "id": "current-electricity-q-electrical-energy-2",
-              "question": "What is a common trap associated with Electrical energy?",
+              "id": "current-electricity-q-resistors-in-series-2",
+              "question": "Describe a scenario where applying the concept of Resistors in series can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electrical-energy",
+                "current-electricity",
+                "resistors-in-series",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-energy",
-                "conceptSlug": "trap-electrical-energy",
-                "microskillSlug": "avoid-electrical-energy",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "resistors-in-series",
+                "conceptSlug": "trap-resistors-in-series",
+                "microskillSlug": "avoid-resistors-in-series"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-emf",
-          "title": "Emf",
+          "id": "mt-current-electricity-resistors-in-parallel-12",
+          "title": "Resistors in parallel",
           "conceptTags": [
             "current-electricity",
-            "emf"
+            "resistors-in-parallel"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Emf"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Resistors in parallel"
           ],
           "mustKnowFacts": [
-            "Emf is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Emf for NEET."
+            "A thorough understanding of Resistors in parallel is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resistors in parallel correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for emf",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Emf during complex MCQs.",
-            "Failing to apply the correct logic for Emf."
+            "Misinterpreting the subtle edge cases of Resistors in parallel during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resistors in parallel."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Emf."
+            "Can accurately solve numericals or identify biological structures related specifically to Resistors in parallel.",
+            "Successfully avoids common pitfalls when Resistors in parallel is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Emf."
+            "Past year questions frequently test the application of Resistors in parallel in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-emf-1",
-              "question": "Explain the core concept behind Emf.",
+              "id": "current-electricity-q-resistors-in-parallel-1",
+              "question": "What are the critical factors or principles governing Resistors in parallel?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "emf"
+                "current-electricity",
+                "resistors-in-parallel"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "emf",
-                "conceptSlug": "core-emf",
-                "microskillSlug": "understand-emf",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "resistors-in-parallel",
+                "conceptSlug": "core-resistors-in-parallel",
+                "microskillSlug": "understand-resistors-in-parallel"
               }
             },
             {
-              "id": "current-electricity-q-emf-2",
-              "question": "What is a common trap associated with Emf?",
+              "id": "current-electricity-q-resistors-in-parallel-2",
+              "question": "Describe a scenario where applying the concept of Resistors in parallel can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "emf",
+                "current-electricity",
+                "resistors-in-parallel",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "emf",
-                "conceptSlug": "trap-emf",
-                "microskillSlug": "avoid-emf",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "resistors-in-parallel",
+                "conceptSlug": "trap-resistors-in-parallel",
+                "microskillSlug": "avoid-resistors-in-parallel"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-terminal-potential-difference",
-          "title": "Terminal potential difference",
+          "id": "mt-current-electricity-electrical-power-13",
+          "title": "Electrical power",
           "conceptTags": [
             "current-electricity",
-            "terminal-potential-difference"
+            "electrical-power"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Terminal potential difference"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electrical power"
           ],
           "mustKnowFacts": [
-            "Terminal potential difference is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Terminal potential difference for NEET."
+            "A thorough understanding of Electrical power is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrical power correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for terminal potential difference",
-              "expression": "F = m a",
+              "name": "Coulomb Force",
+              "expression": "F = \\frac{1}{4\\pi\\epsilon_0} \\frac{q_1 q_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "q_1",
+                "q_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Terminal potential difference during complex MCQs.",
-            "Failing to apply the correct logic for Terminal potential difference."
+            "Misinterpreting the subtle edge cases of Electrical power during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrical power."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Terminal potential difference."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrical power.",
+            "Successfully avoids common pitfalls when Electrical power is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Terminal potential difference."
+            "Past year questions frequently test the application of Electrical power in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-terminal-potential-difference-1",
-              "question": "Explain the core concept behind Terminal potential difference.",
+              "id": "current-electricity-q-electrical-power-1",
+              "question": "What are the critical factors or principles governing Electrical power?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "terminal-potential-difference"
+                "current-electricity",
+                "electrical-power"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "terminal-potential-difference",
-                "conceptSlug": "core-terminal-potential-difference",
-                "microskillSlug": "understand-terminal-potential-difference",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-power",
+                "conceptSlug": "core-electrical-power",
+                "microskillSlug": "understand-electrical-power"
               }
             },
             {
-              "id": "current-electricity-q-terminal-potential-difference-2",
-              "question": "What is a common trap associated with Terminal potential difference?",
+              "id": "current-electricity-q-electrical-power-2",
+              "question": "Describe a scenario where applying the concept of Electrical power can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "terminal-potential-difference",
+                "current-electricity",
+                "electrical-power",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "terminal-potential-difference",
-                "conceptSlug": "trap-terminal-potential-difference",
-                "microskillSlug": "avoid-terminal-potential-difference",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-power",
+                "conceptSlug": "trap-electrical-power",
+                "microskillSlug": "avoid-electrical-power"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-internal-resistance",
-          "title": "Internal resistance",
+          "id": "mt-current-electricity-electrical-energy-dissipation-14",
+          "title": "Electrical energy dissipation",
           "conceptTags": [
             "current-electricity",
-            "internal-resistance"
+            "electrical-energy-dissipation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Internal resistance"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electrical energy dissipation"
           ],
           "mustKnowFacts": [
-            "Internal resistance is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Internal resistance for NEET."
+            "A thorough understanding of Electrical energy dissipation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrical energy dissipation correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for internal resistance",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Internal resistance during complex MCQs.",
-            "Failing to apply the correct logic for Internal resistance."
+            "Misinterpreting the subtle edge cases of Electrical energy dissipation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrical energy dissipation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Internal resistance."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrical energy dissipation.",
+            "Successfully avoids common pitfalls when Electrical energy dissipation is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Internal resistance."
+            "Past year questions frequently test the application of Electrical energy dissipation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-internal-resistance-1",
-              "question": "Explain the core concept behind Internal resistance.",
+              "id": "current-electricity-q-electrical-energy-dissipation-1",
+              "question": "What are the critical factors or principles governing Electrical energy dissipation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "internal-resistance"
+                "current-electricity",
+                "electrical-energy-dissipation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "internal-resistance",
-                "conceptSlug": "core-internal-resistance",
-                "microskillSlug": "understand-internal-resistance",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electrical-energy-dissipation",
+                "conceptSlug": "core-electrical-energy-dissipation",
+                "microskillSlug": "understand-electrical-energy-dissipation"
               }
             },
             {
-              "id": "current-electricity-q-internal-resistance-2",
-              "question": "What is a common trap associated with Internal resistance?",
+              "id": "current-electricity-q-electrical-energy-dissipation-2",
+              "question": "Describe a scenario where applying the concept of Electrical energy dissipation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "internal-resistance",
+                "current-electricity",
+                "electrical-energy-dissipation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "internal-resistance",
-                "conceptSlug": "trap-internal-resistance",
-                "microskillSlug": "avoid-internal-resistance",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-current-electricity-cells-series-parallel",
-          "title": "Cells series/parallel",
-          "conceptTags": [
-            "current-electricity",
-            "cells-series-parallel"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Cells series/parallel"
-          ],
-          "mustKnowFacts": [
-            "Cells series/parallel is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Cells series/parallel for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for cells series/parallel",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Cells series/parallel during complex MCQs.",
-            "Failing to apply the correct logic for Cells series/parallel."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Cells series/parallel."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Cells series/parallel."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-cells-series-parallel-1",
-              "question": "Explain the core concept behind Cells series/parallel.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "cells-series-parallel"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "current-electricity",
                 "topicSlug": "current-electricity",
-                "subtopicSlug": "cells-series-parallel",
-                "conceptSlug": "core-cells-series-parallel",
-                "microskillSlug": "understand-cells-series-parallel",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
-              }
-            },
-            {
-              "id": "current-electricity-q-cells-series-parallel-2",
-              "question": "What is a common trap associated with Cells series/parallel?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "cells-series-parallel",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "cells-series-parallel",
-                "conceptSlug": "trap-cells-series-parallel",
-                "microskillSlug": "avoid-cells-series-parallel",
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "subtopicSlug": "electrical-energy-dissipation",
+                "conceptSlug": "trap-electrical-energy-dissipation",
+                "microskillSlug": "avoid-electrical-energy-dissipation"
               }
             }
           ]
@@ -1679,466 +1522,914 @@
     },
     {
       "id": "m-current-electricity-4",
-      "title": "Current Electricity - Section 4",
-      "description": "Comprehensive analysis covering Kirchhoff laws, Wheatstone bridge, meter bridge and more.",
+      "title": "Mastery Module 4: Electromotive force and Related Concepts",
+      "description": "Comprehensive analysis covering electromotive force, terminal potential difference, internal resistance of a cell and advanced applications.",
       "conceptTags": [
         "current-electricity",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-current-electricity-kirchhoff-laws",
-          "title": "Kirchhoff laws",
+          "id": "mt-current-electricity-electromotive-force-15",
+          "title": "Electromotive force",
           "conceptTags": [
             "current-electricity",
-            "kirchhoff-laws"
+            "electromotive-force"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Kirchhoff laws"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Electromotive force"
           ],
           "mustKnowFacts": [
-            "Kirchhoff laws is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Kirchhoff laws for NEET."
+            "A thorough understanding of Electromotive force is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electromotive force correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for Kirchhoff laws",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Kirchhoff laws during complex MCQs.",
-            "Failing to apply the correct logic for Kirchhoff laws."
+            "Misinterpreting the subtle edge cases of Electromotive force during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electromotive force."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Kirchhoff laws."
+            "Can accurately solve numericals or identify biological structures related specifically to Electromotive force.",
+            "Successfully avoids common pitfalls when Electromotive force is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Kirchhoff laws."
+            "Past year questions frequently test the application of Electromotive force in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-kirchhoff-laws-1",
-              "question": "Explain the core concept behind Kirchhoff laws.",
+              "id": "current-electricity-q-electromotive-force-1",
+              "question": "What are the critical factors or principles governing Electromotive force?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "kirchhoff-laws"
+                "current-electricity",
+                "electromotive-force"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "kirchhoff-laws",
-                "conceptSlug": "core-kirchhoff-laws",
-                "microskillSlug": "understand-kirchhoff-laws",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electromotive-force",
+                "conceptSlug": "core-electromotive-force",
+                "microskillSlug": "understand-electromotive-force"
               }
             },
             {
-              "id": "current-electricity-q-kirchhoff-laws-2",
-              "question": "What is a common trap associated with Kirchhoff laws?",
+              "id": "current-electricity-q-electromotive-force-2",
+              "question": "Describe a scenario where applying the concept of Electromotive force can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "kirchhoff-laws",
+                "current-electricity",
+                "electromotive-force",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "kirchhoff-laws",
-                "conceptSlug": "trap-kirchhoff-laws",
-                "microskillSlug": "avoid-kirchhoff-laws",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "electromotive-force",
+                "conceptSlug": "trap-electromotive-force",
+                "microskillSlug": "avoid-electromotive-force"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-wheatstone-bridge",
-          "title": "Wheatstone bridge",
+          "id": "mt-current-electricity-terminal-potential-difference-16",
+          "title": "Terminal potential difference",
           "conceptTags": [
             "current-electricity",
-            "wheatstone-bridge"
+            "terminal-potential-difference"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Wheatstone bridge"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Terminal potential difference"
           ],
           "mustKnowFacts": [
-            "Wheatstone bridge is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Wheatstone bridge for NEET."
+            "A thorough understanding of Terminal potential difference is heavily tested in recent NEET papers.",
+            "Applying the core principles of Terminal potential difference correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for Wheatstone bridge",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Wheatstone bridge during complex MCQs.",
-            "Failing to apply the correct logic for Wheatstone bridge."
+            "Misinterpreting the subtle edge cases of Terminal potential difference during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Terminal potential difference."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Wheatstone bridge."
+            "Can accurately solve numericals or identify biological structures related specifically to Terminal potential difference.",
+            "Successfully avoids common pitfalls when Terminal potential difference is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Wheatstone bridge."
+            "Past year questions frequently test the application of Terminal potential difference in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-wheatstone-bridge-1",
-              "question": "Explain the core concept behind Wheatstone bridge.",
+              "id": "current-electricity-q-terminal-potential-difference-1",
+              "question": "What are the critical factors or principles governing Terminal potential difference?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "wheatstone-bridge"
+                "current-electricity",
+                "terminal-potential-difference"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "wheatstone-bridge",
-                "conceptSlug": "core-wheatstone-bridge",
-                "microskillSlug": "understand-wheatstone-bridge",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "terminal-potential-difference",
+                "conceptSlug": "core-terminal-potential-difference",
+                "microskillSlug": "understand-terminal-potential-difference"
               }
             },
             {
-              "id": "current-electricity-q-wheatstone-bridge-2",
-              "question": "What is a common trap associated with Wheatstone bridge?",
+              "id": "current-electricity-q-terminal-potential-difference-2",
+              "question": "Describe a scenario where applying the concept of Terminal potential difference can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "wheatstone-bridge",
+                "current-electricity",
+                "terminal-potential-difference",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "wheatstone-bridge",
-                "conceptSlug": "trap-wheatstone-bridge",
-                "microskillSlug": "avoid-wheatstone-bridge",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "terminal-potential-difference",
+                "conceptSlug": "trap-terminal-potential-difference",
+                "microskillSlug": "avoid-terminal-potential-difference"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-meter-bridge",
-          "title": "Meter bridge",
+          "id": "mt-current-electricity-internal-resistance-of-a-cell-17",
+          "title": "Internal resistance of a cell",
           "conceptTags": [
             "current-electricity",
-            "meter-bridge"
+            "internal-resistance-of-a-cell"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Meter bridge"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Internal resistance of a cell"
           ],
           "mustKnowFacts": [
-            "Meter bridge is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Meter bridge for NEET."
+            "A thorough understanding of Internal resistance of a cell is heavily tested in recent NEET papers.",
+            "Applying the core principles of Internal resistance of a cell correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for meter bridge",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Meter bridge during complex MCQs.",
-            "Failing to apply the correct logic for Meter bridge."
+            "Misinterpreting the subtle edge cases of Internal resistance of a cell during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Internal resistance of a cell."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Meter bridge."
+            "Can accurately solve numericals or identify biological structures related specifically to Internal resistance of a cell.",
+            "Successfully avoids common pitfalls when Internal resistance of a cell is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Meter bridge."
+            "Past year questions frequently test the application of Internal resistance of a cell in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-meter-bridge-1",
-              "question": "Explain the core concept behind Meter bridge.",
+              "id": "current-electricity-q-internal-resistance-of-a-cell-1",
+              "question": "What are the critical factors or principles governing Internal resistance of a cell?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "meter-bridge"
+                "current-electricity",
+                "internal-resistance-of-a-cell"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "meter-bridge",
-                "conceptSlug": "core-meter-bridge",
-                "microskillSlug": "understand-meter-bridge",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "internal-resistance-of-a-cell",
+                "conceptSlug": "core-internal-resistance-of-a-cell",
+                "microskillSlug": "understand-internal-resistance-of-a-cell"
               }
             },
             {
-              "id": "current-electricity-q-meter-bridge-2",
-              "question": "What is a common trap associated with Meter bridge?",
+              "id": "current-electricity-q-internal-resistance-of-a-cell-2",
+              "question": "Describe a scenario where applying the concept of Internal resistance of a cell can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "meter-bridge",
+                "current-electricity",
+                "internal-resistance-of-a-cell",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "meter-bridge",
-                "conceptSlug": "trap-meter-bridge",
-                "microskillSlug": "avoid-meter-bridge",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "internal-resistance-of-a-cell",
+                "conceptSlug": "trap-internal-resistance-of-a-cell",
+                "microskillSlug": "avoid-internal-resistance-of-a-cell"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-potentiometer",
-          "title": "Potentiometer",
+          "id": "mt-current-electricity-cells-in-series-and-parallel-18",
+          "title": "Cells in series and parallel",
           "conceptTags": [
             "current-electricity",
-            "potentiometer"
+            "cells-in-series-and-parallel"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Potentiometer"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Cells in series and parallel"
           ],
           "mustKnowFacts": [
-            "Potentiometer is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Potentiometer for NEET."
+            "A thorough understanding of Cells in series and parallel is heavily tested in recent NEET papers.",
+            "Applying the core principles of Cells in series and parallel correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for potentiometer",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Potentiometer during complex MCQs.",
-            "Failing to apply the correct logic for Potentiometer."
+            "Misinterpreting the subtle edge cases of Cells in series and parallel during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Cells in series and parallel."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potentiometer."
+            "Can accurately solve numericals or identify biological structures related specifically to Cells in series and parallel.",
+            "Successfully avoids common pitfalls when Cells in series and parallel is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Potentiometer."
+            "Past year questions frequently test the application of Cells in series and parallel in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-potentiometer-1",
-              "question": "Explain the core concept behind Potentiometer.",
+              "id": "current-electricity-q-cells-in-series-and-parallel-1",
+              "question": "What are the critical factors or principles governing Cells in series and parallel?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "potentiometer"
+                "current-electricity",
+                "cells-in-series-and-parallel"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "potentiometer",
-                "conceptSlug": "core-potentiometer",
-                "microskillSlug": "understand-potentiometer",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "cells-in-series-and-parallel",
+                "conceptSlug": "core-cells-in-series-and-parallel",
+                "microskillSlug": "understand-cells-in-series-and-parallel"
               }
             },
             {
-              "id": "current-electricity-q-potentiometer-2",
-              "question": "What is a common trap associated with Potentiometer?",
+              "id": "current-electricity-q-cells-in-series-and-parallel-2",
+              "question": "Describe a scenario where applying the concept of Cells in series and parallel can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "potentiometer",
+                "current-electricity",
+                "cells-in-series-and-parallel",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "potentiometer",
-                "conceptSlug": "trap-potentiometer",
-                "microskillSlug": "avoid-potentiometer",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "cells-in-series-and-parallel",
+                "conceptSlug": "trap-cells-in-series-and-parallel",
+                "microskillSlug": "avoid-cells-in-series-and-parallel"
               }
             }
           ]
         },
         {
-          "id": "mt-current-electricity-galvanometer-conversion",
-          "title": "Galvanometer conversion",
+          "id": "mt-current-electricity-kirchhoff-wheatstone-19",
+          "title": "Kirchhoff/Wheatstone",
           "conceptTags": [
             "current-electricity",
-            "galvanometer-conversion"
+            "kirchhoff-wheatstone"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Galvanometer conversion"
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Kirchhoff/Wheatstone"
           ],
           "mustKnowFacts": [
-            "Galvanometer conversion is a fundamental subtopic of Current Electricity.",
-            "Crucial to understand the principles governing Galvanometer conversion for NEET."
+            "A thorough understanding of Kirchhoff/Wheatstone is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kirchhoff/Wheatstone correctly is essential for solving complex multi-step problems in Current Electricity."
           ],
           "formulas": [
             {
-              "name": "Formula for galvanometer conversion",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Galvanometer conversion during complex MCQs.",
-            "Failing to apply the correct logic for Galvanometer conversion."
+            "Misinterpreting the subtle edge cases of Kirchhoff/Wheatstone during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kirchhoff/Wheatstone."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Galvanometer conversion."
+            "Can accurately solve numericals or identify biological structures related specifically to Kirchhoff/Wheatstone.",
+            "Successfully avoids common pitfalls when Kirchhoff/Wheatstone is integrated with other concepts in Current Electricity."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Galvanometer conversion."
+            "Past year questions frequently test the application of Kirchhoff/Wheatstone in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-galvanometer-conversion-1",
-              "question": "Explain the core concept behind Galvanometer conversion.",
+              "id": "current-electricity-q-kirchhoff-wheatstone-1",
+              "question": "What are the critical factors or principles governing Kirchhoff/Wheatstone?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "galvanometer-conversion"
+                "current-electricity",
+                "kirchhoff-wheatstone"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "galvanometer-conversion",
-                "conceptSlug": "core-galvanometer-conversion",
-                "microskillSlug": "understand-galvanometer-conversion",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "kirchhoff-wheatstone",
+                "conceptSlug": "core-kirchhoff-wheatstone",
+                "microskillSlug": "understand-kirchhoff-wheatstone"
               }
             },
             {
-              "id": "current-electricity-q-galvanometer-conversion-2",
-              "question": "What is a common trap associated with Galvanometer conversion?",
+              "id": "current-electricity-q-kirchhoff-wheatstone-2",
+              "question": "Describe a scenario where applying the concept of Kirchhoff/Wheatstone can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "galvanometer-conversion",
+                "current-electricity",
+                "kirchhoff-wheatstone",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "galvanometer-conversion",
-                "conceptSlug": "trap-galvanometer-conversion",
-                "microskillSlug": "avoid-galvanometer-conversion",
                 "subject": "Physics",
                 "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity"
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "kirchhoff-wheatstone",
+                "conceptSlug": "trap-kirchhoff-wheatstone",
+                "microskillSlug": "avoid-kirchhoff-wheatstone"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-current-electricity-5",
+      "title": "Mastery Module 5: Meter bridge principle and Related Concepts",
+      "description": "Comprehensive analysis covering meter bridge principle, potentiometer principle, galvanometer to ammeter conversion and advanced applications.",
+      "conceptTags": [
+        "current-electricity",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-current-electricity-meter-bridge-principle-20",
+          "title": "Meter bridge principle",
+          "conceptTags": [
+            "current-electricity",
+            "meter-bridge-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Meter bridge principle"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Meter bridge principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Meter bridge principle correctly is essential for solving complex multi-step problems in Current Electricity."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Meter bridge principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Meter bridge principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Meter bridge principle.",
+            "Successfully avoids common pitfalls when Meter bridge principle is integrated with other concepts in Current Electricity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Meter bridge principle in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "current-electricity-q-meter-bridge-principle-1",
+              "question": "What are the critical factors or principles governing Meter bridge principle?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "meter-bridge-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "meter-bridge-principle",
+                "conceptSlug": "core-meter-bridge-principle",
+                "microskillSlug": "understand-meter-bridge-principle"
+              }
+            },
+            {
+              "id": "current-electricity-q-meter-bridge-principle-2",
+              "question": "Describe a scenario where applying the concept of Meter bridge principle can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "meter-bridge-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "meter-bridge-principle",
+                "conceptSlug": "trap-meter-bridge-principle",
+                "microskillSlug": "avoid-meter-bridge-principle"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-current-electricity-potentiometer-principle-21",
+          "title": "Potentiometer principle",
+          "conceptTags": [
+            "current-electricity",
+            "potentiometer-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Potentiometer principle"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Potentiometer principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potentiometer principle correctly is essential for solving complex multi-step problems in Current Electricity."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Potentiometer principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potentiometer principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Potentiometer principle.",
+            "Successfully avoids common pitfalls when Potentiometer principle is integrated with other concepts in Current Electricity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Potentiometer principle in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "current-electricity-q-potentiometer-principle-1",
+              "question": "What are the critical factors or principles governing Potentiometer principle?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "potentiometer-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "potentiometer-principle",
+                "conceptSlug": "core-potentiometer-principle",
+                "microskillSlug": "understand-potentiometer-principle"
+              }
+            },
+            {
+              "id": "current-electricity-q-potentiometer-principle-2",
+              "question": "Describe a scenario where applying the concept of Potentiometer principle can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "potentiometer-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "potentiometer-principle",
+                "conceptSlug": "trap-potentiometer-principle",
+                "microskillSlug": "avoid-potentiometer-principle"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-current-electricity-galvanometer-to-ammeter-conversion-22",
+          "title": "Galvanometer to ammeter conversion",
+          "conceptTags": [
+            "current-electricity",
+            "galvanometer-to-ammeter-conversion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Galvanometer to ammeter conversion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Galvanometer to ammeter conversion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Galvanometer to ammeter conversion correctly is essential for solving complex multi-step problems in Current Electricity."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Galvanometer to ammeter conversion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Galvanometer to ammeter conversion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Galvanometer to ammeter conversion.",
+            "Successfully avoids common pitfalls when Galvanometer to ammeter conversion is integrated with other concepts in Current Electricity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Galvanometer to ammeter conversion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "current-electricity-q-galvanometer-to-ammeter-conversion-1",
+              "question": "What are the critical factors or principles governing Galvanometer to ammeter conversion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "galvanometer-to-ammeter-conversion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "galvanometer-to-ammeter-conversion",
+                "conceptSlug": "core-galvanometer-to-ammeter-conversion",
+                "microskillSlug": "understand-galvanometer-to-ammeter-conversion"
+              }
+            },
+            {
+              "id": "current-electricity-q-galvanometer-to-ammeter-conversion-2",
+              "question": "Describe a scenario where applying the concept of Galvanometer to ammeter conversion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "galvanometer-to-ammeter-conversion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "galvanometer-to-ammeter-conversion",
+                "conceptSlug": "trap-galvanometer-to-ammeter-conversion",
+                "microskillSlug": "avoid-galvanometer-to-ammeter-conversion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-current-electricity-galvanometer-to-voltmeter-conversion-23",
+          "title": "Galvanometer to voltmeter conversion",
+          "conceptTags": [
+            "current-electricity",
+            "galvanometer-to-voltmeter-conversion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Current Electricity, Section detailing Galvanometer to voltmeter conversion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Galvanometer to voltmeter conversion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Galvanometer to voltmeter conversion correctly is essential for solving complex multi-step problems in Current Electricity."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Galvanometer to voltmeter conversion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Galvanometer to voltmeter conversion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Galvanometer to voltmeter conversion.",
+            "Successfully avoids common pitfalls when Galvanometer to voltmeter conversion is integrated with other concepts in Current Electricity."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Galvanometer to voltmeter conversion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "current-electricity-q-galvanometer-to-voltmeter-conversion-1",
+              "question": "What are the critical factors or principles governing Galvanometer to voltmeter conversion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "galvanometer-to-voltmeter-conversion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "galvanometer-to-voltmeter-conversion",
+                "conceptSlug": "core-galvanometer-to-voltmeter-conversion",
+                "microskillSlug": "understand-galvanometer-to-voltmeter-conversion"
+              }
+            },
+            {
+              "id": "current-electricity-q-galvanometer-to-voltmeter-conversion-2",
+              "question": "Describe a scenario where applying the concept of Galvanometer to voltmeter conversion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "current-electricity",
+                "galvanometer-to-voltmeter-conversion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "current-electricity",
+                "chapterSlug": "current-electricity",
+                "topicSlug": "current-electricity",
+                "subtopicSlug": "galvanometer-to-voltmeter-conversion",
+                "conceptSlug": "trap-galvanometer-to-voltmeter-conversion",
+                "microskillSlug": "avoid-galvanometer-to-voltmeter-conversion"
               }
             }
           ]

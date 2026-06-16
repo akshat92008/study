@@ -58,6 +58,9 @@ function buildSeededTopicRows(
             taxonomyPath: mt.activeRecallQuestions?.[0]?.taxonomyPath,
             estimatedMinutes: mt.estimatedMinutes,
             seededBy: 'neet-curated-seeder-v2',
+            sourceSubject: template.subject,
+            sourceUnit: template.chapterSlug,
+            sourceChapter: template.chapterTitle,
           },
         });
         globalIndex++;

@@ -2,557 +2,505 @@
   "missions": [
     {
       "id": "m-rotational-motion-1",
-      "title": "Rotational Motion - Section 1",
-      "description": "Comprehensive analysis covering centre of mass, COM of two particles, COM of rigid body and more.",
+      "title": "Mastery Module 1: Centre of mass definition and Related Concepts",
+      "description": "Comprehensive analysis covering centre of mass definition, COM of two particle system, COM of continuous bodies and advanced applications.",
       "conceptTags": [
         "rotational-motion",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-rotational-motion-centre-of-mass",
-          "title": "Centre of mass",
+          "id": "mt-rotational-motion-centre-of-mass-definition-0",
+          "title": "Centre of mass definition",
           "conceptTags": [
             "rotational-motion",
-            "centre-of-mass"
+            "centre-of-mass-definition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Centre of mass"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Centre of mass definition"
           ],
           "mustKnowFacts": [
-            "Centre of mass is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Centre of mass for NEET."
+            "A thorough understanding of Centre of mass definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Centre of mass definition correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for centre of mass",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Centre of mass during complex MCQs.",
-            "Failing to apply the correct logic for Centre of mass."
+            "Misinterpreting the subtle edge cases of Centre of mass definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Centre of mass definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Centre of mass."
+            "Can accurately solve numericals or identify biological structures related specifically to Centre of mass definition.",
+            "Successfully avoids common pitfalls when Centre of mass definition is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Centre of mass."
+            "Past year questions frequently test the application of Centre of mass definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-centre-of-mass-1",
-              "question": "Explain the core concept behind Centre of mass.",
+              "id": "rotational-motion-q-centre-of-mass-definition-1",
+              "question": "What are the critical factors or principles governing Centre of mass definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "centre-of-mass"
+                "rotational-motion",
+                "centre-of-mass-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "centre-of-mass",
-                "conceptSlug": "core-centre-of-mass",
-                "microskillSlug": "understand-centre-of-mass",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "centre-of-mass-definition",
+                "conceptSlug": "core-centre-of-mass-definition",
+                "microskillSlug": "understand-centre-of-mass-definition"
               }
             },
             {
-              "id": "rotational-motion-q-centre-of-mass-2",
-              "question": "What is a common trap associated with Centre of mass?",
+              "id": "rotational-motion-q-centre-of-mass-definition-2",
+              "question": "Describe a scenario where applying the concept of Centre of mass definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "centre-of-mass",
+                "rotational-motion",
+                "centre-of-mass-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "centre-of-mass",
-                "conceptSlug": "trap-centre-of-mass",
-                "microskillSlug": "avoid-centre-of-mass",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "centre-of-mass-definition",
+                "conceptSlug": "trap-centre-of-mass-definition",
+                "microskillSlug": "avoid-centre-of-mass-definition"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-com-of-two-particles",
-          "title": "COM of two particles",
+          "id": "mt-rotational-motion-com-of-two-particle-system-1",
+          "title": "COM of two particle system",
           "conceptTags": [
             "rotational-motion",
-            "com-of-two-particles"
+            "com-of-two-particle-system"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, COM of two particles"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing COM of two particle system"
           ],
           "mustKnowFacts": [
-            "COM of two particles is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing COM of two particles for NEET."
+            "A thorough understanding of COM of two particle system is heavily tested in recent NEET papers.",
+            "Applying the core principles of COM of two particle system correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for COM of two particles",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret COM of two particles during complex MCQs.",
-            "Failing to apply the correct logic for COM of two particles."
+            "Misinterpreting the subtle edge cases of COM of two particle system during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with COM of two particle system."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to COM of two particles."
+            "Can accurately solve numericals or identify biological structures related specifically to COM of two particle system.",
+            "Successfully avoids common pitfalls when COM of two particle system is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about COM of two particles."
+            "Past year questions frequently test the application of COM of two particle system in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-com-of-two-particles-1",
-              "question": "Explain the core concept behind COM of two particles.",
+              "id": "rotational-motion-q-com-of-two-particle-system-1",
+              "question": "What are the critical factors or principles governing COM of two particle system?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "com-of-two-particles"
+                "rotational-motion",
+                "com-of-two-particle-system"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-two-particles",
-                "conceptSlug": "core-com-of-two-particles",
-                "microskillSlug": "understand-com-of-two-particles",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "com-of-two-particle-system",
+                "conceptSlug": "core-com-of-two-particle-system",
+                "microskillSlug": "understand-com-of-two-particle-system"
               }
             },
             {
-              "id": "rotational-motion-q-com-of-two-particles-2",
-              "question": "What is a common trap associated with COM of two particles?",
+              "id": "rotational-motion-q-com-of-two-particle-system-2",
+              "question": "Describe a scenario where applying the concept of COM of two particle system can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "com-of-two-particles",
+                "rotational-motion",
+                "com-of-two-particle-system",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-two-particles",
-                "conceptSlug": "trap-com-of-two-particles",
-                "microskillSlug": "avoid-com-of-two-particles",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "com-of-two-particle-system",
+                "conceptSlug": "trap-com-of-two-particle-system",
+                "microskillSlug": "avoid-com-of-two-particle-system"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-com-of-rigid-body",
-          "title": "COM of rigid body",
+          "id": "mt-rotational-motion-com-of-continuous-bodies-2",
+          "title": "COM of continuous bodies",
           "conceptTags": [
             "rotational-motion",
-            "com-of-rigid-body"
+            "com-of-continuous-bodies"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, COM of rigid body"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing COM of continuous bodies"
           ],
           "mustKnowFacts": [
-            "COM of rigid body is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing COM of rigid body for NEET."
+            "A thorough understanding of COM of continuous bodies is heavily tested in recent NEET papers.",
+            "Applying the core principles of COM of continuous bodies correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for COM of rigid body",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret COM of rigid body during complex MCQs.",
-            "Failing to apply the correct logic for COM of rigid body."
+            "Misinterpreting the subtle edge cases of COM of continuous bodies during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with COM of continuous bodies."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to COM of rigid body."
+            "Can accurately solve numericals or identify biological structures related specifically to COM of continuous bodies.",
+            "Successfully avoids common pitfalls when COM of continuous bodies is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about COM of rigid body."
+            "Past year questions frequently test the application of COM of continuous bodies in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-com-of-rigid-body-1",
-              "question": "Explain the core concept behind COM of rigid body.",
+              "id": "rotational-motion-q-com-of-continuous-bodies-1",
+              "question": "What are the critical factors or principles governing COM of continuous bodies?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "com-of-rigid-body"
+                "rotational-motion",
+                "com-of-continuous-bodies"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-rigid-body",
-                "conceptSlug": "core-com-of-rigid-body",
-                "microskillSlug": "understand-com-of-rigid-body",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "com-of-continuous-bodies",
+                "conceptSlug": "core-com-of-continuous-bodies",
+                "microskillSlug": "understand-com-of-continuous-bodies"
               }
             },
             {
-              "id": "rotational-motion-q-com-of-rigid-body-2",
-              "question": "What is a common trap associated with COM of rigid body?",
+              "id": "rotational-motion-q-com-of-continuous-bodies-2",
+              "question": "Describe a scenario where applying the concept of COM of continuous bodies can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "com-of-rigid-body",
+                "rotational-motion",
+                "com-of-continuous-bodies",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-rigid-body",
-                "conceptSlug": "trap-com-of-rigid-body",
-                "microskillSlug": "avoid-com-of-rigid-body",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "com-of-continuous-bodies",
+                "conceptSlug": "trap-com-of-continuous-bodies",
+                "microskillSlug": "avoid-com-of-continuous-bodies"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-torque",
-          "title": "Torque",
+          "id": "mt-rotational-motion-torque-definition-and-formula-3",
+          "title": "Torque definition and formula",
           "conceptTags": [
             "rotational-motion",
-            "torque"
+            "torque-definition-and-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Torque"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Torque definition and formula"
           ],
           "mustKnowFacts": [
-            "Torque is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Torque for NEET."
+            "A thorough understanding of Torque definition and formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Torque definition and formula correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for torque",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Torque during complex MCQs.",
-            "Failing to apply the correct logic for Torque."
+            "Misinterpreting the subtle edge cases of Torque definition and formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Torque definition and formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Torque."
+            "Can accurately solve numericals or identify biological structures related specifically to Torque definition and formula.",
+            "Successfully avoids common pitfalls when Torque definition and formula is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Torque."
+            "Past year questions frequently test the application of Torque definition and formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-torque-1",
-              "question": "Explain the core concept behind Torque.",
+              "id": "rotational-motion-q-torque-definition-and-formula-1",
+              "question": "What are the critical factors or principles governing Torque definition and formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "torque"
+                "rotational-motion",
+                "torque-definition-and-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "torque",
-                "conceptSlug": "core-torque",
-                "microskillSlug": "understand-torque",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "torque-definition-and-formula",
+                "conceptSlug": "core-torque-definition-and-formula",
+                "microskillSlug": "understand-torque-definition-and-formula"
               }
             },
             {
-              "id": "rotational-motion-q-torque-2",
-              "question": "What is a common trap associated with Torque?",
+              "id": "rotational-motion-q-torque-definition-and-formula-2",
+              "question": "Describe a scenario where applying the concept of Torque definition and formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "torque",
+                "rotational-motion",
+                "torque-definition-and-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "torque",
-                "conceptSlug": "trap-torque",
-                "microskillSlug": "avoid-torque",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "torque-definition-and-formula",
+                "conceptSlug": "trap-torque-definition-and-formula",
+                "microskillSlug": "avoid-torque-definition-and-formula"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-moment-arm",
+          "id": "mt-rotational-motion-moment-arm-4",
           "title": "Moment arm",
           "conceptTags": [
             "rotational-motion",
             "moment-arm"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Moment arm"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Moment arm"
           ],
           "mustKnowFacts": [
-            "Moment arm is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Moment arm for NEET."
+            "A thorough understanding of Moment arm is heavily tested in recent NEET papers.",
+            "Applying the core principles of Moment arm correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for moment arm",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Moment arm during complex MCQs.",
-            "Failing to apply the correct logic for Moment arm."
+            "Misinterpreting the subtle edge cases of Moment arm during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Moment arm."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Moment arm."
+            "Can accurately solve numericals or identify biological structures related specifically to Moment arm.",
+            "Successfully avoids common pitfalls when Moment arm is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Moment arm."
+            "Past year questions frequently test the application of Moment arm in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-moment-arm-1",
-              "question": "Explain the core concept behind Moment arm.",
+              "question": "What are the critical factors or principles governing Moment arm?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "moment-arm"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "moment-arm",
                 "conceptSlug": "core-moment-arm",
-                "microskillSlug": "understand-moment-arm",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-moment-arm"
               }
             },
             {
               "id": "rotational-motion-q-moment-arm-2",
-              "question": "What is a common trap associated with Moment arm?",
+              "question": "Describe a scenario where applying the concept of Moment arm can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "moment-arm",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "moment-arm",
                 "conceptSlug": "trap-moment-arm",
-                "microskillSlug": "avoid-moment-arm",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-angular-momentum",
-          "title": "Angular momentum",
-          "conceptTags": [
-            "rotational-motion",
-            "angular-momentum"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Angular momentum"
-          ],
-          "mustKnowFacts": [
-            "Angular momentum is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Angular momentum for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for angular momentum",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Angular momentum during complex MCQs.",
-            "Failing to apply the correct logic for Angular momentum."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angular momentum."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Angular momentum."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-angular-momentum-1",
-              "question": "Explain the core concept behind Angular momentum.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "angular-momentum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-momentum",
-                "conceptSlug": "core-angular-momentum",
-                "microskillSlug": "understand-angular-momentum",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-angular-momentum-2",
-              "question": "What is a common trap associated with Angular momentum?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "angular-momentum",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-momentum",
-                "conceptSlug": "trap-angular-momentum",
-                "microskillSlug": "avoid-angular-momentum",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-moment-arm"
               }
             }
           ]
@@ -561,557 +509,504 @@
     },
     {
       "id": "m-rotational-motion-2",
-      "title": "Rotational Motion - Section 2",
-      "description": "Comprehensive analysis covering conservation of angular momentum, moment of inertia, radius of gyration and more.",
+      "title": "Mastery Module 2: Angular momentum and Related Concepts",
+      "description": "Comprehensive analysis covering angular momentum, conservation of angular momentum, moment of inertia/torque and advanced applications.",
       "conceptTags": [
         "rotational-motion",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-rotational-motion-conservation-of-angular-momentum",
+          "id": "mt-rotational-motion-angular-momentum-5",
+          "title": "Angular momentum",
+          "conceptTags": [
+            "rotational-motion",
+            "angular-momentum"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Angular momentum"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Angular momentum is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angular momentum correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Angular momentum during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angular momentum."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Angular momentum.",
+            "Successfully avoids common pitfalls when Angular momentum is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Angular momentum in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-angular-momentum-1",
+              "question": "What are the critical factors or principles governing Angular momentum?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "angular-momentum"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "angular-momentum",
+                "conceptSlug": "core-angular-momentum",
+                "microskillSlug": "understand-angular-momentum"
+              }
+            },
+            {
+              "id": "rotational-motion-q-angular-momentum-2",
+              "question": "Describe a scenario where applying the concept of Angular momentum can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "angular-momentum",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "angular-momentum",
+                "conceptSlug": "trap-angular-momentum",
+                "microskillSlug": "avoid-angular-momentum"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-conservation-of-angular-momentum-6",
           "title": "Conservation of angular momentum",
           "conceptTags": [
             "rotational-motion",
             "conservation-of-angular-momentum"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Conservation of angular momentum"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Conservation of angular momentum"
           ],
           "mustKnowFacts": [
-            "Conservation of angular momentum is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Conservation of angular momentum for NEET."
+            "A thorough understanding of Conservation of angular momentum is heavily tested in recent NEET papers.",
+            "Applying the core principles of Conservation of angular momentum correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for conservation of angular momentum",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Conservation of angular momentum during complex MCQs.",
-            "Failing to apply the correct logic for Conservation of angular momentum."
+            "Misinterpreting the subtle edge cases of Conservation of angular momentum during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Conservation of angular momentum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conservation of angular momentum."
+            "Can accurately solve numericals or identify biological structures related specifically to Conservation of angular momentum.",
+            "Successfully avoids common pitfalls when Conservation of angular momentum is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Conservation of angular momentum."
+            "Past year questions frequently test the application of Conservation of angular momentum in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-conservation-of-angular-momentum-1",
-              "question": "Explain the core concept behind Conservation of angular momentum.",
+              "question": "What are the critical factors or principles governing Conservation of angular momentum?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "conservation-of-angular-momentum"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "conservation-of-angular-momentum",
                 "conceptSlug": "core-conservation-of-angular-momentum",
-                "microskillSlug": "understand-conservation-of-angular-momentum",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-conservation-of-angular-momentum"
               }
             },
             {
               "id": "rotational-motion-q-conservation-of-angular-momentum-2",
-              "question": "What is a common trap associated with Conservation of angular momentum?",
+              "question": "Describe a scenario where applying the concept of Conservation of angular momentum can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "conservation-of-angular-momentum",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "conservation-of-angular-momentum",
                 "conceptSlug": "trap-conservation-of-angular-momentum",
-                "microskillSlug": "avoid-conservation-of-angular-momentum",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-conservation-of-angular-momentum"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-moment-of-inertia",
-          "title": "Moment of inertia",
+          "id": "mt-rotational-motion-moment-of-inertia-torque-7",
+          "title": "Moment of inertia/torque",
           "conceptTags": [
             "rotational-motion",
-            "moment-of-inertia"
+            "moment-of-inertia-torque"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Moment of inertia"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Moment of inertia/torque"
           ],
           "mustKnowFacts": [
-            "Moment of inertia is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Moment of inertia for NEET."
+            "A thorough understanding of Moment of inertia/torque is heavily tested in recent NEET papers.",
+            "Applying the core principles of Moment of inertia/torque correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for moment of inertia",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Moment of inertia during complex MCQs.",
-            "Failing to apply the correct logic for Moment of inertia."
+            "Misinterpreting the subtle edge cases of Moment of inertia/torque during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Moment of inertia/torque."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Moment of inertia."
+            "Can accurately solve numericals or identify biological structures related specifically to Moment of inertia/torque.",
+            "Successfully avoids common pitfalls when Moment of inertia/torque is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Moment of inertia."
+            "Past year questions frequently test the application of Moment of inertia/torque in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-moment-of-inertia-1",
-              "question": "Explain the core concept behind Moment of inertia.",
+              "id": "rotational-motion-q-moment-of-inertia-torque-1",
+              "question": "What are the critical factors or principles governing Moment of inertia/torque?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "moment-of-inertia"
+                "rotational-motion",
+                "moment-of-inertia-torque"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "moment-of-inertia",
-                "conceptSlug": "core-moment-of-inertia",
-                "microskillSlug": "understand-moment-of-inertia",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "moment-of-inertia-torque",
+                "conceptSlug": "core-moment-of-inertia-torque",
+                "microskillSlug": "understand-moment-of-inertia-torque"
               }
             },
             {
-              "id": "rotational-motion-q-moment-of-inertia-2",
-              "question": "What is a common trap associated with Moment of inertia?",
+              "id": "rotational-motion-q-moment-of-inertia-torque-2",
+              "question": "Describe a scenario where applying the concept of Moment of inertia/torque can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "moment-of-inertia",
+                "rotational-motion",
+                "moment-of-inertia-torque",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "moment-of-inertia",
-                "conceptSlug": "trap-moment-of-inertia",
-                "microskillSlug": "avoid-moment-of-inertia",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "moment-of-inertia-torque",
+                "conceptSlug": "trap-moment-of-inertia-torque",
+                "microskillSlug": "avoid-moment-of-inertia-torque"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-radius-of-gyration",
+          "id": "mt-rotational-motion-radius-of-gyration-8",
           "title": "Radius of gyration",
           "conceptTags": [
             "rotational-motion",
             "radius-of-gyration"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Radius of gyration"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Radius of gyration"
           ],
           "mustKnowFacts": [
-            "Radius of gyration is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Radius of gyration for NEET."
+            "A thorough understanding of Radius of gyration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Radius of gyration correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for radius of gyration",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Radius of gyration during complex MCQs.",
-            "Failing to apply the correct logic for Radius of gyration."
+            "Misinterpreting the subtle edge cases of Radius of gyration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Radius of gyration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Radius of gyration."
+            "Can accurately solve numericals or identify biological structures related specifically to Radius of gyration.",
+            "Successfully avoids common pitfalls when Radius of gyration is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Radius of gyration."
+            "Past year questions frequently test the application of Radius of gyration in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-radius-of-gyration-1",
-              "question": "Explain the core concept behind Radius of gyration.",
+              "question": "What are the critical factors or principles governing Radius of gyration?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "radius-of-gyration"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "radius-of-gyration",
                 "conceptSlug": "core-radius-of-gyration",
-                "microskillSlug": "understand-radius-of-gyration",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-radius-of-gyration"
               }
             },
             {
               "id": "rotational-motion-q-radius-of-gyration-2",
-              "question": "What is a common trap associated with Radius of gyration?",
+              "question": "Describe a scenario where applying the concept of Radius of gyration can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "radius-of-gyration",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "radius-of-gyration",
                 "conceptSlug": "trap-radius-of-gyration",
-                "microskillSlug": "avoid-radius-of-gyration",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-radius-of-gyration"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-parallel-axis-theorem",
+          "id": "mt-rotational-motion-parallel-axis-theorem-9",
           "title": "Parallel axis theorem",
           "conceptTags": [
             "rotational-motion",
             "parallel-axis-theorem"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Parallel axis theorem"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Parallel axis theorem"
           ],
           "mustKnowFacts": [
-            "Parallel axis theorem is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Parallel axis theorem for NEET."
+            "A thorough understanding of Parallel axis theorem is heavily tested in recent NEET papers.",
+            "Applying the core principles of Parallel axis theorem correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for parallel axis theorem",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Parallel axis theorem during complex MCQs.",
-            "Failing to apply the correct logic for Parallel axis theorem."
+            "Misinterpreting the subtle edge cases of Parallel axis theorem during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Parallel axis theorem."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Parallel axis theorem."
+            "Can accurately solve numericals or identify biological structures related specifically to Parallel axis theorem.",
+            "Successfully avoids common pitfalls when Parallel axis theorem is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Parallel axis theorem."
+            "Past year questions frequently test the application of Parallel axis theorem in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-parallel-axis-theorem-1",
-              "question": "Explain the core concept behind Parallel axis theorem.",
+              "question": "What are the critical factors or principles governing Parallel axis theorem?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "parallel-axis-theorem"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "parallel-axis-theorem",
                 "conceptSlug": "core-parallel-axis-theorem",
-                "microskillSlug": "understand-parallel-axis-theorem",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-parallel-axis-theorem"
               }
             },
             {
               "id": "rotational-motion-q-parallel-axis-theorem-2",
-              "question": "What is a common trap associated with Parallel axis theorem?",
+              "question": "Describe a scenario where applying the concept of Parallel axis theorem can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "parallel-axis-theorem",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "parallel-axis-theorem",
                 "conceptSlug": "trap-parallel-axis-theorem",
-                "microskillSlug": "avoid-parallel-axis-theorem",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-perpendicular-axis-theorem",
-          "title": "Perpendicular axis theorem",
-          "conceptTags": [
-            "rotational-motion",
-            "perpendicular-axis-theorem"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Perpendicular axis theorem"
-          ],
-          "mustKnowFacts": [
-            "Perpendicular axis theorem is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Perpendicular axis theorem for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for perpendicular axis theorem",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Perpendicular axis theorem during complex MCQs.",
-            "Failing to apply the correct logic for Perpendicular axis theorem."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Perpendicular axis theorem."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Perpendicular axis theorem."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-perpendicular-axis-theorem-1",
-              "question": "Explain the core concept behind Perpendicular axis theorem.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "perpendicular-axis-theorem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "perpendicular-axis-theorem",
-                "conceptSlug": "core-perpendicular-axis-theorem",
-                "microskillSlug": "understand-perpendicular-axis-theorem",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-perpendicular-axis-theorem-2",
-              "question": "What is a common trap associated with Perpendicular axis theorem?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "perpendicular-axis-theorem",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "perpendicular-axis-theorem",
-                "conceptSlug": "trap-perpendicular-axis-theorem",
-                "microskillSlug": "avoid-perpendicular-axis-theorem",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-mi-of-standard-bodies",
-          "title": "MI of standard bodies",
-          "conceptTags": [
-            "rotational-motion",
-            "mi-of-standard-bodies"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, MI of standard bodies"
-          ],
-          "mustKnowFacts": [
-            "MI of standard bodies is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing MI of standard bodies for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for MI of standard bodies",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret MI of standard bodies during complex MCQs.",
-            "Failing to apply the correct logic for MI of standard bodies."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to MI of standard bodies."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about MI of standard bodies."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-mi-of-standard-bodies-1",
-              "question": "Explain the core concept behind MI of standard bodies.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "mi-of-standard-bodies"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "mi-of-standard-bodies",
-                "conceptSlug": "core-mi-of-standard-bodies",
-                "microskillSlug": "understand-mi-of-standard-bodies",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-mi-of-standard-bodies-2",
-              "question": "What is a common trap associated with MI of standard bodies?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "mi-of-standard-bodies",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "mi-of-standard-bodies",
-                "conceptSlug": "trap-mi-of-standard-bodies",
-                "microskillSlug": "avoid-mi-of-standard-bodies",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-parallel-axis-theorem"
               }
             }
           ]
@@ -1120,557 +1015,505 @@
     },
     {
       "id": "m-rotational-motion-3",
-      "title": "Rotational Motion - Section 3",
-      "description": "Comprehensive analysis covering angular displacement, angular velocity, angular acceleration and more.",
+      "title": "Mastery Module 3: Perpendicular axis theorem and Related Concepts",
+      "description": "Comprehensive analysis covering perpendicular axis theorem, MI of ring and disc, MI of cylinder and sphere and advanced applications.",
       "conceptTags": [
         "rotational-motion",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-rotational-motion-angular-displacement",
+          "id": "mt-rotational-motion-perpendicular-axis-theorem-10",
+          "title": "Perpendicular axis theorem",
+          "conceptTags": [
+            "rotational-motion",
+            "perpendicular-axis-theorem"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Perpendicular axis theorem"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Perpendicular axis theorem is heavily tested in recent NEET papers.",
+            "Applying the core principles of Perpendicular axis theorem correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Perpendicular axis theorem during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Perpendicular axis theorem."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Perpendicular axis theorem.",
+            "Successfully avoids common pitfalls when Perpendicular axis theorem is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Perpendicular axis theorem in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-perpendicular-axis-theorem-1",
+              "question": "What are the critical factors or principles governing Perpendicular axis theorem?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "perpendicular-axis-theorem"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "perpendicular-axis-theorem",
+                "conceptSlug": "core-perpendicular-axis-theorem",
+                "microskillSlug": "understand-perpendicular-axis-theorem"
+              }
+            },
+            {
+              "id": "rotational-motion-q-perpendicular-axis-theorem-2",
+              "question": "Describe a scenario where applying the concept of Perpendicular axis theorem can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "perpendicular-axis-theorem",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "perpendicular-axis-theorem",
+                "conceptSlug": "trap-perpendicular-axis-theorem",
+                "microskillSlug": "avoid-perpendicular-axis-theorem"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-mi-of-ring-and-disc-11",
+          "title": "MI of ring and disc",
+          "conceptTags": [
+            "rotational-motion",
+            "mi-of-ring-and-disc"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing MI of ring and disc"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of MI of ring and disc is heavily tested in recent NEET papers.",
+            "Applying the core principles of MI of ring and disc correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of MI of ring and disc during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with MI of ring and disc."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to MI of ring and disc.",
+            "Successfully avoids common pitfalls when MI of ring and disc is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of MI of ring and disc in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-mi-of-ring-and-disc-1",
+              "question": "What are the critical factors or principles governing MI of ring and disc?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "mi-of-ring-and-disc"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "mi-of-ring-and-disc",
+                "conceptSlug": "core-mi-of-ring-and-disc",
+                "microskillSlug": "understand-mi-of-ring-and-disc"
+              }
+            },
+            {
+              "id": "rotational-motion-q-mi-of-ring-and-disc-2",
+              "question": "Describe a scenario where applying the concept of MI of ring and disc can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "mi-of-ring-and-disc",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "mi-of-ring-and-disc",
+                "conceptSlug": "trap-mi-of-ring-and-disc",
+                "microskillSlug": "avoid-mi-of-ring-and-disc"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-mi-of-cylinder-and-sphere-12",
+          "title": "MI of cylinder and sphere",
+          "conceptTags": [
+            "rotational-motion",
+            "mi-of-cylinder-and-sphere"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing MI of cylinder and sphere"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of MI of cylinder and sphere is heavily tested in recent NEET papers.",
+            "Applying the core principles of MI of cylinder and sphere correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of MI of cylinder and sphere during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with MI of cylinder and sphere."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to MI of cylinder and sphere.",
+            "Successfully avoids common pitfalls when MI of cylinder and sphere is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of MI of cylinder and sphere in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-mi-of-cylinder-and-sphere-1",
+              "question": "What are the critical factors or principles governing MI of cylinder and sphere?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "mi-of-cylinder-and-sphere"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "mi-of-cylinder-and-sphere",
+                "conceptSlug": "core-mi-of-cylinder-and-sphere",
+                "microskillSlug": "understand-mi-of-cylinder-and-sphere"
+              }
+            },
+            {
+              "id": "rotational-motion-q-mi-of-cylinder-and-sphere-2",
+              "question": "Describe a scenario where applying the concept of MI of cylinder and sphere can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "mi-of-cylinder-and-sphere",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "mi-of-cylinder-and-sphere",
+                "conceptSlug": "trap-mi-of-cylinder-and-sphere",
+                "microskillSlug": "avoid-mi-of-cylinder-and-sphere"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-angular-displacement-13",
           "title": "Angular displacement",
           "conceptTags": [
             "rotational-motion",
             "angular-displacement"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Angular displacement"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Angular displacement"
           ],
           "mustKnowFacts": [
-            "Angular displacement is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Angular displacement for NEET."
+            "A thorough understanding of Angular displacement is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angular displacement correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for angular displacement",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Angular displacement during complex MCQs.",
-            "Failing to apply the correct logic for Angular displacement."
+            "Misinterpreting the subtle edge cases of Angular displacement during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angular displacement."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angular displacement."
+            "Can accurately solve numericals or identify biological structures related specifically to Angular displacement.",
+            "Successfully avoids common pitfalls when Angular displacement is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Angular displacement."
+            "Past year questions frequently test the application of Angular displacement in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-angular-displacement-1",
-              "question": "Explain the core concept behind Angular displacement.",
+              "question": "What are the critical factors or principles governing Angular displacement?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "angular-displacement"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "angular-displacement",
                 "conceptSlug": "core-angular-displacement",
-                "microskillSlug": "understand-angular-displacement",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-angular-displacement"
               }
             },
             {
               "id": "rotational-motion-q-angular-displacement-2",
-              "question": "What is a common trap associated with Angular displacement?",
+              "question": "Describe a scenario where applying the concept of Angular displacement can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "angular-displacement",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "angular-displacement",
                 "conceptSlug": "trap-angular-displacement",
-                "microskillSlug": "avoid-angular-displacement",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-angular-displacement"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-angular-velocity",
-          "title": "Angular velocity",
+          "id": "mt-rotational-motion-angular-velocity-and-acceleration-14",
+          "title": "Angular velocity and acceleration",
           "conceptTags": [
             "rotational-motion",
-            "angular-velocity"
+            "angular-velocity-and-acceleration"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Angular velocity"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Angular velocity and acceleration"
           ],
           "mustKnowFacts": [
-            "Angular velocity is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Angular velocity for NEET."
+            "A thorough understanding of Angular velocity and acceleration is heavily tested in recent NEET papers.",
+            "Applying the core principles of Angular velocity and acceleration correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for angular velocity",
-              "expression": "F = m a",
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "x",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Angular velocity during complex MCQs.",
-            "Failing to apply the correct logic for Angular velocity."
+            "Misinterpreting the subtle edge cases of Angular velocity and acceleration during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Angular velocity and acceleration."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angular velocity."
+            "Can accurately solve numericals or identify biological structures related specifically to Angular velocity and acceleration.",
+            "Successfully avoids common pitfalls when Angular velocity and acceleration is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Angular velocity."
+            "Past year questions frequently test the application of Angular velocity and acceleration in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-angular-velocity-1",
-              "question": "Explain the core concept behind Angular velocity.",
+              "id": "rotational-motion-q-angular-velocity-and-acceleration-1",
+              "question": "What are the critical factors or principles governing Angular velocity and acceleration?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "angular-velocity"
+                "rotational-motion",
+                "angular-velocity-and-acceleration"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-velocity",
-                "conceptSlug": "core-angular-velocity",
-                "microskillSlug": "understand-angular-velocity",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "angular-velocity-and-acceleration",
+                "conceptSlug": "core-angular-velocity-and-acceleration",
+                "microskillSlug": "understand-angular-velocity-and-acceleration"
               }
             },
             {
-              "id": "rotational-motion-q-angular-velocity-2",
-              "question": "What is a common trap associated with Angular velocity?",
+              "id": "rotational-motion-q-angular-velocity-and-acceleration-2",
+              "question": "Describe a scenario where applying the concept of Angular velocity and acceleration can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "angular-velocity",
+                "rotational-motion",
+                "angular-velocity-and-acceleration",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-velocity",
-                "conceptSlug": "trap-angular-velocity",
-                "microskillSlug": "avoid-angular-velocity",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-angular-acceleration",
-          "title": "Angular acceleration",
-          "conceptTags": [
-            "rotational-motion",
-            "angular-acceleration"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Angular acceleration"
-          ],
-          "mustKnowFacts": [
-            "Angular acceleration is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Angular acceleration for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for angular acceleration",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Angular acceleration during complex MCQs.",
-            "Failing to apply the correct logic for Angular acceleration."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Angular acceleration."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Angular acceleration."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-angular-acceleration-1",
-              "question": "Explain the core concept behind Angular acceleration.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "angular-acceleration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-acceleration",
-                "conceptSlug": "core-angular-acceleration",
-                "microskillSlug": "understand-angular-acceleration",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-angular-acceleration-2",
-              "question": "What is a common trap associated with Angular acceleration?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "angular-acceleration",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-acceleration",
-                "conceptSlug": "trap-angular-acceleration",
-                "microskillSlug": "avoid-angular-acceleration",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-rotational-kinematics",
-          "title": "Rotational kinematics",
-          "conceptTags": [
-            "rotational-motion",
-            "rotational-kinematics"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Rotational kinematics"
-          ],
-          "mustKnowFacts": [
-            "Rotational kinematics is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Rotational kinematics for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for rotational kinematics",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Rotational kinematics during complex MCQs.",
-            "Failing to apply the correct logic for Rotational kinematics."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rotational kinematics."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Rotational kinematics."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-rotational-kinematics-1",
-              "question": "Explain the core concept behind Rotational kinematics.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "rotational-kinematics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinematics",
-                "conceptSlug": "core-rotational-kinematics",
-                "microskillSlug": "understand-rotational-kinematics",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-rotational-kinematics-2",
-              "question": "What is a common trap associated with Rotational kinematics?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "rotational-kinematics",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinematics",
-                "conceptSlug": "trap-rotational-kinematics",
-                "microskillSlug": "avoid-rotational-kinematics",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-rotational-kinetic-energy",
-          "title": "Rotational kinetic energy",
-          "conceptTags": [
-            "rotational-motion",
-            "rotational-kinetic-energy"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Rotational kinetic energy"
-          ],
-          "mustKnowFacts": [
-            "Rotational kinetic energy is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Rotational kinetic energy for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for rotational kinetic energy",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Rotational kinetic energy during complex MCQs.",
-            "Failing to apply the correct logic for Rotational kinetic energy."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rotational kinetic energy."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Rotational kinetic energy."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-rotational-kinetic-energy-1",
-              "question": "Explain the core concept behind Rotational kinetic energy.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "rotational-kinetic-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinetic-energy",
-                "conceptSlug": "core-rotational-kinetic-energy",
-                "microskillSlug": "understand-rotational-kinetic-energy",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-rotational-kinetic-energy-2",
-              "question": "What is a common trap associated with Rotational kinetic energy?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "rotational-kinetic-energy",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinetic-energy",
-                "conceptSlug": "trap-rotational-kinetic-energy",
-                "microskillSlug": "avoid-rotational-kinetic-energy",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-rotational-motion-rolling-motion",
-          "title": "Rolling motion",
-          "conceptTags": [
-            "rotational-motion",
-            "rolling-motion"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Rolling motion"
-          ],
-          "mustKnowFacts": [
-            "Rolling motion is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Rolling motion for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for rolling motion",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Rolling motion during complex MCQs.",
-            "Failing to apply the correct logic for Rolling motion."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rolling motion."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Rolling motion."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-rolling-motion-1",
-              "question": "Explain the core concept behind Rolling motion.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "rolling-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rolling-motion",
-                "conceptSlug": "core-rolling-motion",
-                "microskillSlug": "understand-rolling-motion",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
-              }
-            },
-            {
-              "id": "rotational-motion-q-rolling-motion-2",
-              "question": "What is a common trap associated with Rolling motion?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "rolling-motion",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rolling-motion",
-                "conceptSlug": "trap-rolling-motion",
-                "microskillSlug": "avoid-rolling-motion",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "subtopicSlug": "angular-velocity-and-acceleration",
+                "conceptSlug": "trap-angular-velocity-and-acceleration",
+                "microskillSlug": "avoid-angular-velocity-and-acceleration"
               }
             }
           ]
@@ -1679,375 +1522,714 @@
     },
     {
       "id": "m-rotational-motion-4",
-      "title": "Rotational Motion - Section 4",
-      "description": "Comprehensive analysis covering pure rolling, rolling on incline, equilibrium of rigid body and more.",
+      "title": "Mastery Module 4: Rotational kinematic equations and Related Concepts",
+      "description": "Comprehensive analysis covering rotational kinematic equations, rotational kinetic energy, pure rolling motion and advanced applications.",
       "conceptTags": [
         "rotational-motion",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-rotational-motion-pure-rolling",
-          "title": "Pure rolling",
+          "id": "mt-rotational-motion-rotational-kinematic-equations-15",
+          "title": "Rotational kinematic equations",
           "conceptTags": [
             "rotational-motion",
-            "pure-rolling"
+            "rotational-kinematic-equations"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Pure rolling"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Rotational kinematic equations"
           ],
           "mustKnowFacts": [
-            "Pure rolling is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Pure rolling for NEET."
+            "A thorough understanding of Rotational kinematic equations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rotational kinematic equations correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for pure rolling",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Pure rolling during complex MCQs.",
-            "Failing to apply the correct logic for Pure rolling."
+            "Misinterpreting the subtle edge cases of Rotational kinematic equations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rotational kinematic equations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Pure rolling."
+            "Can accurately solve numericals or identify biological structures related specifically to Rotational kinematic equations.",
+            "Successfully avoids common pitfalls when Rotational kinematic equations is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Pure rolling."
+            "Past year questions frequently test the application of Rotational kinematic equations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-pure-rolling-1",
-              "question": "Explain the core concept behind Pure rolling.",
+              "id": "rotational-motion-q-rotational-kinematic-equations-1",
+              "question": "What are the critical factors or principles governing Rotational kinematic equations?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "pure-rolling"
+                "rotational-motion",
+                "rotational-kinematic-equations"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "pure-rolling",
-                "conceptSlug": "core-pure-rolling",
-                "microskillSlug": "understand-pure-rolling",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rotational-kinematic-equations",
+                "conceptSlug": "core-rotational-kinematic-equations",
+                "microskillSlug": "understand-rotational-kinematic-equations"
               }
             },
             {
-              "id": "rotational-motion-q-pure-rolling-2",
-              "question": "What is a common trap associated with Pure rolling?",
+              "id": "rotational-motion-q-rotational-kinematic-equations-2",
+              "question": "Describe a scenario where applying the concept of Rotational kinematic equations can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "pure-rolling",
+                "rotational-motion",
+                "rotational-kinematic-equations",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "pure-rolling",
-                "conceptSlug": "trap-pure-rolling",
-                "microskillSlug": "avoid-pure-rolling",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rotational-kinematic-equations",
+                "conceptSlug": "trap-rotational-kinematic-equations",
+                "microskillSlug": "avoid-rotational-kinematic-equations"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-rolling-on-incline",
-          "title": "Rolling on incline",
+          "id": "mt-rotational-motion-rotational-kinetic-energy-16",
+          "title": "Rotational kinetic energy",
           "conceptTags": [
             "rotational-motion",
-            "rolling-on-incline"
+            "rotational-kinetic-energy"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Rolling on incline"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Rotational kinetic energy"
           ],
           "mustKnowFacts": [
-            "Rolling on incline is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Rolling on incline for NEET."
+            "A thorough understanding of Rotational kinetic energy is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rotational kinetic energy correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for rolling on incline",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Rolling on incline during complex MCQs.",
-            "Failing to apply the correct logic for Rolling on incline."
+            "Misinterpreting the subtle edge cases of Rotational kinetic energy during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rotational kinetic energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rolling on incline."
+            "Can accurately solve numericals or identify biological structures related specifically to Rotational kinetic energy.",
+            "Successfully avoids common pitfalls when Rotational kinetic energy is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rolling on incline."
+            "Past year questions frequently test the application of Rotational kinetic energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-rolling-on-incline-1",
-              "question": "Explain the core concept behind Rolling on incline.",
+              "id": "rotational-motion-q-rotational-kinetic-energy-1",
+              "question": "What are the critical factors or principles governing Rotational kinetic energy?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rolling-on-incline"
+                "rotational-motion",
+                "rotational-kinetic-energy"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rolling-on-incline",
-                "conceptSlug": "core-rolling-on-incline",
-                "microskillSlug": "understand-rolling-on-incline",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rotational-kinetic-energy",
+                "conceptSlug": "core-rotational-kinetic-energy",
+                "microskillSlug": "understand-rotational-kinetic-energy"
               }
             },
             {
-              "id": "rotational-motion-q-rolling-on-incline-2",
-              "question": "What is a common trap associated with Rolling on incline?",
+              "id": "rotational-motion-q-rotational-kinetic-energy-2",
+              "question": "Describe a scenario where applying the concept of Rotational kinetic energy can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rolling-on-incline",
+                "rotational-motion",
+                "rotational-kinetic-energy",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rolling-on-incline",
-                "conceptSlug": "trap-rolling-on-incline",
-                "microskillSlug": "avoid-rolling-on-incline",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rotational-kinetic-energy",
+                "conceptSlug": "trap-rotational-kinetic-energy",
+                "microskillSlug": "avoid-rotational-kinetic-energy"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-equilibrium-of-rigid-body",
+          "id": "mt-rotational-motion-pure-rolling-motion-17",
+          "title": "Pure rolling motion",
+          "conceptTags": [
+            "rotational-motion",
+            "pure-rolling-motion"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Pure rolling motion"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Pure rolling motion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Pure rolling motion correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Pure rolling motion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Pure rolling motion."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Pure rolling motion.",
+            "Successfully avoids common pitfalls when Pure rolling motion is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Pure rolling motion in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-pure-rolling-motion-1",
+              "question": "What are the critical factors or principles governing Pure rolling motion?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "pure-rolling-motion"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "pure-rolling-motion",
+                "conceptSlug": "core-pure-rolling-motion",
+                "microskillSlug": "understand-pure-rolling-motion"
+              }
+            },
+            {
+              "id": "rotational-motion-q-pure-rolling-motion-2",
+              "question": "Describe a scenario where applying the concept of Pure rolling motion can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "pure-rolling-motion",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "pure-rolling-motion",
+                "conceptSlug": "trap-pure-rolling-motion",
+                "microskillSlug": "avoid-pure-rolling-motion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-rolling-motion-on-incline-18",
+          "title": "Rolling motion on incline",
+          "conceptTags": [
+            "rotational-motion",
+            "rolling-motion-on-incline"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Rolling motion on incline"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Rolling motion on incline is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rolling motion on incline correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Rolling motion on incline during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rolling motion on incline."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Rolling motion on incline.",
+            "Successfully avoids common pitfalls when Rolling motion on incline is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Rolling motion on incline in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-rolling-motion-on-incline-1",
+              "question": "What are the critical factors or principles governing Rolling motion on incline?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "rolling-motion-on-incline"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rolling-motion-on-incline",
+                "conceptSlug": "core-rolling-motion-on-incline",
+                "microskillSlug": "understand-rolling-motion-on-incline"
+              }
+            },
+            {
+              "id": "rotational-motion-q-rolling-motion-on-incline-2",
+              "question": "Describe a scenario where applying the concept of Rolling motion on incline can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "rolling-motion-on-incline",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "rolling-motion-on-incline",
+                "conceptSlug": "trap-rolling-motion-on-incline",
+                "microskillSlug": "avoid-rolling-motion-on-incline"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-rotational-motion-friction-in-rolling-19",
+          "title": "Friction in rolling",
+          "conceptTags": [
+            "rotational-motion",
+            "friction-in-rolling"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Friction in rolling"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Friction in rolling is heavily tested in recent NEET papers.",
+            "Applying the core principles of Friction in rolling correctly is essential for solving complex multi-step problems in Rotational Motion."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Friction in rolling during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Friction in rolling."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Friction in rolling.",
+            "Successfully avoids common pitfalls when Friction in rolling is integrated with other concepts in Rotational Motion."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Friction in rolling in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "rotational-motion-q-friction-in-rolling-1",
+              "question": "What are the critical factors or principles governing Friction in rolling?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "friction-in-rolling"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "friction-in-rolling",
+                "conceptSlug": "core-friction-in-rolling",
+                "microskillSlug": "understand-friction-in-rolling"
+              }
+            },
+            {
+              "id": "rotational-motion-q-friction-in-rolling-2",
+              "question": "Describe a scenario where applying the concept of Friction in rolling can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "rotational-motion",
+                "friction-in-rolling",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "friction-in-rolling",
+                "conceptSlug": "trap-friction-in-rolling",
+                "microskillSlug": "avoid-friction-in-rolling"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-rotational-motion-5",
+      "title": "Mastery Module 5: Equilibrium of rigid body and Related Concepts",
+      "description": "Comprehensive analysis covering equilibrium of rigid body, comparison of linear and rotational and advanced applications.",
+      "conceptTags": [
+        "rotational-motion",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-rotational-motion-equilibrium-of-rigid-body-20",
           "title": "Equilibrium of rigid body",
           "conceptTags": [
             "rotational-motion",
             "equilibrium-of-rigid-body"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Equilibrium of rigid body"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Equilibrium of rigid body"
           ],
           "mustKnowFacts": [
-            "Equilibrium of rigid body is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Equilibrium of rigid body for NEET."
+            "A thorough understanding of Equilibrium of rigid body is heavily tested in recent NEET papers.",
+            "Applying the core principles of Equilibrium of rigid body correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for equilibrium of rigid body",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Equilibrium of rigid body during complex MCQs.",
-            "Failing to apply the correct logic for Equilibrium of rigid body."
+            "Misinterpreting the subtle edge cases of Equilibrium of rigid body during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Equilibrium of rigid body."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Equilibrium of rigid body."
+            "Can accurately solve numericals or identify biological structures related specifically to Equilibrium of rigid body.",
+            "Successfully avoids common pitfalls when Equilibrium of rigid body is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Equilibrium of rigid body."
+            "Past year questions frequently test the application of Equilibrium of rigid body in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "rotational-motion-q-equilibrium-of-rigid-body-1",
-              "question": "Explain the core concept behind Equilibrium of rigid body.",
+              "question": "What are the critical factors or principles governing Equilibrium of rigid body?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "equilibrium-of-rigid-body"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "equilibrium-of-rigid-body",
                 "conceptSlug": "core-equilibrium-of-rigid-body",
-                "microskillSlug": "understand-equilibrium-of-rigid-body",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "understand-equilibrium-of-rigid-body"
               }
             },
             {
               "id": "rotational-motion-q-equilibrium-of-rigid-body-2",
-              "question": "What is a common trap associated with Equilibrium of rigid body?",
+              "question": "Describe a scenario where applying the concept of Equilibrium of rigid body can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "rotational-motion",
                 "equilibrium-of-rigid-body",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "rotational-motion",
+                "chapterSlug": "rotational-motion",
                 "topicSlug": "rotational-motion",
                 "subtopicSlug": "equilibrium-of-rigid-body",
                 "conceptSlug": "trap-equilibrium-of-rigid-body",
-                "microskillSlug": "avoid-equilibrium-of-rigid-body",
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "microskillSlug": "avoid-equilibrium-of-rigid-body"
               }
             }
           ]
         },
         {
-          "id": "mt-rotational-motion-comparison-of-linear-and-rotational-motion",
-          "title": "Comparison of linear and rotational motion",
+          "id": "mt-rotational-motion-comparison-of-linear-and-rotational-21",
+          "title": "Comparison of linear and rotational",
           "conceptTags": [
             "rotational-motion",
-            "comparison-of-linear-and-rotational-motion"
+            "comparison-of-linear-and-rotational"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Comparison of linear and rotational motion"
+            "NCERT Physics Class 11, Chapter: Rotational Motion, Section detailing Comparison of linear and rotational"
           ],
           "mustKnowFacts": [
-            "Comparison of linear and rotational motion is a fundamental subtopic of Rotational Motion.",
-            "Crucial to understand the principles governing Comparison of linear and rotational motion for NEET."
+            "A thorough understanding of Comparison of linear and rotational is heavily tested in recent NEET papers.",
+            "Applying the core principles of Comparison of linear and rotational correctly is essential for solving complex multi-step problems in Rotational Motion."
           ],
           "formulas": [
             {
-              "name": "Formula for comparison of linear and rotational motion",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Comparison of linear and rotational motion during complex MCQs.",
-            "Failing to apply the correct logic for Comparison of linear and rotational motion."
+            "Misinterpreting the subtle edge cases of Comparison of linear and rotational during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Comparison of linear and rotational."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Comparison of linear and rotational motion."
+            "Can accurately solve numericals or identify biological structures related specifically to Comparison of linear and rotational.",
+            "Successfully avoids common pitfalls when Comparison of linear and rotational is integrated with other concepts in Rotational Motion."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Comparison of linear and rotational motion."
+            "Past year questions frequently test the application of Comparison of linear and rotational in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-comparison-of-linear-and-rotational-motion-1",
-              "question": "Explain the core concept behind Comparison of linear and rotational motion.",
+              "id": "rotational-motion-q-comparison-of-linear-and-rotational-1",
+              "question": "What are the critical factors or principles governing Comparison of linear and rotational?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "comparison-of-linear-and-rotational-motion"
+                "rotational-motion",
+                "comparison-of-linear-and-rotational"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "comparison-of-linear-and-rotational-motion",
-                "conceptSlug": "core-comparison-of-linear-and-rotational-motion",
-                "microskillSlug": "understand-comparison-of-linear-and-rotational-motion",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "comparison-of-linear-and-rotational",
+                "conceptSlug": "core-comparison-of-linear-and-rotational",
+                "microskillSlug": "understand-comparison-of-linear-and-rotational"
               }
             },
             {
-              "id": "rotational-motion-q-comparison-of-linear-and-rotational-motion-2",
-              "question": "What is a common trap associated with Comparison of linear and rotational motion?",
+              "id": "rotational-motion-q-comparison-of-linear-and-rotational-2",
+              "question": "Describe a scenario where applying the concept of Comparison of linear and rotational can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "comparison-of-linear-and-rotational-motion",
+                "rotational-motion",
+                "comparison-of-linear-and-rotational",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "comparison-of-linear-and-rotational-motion",
-                "conceptSlug": "trap-comparison-of-linear-and-rotational-motion",
-                "microskillSlug": "avoid-comparison-of-linear-and-rotational-motion",
                 "subject": "Physics",
                 "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion"
+                "chapterSlug": "rotational-motion",
+                "topicSlug": "rotational-motion",
+                "subtopicSlug": "comparison-of-linear-and-rotational",
+                "conceptSlug": "trap-comparison-of-linear-and-rotational",
+                "microskillSlug": "avoid-comparison-of-linear-and-rotational"
               }
             }
           ]

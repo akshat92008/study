@@ -2,431 +2,457 @@
   "missions": [
     {
       "id": "m-some-basic-concepts-1",
-      "title": "Some Basic Concepts in Chemistry - Section 1",
-      "description": "Comprehensive analysis covering matter classification, atoms/molecules/elements/compounds, laws of chemical combination and more.",
+      "title": "Mastery Module 1: Classification of matter and Related Concepts",
+      "description": "Comprehensive analysis covering classification of matter, atoms and molecules, elements and compounds and advanced applications.",
       "conceptTags": [
         "some-basic-concepts",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-some-basic-concepts-matter-classification",
-          "title": "Matter classification",
+          "id": "mt-some-basic-concepts-classification-of-matter-0",
+          "title": "Classification of matter",
           "conceptTags": [
             "some-basic-concepts",
-            "matter-classification"
+            "classification-of-matter"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Matter classification"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Classification of matter"
           ],
           "mustKnowFacts": [
-            "Matter classification is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Matter classification for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for matter classification",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving matter classification",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Classification of matter is heavily tested in recent NEET papers.",
+            "Applying the core principles of Classification of matter correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Matter classification during complex MCQs.",
-            "Failing to apply the correct logic for Matter classification."
+            "Misinterpreting the subtle edge cases of Classification of matter during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Classification of matter."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Matter classification."
+            "Can accurately solve numericals or identify biological structures related specifically to Classification of matter.",
+            "Successfully avoids common pitfalls when Classification of matter is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Matter classification."
+            "Past year questions frequently test the application of Classification of matter in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-matter-classification-1",
-              "question": "Explain the core concept behind Matter classification.",
+              "id": "some-basic-concepts-q-classification-of-matter-1",
+              "question": "What are the critical factors or principles governing Classification of matter?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "matter-classification"
+                "some-basic-concepts",
+                "classification-of-matter"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "matter-classification",
-                "conceptSlug": "core-matter-classification",
-                "microskillSlug": "understand-matter-classification",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "classification-of-matter",
+                "conceptSlug": "core-classification-of-matter",
+                "microskillSlug": "understand-classification-of-matter"
               }
             },
             {
-              "id": "some-basic-concepts-q-matter-classification-2",
-              "question": "What is a common trap associated with Matter classification?",
+              "id": "some-basic-concepts-q-classification-of-matter-2",
+              "question": "Describe a scenario where applying the concept of Classification of matter can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "matter-classification",
+                "some-basic-concepts",
+                "classification-of-matter",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "matter-classification",
-                "conceptSlug": "trap-matter-classification",
-                "microskillSlug": "avoid-matter-classification",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "classification-of-matter",
+                "conceptSlug": "trap-classification-of-matter",
+                "microskillSlug": "avoid-classification-of-matter"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-atoms-molecules-elements-compounds",
-          "title": "Atoms/molecules/elements/compounds",
+          "id": "mt-some-basic-concepts-atoms-and-molecules-1",
+          "title": "Atoms and molecules",
           "conceptTags": [
             "some-basic-concepts",
-            "atoms-molecules-elements-compounds"
+            "atoms-and-molecules"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Atoms/molecules/elements/compounds"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Atoms and molecules"
           ],
           "mustKnowFacts": [
-            "Atoms/molecules/elements/compounds is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Atoms/molecules/elements/compounds for NEET."
+            "A thorough understanding of Atoms and molecules is heavily tested in recent NEET papers.",
+            "Applying the core principles of Atoms and molecules correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for atoms/molecules/elements/compounds",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving atoms/molecules/elements/compounds",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Atoms/molecules/elements/compounds during complex MCQs.",
-            "Failing to apply the correct logic for Atoms/molecules/elements/compounds."
+            "Misinterpreting the subtle edge cases of Atoms and molecules during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Atoms and molecules."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Atoms/molecules/elements/compounds."
+            "Can accurately solve numericals or identify biological structures related specifically to Atoms and molecules.",
+            "Successfully avoids common pitfalls when Atoms and molecules is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Atoms/molecules/elements/compounds."
+            "Past year questions frequently test the application of Atoms and molecules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-atoms-molecules-elements-compounds-1",
-              "question": "Explain the core concept behind Atoms/molecules/elements/compounds.",
+              "id": "some-basic-concepts-q-atoms-and-molecules-1",
+              "question": "What are the critical factors or principles governing Atoms and molecules?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "atoms-molecules-elements-compounds"
+                "some-basic-concepts",
+                "atoms-and-molecules"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atoms-molecules-elements-compounds",
-                "conceptSlug": "core-atoms-molecules-elements-compounds",
-                "microskillSlug": "understand-atoms-molecules-elements-compounds",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "atoms-and-molecules",
+                "conceptSlug": "core-atoms-and-molecules",
+                "microskillSlug": "understand-atoms-and-molecules"
               }
             },
             {
-              "id": "some-basic-concepts-q-atoms-molecules-elements-compounds-2",
-              "question": "What is a common trap associated with Atoms/molecules/elements/compounds?",
+              "id": "some-basic-concepts-q-atoms-and-molecules-2",
+              "question": "Describe a scenario where applying the concept of Atoms and molecules can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "atoms-molecules-elements-compounds",
+                "some-basic-concepts",
+                "atoms-and-molecules",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atoms-molecules-elements-compounds",
-                "conceptSlug": "trap-atoms-molecules-elements-compounds",
-                "microskillSlug": "avoid-atoms-molecules-elements-compounds",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "atoms-and-molecules",
+                "conceptSlug": "trap-atoms-and-molecules",
+                "microskillSlug": "avoid-atoms-and-molecules"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-laws-of-chemical-combination",
-          "title": "Laws of chemical combination",
+          "id": "mt-some-basic-concepts-elements-and-compounds-2",
+          "title": "Elements and compounds",
           "conceptTags": [
             "some-basic-concepts",
-            "laws-of-chemical-combination"
+            "elements-and-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Laws of chemical combination"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Elements and compounds"
           ],
           "mustKnowFacts": [
-            "Laws of chemical combination is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Laws of chemical combination for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for laws of chemical combination",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving laws of chemical combination",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Elements and compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Elements and compounds correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Laws of chemical combination during complex MCQs.",
-            "Failing to apply the correct logic for Laws of chemical combination."
+            "Misinterpreting the subtle edge cases of Elements and compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Elements and compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Laws of chemical combination."
+            "Can accurately solve numericals or identify biological structures related specifically to Elements and compounds.",
+            "Successfully avoids common pitfalls when Elements and compounds is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Laws of chemical combination."
+            "Past year questions frequently test the application of Elements and compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-laws-of-chemical-combination-1",
-              "question": "Explain the core concept behind Laws of chemical combination.",
+              "id": "some-basic-concepts-q-elements-and-compounds-1",
+              "question": "What are the critical factors or principles governing Elements and compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "laws-of-chemical-combination"
+                "some-basic-concepts",
+                "elements-and-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "laws-of-chemical-combination",
-                "conceptSlug": "core-laws-of-chemical-combination",
-                "microskillSlug": "understand-laws-of-chemical-combination",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "elements-and-compounds",
+                "conceptSlug": "core-elements-and-compounds",
+                "microskillSlug": "understand-elements-and-compounds"
               }
             },
             {
-              "id": "some-basic-concepts-q-laws-of-chemical-combination-2",
-              "question": "What is a common trap associated with Laws of chemical combination?",
+              "id": "some-basic-concepts-q-elements-and-compounds-2",
+              "question": "Describe a scenario where applying the concept of Elements and compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "laws-of-chemical-combination",
+                "some-basic-concepts",
+                "elements-and-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "laws-of-chemical-combination",
-                "conceptSlug": "trap-laws-of-chemical-combination",
-                "microskillSlug": "avoid-laws-of-chemical-combination",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "elements-and-compounds",
+                "conceptSlug": "trap-elements-and-compounds",
+                "microskillSlug": "avoid-elements-and-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-atomic-mass",
-          "title": "Atomic mass",
+          "id": "mt-some-basic-concepts-law-of-conservation-of-mass-3",
+          "title": "Law of conservation of mass",
           "conceptTags": [
             "some-basic-concepts",
-            "atomic-mass"
+            "law-of-conservation-of-mass"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Atomic mass"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of conservation of mass"
           ],
           "mustKnowFacts": [
-            "Atomic mass is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Atomic mass for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for atomic mass",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving atomic mass",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Law of conservation of mass is heavily tested in recent NEET papers.",
+            "Applying the core principles of Law of conservation of mass correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Atomic mass during complex MCQs.",
-            "Failing to apply the correct logic for Atomic mass."
+            "Misinterpreting the subtle edge cases of Law of conservation of mass during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Law of conservation of mass."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Atomic mass."
+            "Can accurately solve numericals or identify biological structures related specifically to Law of conservation of mass.",
+            "Successfully avoids common pitfalls when Law of conservation of mass is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Atomic mass."
+            "Past year questions frequently test the application of Law of conservation of mass in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-atomic-mass-1",
-              "question": "Explain the core concept behind Atomic mass.",
+              "id": "some-basic-concepts-q-law-of-conservation-of-mass-1",
+              "question": "What are the critical factors or principles governing Law of conservation of mass?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "atomic-mass"
+                "some-basic-concepts",
+                "law-of-conservation-of-mass"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atomic-mass",
-                "conceptSlug": "core-atomic-mass",
-                "microskillSlug": "understand-atomic-mass",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-conservation-of-mass",
+                "conceptSlug": "core-law-of-conservation-of-mass",
+                "microskillSlug": "understand-law-of-conservation-of-mass"
               }
             },
             {
-              "id": "some-basic-concepts-q-atomic-mass-2",
-              "question": "What is a common trap associated with Atomic mass?",
+              "id": "some-basic-concepts-q-law-of-conservation-of-mass-2",
+              "question": "Describe a scenario where applying the concept of Law of conservation of mass can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "atomic-mass",
+                "some-basic-concepts",
+                "law-of-conservation-of-mass",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atomic-mass",
-                "conceptSlug": "trap-atomic-mass",
-                "microskillSlug": "avoid-atomic-mass",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-conservation-of-mass",
+                "conceptSlug": "trap-law-of-conservation-of-mass",
+                "microskillSlug": "avoid-law-of-conservation-of-mass"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-some-basic-concepts-law-of-definite-proportions-4",
+          "title": "Law of definite proportions",
+          "conceptTags": [
+            "some-basic-concepts",
+            "law-of-definite-proportions"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of definite proportions"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Law of definite proportions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Law of definite proportions correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Law of definite proportions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Law of definite proportions."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Law of definite proportions.",
+            "Successfully avoids common pitfalls when Law of definite proportions is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Law of definite proportions in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-law-of-definite-proportions-1",
+              "question": "What are the critical factors or principles governing Law of definite proportions?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "law-of-definite-proportions"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-definite-proportions",
+                "conceptSlug": "core-law-of-definite-proportions",
+                "microskillSlug": "understand-law-of-definite-proportions"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-law-of-definite-proportions-2",
+              "question": "Describe a scenario where applying the concept of Law of definite proportions can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "law-of-definite-proportions",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-definite-proportions",
+                "conceptSlug": "trap-law-of-definite-proportions",
+                "microskillSlug": "avoid-law-of-definite-proportions"
               }
             }
           ]
@@ -435,431 +461,468 @@
     },
     {
       "id": "m-some-basic-concepts-2",
-      "title": "Some Basic Concepts in Chemistry - Section 2",
-      "description": "Comprehensive analysis covering molecular mass, mole concept, Avogadro number and more.",
+      "title": "Mastery Module 2: Law of multiple proportions and Related Concepts",
+      "description": "Comprehensive analysis covering law of multiple proportions, Gay Lussac’s law of gaseous volumes, atomic mass and molecular mass and advanced applications.",
       "conceptTags": [
         "some-basic-concepts",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-some-basic-concepts-molecular-mass",
-          "title": "Molecular mass",
+          "id": "mt-some-basic-concepts-law-of-multiple-proportions-5",
+          "title": "Law of multiple proportions",
           "conceptTags": [
             "some-basic-concepts",
-            "molecular-mass"
+            "law-of-multiple-proportions"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Molecular mass"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of multiple proportions"
           ],
           "mustKnowFacts": [
-            "Molecular mass is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Molecular mass for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for molecular mass",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molecular mass",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Law of multiple proportions is heavily tested in recent NEET papers.",
+            "Applying the core principles of Law of multiple proportions correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Molecular mass during complex MCQs.",
-            "Failing to apply the correct logic for Molecular mass."
+            "Misinterpreting the subtle edge cases of Law of multiple proportions during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Law of multiple proportions."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molecular mass."
+            "Can accurately solve numericals or identify biological structures related specifically to Law of multiple proportions.",
+            "Successfully avoids common pitfalls when Law of multiple proportions is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molecular mass."
+            "Past year questions frequently test the application of Law of multiple proportions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-molecular-mass-1",
-              "question": "Explain the core concept behind Molecular mass.",
+              "id": "some-basic-concepts-q-law-of-multiple-proportions-1",
+              "question": "What are the critical factors or principles governing Law of multiple proportions?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molecular-mass"
+                "some-basic-concepts",
+                "law-of-multiple-proportions"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molecular-mass",
-                "conceptSlug": "core-molecular-mass",
-                "microskillSlug": "understand-molecular-mass",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-multiple-proportions",
+                "conceptSlug": "core-law-of-multiple-proportions",
+                "microskillSlug": "understand-law-of-multiple-proportions"
               }
             },
             {
-              "id": "some-basic-concepts-q-molecular-mass-2",
-              "question": "What is a common trap associated with Molecular mass?",
+              "id": "some-basic-concepts-q-law-of-multiple-proportions-2",
+              "question": "Describe a scenario where applying the concept of Law of multiple proportions can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molecular-mass",
+                "some-basic-concepts",
+                "law-of-multiple-proportions",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molecular-mass",
-                "conceptSlug": "trap-molecular-mass",
-                "microskillSlug": "avoid-molecular-mass",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "law-of-multiple-proportions",
+                "conceptSlug": "trap-law-of-multiple-proportions",
+                "microskillSlug": "avoid-law-of-multiple-proportions"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-mole-concept",
+          "id": "mt-some-basic-concepts-gay-lussac-s-law-of-gaseous-volumes-6",
+          "title": "Gay Lussac’s law of gaseous volumes",
+          "conceptTags": [
+            "some-basic-concepts",
+            "gay-lussac-s-law-of-gaseous-volumes"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Gay Lussac’s law of gaseous volumes"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Gay Lussac’s law of gaseous volumes is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gay Lussac’s law of gaseous volumes correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Gay Lussac’s law of gaseous volumes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gay Lussac’s law of gaseous volumes."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Gay Lussac’s law of gaseous volumes.",
+            "Successfully avoids common pitfalls when Gay Lussac’s law of gaseous volumes is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Gay Lussac’s law of gaseous volumes in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-1",
+              "question": "What are the critical factors or principles governing Gay Lussac’s law of gaseous volumes?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "gay-lussac-s-law-of-gaseous-volumes"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "gay-lussac-s-law-of-gaseous-volumes",
+                "conceptSlug": "core-gay-lussac-s-law-of-gaseous-volumes",
+                "microskillSlug": "understand-gay-lussac-s-law-of-gaseous-volumes"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-2",
+              "question": "Describe a scenario where applying the concept of Gay Lussac’s law of gaseous volumes can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "gay-lussac-s-law-of-gaseous-volumes",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "gay-lussac-s-law-of-gaseous-volumes",
+                "conceptSlug": "trap-gay-lussac-s-law-of-gaseous-volumes",
+                "microskillSlug": "avoid-gay-lussac-s-law-of-gaseous-volumes"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-some-basic-concepts-atomic-mass-and-molecular-mass-7",
+          "title": "Atomic mass and molecular mass",
+          "conceptTags": [
+            "some-basic-concepts",
+            "atomic-mass-and-molecular-mass"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Atomic mass and molecular mass"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Atomic mass and molecular mass is heavily tested in recent NEET papers.",
+            "Applying the core principles of Atomic mass and molecular mass correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "formulas": [
+            {
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
+              "variables": [
+                "n",
+                "m",
+                "M"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Atomic mass and molecular mass during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Atomic mass and molecular mass."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Atomic mass and molecular mass.",
+            "Successfully avoids common pitfalls when Atomic mass and molecular mass is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Atomic mass and molecular mass in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-1",
+              "question": "What are the critical factors or principles governing Atomic mass and molecular mass?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "atomic-mass-and-molecular-mass"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "atomic-mass-and-molecular-mass",
+                "conceptSlug": "core-atomic-mass-and-molecular-mass",
+                "microskillSlug": "understand-atomic-mass-and-molecular-mass"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-2",
+              "question": "Describe a scenario where applying the concept of Atomic mass and molecular mass can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "atomic-mass-and-molecular-mass",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "atomic-mass-and-molecular-mass",
+                "conceptSlug": "trap-atomic-mass-and-molecular-mass",
+                "microskillSlug": "avoid-atomic-mass-and-molecular-mass"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-some-basic-concepts-mole-concept-8",
           "title": "Mole concept",
           "conceptTags": [
             "some-basic-concepts",
             "mole-concept"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Mole concept"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Mole concept"
           ],
           "mustKnowFacts": [
-            "Mole concept is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Mole concept for NEET."
+            "A thorough understanding of Mole concept is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mole concept correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for mole concept",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving mole concept",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Mole concept during complex MCQs.",
-            "Failing to apply the correct logic for Mole concept."
+            "Misinterpreting the subtle edge cases of Mole concept during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mole concept."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mole concept."
+            "Can accurately solve numericals or identify biological structures related specifically to Mole concept.",
+            "Successfully avoids common pitfalls when Mole concept is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Mole concept."
+            "Past year questions frequently test the application of Mole concept in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-mole-concept-1",
-              "question": "Explain the core concept behind Mole concept.",
+              "question": "What are the critical factors or principles governing Mole concept?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "mole-concept"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "mole-concept",
                 "conceptSlug": "core-mole-concept",
-                "microskillSlug": "understand-mole-concept",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "understand-mole-concept"
               }
             },
             {
               "id": "some-basic-concepts-q-mole-concept-2",
-              "question": "What is a common trap associated with Mole concept?",
+              "question": "Describe a scenario where applying the concept of Mole concept can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "mole-concept",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "mole-concept",
                 "conceptSlug": "trap-mole-concept",
-                "microskillSlug": "avoid-mole-concept",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "avoid-mole-concept"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-avogadro-number",
-          "title": "Avogadro number",
+          "id": "mt-some-basic-concepts-avogadro-number-application-9",
+          "title": "Avogadro number application",
           "conceptTags": [
             "some-basic-concepts",
-            "avogadro-number"
+            "avogadro-number-application"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Avogadro number"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Avogadro number application"
           ],
           "mustKnowFacts": [
-            "Avogadro number is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Avogadro number for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for Avogadro number",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving Avogadro number",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Avogadro number application is heavily tested in recent NEET papers.",
+            "Applying the core principles of Avogadro number application correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Avogadro number during complex MCQs.",
-            "Failing to apply the correct logic for Avogadro number."
+            "Misinterpreting the subtle edge cases of Avogadro number application during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Avogadro number application."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Avogadro number."
+            "Can accurately solve numericals or identify biological structures related specifically to Avogadro number application.",
+            "Successfully avoids common pitfalls when Avogadro number application is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Avogadro number."
+            "Past year questions frequently test the application of Avogadro number application in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-avogadro-number-1",
-              "question": "Explain the core concept behind Avogadro number.",
+              "id": "some-basic-concepts-q-avogadro-number-application-1",
+              "question": "What are the critical factors or principles governing Avogadro number application?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "avogadro-number"
+                "some-basic-concepts",
+                "avogadro-number-application"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "avogadro-number",
-                "conceptSlug": "core-avogadro-number",
-                "microskillSlug": "understand-avogadro-number",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "avogadro-number-application",
+                "conceptSlug": "core-avogadro-number-application",
+                "microskillSlug": "understand-avogadro-number-application"
               }
             },
             {
-              "id": "some-basic-concepts-q-avogadro-number-2",
-              "question": "What is a common trap associated with Avogadro number?",
+              "id": "some-basic-concepts-q-avogadro-number-application-2",
+              "question": "Describe a scenario where applying the concept of Avogadro number application can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "avogadro-number",
+                "some-basic-concepts",
+                "avogadro-number-application",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "avogadro-number",
-                "conceptSlug": "trap-avogadro-number",
-                "microskillSlug": "avoid-avogadro-number",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-some-basic-concepts-molar-mass",
-          "title": "Molar mass",
-          "conceptTags": [
-            "some-basic-concepts",
-            "molar-mass"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Molar mass"
-          ],
-          "mustKnowFacts": [
-            "Molar mass is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Molar mass for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for molar mass",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molar mass",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Molar mass during complex MCQs.",
-            "Failing to apply the correct logic for Molar mass."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molar mass."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Molar mass."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-molar-mass-1",
-              "question": "Explain the core concept behind Molar mass.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "molar-mass"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molar-mass",
-                "conceptSlug": "core-molar-mass",
-                "microskillSlug": "understand-molar-mass",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
-              }
-            },
-            {
-              "id": "some-basic-concepts-q-molar-mass-2",
-              "question": "What is a common trap associated with Molar mass?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "molar-mass",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molar-mass",
-                "conceptSlug": "trap-molar-mass",
-                "microskillSlug": "avoid-molar-mass",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "subtopicSlug": "avogadro-number-application",
+                "conceptSlug": "trap-avogadro-number-application",
+                "microskillSlug": "avoid-avogadro-number-application"
               }
             }
           ]
@@ -868,431 +931,468 @@
     },
     {
       "id": "m-some-basic-concepts-3",
-      "title": "Some Basic Concepts in Chemistry - Section 3",
-      "description": "Comprehensive analysis covering percentage composition, empirical formula, molecular formula and more.",
+      "title": "Mastery Module 3: Molar mass calculations and Related Concepts",
+      "description": "Comprehensive analysis covering molar mass calculations, percentage composition, empirical formula determination and advanced applications.",
       "conceptTags": [
         "some-basic-concepts",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-some-basic-concepts-percentage-composition",
+          "id": "mt-some-basic-concepts-molar-mass-calculations-10",
+          "title": "Molar mass calculations",
+          "conceptTags": [
+            "some-basic-concepts",
+            "molar-mass-calculations"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molar mass calculations"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Molar mass calculations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molar mass calculations correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Molar mass calculations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molar mass calculations."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Molar mass calculations.",
+            "Successfully avoids common pitfalls when Molar mass calculations is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Molar mass calculations in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-molar-mass-calculations-1",
+              "question": "What are the critical factors or principles governing Molar mass calculations?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "molar-mass-calculations"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molar-mass-calculations",
+                "conceptSlug": "core-molar-mass-calculations",
+                "microskillSlug": "understand-molar-mass-calculations"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-molar-mass-calculations-2",
+              "question": "Describe a scenario where applying the concept of Molar mass calculations can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "molar-mass-calculations",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molar-mass-calculations",
+                "conceptSlug": "trap-molar-mass-calculations",
+                "microskillSlug": "avoid-molar-mass-calculations"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-some-basic-concepts-percentage-composition-11",
           "title": "Percentage composition",
           "conceptTags": [
             "some-basic-concepts",
             "percentage-composition"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Percentage composition"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Percentage composition"
           ],
           "mustKnowFacts": [
-            "Percentage composition is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Percentage composition for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for percentage composition",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving percentage composition",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Percentage composition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Percentage composition correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Percentage composition during complex MCQs.",
-            "Failing to apply the correct logic for Percentage composition."
+            "Misinterpreting the subtle edge cases of Percentage composition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Percentage composition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Percentage composition."
+            "Can accurately solve numericals or identify biological structures related specifically to Percentage composition.",
+            "Successfully avoids common pitfalls when Percentage composition is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Percentage composition."
+            "Past year questions frequently test the application of Percentage composition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-percentage-composition-1",
-              "question": "Explain the core concept behind Percentage composition.",
+              "question": "What are the critical factors or principles governing Percentage composition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "percentage-composition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "percentage-composition",
                 "conceptSlug": "core-percentage-composition",
-                "microskillSlug": "understand-percentage-composition",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "understand-percentage-composition"
               }
             },
             {
               "id": "some-basic-concepts-q-percentage-composition-2",
-              "question": "What is a common trap associated with Percentage composition?",
+              "question": "Describe a scenario where applying the concept of Percentage composition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "percentage-composition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "percentage-composition",
                 "conceptSlug": "trap-percentage-composition",
-                "microskillSlug": "avoid-percentage-composition",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "avoid-percentage-composition"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-empirical-formula",
-          "title": "Empirical formula",
+          "id": "mt-some-basic-concepts-empirical-formula-determination-12",
+          "title": "Empirical formula determination",
           "conceptTags": [
             "some-basic-concepts",
-            "empirical-formula"
+            "empirical-formula-determination"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Empirical formula"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Empirical formula determination"
           ],
           "mustKnowFacts": [
-            "Empirical formula is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Empirical formula for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for empirical formula",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving empirical formula",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Empirical formula determination is heavily tested in recent NEET papers.",
+            "Applying the core principles of Empirical formula determination correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Empirical formula during complex MCQs.",
-            "Failing to apply the correct logic for Empirical formula."
+            "Misinterpreting the subtle edge cases of Empirical formula determination during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Empirical formula determination."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Empirical formula."
+            "Can accurately solve numericals or identify biological structures related specifically to Empirical formula determination.",
+            "Successfully avoids common pitfalls when Empirical formula determination is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Empirical formula."
+            "Past year questions frequently test the application of Empirical formula determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-empirical-formula-1",
-              "question": "Explain the core concept behind Empirical formula.",
+              "id": "some-basic-concepts-q-empirical-formula-determination-1",
+              "question": "What are the critical factors or principles governing Empirical formula determination?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "empirical-formula"
+                "some-basic-concepts",
+                "empirical-formula-determination"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "empirical-formula",
-                "conceptSlug": "core-empirical-formula",
-                "microskillSlug": "understand-empirical-formula",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "empirical-formula-determination",
+                "conceptSlug": "core-empirical-formula-determination",
+                "microskillSlug": "understand-empirical-formula-determination"
               }
             },
             {
-              "id": "some-basic-concepts-q-empirical-formula-2",
-              "question": "What is a common trap associated with Empirical formula?",
+              "id": "some-basic-concepts-q-empirical-formula-determination-2",
+              "question": "Describe a scenario where applying the concept of Empirical formula determination can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "empirical-formula",
+                "some-basic-concepts",
+                "empirical-formula-determination",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "empirical-formula",
-                "conceptSlug": "trap-empirical-formula",
-                "microskillSlug": "avoid-empirical-formula",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "empirical-formula-determination",
+                "conceptSlug": "trap-empirical-formula-determination",
+                "microskillSlug": "avoid-empirical-formula-determination"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-molecular-formula",
-          "title": "Molecular formula",
+          "id": "mt-some-basic-concepts-molecular-formula-determination-13",
+          "title": "Molecular formula determination",
           "conceptTags": [
             "some-basic-concepts",
-            "molecular-formula"
+            "molecular-formula-determination"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Molecular formula"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molecular formula determination"
           ],
           "mustKnowFacts": [
-            "Molecular formula is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Molecular formula for NEET."
+            "A thorough understanding of Molecular formula determination is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molecular formula determination correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for molecular formula",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving molecular formula",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Molecular formula during complex MCQs.",
-            "Failing to apply the correct logic for Molecular formula."
+            "Misinterpreting the subtle edge cases of Molecular formula determination during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molecular formula determination."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Molecular formula."
+            "Can accurately solve numericals or identify biological structures related specifically to Molecular formula determination.",
+            "Successfully avoids common pitfalls when Molecular formula determination is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Molecular formula."
+            "Past year questions frequently test the application of Molecular formula determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-molecular-formula-1",
-              "question": "Explain the core concept behind Molecular formula.",
+              "id": "some-basic-concepts-q-molecular-formula-determination-1",
+              "question": "What are the critical factors or principles governing Molecular formula determination?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "molecular-formula"
+                "some-basic-concepts",
+                "molecular-formula-determination"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molecular-formula",
-                "conceptSlug": "core-molecular-formula",
-                "microskillSlug": "understand-molecular-formula",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molecular-formula-determination",
+                "conceptSlug": "core-molecular-formula-determination",
+                "microskillSlug": "understand-molecular-formula-determination"
               }
             },
             {
-              "id": "some-basic-concepts-q-molecular-formula-2",
-              "question": "What is a common trap associated with Molecular formula?",
+              "id": "some-basic-concepts-q-molecular-formula-determination-2",
+              "question": "Describe a scenario where applying the concept of Molecular formula determination can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "molecular-formula",
+                "some-basic-concepts",
+                "molecular-formula-determination",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molecular-formula",
-                "conceptSlug": "trap-molecular-formula",
-                "microskillSlug": "avoid-molecular-formula",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molecular-formula-determination",
+                "conceptSlug": "trap-molecular-formula-determination",
+                "microskillSlug": "avoid-molecular-formula-determination"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-stoichiometry",
-          "title": "Stoichiometry",
+          "id": "mt-some-basic-concepts-stoichiometry-calculations-14",
+          "title": "Stoichiometry calculations",
           "conceptTags": [
             "some-basic-concepts",
-            "stoichiometry"
+            "stoichiometry-calculations"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Stoichiometry"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Stoichiometry calculations"
           ],
           "mustKnowFacts": [
-            "Stoichiometry is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Stoichiometry for NEET."
+            "A thorough understanding of Stoichiometry calculations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Stoichiometry calculations correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
-              "name": "Relation for stoichiometry",
-              "expression": "PV = nRT",
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
               "variables": [
-                "P",
-                "V",
                 "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving stoichiometry",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
+                "m",
+                "M"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Stoichiometry during complex MCQs.",
-            "Failing to apply the correct logic for Stoichiometry."
+            "Misinterpreting the subtle edge cases of Stoichiometry calculations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Stoichiometry calculations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Stoichiometry."
+            "Can accurately solve numericals or identify biological structures related specifically to Stoichiometry calculations.",
+            "Successfully avoids common pitfalls when Stoichiometry calculations is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Stoichiometry."
+            "Past year questions frequently test the application of Stoichiometry calculations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-stoichiometry-1",
-              "question": "Explain the core concept behind Stoichiometry.",
+              "id": "some-basic-concepts-q-stoichiometry-calculations-1",
+              "question": "What are the critical factors or principles governing Stoichiometry calculations?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "stoichiometry"
+                "some-basic-concepts",
+                "stoichiometry-calculations"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "stoichiometry",
-                "conceptSlug": "core-stoichiometry",
-                "microskillSlug": "understand-stoichiometry",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "stoichiometry-calculations",
+                "conceptSlug": "core-stoichiometry-calculations",
+                "microskillSlug": "understand-stoichiometry-calculations"
               }
             },
             {
-              "id": "some-basic-concepts-q-stoichiometry-2",
-              "question": "What is a common trap associated with Stoichiometry?",
+              "id": "some-basic-concepts-q-stoichiometry-calculations-2",
+              "question": "Describe a scenario where applying the concept of Stoichiometry calculations can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "stoichiometry",
+                "some-basic-concepts",
+                "stoichiometry-calculations",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "stoichiometry",
-                "conceptSlug": "trap-stoichiometry",
-                "microskillSlug": "avoid-stoichiometry",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "stoichiometry-calculations",
+                "conceptSlug": "trap-stoichiometry-calculations",
+                "microskillSlug": "avoid-stoichiometry-calculations"
               }
             }
           ]
@@ -1301,431 +1401,557 @@
     },
     {
       "id": "m-some-basic-concepts-4",
-      "title": "Some Basic Concepts in Chemistry - Section 4",
-      "description": "Comprehensive analysis covering limiting reagent, concentration terms, chemical equation balancing and more.",
+      "title": "Mastery Module 4: Limiting reagent and Related Concepts",
+      "description": "Comprehensive analysis covering limiting reagent, reaction yield and purity, molarity definition and problems and advanced applications.",
       "conceptTags": [
         "some-basic-concepts",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-some-basic-concepts-limiting-reagent",
+          "id": "mt-some-basic-concepts-limiting-reagent-15",
           "title": "Limiting reagent",
           "conceptTags": [
             "some-basic-concepts",
             "limiting-reagent"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Limiting reagent"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Limiting reagent"
           ],
           "mustKnowFacts": [
-            "Limiting reagent is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Limiting reagent for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for limiting reagent",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving limiting reagent",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Limiting reagent is heavily tested in recent NEET papers.",
+            "Applying the core principles of Limiting reagent correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Limiting reagent during complex MCQs.",
-            "Failing to apply the correct logic for Limiting reagent."
+            "Misinterpreting the subtle edge cases of Limiting reagent during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Limiting reagent."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Limiting reagent."
+            "Can accurately solve numericals or identify biological structures related specifically to Limiting reagent.",
+            "Successfully avoids common pitfalls when Limiting reagent is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Limiting reagent."
+            "Past year questions frequently test the application of Limiting reagent in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-limiting-reagent-1",
-              "question": "Explain the core concept behind Limiting reagent.",
+              "question": "What are the critical factors or principles governing Limiting reagent?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "limiting-reagent"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "limiting-reagent",
                 "conceptSlug": "core-limiting-reagent",
-                "microskillSlug": "understand-limiting-reagent",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "understand-limiting-reagent"
               }
             },
             {
               "id": "some-basic-concepts-q-limiting-reagent-2",
-              "question": "What is a common trap associated with Limiting reagent?",
+              "question": "Describe a scenario where applying the concept of Limiting reagent can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "some-basic-concepts",
                 "limiting-reagent",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
                 "topicSlug": "some-basic-concepts",
                 "subtopicSlug": "limiting-reagent",
                 "conceptSlug": "trap-limiting-reagent",
-                "microskillSlug": "avoid-limiting-reagent",
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "microskillSlug": "avoid-limiting-reagent"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-concentration-terms",
-          "title": "Concentration terms",
+          "id": "mt-some-basic-concepts-reaction-yield-and-purity-16",
+          "title": "Reaction yield and purity",
           "conceptTags": [
             "some-basic-concepts",
-            "concentration-terms"
+            "reaction-yield-and-purity"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Concentration terms"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Reaction yield and purity"
           ],
           "mustKnowFacts": [
-            "Concentration terms is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Concentration terms for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for concentration terms",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving concentration terms",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Reaction yield and purity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Reaction yield and purity correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Concentration terms during complex MCQs.",
-            "Failing to apply the correct logic for Concentration terms."
+            "Misinterpreting the subtle edge cases of Reaction yield and purity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Reaction yield and purity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Concentration terms."
+            "Can accurately solve numericals or identify biological structures related specifically to Reaction yield and purity.",
+            "Successfully avoids common pitfalls when Reaction yield and purity is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Concentration terms."
+            "Past year questions frequently test the application of Reaction yield and purity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-concentration-terms-1",
-              "question": "Explain the core concept behind Concentration terms.",
+              "id": "some-basic-concepts-q-reaction-yield-and-purity-1",
+              "question": "What are the critical factors or principles governing Reaction yield and purity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "concentration-terms"
+                "some-basic-concepts",
+                "reaction-yield-and-purity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "concentration-terms",
-                "conceptSlug": "core-concentration-terms",
-                "microskillSlug": "understand-concentration-terms",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "reaction-yield-and-purity",
+                "conceptSlug": "core-reaction-yield-and-purity",
+                "microskillSlug": "understand-reaction-yield-and-purity"
               }
             },
             {
-              "id": "some-basic-concepts-q-concentration-terms-2",
-              "question": "What is a common trap associated with Concentration terms?",
+              "id": "some-basic-concepts-q-reaction-yield-and-purity-2",
+              "question": "Describe a scenario where applying the concept of Reaction yield and purity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "concentration-terms",
+                "some-basic-concepts",
+                "reaction-yield-and-purity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "concentration-terms",
-                "conceptSlug": "trap-concentration-terms",
-                "microskillSlug": "avoid-concentration-terms",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "reaction-yield-and-purity",
+                "conceptSlug": "trap-reaction-yield-and-purity",
+                "microskillSlug": "avoid-reaction-yield-and-purity"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-chemical-equation-balancing",
-          "title": "Chemical equation balancing",
+          "id": "mt-some-basic-concepts-molarity-definition-and-problems-17",
+          "title": "Molarity definition and problems",
           "conceptTags": [
             "some-basic-concepts",
-            "chemical-equation-balancing"
+            "molarity-definition-and-problems"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Chemical equation balancing"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molarity definition and problems"
           ],
           "mustKnowFacts": [
-            "Chemical equation balancing is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Chemical equation balancing for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for chemical equation balancing",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving chemical equation balancing",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Molarity definition and problems is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molarity definition and problems correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Chemical equation balancing during complex MCQs.",
-            "Failing to apply the correct logic for Chemical equation balancing."
+            "Misinterpreting the subtle edge cases of Molarity definition and problems during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molarity definition and problems."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Chemical equation balancing."
+            "Can accurately solve numericals or identify biological structures related specifically to Molarity definition and problems.",
+            "Successfully avoids common pitfalls when Molarity definition and problems is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Chemical equation balancing."
+            "Past year questions frequently test the application of Molarity definition and problems in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-chemical-equation-balancing-1",
-              "question": "Explain the core concept behind Chemical equation balancing.",
+              "id": "some-basic-concepts-q-molarity-definition-and-problems-1",
+              "question": "What are the critical factors or principles governing Molarity definition and problems?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "chemical-equation-balancing"
+                "some-basic-concepts",
+                "molarity-definition-and-problems"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "chemical-equation-balancing",
-                "conceptSlug": "core-chemical-equation-balancing",
-                "microskillSlug": "understand-chemical-equation-balancing",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molarity-definition-and-problems",
+                "conceptSlug": "core-molarity-definition-and-problems",
+                "microskillSlug": "understand-molarity-definition-and-problems"
               }
             },
             {
-              "id": "some-basic-concepts-q-chemical-equation-balancing-2",
-              "question": "What is a common trap associated with Chemical equation balancing?",
+              "id": "some-basic-concepts-q-molarity-definition-and-problems-2",
+              "question": "Describe a scenario where applying the concept of Molarity definition and problems can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "chemical-equation-balancing",
+                "some-basic-concepts",
+                "molarity-definition-and-problems",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "chemical-equation-balancing",
-                "conceptSlug": "trap-chemical-equation-balancing",
-                "microskillSlug": "avoid-chemical-equation-balancing",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molarity-definition-and-problems",
+                "conceptSlug": "trap-molarity-definition-and-problems",
+                "microskillSlug": "avoid-molarity-definition-and-problems"
               }
             }
           ]
         },
         {
-          "id": "mt-some-basic-concepts-yield-purity-basics",
-          "title": "Yield/purity basics",
+          "id": "mt-some-basic-concepts-molality-definition-18",
+          "title": "Molality definition",
           "conceptTags": [
             "some-basic-concepts",
-            "yield-purity-basics"
+            "molality-definition"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Yield/purity basics"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molality definition"
           ],
           "mustKnowFacts": [
-            "Yield/purity basics is a fundamental subtopic of Some Basic Concepts in Chemistry.",
-            "Crucial to understand the principles governing Yield/purity basics for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for yield/purity basics",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving yield/purity basics",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Molality definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Molality definition correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Yield/purity basics during complex MCQs.",
-            "Failing to apply the correct logic for Yield/purity basics."
+            "Misinterpreting the subtle edge cases of Molality definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Molality definition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Yield/purity basics."
+            "Can accurately solve numericals or identify biological structures related specifically to Molality definition.",
+            "Successfully avoids common pitfalls when Molality definition is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Yield/purity basics."
+            "Past year questions frequently test the application of Molality definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-yield-purity-basics-1",
-              "question": "Explain the core concept behind Yield/purity basics.",
+              "id": "some-basic-concepts-q-molality-definition-1",
+              "question": "What are the critical factors or principles governing Molality definition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "yield-purity-basics"
+                "some-basic-concepts",
+                "molality-definition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "yield-purity-basics",
-                "conceptSlug": "core-yield-purity-basics",
-                "microskillSlug": "understand-yield-purity-basics",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molality-definition",
+                "conceptSlug": "core-molality-definition",
+                "microskillSlug": "understand-molality-definition"
               }
             },
             {
-              "id": "some-basic-concepts-q-yield-purity-basics-2",
-              "question": "What is a common trap associated with Yield/purity basics?",
+              "id": "some-basic-concepts-q-molality-definition-2",
+              "question": "Describe a scenario where applying the concept of Molality definition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "yield-purity-basics",
+                "some-basic-concepts",
+                "molality-definition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "yield-purity-basics",
-                "conceptSlug": "trap-yield-purity-basics",
-                "microskillSlug": "avoid-yield-purity-basics",
                 "subject": "Chemistry",
                 "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts"
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "molality-definition",
+                "conceptSlug": "trap-molality-definition",
+                "microskillSlug": "avoid-molality-definition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-some-basic-concepts-mole-fraction-19",
+          "title": "Mole fraction",
+          "conceptTags": [
+            "some-basic-concepts",
+            "mole-fraction"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Mole fraction"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Mole fraction is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mole fraction correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "formulas": [
+            {
+              "name": "Mole Concept",
+              "expression": "n = \\frac{m}{M}",
+              "variables": [
+                "n",
+                "m",
+                "M"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Mole fraction during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mole fraction."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Mole fraction.",
+            "Successfully avoids common pitfalls when Mole fraction is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Mole fraction in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-mole-fraction-1",
+              "question": "What are the critical factors or principles governing Mole fraction?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "mole-fraction"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "mole-fraction",
+                "conceptSlug": "core-mole-fraction",
+                "microskillSlug": "understand-mole-fraction"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-mole-fraction-2",
+              "question": "Describe a scenario where applying the concept of Mole fraction can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "mole-fraction",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "mole-fraction",
+                "conceptSlug": "trap-mole-fraction",
+                "microskillSlug": "avoid-mole-fraction"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-some-basic-concepts-5",
+      "title": "Mastery Module 5: Equivalent mass concept and Related Concepts",
+      "description": "Comprehensive analysis covering equivalent mass concept and advanced applications.",
+      "conceptTags": [
+        "some-basic-concepts",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-some-basic-concepts-equivalent-mass-concept-20",
+          "title": "Equivalent mass concept",
+          "conceptTags": [
+            "some-basic-concepts",
+            "equivalent-mass-concept"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Equivalent mass concept"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Equivalent mass concept is heavily tested in recent NEET papers.",
+            "Applying the core principles of Equivalent mass concept correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Equivalent mass concept during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Equivalent mass concept."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Equivalent mass concept.",
+            "Successfully avoids common pitfalls when Equivalent mass concept is integrated with other concepts in Some Basic Concepts in Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Equivalent mass concept in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "some-basic-concepts-q-equivalent-mass-concept-1",
+              "question": "What are the critical factors or principles governing Equivalent mass concept?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "equivalent-mass-concept"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "equivalent-mass-concept",
+                "conceptSlug": "core-equivalent-mass-concept",
+                "microskillSlug": "understand-equivalent-mass-concept"
+              }
+            },
+            {
+              "id": "some-basic-concepts-q-equivalent-mass-concept-2",
+              "question": "Describe a scenario where applying the concept of Equivalent mass concept can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "some-basic-concepts",
+                "equivalent-mass-concept",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "some-basic-concepts",
+                "chapterSlug": "some-basic-concepts",
+                "topicSlug": "some-basic-concepts",
+                "subtopicSlug": "equivalent-mass-concept",
+                "conceptSlug": "trap-equivalent-mass-concept",
+                "microskillSlug": "avoid-equivalent-mass-concept"
               }
             }
           ]

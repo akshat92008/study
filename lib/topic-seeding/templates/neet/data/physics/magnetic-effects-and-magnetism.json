@@ -2,557 +2,503 @@
   "missions": [
     {
       "id": "m-magnetic-effects-and-magnetism-1",
-      "title": "Magnetic Effects of Current and Magnetism - Section 1",
-      "description": "Comprehensive analysis covering magnetic force on charge, Lorentz force, circular motion in magnetic field and more.",
+      "title": "Mastery Module 1: Magnetic force on moving charge and Related Concepts",
+      "description": "Comprehensive analysis covering magnetic force on moving charge, Lorentz force equation, circular motion in magnetic field and advanced applications.",
       "conceptTags": [
         "magnetic-effects-and-magnetism",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-magnetic-effects-and-magnetism-magnetic-force-on-charge",
-          "title": "Magnetic force on charge",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-force-on-moving-charge-0",
+          "title": "Magnetic force on moving charge",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "magnetic-force-on-charge"
+            "magnetic-force-on-moving-charge"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Magnetic force on charge"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic force on moving charge"
           ],
           "mustKnowFacts": [
-            "Magnetic force on charge is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Magnetic force on charge for NEET."
+            "A thorough understanding of Magnetic force on moving charge is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic force on moving charge correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for magnetic force on charge",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Magnetic force on charge during complex MCQs.",
-            "Failing to apply the correct logic for Magnetic force on charge."
+            "Misinterpreting the subtle edge cases of Magnetic force on moving charge during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic force on moving charge."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Magnetic force on charge."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic force on moving charge.",
+            "Successfully avoids common pitfalls when Magnetic force on moving charge is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Magnetic force on charge."
+            "Past year questions frequently test the application of Magnetic force on moving charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-charge-1",
-              "question": "Explain the core concept behind Magnetic force on charge.",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-1",
+              "question": "What are the critical factors or principles governing Magnetic force on moving charge?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "magnetic-force-on-charge"
+                "magnetic-effects-and-magnetism",
+                "magnetic-force-on-moving-charge"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-force-on-charge",
-                "conceptSlug": "core-magnetic-force-on-charge",
-                "microskillSlug": "understand-magnetic-force-on-charge",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-force-on-moving-charge",
+                "conceptSlug": "core-magnetic-force-on-moving-charge",
+                "microskillSlug": "understand-magnetic-force-on-moving-charge"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-charge-2",
-              "question": "What is a common trap associated with Magnetic force on charge?",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-2",
+              "question": "Describe a scenario where applying the concept of Magnetic force on moving charge can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "magnetic-force-on-charge",
+                "magnetic-effects-and-magnetism",
+                "magnetic-force-on-moving-charge",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-force-on-charge",
-                "conceptSlug": "trap-magnetic-force-on-charge",
-                "microskillSlug": "avoid-magnetic-force-on-charge",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-force-on-moving-charge",
+                "conceptSlug": "trap-magnetic-force-on-moving-charge",
+                "microskillSlug": "avoid-magnetic-force-on-moving-charge"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-lorentz-force",
-          "title": "Lorentz force",
+          "id": "mt-magnetic-effects-and-magnetism-lorentz-force-equation-1",
+          "title": "Lorentz force equation",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "lorentz-force"
+            "lorentz-force-equation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Lorentz force"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Lorentz force equation"
           ],
           "mustKnowFacts": [
-            "Lorentz force is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Lorentz force for NEET."
+            "A thorough understanding of Lorentz force equation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Lorentz force equation correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for Lorentz force",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Lorentz force during complex MCQs.",
-            "Failing to apply the correct logic for Lorentz force."
+            "Misinterpreting the subtle edge cases of Lorentz force equation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Lorentz force equation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Lorentz force."
+            "Can accurately solve numericals or identify biological structures related specifically to Lorentz force equation.",
+            "Successfully avoids common pitfalls when Lorentz force equation is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Lorentz force."
+            "Past year questions frequently test the application of Lorentz force equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-lorentz-force-1",
-              "question": "Explain the core concept behind Lorentz force.",
+              "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-1",
+              "question": "What are the critical factors or principles governing Lorentz force equation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "lorentz-force"
+                "magnetic-effects-and-magnetism",
+                "lorentz-force-equation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "lorentz-force",
-                "conceptSlug": "core-lorentz-force",
-                "microskillSlug": "understand-lorentz-force",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "lorentz-force-equation",
+                "conceptSlug": "core-lorentz-force-equation",
+                "microskillSlug": "understand-lorentz-force-equation"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-lorentz-force-2",
-              "question": "What is a common trap associated with Lorentz force?",
+              "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-2",
+              "question": "Describe a scenario where applying the concept of Lorentz force equation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "lorentz-force",
+                "magnetic-effects-and-magnetism",
+                "lorentz-force-equation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "lorentz-force",
-                "conceptSlug": "trap-lorentz-force",
-                "microskillSlug": "avoid-lorentz-force",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "lorentz-force-equation",
+                "conceptSlug": "trap-lorentz-force-equation",
+                "microskillSlug": "avoid-lorentz-force-equation"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-circular-motion-in-magnetic-field",
+          "id": "mt-magnetic-effects-and-magnetism-circular-motion-in-magnetic-field-2",
           "title": "Circular motion in magnetic field",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "circular-motion-in-magnetic-field"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Circular motion in magnetic field"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Circular motion in magnetic field"
           ],
           "mustKnowFacts": [
-            "Circular motion in magnetic field is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Circular motion in magnetic field for NEET."
+            "A thorough understanding of Circular motion in magnetic field is heavily tested in recent NEET papers.",
+            "Applying the core principles of Circular motion in magnetic field correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for circular motion in magnetic field",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Circular motion in magnetic field during complex MCQs.",
-            "Failing to apply the correct logic for Circular motion in magnetic field."
+            "Misinterpreting the subtle edge cases of Circular motion in magnetic field during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Circular motion in magnetic field."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Circular motion in magnetic field."
+            "Can accurately solve numericals or identify biological structures related specifically to Circular motion in magnetic field.",
+            "Successfully avoids common pitfalls when Circular motion in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Circular motion in magnetic field."
+            "Past year questions frequently test the application of Circular motion in magnetic field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-1",
-              "question": "Explain the core concept behind Circular motion in magnetic field.",
+              "question": "What are the critical factors or principles governing Circular motion in magnetic field?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "circular-motion-in-magnetic-field"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "circular-motion-in-magnetic-field",
                 "conceptSlug": "core-circular-motion-in-magnetic-field",
-                "microskillSlug": "understand-circular-motion-in-magnetic-field",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-circular-motion-in-magnetic-field"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-2",
-              "question": "What is a common trap associated with Circular motion in magnetic field?",
+              "question": "Describe a scenario where applying the concept of Circular motion in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "circular-motion-in-magnetic-field",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "circular-motion-in-magnetic-field",
                 "conceptSlug": "trap-circular-motion-in-magnetic-field",
-                "microskillSlug": "avoid-circular-motion-in-magnetic-field",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-circular-motion-in-magnetic-field"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-helical-path",
-          "title": "Helical path",
+          "id": "mt-magnetic-effects-and-magnetism-helical-path-in-magnetic-field-3",
+          "title": "Helical path in magnetic field",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "helical-path"
+            "helical-path-in-magnetic-field"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Helical path"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Helical path in magnetic field"
           ],
           "mustKnowFacts": [
-            "Helical path is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Helical path for NEET."
+            "A thorough understanding of Helical path in magnetic field is heavily tested in recent NEET papers.",
+            "Applying the core principles of Helical path in magnetic field correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for helical path",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Helical path during complex MCQs.",
-            "Failing to apply the correct logic for Helical path."
+            "Misinterpreting the subtle edge cases of Helical path in magnetic field during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Helical path in magnetic field."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Helical path."
+            "Can accurately solve numericals or identify biological structures related specifically to Helical path in magnetic field.",
+            "Successfully avoids common pitfalls when Helical path in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Helical path."
+            "Past year questions frequently test the application of Helical path in magnetic field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-helical-path-1",
-              "question": "Explain the core concept behind Helical path.",
+              "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-1",
+              "question": "What are the critical factors or principles governing Helical path in magnetic field?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "helical-path"
+                "magnetic-effects-and-magnetism",
+                "helical-path-in-magnetic-field"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "helical-path",
-                "conceptSlug": "core-helical-path",
-                "microskillSlug": "understand-helical-path",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "helical-path-in-magnetic-field",
+                "conceptSlug": "core-helical-path-in-magnetic-field",
+                "microskillSlug": "understand-helical-path-in-magnetic-field"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-helical-path-2",
-              "question": "What is a common trap associated with Helical path?",
+              "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-2",
+              "question": "Describe a scenario where applying the concept of Helical path in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "helical-path",
+                "magnetic-effects-and-magnetism",
+                "helical-path-in-magnetic-field",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "helical-path",
-                "conceptSlug": "trap-helical-path",
-                "microskillSlug": "avoid-helical-path",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "helical-path-in-magnetic-field",
+                "conceptSlug": "trap-helical-path-in-magnetic-field",
+                "microskillSlug": "avoid-helical-path-in-magnetic-field"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-velocity-selector",
+          "id": "mt-magnetic-effects-and-magnetism-velocity-selector-4",
           "title": "Velocity selector",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "velocity-selector"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Velocity selector"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Velocity selector"
           ],
           "mustKnowFacts": [
-            "Velocity selector is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Velocity selector for NEET."
+            "A thorough understanding of Velocity selector is heavily tested in recent NEET papers.",
+            "Applying the core principles of Velocity selector correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for velocity selector",
-              "expression": "F = m a",
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "x",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Velocity selector during complex MCQs.",
-            "Failing to apply the correct logic for Velocity selector."
+            "Misinterpreting the subtle edge cases of Velocity selector during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Velocity selector."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Velocity selector."
+            "Can accurately solve numericals or identify biological structures related specifically to Velocity selector.",
+            "Successfully avoids common pitfalls when Velocity selector is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Velocity selector."
+            "Past year questions frequently test the application of Velocity selector in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-velocity-selector-1",
-              "question": "Explain the core concept behind Velocity selector.",
+              "question": "What are the critical factors or principles governing Velocity selector?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "velocity-selector"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "velocity-selector",
                 "conceptSlug": "core-velocity-selector",
-                "microskillSlug": "understand-velocity-selector",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-velocity-selector"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-velocity-selector-2",
-              "question": "What is a common trap associated with Velocity selector?",
+              "question": "Describe a scenario where applying the concept of Velocity selector can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "velocity-selector",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "velocity-selector",
                 "conceptSlug": "trap-velocity-selector",
-                "microskillSlug": "avoid-velocity-selector",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-cyclotron",
-          "title": "Cyclotron",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "cyclotron"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Cyclotron"
-          ],
-          "mustKnowFacts": [
-            "Cyclotron is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Cyclotron for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for cyclotron",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Cyclotron during complex MCQs.",
-            "Failing to apply the correct logic for Cyclotron."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Cyclotron."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Cyclotron."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-cyclotron-1",
-              "question": "Explain the core concept behind Cyclotron.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "cyclotron"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "cyclotron",
-                "conceptSlug": "core-cyclotron",
-                "microskillSlug": "understand-cyclotron",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-cyclotron-2",
-              "question": "What is a common trap associated with Cyclotron?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "cyclotron",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "cyclotron",
-                "conceptSlug": "trap-cyclotron",
-                "microskillSlug": "avoid-cyclotron",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-velocity-selector"
               }
             }
           ]
@@ -561,557 +507,506 @@
     },
     {
       "id": "m-magnetic-effects-and-magnetism-2",
-      "title": "Magnetic Effects of Current and Magnetism - Section 2",
-      "description": "Comprehensive analysis covering Biot-Savart law, circular loop field, Ampere law and more.",
+      "title": "Mastery Module 2: Cyclotron principle and Related Concepts",
+      "description": "Comprehensive analysis covering cyclotron principle, Biot-Savart law, magnetic field of circular loop and advanced applications.",
       "conceptTags": [
         "magnetic-effects-and-magnetism",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-magnetic-effects-and-magnetism-biot-savart-law",
+          "id": "mt-magnetic-effects-and-magnetism-cyclotron-principle-5",
+          "title": "Cyclotron principle",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "cyclotron-principle"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Cyclotron principle"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Cyclotron principle is heavily tested in recent NEET papers.",
+            "Applying the core principles of Cyclotron principle correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Cyclotron principle during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Cyclotron principle."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Cyclotron principle.",
+            "Successfully avoids common pitfalls when Cyclotron principle is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Cyclotron principle in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-1",
+              "question": "What are the critical factors or principles governing Cyclotron principle?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "cyclotron-principle"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "cyclotron-principle",
+                "conceptSlug": "core-cyclotron-principle",
+                "microskillSlug": "understand-cyclotron-principle"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-2",
+              "question": "Describe a scenario where applying the concept of Cyclotron principle can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "cyclotron-principle",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "cyclotron-principle",
+                "conceptSlug": "trap-cyclotron-principle",
+                "microskillSlug": "avoid-cyclotron-principle"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-biot-savart-law-6",
           "title": "Biot-Savart law",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "biot-savart-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Biot-Savart law"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Biot-Savart law"
           ],
           "mustKnowFacts": [
-            "Biot-Savart law is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Biot-Savart law for NEET."
+            "A thorough understanding of Biot-Savart law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Biot-Savart law correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for Biot-Savart law",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Biot-Savart law during complex MCQs.",
-            "Failing to apply the correct logic for Biot-Savart law."
+            "Misinterpreting the subtle edge cases of Biot-Savart law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Biot-Savart law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Biot-Savart law."
+            "Can accurately solve numericals or identify biological structures related specifically to Biot-Savart law.",
+            "Successfully avoids common pitfalls when Biot-Savart law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Biot-Savart law."
+            "Past year questions frequently test the application of Biot-Savart law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-biot-savart-law-1",
-              "question": "Explain the core concept behind Biot-Savart law.",
+              "question": "What are the critical factors or principles governing Biot-Savart law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "biot-savart-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "biot-savart-law",
                 "conceptSlug": "core-biot-savart-law",
-                "microskillSlug": "understand-biot-savart-law",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-biot-savart-law"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-biot-savart-law-2",
-              "question": "What is a common trap associated with Biot-Savart law?",
+              "question": "Describe a scenario where applying the concept of Biot-Savart law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "biot-savart-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "biot-savart-law",
                 "conceptSlug": "trap-biot-savart-law",
-                "microskillSlug": "avoid-biot-savart-law",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-biot-savart-law"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-circular-loop-field",
-          "title": "Circular loop field",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-field-of-circular-loop-7",
+          "title": "Magnetic field of circular loop",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "circular-loop-field"
+            "magnetic-field-of-circular-loop"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Circular loop field"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of circular loop"
           ],
           "mustKnowFacts": [
-            "Circular loop field is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Circular loop field for NEET."
+            "A thorough understanding of Magnetic field of circular loop is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic field of circular loop correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for circular loop field",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Circular loop field during complex MCQs.",
-            "Failing to apply the correct logic for Circular loop field."
+            "Misinterpreting the subtle edge cases of Magnetic field of circular loop during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic field of circular loop."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Circular loop field."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of circular loop.",
+            "Successfully avoids common pitfalls when Magnetic field of circular loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Circular loop field."
+            "Past year questions frequently test the application of Magnetic field of circular loop in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-circular-loop-field-1",
-              "question": "Explain the core concept behind Circular loop field.",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-1",
+              "question": "What are the critical factors or principles governing Magnetic field of circular loop?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "circular-loop-field"
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-circular-loop"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "circular-loop-field",
-                "conceptSlug": "core-circular-loop-field",
-                "microskillSlug": "understand-circular-loop-field",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-circular-loop",
+                "conceptSlug": "core-magnetic-field-of-circular-loop",
+                "microskillSlug": "understand-magnetic-field-of-circular-loop"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-circular-loop-field-2",
-              "question": "What is a common trap associated with Circular loop field?",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-2",
+              "question": "Describe a scenario where applying the concept of Magnetic field of circular loop can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "circular-loop-field",
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-circular-loop",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "circular-loop-field",
-                "conceptSlug": "trap-circular-loop-field",
-                "microskillSlug": "avoid-circular-loop-field",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-circular-loop",
+                "conceptSlug": "trap-magnetic-field-of-circular-loop",
+                "microskillSlug": "avoid-magnetic-field-of-circular-loop"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-ampere-law",
-          "title": "Ampere law",
+          "id": "mt-magnetic-effects-and-magnetism-ampere-s-circuital-law-8",
+          "title": "Ampere’s circuital law",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "ampere-law"
+            "ampere-s-circuital-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Ampere law"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Ampere’s circuital law"
           ],
           "mustKnowFacts": [
-            "Ampere law is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Ampere law for NEET."
+            "A thorough understanding of Ampere’s circuital law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ampere’s circuital law correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for Ampere law",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Ampere law during complex MCQs.",
-            "Failing to apply the correct logic for Ampere law."
+            "Misinterpreting the subtle edge cases of Ampere’s circuital law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ampere’s circuital law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ampere law."
+            "Can accurately solve numericals or identify biological structures related specifically to Ampere’s circuital law.",
+            "Successfully avoids common pitfalls when Ampere’s circuital law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Ampere law."
+            "Past year questions frequently test the application of Ampere’s circuital law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-ampere-law-1",
-              "question": "Explain the core concept behind Ampere law.",
+              "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-1",
+              "question": "What are the critical factors or principles governing Ampere’s circuital law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ampere-law"
+                "magnetic-effects-and-magnetism",
+                "ampere-s-circuital-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "ampere-law",
-                "conceptSlug": "core-ampere-law",
-                "microskillSlug": "understand-ampere-law",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "ampere-s-circuital-law",
+                "conceptSlug": "core-ampere-s-circuital-law",
+                "microskillSlug": "understand-ampere-s-circuital-law"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-ampere-law-2",
-              "question": "What is a common trap associated with Ampere law?",
+              "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-2",
+              "question": "Describe a scenario where applying the concept of Ampere’s circuital law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ampere-law",
+                "magnetic-effects-and-magnetism",
+                "ampere-s-circuital-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "ampere-law",
-                "conceptSlug": "trap-ampere-law",
-                "microskillSlug": "avoid-ampere-law",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "ampere-s-circuital-law",
+                "conceptSlug": "trap-ampere-s-circuital-law",
+                "microskillSlug": "avoid-ampere-s-circuital-law"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-straight-wire",
-          "title": "Straight wire",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-field-of-straight-wire-9",
+          "title": "Magnetic field of straight wire",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "straight-wire"
+            "magnetic-field-of-straight-wire"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Straight wire"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of straight wire"
           ],
           "mustKnowFacts": [
-            "Straight wire is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Straight wire for NEET."
+            "A thorough understanding of Magnetic field of straight wire is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic field of straight wire correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for straight wire",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Straight wire during complex MCQs.",
-            "Failing to apply the correct logic for Straight wire."
+            "Misinterpreting the subtle edge cases of Magnetic field of straight wire during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic field of straight wire."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Straight wire."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of straight wire.",
+            "Successfully avoids common pitfalls when Magnetic field of straight wire is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Straight wire."
+            "Past year questions frequently test the application of Magnetic field of straight wire in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-straight-wire-1",
-              "question": "Explain the core concept behind Straight wire.",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-1",
+              "question": "What are the critical factors or principles governing Magnetic field of straight wire?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "straight-wire"
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-straight-wire"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "straight-wire",
-                "conceptSlug": "core-straight-wire",
-                "microskillSlug": "understand-straight-wire",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-straight-wire",
+                "conceptSlug": "core-magnetic-field-of-straight-wire",
+                "microskillSlug": "understand-magnetic-field-of-straight-wire"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-straight-wire-2",
-              "question": "What is a common trap associated with Straight wire?",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-2",
+              "question": "Describe a scenario where applying the concept of Magnetic field of straight wire can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "straight-wire",
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-straight-wire",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "straight-wire",
-                "conceptSlug": "trap-straight-wire",
-                "microskillSlug": "avoid-straight-wire",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-solenoid",
-          "title": "Solenoid",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "solenoid"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Solenoid"
-          ],
-          "mustKnowFacts": [
-            "Solenoid is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Solenoid for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for solenoid",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Solenoid during complex MCQs.",
-            "Failing to apply the correct logic for Solenoid."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Solenoid."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Solenoid."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-solenoid-1",
-              "question": "Explain the core concept behind Solenoid.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "solenoid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "solenoid",
-                "conceptSlug": "core-solenoid",
-                "microskillSlug": "understand-solenoid",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-solenoid-2",
-              "question": "What is a common trap associated with Solenoid?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "solenoid",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "solenoid",
-                "conceptSlug": "trap-solenoid",
-                "microskillSlug": "avoid-solenoid",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-toroid",
-          "title": "Toroid",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "toroid"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Toroid"
-          ],
-          "mustKnowFacts": [
-            "Toroid is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Toroid for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for toroid",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Toroid during complex MCQs.",
-            "Failing to apply the correct logic for Toroid."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Toroid."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Toroid."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-toroid-1",
-              "question": "Explain the core concept behind Toroid.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "toroid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "toroid",
-                "conceptSlug": "core-toroid",
-                "microskillSlug": "understand-toroid",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-toroid-2",
-              "question": "What is a common trap associated with Toroid?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "toroid",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "toroid",
-                "conceptSlug": "trap-toroid",
-                "microskillSlug": "avoid-toroid",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "subtopicSlug": "magnetic-field-of-straight-wire",
+                "conceptSlug": "trap-magnetic-field-of-straight-wire",
+                "microskillSlug": "avoid-magnetic-field-of-straight-wire"
               }
             }
           ]
@@ -1120,557 +1015,503 @@
     },
     {
       "id": "m-magnetic-effects-and-magnetism-3",
-      "title": "Magnetic Effects of Current and Magnetism - Section 3",
-      "description": "Comprehensive analysis covering force on current-carrying conductor, force between parallel currents, torque on current loop and more.",
+      "title": "Mastery Module 3: Magnetic field of solenoid and Related Concepts",
+      "description": "Comprehensive analysis covering magnetic field of solenoid, magnetic field of toroid, force on current-carrying conductor and advanced applications.",
       "conceptTags": [
         "magnetic-effects-and-magnetism",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-magnetic-effects-and-magnetism-force-on-current-carrying-conductor",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-field-of-solenoid-10",
+          "title": "Magnetic field of solenoid",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "magnetic-field-of-solenoid"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of solenoid"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Magnetic field of solenoid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic field of solenoid correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
+              "variables": [
+                "B",
+                "I",
+                "l",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Magnetic field of solenoid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic field of solenoid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of solenoid.",
+            "Successfully avoids common pitfalls when Magnetic field of solenoid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Magnetic field of solenoid in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-1",
+              "question": "What are the critical factors or principles governing Magnetic field of solenoid?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-solenoid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-solenoid",
+                "conceptSlug": "core-magnetic-field-of-solenoid",
+                "microskillSlug": "understand-magnetic-field-of-solenoid"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-2",
+              "question": "Describe a scenario where applying the concept of Magnetic field of solenoid can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-solenoid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-solenoid",
+                "conceptSlug": "trap-magnetic-field-of-solenoid",
+                "microskillSlug": "avoid-magnetic-field-of-solenoid"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-field-of-toroid-11",
+          "title": "Magnetic field of toroid",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "magnetic-field-of-toroid"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of toroid"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Magnetic field of toroid is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic field of toroid correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
+              "variables": [
+                "B",
+                "I",
+                "l",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Magnetic field of toroid during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic field of toroid."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field of toroid.",
+            "Successfully avoids common pitfalls when Magnetic field of toroid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Magnetic field of toroid in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-1",
+              "question": "What are the critical factors or principles governing Magnetic field of toroid?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-toroid"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-toroid",
+                "conceptSlug": "core-magnetic-field-of-toroid",
+                "microskillSlug": "understand-magnetic-field-of-toroid"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-2",
+              "question": "Describe a scenario where applying the concept of Magnetic field of toroid can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-of-toroid",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-of-toroid",
+                "conceptSlug": "trap-magnetic-field-of-toroid",
+                "microskillSlug": "avoid-magnetic-field-of-toroid"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-force-on-current-carrying-conductor-12",
           "title": "Force on current-carrying conductor",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "force-on-current-carrying-conductor"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Force on current-carrying conductor"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Force on current-carrying conductor"
           ],
           "mustKnowFacts": [
-            "Force on current-carrying conductor is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Force on current-carrying conductor for NEET."
+            "A thorough understanding of Force on current-carrying conductor is heavily tested in recent NEET papers.",
+            "Applying the core principles of Force on current-carrying conductor correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for force on current-carrying conductor",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Force on current-carrying conductor during complex MCQs.",
-            "Failing to apply the correct logic for Force on current-carrying conductor."
+            "Misinterpreting the subtle edge cases of Force on current-carrying conductor during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Force on current-carrying conductor."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Force on current-carrying conductor."
+            "Can accurately solve numericals or identify biological structures related specifically to Force on current-carrying conductor.",
+            "Successfully avoids common pitfalls when Force on current-carrying conductor is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Force on current-carrying conductor."
+            "Past year questions frequently test the application of Force on current-carrying conductor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-1",
-              "question": "Explain the core concept behind Force on current-carrying conductor.",
+              "question": "What are the critical factors or principles governing Force on current-carrying conductor?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "force-on-current-carrying-conductor"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "force-on-current-carrying-conductor",
                 "conceptSlug": "core-force-on-current-carrying-conductor",
-                "microskillSlug": "understand-force-on-current-carrying-conductor",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-force-on-current-carrying-conductor"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-2",
-              "question": "What is a common trap associated with Force on current-carrying conductor?",
+              "question": "Describe a scenario where applying the concept of Force on current-carrying conductor can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "force-on-current-carrying-conductor",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "force-on-current-carrying-conductor",
                 "conceptSlug": "trap-force-on-current-carrying-conductor",
-                "microskillSlug": "avoid-force-on-current-carrying-conductor",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-force-on-current-carrying-conductor"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-force-between-parallel-currents",
+          "id": "mt-magnetic-effects-and-magnetism-force-between-parallel-currents-13",
           "title": "Force between parallel currents",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "force-between-parallel-currents"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Force between parallel currents"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Force between parallel currents"
           ],
           "mustKnowFacts": [
-            "Force between parallel currents is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Force between parallel currents for NEET."
+            "A thorough understanding of Force between parallel currents is heavily tested in recent NEET papers.",
+            "Applying the core principles of Force between parallel currents correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for force between parallel currents",
-              "expression": "F = m a",
+              "name": "Newton Second Law",
+              "expression": "\\vec{F} = \\frac{d\\vec{p}}{dt}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "p",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Force between parallel currents during complex MCQs.",
-            "Failing to apply the correct logic for Force between parallel currents."
+            "Misinterpreting the subtle edge cases of Force between parallel currents during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Force between parallel currents."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Force between parallel currents."
+            "Can accurately solve numericals or identify biological structures related specifically to Force between parallel currents.",
+            "Successfully avoids common pitfalls when Force between parallel currents is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Force between parallel currents."
+            "Past year questions frequently test the application of Force between parallel currents in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-1",
-              "question": "Explain the core concept behind Force between parallel currents.",
+              "question": "What are the critical factors or principles governing Force between parallel currents?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "force-between-parallel-currents"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "force-between-parallel-currents",
                 "conceptSlug": "core-force-between-parallel-currents",
-                "microskillSlug": "understand-force-between-parallel-currents",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-force-between-parallel-currents"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-2",
-              "question": "What is a common trap associated with Force between parallel currents?",
+              "question": "Describe a scenario where applying the concept of Force between parallel currents can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "force-between-parallel-currents",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "force-between-parallel-currents",
                 "conceptSlug": "trap-force-between-parallel-currents",
-                "microskillSlug": "avoid-force-between-parallel-currents",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-force-between-parallel-currents"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-torque-on-current-loop",
+          "id": "mt-magnetic-effects-and-magnetism-torque-on-current-loop-14",
           "title": "Torque on current loop",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
             "torque-on-current-loop"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Torque on current loop"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Torque on current loop"
           ],
           "mustKnowFacts": [
-            "Torque on current loop is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Torque on current loop for NEET."
+            "A thorough understanding of Torque on current loop is heavily tested in recent NEET papers.",
+            "Applying the core principles of Torque on current loop correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for torque on current loop",
-              "expression": "F = m a",
+              "name": "Torque",
+              "expression": "\\vec{\\tau} = \\vec{r} \\times \\vec{F}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "\\tau",
+                "r",
+                "F"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Torque on current loop during complex MCQs.",
-            "Failing to apply the correct logic for Torque on current loop."
+            "Misinterpreting the subtle edge cases of Torque on current loop during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Torque on current loop."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Torque on current loop."
+            "Can accurately solve numericals or identify biological structures related specifically to Torque on current loop.",
+            "Successfully avoids common pitfalls when Torque on current loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Torque on current loop."
+            "Past year questions frequently test the application of Torque on current loop in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-1",
-              "question": "Explain the core concept behind Torque on current loop.",
+              "question": "What are the critical factors or principles governing Torque on current loop?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "torque-on-current-loop"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "torque-on-current-loop",
                 "conceptSlug": "core-torque-on-current-loop",
-                "microskillSlug": "understand-torque-on-current-loop",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "understand-torque-on-current-loop"
               }
             },
             {
               "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-2",
-              "question": "What is a common trap associated with Torque on current loop?",
+              "question": "Describe a scenario where applying the concept of Torque on current loop can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "magnetic-effects-and-magnetism",
                 "torque-on-current-loop",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
                 "topicSlug": "magnetic-effects-and-magnetism",
                 "subtopicSlug": "torque-on-current-loop",
                 "conceptSlug": "trap-torque-on-current-loop",
-                "microskillSlug": "avoid-torque-on-current-loop",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-magnetic-dipole-moment",
-          "title": "Magnetic dipole moment",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "magnetic-dipole-moment"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Magnetic dipole moment"
-          ],
-          "mustKnowFacts": [
-            "Magnetic dipole moment is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Magnetic dipole moment for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for magnetic dipole moment",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Magnetic dipole moment during complex MCQs.",
-            "Failing to apply the correct logic for Magnetic dipole moment."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Magnetic dipole moment."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Magnetic dipole moment."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-1",
-              "question": "Explain the core concept behind Magnetic dipole moment.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "magnetic-dipole-moment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-dipole-moment",
-                "conceptSlug": "core-magnetic-dipole-moment",
-                "microskillSlug": "understand-magnetic-dipole-moment",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-2",
-              "question": "What is a common trap associated with Magnetic dipole moment?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "magnetic-dipole-moment",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-dipole-moment",
-                "conceptSlug": "trap-magnetic-dipole-moment",
-                "microskillSlug": "avoid-magnetic-dipole-moment",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-moving-coil-galvanometer",
-          "title": "Moving coil galvanometer",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "moving-coil-galvanometer"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Moving coil galvanometer"
-          ],
-          "mustKnowFacts": [
-            "Moving coil galvanometer is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Moving coil galvanometer for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for moving coil galvanometer",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Moving coil galvanometer during complex MCQs.",
-            "Failing to apply the correct logic for Moving coil galvanometer."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Moving coil galvanometer."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Moving coil galvanometer."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-1",
-              "question": "Explain the core concept behind Moving coil galvanometer.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "moving-coil-galvanometer"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "moving-coil-galvanometer",
-                "conceptSlug": "core-moving-coil-galvanometer",
-                "microskillSlug": "understand-moving-coil-galvanometer",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-2",
-              "question": "What is a common trap associated with Moving coil galvanometer?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "moving-coil-galvanometer",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "moving-coil-galvanometer",
-                "conceptSlug": "trap-moving-coil-galvanometer",
-                "microskillSlug": "avoid-moving-coil-galvanometer",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-magnetic-effects-and-magnetism-conversion-to-ammeter-voltmeter",
-          "title": "Conversion to ammeter/voltmeter",
-          "conceptTags": [
-            "magnetic-effects-and-magnetism",
-            "conversion-to-ammeter-voltmeter"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Conversion to ammeter/voltmeter"
-          ],
-          "mustKnowFacts": [
-            "Conversion to ammeter/voltmeter is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Conversion to ammeter/voltmeter for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for conversion to ammeter/voltmeter",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Conversion to ammeter/voltmeter during complex MCQs.",
-            "Failing to apply the correct logic for Conversion to ammeter/voltmeter."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Conversion to ammeter/voltmeter."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Conversion to ammeter/voltmeter."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-conversion-to-ammeter-voltmeter-1",
-              "question": "Explain the core concept behind Conversion to ammeter/voltmeter.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "conversion-to-ammeter-voltmeter"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "conversion-to-ammeter-voltmeter",
-                "conceptSlug": "core-conversion-to-ammeter-voltmeter",
-                "microskillSlug": "understand-conversion-to-ammeter-voltmeter",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
-              }
-            },
-            {
-              "id": "magnetic-effects-and-magnetism-q-conversion-to-ammeter-voltmeter-2",
-              "question": "What is a common trap associated with Conversion to ammeter/voltmeter?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "conversion-to-ammeter-voltmeter",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "conversion-to-ammeter-voltmeter",
-                "conceptSlug": "trap-conversion-to-ammeter-voltmeter",
-                "microskillSlug": "avoid-conversion-to-ammeter-voltmeter",
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "microskillSlug": "avoid-torque-on-current-loop"
               }
             }
           ]
@@ -1679,375 +1520,816 @@
     },
     {
       "id": "m-magnetic-effects-and-magnetism-4",
-      "title": "Magnetic Effects of Current and Magnetism - Section 4",
-      "description": "Comprehensive analysis covering bar magnet, dipole field, Earth magnetism and more.",
+      "title": "Mastery Module 4: Magnetic dipole moment and Related Concepts",
+      "description": "Comprehensive analysis covering magnetic dipole moment, moving coil galvanometer, bar magnet properties and advanced applications.",
       "conceptTags": [
         "magnetic-effects-and-magnetism",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-magnetic-effects-and-magnetism-bar-magnet",
-          "title": "Bar magnet",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-dipole-moment-15",
+          "title": "Magnetic dipole moment",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "bar-magnet"
+            "magnetic-dipole-moment"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Bar magnet"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic dipole moment"
           ],
           "mustKnowFacts": [
-            "Bar magnet is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Bar magnet for NEET."
+            "A thorough understanding of Magnetic dipole moment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic dipole moment correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for bar magnet",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Bar magnet during complex MCQs.",
-            "Failing to apply the correct logic for Bar magnet."
+            "Misinterpreting the subtle edge cases of Magnetic dipole moment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic dipole moment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Bar magnet."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic dipole moment.",
+            "Successfully avoids common pitfalls when Magnetic dipole moment is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Bar magnet."
+            "Past year questions frequently test the application of Magnetic dipole moment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-bar-magnet-1",
-              "question": "Explain the core concept behind Bar magnet.",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-1",
+              "question": "What are the critical factors or principles governing Magnetic dipole moment?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "bar-magnet"
+                "magnetic-effects-and-magnetism",
+                "magnetic-dipole-moment"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "bar-magnet",
-                "conceptSlug": "core-bar-magnet",
-                "microskillSlug": "understand-bar-magnet",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-dipole-moment",
+                "conceptSlug": "core-magnetic-dipole-moment",
+                "microskillSlug": "understand-magnetic-dipole-moment"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-bar-magnet-2",
-              "question": "What is a common trap associated with Bar magnet?",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-2",
+              "question": "Describe a scenario where applying the concept of Magnetic dipole moment can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "bar-magnet",
+                "magnetic-effects-and-magnetism",
+                "magnetic-dipole-moment",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "bar-magnet",
-                "conceptSlug": "trap-bar-magnet",
-                "microskillSlug": "avoid-bar-magnet",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-dipole-moment",
+                "conceptSlug": "trap-magnetic-dipole-moment",
+                "microskillSlug": "avoid-magnetic-dipole-moment"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-dipole-field",
-          "title": "Dipole field",
+          "id": "mt-magnetic-effects-and-magnetism-moving-coil-galvanometer-16",
+          "title": "Moving coil galvanometer",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "dipole-field"
+            "moving-coil-galvanometer"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dipole field"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Moving coil galvanometer"
           ],
           "mustKnowFacts": [
-            "Dipole field is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Dipole field for NEET."
+            "A thorough understanding of Moving coil galvanometer is heavily tested in recent NEET papers.",
+            "Applying the core principles of Moving coil galvanometer correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for dipole field",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dipole field during complex MCQs.",
-            "Failing to apply the correct logic for Dipole field."
+            "Misinterpreting the subtle edge cases of Moving coil galvanometer during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Moving coil galvanometer."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dipole field."
+            "Can accurately solve numericals or identify biological structures related specifically to Moving coil galvanometer.",
+            "Successfully avoids common pitfalls when Moving coil galvanometer is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dipole field."
+            "Past year questions frequently test the application of Moving coil galvanometer in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-dipole-field-1",
-              "question": "Explain the core concept behind Dipole field.",
+              "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-1",
+              "question": "What are the critical factors or principles governing Moving coil galvanometer?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dipole-field"
+                "magnetic-effects-and-magnetism",
+                "moving-coil-galvanometer"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "dipole-field",
-                "conceptSlug": "core-dipole-field",
-                "microskillSlug": "understand-dipole-field",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "moving-coil-galvanometer",
+                "conceptSlug": "core-moving-coil-galvanometer",
+                "microskillSlug": "understand-moving-coil-galvanometer"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-dipole-field-2",
-              "question": "What is a common trap associated with Dipole field?",
+              "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-2",
+              "question": "Describe a scenario where applying the concept of Moving coil galvanometer can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dipole-field",
+                "magnetic-effects-and-magnetism",
+                "moving-coil-galvanometer",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "dipole-field",
-                "conceptSlug": "trap-dipole-field",
-                "microskillSlug": "avoid-dipole-field",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "moving-coil-galvanometer",
+                "conceptSlug": "trap-moving-coil-galvanometer",
+                "microskillSlug": "avoid-moving-coil-galvanometer"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-earth-magnetism",
-          "title": "Earth magnetism",
+          "id": "mt-magnetic-effects-and-magnetism-bar-magnet-properties-17",
+          "title": "Bar magnet properties",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "earth-magnetism"
+            "bar-magnet-properties"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Earth magnetism"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Bar magnet properties"
           ],
           "mustKnowFacts": [
-            "Earth magnetism is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Earth magnetism for NEET."
+            "A thorough understanding of Bar magnet properties is heavily tested in recent NEET papers.",
+            "Applying the core principles of Bar magnet properties correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for Earth magnetism",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Earth magnetism during complex MCQs.",
-            "Failing to apply the correct logic for Earth magnetism."
+            "Misinterpreting the subtle edge cases of Bar magnet properties during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Bar magnet properties."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Earth magnetism."
+            "Can accurately solve numericals or identify biological structures related specifically to Bar magnet properties.",
+            "Successfully avoids common pitfalls when Bar magnet properties is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Earth magnetism."
+            "Past year questions frequently test the application of Bar magnet properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-earth-magnetism-1",
-              "question": "Explain the core concept behind Earth magnetism.",
+              "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-1",
+              "question": "What are the critical factors or principles governing Bar magnet properties?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "earth-magnetism"
+                "magnetic-effects-and-magnetism",
+                "bar-magnet-properties"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "earth-magnetism",
-                "conceptSlug": "core-earth-magnetism",
-                "microskillSlug": "understand-earth-magnetism",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "bar-magnet-properties",
+                "conceptSlug": "core-bar-magnet-properties",
+                "microskillSlug": "understand-bar-magnet-properties"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-earth-magnetism-2",
-              "question": "What is a common trap associated with Earth magnetism?",
+              "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-2",
+              "question": "Describe a scenario where applying the concept of Bar magnet properties can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "earth-magnetism",
+                "magnetic-effects-and-magnetism",
+                "bar-magnet-properties",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "earth-magnetism",
-                "conceptSlug": "trap-earth-magnetism",
-                "microskillSlug": "avoid-earth-magnetism",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "bar-magnet-properties",
+                "conceptSlug": "trap-bar-magnet-properties",
+                "microskillSlug": "avoid-bar-magnet-properties"
               }
             }
           ]
         },
         {
-          "id": "mt-magnetic-effects-and-magnetism-dia-para-ferromagnetism",
-          "title": "Dia/para/ferromagnetism",
+          "id": "mt-magnetic-effects-and-magnetism-magnetic-field-lines-18",
+          "title": "Magnetic field lines",
           "conceptTags": [
             "magnetic-effects-and-magnetism",
-            "dia-para-ferromagnetism"
+            "magnetic-field-lines"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Dia/para/ferromagnetism"
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field lines"
           ],
           "mustKnowFacts": [
-            "Dia/para/ferromagnetism is a fundamental subtopic of Magnetic Effects of Current and Magnetism.",
-            "Crucial to understand the principles governing Dia/para/ferromagnetism for NEET."
+            "A thorough understanding of Magnetic field lines is heavily tested in recent NEET papers.",
+            "Applying the core principles of Magnetic field lines correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
-              "name": "Formula for dia/para/ferromagnetism",
-              "expression": "F = m a",
+              "name": "Biot-Savart Law",
+              "expression": "d\\vec{B} = \\frac{\\mu_0 I}{4\\pi} \\frac{d\\vec{l} \\times \\hat{r}}{r^2}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "B",
+                "I",
+                "l",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Dia/para/ferromagnetism during complex MCQs.",
-            "Failing to apply the correct logic for Dia/para/ferromagnetism."
+            "Misinterpreting the subtle edge cases of Magnetic field lines during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Magnetic field lines."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Dia/para/ferromagnetism."
+            "Can accurately solve numericals or identify biological structures related specifically to Magnetic field lines.",
+            "Successfully avoids common pitfalls when Magnetic field lines is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Dia/para/ferromagnetism."
+            "Past year questions frequently test the application of Magnetic field lines in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-dia-para-ferromagnetism-1",
-              "question": "Explain the core concept behind Dia/para/ferromagnetism.",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-1",
+              "question": "What are the critical factors or principles governing Magnetic field lines?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "dia-para-ferromagnetism"
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-lines"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "dia-para-ferromagnetism",
-                "conceptSlug": "core-dia-para-ferromagnetism",
-                "microskillSlug": "understand-dia-para-ferromagnetism",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-lines",
+                "conceptSlug": "core-magnetic-field-lines",
+                "microskillSlug": "understand-magnetic-field-lines"
               }
             },
             {
-              "id": "magnetic-effects-and-magnetism-q-dia-para-ferromagnetism-2",
-              "question": "What is a common trap associated with Dia/para/ferromagnetism?",
+              "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-2",
+              "question": "Describe a scenario where applying the concept of Magnetic field lines can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "dia-para-ferromagnetism",
+                "magnetic-effects-and-magnetism",
+                "magnetic-field-lines",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "dia-para-ferromagnetism",
-                "conceptSlug": "trap-dia-para-ferromagnetism",
-                "microskillSlug": "avoid-dia-para-ferromagnetism",
                 "subject": "Physics",
                 "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism"
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "magnetic-field-lines",
+                "conceptSlug": "trap-magnetic-field-lines",
+                "microskillSlug": "avoid-magnetic-field-lines"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-earth-magnetism-elements-19",
+          "title": "Earth magnetism elements",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "earth-magnetism-elements"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Earth magnetism elements"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Earth magnetism elements is heavily tested in recent NEET papers.",
+            "Applying the core principles of Earth magnetism elements correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Earth magnetism elements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Earth magnetism elements."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Earth magnetism elements.",
+            "Successfully avoids common pitfalls when Earth magnetism elements is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Earth magnetism elements in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-1",
+              "question": "What are the critical factors or principles governing Earth magnetism elements?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "earth-magnetism-elements"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "earth-magnetism-elements",
+                "conceptSlug": "core-earth-magnetism-elements",
+                "microskillSlug": "understand-earth-magnetism-elements"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-2",
+              "question": "Describe a scenario where applying the concept of Earth magnetism elements can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "earth-magnetism-elements",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "earth-magnetism-elements",
+                "conceptSlug": "trap-earth-magnetism-elements",
+                "microskillSlug": "avoid-earth-magnetism-elements"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-magnetic-effects-and-magnetism-5",
+      "title": "Mastery Module 5: Diamagnetism and Related Concepts",
+      "description": "Comprehensive analysis covering diamagnetism, paramagnetism, ferromagnetism and advanced applications.",
+      "conceptTags": [
+        "magnetic-effects-and-magnetism",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-magnetic-effects-and-magnetism-diamagnetism-20",
+          "title": "Diamagnetism",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "diamagnetism"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Diamagnetism"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Diamagnetism is heavily tested in recent NEET papers.",
+            "Applying the core principles of Diamagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Diamagnetism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Diamagnetism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Diamagnetism.",
+            "Successfully avoids common pitfalls when Diamagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Diamagnetism in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-diamagnetism-1",
+              "question": "What are the critical factors or principles governing Diamagnetism?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "diamagnetism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "diamagnetism",
+                "conceptSlug": "core-diamagnetism",
+                "microskillSlug": "understand-diamagnetism"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-diamagnetism-2",
+              "question": "Describe a scenario where applying the concept of Diamagnetism can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "diamagnetism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "diamagnetism",
+                "conceptSlug": "trap-diamagnetism",
+                "microskillSlug": "avoid-diamagnetism"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-paramagnetism-21",
+          "title": "Paramagnetism",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "paramagnetism"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Paramagnetism"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Paramagnetism is heavily tested in recent NEET papers.",
+            "Applying the core principles of Paramagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Paramagnetism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Paramagnetism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Paramagnetism.",
+            "Successfully avoids common pitfalls when Paramagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Paramagnetism in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-paramagnetism-1",
+              "question": "What are the critical factors or principles governing Paramagnetism?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "paramagnetism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "paramagnetism",
+                "conceptSlug": "core-paramagnetism",
+                "microskillSlug": "understand-paramagnetism"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-paramagnetism-2",
+              "question": "Describe a scenario where applying the concept of Paramagnetism can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "paramagnetism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "paramagnetism",
+                "conceptSlug": "trap-paramagnetism",
+                "microskillSlug": "avoid-paramagnetism"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-magnetic-effects-and-magnetism-ferromagnetism-22",
+          "title": "Ferromagnetism",
+          "conceptTags": [
+            "magnetic-effects-and-magnetism",
+            "ferromagnetism"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Ferromagnetism"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Ferromagnetism is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ferromagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Ferromagnetism during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ferromagnetism."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Ferromagnetism.",
+            "Successfully avoids common pitfalls when Ferromagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Ferromagnetism in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "magnetic-effects-and-magnetism-q-ferromagnetism-1",
+              "question": "What are the critical factors or principles governing Ferromagnetism?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "ferromagnetism"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "ferromagnetism",
+                "conceptSlug": "core-ferromagnetism",
+                "microskillSlug": "understand-ferromagnetism"
+              }
+            },
+            {
+              "id": "magnetic-effects-and-magnetism-q-ferromagnetism-2",
+              "question": "Describe a scenario where applying the concept of Ferromagnetism can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "magnetic-effects-and-magnetism",
+                "ferromagnetism",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "magnetic-effects-and-magnetism",
+                "chapterSlug": "magnetic-effects-and-magnetism",
+                "topicSlug": "magnetic-effects-and-magnetism",
+                "subtopicSlug": "ferromagnetism",
+                "conceptSlug": "trap-ferromagnetism",
+                "microskillSlug": "avoid-ferromagnetism"
               }
             }
           ]

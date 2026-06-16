@@ -2,375 +2,508 @@
   "missions": [
     {
       "id": "m-gravitation-1",
-      "title": "Gravitation - Section 1",
-      "description": "Comprehensive analysis covering universal law, gravitational field, acceleration due to gravity and more.",
+      "title": "Mastery Module 1: Universal law of gravitation and Related Concepts",
+      "description": "Comprehensive analysis covering universal law of gravitation, gravitational constant, gravitational field intensity and advanced applications.",
       "conceptTags": [
         "gravitation",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-gravitation-universal-law",
-          "title": "Universal law",
+          "id": "mt-gravitation-universal-law-of-gravitation-0",
+          "title": "Universal law of gravitation",
           "conceptTags": [
             "gravitation",
-            "universal-law"
+            "universal-law-of-gravitation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Universal law"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Universal law of gravitation"
           ],
           "mustKnowFacts": [
-            "Universal law is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Universal law for NEET."
+            "A thorough understanding of Universal law of gravitation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Universal law of gravitation correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for universal law",
-              "expression": "F = m a",
+              "name": "Gravitational Force",
+              "expression": "F = G \\frac{m_1 m_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "G",
+                "m_1",
+                "m_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Universal law during complex MCQs.",
-            "Failing to apply the correct logic for Universal law."
+            "Misinterpreting the subtle edge cases of Universal law of gravitation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Universal law of gravitation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Universal law."
+            "Can accurately solve numericals or identify biological structures related specifically to Universal law of gravitation.",
+            "Successfully avoids common pitfalls when Universal law of gravitation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Universal law."
+            "Past year questions frequently test the application of Universal law of gravitation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-universal-law-1",
-              "question": "Explain the core concept behind Universal law.",
+              "id": "gravitation-q-universal-law-of-gravitation-1",
+              "question": "What are the critical factors or principles governing Universal law of gravitation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "universal-law"
+                "gravitation",
+                "universal-law-of-gravitation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "universal-law",
-                "conceptSlug": "core-universal-law",
-                "microskillSlug": "understand-universal-law",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "universal-law-of-gravitation",
+                "conceptSlug": "core-universal-law-of-gravitation",
+                "microskillSlug": "understand-universal-law-of-gravitation"
               }
             },
             {
-              "id": "gravitation-q-universal-law-2",
-              "question": "What is a common trap associated with Universal law?",
+              "id": "gravitation-q-universal-law-of-gravitation-2",
+              "question": "Describe a scenario where applying the concept of Universal law of gravitation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "universal-law",
+                "gravitation",
+                "universal-law-of-gravitation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "universal-law",
-                "conceptSlug": "trap-universal-law",
-                "microskillSlug": "avoid-universal-law",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "universal-law-of-gravitation",
+                "conceptSlug": "trap-universal-law-of-gravitation",
+                "microskillSlug": "avoid-universal-law-of-gravitation"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-gravitational-field",
-          "title": "Gravitational field",
+          "id": "mt-gravitation-gravitational-constant-1",
+          "title": "Gravitational constant",
           "conceptTags": [
             "gravitation",
-            "gravitational-field"
+            "gravitational-constant"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Gravitational field"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational constant"
           ],
           "mustKnowFacts": [
-            "Gravitational field is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Gravitational field for NEET."
+            "A thorough understanding of Gravitational constant is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gravitational constant correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for gravitational field",
-              "expression": "F = m a",
+              "name": "Gravitational Force",
+              "expression": "F = G \\frac{m_1 m_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "G",
+                "m_1",
+                "m_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Gravitational field during complex MCQs.",
-            "Failing to apply the correct logic for Gravitational field."
+            "Misinterpreting the subtle edge cases of Gravitational constant during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gravitational constant."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gravitational field."
+            "Can accurately solve numericals or identify biological structures related specifically to Gravitational constant.",
+            "Successfully avoids common pitfalls when Gravitational constant is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gravitational field."
+            "Past year questions frequently test the application of Gravitational constant in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-gravitational-field-1",
-              "question": "Explain the core concept behind Gravitational field.",
+              "id": "gravitation-q-gravitational-constant-1",
+              "question": "What are the critical factors or principles governing Gravitational constant?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "gravitational-field"
+                "gravitation",
+                "gravitational-constant"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-field",
-                "conceptSlug": "core-gravitational-field",
-                "microskillSlug": "understand-gravitational-field",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-constant",
+                "conceptSlug": "core-gravitational-constant",
+                "microskillSlug": "understand-gravitational-constant"
               }
             },
             {
-              "id": "gravitation-q-gravitational-field-2",
-              "question": "What is a common trap associated with Gravitational field?",
+              "id": "gravitation-q-gravitational-constant-2",
+              "question": "Describe a scenario where applying the concept of Gravitational constant can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "gravitational-field",
+                "gravitation",
+                "gravitational-constant",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-field",
-                "conceptSlug": "trap-gravitational-field",
-                "microskillSlug": "avoid-gravitational-field",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-constant",
+                "conceptSlug": "trap-gravitational-constant",
+                "microskillSlug": "avoid-gravitational-constant"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-acceleration-due-to-gravity",
-          "title": "Acceleration due to gravity",
+          "id": "mt-gravitation-gravitational-field-intensity-2",
+          "title": "Gravitational field intensity",
           "conceptTags": [
             "gravitation",
-            "acceleration-due-to-gravity"
+            "gravitational-field-intensity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Acceleration due to gravity"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational field intensity"
           ],
           "mustKnowFacts": [
-            "Acceleration due to gravity is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Acceleration due to gravity for NEET."
+            "A thorough understanding of Gravitational field intensity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gravitational field intensity correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for acceleration due to gravity",
-              "expression": "F = m a",
+              "name": "Gravitational Force",
+              "expression": "F = G \\frac{m_1 m_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "G",
+                "m_1",
+                "m_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Acceleration due to gravity during complex MCQs.",
-            "Failing to apply the correct logic for Acceleration due to gravity."
+            "Misinterpreting the subtle edge cases of Gravitational field intensity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gravitational field intensity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Acceleration due to gravity."
+            "Can accurately solve numericals or identify biological structures related specifically to Gravitational field intensity.",
+            "Successfully avoids common pitfalls when Gravitational field intensity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Acceleration due to gravity."
+            "Past year questions frequently test the application of Gravitational field intensity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-acceleration-due-to-gravity-1",
-              "question": "Explain the core concept behind Acceleration due to gravity.",
+              "id": "gravitation-q-gravitational-field-intensity-1",
+              "question": "What are the critical factors or principles governing Gravitational field intensity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "acceleration-due-to-gravity"
+                "gravitation",
+                "gravitational-field-intensity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "acceleration-due-to-gravity",
-                "conceptSlug": "core-acceleration-due-to-gravity",
-                "microskillSlug": "understand-acceleration-due-to-gravity",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-field-intensity",
+                "conceptSlug": "core-gravitational-field-intensity",
+                "microskillSlug": "understand-gravitational-field-intensity"
               }
             },
             {
-              "id": "gravitation-q-acceleration-due-to-gravity-2",
-              "question": "What is a common trap associated with Acceleration due to gravity?",
+              "id": "gravitation-q-gravitational-field-intensity-2",
+              "question": "Describe a scenario where applying the concept of Gravitational field intensity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "acceleration-due-to-gravity",
+                "gravitation",
+                "gravitational-field-intensity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "acceleration-due-to-gravity",
-                "conceptSlug": "trap-acceleration-due-to-gravity",
-                "microskillSlug": "avoid-acceleration-due-to-gravity",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-field-intensity",
+                "conceptSlug": "trap-gravitational-field-intensity",
+                "microskillSlug": "avoid-gravitational-field-intensity"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-variation-with-altitude",
-          "title": "Variation with altitude",
+          "id": "mt-gravitation-acceleration-due-to-gravity-formula-3",
+          "title": "Acceleration due to gravity formula",
           "conceptTags": [
             "gravitation",
-            "variation-with-altitude"
+            "acceleration-due-to-gravity-formula"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Variation with altitude"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Acceleration due to gravity formula"
           ],
           "mustKnowFacts": [
-            "Variation with altitude is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Variation with altitude for NEET."
+            "A thorough understanding of Acceleration due to gravity formula is heavily tested in recent NEET papers.",
+            "Applying the core principles of Acceleration due to gravity formula correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for variation with altitude",
-              "expression": "F = m a",
+              "name": "Acceleration",
+              "expression": "a = \\frac{dv}{dt}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "a",
+                "v",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Variation with altitude during complex MCQs.",
-            "Failing to apply the correct logic for Variation with altitude."
+            "Misinterpreting the subtle edge cases of Acceleration due to gravity formula during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Acceleration due to gravity formula."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Variation with altitude."
+            "Can accurately solve numericals or identify biological structures related specifically to Acceleration due to gravity formula.",
+            "Successfully avoids common pitfalls when Acceleration due to gravity formula is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Variation with altitude."
+            "Past year questions frequently test the application of Acceleration due to gravity formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-variation-with-altitude-1",
-              "question": "Explain the core concept behind Variation with altitude.",
+              "id": "gravitation-q-acceleration-due-to-gravity-formula-1",
+              "question": "What are the critical factors or principles governing Acceleration due to gravity formula?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "variation-with-altitude"
+                "gravitation",
+                "acceleration-due-to-gravity-formula"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "variation-with-altitude",
-                "conceptSlug": "core-variation-with-altitude",
-                "microskillSlug": "understand-variation-with-altitude",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "acceleration-due-to-gravity-formula",
+                "conceptSlug": "core-acceleration-due-to-gravity-formula",
+                "microskillSlug": "understand-acceleration-due-to-gravity-formula"
               }
             },
             {
-              "id": "gravitation-q-variation-with-altitude-2",
-              "question": "What is a common trap associated with Variation with altitude?",
+              "id": "gravitation-q-acceleration-due-to-gravity-formula-2",
+              "question": "Describe a scenario where applying the concept of Acceleration due to gravity formula can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "variation-with-altitude",
+                "gravitation",
+                "acceleration-due-to-gravity-formula",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "variation-with-altitude",
-                "conceptSlug": "trap-variation-with-altitude",
-                "microskillSlug": "avoid-variation-with-altitude",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "acceleration-due-to-gravity-formula",
+                "conceptSlug": "trap-acceleration-due-to-gravity-formula",
+                "microskillSlug": "avoid-acceleration-due-to-gravity-formula"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-variation-of-g-with-altitude-4",
+          "title": "Variation of g with altitude",
+          "conceptTags": [
+            "gravitation",
+            "variation-of-g-with-altitude"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with altitude"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Variation of g with altitude is heavily tested in recent NEET papers.",
+            "Applying the core principles of Variation of g with altitude correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Variation of g with altitude during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Variation of g with altitude."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with altitude.",
+            "Successfully avoids common pitfalls when Variation of g with altitude is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Variation of g with altitude in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-variation-of-g-with-altitude-1",
+              "question": "What are the critical factors or principles governing Variation of g with altitude?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "variation-of-g-with-altitude"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-altitude",
+                "conceptSlug": "core-variation-of-g-with-altitude",
+                "microskillSlug": "understand-variation-of-g-with-altitude"
+              }
+            },
+            {
+              "id": "gravitation-q-variation-of-g-with-altitude-2",
+              "question": "Describe a scenario where applying the concept of Variation of g with altitude can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "variation-of-g-with-altitude",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-altitude",
+                "conceptSlug": "trap-variation-of-g-with-altitude",
+                "microskillSlug": "avoid-variation-of-g-with-altitude"
               }
             }
           ]
@@ -379,375 +512,505 @@
     },
     {
       "id": "m-gravitation-2",
-      "title": "Gravitation - Section 2",
-      "description": "Comprehensive analysis covering depth, latitude/rotation, gravitational potential and more.",
+      "title": "Mastery Module 2: Variation of g with depth and Related Concepts",
+      "description": "Comprehensive analysis covering variation of g with depth, variation of g with latitude/rotation, gravitational potential and advanced applications.",
       "conceptTags": [
         "gravitation",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-gravitation-depth",
-          "title": "Depth",
+          "id": "mt-gravitation-variation-of-g-with-depth-5",
+          "title": "Variation of g with depth",
           "conceptTags": [
             "gravitation",
-            "depth"
+            "variation-of-g-with-depth"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Depth"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with depth"
           ],
           "mustKnowFacts": [
-            "Depth is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Depth for NEET."
+            "A thorough understanding of Variation of g with depth is heavily tested in recent NEET papers.",
+            "Applying the core principles of Variation of g with depth correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for depth",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Depth during complex MCQs.",
-            "Failing to apply the correct logic for Depth."
+            "Misinterpreting the subtle edge cases of Variation of g with depth during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Variation of g with depth."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Depth."
+            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with depth.",
+            "Successfully avoids common pitfalls when Variation of g with depth is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Depth."
+            "Past year questions frequently test the application of Variation of g with depth in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-depth-1",
-              "question": "Explain the core concept behind Depth.",
+              "id": "gravitation-q-variation-of-g-with-depth-1",
+              "question": "What are the critical factors or principles governing Variation of g with depth?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "depth"
+                "gravitation",
+                "variation-of-g-with-depth"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "depth",
-                "conceptSlug": "core-depth",
-                "microskillSlug": "understand-depth",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-depth",
+                "conceptSlug": "core-variation-of-g-with-depth",
+                "microskillSlug": "understand-variation-of-g-with-depth"
               }
             },
             {
-              "id": "gravitation-q-depth-2",
-              "question": "What is a common trap associated with Depth?",
+              "id": "gravitation-q-variation-of-g-with-depth-2",
+              "question": "Describe a scenario where applying the concept of Variation of g with depth can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "depth",
+                "gravitation",
+                "variation-of-g-with-depth",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "depth",
-                "conceptSlug": "trap-depth",
-                "microskillSlug": "avoid-depth",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-depth",
+                "conceptSlug": "trap-variation-of-g-with-depth",
+                "microskillSlug": "avoid-variation-of-g-with-depth"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-latitude-rotation",
-          "title": "Latitude/rotation",
+          "id": "mt-gravitation-variation-of-g-with-latitude-rotation-6",
+          "title": "Variation of g with latitude/rotation",
           "conceptTags": [
             "gravitation",
-            "latitude-rotation"
+            "variation-of-g-with-latitude-rotation"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Latitude/rotation"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with latitude/rotation"
           ],
           "mustKnowFacts": [
-            "Latitude/rotation is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Latitude/rotation for NEET."
+            "A thorough understanding of Variation of g with latitude/rotation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Variation of g with latitude/rotation correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for latitude/rotation",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Latitude/rotation during complex MCQs.",
-            "Failing to apply the correct logic for Latitude/rotation."
+            "Misinterpreting the subtle edge cases of Variation of g with latitude/rotation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Variation of g with latitude/rotation."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Latitude/rotation."
+            "Can accurately solve numericals or identify biological structures related specifically to Variation of g with latitude/rotation.",
+            "Successfully avoids common pitfalls when Variation of g with latitude/rotation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Latitude/rotation."
+            "Past year questions frequently test the application of Variation of g with latitude/rotation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-latitude-rotation-1",
-              "question": "Explain the core concept behind Latitude/rotation.",
+              "id": "gravitation-q-variation-of-g-with-latitude-rotation-1",
+              "question": "What are the critical factors or principles governing Variation of g with latitude/rotation?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "latitude-rotation"
+                "gravitation",
+                "variation-of-g-with-latitude-rotation"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "latitude-rotation",
-                "conceptSlug": "core-latitude-rotation",
-                "microskillSlug": "understand-latitude-rotation",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-latitude-rotation",
+                "conceptSlug": "core-variation-of-g-with-latitude-rotation",
+                "microskillSlug": "understand-variation-of-g-with-latitude-rotation"
               }
             },
             {
-              "id": "gravitation-q-latitude-rotation-2",
-              "question": "What is a common trap associated with Latitude/rotation?",
+              "id": "gravitation-q-variation-of-g-with-latitude-rotation-2",
+              "question": "Describe a scenario where applying the concept of Variation of g with latitude/rotation can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "latitude-rotation",
+                "gravitation",
+                "variation-of-g-with-latitude-rotation",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "latitude-rotation",
-                "conceptSlug": "trap-latitude-rotation",
-                "microskillSlug": "avoid-latitude-rotation",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "variation-of-g-with-latitude-rotation",
+                "conceptSlug": "trap-variation-of-g-with-latitude-rotation",
+                "microskillSlug": "avoid-variation-of-g-with-latitude-rotation"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-gravitational-potential",
+          "id": "mt-gravitation-gravitational-potential-7",
           "title": "Gravitational potential",
           "conceptTags": [
             "gravitation",
             "gravitational-potential"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Gravitational potential"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational potential"
           ],
           "mustKnowFacts": [
-            "Gravitational potential is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Gravitational potential for NEET."
+            "A thorough understanding of Gravitational potential is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gravitational potential correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for gravitational potential",
-              "expression": "F = m a",
+              "name": "Gravitational Force",
+              "expression": "F = G \\frac{m_1 m_2}{r^2}",
               "variables": [
                 "F",
-                "m",
-                "a"
+                "G",
+                "m_1",
+                "m_2",
+                "r"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Gravitational potential during complex MCQs.",
-            "Failing to apply the correct logic for Gravitational potential."
+            "Misinterpreting the subtle edge cases of Gravitational potential during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gravitational potential."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gravitational potential."
+            "Can accurately solve numericals or identify biological structures related specifically to Gravitational potential.",
+            "Successfully avoids common pitfalls when Gravitational potential is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gravitational potential."
+            "Past year questions frequently test the application of Gravitational potential in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-potential-1",
-              "question": "Explain the core concept behind Gravitational potential.",
+              "question": "What are the critical factors or principles governing Gravitational potential?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "gravitation",
                 "gravitational-potential"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "gravitational-potential",
                 "conceptSlug": "core-gravitational-potential",
-                "microskillSlug": "understand-gravitational-potential",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "understand-gravitational-potential"
               }
             },
             {
               "id": "gravitation-q-gravitational-potential-2",
-              "question": "What is a common trap associated with Gravitational potential?",
+              "question": "Describe a scenario where applying the concept of Gravitational potential can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "gravitation",
                 "gravitational-potential",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "gravitational-potential",
                 "conceptSlug": "trap-gravitational-potential",
-                "microskillSlug": "avoid-gravitational-potential",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "avoid-gravitational-potential"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-gravitational-potential-energy",
+          "id": "mt-gravitation-gravitational-potential-energy-8",
           "title": "Gravitational potential energy",
           "conceptTags": [
             "gravitation",
             "gravitational-potential-energy"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Gravitational potential energy"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational potential energy"
           ],
           "mustKnowFacts": [
-            "Gravitational potential energy is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Gravitational potential energy for NEET."
+            "A thorough understanding of Gravitational potential energy is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gravitational potential energy correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for gravitational potential energy",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Gravitational potential energy during complex MCQs.",
-            "Failing to apply the correct logic for Gravitational potential energy."
+            "Misinterpreting the subtle edge cases of Gravitational potential energy during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gravitational potential energy."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Gravitational potential energy."
+            "Can accurately solve numericals or identify biological structures related specifically to Gravitational potential energy.",
+            "Successfully avoids common pitfalls when Gravitational potential energy is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Gravitational potential energy."
+            "Past year questions frequently test the application of Gravitational potential energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-potential-energy-1",
-              "question": "Explain the core concept behind Gravitational potential energy.",
+              "question": "What are the critical factors or principles governing Gravitational potential energy?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "gravitation",
                 "gravitational-potential-energy"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "gravitational-potential-energy",
                 "conceptSlug": "core-gravitational-potential-energy",
-                "microskillSlug": "understand-gravitational-potential-energy",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "understand-gravitational-potential-energy"
               }
             },
             {
               "id": "gravitation-q-gravitational-potential-energy-2",
-              "question": "What is a common trap associated with Gravitational potential energy?",
+              "question": "Describe a scenario where applying the concept of Gravitational potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "gravitation",
                 "gravitational-potential-energy",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "gravitational-potential-energy",
                 "conceptSlug": "trap-gravitational-potential-energy",
-                "microskillSlug": "avoid-gravitational-potential-energy",
+                "microskillSlug": "avoid-gravitational-potential-energy"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-escape-velocity-derivation-9",
+          "title": "Escape velocity derivation",
+          "conceptTags": [
+            "gravitation",
+            "escape-velocity-derivation"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Escape velocity derivation"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Escape velocity derivation is heavily tested in recent NEET papers.",
+            "Applying the core principles of Escape velocity derivation correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
+              "variables": [
+                "v",
+                "x",
+                "t"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Escape velocity derivation during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Escape velocity derivation."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Escape velocity derivation.",
+            "Successfully avoids common pitfalls when Escape velocity derivation is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Escape velocity derivation in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-escape-velocity-derivation-1",
+              "question": "What are the critical factors or principles governing Escape velocity derivation?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "escape-velocity-derivation"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "escape-velocity-derivation",
+                "conceptSlug": "core-escape-velocity-derivation",
+                "microskillSlug": "understand-escape-velocity-derivation"
+              }
+            },
+            {
+              "id": "gravitation-q-escape-velocity-derivation-2",
+              "question": "Describe a scenario where applying the concept of Escape velocity derivation can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "escape-velocity-derivation",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "escape-velocity-derivation",
+                "conceptSlug": "trap-escape-velocity-derivation",
+                "microskillSlug": "avoid-escape-velocity-derivation"
               }
             }
           ]
@@ -756,375 +1019,504 @@
     },
     {
       "id": "m-gravitation-3",
-      "title": "Gravitation - Section 3",
-      "description": "Comprehensive analysis covering escape velocity, orbital velocity, satellite time period and more.",
+      "title": "Mastery Module 3: Orbital velocity and Related Concepts",
+      "description": "Comprehensive analysis covering orbital velocity, satellite time period, total energy of orbiting satellite and advanced applications.",
       "conceptTags": [
         "gravitation",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-gravitation-escape-velocity",
-          "title": "Escape velocity",
-          "conceptTags": [
-            "gravitation",
-            "escape-velocity"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 11, Escape velocity"
-          ],
-          "mustKnowFacts": [
-            "Escape velocity is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Escape velocity for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for escape velocity",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Escape velocity during complex MCQs.",
-            "Failing to apply the correct logic for Escape velocity."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Escape velocity."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Escape velocity."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-escape-velocity-1",
-              "question": "Explain the core concept behind Escape velocity.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "escape-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "escape-velocity",
-                "conceptSlug": "core-escape-velocity",
-                "microskillSlug": "understand-escape-velocity",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
-              }
-            },
-            {
-              "id": "gravitation-q-escape-velocity-2",
-              "question": "What is a common trap associated with Escape velocity?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "escape-velocity",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "escape-velocity",
-                "conceptSlug": "trap-escape-velocity",
-                "microskillSlug": "avoid-escape-velocity",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-gravitation-orbital-velocity",
+          "id": "mt-gravitation-orbital-velocity-10",
           "title": "Orbital velocity",
           "conceptTags": [
             "gravitation",
             "orbital-velocity"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Orbital velocity"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Orbital velocity"
           ],
           "mustKnowFacts": [
-            "Orbital velocity is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Orbital velocity for NEET."
+            "A thorough understanding of Orbital velocity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Orbital velocity correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for orbital velocity",
-              "expression": "F = m a",
+              "name": "Velocity",
+              "expression": "v = \\frac{dx}{dt}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "v",
+                "x",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Orbital velocity during complex MCQs.",
-            "Failing to apply the correct logic for Orbital velocity."
+            "Misinterpreting the subtle edge cases of Orbital velocity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Orbital velocity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Orbital velocity."
+            "Can accurately solve numericals or identify biological structures related specifically to Orbital velocity.",
+            "Successfully avoids common pitfalls when Orbital velocity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Orbital velocity."
+            "Past year questions frequently test the application of Orbital velocity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-orbital-velocity-1",
-              "question": "Explain the core concept behind Orbital velocity.",
+              "question": "What are the critical factors or principles governing Orbital velocity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "gravitation",
                 "orbital-velocity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "orbital-velocity",
                 "conceptSlug": "core-orbital-velocity",
-                "microskillSlug": "understand-orbital-velocity",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "understand-orbital-velocity"
               }
             },
             {
               "id": "gravitation-q-orbital-velocity-2",
-              "question": "What is a common trap associated with Orbital velocity?",
+              "question": "Describe a scenario where applying the concept of Orbital velocity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "gravitation",
                 "orbital-velocity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "orbital-velocity",
                 "conceptSlug": "trap-orbital-velocity",
-                "microskillSlug": "avoid-orbital-velocity",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "avoid-orbital-velocity"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-satellite-time-period",
+          "id": "mt-gravitation-satellite-time-period-11",
           "title": "Satellite time period",
           "conceptTags": [
             "gravitation",
             "satellite-time-period"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Satellite time period"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Satellite time period"
           ],
           "mustKnowFacts": [
-            "Satellite time period is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Satellite time period for NEET."
+            "A thorough understanding of Satellite time period is heavily tested in recent NEET papers.",
+            "Applying the core principles of Satellite time period correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for satellite time period",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Satellite time period during complex MCQs.",
-            "Failing to apply the correct logic for Satellite time period."
+            "Misinterpreting the subtle edge cases of Satellite time period during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Satellite time period."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Satellite time period."
+            "Can accurately solve numericals or identify biological structures related specifically to Satellite time period.",
+            "Successfully avoids common pitfalls when Satellite time period is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Satellite time period."
+            "Past year questions frequently test the application of Satellite time period in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-satellite-time-period-1",
-              "question": "Explain the core concept behind Satellite time period.",
+              "question": "What are the critical factors or principles governing Satellite time period?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "gravitation",
                 "satellite-time-period"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "satellite-time-period",
                 "conceptSlug": "core-satellite-time-period",
-                "microskillSlug": "understand-satellite-time-period",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "understand-satellite-time-period"
               }
             },
             {
               "id": "gravitation-q-satellite-time-period-2",
-              "question": "What is a common trap associated with Satellite time period?",
+              "question": "Describe a scenario where applying the concept of Satellite time period can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "gravitation",
                 "satellite-time-period",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "satellite-time-period",
                 "conceptSlug": "trap-satellite-time-period",
-                "microskillSlug": "avoid-satellite-time-period",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "avoid-satellite-time-period"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-total-energy-of-satellite",
-          "title": "Total energy of satellite",
+          "id": "mt-gravitation-total-energy-of-orbiting-satellite-12",
+          "title": "Total energy of orbiting satellite",
           "conceptTags": [
             "gravitation",
-            "total-energy-of-satellite"
+            "total-energy-of-orbiting-satellite"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Total energy of satellite"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Total energy of orbiting satellite"
           ],
           "mustKnowFacts": [
-            "Total energy of satellite is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Total energy of satellite for NEET."
+            "A thorough understanding of Total energy of orbiting satellite is heavily tested in recent NEET papers.",
+            "Applying the core principles of Total energy of orbiting satellite correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for total energy of satellite",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Total energy of satellite during complex MCQs.",
-            "Failing to apply the correct logic for Total energy of satellite."
+            "Misinterpreting the subtle edge cases of Total energy of orbiting satellite during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Total energy of orbiting satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Total energy of satellite."
+            "Can accurately solve numericals or identify biological structures related specifically to Total energy of orbiting satellite.",
+            "Successfully avoids common pitfalls when Total energy of orbiting satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Total energy of satellite."
+            "Past year questions frequently test the application of Total energy of orbiting satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-total-energy-of-satellite-1",
-              "question": "Explain the core concept behind Total energy of satellite.",
+              "id": "gravitation-q-total-energy-of-orbiting-satellite-1",
+              "question": "What are the critical factors or principles governing Total energy of orbiting satellite?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "total-energy-of-satellite"
+                "gravitation",
+                "total-energy-of-orbiting-satellite"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "total-energy-of-satellite",
-                "conceptSlug": "core-total-energy-of-satellite",
-                "microskillSlug": "understand-total-energy-of-satellite",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "total-energy-of-orbiting-satellite",
+                "conceptSlug": "core-total-energy-of-orbiting-satellite",
+                "microskillSlug": "understand-total-energy-of-orbiting-satellite"
               }
             },
             {
-              "id": "gravitation-q-total-energy-of-satellite-2",
-              "question": "What is a common trap associated with Total energy of satellite?",
+              "id": "gravitation-q-total-energy-of-orbiting-satellite-2",
+              "question": "Describe a scenario where applying the concept of Total energy of orbiting satellite can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "total-energy-of-satellite",
+                "gravitation",
+                "total-energy-of-orbiting-satellite",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "total-energy-of-satellite",
-                "conceptSlug": "trap-total-energy-of-satellite",
-                "microskillSlug": "avoid-total-energy-of-satellite",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "total-energy-of-orbiting-satellite",
+                "conceptSlug": "trap-total-energy-of-orbiting-satellite",
+                "microskillSlug": "avoid-total-energy-of-orbiting-satellite"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-kepler-s-first-law-13",
+          "title": "Kepler’s first law",
+          "conceptTags": [
+            "gravitation",
+            "kepler-s-first-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s first law"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Kepler’s first law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kepler’s first law correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Kepler’s first law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kepler’s first law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s first law.",
+            "Successfully avoids common pitfalls when Kepler’s first law is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Kepler’s first law in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-kepler-s-first-law-1",
+              "question": "What are the critical factors or principles governing Kepler’s first law?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "kepler-s-first-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-first-law",
+                "conceptSlug": "core-kepler-s-first-law",
+                "microskillSlug": "understand-kepler-s-first-law"
+              }
+            },
+            {
+              "id": "gravitation-q-kepler-s-first-law-2",
+              "question": "Describe a scenario where applying the concept of Kepler’s first law can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "kepler-s-first-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-first-law",
+                "conceptSlug": "trap-kepler-s-first-law",
+                "microskillSlug": "avoid-kepler-s-first-law"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-kepler-s-second-law-14",
+          "title": "Kepler’s second law",
+          "conceptTags": [
+            "gravitation",
+            "kepler-s-second-law"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s second law"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Kepler’s second law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kepler’s second law correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Kepler’s second law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kepler’s second law."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s second law.",
+            "Successfully avoids common pitfalls when Kepler’s second law is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Kepler’s second law in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-kepler-s-second-law-1",
+              "question": "What are the critical factors or principles governing Kepler’s second law?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "kepler-s-second-law"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-second-law",
+                "conceptSlug": "core-kepler-s-second-law",
+                "microskillSlug": "understand-kepler-s-second-law"
+              }
+            },
+            {
+              "id": "gravitation-q-kepler-s-second-law-2",
+              "question": "Describe a scenario where applying the concept of Kepler’s second law can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "kepler-s-second-law",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-second-law",
+                "conceptSlug": "trap-kepler-s-second-law",
+                "microskillSlug": "avoid-kepler-s-second-law"
               }
             }
           ]
@@ -1133,375 +1525,616 @@
     },
     {
       "id": "m-gravitation-4",
-      "title": "Gravitation - Section 4",
-      "description": "Comprehensive analysis covering Kepler laws, geostationary satellite, weightlessness and more.",
+      "title": "Mastery Module 4: Kepler’s third law and Related Concepts",
+      "description": "Comprehensive analysis covering Kepler’s third law, geostationary satellite, polar satellite and advanced applications.",
       "conceptTags": [
         "gravitation",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-gravitation-kepler-laws",
-          "title": "Kepler laws",
+          "id": "mt-gravitation-kepler-s-third-law-15",
+          "title": "Kepler’s third law",
           "conceptTags": [
             "gravitation",
-            "kepler-laws"
+            "kepler-s-third-law"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Kepler laws"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s third law"
           ],
           "mustKnowFacts": [
-            "Kepler laws is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Kepler laws for NEET."
+            "A thorough understanding of Kepler’s third law is heavily tested in recent NEET papers.",
+            "Applying the core principles of Kepler’s third law correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for Kepler laws",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Kepler laws during complex MCQs.",
-            "Failing to apply the correct logic for Kepler laws."
+            "Misinterpreting the subtle edge cases of Kepler’s third law during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Kepler’s third law."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Kepler laws."
+            "Can accurately solve numericals or identify biological structures related specifically to Kepler’s third law.",
+            "Successfully avoids common pitfalls when Kepler’s third law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Kepler laws."
+            "Past year questions frequently test the application of Kepler’s third law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-kepler-laws-1",
-              "question": "Explain the core concept behind Kepler laws.",
+              "id": "gravitation-q-kepler-s-third-law-1",
+              "question": "What are the critical factors or principles governing Kepler’s third law?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "kepler-laws"
+                "gravitation",
+                "kepler-s-third-law"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "kepler-laws",
-                "conceptSlug": "core-kepler-laws",
-                "microskillSlug": "understand-kepler-laws",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-third-law",
+                "conceptSlug": "core-kepler-s-third-law",
+                "microskillSlug": "understand-kepler-s-third-law"
               }
             },
             {
-              "id": "gravitation-q-kepler-laws-2",
-              "question": "What is a common trap associated with Kepler laws?",
+              "id": "gravitation-q-kepler-s-third-law-2",
+              "question": "Describe a scenario where applying the concept of Kepler’s third law can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "kepler-laws",
+                "gravitation",
+                "kepler-s-third-law",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "kepler-laws",
-                "conceptSlug": "trap-kepler-laws",
-                "microskillSlug": "avoid-kepler-laws",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "kepler-s-third-law",
+                "conceptSlug": "trap-kepler-s-third-law",
+                "microskillSlug": "avoid-kepler-s-third-law"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-geostationary-satellite",
+          "id": "mt-gravitation-geostationary-satellite-16",
           "title": "Geostationary satellite",
           "conceptTags": [
             "gravitation",
             "geostationary-satellite"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Geostationary satellite"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Geostationary satellite"
           ],
           "mustKnowFacts": [
-            "Geostationary satellite is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Geostationary satellite for NEET."
+            "A thorough understanding of Geostationary satellite is heavily tested in recent NEET papers.",
+            "Applying the core principles of Geostationary satellite correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for geostationary satellite",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Geostationary satellite during complex MCQs.",
-            "Failing to apply the correct logic for Geostationary satellite."
+            "Misinterpreting the subtle edge cases of Geostationary satellite during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Geostationary satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Geostationary satellite."
+            "Can accurately solve numericals or identify biological structures related specifically to Geostationary satellite.",
+            "Successfully avoids common pitfalls when Geostationary satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Geostationary satellite."
+            "Past year questions frequently test the application of Geostationary satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-geostationary-satellite-1",
-              "question": "Explain the core concept behind Geostationary satellite.",
+              "question": "What are the critical factors or principles governing Geostationary satellite?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "gravitation",
                 "geostationary-satellite"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "geostationary-satellite",
                 "conceptSlug": "core-geostationary-satellite",
-                "microskillSlug": "understand-geostationary-satellite",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "understand-geostationary-satellite"
               }
             },
             {
               "id": "gravitation-q-geostationary-satellite-2",
-              "question": "What is a common trap associated with Geostationary satellite?",
+              "question": "Describe a scenario where applying the concept of Geostationary satellite can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "gravitation",
                 "geostationary-satellite",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
                 "topicSlug": "gravitation",
                 "subtopicSlug": "geostationary-satellite",
                 "conceptSlug": "trap-geostationary-satellite",
-                "microskillSlug": "avoid-geostationary-satellite",
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "microskillSlug": "avoid-geostationary-satellite"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-weightlessness",
-          "title": "Weightlessness",
+          "id": "mt-gravitation-polar-satellite-17",
+          "title": "Polar satellite",
           "conceptTags": [
             "gravitation",
-            "weightlessness"
+            "polar-satellite"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Weightlessness"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Polar satellite"
           ],
           "mustKnowFacts": [
-            "Weightlessness is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Weightlessness for NEET."
+            "A thorough understanding of Polar satellite is heavily tested in recent NEET papers.",
+            "Applying the core principles of Polar satellite correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for weightlessness",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Weightlessness during complex MCQs.",
-            "Failing to apply the correct logic for Weightlessness."
+            "Misinterpreting the subtle edge cases of Polar satellite during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Polar satellite."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Weightlessness."
+            "Can accurately solve numericals or identify biological structures related specifically to Polar satellite.",
+            "Successfully avoids common pitfalls when Polar satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Weightlessness."
+            "Past year questions frequently test the application of Polar satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-weightlessness-1",
-              "question": "Explain the core concept behind Weightlessness.",
+              "id": "gravitation-q-polar-satellite-1",
+              "question": "What are the critical factors or principles governing Polar satellite?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "weightlessness"
+                "gravitation",
+                "polar-satellite"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "weightlessness",
-                "conceptSlug": "core-weightlessness",
-                "microskillSlug": "understand-weightlessness",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "polar-satellite",
+                "conceptSlug": "core-polar-satellite",
+                "microskillSlug": "understand-polar-satellite"
               }
             },
             {
-              "id": "gravitation-q-weightlessness-2",
-              "question": "What is a common trap associated with Weightlessness?",
+              "id": "gravitation-q-polar-satellite-2",
+              "question": "Describe a scenario where applying the concept of Polar satellite can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "weightlessness",
+                "gravitation",
+                "polar-satellite",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "weightlessness",
-                "conceptSlug": "trap-weightlessness",
-                "microskillSlug": "avoid-weightlessness",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "polar-satellite",
+                "conceptSlug": "trap-polar-satellite",
+                "microskillSlug": "avoid-polar-satellite"
               }
             }
           ]
         },
         {
-          "id": "mt-gravitation-binding-energy-idea",
-          "title": "Binding energy idea",
+          "id": "mt-gravitation-weightlessness-condition-18",
+          "title": "Weightlessness condition",
           "conceptTags": [
             "gravitation",
-            "binding-energy-idea"
+            "weightlessness-condition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 11, Binding energy idea"
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Weightlessness condition"
           ],
           "mustKnowFacts": [
-            "Binding energy idea is a fundamental subtopic of Gravitation.",
-            "Crucial to understand the principles governing Binding energy idea for NEET."
+            "A thorough understanding of Weightlessness condition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Weightlessness condition correctly is essential for solving complex multi-step problems in Gravitation."
           ],
           "formulas": [
             {
-              "name": "Formula for binding energy idea",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Binding energy idea during complex MCQs.",
-            "Failing to apply the correct logic for Binding energy idea."
+            "Misinterpreting the subtle edge cases of Weightlessness condition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Weightlessness condition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Binding energy idea."
+            "Can accurately solve numericals or identify biological structures related specifically to Weightlessness condition.",
+            "Successfully avoids common pitfalls when Weightlessness condition is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Binding energy idea."
+            "Past year questions frequently test the application of Weightlessness condition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-binding-energy-idea-1",
-              "question": "Explain the core concept behind Binding energy idea.",
+              "id": "gravitation-q-weightlessness-condition-1",
+              "question": "What are the critical factors or principles governing Weightlessness condition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "binding-energy-idea"
+                "gravitation",
+                "weightlessness-condition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "binding-energy-idea",
-                "conceptSlug": "core-binding-energy-idea",
-                "microskillSlug": "understand-binding-energy-idea",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "weightlessness-condition",
+                "conceptSlug": "core-weightlessness-condition",
+                "microskillSlug": "understand-weightlessness-condition"
               }
             },
             {
-              "id": "gravitation-q-binding-energy-idea-2",
-              "question": "What is a common trap associated with Binding energy idea?",
+              "id": "gravitation-q-weightlessness-condition-2",
+              "question": "Describe a scenario where applying the concept of Weightlessness condition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "binding-energy-idea",
+                "gravitation",
+                "weightlessness-condition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "gravitation",
-                "subtopicSlug": "binding-energy-idea",
-                "conceptSlug": "trap-binding-energy-idea",
-                "microskillSlug": "avoid-binding-energy-idea",
                 "subject": "Physics",
                 "unitSlug": "gravitation",
-                "chapterSlug": "gravitation"
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "weightlessness-condition",
+                "conceptSlug": "trap-weightlessness-condition",
+                "microskillSlug": "avoid-weightlessness-condition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-gravitation-binding-energy-of-satellite-19",
+          "title": "Binding energy of satellite",
+          "conceptTags": [
+            "gravitation",
+            "binding-energy-of-satellite"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Binding energy of satellite"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Binding energy of satellite is heavily tested in recent NEET papers.",
+            "Applying the core principles of Binding energy of satellite correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
+              "variables": [
+                "E",
+                "K",
+                "U"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Binding energy of satellite during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Binding energy of satellite."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Binding energy of satellite.",
+            "Successfully avoids common pitfalls when Binding energy of satellite is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Binding energy of satellite in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-binding-energy-of-satellite-1",
+              "question": "What are the critical factors or principles governing Binding energy of satellite?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "binding-energy-of-satellite"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "binding-energy-of-satellite",
+                "conceptSlug": "core-binding-energy-of-satellite",
+                "microskillSlug": "understand-binding-energy-of-satellite"
+              }
+            },
+            {
+              "id": "gravitation-q-binding-energy-of-satellite-2",
+              "question": "Describe a scenario where applying the concept of Binding energy of satellite can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "binding-energy-of-satellite",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "binding-energy-of-satellite",
+                "conceptSlug": "trap-binding-energy-of-satellite",
+                "microskillSlug": "avoid-binding-energy-of-satellite"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-gravitation-5",
+      "title": "Mastery Module 5: Gravitational mass vs inertial mass and Related Concepts",
+      "description": "Comprehensive analysis covering gravitational mass vs inertial mass and advanced applications.",
+      "conceptTags": [
+        "gravitation",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-gravitation-gravitational-mass-vs-inertial-mass-20",
+          "title": "Gravitational mass vs inertial mass",
+          "conceptTags": [
+            "gravitation",
+            "gravitational-mass-vs-inertial-mass"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational mass vs inertial mass"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Gravitational mass vs inertial mass is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gravitational mass vs inertial mass correctly is essential for solving complex multi-step problems in Gravitation."
+          ],
+          "formulas": [
+            {
+              "name": "Moment of Inertia",
+              "expression": "I = \\sum m_i r_i^2",
+              "variables": [
+                "I",
+                "m",
+                "r"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Gravitational mass vs inertial mass during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gravitational mass vs inertial mass."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Gravitational mass vs inertial mass.",
+            "Successfully avoids common pitfalls when Gravitational mass vs inertial mass is integrated with other concepts in Gravitation."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Gravitational mass vs inertial mass in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "gravitation-q-gravitational-mass-vs-inertial-mass-1",
+              "question": "What are the critical factors or principles governing Gravitational mass vs inertial mass?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "gravitational-mass-vs-inertial-mass"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-mass-vs-inertial-mass",
+                "conceptSlug": "core-gravitational-mass-vs-inertial-mass",
+                "microskillSlug": "understand-gravitational-mass-vs-inertial-mass"
+              }
+            },
+            {
+              "id": "gravitation-q-gravitational-mass-vs-inertial-mass-2",
+              "question": "Describe a scenario where applying the concept of Gravitational mass vs inertial mass can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "gravitation",
+                "gravitational-mass-vs-inertial-mass",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "gravitation",
+                "chapterSlug": "gravitation",
+                "topicSlug": "gravitation",
+                "subtopicSlug": "gravitational-mass-vs-inertial-mass",
+                "conceptSlug": "trap-gravitational-mass-vs-inertial-mass",
+                "microskillSlug": "avoid-gravitational-mass-vs-inertial-mass"
               }
             }
           ]

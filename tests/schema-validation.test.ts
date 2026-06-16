@@ -5,7 +5,7 @@ const hasSupabaseEnv =
   Boolean(process.env.SUPABASE_TEST_URL) &&
   Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY);
 
-const liveIt = hasSupabaseEnv ? it : it.skip;
+const liveIt = it;
 
 describe('live Supabase schema validation', () => {
   liveIt('has the runtime tables, columns, and budget RPC used by the MVP loop', async () => {

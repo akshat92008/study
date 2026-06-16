@@ -2,375 +2,407 @@
   "missions": [
     {
       "id": "m-experimental-skills-1",
-      "title": "Experimental Skills - Section 1",
-      "description": "Comprehensive analysis covering Vernier calipers, screw gauge, simple pendulum and more.",
+      "title": "Mastery Module 1: Vernier calipers measurements and Related Concepts",
+      "description": "Comprehensive analysis covering Vernier calipers measurements, screw gauge measurements, simple pendulum experiment and advanced applications.",
       "conceptTags": [
         "experimental-skills",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-experimental-skills-vernier-calipers",
-          "title": "Vernier calipers",
+          "id": "mt-experimental-skills-vernier-calipers-measurements-0",
+          "title": "Vernier calipers measurements",
           "conceptTags": [
             "experimental-skills",
-            "vernier-calipers"
+            "vernier-calipers-measurements"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Vernier calipers"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Vernier calipers measurements"
           ],
           "mustKnowFacts": [
-            "Vernier calipers is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Vernier calipers for NEET."
+            "A thorough understanding of Vernier calipers measurements is heavily tested in recent NEET papers.",
+            "Applying the core principles of Vernier calipers measurements correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for Vernier calipers",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Vernier calipers during complex MCQs.",
-            "Failing to apply the correct logic for Vernier calipers."
+            "Misinterpreting the subtle edge cases of Vernier calipers measurements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Vernier calipers measurements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Vernier calipers."
+            "Can accurately solve numericals or identify biological structures related specifically to Vernier calipers measurements.",
+            "Successfully avoids common pitfalls when Vernier calipers measurements is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Vernier calipers."
+            "Past year questions frequently test the application of Vernier calipers measurements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-vernier-calipers-1",
-              "question": "Explain the core concept behind Vernier calipers.",
+              "id": "experimental-skills-q-vernier-calipers-measurements-1",
+              "question": "What are the critical factors or principles governing Vernier calipers measurements?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "vernier-calipers"
+                "experimental-skills",
+                "vernier-calipers-measurements"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "vernier-calipers",
-                "conceptSlug": "core-vernier-calipers",
-                "microskillSlug": "understand-vernier-calipers",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "vernier-calipers-measurements",
+                "conceptSlug": "core-vernier-calipers-measurements",
+                "microskillSlug": "understand-vernier-calipers-measurements"
               }
             },
             {
-              "id": "experimental-skills-q-vernier-calipers-2",
-              "question": "What is a common trap associated with Vernier calipers?",
+              "id": "experimental-skills-q-vernier-calipers-measurements-2",
+              "question": "Describe a scenario where applying the concept of Vernier calipers measurements can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "vernier-calipers",
+                "experimental-skills",
+                "vernier-calipers-measurements",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "vernier-calipers",
-                "conceptSlug": "trap-vernier-calipers",
-                "microskillSlug": "avoid-vernier-calipers",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "vernier-calipers-measurements",
+                "conceptSlug": "trap-vernier-calipers-measurements",
+                "microskillSlug": "avoid-vernier-calipers-measurements"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-screw-gauge",
-          "title": "Screw gauge",
+          "id": "mt-experimental-skills-screw-gauge-measurements-1",
+          "title": "Screw gauge measurements",
           "conceptTags": [
             "experimental-skills",
-            "screw-gauge"
+            "screw-gauge-measurements"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Screw gauge"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Screw gauge measurements"
           ],
           "mustKnowFacts": [
-            "Screw gauge is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Screw gauge for NEET."
+            "A thorough understanding of Screw gauge measurements is heavily tested in recent NEET papers.",
+            "Applying the core principles of Screw gauge measurements correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for screw gauge",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Screw gauge during complex MCQs.",
-            "Failing to apply the correct logic for Screw gauge."
+            "Misinterpreting the subtle edge cases of Screw gauge measurements during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Screw gauge measurements."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Screw gauge."
+            "Can accurately solve numericals or identify biological structures related specifically to Screw gauge measurements.",
+            "Successfully avoids common pitfalls when Screw gauge measurements is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Screw gauge."
+            "Past year questions frequently test the application of Screw gauge measurements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-screw-gauge-1",
-              "question": "Explain the core concept behind Screw gauge.",
+              "id": "experimental-skills-q-screw-gauge-measurements-1",
+              "question": "What are the critical factors or principles governing Screw gauge measurements?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "screw-gauge"
+                "experimental-skills",
+                "screw-gauge-measurements"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "screw-gauge",
-                "conceptSlug": "core-screw-gauge",
-                "microskillSlug": "understand-screw-gauge",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "screw-gauge-measurements",
+                "conceptSlug": "core-screw-gauge-measurements",
+                "microskillSlug": "understand-screw-gauge-measurements"
               }
             },
             {
-              "id": "experimental-skills-q-screw-gauge-2",
-              "question": "What is a common trap associated with Screw gauge?",
+              "id": "experimental-skills-q-screw-gauge-measurements-2",
+              "question": "Describe a scenario where applying the concept of Screw gauge measurements can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "screw-gauge",
+                "experimental-skills",
+                "screw-gauge-measurements",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "screw-gauge",
-                "conceptSlug": "trap-screw-gauge",
-                "microskillSlug": "avoid-screw-gauge",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "screw-gauge-measurements",
+                "conceptSlug": "trap-screw-gauge-measurements",
+                "microskillSlug": "avoid-screw-gauge-measurements"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-simple-pendulum",
-          "title": "Simple pendulum",
+          "id": "mt-experimental-skills-simple-pendulum-experiment-2",
+          "title": "Simple pendulum experiment",
           "conceptTags": [
             "experimental-skills",
-            "simple-pendulum"
+            "simple-pendulum-experiment"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Simple pendulum"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Simple pendulum experiment"
           ],
           "mustKnowFacts": [
-            "Simple pendulum is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Simple pendulum for NEET."
+            "A thorough understanding of Simple pendulum experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Simple pendulum experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for simple pendulum",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Simple pendulum during complex MCQs.",
-            "Failing to apply the correct logic for Simple pendulum."
+            "Misinterpreting the subtle edge cases of Simple pendulum experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Simple pendulum experiment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Simple pendulum."
+            "Can accurately solve numericals or identify biological structures related specifically to Simple pendulum experiment.",
+            "Successfully avoids common pitfalls when Simple pendulum experiment is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Simple pendulum."
+            "Past year questions frequently test the application of Simple pendulum experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-simple-pendulum-1",
-              "question": "Explain the core concept behind Simple pendulum.",
+              "id": "experimental-skills-q-simple-pendulum-experiment-1",
+              "question": "What are the critical factors or principles governing Simple pendulum experiment?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "simple-pendulum"
+                "experimental-skills",
+                "simple-pendulum-experiment"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "simple-pendulum",
-                "conceptSlug": "core-simple-pendulum",
-                "microskillSlug": "understand-simple-pendulum",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "simple-pendulum-experiment",
+                "conceptSlug": "core-simple-pendulum-experiment",
+                "microskillSlug": "understand-simple-pendulum-experiment"
               }
             },
             {
-              "id": "experimental-skills-q-simple-pendulum-2",
-              "question": "What is a common trap associated with Simple pendulum?",
+              "id": "experimental-skills-q-simple-pendulum-experiment-2",
+              "question": "Describe a scenario where applying the concept of Simple pendulum experiment can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "simple-pendulum",
+                "experimental-skills",
+                "simple-pendulum-experiment",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "simple-pendulum",
-                "conceptSlug": "trap-simple-pendulum",
-                "microskillSlug": "avoid-simple-pendulum",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "simple-pendulum-experiment",
+                "conceptSlug": "trap-simple-pendulum-experiment",
+                "microskillSlug": "avoid-simple-pendulum-experiment"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-spring-constant",
-          "title": "Spring constant",
+          "id": "mt-experimental-skills-spring-constant-determination-3",
+          "title": "Spring constant determination",
           "conceptTags": [
             "experimental-skills",
-            "spring-constant"
+            "spring-constant-determination"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Spring constant"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Spring constant determination"
           ],
           "mustKnowFacts": [
-            "Spring constant is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Spring constant for NEET."
+            "A thorough understanding of Spring constant determination is heavily tested in recent NEET papers.",
+            "Applying the core principles of Spring constant determination correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for spring constant",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Spring constant during complex MCQs.",
-            "Failing to apply the correct logic for Spring constant."
+            "Misinterpreting the subtle edge cases of Spring constant determination during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Spring constant determination."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Spring constant."
+            "Can accurately solve numericals or identify biological structures related specifically to Spring constant determination.",
+            "Successfully avoids common pitfalls when Spring constant determination is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Spring constant."
+            "Past year questions frequently test the application of Spring constant determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-spring-constant-1",
-              "question": "Explain the core concept behind Spring constant.",
+              "id": "experimental-skills-q-spring-constant-determination-1",
+              "question": "What are the critical factors or principles governing Spring constant determination?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "spring-constant"
+                "experimental-skills",
+                "spring-constant-determination"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "spring-constant",
-                "conceptSlug": "core-spring-constant",
-                "microskillSlug": "understand-spring-constant",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "spring-constant-determination",
+                "conceptSlug": "core-spring-constant-determination",
+                "microskillSlug": "understand-spring-constant-determination"
               }
             },
             {
-              "id": "experimental-skills-q-spring-constant-2",
-              "question": "What is a common trap associated with Spring constant?",
+              "id": "experimental-skills-q-spring-constant-determination-2",
+              "question": "Describe a scenario where applying the concept of Spring constant determination can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "spring-constant",
+                "experimental-skills",
+                "spring-constant-determination",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "spring-constant",
-                "conceptSlug": "trap-spring-constant",
-                "microskillSlug": "avoid-spring-constant",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "spring-constant-determination",
+                "conceptSlug": "trap-spring-constant-determination",
+                "microskillSlug": "avoid-spring-constant-determination"
               }
             }
           ]
@@ -379,375 +411,406 @@
     },
     {
       "id": "m-experimental-skills-2",
-      "title": "Experimental Skills - Section 2",
-      "description": "Comprehensive analysis covering Ohm law experiment, meter bridge, potentiometer and more.",
+      "title": "Mastery Module 2: Ohm’s law verification and Related Concepts",
+      "description": "Comprehensive analysis covering Ohm’s law verification, meter bridge specific resistance, potentiometer cell comparison and advanced applications.",
       "conceptTags": [
         "experimental-skills",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-experimental-skills-ohm-law-experiment",
-          "title": "Ohm law experiment",
+          "id": "mt-experimental-skills-ohm-s-law-verification-4",
+          "title": "Ohm’s law verification",
           "conceptTags": [
             "experimental-skills",
-            "ohm-law-experiment"
+            "ohm-s-law-verification"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Ohm law experiment"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Ohm’s law verification"
           ],
           "mustKnowFacts": [
-            "Ohm law experiment is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Ohm law experiment for NEET."
+            "A thorough understanding of Ohm’s law verification is heavily tested in recent NEET papers.",
+            "Applying the core principles of Ohm’s law verification correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for Ohm law experiment",
-              "expression": "F = m a",
+              "name": "Ohm Law",
+              "expression": "V = I R",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "V",
+                "I",
+                "R"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Ohm law experiment during complex MCQs.",
-            "Failing to apply the correct logic for Ohm law experiment."
+            "Misinterpreting the subtle edge cases of Ohm’s law verification during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Ohm’s law verification."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Ohm law experiment."
+            "Can accurately solve numericals or identify biological structures related specifically to Ohm’s law verification.",
+            "Successfully avoids common pitfalls when Ohm’s law verification is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Ohm law experiment."
+            "Past year questions frequently test the application of Ohm’s law verification in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-ohm-law-experiment-1",
-              "question": "Explain the core concept behind Ohm law experiment.",
+              "id": "experimental-skills-q-ohm-s-law-verification-1",
+              "question": "What are the critical factors or principles governing Ohm’s law verification?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "ohm-law-experiment"
+                "experimental-skills",
+                "ohm-s-law-verification"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "ohm-law-experiment",
-                "conceptSlug": "core-ohm-law-experiment",
-                "microskillSlug": "understand-ohm-law-experiment",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "ohm-s-law-verification",
+                "conceptSlug": "core-ohm-s-law-verification",
+                "microskillSlug": "understand-ohm-s-law-verification"
               }
             },
             {
-              "id": "experimental-skills-q-ohm-law-experiment-2",
-              "question": "What is a common trap associated with Ohm law experiment?",
+              "id": "experimental-skills-q-ohm-s-law-verification-2",
+              "question": "Describe a scenario where applying the concept of Ohm’s law verification can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "ohm-law-experiment",
+                "experimental-skills",
+                "ohm-s-law-verification",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "ohm-law-experiment",
-                "conceptSlug": "trap-ohm-law-experiment",
-                "microskillSlug": "avoid-ohm-law-experiment",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "ohm-s-law-verification",
+                "conceptSlug": "trap-ohm-s-law-verification",
+                "microskillSlug": "avoid-ohm-s-law-verification"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-meter-bridge",
-          "title": "Meter bridge",
+          "id": "mt-experimental-skills-meter-bridge-specific-resistance-5",
+          "title": "Meter bridge specific resistance",
           "conceptTags": [
             "experimental-skills",
-            "meter-bridge"
+            "meter-bridge-specific-resistance"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Meter bridge"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Meter bridge specific resistance"
           ],
           "mustKnowFacts": [
-            "Meter bridge is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Meter bridge for NEET."
+            "A thorough understanding of Meter bridge specific resistance is heavily tested in recent NEET papers.",
+            "Applying the core principles of Meter bridge specific resistance correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for meter bridge",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Meter bridge during complex MCQs.",
-            "Failing to apply the correct logic for Meter bridge."
+            "Misinterpreting the subtle edge cases of Meter bridge specific resistance during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Meter bridge specific resistance."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Meter bridge."
+            "Can accurately solve numericals or identify biological structures related specifically to Meter bridge specific resistance.",
+            "Successfully avoids common pitfalls when Meter bridge specific resistance is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Meter bridge."
+            "Past year questions frequently test the application of Meter bridge specific resistance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-meter-bridge-1",
-              "question": "Explain the core concept behind Meter bridge.",
+              "id": "experimental-skills-q-meter-bridge-specific-resistance-1",
+              "question": "What are the critical factors or principles governing Meter bridge specific resistance?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "meter-bridge"
+                "experimental-skills",
+                "meter-bridge-specific-resistance"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "meter-bridge",
-                "conceptSlug": "core-meter-bridge",
-                "microskillSlug": "understand-meter-bridge",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "meter-bridge-specific-resistance",
+                "conceptSlug": "core-meter-bridge-specific-resistance",
+                "microskillSlug": "understand-meter-bridge-specific-resistance"
               }
             },
             {
-              "id": "experimental-skills-q-meter-bridge-2",
-              "question": "What is a common trap associated with Meter bridge?",
+              "id": "experimental-skills-q-meter-bridge-specific-resistance-2",
+              "question": "Describe a scenario where applying the concept of Meter bridge specific resistance can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "meter-bridge",
+                "experimental-skills",
+                "meter-bridge-specific-resistance",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "meter-bridge",
-                "conceptSlug": "trap-meter-bridge",
-                "microskillSlug": "avoid-meter-bridge",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "meter-bridge-specific-resistance",
+                "conceptSlug": "trap-meter-bridge-specific-resistance",
+                "microskillSlug": "avoid-meter-bridge-specific-resistance"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-potentiometer",
-          "title": "Potentiometer",
+          "id": "mt-experimental-skills-potentiometer-cell-comparison-6",
+          "title": "Potentiometer cell comparison",
           "conceptTags": [
             "experimental-skills",
-            "potentiometer"
+            "potentiometer-cell-comparison"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Potentiometer"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Potentiometer cell comparison"
           ],
           "mustKnowFacts": [
-            "Potentiometer is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Potentiometer for NEET."
+            "A thorough understanding of Potentiometer cell comparison is heavily tested in recent NEET papers.",
+            "Applying the core principles of Potentiometer cell comparison correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for potentiometer",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Potentiometer during complex MCQs.",
-            "Failing to apply the correct logic for Potentiometer."
+            "Misinterpreting the subtle edge cases of Potentiometer cell comparison during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Potentiometer cell comparison."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Potentiometer."
+            "Can accurately solve numericals or identify biological structures related specifically to Potentiometer cell comparison.",
+            "Successfully avoids common pitfalls when Potentiometer cell comparison is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Potentiometer."
+            "Past year questions frequently test the application of Potentiometer cell comparison in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-potentiometer-1",
-              "question": "Explain the core concept behind Potentiometer.",
+              "id": "experimental-skills-q-potentiometer-cell-comparison-1",
+              "question": "What are the critical factors or principles governing Potentiometer cell comparison?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "potentiometer"
+                "experimental-skills",
+                "potentiometer-cell-comparison"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "potentiometer",
-                "conceptSlug": "core-potentiometer",
-                "microskillSlug": "understand-potentiometer",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "potentiometer-cell-comparison",
+                "conceptSlug": "core-potentiometer-cell-comparison",
+                "microskillSlug": "understand-potentiometer-cell-comparison"
               }
             },
             {
-              "id": "experimental-skills-q-potentiometer-2",
-              "question": "What is a common trap associated with Potentiometer?",
+              "id": "experimental-skills-q-potentiometer-cell-comparison-2",
+              "question": "Describe a scenario where applying the concept of Potentiometer cell comparison can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "potentiometer",
+                "experimental-skills",
+                "potentiometer-cell-comparison",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "potentiometer",
-                "conceptSlug": "trap-potentiometer",
-                "microskillSlug": "avoid-potentiometer",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "potentiometer-cell-comparison",
+                "conceptSlug": "trap-potentiometer-cell-comparison",
+                "microskillSlug": "avoid-potentiometer-cell-comparison"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-diode-characteristics",
-          "title": "Diode characteristics",
+          "id": "mt-experimental-skills-diode-v-i-characteristics-experiment-7",
+          "title": "Diode V-I characteristics experiment",
           "conceptTags": [
             "experimental-skills",
-            "diode-characteristics"
+            "diode-v-i-characteristics-experiment"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Diode characteristics"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Diode V-I characteristics experiment"
           ],
           "mustKnowFacts": [
-            "Diode characteristics is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Diode characteristics for NEET."
+            "A thorough understanding of Diode V-I characteristics experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Diode V-I characteristics experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for diode characteristics",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Diode characteristics during complex MCQs.",
-            "Failing to apply the correct logic for Diode characteristics."
+            "Misinterpreting the subtle edge cases of Diode V-I characteristics experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Diode V-I characteristics experiment."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Diode characteristics."
+            "Can accurately solve numericals or identify biological structures related specifically to Diode V-I characteristics experiment.",
+            "Successfully avoids common pitfalls when Diode V-I characteristics experiment is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Diode characteristics."
+            "Past year questions frequently test the application of Diode V-I characteristics experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-diode-characteristics-1",
-              "question": "Explain the core concept behind Diode characteristics.",
+              "id": "experimental-skills-q-diode-v-i-characteristics-experiment-1",
+              "question": "What are the critical factors or principles governing Diode V-I characteristics experiment?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "diode-characteristics"
+                "experimental-skills",
+                "diode-v-i-characteristics-experiment"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "diode-characteristics",
-                "conceptSlug": "core-diode-characteristics",
-                "microskillSlug": "understand-diode-characteristics",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "diode-v-i-characteristics-experiment",
+                "conceptSlug": "core-diode-v-i-characteristics-experiment",
+                "microskillSlug": "understand-diode-v-i-characteristics-experiment"
               }
             },
             {
-              "id": "experimental-skills-q-diode-characteristics-2",
-              "question": "What is a common trap associated with Diode characteristics?",
+              "id": "experimental-skills-q-diode-v-i-characteristics-experiment-2",
+              "question": "Describe a scenario where applying the concept of Diode V-I characteristics experiment can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "diode-characteristics",
+                "experimental-skills",
+                "diode-v-i-characteristics-experiment",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "diode-characteristics",
-                "conceptSlug": "trap-diode-characteristics",
-                "microskillSlug": "avoid-diode-characteristics",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "diode-v-i-characteristics-experiment",
+                "conceptSlug": "trap-diode-v-i-characteristics-experiment",
+                "microskillSlug": "avoid-diode-v-i-characteristics-experiment"
               }
             }
           ]
@@ -756,375 +819,406 @@
     },
     {
       "id": "m-experimental-skills-3",
-      "title": "Experimental Skills - Section 3",
-      "description": "Comprehensive analysis covering focal length mirror/lens, glass slab refractive index, graph plotting and more.",
+      "title": "Mastery Module 3: Focal length of concave mirror and Related Concepts",
+      "description": "Comprehensive analysis covering focal length of concave mirror, focal length of convex lens, glass slab refractive index and advanced applications.",
       "conceptTags": [
         "experimental-skills",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-experimental-skills-focal-length-mirror-lens",
-          "title": "Focal length mirror/lens",
+          "id": "mt-experimental-skills-focal-length-of-concave-mirror-8",
+          "title": "Focal length of concave mirror",
           "conceptTags": [
             "experimental-skills",
-            "focal-length-mirror-lens"
+            "focal-length-of-concave-mirror"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Focal length mirror/lens"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Focal length of concave mirror"
           ],
           "mustKnowFacts": [
-            "Focal length mirror/lens is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Focal length mirror/lens for NEET."
+            "A thorough understanding of Focal length of concave mirror is heavily tested in recent NEET papers.",
+            "Applying the core principles of Focal length of concave mirror correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for focal length mirror/lens",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Focal length mirror/lens during complex MCQs.",
-            "Failing to apply the correct logic for Focal length mirror/lens."
+            "Misinterpreting the subtle edge cases of Focal length of concave mirror during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Focal length of concave mirror."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Focal length mirror/lens."
+            "Can accurately solve numericals or identify biological structures related specifically to Focal length of concave mirror.",
+            "Successfully avoids common pitfalls when Focal length of concave mirror is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Focal length mirror/lens."
+            "Past year questions frequently test the application of Focal length of concave mirror in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-focal-length-mirror-lens-1",
-              "question": "Explain the core concept behind Focal length mirror/lens.",
+              "id": "experimental-skills-q-focal-length-of-concave-mirror-1",
+              "question": "What are the critical factors or principles governing Focal length of concave mirror?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "focal-length-mirror-lens"
+                "experimental-skills",
+                "focal-length-of-concave-mirror"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "focal-length-mirror-lens",
-                "conceptSlug": "core-focal-length-mirror-lens",
-                "microskillSlug": "understand-focal-length-mirror-lens",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "focal-length-of-concave-mirror",
+                "conceptSlug": "core-focal-length-of-concave-mirror",
+                "microskillSlug": "understand-focal-length-of-concave-mirror"
               }
             },
             {
-              "id": "experimental-skills-q-focal-length-mirror-lens-2",
-              "question": "What is a common trap associated with Focal length mirror/lens?",
+              "id": "experimental-skills-q-focal-length-of-concave-mirror-2",
+              "question": "Describe a scenario where applying the concept of Focal length of concave mirror can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "focal-length-mirror-lens",
+                "experimental-skills",
+                "focal-length-of-concave-mirror",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "focal-length-mirror-lens",
-                "conceptSlug": "trap-focal-length-mirror-lens",
-                "microskillSlug": "avoid-focal-length-mirror-lens",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "focal-length-of-concave-mirror",
+                "conceptSlug": "trap-focal-length-of-concave-mirror",
+                "microskillSlug": "avoid-focal-length-of-concave-mirror"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-glass-slab-refractive-index",
+          "id": "mt-experimental-skills-focal-length-of-convex-lens-9",
+          "title": "Focal length of convex lens",
+          "conceptTags": [
+            "experimental-skills",
+            "focal-length-of-convex-lens"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Focal length of convex lens"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Focal length of convex lens is heavily tested in recent NEET papers.",
+            "Applying the core principles of Focal length of convex lens correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Lens Formula",
+              "expression": "\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}",
+              "variables": [
+                "f",
+                "v",
+                "u"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Focal length of convex lens during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Focal length of convex lens."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Focal length of convex lens.",
+            "Successfully avoids common pitfalls when Focal length of convex lens is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Focal length of convex lens in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-focal-length-of-convex-lens-1",
+              "question": "What are the critical factors or principles governing Focal length of convex lens?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "focal-length-of-convex-lens"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "focal-length-of-convex-lens",
+                "conceptSlug": "core-focal-length-of-convex-lens",
+                "microskillSlug": "understand-focal-length-of-convex-lens"
+              }
+            },
+            {
+              "id": "experimental-skills-q-focal-length-of-convex-lens-2",
+              "question": "Describe a scenario where applying the concept of Focal length of convex lens can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "focal-length-of-convex-lens",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "focal-length-of-convex-lens",
+                "conceptSlug": "trap-focal-length-of-convex-lens",
+                "microskillSlug": "avoid-focal-length-of-convex-lens"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-glass-slab-refractive-index-10",
           "title": "Glass slab refractive index",
           "conceptTags": [
             "experimental-skills",
             "glass-slab-refractive-index"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Glass slab refractive index"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Glass slab refractive index"
           ],
           "mustKnowFacts": [
-            "Glass slab refractive index is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Glass slab refractive index for NEET."
+            "A thorough understanding of Glass slab refractive index is heavily tested in recent NEET papers.",
+            "Applying the core principles of Glass slab refractive index correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for glass slab refractive index",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Glass slab refractive index during complex MCQs.",
-            "Failing to apply the correct logic for Glass slab refractive index."
+            "Misinterpreting the subtle edge cases of Glass slab refractive index during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Glass slab refractive index."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Glass slab refractive index."
+            "Can accurately solve numericals or identify biological structures related specifically to Glass slab refractive index.",
+            "Successfully avoids common pitfalls when Glass slab refractive index is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Glass slab refractive index."
+            "Past year questions frequently test the application of Glass slab refractive index in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-glass-slab-refractive-index-1",
-              "question": "Explain the core concept behind Glass slab refractive index.",
+              "question": "What are the critical factors or principles governing Glass slab refractive index?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "experimental-skills",
                 "glass-slab-refractive-index"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
                 "topicSlug": "experimental-skills",
                 "subtopicSlug": "glass-slab-refractive-index",
                 "conceptSlug": "core-glass-slab-refractive-index",
-                "microskillSlug": "understand-glass-slab-refractive-index",
-                "subject": "Physics",
-                "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "microskillSlug": "understand-glass-slab-refractive-index"
               }
             },
             {
               "id": "experimental-skills-q-glass-slab-refractive-index-2",
-              "question": "What is a common trap associated with Glass slab refractive index?",
+              "question": "Describe a scenario where applying the concept of Glass slab refractive index can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "experimental-skills",
                 "glass-slab-refractive-index",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
                 "topicSlug": "experimental-skills",
                 "subtopicSlug": "glass-slab-refractive-index",
                 "conceptSlug": "trap-glass-slab-refractive-index",
-                "microskillSlug": "avoid-glass-slab-refractive-index",
-                "subject": "Physics",
-                "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "microskillSlug": "avoid-glass-slab-refractive-index"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-graph-plotting",
-          "title": "Graph plotting",
+          "id": "mt-experimental-skills-graph-plotting-techniques-11",
+          "title": "Graph plotting techniques",
           "conceptTags": [
             "experimental-skills",
-            "graph-plotting"
+            "graph-plotting-techniques"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Graph plotting"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Graph plotting techniques"
           ],
           "mustKnowFacts": [
-            "Graph plotting is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Graph plotting for NEET."
+            "A thorough understanding of Graph plotting techniques is heavily tested in recent NEET papers.",
+            "Applying the core principles of Graph plotting techniques correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for graph plotting",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Graph plotting during complex MCQs.",
-            "Failing to apply the correct logic for Graph plotting."
+            "Misinterpreting the subtle edge cases of Graph plotting techniques during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Graph plotting techniques."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Graph plotting."
+            "Can accurately solve numericals or identify biological structures related specifically to Graph plotting techniques.",
+            "Successfully avoids common pitfalls when Graph plotting techniques is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Graph plotting."
+            "Past year questions frequently test the application of Graph plotting techniques in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-graph-plotting-1",
-              "question": "Explain the core concept behind Graph plotting.",
+              "id": "experimental-skills-q-graph-plotting-techniques-1",
+              "question": "What are the critical factors or principles governing Graph plotting techniques?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "graph-plotting"
+                "experimental-skills",
+                "graph-plotting-techniques"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "graph-plotting",
-                "conceptSlug": "core-graph-plotting",
-                "microskillSlug": "understand-graph-plotting",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "graph-plotting-techniques",
+                "conceptSlug": "core-graph-plotting-techniques",
+                "microskillSlug": "understand-graph-plotting-techniques"
               }
             },
             {
-              "id": "experimental-skills-q-graph-plotting-2",
-              "question": "What is a common trap associated with Graph plotting?",
+              "id": "experimental-skills-q-graph-plotting-techniques-2",
+              "question": "Describe a scenario where applying the concept of Graph plotting techniques can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "graph-plotting",
+                "experimental-skills",
+                "graph-plotting-techniques",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "graph-plotting",
-                "conceptSlug": "trap-graph-plotting",
-                "microskillSlug": "avoid-graph-plotting",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-experimental-skills-error-calculation",
-          "title": "Error calculation",
-          "conceptTags": [
-            "experimental-skills",
-            "error-calculation"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class mixed, Error calculation"
-          ],
-          "mustKnowFacts": [
-            "Error calculation is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Error calculation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for error calculation",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Error calculation during complex MCQs.",
-            "Failing to apply the correct logic for Error calculation."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Error calculation."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Error calculation."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "experimental-skills-q-error-calculation-1",
-              "question": "Explain the core concept behind Error calculation.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "error-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "experimental-skills",
                 "topicSlug": "experimental-skills",
-                "subtopicSlug": "error-calculation",
-                "conceptSlug": "core-error-calculation",
-                "microskillSlug": "understand-error-calculation",
-                "subject": "Physics",
-                "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
-              }
-            },
-            {
-              "id": "experimental-skills-q-error-calculation-2",
-              "question": "What is a common trap associated with Error calculation?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "error-calculation",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "error-calculation",
-                "conceptSlug": "trap-error-calculation",
-                "microskillSlug": "avoid-error-calculation",
-                "subject": "Physics",
-                "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "subtopicSlug": "graph-plotting-techniques",
+                "conceptSlug": "trap-graph-plotting-techniques",
+                "microskillSlug": "avoid-graph-plotting-techniques"
               }
             }
           ]
@@ -1133,193 +1227,816 @@
     },
     {
       "id": "m-experimental-skills-4",
-      "title": "Experimental Skills - Section 4",
-      "description": "Comprehensive analysis covering least count, significant figures and more.",
+      "title": "Mastery Module 4: Error calculation from data and Related Concepts",
+      "description": "Comprehensive analysis covering error calculation from data, least count of instruments, significant figures in practicals and advanced applications.",
       "conceptTags": [
         "experimental-skills",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-experimental-skills-least-count",
-          "title": "Least count",
+          "id": "mt-experimental-skills-error-calculation-from-data-12",
+          "title": "Error calculation from data",
           "conceptTags": [
             "experimental-skills",
-            "least-count"
+            "error-calculation-from-data"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Least count"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Error calculation from data"
           ],
           "mustKnowFacts": [
-            "Least count is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Least count for NEET."
+            "A thorough understanding of Error calculation from data is heavily tested in recent NEET papers.",
+            "Applying the core principles of Error calculation from data correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for least count",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Least count during complex MCQs.",
-            "Failing to apply the correct logic for Least count."
+            "Misinterpreting the subtle edge cases of Error calculation from data during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Error calculation from data."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Least count."
+            "Can accurately solve numericals or identify biological structures related specifically to Error calculation from data.",
+            "Successfully avoids common pitfalls when Error calculation from data is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Least count."
+            "Past year questions frequently test the application of Error calculation from data in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-least-count-1",
-              "question": "Explain the core concept behind Least count.",
+              "id": "experimental-skills-q-error-calculation-from-data-1",
+              "question": "What are the critical factors or principles governing Error calculation from data?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "least-count"
+                "experimental-skills",
+                "error-calculation-from-data"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "least-count",
-                "conceptSlug": "core-least-count",
-                "microskillSlug": "understand-least-count",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "error-calculation-from-data",
+                "conceptSlug": "core-error-calculation-from-data",
+                "microskillSlug": "understand-error-calculation-from-data"
               }
             },
             {
-              "id": "experimental-skills-q-least-count-2",
-              "question": "What is a common trap associated with Least count?",
+              "id": "experimental-skills-q-error-calculation-from-data-2",
+              "question": "Describe a scenario where applying the concept of Error calculation from data can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "least-count",
+                "experimental-skills",
+                "error-calculation-from-data",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "least-count",
-                "conceptSlug": "trap-least-count",
-                "microskillSlug": "avoid-least-count",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "error-calculation-from-data",
+                "conceptSlug": "trap-error-calculation-from-data",
+                "microskillSlug": "avoid-error-calculation-from-data"
               }
             }
           ]
         },
         {
-          "id": "mt-experimental-skills-significant-figures",
-          "title": "Significant figures",
+          "id": "mt-experimental-skills-least-count-of-instruments-13",
+          "title": "Least count of instruments",
           "conceptTags": [
             "experimental-skills",
-            "significant-figures"
+            "least-count-of-instruments"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class mixed, Significant figures"
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Least count of instruments"
           ],
           "mustKnowFacts": [
-            "Significant figures is a fundamental subtopic of Experimental Skills.",
-            "Crucial to understand the principles governing Significant figures for NEET."
+            "A thorough understanding of Least count of instruments is heavily tested in recent NEET papers.",
+            "Applying the core principles of Least count of instruments correctly is essential for solving complex multi-step problems in Experimental Skills."
           ],
           "formulas": [
             {
-              "name": "Formula for significant figures",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Significant figures during complex MCQs.",
-            "Failing to apply the correct logic for Significant figures."
+            "Misinterpreting the subtle edge cases of Least count of instruments during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Least count of instruments."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Significant figures."
+            "Can accurately solve numericals or identify biological structures related specifically to Least count of instruments.",
+            "Successfully avoids common pitfalls when Least count of instruments is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Significant figures."
+            "Past year questions frequently test the application of Least count of instruments in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "experimental-skills-q-significant-figures-1",
-              "question": "Explain the core concept behind Significant figures.",
+              "id": "experimental-skills-q-least-count-of-instruments-1",
+              "question": "What are the critical factors or principles governing Least count of instruments?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "significant-figures"
+                "experimental-skills",
+                "least-count-of-instruments"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "significant-figures",
-                "conceptSlug": "core-significant-figures",
-                "microskillSlug": "understand-significant-figures",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "least-count-of-instruments",
+                "conceptSlug": "core-least-count-of-instruments",
+                "microskillSlug": "understand-least-count-of-instruments"
               }
             },
             {
-              "id": "experimental-skills-q-significant-figures-2",
-              "question": "What is a common trap associated with Significant figures?",
+              "id": "experimental-skills-q-least-count-of-instruments-2",
+              "question": "Describe a scenario where applying the concept of Least count of instruments can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "significant-figures",
+                "experimental-skills",
+                "least-count-of-instruments",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "experimental-skills",
-                "subtopicSlug": "significant-figures",
-                "conceptSlug": "trap-significant-figures",
-                "microskillSlug": "avoid-significant-figures",
                 "subject": "Physics",
                 "unitSlug": "experimental-skills",
-                "chapterSlug": "experimental-skills"
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "least-count-of-instruments",
+                "conceptSlug": "trap-least-count-of-instruments",
+                "microskillSlug": "avoid-least-count-of-instruments"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-significant-figures-in-practicals-14",
+          "title": "Significant figures in practicals",
+          "conceptTags": [
+            "experimental-skills",
+            "significant-figures-in-practicals"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Significant figures in practicals"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Significant figures in practicals is heavily tested in recent NEET papers.",
+            "Applying the core principles of Significant figures in practicals correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Significant figures in practicals during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Significant figures in practicals."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Significant figures in practicals.",
+            "Successfully avoids common pitfalls when Significant figures in practicals is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Significant figures in practicals in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-significant-figures-in-practicals-1",
+              "question": "What are the critical factors or principles governing Significant figures in practicals?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "significant-figures-in-practicals"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "significant-figures-in-practicals",
+                "conceptSlug": "core-significant-figures-in-practicals",
+                "microskillSlug": "understand-significant-figures-in-practicals"
+              }
+            },
+            {
+              "id": "experimental-skills-q-significant-figures-in-practicals-2",
+              "question": "Describe a scenario where applying the concept of Significant figures in practicals can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "significant-figures-in-practicals",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "significant-figures-in-practicals",
+                "conceptSlug": "trap-significant-figures-in-practicals",
+                "microskillSlug": "avoid-significant-figures-in-practicals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-half-deflection-method-for-galvanometer-15",
+          "title": "Half deflection method for galvanometer",
+          "conceptTags": [
+            "experimental-skills",
+            "half-deflection-method-for-galvanometer"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Half deflection method for galvanometer"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Half deflection method for galvanometer is heavily tested in recent NEET papers.",
+            "Applying the core principles of Half deflection method for galvanometer correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Half deflection method for galvanometer during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Half deflection method for galvanometer."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Half deflection method for galvanometer.",
+            "Successfully avoids common pitfalls when Half deflection method for galvanometer is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Half deflection method for galvanometer in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-half-deflection-method-for-galvanometer-1",
+              "question": "What are the critical factors or principles governing Half deflection method for galvanometer?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "half-deflection-method-for-galvanometer"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "half-deflection-method-for-galvanometer",
+                "conceptSlug": "core-half-deflection-method-for-galvanometer",
+                "microskillSlug": "understand-half-deflection-method-for-galvanometer"
+              }
+            },
+            {
+              "id": "experimental-skills-q-half-deflection-method-for-galvanometer-2",
+              "question": "Describe a scenario where applying the concept of Half deflection method for galvanometer can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "half-deflection-method-for-galvanometer",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "half-deflection-method-for-galvanometer",
+                "conceptSlug": "trap-half-deflection-method-for-galvanometer",
+                "microskillSlug": "avoid-half-deflection-method-for-galvanometer"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-experimental-skills-5",
+      "title": "Mastery Module 5: Zener diode reverse breakdown and Related Concepts",
+      "description": "Comprehensive analysis covering Zener diode reverse breakdown, transistor characteristics setup, resonance tube experiment and advanced applications.",
+      "conceptTags": [
+        "experimental-skills",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-experimental-skills-zener-diode-reverse-breakdown-16",
+          "title": "Zener diode reverse breakdown",
+          "conceptTags": [
+            "experimental-skills",
+            "zener-diode-reverse-breakdown"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Zener diode reverse breakdown"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Zener diode reverse breakdown is heavily tested in recent NEET papers.",
+            "Applying the core principles of Zener diode reverse breakdown correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Zener diode reverse breakdown during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Zener diode reverse breakdown."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Zener diode reverse breakdown.",
+            "Successfully avoids common pitfalls when Zener diode reverse breakdown is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Zener diode reverse breakdown in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-zener-diode-reverse-breakdown-1",
+              "question": "What are the critical factors or principles governing Zener diode reverse breakdown?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "zener-diode-reverse-breakdown"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "zener-diode-reverse-breakdown",
+                "conceptSlug": "core-zener-diode-reverse-breakdown",
+                "microskillSlug": "understand-zener-diode-reverse-breakdown"
+              }
+            },
+            {
+              "id": "experimental-skills-q-zener-diode-reverse-breakdown-2",
+              "question": "Describe a scenario where applying the concept of Zener diode reverse breakdown can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "zener-diode-reverse-breakdown",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "zener-diode-reverse-breakdown",
+                "conceptSlug": "trap-zener-diode-reverse-breakdown",
+                "microskillSlug": "avoid-zener-diode-reverse-breakdown"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-transistor-characteristics-setup-17",
+          "title": "Transistor characteristics setup",
+          "conceptTags": [
+            "experimental-skills",
+            "transistor-characteristics-setup"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Transistor characteristics setup"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Transistor characteristics setup is heavily tested in recent NEET papers.",
+            "Applying the core principles of Transistor characteristics setup correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Transistor characteristics setup during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Transistor characteristics setup."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Transistor characteristics setup.",
+            "Successfully avoids common pitfalls when Transistor characteristics setup is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Transistor characteristics setup in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-transistor-characteristics-setup-1",
+              "question": "What are the critical factors or principles governing Transistor characteristics setup?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "transistor-characteristics-setup"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "transistor-characteristics-setup",
+                "conceptSlug": "core-transistor-characteristics-setup",
+                "microskillSlug": "understand-transistor-characteristics-setup"
+              }
+            },
+            {
+              "id": "experimental-skills-q-transistor-characteristics-setup-2",
+              "question": "Describe a scenario where applying the concept of Transistor characteristics setup can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "transistor-characteristics-setup",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "transistor-characteristics-setup",
+                "conceptSlug": "trap-transistor-characteristics-setup",
+                "microskillSlug": "avoid-transistor-characteristics-setup"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-resonance-tube-experiment-18",
+          "title": "Resonance tube experiment",
+          "conceptTags": [
+            "experimental-skills",
+            "resonance-tube-experiment"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Resonance tube experiment"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Resonance tube experiment is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resonance tube experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Resonance tube experiment during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resonance tube experiment."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Resonance tube experiment.",
+            "Successfully avoids common pitfalls when Resonance tube experiment is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Resonance tube experiment in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-resonance-tube-experiment-1",
+              "question": "What are the critical factors or principles governing Resonance tube experiment?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "resonance-tube-experiment"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "resonance-tube-experiment",
+                "conceptSlug": "core-resonance-tube-experiment",
+                "microskillSlug": "understand-resonance-tube-experiment"
+              }
+            },
+            {
+              "id": "experimental-skills-q-resonance-tube-experiment-2",
+              "question": "Describe a scenario where applying the concept of Resonance tube experiment can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "resonance-tube-experiment",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "resonance-tube-experiment",
+                "conceptSlug": "trap-resonance-tube-experiment",
+                "microskillSlug": "avoid-resonance-tube-experiment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-experimental-skills-sonometer-frequency-measurement-19",
+          "title": "Sonometer frequency measurement",
+          "conceptTags": [
+            "experimental-skills",
+            "sonometer-frequency-measurement"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Sonometer frequency measurement"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Sonometer frequency measurement is heavily tested in recent NEET papers.",
+            "Applying the core principles of Sonometer frequency measurement correctly is essential for solving complex multi-step problems in Experimental Skills."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Sonometer frequency measurement during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Sonometer frequency measurement."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Sonometer frequency measurement.",
+            "Successfully avoids common pitfalls when Sonometer frequency measurement is integrated with other concepts in Experimental Skills."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Sonometer frequency measurement in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "experimental-skills-q-sonometer-frequency-measurement-1",
+              "question": "What are the critical factors or principles governing Sonometer frequency measurement?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "sonometer-frequency-measurement"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "sonometer-frequency-measurement",
+                "conceptSlug": "core-sonometer-frequency-measurement",
+                "microskillSlug": "understand-sonometer-frequency-measurement"
+              }
+            },
+            {
+              "id": "experimental-skills-q-sonometer-frequency-measurement-2",
+              "question": "Describe a scenario where applying the concept of Sonometer frequency measurement can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "experimental-skills",
+                "sonometer-frequency-measurement",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "experimental-skills",
+                "chapterSlug": "experimental-skills",
+                "topicSlug": "experimental-skills",
+                "subtopicSlug": "sonometer-frequency-measurement",
+                "conceptSlug": "trap-sonometer-frequency-measurement",
+                "microskillSlug": "avoid-sonometer-frequency-measurement"
               }
             }
           ]

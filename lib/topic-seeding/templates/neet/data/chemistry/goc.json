@@ -2,746 +2,359 @@
   "missions": [
     {
       "id": "m-goc-1",
-      "title": "Some Basic Principles of Organic Chemistry - Section 1",
-      "description": "Comprehensive analysis covering tetravalency, hybridisation of carbon, shapes and more.",
+      "title": "Mastery Module 1: Tetravalency of carbon and Related Concepts",
+      "description": "Comprehensive analysis covering tetravalency of carbon, hybridisation of carbon in organic compounds, classification of organic compounds and advanced applications.",
       "conceptTags": [
         "goc",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-goc-tetravalency",
-          "title": "Tetravalency",
+          "id": "mt-goc-tetravalency-of-carbon-0",
+          "title": "Tetravalency of carbon",
           "conceptTags": [
             "goc",
-            "tetravalency"
+            "tetravalency-of-carbon"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Tetravalency"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Tetravalency of carbon"
           ],
           "mustKnowFacts": [
-            "Tetravalency is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Tetravalency for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for tetravalency",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving tetravalency",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Tetravalency of carbon is heavily tested in recent NEET papers.",
+            "Applying the core principles of Tetravalency of carbon correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Tetravalency during complex MCQs.",
-            "Failing to apply the correct logic for Tetravalency."
+            "Misinterpreting the subtle edge cases of Tetravalency of carbon during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Tetravalency of carbon."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Tetravalency."
+            "Can accurately solve numericals or identify biological structures related specifically to Tetravalency of carbon.",
+            "Successfully avoids common pitfalls when Tetravalency of carbon is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Tetravalency."
+            "Past year questions frequently test the application of Tetravalency of carbon in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-tetravalency-1",
-              "question": "Explain the core concept behind Tetravalency.",
+              "id": "goc-q-tetravalency-of-carbon-1",
+              "question": "What are the critical factors or principles governing Tetravalency of carbon?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "tetravalency"
+                "goc",
+                "tetravalency-of-carbon"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "tetravalency",
-                "conceptSlug": "core-tetravalency",
-                "microskillSlug": "understand-tetravalency",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "tetravalency-of-carbon",
+                "conceptSlug": "core-tetravalency-of-carbon",
+                "microskillSlug": "understand-tetravalency-of-carbon"
               }
             },
             {
-              "id": "goc-q-tetravalency-2",
-              "question": "What is a common trap associated with Tetravalency?",
+              "id": "goc-q-tetravalency-of-carbon-2",
+              "question": "Describe a scenario where applying the concept of Tetravalency of carbon can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "tetravalency",
+                "goc",
+                "tetravalency-of-carbon",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "tetravalency",
-                "conceptSlug": "trap-tetravalency",
-                "microskillSlug": "avoid-tetravalency",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "tetravalency-of-carbon",
+                "conceptSlug": "trap-tetravalency-of-carbon",
+                "microskillSlug": "avoid-tetravalency-of-carbon"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-hybridisation-of-carbon",
-          "title": "Hybridisation of carbon",
+          "id": "mt-goc-hybridisation-of-carbon-in-organic-compounds-1",
+          "title": "Hybridisation of carbon in organic compounds",
           "conceptTags": [
             "goc",
-            "hybridisation-of-carbon"
+            "hybridisation-of-carbon-in-organic-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Hybridisation of carbon"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Hybridisation of carbon in organic compounds"
           ],
           "mustKnowFacts": [
-            "Hybridisation of carbon is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Hybridisation of carbon for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for hybridisation of carbon",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving hybridisation of carbon",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Hybridisation of carbon in organic compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Hybridisation of carbon in organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Hybridisation of carbon during complex MCQs.",
-            "Failing to apply the correct logic for Hybridisation of carbon."
+            "Misinterpreting the subtle edge cases of Hybridisation of carbon in organic compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Hybridisation of carbon in organic compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Hybridisation of carbon."
+            "Can accurately solve numericals or identify biological structures related specifically to Hybridisation of carbon in organic compounds.",
+            "Successfully avoids common pitfalls when Hybridisation of carbon in organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Hybridisation of carbon."
+            "Past year questions frequently test the application of Hybridisation of carbon in organic compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-hybridisation-of-carbon-1",
-              "question": "Explain the core concept behind Hybridisation of carbon.",
+              "id": "goc-q-hybridisation-of-carbon-in-organic-compounds-1",
+              "question": "What are the critical factors or principles governing Hybridisation of carbon in organic compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "hybridisation-of-carbon"
+                "goc",
+                "hybridisation-of-carbon-in-organic-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "hybridisation-of-carbon",
-                "conceptSlug": "core-hybridisation-of-carbon",
-                "microskillSlug": "understand-hybridisation-of-carbon",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "hybridisation-of-carbon-in-organic-compounds",
+                "conceptSlug": "core-hybridisation-of-carbon-in-organic-compounds",
+                "microskillSlug": "understand-hybridisation-of-carbon-in-organic-compounds"
               }
             },
             {
-              "id": "goc-q-hybridisation-of-carbon-2",
-              "question": "What is a common trap associated with Hybridisation of carbon?",
+              "id": "goc-q-hybridisation-of-carbon-in-organic-compounds-2",
+              "question": "Describe a scenario where applying the concept of Hybridisation of carbon in organic compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "hybridisation-of-carbon",
+                "goc",
+                "hybridisation-of-carbon-in-organic-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "hybridisation-of-carbon",
-                "conceptSlug": "trap-hybridisation-of-carbon",
-                "microskillSlug": "avoid-hybridisation-of-carbon",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "hybridisation-of-carbon-in-organic-compounds",
+                "conceptSlug": "trap-hybridisation-of-carbon-in-organic-compounds",
+                "microskillSlug": "avoid-hybridisation-of-carbon-in-organic-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-shapes",
-          "title": "Shapes",
+          "id": "mt-goc-classification-of-organic-compounds-2",
+          "title": "Classification of organic compounds",
           "conceptTags": [
             "goc",
-            "shapes"
+            "classification-of-organic-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Shapes"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Classification of organic compounds"
           ],
           "mustKnowFacts": [
-            "Shapes is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Shapes for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for shapes",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving shapes",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Classification of organic compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Classification of organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Shapes during complex MCQs.",
-            "Failing to apply the correct logic for Shapes."
+            "Misinterpreting the subtle edge cases of Classification of organic compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Classification of organic compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Shapes."
+            "Can accurately solve numericals or identify biological structures related specifically to Classification of organic compounds.",
+            "Successfully avoids common pitfalls when Classification of organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Shapes."
+            "Past year questions frequently test the application of Classification of organic compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-shapes-1",
-              "question": "Explain the core concept behind Shapes.",
+              "id": "goc-q-classification-of-organic-compounds-1",
+              "question": "What are the critical factors or principles governing Classification of organic compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "shapes"
+                "goc",
+                "classification-of-organic-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "shapes",
-                "conceptSlug": "core-shapes",
-                "microskillSlug": "understand-shapes",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "classification-of-organic-compounds",
+                "conceptSlug": "core-classification-of-organic-compounds",
+                "microskillSlug": "understand-classification-of-organic-compounds"
               }
             },
             {
-              "id": "goc-q-shapes-2",
-              "question": "What is a common trap associated with Shapes?",
+              "id": "goc-q-classification-of-organic-compounds-2",
+              "question": "Describe a scenario where applying the concept of Classification of organic compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "shapes",
+                "goc",
+                "classification-of-organic-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "shapes",
-                "conceptSlug": "trap-shapes",
-                "microskillSlug": "avoid-shapes",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "classification-of-organic-compounds",
+                "conceptSlug": "trap-classification-of-organic-compounds",
+                "microskillSlug": "avoid-classification-of-organic-compounds"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-functional-group-classification",
-          "title": "Functional group classification",
+          "id": "mt-goc-functional-groups-overview-3",
+          "title": "Functional groups overview",
           "conceptTags": [
             "goc",
-            "functional-group-classification"
+            "functional-groups-overview"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Functional group classification"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Functional groups overview"
           ],
           "mustKnowFacts": [
-            "Functional group classification is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Functional group classification for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for functional group classification",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving functional group classification",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Functional groups overview is heavily tested in recent NEET papers.",
+            "Applying the core principles of Functional groups overview correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Functional group classification during complex MCQs.",
-            "Failing to apply the correct logic for Functional group classification."
+            "Misinterpreting the subtle edge cases of Functional groups overview during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Functional groups overview."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Functional group classification."
+            "Can accurately solve numericals or identify biological structures related specifically to Functional groups overview.",
+            "Successfully avoids common pitfalls when Functional groups overview is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Functional group classification."
+            "Past year questions frequently test the application of Functional groups overview in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-functional-group-classification-1",
-              "question": "Explain the core concept behind Functional group classification.",
+              "id": "goc-q-functional-groups-overview-1",
+              "question": "What are the critical factors or principles governing Functional groups overview?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "functional-group-classification"
+                "goc",
+                "functional-groups-overview"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "functional-group-classification",
-                "conceptSlug": "core-functional-group-classification",
-                "microskillSlug": "understand-functional-group-classification",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "functional-groups-overview",
+                "conceptSlug": "core-functional-groups-overview",
+                "microskillSlug": "understand-functional-groups-overview"
               }
             },
             {
-              "id": "goc-q-functional-group-classification-2",
-              "question": "What is a common trap associated with Functional group classification?",
+              "id": "goc-q-functional-groups-overview-2",
+              "question": "Describe a scenario where applying the concept of Functional groups overview can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "functional-group-classification",
+                "goc",
+                "functional-groups-overview",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "functional-group-classification",
-                "conceptSlug": "trap-functional-group-classification",
-                "microskillSlug": "avoid-functional-group-classification",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-homologous-series",
-          "title": "Homologous series",
-          "conceptTags": [
-            "goc",
-            "homologous-series"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Homologous series"
-          ],
-          "mustKnowFacts": [
-            "Homologous series is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Homologous series for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for homologous series",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving homologous series",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Homologous series during complex MCQs.",
-            "Failing to apply the correct logic for Homologous series."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Homologous series."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Homologous series."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-homologous-series-1",
-              "question": "Explain the core concept behind Homologous series.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "homologous-series"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "goc",
                 "topicSlug": "goc",
-                "subtopicSlug": "homologous-series",
-                "conceptSlug": "core-homologous-series",
-                "microskillSlug": "understand-homologous-series",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-homologous-series-2",
-              "question": "What is a common trap associated with Homologous series?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "homologous-series",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "homologous-series",
-                "conceptSlug": "trap-homologous-series",
-                "microskillSlug": "avoid-homologous-series",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-iupac-nomenclature",
-          "title": "IUPAC nomenclature",
-          "conceptTags": [
-            "goc",
-            "iupac-nomenclature"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, IUPAC nomenclature"
-          ],
-          "mustKnowFacts": [
-            "IUPAC nomenclature is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing IUPAC nomenclature for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for IUPAC nomenclature",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving IUPAC nomenclature",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret IUPAC nomenclature during complex MCQs.",
-            "Failing to apply the correct logic for IUPAC nomenclature."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to IUPAC nomenclature."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about IUPAC nomenclature."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-iupac-nomenclature-1",
-              "question": "Explain the core concept behind IUPAC nomenclature.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "iupac-nomenclature"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "iupac-nomenclature",
-                "conceptSlug": "core-iupac-nomenclature",
-                "microskillSlug": "understand-iupac-nomenclature",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-iupac-nomenclature-2",
-              "question": "What is a common trap associated with IUPAC nomenclature?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "iupac-nomenclature",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "iupac-nomenclature",
-                "conceptSlug": "trap-iupac-nomenclature",
-                "microskillSlug": "avoid-iupac-nomenclature",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-structural-isomerism",
-          "title": "Structural isomerism",
-          "conceptTags": [
-            "goc",
-            "structural-isomerism"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Structural isomerism"
-          ],
-          "mustKnowFacts": [
-            "Structural isomerism is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Structural isomerism for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for structural isomerism",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving structural isomerism",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Structural isomerism during complex MCQs.",
-            "Failing to apply the correct logic for Structural isomerism."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Structural isomerism."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Structural isomerism."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-structural-isomerism-1",
-              "question": "Explain the core concept behind Structural isomerism.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "structural-isomerism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "structural-isomerism",
-                "conceptSlug": "core-structural-isomerism",
-                "microskillSlug": "understand-structural-isomerism",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-structural-isomerism-2",
-              "question": "What is a common trap associated with Structural isomerism?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "structural-isomerism",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "structural-isomerism",
-                "conceptSlug": "trap-structural-isomerism",
-                "microskillSlug": "avoid-structural-isomerism",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "subtopicSlug": "functional-groups-overview",
+                "conceptSlug": "trap-functional-groups-overview",
+                "microskillSlug": "avoid-functional-groups-overview"
               }
             }
           ]
@@ -750,746 +363,371 @@
     },
     {
       "id": "m-goc-2",
-      "title": "Some Basic Principles of Organic Chemistry - Section 2",
-      "description": "Comprehensive analysis covering stereoisomerism, homolytic fission, heterolytic fission and more.",
+      "title": "Mastery Module 2: Homologous series and Related Concepts",
+      "description": "Comprehensive analysis covering homologous series, IUPAC nomenclature of alkanes, IUPAC nomenclature of functional groups and advanced applications.",
       "conceptTags": [
         "goc",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-goc-stereoisomerism",
-          "title": "Stereoisomerism",
+          "id": "mt-goc-homologous-series-4",
+          "title": "Homologous series",
           "conceptTags": [
             "goc",
-            "stereoisomerism"
+            "homologous-series"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Stereoisomerism"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Homologous series"
           ],
           "mustKnowFacts": [
-            "Stereoisomerism is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Stereoisomerism for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for stereoisomerism",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving stereoisomerism",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Homologous series is heavily tested in recent NEET papers.",
+            "Applying the core principles of Homologous series correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Stereoisomerism during complex MCQs.",
-            "Failing to apply the correct logic for Stereoisomerism."
+            "Misinterpreting the subtle edge cases of Homologous series during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Homologous series."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Stereoisomerism."
+            "Can accurately solve numericals or identify biological structures related specifically to Homologous series.",
+            "Successfully avoids common pitfalls when Homologous series is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Stereoisomerism."
+            "Past year questions frequently test the application of Homologous series in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-stereoisomerism-1",
-              "question": "Explain the core concept behind Stereoisomerism.",
+              "id": "goc-q-homologous-series-1",
+              "question": "What are the critical factors or principles governing Homologous series?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "stereoisomerism"
+                "goc",
+                "homologous-series"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "stereoisomerism",
-                "conceptSlug": "core-stereoisomerism",
-                "microskillSlug": "understand-stereoisomerism",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "homologous-series",
+                "conceptSlug": "core-homologous-series",
+                "microskillSlug": "understand-homologous-series"
               }
             },
             {
-              "id": "goc-q-stereoisomerism-2",
-              "question": "What is a common trap associated with Stereoisomerism?",
+              "id": "goc-q-homologous-series-2",
+              "question": "Describe a scenario where applying the concept of Homologous series can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "stereoisomerism",
+                "goc",
+                "homologous-series",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "stereoisomerism",
-                "conceptSlug": "trap-stereoisomerism",
-                "microskillSlug": "avoid-stereoisomerism",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "homologous-series",
+                "conceptSlug": "trap-homologous-series",
+                "microskillSlug": "avoid-homologous-series"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-homolytic-fission",
-          "title": "Homolytic fission",
+          "id": "mt-goc-iupac-nomenclature-of-alkanes-5",
+          "title": "IUPAC nomenclature of alkanes",
           "conceptTags": [
             "goc",
-            "homolytic-fission"
+            "iupac-nomenclature-of-alkanes"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Homolytic fission"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing IUPAC nomenclature of alkanes"
           ],
           "mustKnowFacts": [
-            "Homolytic fission is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Homolytic fission for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for homolytic fission",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
+            "A thorough understanding of IUPAC nomenclature of alkanes is heavily tested in recent NEET papers.",
+            "Applying the core principles of IUPAC nomenclature of alkanes correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "reactions": [
             {
-              "name": "Reaction involving homolytic fission",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
+              "name": "Typical IUPAC nomenclature of alkanes Reaction",
+              "equation": "Reactant -> Product",
               "reagentConditions": [
-                "Heat"
+                "Specific catalyst/temperature"
               ],
               "mechanismTags": [
-                "combustion"
+                "Characteristic mechanism"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Homolytic fission during complex MCQs.",
-            "Failing to apply the correct logic for Homolytic fission."
+            "Misinterpreting the subtle edge cases of IUPAC nomenclature of alkanes during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with IUPAC nomenclature of alkanes."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Homolytic fission."
+            "Can accurately solve numericals or identify biological structures related specifically to IUPAC nomenclature of alkanes.",
+            "Successfully avoids common pitfalls when IUPAC nomenclature of alkanes is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Homolytic fission."
+            "Past year questions frequently test the application of IUPAC nomenclature of alkanes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-homolytic-fission-1",
-              "question": "Explain the core concept behind Homolytic fission.",
+              "id": "goc-q-iupac-nomenclature-of-alkanes-1",
+              "question": "What are the critical factors or principles governing IUPAC nomenclature of alkanes?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "homolytic-fission"
+                "goc",
+                "iupac-nomenclature-of-alkanes"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "homolytic-fission",
-                "conceptSlug": "core-homolytic-fission",
-                "microskillSlug": "understand-homolytic-fission",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "iupac-nomenclature-of-alkanes",
+                "conceptSlug": "core-iupac-nomenclature-of-alkanes",
+                "microskillSlug": "understand-iupac-nomenclature-of-alkanes"
               }
             },
             {
-              "id": "goc-q-homolytic-fission-2",
-              "question": "What is a common trap associated with Homolytic fission?",
+              "id": "goc-q-iupac-nomenclature-of-alkanes-2",
+              "question": "Describe a scenario where applying the concept of IUPAC nomenclature of alkanes can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "homolytic-fission",
+                "goc",
+                "iupac-nomenclature-of-alkanes",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "homolytic-fission",
-                "conceptSlug": "trap-homolytic-fission",
-                "microskillSlug": "avoid-homolytic-fission",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "iupac-nomenclature-of-alkanes",
+                "conceptSlug": "trap-iupac-nomenclature-of-alkanes",
+                "microskillSlug": "avoid-iupac-nomenclature-of-alkanes"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-heterolytic-fission",
-          "title": "Heterolytic fission",
+          "id": "mt-goc-iupac-nomenclature-of-functional-groups-6",
+          "title": "IUPAC nomenclature of functional groups",
           "conceptTags": [
             "goc",
-            "heterolytic-fission"
+            "iupac-nomenclature-of-functional-groups"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Heterolytic fission"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing IUPAC nomenclature of functional groups"
           ],
           "mustKnowFacts": [
-            "Heterolytic fission is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Heterolytic fission for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for heterolytic fission",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving heterolytic fission",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of IUPAC nomenclature of functional groups is heavily tested in recent NEET papers.",
+            "Applying the core principles of IUPAC nomenclature of functional groups correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Heterolytic fission during complex MCQs.",
-            "Failing to apply the correct logic for Heterolytic fission."
+            "Misinterpreting the subtle edge cases of IUPAC nomenclature of functional groups during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with IUPAC nomenclature of functional groups."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Heterolytic fission."
+            "Can accurately solve numericals or identify biological structures related specifically to IUPAC nomenclature of functional groups.",
+            "Successfully avoids common pitfalls when IUPAC nomenclature of functional groups is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Heterolytic fission."
+            "Past year questions frequently test the application of IUPAC nomenclature of functional groups in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-heterolytic-fission-1",
-              "question": "Explain the core concept behind Heterolytic fission.",
+              "id": "goc-q-iupac-nomenclature-of-functional-groups-1",
+              "question": "What are the critical factors or principles governing IUPAC nomenclature of functional groups?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "heterolytic-fission"
+                "goc",
+                "iupac-nomenclature-of-functional-groups"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "heterolytic-fission",
-                "conceptSlug": "core-heterolytic-fission",
-                "microskillSlug": "understand-heterolytic-fission",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "iupac-nomenclature-of-functional-groups",
+                "conceptSlug": "core-iupac-nomenclature-of-functional-groups",
+                "microskillSlug": "understand-iupac-nomenclature-of-functional-groups"
               }
             },
             {
-              "id": "goc-q-heterolytic-fission-2",
-              "question": "What is a common trap associated with Heterolytic fission?",
+              "id": "goc-q-iupac-nomenclature-of-functional-groups-2",
+              "question": "Describe a scenario where applying the concept of IUPAC nomenclature of functional groups can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "heterolytic-fission",
+                "goc",
+                "iupac-nomenclature-of-functional-groups",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "heterolytic-fission",
-                "conceptSlug": "trap-heterolytic-fission",
-                "microskillSlug": "avoid-heterolytic-fission",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "iupac-nomenclature-of-functional-groups",
+                "conceptSlug": "trap-iupac-nomenclature-of-functional-groups",
+                "microskillSlug": "avoid-iupac-nomenclature-of-functional-groups"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-free-radicals",
-          "title": "Free radicals",
+          "id": "mt-goc-structural-isomerism-in-organic-compounds-7",
+          "title": "Structural isomerism in organic compounds",
           "conceptTags": [
             "goc",
-            "free-radicals"
+            "structural-isomerism-in-organic-compounds"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Free radicals"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Structural isomerism in organic compounds"
           ],
           "mustKnowFacts": [
-            "Free radicals is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Free radicals for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for free radicals",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving free radicals",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Structural isomerism in organic compounds is heavily tested in recent NEET papers.",
+            "Applying the core principles of Structural isomerism in organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Free radicals during complex MCQs.",
-            "Failing to apply the correct logic for Free radicals."
+            "Misinterpreting the subtle edge cases of Structural isomerism in organic compounds during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Structural isomerism in organic compounds."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Free radicals."
+            "Can accurately solve numericals or identify biological structures related specifically to Structural isomerism in organic compounds.",
+            "Successfully avoids common pitfalls when Structural isomerism in organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Free radicals."
+            "Past year questions frequently test the application of Structural isomerism in organic compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-free-radicals-1",
-              "question": "Explain the core concept behind Free radicals.",
+              "id": "goc-q-structural-isomerism-in-organic-compounds-1",
+              "question": "What are the critical factors or principles governing Structural isomerism in organic compounds?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "free-radicals"
+                "goc",
+                "structural-isomerism-in-organic-compounds"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "free-radicals",
-                "conceptSlug": "core-free-radicals",
-                "microskillSlug": "understand-free-radicals",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "structural-isomerism-in-organic-compounds",
+                "conceptSlug": "core-structural-isomerism-in-organic-compounds",
+                "microskillSlug": "understand-structural-isomerism-in-organic-compounds"
               }
             },
             {
-              "id": "goc-q-free-radicals-2",
-              "question": "What is a common trap associated with Free radicals?",
+              "id": "goc-q-structural-isomerism-in-organic-compounds-2",
+              "question": "Describe a scenario where applying the concept of Structural isomerism in organic compounds can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "free-radicals",
+                "goc",
+                "structural-isomerism-in-organic-compounds",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "free-radicals",
-                "conceptSlug": "trap-free-radicals",
-                "microskillSlug": "avoid-free-radicals",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-carbocations",
-          "title": "Carbocations",
-          "conceptTags": [
-            "goc",
-            "carbocations"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Carbocations"
-          ],
-          "mustKnowFacts": [
-            "Carbocations is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Carbocations for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for carbocations",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving carbocations",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Carbocations during complex MCQs.",
-            "Failing to apply the correct logic for Carbocations."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Carbocations."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Carbocations."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-carbocations-1",
-              "question": "Explain the core concept behind Carbocations.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "carbocations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "goc",
                 "topicSlug": "goc",
-                "subtopicSlug": "carbocations",
-                "conceptSlug": "core-carbocations",
-                "microskillSlug": "understand-carbocations",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-carbocations-2",
-              "question": "What is a common trap associated with Carbocations?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "carbocations",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "carbocations",
-                "conceptSlug": "trap-carbocations",
-                "microskillSlug": "avoid-carbocations",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-carbanions",
-          "title": "Carbanions",
-          "conceptTags": [
-            "goc",
-            "carbanions"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Carbanions"
-          ],
-          "mustKnowFacts": [
-            "Carbanions is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Carbanions for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for carbanions",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving carbanions",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Carbanions during complex MCQs.",
-            "Failing to apply the correct logic for Carbanions."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Carbanions."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Carbanions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-carbanions-1",
-              "question": "Explain the core concept behind Carbanions.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "carbanions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "carbanions",
-                "conceptSlug": "core-carbanions",
-                "microskillSlug": "understand-carbanions",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-carbanions-2",
-              "question": "What is a common trap associated with Carbanions?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "carbanions",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "carbanions",
-                "conceptSlug": "trap-carbanions",
-                "microskillSlug": "avoid-carbanions",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-electrophiles",
-          "title": "Electrophiles",
-          "conceptTags": [
-            "goc",
-            "electrophiles"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Electrophiles"
-          ],
-          "mustKnowFacts": [
-            "Electrophiles is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Electrophiles for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electrophiles",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electrophiles",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Electrophiles during complex MCQs.",
-            "Failing to apply the correct logic for Electrophiles."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electrophiles."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Electrophiles."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-electrophiles-1",
-              "question": "Explain the core concept behind Electrophiles.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "electrophiles"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "electrophiles",
-                "conceptSlug": "core-electrophiles",
-                "microskillSlug": "understand-electrophiles",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-electrophiles-2",
-              "question": "What is a common trap associated with Electrophiles?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "electrophiles",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "electrophiles",
-                "conceptSlug": "trap-electrophiles",
-                "microskillSlug": "avoid-electrophiles",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "subtopicSlug": "structural-isomerism-in-organic-compounds",
+                "conceptSlug": "trap-structural-isomerism-in-organic-compounds",
+                "microskillSlug": "avoid-structural-isomerism-in-organic-compounds"
               }
             }
           ]
@@ -1498,746 +736,359 @@
     },
     {
       "id": "m-goc-3",
-      "title": "Some Basic Principles of Organic Chemistry - Section 3",
-      "description": "Comprehensive analysis covering nucleophiles, inductive effect, electromeric effect and more.",
+      "title": "Mastery Module 3: Stereoisomerism basics and Related Concepts",
+      "description": "Comprehensive analysis covering stereoisomerism basics, homolytic and heterolytic fission, free radicals stability and advanced applications.",
       "conceptTags": [
         "goc",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-goc-nucleophiles",
-          "title": "Nucleophiles",
+          "id": "mt-goc-stereoisomerism-basics-8",
+          "title": "Stereoisomerism basics",
           "conceptTags": [
             "goc",
-            "nucleophiles"
+            "stereoisomerism-basics"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Nucleophiles"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Stereoisomerism basics"
           ],
           "mustKnowFacts": [
-            "Nucleophiles is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Nucleophiles for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for nucleophiles",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving nucleophiles",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Stereoisomerism basics is heavily tested in recent NEET papers.",
+            "Applying the core principles of Stereoisomerism basics correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Nucleophiles during complex MCQs.",
-            "Failing to apply the correct logic for Nucleophiles."
+            "Misinterpreting the subtle edge cases of Stereoisomerism basics during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Stereoisomerism basics."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nucleophiles."
+            "Can accurately solve numericals or identify biological structures related specifically to Stereoisomerism basics.",
+            "Successfully avoids common pitfalls when Stereoisomerism basics is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nucleophiles."
+            "Past year questions frequently test the application of Stereoisomerism basics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-nucleophiles-1",
-              "question": "Explain the core concept behind Nucleophiles.",
+              "id": "goc-q-stereoisomerism-basics-1",
+              "question": "What are the critical factors or principles governing Stereoisomerism basics?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "nucleophiles"
+                "goc",
+                "stereoisomerism-basics"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "nucleophiles",
-                "conceptSlug": "core-nucleophiles",
-                "microskillSlug": "understand-nucleophiles",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "stereoisomerism-basics",
+                "conceptSlug": "core-stereoisomerism-basics",
+                "microskillSlug": "understand-stereoisomerism-basics"
               }
             },
             {
-              "id": "goc-q-nucleophiles-2",
-              "question": "What is a common trap associated with Nucleophiles?",
+              "id": "goc-q-stereoisomerism-basics-2",
+              "question": "Describe a scenario where applying the concept of Stereoisomerism basics can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "nucleophiles",
+                "goc",
+                "stereoisomerism-basics",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "nucleophiles",
-                "conceptSlug": "trap-nucleophiles",
-                "microskillSlug": "avoid-nucleophiles",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "stereoisomerism-basics",
+                "conceptSlug": "trap-stereoisomerism-basics",
+                "microskillSlug": "avoid-stereoisomerism-basics"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-inductive-effect",
-          "title": "Inductive effect",
+          "id": "mt-goc-homolytic-and-heterolytic-fission-9",
+          "title": "Homolytic and heterolytic fission",
           "conceptTags": [
             "goc",
-            "inductive-effect"
+            "homolytic-and-heterolytic-fission"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Inductive effect"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Homolytic and heterolytic fission"
           ],
           "mustKnowFacts": [
-            "Inductive effect is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Inductive effect for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for inductive effect",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving inductive effect",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Homolytic and heterolytic fission is heavily tested in recent NEET papers.",
+            "Applying the core principles of Homolytic and heterolytic fission correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Inductive effect during complex MCQs.",
-            "Failing to apply the correct logic for Inductive effect."
+            "Misinterpreting the subtle edge cases of Homolytic and heterolytic fission during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Homolytic and heterolytic fission."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Inductive effect."
+            "Can accurately solve numericals or identify biological structures related specifically to Homolytic and heterolytic fission.",
+            "Successfully avoids common pitfalls when Homolytic and heterolytic fission is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Inductive effect."
+            "Past year questions frequently test the application of Homolytic and heterolytic fission in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-inductive-effect-1",
-              "question": "Explain the core concept behind Inductive effect.",
+              "id": "goc-q-homolytic-and-heterolytic-fission-1",
+              "question": "What are the critical factors or principles governing Homolytic and heterolytic fission?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "inductive-effect"
+                "goc",
+                "homolytic-and-heterolytic-fission"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "inductive-effect",
-                "conceptSlug": "core-inductive-effect",
-                "microskillSlug": "understand-inductive-effect",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "homolytic-and-heterolytic-fission",
+                "conceptSlug": "core-homolytic-and-heterolytic-fission",
+                "microskillSlug": "understand-homolytic-and-heterolytic-fission"
               }
             },
             {
-              "id": "goc-q-inductive-effect-2",
-              "question": "What is a common trap associated with Inductive effect?",
+              "id": "goc-q-homolytic-and-heterolytic-fission-2",
+              "question": "Describe a scenario where applying the concept of Homolytic and heterolytic fission can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "inductive-effect",
+                "goc",
+                "homolytic-and-heterolytic-fission",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "inductive-effect",
-                "conceptSlug": "trap-inductive-effect",
-                "microskillSlug": "avoid-inductive-effect",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "homolytic-and-heterolytic-fission",
+                "conceptSlug": "trap-homolytic-and-heterolytic-fission",
+                "microskillSlug": "avoid-homolytic-and-heterolytic-fission"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-electromeric-effect",
-          "title": "Electromeric effect",
+          "id": "mt-goc-free-radicals-stability-10",
+          "title": "Free radicals stability",
           "conceptTags": [
             "goc",
-            "electromeric-effect"
+            "free-radicals-stability"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Electromeric effect"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Free radicals stability"
           ],
           "mustKnowFacts": [
-            "Electromeric effect is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Electromeric effect for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for electromeric effect",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving electromeric effect",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Free radicals stability is heavily tested in recent NEET papers.",
+            "Applying the core principles of Free radicals stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Electromeric effect during complex MCQs.",
-            "Failing to apply the correct logic for Electromeric effect."
+            "Misinterpreting the subtle edge cases of Free radicals stability during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Free radicals stability."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Electromeric effect."
+            "Can accurately solve numericals or identify biological structures related specifically to Free radicals stability.",
+            "Successfully avoids common pitfalls when Free radicals stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Electromeric effect."
+            "Past year questions frequently test the application of Free radicals stability in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-electromeric-effect-1",
-              "question": "Explain the core concept behind Electromeric effect.",
+              "id": "goc-q-free-radicals-stability-1",
+              "question": "What are the critical factors or principles governing Free radicals stability?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "electromeric-effect"
+                "goc",
+                "free-radicals-stability"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "electromeric-effect",
-                "conceptSlug": "core-electromeric-effect",
-                "microskillSlug": "understand-electromeric-effect",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "free-radicals-stability",
+                "conceptSlug": "core-free-radicals-stability",
+                "microskillSlug": "understand-free-radicals-stability"
               }
             },
             {
-              "id": "goc-q-electromeric-effect-2",
-              "question": "What is a common trap associated with Electromeric effect?",
+              "id": "goc-q-free-radicals-stability-2",
+              "question": "Describe a scenario where applying the concept of Free radicals stability can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "electromeric-effect",
+                "goc",
+                "free-radicals-stability",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "electromeric-effect",
-                "conceptSlug": "trap-electromeric-effect",
-                "microskillSlug": "avoid-electromeric-effect",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "free-radicals-stability",
+                "conceptSlug": "trap-free-radicals-stability",
+                "microskillSlug": "avoid-free-radicals-stability"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-resonance",
-          "title": "Resonance",
+          "id": "mt-goc-carbocations-stability-11",
+          "title": "Carbocations stability",
           "conceptTags": [
             "goc",
-            "resonance"
+            "carbocations-stability"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Resonance"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Carbocations stability"
           ],
           "mustKnowFacts": [
-            "Resonance is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Resonance for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for resonance",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving resonance",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Carbocations stability is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carbocations stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Resonance during complex MCQs.",
-            "Failing to apply the correct logic for Resonance."
+            "Misinterpreting the subtle edge cases of Carbocations stability during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carbocations stability."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Resonance."
+            "Can accurately solve numericals or identify biological structures related specifically to Carbocations stability.",
+            "Successfully avoids common pitfalls when Carbocations stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Resonance."
+            "Past year questions frequently test the application of Carbocations stability in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-resonance-1",
-              "question": "Explain the core concept behind Resonance.",
+              "id": "goc-q-carbocations-stability-1",
+              "question": "What are the critical factors or principles governing Carbocations stability?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "resonance"
+                "goc",
+                "carbocations-stability"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "resonance",
-                "conceptSlug": "core-resonance",
-                "microskillSlug": "understand-resonance",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "carbocations-stability",
+                "conceptSlug": "core-carbocations-stability",
+                "microskillSlug": "understand-carbocations-stability"
               }
             },
             {
-              "id": "goc-q-resonance-2",
-              "question": "What is a common trap associated with Resonance?",
+              "id": "goc-q-carbocations-stability-2",
+              "question": "Describe a scenario where applying the concept of Carbocations stability can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "resonance",
+                "goc",
+                "carbocations-stability",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "resonance",
-                "conceptSlug": "trap-resonance",
-                "microskillSlug": "avoid-resonance",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-hyperconjugation",
-          "title": "Hyperconjugation",
-          "conceptTags": [
-            "goc",
-            "hyperconjugation"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Hyperconjugation"
-          ],
-          "mustKnowFacts": [
-            "Hyperconjugation is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Hyperconjugation for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for hyperconjugation",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving hyperconjugation",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Hyperconjugation during complex MCQs.",
-            "Failing to apply the correct logic for Hyperconjugation."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Hyperconjugation."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Hyperconjugation."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-hyperconjugation-1",
-              "question": "Explain the core concept behind Hyperconjugation.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "hyperconjugation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "goc",
                 "topicSlug": "goc",
-                "subtopicSlug": "hyperconjugation",
-                "conceptSlug": "core-hyperconjugation",
-                "microskillSlug": "understand-hyperconjugation",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-hyperconjugation-2",
-              "question": "What is a common trap associated with Hyperconjugation?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "hyperconjugation",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "hyperconjugation",
-                "conceptSlug": "trap-hyperconjugation",
-                "microskillSlug": "avoid-hyperconjugation",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-acidity-basicity-order",
-          "title": "Acidity/basicity order",
-          "conceptTags": [
-            "goc",
-            "acidity-basicity-order"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Acidity/basicity order"
-          ],
-          "mustKnowFacts": [
-            "Acidity/basicity order is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Acidity/basicity order for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for acidity/basicity order",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving acidity/basicity order",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Acidity/basicity order during complex MCQs.",
-            "Failing to apply the correct logic for Acidity/basicity order."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Acidity/basicity order."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Acidity/basicity order."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-acidity-basicity-order-1",
-              "question": "Explain the core concept behind Acidity/basicity order.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "acidity-basicity-order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "acidity-basicity-order",
-                "conceptSlug": "core-acidity-basicity-order",
-                "microskillSlug": "understand-acidity-basicity-order",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-acidity-basicity-order-2",
-              "question": "What is a common trap associated with Acidity/basicity order?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "acidity-basicity-order",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "acidity-basicity-order",
-                "conceptSlug": "trap-acidity-basicity-order",
-                "microskillSlug": "avoid-acidity-basicity-order",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-goc-reaction-intermediates-stability",
-          "title": "Reaction intermediates stability",
-          "conceptTags": [
-            "goc",
-            "reaction-intermediates-stability"
-          ],
-          "ncertAnchors": [
-            "NCERT Chemistry Class 11, Reaction intermediates stability"
-          ],
-          "mustKnowFacts": [
-            "Reaction intermediates stability is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Reaction intermediates stability for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for reaction intermediates stability",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving reaction intermediates stability",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Reaction intermediates stability during complex MCQs.",
-            "Failing to apply the correct logic for Reaction intermediates stability."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Reaction intermediates stability."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Reaction intermediates stability."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "goc-q-reaction-intermediates-stability-1",
-              "question": "Explain the core concept behind Reaction intermediates stability.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "reaction-intermediates-stability"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "reaction-intermediates-stability",
-                "conceptSlug": "core-reaction-intermediates-stability",
-                "microskillSlug": "understand-reaction-intermediates-stability",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
-              }
-            },
-            {
-              "id": "goc-q-reaction-intermediates-stability-2",
-              "question": "What is a common trap associated with Reaction intermediates stability?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "reaction-intermediates-stability",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "reaction-intermediates-stability",
-                "conceptSlug": "trap-reaction-intermediates-stability",
-                "microskillSlug": "avoid-reaction-intermediates-stability",
-                "subject": "Chemistry",
-                "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "subtopicSlug": "carbocations-stability",
+                "conceptSlug": "trap-carbocations-stability",
+                "microskillSlug": "avoid-carbocations-stability"
               }
             }
           ]
@@ -2246,431 +1097,720 @@
     },
     {
       "id": "m-goc-4",
-      "title": "Some Basic Principles of Organic Chemistry - Section 4",
-      "description": "Comprehensive analysis covering substitution, addition, elimination and more.",
+      "title": "Mastery Module 4: Carbanions stability and Related Concepts",
+      "description": "Comprehensive analysis covering carbanions stability, electrophiles and nucleophiles, hyperconjugation and acidity and advanced applications.",
       "conceptTags": [
         "goc",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-goc-substitution",
-          "title": "Substitution",
+          "id": "mt-goc-carbanions-stability-12",
+          "title": "Carbanions stability",
           "conceptTags": [
             "goc",
-            "substitution"
+            "carbanions-stability"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Substitution"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Carbanions stability"
           ],
           "mustKnowFacts": [
-            "Substitution is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Substitution for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for substitution",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving substitution",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Carbanions stability is heavily tested in recent NEET papers.",
+            "Applying the core principles of Carbanions stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Substitution during complex MCQs.",
-            "Failing to apply the correct logic for Substitution."
+            "Misinterpreting the subtle edge cases of Carbanions stability during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Carbanions stability."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Substitution."
+            "Can accurately solve numericals or identify biological structures related specifically to Carbanions stability.",
+            "Successfully avoids common pitfalls when Carbanions stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Substitution."
+            "Past year questions frequently test the application of Carbanions stability in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-substitution-1",
-              "question": "Explain the core concept behind Substitution.",
+              "id": "goc-q-carbanions-stability-1",
+              "question": "What are the critical factors or principles governing Carbanions stability?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "substitution"
+                "goc",
+                "carbanions-stability"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "substitution",
-                "conceptSlug": "core-substitution",
-                "microskillSlug": "understand-substitution",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "carbanions-stability",
+                "conceptSlug": "core-carbanions-stability",
+                "microskillSlug": "understand-carbanions-stability"
               }
             },
             {
-              "id": "goc-q-substitution-2",
-              "question": "What is a common trap associated with Substitution?",
+              "id": "goc-q-carbanions-stability-2",
+              "question": "Describe a scenario where applying the concept of Carbanions stability can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "substitution",
+                "goc",
+                "carbanions-stability",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "substitution",
-                "conceptSlug": "trap-substitution",
-                "microskillSlug": "avoid-substitution",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "carbanions-stability",
+                "conceptSlug": "trap-carbanions-stability",
+                "microskillSlug": "avoid-carbanions-stability"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-addition",
-          "title": "Addition",
+          "id": "mt-goc-electrophiles-and-nucleophiles-13",
+          "title": "Electrophiles and nucleophiles",
           "conceptTags": [
             "goc",
-            "addition"
+            "electrophiles-and-nucleophiles"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Addition"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Electrophiles and nucleophiles"
           ],
           "mustKnowFacts": [
-            "Addition is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Addition for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for addition",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving addition",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electrophiles and nucleophiles is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electrophiles and nucleophiles correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Addition during complex MCQs.",
-            "Failing to apply the correct logic for Addition."
+            "Misinterpreting the subtle edge cases of Electrophiles and nucleophiles during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electrophiles and nucleophiles."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Addition."
+            "Can accurately solve numericals or identify biological structures related specifically to Electrophiles and nucleophiles.",
+            "Successfully avoids common pitfalls when Electrophiles and nucleophiles is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Addition."
+            "Past year questions frequently test the application of Electrophiles and nucleophiles in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-addition-1",
-              "question": "Explain the core concept behind Addition.",
+              "id": "goc-q-electrophiles-and-nucleophiles-1",
+              "question": "What are the critical factors or principles governing Electrophiles and nucleophiles?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "addition"
+                "goc",
+                "electrophiles-and-nucleophiles"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "addition",
-                "conceptSlug": "core-addition",
-                "microskillSlug": "understand-addition",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "electrophiles-and-nucleophiles",
+                "conceptSlug": "core-electrophiles-and-nucleophiles",
+                "microskillSlug": "understand-electrophiles-and-nucleophiles"
               }
             },
             {
-              "id": "goc-q-addition-2",
-              "question": "What is a common trap associated with Addition?",
+              "id": "goc-q-electrophiles-and-nucleophiles-2",
+              "question": "Describe a scenario where applying the concept of Electrophiles and nucleophiles can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "addition",
+                "goc",
+                "electrophiles-and-nucleophiles",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "addition",
-                "conceptSlug": "trap-addition",
-                "microskillSlug": "avoid-addition",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "electrophiles-and-nucleophiles",
+                "conceptSlug": "trap-electrophiles-and-nucleophiles",
+                "microskillSlug": "avoid-electrophiles-and-nucleophiles"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-elimination",
-          "title": "Elimination",
+          "id": "mt-goc-hyperconjugation-and-acidity-14",
+          "title": "Hyperconjugation and acidity",
           "conceptTags": [
             "goc",
-            "elimination"
+            "hyperconjugation-and-acidity"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Elimination"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Hyperconjugation and acidity"
           ],
           "mustKnowFacts": [
-            "Elimination is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Elimination for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for elimination",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving elimination",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Hyperconjugation and acidity is heavily tested in recent NEET papers.",
+            "Applying the core principles of Hyperconjugation and acidity correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Elimination during complex MCQs.",
-            "Failing to apply the correct logic for Elimination."
+            "Misinterpreting the subtle edge cases of Hyperconjugation and acidity during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Hyperconjugation and acidity."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Elimination."
+            "Can accurately solve numericals or identify biological structures related specifically to Hyperconjugation and acidity.",
+            "Successfully avoids common pitfalls when Hyperconjugation and acidity is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Elimination."
+            "Past year questions frequently test the application of Hyperconjugation and acidity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-elimination-1",
-              "question": "Explain the core concept behind Elimination.",
+              "id": "goc-q-hyperconjugation-and-acidity-1",
+              "question": "What are the critical factors or principles governing Hyperconjugation and acidity?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "elimination"
+                "goc",
+                "hyperconjugation-and-acidity"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "elimination",
-                "conceptSlug": "core-elimination",
-                "microskillSlug": "understand-elimination",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "hyperconjugation-and-acidity",
+                "conceptSlug": "core-hyperconjugation-and-acidity",
+                "microskillSlug": "understand-hyperconjugation-and-acidity"
               }
             },
             {
-              "id": "goc-q-elimination-2",
-              "question": "What is a common trap associated with Elimination?",
+              "id": "goc-q-hyperconjugation-and-acidity-2",
+              "question": "Describe a scenario where applying the concept of Hyperconjugation and acidity can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "elimination",
+                "goc",
+                "hyperconjugation-and-acidity",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "elimination",
-                "conceptSlug": "trap-elimination",
-                "microskillSlug": "avoid-elimination",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "hyperconjugation-and-acidity",
+                "conceptSlug": "trap-hyperconjugation-and-acidity",
+                "microskillSlug": "avoid-hyperconjugation-and-acidity"
               }
             }
           ]
         },
         {
-          "id": "mt-goc-rearrangement",
-          "title": "Rearrangement",
+          "id": "mt-goc-electromeric-effect-15",
+          "title": "Electromeric effect",
           "conceptTags": [
             "goc",
-            "rearrangement"
+            "electromeric-effect"
           ],
           "ncertAnchors": [
-            "NCERT Chemistry Class 11, Rearrangement"
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Electromeric effect"
           ],
           "mustKnowFacts": [
-            "Rearrangement is a fundamental subtopic of Some Basic Principles of Organic Chemistry.",
-            "Crucial to understand the principles governing Rearrangement for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Relation for rearrangement",
-              "expression": "PV = nRT",
-              "variables": [
-                "P",
-                "V",
-                "n",
-                "R",
-                "T"
-              ]
-            }
-          ],
-          "reactions": [
-            {
-              "name": "Reaction involving rearrangement",
-              "equation": "CH4 + 2O2 -> CO2 + 2H2O",
-              "reagentConditions": [
-                "Heat"
-              ],
-              "mechanismTags": [
-                "combustion"
-              ]
-            }
+            "A thorough understanding of Electromeric effect is heavily tested in recent NEET papers.",
+            "Applying the core principles of Electromeric effect correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
           ],
           "commonTraps": [
-            "Students often misinterpret Rearrangement during complex MCQs.",
-            "Failing to apply the correct logic for Rearrangement."
+            "Misinterpreting the subtle edge cases of Electromeric effect during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Electromeric effect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rearrangement."
+            "Can accurately solve numericals or identify biological structures related specifically to Electromeric effect.",
+            "Successfully avoids common pitfalls when Electromeric effect is integrated with other concepts in Some Basic Principles of Organic Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rearrangement."
+            "Past year questions frequently test the application of Electromeric effect in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "goc-q-rearrangement-1",
-              "question": "Explain the core concept behind Rearrangement.",
+              "id": "goc-q-electromeric-effect-1",
+              "question": "What are the critical factors or principles governing Electromeric effect?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rearrangement"
+                "goc",
+                "electromeric-effect"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "rearrangement",
-                "conceptSlug": "core-rearrangement",
-                "microskillSlug": "understand-rearrangement",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "electromeric-effect",
+                "conceptSlug": "core-electromeric-effect",
+                "microskillSlug": "understand-electromeric-effect"
               }
             },
             {
-              "id": "goc-q-rearrangement-2",
-              "question": "What is a common trap associated with Rearrangement?",
+              "id": "goc-q-electromeric-effect-2",
+              "question": "Describe a scenario where applying the concept of Electromeric effect can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rearrangement",
+                "goc",
+                "electromeric-effect",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "goc",
-                "subtopicSlug": "rearrangement",
-                "conceptSlug": "trap-rearrangement",
-                "microskillSlug": "avoid-rearrangement",
                 "subject": "Chemistry",
                 "unitSlug": "goc",
-                "chapterSlug": "goc"
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "electromeric-effect",
+                "conceptSlug": "trap-electromeric-effect",
+                "microskillSlug": "avoid-electromeric-effect"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-goc-5",
+      "title": "Mastery Module 5: Resonance effect and mesomeric effect and Related Concepts",
+      "description": "Comprehensive analysis covering resonance effect and mesomeric effect, reaction intermediates comparison, types of organic reactions (substitution addition elimination) and advanced applications.",
+      "conceptTags": [
+        "goc",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-goc-resonance-effect-and-mesomeric-effect-16",
+          "title": "Resonance effect and mesomeric effect",
+          "conceptTags": [
+            "goc",
+            "resonance-effect-and-mesomeric-effect"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Resonance effect and mesomeric effect"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Resonance effect and mesomeric effect is heavily tested in recent NEET papers.",
+            "Applying the core principles of Resonance effect and mesomeric effect correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Resonance effect and mesomeric effect during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Resonance effect and mesomeric effect."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Resonance effect and mesomeric effect.",
+            "Successfully avoids common pitfalls when Resonance effect and mesomeric effect is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Resonance effect and mesomeric effect in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-resonance-effect-and-mesomeric-effect-1",
+              "question": "What are the critical factors or principles governing Resonance effect and mesomeric effect?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "goc",
+                "resonance-effect-and-mesomeric-effect"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "resonance-effect-and-mesomeric-effect",
+                "conceptSlug": "core-resonance-effect-and-mesomeric-effect",
+                "microskillSlug": "understand-resonance-effect-and-mesomeric-effect"
+              }
+            },
+            {
+              "id": "goc-q-resonance-effect-and-mesomeric-effect-2",
+              "question": "Describe a scenario where applying the concept of Resonance effect and mesomeric effect can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "goc",
+                "resonance-effect-and-mesomeric-effect",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "resonance-effect-and-mesomeric-effect",
+                "conceptSlug": "trap-resonance-effect-and-mesomeric-effect",
+                "microskillSlug": "avoid-resonance-effect-and-mesomeric-effect"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-reaction-intermediates-comparison-17",
+          "title": "Reaction intermediates comparison",
+          "conceptTags": [
+            "goc",
+            "reaction-intermediates-comparison"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Reaction intermediates comparison"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Reaction intermediates comparison is heavily tested in recent NEET papers.",
+            "Applying the core principles of Reaction intermediates comparison correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Reaction intermediates comparison during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Reaction intermediates comparison."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Reaction intermediates comparison.",
+            "Successfully avoids common pitfalls when Reaction intermediates comparison is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Reaction intermediates comparison in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-reaction-intermediates-comparison-1",
+              "question": "What are the critical factors or principles governing Reaction intermediates comparison?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "goc",
+                "reaction-intermediates-comparison"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "reaction-intermediates-comparison",
+                "conceptSlug": "core-reaction-intermediates-comparison",
+                "microskillSlug": "understand-reaction-intermediates-comparison"
+              }
+            },
+            {
+              "id": "goc-q-reaction-intermediates-comparison-2",
+              "question": "Describe a scenario where applying the concept of Reaction intermediates comparison can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "goc",
+                "reaction-intermediates-comparison",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "reaction-intermediates-comparison",
+                "conceptSlug": "trap-reaction-intermediates-comparison",
+                "microskillSlug": "avoid-reaction-intermediates-comparison"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-types-of-organic-reactions-substitution-addition-elimination-18",
+          "title": "Types of organic reactions (substitution addition elimination)",
+          "conceptTags": [
+            "goc",
+            "types-of-organic-reactions-substitution-addition-elimination"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Types of organic reactions (substitution addition elimination)"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Types of organic reactions (substitution addition elimination) is heavily tested in recent NEET papers.",
+            "Applying the core principles of Types of organic reactions (substitution addition elimination) correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Types of organic reactions (substitution addition elimination) during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Types of organic reactions (substitution addition elimination)."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Types of organic reactions (substitution addition elimination).",
+            "Successfully avoids common pitfalls when Types of organic reactions (substitution addition elimination) is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Types of organic reactions (substitution addition elimination) in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-types-of-organic-reactions-substitution-addition-elimination-1",
+              "question": "What are the critical factors or principles governing Types of organic reactions (substitution addition elimination)?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "goc",
+                "types-of-organic-reactions-substitution-addition-elimination"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "types-of-organic-reactions-substitution-addition-elimination",
+                "conceptSlug": "core-types-of-organic-reactions-substitution-addition-elimination",
+                "microskillSlug": "understand-types-of-organic-reactions-substitution-addition-elimination"
+              }
+            },
+            {
+              "id": "goc-q-types-of-organic-reactions-substitution-addition-elimination-2",
+              "question": "Describe a scenario where applying the concept of Types of organic reactions (substitution addition elimination) can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "goc",
+                "types-of-organic-reactions-substitution-addition-elimination",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "types-of-organic-reactions-substitution-addition-elimination",
+                "conceptSlug": "trap-types-of-organic-reactions-substitution-addition-elimination",
+                "microskillSlug": "avoid-types-of-organic-reactions-substitution-addition-elimination"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-goc-some-basic-principles-of-organic-chemistry-specific-application-19-19",
+          "title": "Some Basic Principles of Organic Chemistry Specific Application 19",
+          "conceptTags": [
+            "goc",
+            "some-basic-principles-of-organic-chemistry-specific-application-19"
+          ],
+          "ncertAnchors": [
+            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Some Basic Principles of Organic Chemistry Specific Application 19"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Some Basic Principles of Organic Chemistry Specific Application 19 is heavily tested in recent NEET papers.",
+            "Applying the core principles of Some Basic Principles of Organic Chemistry Specific Application 19 correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Some Basic Principles of Organic Chemistry Specific Application 19 during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Some Basic Principles of Organic Chemistry Specific Application 19."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Some Basic Principles of Organic Chemistry Specific Application 19.",
+            "Successfully avoids common pitfalls when Some Basic Principles of Organic Chemistry Specific Application 19 is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Some Basic Principles of Organic Chemistry Specific Application 19 in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "goc-q-some-basic-principles-of-organic-chemistry-specific-application-19-1",
+              "question": "What are the critical factors or principles governing Some Basic Principles of Organic Chemistry Specific Application 19?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "goc",
+                "some-basic-principles-of-organic-chemistry-specific-application-19"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "some-basic-principles-of-organic-chemistry-specific-application-19",
+                "conceptSlug": "core-some-basic-principles-of-organic-chemistry-specific-application-19",
+                "microskillSlug": "understand-some-basic-principles-of-organic-chemistry-specific-application-19"
+              }
+            },
+            {
+              "id": "goc-q-some-basic-principles-of-organic-chemistry-specific-application-19-2",
+              "question": "Describe a scenario where applying the concept of Some Basic Principles of Organic Chemistry Specific Application 19 can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "goc",
+                "some-basic-principles-of-organic-chemistry-specific-application-19",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Chemistry",
+                "unitSlug": "goc",
+                "chapterSlug": "goc",
+                "topicSlug": "goc",
+                "subtopicSlug": "some-basic-principles-of-organic-chemistry-specific-application-19",
+                "conceptSlug": "trap-some-basic-principles-of-organic-chemistry-specific-application-19",
+                "microskillSlug": "avoid-some-basic-principles-of-organic-chemistry-specific-application-19"
               }
             }
           ]

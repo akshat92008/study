@@ -2,466 +2,406 @@
   "missions": [
     {
       "id": "m-atoms-and-nuclei-1",
-      "title": "Atoms and Nuclei - Section 1",
-      "description": "Comprehensive analysis covering Rutherford model, alpha scattering, Bohr postulates and more.",
+      "title": "Mastery Module 1: Rutherford alpha scattering and Related Concepts",
+      "description": "Comprehensive analysis covering Rutherford alpha scattering, Rutherford model limitations, Bohr model/hydrogen spectrum and advanced applications.",
       "conceptTags": [
         "atoms-and-nuclei",
-        "section-1"
+        "module-1"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-atoms-and-nuclei-rutherford-model",
-          "title": "Rutherford model",
+          "id": "mt-atoms-and-nuclei-rutherford-alpha-scattering-0",
+          "title": "Rutherford alpha scattering",
           "conceptTags": [
             "atoms-and-nuclei",
-            "rutherford-model"
+            "rutherford-alpha-scattering"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Rutherford model"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Rutherford alpha scattering"
           ],
           "mustKnowFacts": [
-            "Rutherford model is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Rutherford model for NEET."
+            "A thorough understanding of Rutherford alpha scattering is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rutherford alpha scattering correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for Rutherford model",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Rutherford model during complex MCQs.",
-            "Failing to apply the correct logic for Rutherford model."
+            "Misinterpreting the subtle edge cases of Rutherford alpha scattering during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rutherford alpha scattering."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Rutherford model."
+            "Can accurately solve numericals or identify biological structures related specifically to Rutherford alpha scattering.",
+            "Successfully avoids common pitfalls when Rutherford alpha scattering is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Rutherford model."
+            "Past year questions frequently test the application of Rutherford alpha scattering in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-rutherford-model-1",
-              "question": "Explain the core concept behind Rutherford model.",
+              "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-1",
+              "question": "What are the critical factors or principles governing Rutherford alpha scattering?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "rutherford-model"
+                "atoms-and-nuclei",
+                "rutherford-alpha-scattering"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "rutherford-model",
-                "conceptSlug": "core-rutherford-model",
-                "microskillSlug": "understand-rutherford-model",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-alpha-scattering",
+                "conceptSlug": "core-rutherford-alpha-scattering",
+                "microskillSlug": "understand-rutherford-alpha-scattering"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-rutherford-model-2",
-              "question": "What is a common trap associated with Rutherford model?",
+              "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-2",
+              "question": "Describe a scenario where applying the concept of Rutherford alpha scattering can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "rutherford-model",
+                "atoms-and-nuclei",
+                "rutherford-alpha-scattering",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "rutherford-model",
-                "conceptSlug": "trap-rutherford-model",
-                "microskillSlug": "avoid-rutherford-model",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-alpha-scattering",
+                "conceptSlug": "trap-rutherford-alpha-scattering",
+                "microskillSlug": "avoid-rutherford-alpha-scattering"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-alpha-scattering",
-          "title": "Alpha scattering",
+          "id": "mt-atoms-and-nuclei-rutherford-model-limitations-1",
+          "title": "Rutherford model limitations",
           "conceptTags": [
             "atoms-and-nuclei",
-            "alpha-scattering"
+            "rutherford-model-limitations"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Alpha scattering"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Rutherford model limitations"
           ],
           "mustKnowFacts": [
-            "Alpha scattering is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Alpha scattering for NEET."
+            "A thorough understanding of Rutherford model limitations is heavily tested in recent NEET papers.",
+            "Applying the core principles of Rutherford model limitations correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for alpha scattering",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Alpha scattering during complex MCQs.",
-            "Failing to apply the correct logic for Alpha scattering."
+            "Misinterpreting the subtle edge cases of Rutherford model limitations during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Rutherford model limitations."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Alpha scattering."
+            "Can accurately solve numericals or identify biological structures related specifically to Rutherford model limitations.",
+            "Successfully avoids common pitfalls when Rutherford model limitations is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Alpha scattering."
+            "Past year questions frequently test the application of Rutherford model limitations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-alpha-scattering-1",
-              "question": "Explain the core concept behind Alpha scattering.",
+              "id": "atoms-and-nuclei-q-rutherford-model-limitations-1",
+              "question": "What are the critical factors or principles governing Rutherford model limitations?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "alpha-scattering"
+                "atoms-and-nuclei",
+                "rutherford-model-limitations"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "alpha-scattering",
-                "conceptSlug": "core-alpha-scattering",
-                "microskillSlug": "understand-alpha-scattering",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-model-limitations",
+                "conceptSlug": "core-rutherford-model-limitations",
+                "microskillSlug": "understand-rutherford-model-limitations"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-alpha-scattering-2",
-              "question": "What is a common trap associated with Alpha scattering?",
+              "id": "atoms-and-nuclei-q-rutherford-model-limitations-2",
+              "question": "Describe a scenario where applying the concept of Rutherford model limitations can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "alpha-scattering",
+                "atoms-and-nuclei",
+                "rutherford-model-limitations",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "alpha-scattering",
-                "conceptSlug": "trap-alpha-scattering",
-                "microskillSlug": "avoid-alpha-scattering",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "rutherford-model-limitations",
+                "conceptSlug": "trap-rutherford-model-limitations",
+                "microskillSlug": "avoid-rutherford-model-limitations"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-bohr-postulates",
-          "title": "Bohr postulates",
+          "id": "mt-atoms-and-nuclei-bohr-model-hydrogen-spectrum-2",
+          "title": "Bohr model/hydrogen spectrum",
           "conceptTags": [
             "atoms-and-nuclei",
-            "bohr-postulates"
+            "bohr-model-hydrogen-spectrum"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Bohr postulates"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Bohr model/hydrogen spectrum"
           ],
           "mustKnowFacts": [
-            "Bohr postulates is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Bohr postulates for NEET."
+            "A thorough understanding of Bohr model/hydrogen spectrum is heavily tested in recent NEET papers.",
+            "Applying the core principles of Bohr model/hydrogen spectrum correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for Bohr postulates",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Bohr postulates during complex MCQs.",
-            "Failing to apply the correct logic for Bohr postulates."
+            "Misinterpreting the subtle edge cases of Bohr model/hydrogen spectrum during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Bohr model/hydrogen spectrum."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Bohr postulates."
+            "Can accurately solve numericals or identify biological structures related specifically to Bohr model/hydrogen spectrum.",
+            "Successfully avoids common pitfalls when Bohr model/hydrogen spectrum is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Bohr postulates."
+            "Past year questions frequently test the application of Bohr model/hydrogen spectrum in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-bohr-postulates-1",
-              "question": "Explain the core concept behind Bohr postulates.",
+              "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-1",
+              "question": "What are the critical factors or principles governing Bohr model/hydrogen spectrum?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "bohr-postulates"
+                "atoms-and-nuclei",
+                "bohr-model-hydrogen-spectrum"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "bohr-postulates",
-                "conceptSlug": "core-bohr-postulates",
-                "microskillSlug": "understand-bohr-postulates",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "bohr-model-hydrogen-spectrum",
+                "conceptSlug": "core-bohr-model-hydrogen-spectrum",
+                "microskillSlug": "understand-bohr-model-hydrogen-spectrum"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-bohr-postulates-2",
-              "question": "What is a common trap associated with Bohr postulates?",
+              "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-2",
+              "question": "Describe a scenario where applying the concept of Bohr model/hydrogen spectrum can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "bohr-postulates",
+                "atoms-and-nuclei",
+                "bohr-model-hydrogen-spectrum",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "bohr-postulates",
-                "conceptSlug": "trap-bohr-postulates",
-                "microskillSlug": "avoid-bohr-postulates",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "bohr-model-hydrogen-spectrum",
+                "conceptSlug": "trap-bohr-model-hydrogen-spectrum",
+                "microskillSlug": "avoid-bohr-model-hydrogen-spectrum"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-energy-levels",
-          "title": "Energy levels",
+          "id": "mt-atoms-and-nuclei-energy-levels-in-hydrogen-3",
+          "title": "Energy levels in hydrogen",
           "conceptTags": [
             "atoms-and-nuclei",
-            "energy-levels"
+            "energy-levels-in-hydrogen"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Energy levels"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Energy levels in hydrogen"
           ],
           "mustKnowFacts": [
-            "Energy levels is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Energy levels for NEET."
+            "A thorough understanding of Energy levels in hydrogen is heavily tested in recent NEET papers.",
+            "Applying the core principles of Energy levels in hydrogen correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for energy levels",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Energy levels during complex MCQs.",
-            "Failing to apply the correct logic for Energy levels."
+            "Misinterpreting the subtle edge cases of Energy levels in hydrogen during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Energy levels in hydrogen."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Energy levels."
+            "Can accurately solve numericals or identify biological structures related specifically to Energy levels in hydrogen.",
+            "Successfully avoids common pitfalls when Energy levels in hydrogen is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Energy levels."
+            "Past year questions frequently test the application of Energy levels in hydrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-energy-levels-1",
-              "question": "Explain the core concept behind Energy levels.",
+              "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-1",
+              "question": "What are the critical factors or principles governing Energy levels in hydrogen?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "energy-levels"
+                "atoms-and-nuclei",
+                "energy-levels-in-hydrogen"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "energy-levels",
-                "conceptSlug": "core-energy-levels",
-                "microskillSlug": "understand-energy-levels",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "energy-levels-in-hydrogen",
+                "conceptSlug": "core-energy-levels-in-hydrogen",
+                "microskillSlug": "understand-energy-levels-in-hydrogen"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-energy-levels-2",
-              "question": "What is a common trap associated with Energy levels?",
+              "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-2",
+              "question": "Describe a scenario where applying the concept of Energy levels in hydrogen can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "energy-levels",
+                "atoms-and-nuclei",
+                "energy-levels-in-hydrogen",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "energy-levels",
-                "conceptSlug": "trap-energy-levels",
-                "microskillSlug": "avoid-energy-levels",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-atoms-and-nuclei-radius",
-          "title": "Radius",
-          "conceptTags": [
-            "atoms-and-nuclei",
-            "radius"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Radius"
-          ],
-          "mustKnowFacts": [
-            "Radius is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Radius for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for radius",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Radius during complex MCQs.",
-            "Failing to apply the correct logic for Radius."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Radius."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Radius."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-radius-1",
-              "question": "Explain the core concept behind Radius.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "radius"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radius",
-                "conceptSlug": "core-radius",
-                "microskillSlug": "understand-radius",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            },
-            {
-              "id": "atoms-and-nuclei-q-radius-2",
-              "question": "What is a common trap associated with Radius?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "radius",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radius",
-                "conceptSlug": "trap-radius",
-                "microskillSlug": "avoid-radius",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "subtopicSlug": "energy-levels-in-hydrogen",
+                "conceptSlug": "trap-energy-levels-in-hydrogen",
+                "microskillSlug": "avoid-energy-levels-in-hydrogen"
               }
             }
           ]
@@ -470,466 +410,407 @@
     },
     {
       "id": "m-atoms-and-nuclei-2",
-      "title": "Atoms and Nuclei - Section 2",
-      "description": "Comprehensive analysis covering spectral series, hydrogen spectrum, nuclear composition and more.",
+      "title": "Mastery Module 2: Radius of Bohr orbit and Related Concepts",
+      "description": "Comprehensive analysis covering radius of Bohr orbit, spectral series, nuclear composition and advanced applications.",
       "conceptTags": [
         "atoms-and-nuclei",
-        "section-2"
+        "module-2"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-atoms-and-nuclei-spectral-series",
+          "id": "mt-atoms-and-nuclei-radius-of-bohr-orbit-4",
+          "title": "Radius of Bohr orbit",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "radius-of-bohr-orbit"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Radius of Bohr orbit"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Radius of Bohr orbit is heavily tested in recent NEET papers.",
+            "Applying the core principles of Radius of Bohr orbit correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Radius of Bohr orbit during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Radius of Bohr orbit."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Radius of Bohr orbit.",
+            "Successfully avoids common pitfalls when Radius of Bohr orbit is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Radius of Bohr orbit in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-1",
+              "question": "What are the critical factors or principles governing Radius of Bohr orbit?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "radius-of-bohr-orbit"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radius-of-bohr-orbit",
+                "conceptSlug": "core-radius-of-bohr-orbit",
+                "microskillSlug": "understand-radius-of-bohr-orbit"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-2",
+              "question": "Describe a scenario where applying the concept of Radius of Bohr orbit can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "radius-of-bohr-orbit",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radius-of-bohr-orbit",
+                "conceptSlug": "trap-radius-of-bohr-orbit",
+                "microskillSlug": "avoid-radius-of-bohr-orbit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-spectral-series-5",
           "title": "Spectral series",
           "conceptTags": [
             "atoms-and-nuclei",
             "spectral-series"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Spectral series"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Spectral series"
           ],
           "mustKnowFacts": [
-            "Spectral series is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Spectral series for NEET."
+            "A thorough understanding of Spectral series is heavily tested in recent NEET papers.",
+            "Applying the core principles of Spectral series correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for spectral series",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Spectral series during complex MCQs.",
-            "Failing to apply the correct logic for Spectral series."
+            "Misinterpreting the subtle edge cases of Spectral series during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Spectral series."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Spectral series."
+            "Can accurately solve numericals or identify biological structures related specifically to Spectral series.",
+            "Successfully avoids common pitfalls when Spectral series is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Spectral series."
+            "Past year questions frequently test the application of Spectral series in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-spectral-series-1",
-              "question": "Explain the core concept behind Spectral series.",
+              "question": "What are the critical factors or principles governing Spectral series?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "spectral-series"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "spectral-series",
                 "conceptSlug": "core-spectral-series",
-                "microskillSlug": "understand-spectral-series",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "understand-spectral-series"
               }
             },
             {
               "id": "atoms-and-nuclei-q-spectral-series-2",
-              "question": "What is a common trap associated with Spectral series?",
+              "question": "Describe a scenario where applying the concept of Spectral series can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "spectral-series",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "spectral-series",
                 "conceptSlug": "trap-spectral-series",
-                "microskillSlug": "avoid-spectral-series",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "avoid-spectral-series"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-hydrogen-spectrum",
-          "title": "Hydrogen spectrum",
-          "conceptTags": [
-            "atoms-and-nuclei",
-            "hydrogen-spectrum"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Hydrogen spectrum"
-          ],
-          "mustKnowFacts": [
-            "Hydrogen spectrum is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Hydrogen spectrum for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for hydrogen spectrum",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Hydrogen spectrum during complex MCQs.",
-            "Failing to apply the correct logic for Hydrogen spectrum."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Hydrogen spectrum."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Hydrogen spectrum."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-hydrogen-spectrum-1",
-              "question": "Explain the core concept behind Hydrogen spectrum.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "hydrogen-spectrum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "hydrogen-spectrum",
-                "conceptSlug": "core-hydrogen-spectrum",
-                "microskillSlug": "understand-hydrogen-spectrum",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            },
-            {
-              "id": "atoms-and-nuclei-q-hydrogen-spectrum-2",
-              "question": "What is a common trap associated with Hydrogen spectrum?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "hydrogen-spectrum",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "hydrogen-spectrum",
-                "conceptSlug": "trap-hydrogen-spectrum",
-                "microskillSlug": "avoid-hydrogen-spectrum",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-atoms-and-nuclei-nuclear-composition",
+          "id": "mt-atoms-and-nuclei-nuclear-composition-6",
           "title": "Nuclear composition",
           "conceptTags": [
             "atoms-and-nuclei",
             "nuclear-composition"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Nuclear composition"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear composition"
           ],
           "mustKnowFacts": [
-            "Nuclear composition is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Nuclear composition for NEET."
+            "A thorough understanding of Nuclear composition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nuclear composition correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for nuclear composition",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Nuclear composition during complex MCQs.",
-            "Failing to apply the correct logic for Nuclear composition."
+            "Misinterpreting the subtle edge cases of Nuclear composition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nuclear composition."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nuclear composition."
+            "Can accurately solve numericals or identify biological structures related specifically to Nuclear composition.",
+            "Successfully avoids common pitfalls when Nuclear composition is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nuclear composition."
+            "Past year questions frequently test the application of Nuclear composition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-composition-1",
-              "question": "Explain the core concept behind Nuclear composition.",
+              "question": "What are the critical factors or principles governing Nuclear composition?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-composition"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-composition",
                 "conceptSlug": "core-nuclear-composition",
-                "microskillSlug": "understand-nuclear-composition",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "understand-nuclear-composition"
               }
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-composition-2",
-              "question": "What is a common trap associated with Nuclear composition?",
+              "question": "Describe a scenario where applying the concept of Nuclear composition can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-composition",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-composition",
                 "conceptSlug": "trap-nuclear-composition",
-                "microskillSlug": "avoid-nuclear-composition",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "avoid-nuclear-composition"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-isotopes-isobars-isotones",
-          "title": "Isotopes/isobars/isotones",
+          "id": "mt-atoms-and-nuclei-isotopes-isobars-isotones-7",
+          "title": "Isotopes isobars isotones",
           "conceptTags": [
             "atoms-and-nuclei",
             "isotopes-isobars-isotones"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Isotopes/isobars/isotones"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Isotopes isobars isotones"
           ],
           "mustKnowFacts": [
-            "Isotopes/isobars/isotones is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Isotopes/isobars/isotones for NEET."
+            "A thorough understanding of Isotopes isobars isotones is heavily tested in recent NEET papers.",
+            "Applying the core principles of Isotopes isobars isotones correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for isotopes/isobars/isotones",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Isotopes/isobars/isotones during complex MCQs.",
-            "Failing to apply the correct logic for Isotopes/isobars/isotones."
+            "Misinterpreting the subtle edge cases of Isotopes isobars isotones during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Isotopes isobars isotones."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Isotopes/isobars/isotones."
+            "Can accurately solve numericals or identify biological structures related specifically to Isotopes isobars isotones.",
+            "Successfully avoids common pitfalls when Isotopes isobars isotones is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Isotopes/isobars/isotones."
+            "Past year questions frequently test the application of Isotopes isobars isotones in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-1",
-              "question": "Explain the core concept behind Isotopes/isobars/isotones.",
+              "question": "What are the critical factors or principles governing Isotopes isobars isotones?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "isotopes-isobars-isotones"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "isotopes-isobars-isotones",
                 "conceptSlug": "core-isotopes-isobars-isotones",
-                "microskillSlug": "understand-isotopes-isobars-isotones",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "understand-isotopes-isobars-isotones"
               }
             },
             {
               "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-2",
-              "question": "What is a common trap associated with Isotopes/isobars/isotones?",
+              "question": "Describe a scenario where applying the concept of Isotopes isobars isotones can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "isotopes-isobars-isotones",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "isotopes-isobars-isotones",
                 "conceptSlug": "trap-isotopes-isobars-isotones",
-                "microskillSlug": "avoid-isotopes-isobars-isotones",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-atoms-and-nuclei-mass-defect",
-          "title": "Mass defect",
-          "conceptTags": [
-            "atoms-and-nuclei",
-            "mass-defect"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Mass defect"
-          ],
-          "mustKnowFacts": [
-            "Mass defect is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Mass defect for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for mass defect",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Mass defect during complex MCQs.",
-            "Failing to apply the correct logic for Mass defect."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mass defect."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Mass defect."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-mass-defect-1",
-              "question": "Explain the core concept behind Mass defect.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "mass-defect"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mass-defect",
-                "conceptSlug": "core-mass-defect",
-                "microskillSlug": "understand-mass-defect",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            },
-            {
-              "id": "atoms-and-nuclei-q-mass-defect-2",
-              "question": "What is a common trap associated with Mass defect?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "mass-defect",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mass-defect",
-                "conceptSlug": "trap-mass-defect",
-                "microskillSlug": "avoid-mass-defect",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "avoid-isotopes-isobars-isotones"
               }
             }
           ]
@@ -938,466 +819,406 @@
     },
     {
       "id": "m-atoms-and-nuclei-3",
-      "title": "Atoms and Nuclei - Section 3",
-      "description": "Comprehensive analysis covering binding energy, radioactivity, alpha/beta/gamma decay and more.",
+      "title": "Mastery Module 3: Nuclear size and density and Related Concepts",
+      "description": "Comprehensive analysis covering nuclear size and density, mass defect, nuclear binding energy per nucleon and advanced applications.",
       "conceptTags": [
         "atoms-and-nuclei",
-        "section-3"
+        "module-3"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-atoms-and-nuclei-binding-energy",
-          "title": "Binding energy",
+          "id": "mt-atoms-and-nuclei-nuclear-size-and-density-8",
+          "title": "Nuclear size and density",
           "conceptTags": [
             "atoms-and-nuclei",
-            "binding-energy"
+            "nuclear-size-and-density"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Binding energy"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear size and density"
           ],
           "mustKnowFacts": [
-            "Binding energy is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Binding energy for NEET."
+            "A thorough understanding of Nuclear size and density is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nuclear size and density correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for binding energy",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Binding energy during complex MCQs.",
-            "Failing to apply the correct logic for Binding energy."
+            "Misinterpreting the subtle edge cases of Nuclear size and density during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nuclear size and density."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Binding energy."
+            "Can accurately solve numericals or identify biological structures related specifically to Nuclear size and density.",
+            "Successfully avoids common pitfalls when Nuclear size and density is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Binding energy."
+            "Past year questions frequently test the application of Nuclear size and density in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-binding-energy-1",
-              "question": "Explain the core concept behind Binding energy.",
+              "id": "atoms-and-nuclei-q-nuclear-size-and-density-1",
+              "question": "What are the critical factors or principles governing Nuclear size and density?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "binding-energy"
+                "atoms-and-nuclei",
+                "nuclear-size-and-density"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "binding-energy",
-                "conceptSlug": "core-binding-energy",
-                "microskillSlug": "understand-binding-energy",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-size-and-density",
+                "conceptSlug": "core-nuclear-size-and-density",
+                "microskillSlug": "understand-nuclear-size-and-density"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-binding-energy-2",
-              "question": "What is a common trap associated with Binding energy?",
+              "id": "atoms-and-nuclei-q-nuclear-size-and-density-2",
+              "question": "Describe a scenario where applying the concept of Nuclear size and density can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "binding-energy",
+                "atoms-and-nuclei",
+                "nuclear-size-and-density",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "binding-energy",
-                "conceptSlug": "trap-binding-energy",
-                "microskillSlug": "avoid-binding-energy",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-size-and-density",
+                "conceptSlug": "trap-nuclear-size-and-density",
+                "microskillSlug": "avoid-nuclear-size-and-density"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-radioactivity",
-          "title": "Radioactivity",
+          "id": "mt-atoms-and-nuclei-mass-defect-9",
+          "title": "Mass defect",
           "conceptTags": [
             "atoms-and-nuclei",
-            "radioactivity"
+            "mass-defect"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Radioactivity"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Mass defect"
           ],
           "mustKnowFacts": [
-            "Radioactivity is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Radioactivity for NEET."
+            "A thorough understanding of Mass defect is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mass defect correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for radioactivity",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Radioactivity during complex MCQs.",
-            "Failing to apply the correct logic for Radioactivity."
+            "Misinterpreting the subtle edge cases of Mass defect during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mass defect."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Radioactivity."
+            "Can accurately solve numericals or identify biological structures related specifically to Mass defect.",
+            "Successfully avoids common pitfalls when Mass defect is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Radioactivity."
+            "Past year questions frequently test the application of Mass defect in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-radioactivity-1",
-              "question": "Explain the core concept behind Radioactivity.",
+              "id": "atoms-and-nuclei-q-mass-defect-1",
+              "question": "What are the critical factors or principles governing Mass defect?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "radioactivity"
+                "atoms-and-nuclei",
+                "mass-defect"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radioactivity",
-                "conceptSlug": "core-radioactivity",
-                "microskillSlug": "understand-radioactivity",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mass-defect",
+                "conceptSlug": "core-mass-defect",
+                "microskillSlug": "understand-mass-defect"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-radioactivity-2",
-              "question": "What is a common trap associated with Radioactivity?",
+              "id": "atoms-and-nuclei-q-mass-defect-2",
+              "question": "Describe a scenario where applying the concept of Mass defect can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "radioactivity",
+                "atoms-and-nuclei",
+                "mass-defect",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radioactivity",
-                "conceptSlug": "trap-radioactivity",
-                "microskillSlug": "avoid-radioactivity",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mass-defect",
+                "conceptSlug": "trap-mass-defect",
+                "microskillSlug": "avoid-mass-defect"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-alpha-beta-gamma-decay",
-          "title": "Alpha/beta/gamma decay",
+          "id": "mt-atoms-and-nuclei-nuclear-binding-energy-per-nucleon-10",
+          "title": "Nuclear binding energy per nucleon",
           "conceptTags": [
             "atoms-and-nuclei",
-            "alpha-beta-gamma-decay"
+            "nuclear-binding-energy-per-nucleon"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Alpha/beta/gamma decay"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear binding energy per nucleon"
           ],
           "mustKnowFacts": [
-            "Alpha/beta/gamma decay is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Alpha/beta/gamma decay for NEET."
+            "A thorough understanding of Nuclear binding energy per nucleon is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nuclear binding energy per nucleon correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for alpha/beta/gamma decay",
-              "expression": "F = m a",
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "E",
+                "K",
+                "U"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Alpha/beta/gamma decay during complex MCQs.",
-            "Failing to apply the correct logic for Alpha/beta/gamma decay."
+            "Misinterpreting the subtle edge cases of Nuclear binding energy per nucleon during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nuclear binding energy per nucleon."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Alpha/beta/gamma decay."
+            "Can accurately solve numericals or identify biological structures related specifically to Nuclear binding energy per nucleon.",
+            "Successfully avoids common pitfalls when Nuclear binding energy per nucleon is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Alpha/beta/gamma decay."
+            "Past year questions frequently test the application of Nuclear binding energy per nucleon in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-alpha-beta-gamma-decay-1",
-              "question": "Explain the core concept behind Alpha/beta/gamma decay.",
+              "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-1",
+              "question": "What are the critical factors or principles governing Nuclear binding energy per nucleon?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "alpha-beta-gamma-decay"
+                "atoms-and-nuclei",
+                "nuclear-binding-energy-per-nucleon"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "alpha-beta-gamma-decay",
-                "conceptSlug": "core-alpha-beta-gamma-decay",
-                "microskillSlug": "understand-alpha-beta-gamma-decay",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-binding-energy-per-nucleon",
+                "conceptSlug": "core-nuclear-binding-energy-per-nucleon",
+                "microskillSlug": "understand-nuclear-binding-energy-per-nucleon"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-alpha-beta-gamma-decay-2",
-              "question": "What is a common trap associated with Alpha/beta/gamma decay?",
+              "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-2",
+              "question": "Describe a scenario where applying the concept of Nuclear binding energy per nucleon can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "alpha-beta-gamma-decay",
+                "atoms-and-nuclei",
+                "nuclear-binding-energy-per-nucleon",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "alpha-beta-gamma-decay",
-                "conceptSlug": "trap-alpha-beta-gamma-decay",
-                "microskillSlug": "avoid-alpha-beta-gamma-decay",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "nuclear-binding-energy-per-nucleon",
+                "conceptSlug": "trap-nuclear-binding-energy-per-nucleon",
+                "microskillSlug": "avoid-nuclear-binding-energy-per-nucleon"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-half-life",
-          "title": "Half-life",
+          "id": "mt-atoms-and-nuclei-radioactivity-laws-11",
+          "title": "Radioactivity laws",
           "conceptTags": [
             "atoms-and-nuclei",
-            "half-life"
+            "radioactivity-laws"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Half-life"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Radioactivity laws"
           ],
           "mustKnowFacts": [
-            "Half-life is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Half-life for NEET."
+            "A thorough understanding of Radioactivity laws is heavily tested in recent NEET papers.",
+            "Applying the core principles of Radioactivity laws correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for half-life",
-              "expression": "F = m a",
+              "name": "Radioactive Decay",
+              "expression": "N(t) = N_0 e^{-\\lambda t}",
               "variables": [
-                "F",
-                "m",
-                "a"
+                "N",
+                "N_0",
+                "\\lambda",
+                "t"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Half-life during complex MCQs.",
-            "Failing to apply the correct logic for Half-life."
+            "Misinterpreting the subtle edge cases of Radioactivity laws during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Radioactivity laws."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Half-life."
+            "Can accurately solve numericals or identify biological structures related specifically to Radioactivity laws.",
+            "Successfully avoids common pitfalls when Radioactivity laws is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Half-life."
+            "Past year questions frequently test the application of Radioactivity laws in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-half-life-1",
-              "question": "Explain the core concept behind Half-life.",
+              "id": "atoms-and-nuclei-q-radioactivity-laws-1",
+              "question": "What are the critical factors or principles governing Radioactivity laws?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
-                "half-life"
+                "atoms-and-nuclei",
+                "radioactivity-laws"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "half-life",
-                "conceptSlug": "core-half-life",
-                "microskillSlug": "understand-half-life",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "radioactivity-laws",
+                "conceptSlug": "core-radioactivity-laws",
+                "microskillSlug": "understand-radioactivity-laws"
               }
             },
             {
-              "id": "atoms-and-nuclei-q-half-life-2",
-              "question": "What is a common trap associated with Half-life?",
+              "id": "atoms-and-nuclei-q-radioactivity-laws-2",
+              "question": "Describe a scenario where applying the concept of Radioactivity laws can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
-                "half-life",
+                "atoms-and-nuclei",
+                "radioactivity-laws",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "half-life",
-                "conceptSlug": "trap-half-life",
-                "microskillSlug": "avoid-half-life",
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-atoms-and-nuclei-mean-life",
-          "title": "Mean life",
-          "conceptTags": [
-            "atoms-and-nuclei",
-            "mean-life"
-          ],
-          "ncertAnchors": [
-            "NCERT Physics Class 12, Mean life"
-          ],
-          "mustKnowFacts": [
-            "Mean life is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Mean life for NEET."
-          ],
-          "formulas": [
-            {
-              "name": "Formula for mean life",
-              "expression": "F = m a",
-              "variables": [
-                "F",
-                "m",
-                "a"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Students often misinterpret Mean life during complex MCQs.",
-            "Failing to apply the correct logic for Mean life."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Mean life."
-          ],
-          "pyqPatterns": [
-            "Past year questions frequently ask about Mean life."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-mean-life-1",
-              "question": "Explain the core concept behind Mean life.",
-              "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
-              ],
-              "acceptedSynonyms": [
-                "principle",
-                "concept"
-              ],
-              "conceptTags": [
-                "mean-life"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mean-life",
-                "conceptSlug": "core-mean-life",
-                "microskillSlug": "understand-mean-life",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
-              }
-            },
-            {
-              "id": "atoms-and-nuclei-q-mean-life-2",
-              "question": "What is a common trap associated with Mean life?",
-              "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake"
-              ],
-              "conceptTags": [
-                "mean-life",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mean-life",
-                "conceptSlug": "trap-mean-life",
-                "microskillSlug": "avoid-mean-life",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "subtopicSlug": "radioactivity-laws",
+                "conceptSlug": "trap-radioactivity-laws",
+                "microskillSlug": "avoid-radioactivity-laws"
               }
             }
           ]
@@ -1406,193 +1227,815 @@
     },
     {
       "id": "m-atoms-and-nuclei-4",
-      "title": "Atoms and Nuclei - Section 4",
-      "description": "Comprehensive analysis covering nuclear fission, nuclear fusion and more.",
+      "title": "Mastery Module 4: Alpha decay and Related Concepts",
+      "description": "Comprehensive analysis covering alpha decay, beta decay, gamma decay and advanced applications.",
       "conceptTags": [
         "atoms-and-nuclei",
-        "section-4"
+        "module-4"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-atoms-and-nuclei-nuclear-fission",
+          "id": "mt-atoms-and-nuclei-alpha-decay-12",
+          "title": "Alpha decay",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "alpha-decay"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Alpha decay"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Alpha decay is heavily tested in recent NEET papers.",
+            "Applying the core principles of Alpha decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Alpha decay during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Alpha decay."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Alpha decay.",
+            "Successfully avoids common pitfalls when Alpha decay is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Alpha decay in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-alpha-decay-1",
+              "question": "What are the critical factors or principles governing Alpha decay?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "alpha-decay"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-decay",
+                "conceptSlug": "core-alpha-decay",
+                "microskillSlug": "understand-alpha-decay"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-alpha-decay-2",
+              "question": "Describe a scenario where applying the concept of Alpha decay can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "alpha-decay",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "alpha-decay",
+                "conceptSlug": "trap-alpha-decay",
+                "microskillSlug": "avoid-alpha-decay"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-beta-decay-13",
+          "title": "Beta decay",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "beta-decay"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Beta decay"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Beta decay is heavily tested in recent NEET papers.",
+            "Applying the core principles of Beta decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Beta decay during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Beta decay."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Beta decay.",
+            "Successfully avoids common pitfalls when Beta decay is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Beta decay in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-beta-decay-1",
+              "question": "What are the critical factors or principles governing Beta decay?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "beta-decay"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "beta-decay",
+                "conceptSlug": "core-beta-decay",
+                "microskillSlug": "understand-beta-decay"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-beta-decay-2",
+              "question": "Describe a scenario where applying the concept of Beta decay can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "beta-decay",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "beta-decay",
+                "conceptSlug": "trap-beta-decay",
+                "microskillSlug": "avoid-beta-decay"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-gamma-decay-14",
+          "title": "Gamma decay",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "gamma-decay"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Gamma decay"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Gamma decay is heavily tested in recent NEET papers.",
+            "Applying the core principles of Gamma decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Gamma decay during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Gamma decay."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Gamma decay.",
+            "Successfully avoids common pitfalls when Gamma decay is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Gamma decay in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-gamma-decay-1",
+              "question": "What are the critical factors or principles governing Gamma decay?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "gamma-decay"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "gamma-decay",
+                "conceptSlug": "core-gamma-decay",
+                "microskillSlug": "understand-gamma-decay"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-gamma-decay-2",
+              "question": "Describe a scenario where applying the concept of Gamma decay can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "gamma-decay",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "gamma-decay",
+                "conceptSlug": "trap-gamma-decay",
+                "microskillSlug": "avoid-gamma-decay"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-half-life-definition-15",
+          "title": "Half-life definition",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "half-life-definition"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Half-life definition"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Half-life definition is heavily tested in recent NEET papers.",
+            "Applying the core principles of Half-life definition correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Half-life definition during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Half-life definition."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Half-life definition.",
+            "Successfully avoids common pitfalls when Half-life definition is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Half-life definition in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-half-life-definition-1",
+              "question": "What are the critical factors or principles governing Half-life definition?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "half-life-definition"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "half-life-definition",
+                "conceptSlug": "core-half-life-definition",
+                "microskillSlug": "understand-half-life-definition"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-half-life-definition-2",
+              "question": "Describe a scenario where applying the concept of Half-life definition can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "half-life-definition",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "half-life-definition",
+                "conceptSlug": "trap-half-life-definition",
+                "microskillSlug": "avoid-half-life-definition"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m-atoms-and-nuclei-5",
+      "title": "Mastery Module 5: Mean life and Related Concepts",
+      "description": "Comprehensive analysis covering mean life, nuclear fission, nuclear fusion and advanced applications.",
+      "conceptTags": [
+        "atoms-and-nuclei",
+        "module-5"
+      ],
+      "estimatedMinutes": 120,
+      "difficulty": "medium",
+      "microtargets": [
+        {
+          "id": "mt-atoms-and-nuclei-mean-life-16",
+          "title": "Mean life",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "mean-life"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Mean life"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Mean life is heavily tested in recent NEET papers.",
+            "Applying the core principles of Mean life correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
+              "variables": [
+                "s",
+                "u",
+                "t",
+                "a"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Mean life during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Mean life."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Mean life.",
+            "Successfully avoids common pitfalls when Mean life is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Mean life in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-mean-life-1",
+              "question": "What are the critical factors or principles governing Mean life?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "mean-life"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mean-life",
+                "conceptSlug": "core-mean-life",
+                "microskillSlug": "understand-mean-life"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-mean-life-2",
+              "question": "Describe a scenario where applying the concept of Mean life can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "mean-life",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "mean-life",
+                "conceptSlug": "trap-mean-life",
+                "microskillSlug": "avoid-mean-life"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-nuclear-fission-17",
           "title": "Nuclear fission",
           "conceptTags": [
             "atoms-and-nuclei",
             "nuclear-fission"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Nuclear fission"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear fission"
           ],
           "mustKnowFacts": [
-            "Nuclear fission is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Nuclear fission for NEET."
+            "A thorough understanding of Nuclear fission is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nuclear fission correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for nuclear fission",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Nuclear fission during complex MCQs.",
-            "Failing to apply the correct logic for Nuclear fission."
+            "Misinterpreting the subtle edge cases of Nuclear fission during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nuclear fission."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nuclear fission."
+            "Can accurately solve numericals or identify biological structures related specifically to Nuclear fission.",
+            "Successfully avoids common pitfalls when Nuclear fission is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nuclear fission."
+            "Past year questions frequently test the application of Nuclear fission in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-fission-1",
-              "question": "Explain the core concept behind Nuclear fission.",
+              "question": "What are the critical factors or principles governing Nuclear fission?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-fission"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-fission",
                 "conceptSlug": "core-nuclear-fission",
-                "microskillSlug": "understand-nuclear-fission",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "understand-nuclear-fission"
               }
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-fission-2",
-              "question": "What is a common trap associated with Nuclear fission?",
+              "question": "Describe a scenario where applying the concept of Nuclear fission can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-fission",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-fission",
                 "conceptSlug": "trap-nuclear-fission",
-                "microskillSlug": "avoid-nuclear-fission",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "avoid-nuclear-fission"
               }
             }
           ]
         },
         {
-          "id": "mt-atoms-and-nuclei-nuclear-fusion",
+          "id": "mt-atoms-and-nuclei-nuclear-fusion-18",
           "title": "Nuclear fusion",
           "conceptTags": [
             "atoms-and-nuclei",
             "nuclear-fusion"
           ],
           "ncertAnchors": [
-            "NCERT Physics Class 12, Nuclear fusion"
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear fusion"
           ],
           "mustKnowFacts": [
-            "Nuclear fusion is a fundamental subtopic of Atoms and Nuclei.",
-            "Crucial to understand the principles governing Nuclear fusion for NEET."
+            "A thorough understanding of Nuclear fusion is heavily tested in recent NEET papers.",
+            "Applying the core principles of Nuclear fusion correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
-              "name": "Formula for nuclear fusion",
-              "expression": "F = m a",
+              "name": "Kinematic Relation",
+              "expression": "s = ut + \\frac{1}{2}at^2",
               "variables": [
-                "F",
-                "m",
+                "s",
+                "u",
+                "t",
                 "a"
               ]
             }
           ],
           "commonTraps": [
-            "Students often misinterpret Nuclear fusion during complex MCQs.",
-            "Failing to apply the correct logic for Nuclear fusion."
+            "Misinterpreting the subtle edge cases of Nuclear fusion during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Nuclear fusion."
           ],
           "masteryCriteria": [
-            "Can accurately solve numericals or identify structures related to Nuclear fusion."
+            "Can accurately solve numericals or identify biological structures related specifically to Nuclear fusion.",
+            "Successfully avoids common pitfalls when Nuclear fusion is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently ask about Nuclear fusion."
+            "Past year questions frequently test the application of Nuclear fusion in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-fusion-1",
-              "question": "Explain the core concept behind Nuclear fusion.",
+              "question": "What are the critical factors or principles governing Nuclear fusion?",
               "expectedAnswerPoints": [
-                "Key principle 1",
-                "Key principle 2"
+                "Primary mechanism or law",
+                "Key variables or structures involved"
               ],
               "acceptedSynonyms": [
+                "mechanism",
                 "principle",
-                "concept"
+                "variables"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-fusion"
               ],
               "difficulty": "easy",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-fusion",
                 "conceptSlug": "core-nuclear-fusion",
-                "microskillSlug": "understand-nuclear-fusion",
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "microskillSlug": "understand-nuclear-fusion"
               }
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-fusion-2",
-              "question": "What is a common trap associated with Nuclear fusion?",
+              "question": "Describe a scenario where applying the concept of Nuclear fusion can lead to a common student error.",
               "expectedAnswerPoints": [
-                "Misinterpreting the principle",
-                "Calculation error"
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
               ],
               "acceptedSynonyms": [
                 "error",
-                "mistake"
+                "mistake",
+                "trap",
+                "confusion"
               ],
               "conceptTags": [
+                "atoms-and-nuclei",
                 "nuclear-fusion",
                 "traps"
               ],
               "difficulty": "medium",
               "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
                 "topicSlug": "atoms-and-nuclei",
                 "subtopicSlug": "nuclear-fusion",
                 "conceptSlug": "trap-nuclear-fusion",
-                "microskillSlug": "avoid-nuclear-fusion",
+                "microskillSlug": "avoid-nuclear-fusion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt-atoms-and-nuclei-stellar-energy-source-19",
+          "title": "Stellar energy source",
+          "conceptTags": [
+            "atoms-and-nuclei",
+            "stellar-energy-source"
+          ],
+          "ncertAnchors": [
+            "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Stellar energy source"
+          ],
+          "mustKnowFacts": [
+            "A thorough understanding of Stellar energy source is heavily tested in recent NEET papers.",
+            "Applying the core principles of Stellar energy source correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+          ],
+          "formulas": [
+            {
+              "name": "Mechanical Energy",
+              "expression": "E = K + U",
+              "variables": [
+                "E",
+                "K",
+                "U"
+              ]
+            }
+          ],
+          "commonTraps": [
+            "Misinterpreting the subtle edge cases of Stellar energy source during high-pressure exam scenarios.",
+            "Failing to recall the exact conditions or sign conventions associated with Stellar energy source."
+          ],
+          "masteryCriteria": [
+            "Can accurately solve numericals or identify biological structures related specifically to Stellar energy source.",
+            "Successfully avoids common pitfalls when Stellar energy source is integrated with other concepts in Atoms and Nuclei."
+          ],
+          "pyqPatterns": [
+            "Past year questions frequently test the application of Stellar energy source in tricky assertion-reason or statement-based questions."
+          ],
+          "estimatedMinutes": 30,
+          "difficulty": "medium",
+          "activeRecallQuestions": [
+            {
+              "id": "atoms-and-nuclei-q-stellar-energy-source-1",
+              "question": "What are the critical factors or principles governing Stellar energy source?",
+              "expectedAnswerPoints": [
+                "Primary mechanism or law",
+                "Key variables or structures involved"
+              ],
+              "acceptedSynonyms": [
+                "mechanism",
+                "principle",
+                "variables"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "stellar-energy-source"
+              ],
+              "difficulty": "easy",
+              "taxonomyPath": {
                 "subject": "Physics",
                 "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei"
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "stellar-energy-source",
+                "conceptSlug": "core-stellar-energy-source",
+                "microskillSlug": "understand-stellar-energy-source"
+              }
+            },
+            {
+              "id": "atoms-and-nuclei-q-stellar-energy-source-2",
+              "question": "Describe a scenario where applying the concept of Stellar energy source can lead to a common student error.",
+              "expectedAnswerPoints": [
+                "Sign convention error",
+                "Mislabeling structures",
+                "Ignoring edge conditions"
+              ],
+              "acceptedSynonyms": [
+                "error",
+                "mistake",
+                "trap",
+                "confusion"
+              ],
+              "conceptTags": [
+                "atoms-and-nuclei",
+                "stellar-energy-source",
+                "traps"
+              ],
+              "difficulty": "medium",
+              "taxonomyPath": {
+                "subject": "Physics",
+                "unitSlug": "atoms-and-nuclei",
+                "chapterSlug": "atoms-and-nuclei",
+                "topicSlug": "atoms-and-nuclei",
+                "subtopicSlug": "stellar-energy-source",
+                "conceptSlug": "trap-stellar-energy-source",
+                "microskillSlug": "avoid-stellar-energy-source"
               }
             }
           ]
