@@ -1,6 +1,22 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
+const fetchWithTimeout = async (input: RequestInfo | URL, init?: RequestInit) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(input, { ...init, signal: controller.signal });
+    return response;
+  } catch (error: any) {
+    if (error.name === 'AbortError') {
+      throw new Error('Supabase API timed out after 5 seconds. Your project might be asleep or unavailable.');
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
+
 export async function createClient() {
   const cookieStore = await cookies();
 
@@ -19,6 +35,9 @@ export async function createClient() {
     supabaseUrl,
     supabaseKey,
     {
+      global: {
+        fetch: fetchWithTimeout,
+      },
       cookies: {
         getAll() {
           return cookieStore.getAll();
@@ -30,8 +49,6 @@ export async function createClient() {
             );
           } catch {
             // The `setAll` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
           }
         },
       },

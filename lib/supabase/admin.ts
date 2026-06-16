@@ -1,42 +1,50 @@
-import 'server-only';
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-if (typeof window !== 'undefined') {
-  throw new Error('admin client is server-only');
-}
+const fetchWithTimeout = async (input: RequestInfo | URL, init?: RequestInit) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(input, { ...init, signal: controller.signal });
+    return response;
+  } catch (error: any) {
+    if (error.name === 'AbortError') {
+      throw new Error('Supabase API timed out after 5 seconds. Your project might be asleep or unavailable.');
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
 
 let adminClient: SupabaseClient | null = null;
 
 export function createAdminClient(): SupabaseClient {
   if (adminClient) return adminClient;
-
+  
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseUrl.startsWith('http')) {
-    throw new Error('CRITICAL CONFIG ERROR: NEXT_PUBLIC_SUPABASE_URL is missing or invalid. It must start with https://. Please check your Vercel Environment Variables.');
-  }
-
-  if (!serviceRoleKey || serviceRoleKey.length < 20) {
-    throw new Error('CRITICAL CONFIG ERROR: SUPABASE_SERVICE_ROLE_KEY is missing or invalid. Please check your Vercel Environment Variables.');
+    throw new Error('CRITICAL CONFIG ERROR: NEXT_PUBLIC_SUPABASE_URL is missing or invalid.');
   }
   
+  if (!serviceRoleKey) {
+    throw new Error('CRITICAL CONFIG ERROR: SUPABASE_SERVICE_ROLE_KEY is missing.');
+  }
+
   adminClient = createClient(
     supabaseUrl,
     serviceRoleKey,
     {
+      global: {
+        fetch: fetchWithTimeout,
+      },
       auth: {
         autoRefreshToken: false,
         persistSession: false,
       },
-      global: {
-        fetch: (...args: Parameters<typeof fetch>) => fetch(...args),
-      },
-      db: {
-        schema: 'public',
-      },
     }
   );
-  
+
   return adminClient;
 }
