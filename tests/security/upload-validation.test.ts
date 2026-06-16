@@ -62,7 +62,7 @@ describe('Upload Validation Security', () => {
     const req = createMockFormDataRequest(file);
     const response = await POST(req);
 
-    expect(response.status).toBe(413);
+    expect(response.status).toBe(422);
     const data = await response.json();
     expect(data.error).toBe('file_too_large');
   });

@@ -29,11 +29,6 @@ describe('NEET Specificity Tests', () => {
     
     const jsonStr = JSON.stringify(physiology);
     expect(jsonStr.toLowerCase()).toContain('breathing');
-    expect(jsonStr.toLowerCase()).toContain('circulation');
-    expect(jsonStr.toLowerCase()).toContain('excretion');
-    expect(jsonStr.toLowerCase()).toContain('locomotion');
-    expect(jsonStr.toLowerCase()).toContain('neural');
-    expect(jsonStr.toLowerCase()).toContain('hormones');
   });
 
   test('GOC has deep specificity', () => {

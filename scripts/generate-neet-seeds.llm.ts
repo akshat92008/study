@@ -118,14 +118,14 @@ const schema = {
 };
 
 async function generateChapterData(unit: any) {
-  const prompt = \`Generate highly detailed, exhaustively deep JSON seed data for the NEET syllabus chapter: "\${unit.chapterSlug}" in \${unit.subject}.
+  const prompt = `Generate highly detailed, exhaustively deep JSON seed data for the NEET syllabus chapter: "${unit.chapterSlug}" in ${unit.subject}.
     Constraints:
     1. Physics/Chemistry chapters MUST have at least 20 microtargets. Biology MUST have at least 30 microtargets (50+ for large units like human physiology).
     2. Do NOT use fake formulas (e.g. F=ma everywhere). Only use real formulas for the exact topic.
     3. Include reactions for Organic Chemistry. Include diagrams for Biology.
     4. Taxonomy slugs must NOT be generic (e.g., no topic-0).
     5. No placeholder phrases like "NCERT paragraph on".
-    6. Include specific commonTraps and PYQ patterns.\`;
+    6. Include specific commonTraps and PYQ patterns.`;
 
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-pro',
@@ -152,14 +152,14 @@ async function run() {
   for (const unit of NEET_UG_2026_UNITS) {
     if (skipList.includes(unit.chapterSlug)) continue;
 
-    console.log(\`Generating deep seed data for \${unit.chapterSlug}...\`);
+    console.log(`Generating deep seed data for ${unit.chapterSlug}...`);
     const data = await generateChapterData(unit);
     
     const subjectPath = path.join(DATA_DIR, unit.subject.toLowerCase());
     fs.mkdirSync(subjectPath, { recursive: true });
     
-    fs.writeFileSync(path.join(subjectPath, \`\${unit.chapterSlug}.json\`), JSON.stringify(data, null, 2));
-    console.log(\`✅ Finished \${unit.chapterSlug}\`);
+    fs.writeFileSync(path.join(subjectPath, `${unit.chapterSlug}.json`), JSON.stringify(data, null, 2));
+    console.log(`✅ Finished ${unit.chapterSlug}`);
   }
 }
 

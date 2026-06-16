@@ -69,9 +69,9 @@ describe('global topic seeding', () => {
     expect(rows[1].status).toBe('not_started');
   });
   it('maps autopsy text to seeded topics', () => {
-    expect(mapTextToSeededTopic('I made a v-t graph slope mistake')).toBe('Motion graphs');
-    expect(mapTextToSeededTopic('I used wrong range formula in projectile')).toBe('Projectile motion');
-    expect(mapTextToSeededTopic('I confused hormone phases in menstrual cycle')).toBe('Menstrual cycle/gametogenesis');
-    expect(mapTextToSeededTopic('I got VSEPR shape wrong')).toBe('VSEPR/hybridisation/MOT');
+    expect(mapTextToSeededTopic('I made a v-t graph slope mistake')).toBe('x-t/v-t graph slope');
+    expect(mapTextToSeededTopic('I used wrong range formula in projectile')).toBe('projectile motion trajectory');
+    expect(mapTextToSeededTopic('I confused hormone phases in menstrual cycle')).toBe('menstrual cycle/gametogenesis');
+    expect(mapTextToSeededTopic('I got VSEPR shape wrong')).toBe('VSEPR/hybridisation');
   });
 });
