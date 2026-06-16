@@ -1,0 +1,3655 @@
+diff --git a/app/api/ai/chat/route.ts b/app/api/ai/chat/route.ts
+index 41ed49aa..b1efac43 100644
+--- a/app/api/ai/chat/route.ts
++++ b/app/api/ai/chat/route.ts
+@@ -190,8 +190,7 @@ export async function POST(req: NextRequest) {
+     const uploadIntent = hasUploadedFile ? classifyChatUploadIntent({ message: message || '', mimeType: (imageMimeType || documentMimeType || undefined) as string | undefined }) : 'unsupported';
+ 
+     // 9. Route Uploads (if any)
+-    if (hasUploadedFile) {
+-    }
++
+ 
+     const uploadResponse = await routeUploads({
+       hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId: user.id, message, profilePreview, messageRequestId, activeGoalId: activeGoalId ?? undefined, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId
+@@ -204,8 +203,7 @@ export async function POST(req: NextRequest) {
+     });
+     if (ruleResponse) return ruleResponse;
+ 
+-    if (!hasUploadedFile) {
+-    }
++
+ 
+     const { consumeFeatureUsage } = await import('@/lib/usage/enforce-feature-limit');
+     await consumeFeatureUsage(user.id, 'chat_message', 1, { idempotencyKey: messageRequestId });
+diff --git a/cognition-os.zip b/cognition-os.zip
+deleted file mode 100644
+index 1a817a47..00000000
+Binary files a/cognition-os.zip and /dev/null differ
+diff --git a/delete-old-events.js b/delete-old-events.js
+deleted file mode 100644
+index 6bc21e6f..00000000
+--- a/delete-old-events.js
++++ /dev/null
+@@ -1,21 +0,0 @@
+-const { createClient } = require('@supabase/supabase-js');
+-require('dotenv').config({ path: '.env.local' });
+-
+-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+-
+-async function run() {
+-  const { error } = await supabase.from('event_queue').delete().eq('type', 'COMMAND_SESSION_COMPLETED');
+-  console.log('Deleted old events error:', error);
+-  
+-  const { error: err2 } = await supabase.from('consumer_locks').delete().eq('consumer_name', 'command_engine');
+-  console.log('Deleted old consumer locks error:', err2);
+-  
+-  // Actually, just delete ALL events in the queue so the tests run cleanly. 
+-  // Wait, no, maybe there's a reason to keep them? It's a test/staging DB. Let's just delete the COMMAND_SESSION_COMPLETED ones.
+-  // We'll also delete ANY event that's older than 1 hour to prevent any other stuck events from interfering.
+-  
+-  const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+-  const { error: err3 } = await supabase.from('event_queue').delete().lt('created_at', oneHourAgo);
+-  console.log('Deleted events older than 1h error:', err3);
+-}
+-run();
+diff --git a/fix-artifact.js b/fix-artifact.js
+deleted file mode 100644
+index c14cd84d..00000000
+--- a/fix-artifact.js
++++ /dev/null
+@@ -1,163 +0,0 @@
+-const fs = require('fs');
+-const path = '/Users/ashishsingh/Desktop/neetapp.nosync/lib/ai/prompts/mind-prompt.ts';
+-let code = fs.readFileSync(path, 'utf8');
+-const artifactBlockStart = code.indexOf('const artifactBlock = ');
+-const backtickBeforeReturn = code.indexOf('` ;\n\n  return `');
+-const artifactBlockEnd = backtickBeforeReturn + 3;
+-const before = code.slice(0, artifactBlockStart);
+-const after = code.slice(artifactBlockEnd);
+-
+-const triggers = [
+-  '- "MCQ", "quiz", "test me", "practice questions" -> `practice-test`',
+-  '- "flashcards" -> `flashcard-set`',
+-  '- "formula sheet", "formula list", "cheat sheet" -> `formula-sheet`',
+-  '- "revision sheet", "revision notes" -> `revision-sheet`',
+-  '- "learning document", "study material", "teach me properly" -> `learning-document`',
+-  '- "study guide" -> `study-guide`',
+-  '- "concept map", "mind map" -> `concept-map`',
+-  '- "study plan" -> `study-plan`',
+-].join('\n');
+-
+-const artifactExamples = [
+-  'STUDY GUIDE:',
+-  '<artifact type="study-guide" topic="[TOPIC]" subject="[SUBJECT]">',
+-  '## Core Concept',
+-  '[2-3 sentence mastery-level explanation]',
+-  '',
+-  '## Key Formulas / Principles',
+-  '[numbered list with exactly what to memorise]',
+-  '',
+-  '## How This Shows Up in ${ctx.profile.examType}',
+-  '[specific exam insight - typical question formats, common traps]',
+-  '',
+-  '## Common Mistakes Made By Students',
+-  '[conceptual vs application errors]',
+-  '',
+-  '## Quick Recall Test',
+-  'Q1: [question]',
+-  'Q2: [question]',
+-  'Q3: [question]',
+-  '</artifact>',
+-  '',
+-  'FORMULA SHEET:',
+-  '<artifact type="formula-sheet" topic="[TOPIC]" subject="[SUBJECT]">',
+-  '⚡ MUST-KNOW FORMULAS',
+-  '1. [Formula]',
+-  '   Meaning: [what each symbol means]',
+-  '   Units: [SI units]',
+-  '   Use when: [question condition]',
+-  '',
+-  '📐 DERIVATION SNAPSHOT',
+-  '[only the minimum derivation needed for exam understanding]',
+-  '',
+-  '🔁 FORMULA CONNECTIONS',
+-  '[how formulas connect to each other]',
+-  '',
+-  '⚠️ COMMON TRAPS',
+-  '[sign mistakes, unit mistakes, wrong substitution, hidden assumptions]',
+-  '',
+-  '🏆 FAST RECALL HOOKS',
+-  '[memory tricks for this exact formula set]',
+-  '</artifact>',
+-  '',
+-  'LEARNING DOCUMENT:',
+-  '<artifact type="learning-document" topic="[TOPIC]" subject="[SUBJECT]">',
+-  '## 1. What this chapter is really about',
+-  '[clear explanation]',
+-  '',
+-  '## 2. Core theory',
+-  '[exam-focused theory]',
+-  '',
+-  '## 3. Must-know formulas / facts',
+-  '[bullet list]',
+-  '',
+-  '## 4. Solved example pattern',
+-  '[one representative pattern]',
+-  '',
+-  '## 5. Common mistakes',
+-  '[student-level mistakes]',
+-  '',
+-  '## 6. Quick recall questions',
+-  'Q1. [question]',
+-  'Q2. [question]',
+-  'Q3. [question]',
+-  '',
+-  '## 7. What to revise next',
+-  '[next connected concept]',
+-  '</artifact>',
+-  '',
+-  'REVISION SHEET:',
+-  '<artifact type="revision-sheet" topic="[TOPIC]" subject="[SUBJECT]">',
+-  '⚡ RAPID FIRE FACTS',
+-  '[bullet list of every fact that MUST be memorised]',
+-  '',
+-  '📐 FORMULAS',
+-  '[every formula, with what each variable means]',
+-  '',
+-  '🔗 CONNECTIONS',
+-  '[how this topic connects to other topics in the syllabus]',
+-  '',
+-  '⚠️ EXAM TRAPS',
+-  '[the exact ways students lose marks on this]',
+-  '',
+-  '🏆 MEMORY HOOKS',
+-  '[mnemonics, analogies, tricks that work for this specific learner]',
+-  '</artifact>',
+-  '',
+-  'PRACTICE TEST:',
+-  '<artifact type="practice-test" topic="[TOPIC]" subject="[SUBJECT]" count="[N]">',
+-  'Q1. [question text]',
+-  '(A) [option] (B) [option] (C) [option] (D) [option]',
+-  'ANSWER: [X]',
+-  'EXPLANATION: [why, and why the wrong options are wrong]',
+-  'EXAM_RELEVANCE: [how this appears in ${ctx.profile.examType}]',
+-  '---',
+-  '[repeat for each question - you MUST generate the EXACT number of questions requested by the user, default 5]',
+-  '</artifact>',
+-  '',
+-  'FLASHCARD SET:',
+-  '<artifact type="flashcard-set" topic="[TOPIC]" subject="[SUBJECT]">',
+-  'CARD 1',
+-  'FRONT: [question or prompt - testable, specific]',
+-  'BACK: [complete answer]',
+-  '---',
+-  '[repeat - minimum 8 cards]',
+-  '</artifact>',
+-  '',
+-  'CONCEPT MAP:',
+-  '<artifact type="concept-map" topic="[TOPIC]">',
+-  '[ROOT] -> [concept A] -> [concept B]',
+-  '         -> [concept C] -> [concept D]',
+-  '                      -> [concept E]',
+-  '[dependency arrows as ASCII tree]',
+-  'Prerequisites: [list]',
+-  'Unlocks: [what mastering this opens up]',
+-  '</artifact>',
+-  '',
+-  'STUDY PLAN:',
+-  '<artifact type="study-plan" days="[N]">',
+-  'DAY 1 - [date]: [topic] - [duration] - [method]',
+-  '[continue for each day]',
+-  'TOTAL: [X] hours over [N] days',
+-  'Priority logic: [why this order]',
+-  '</artifact>',
+-].join('\n');
+-
+-const newArtifact = [
+-  'const artifactBlock = \`' + '═══════════════════════════════════════',
+-  'ARTIFACT FORMAT - USE FOR RICH CONTENT',
+-  '═══════════════════════════════════════',
+-  '',
+-  'When generating study materials, wrap them in the correct artifact tag. The UI will render these beautifully - do NOT use plain markdown for these types.',
+-  '',
+-  'CRITICAL TRIGGERS - use these to pick the right artifact type:',
+-  triggers,
+-  '',
+-  'Never output the artifact XML as a code block. Output the raw artifact tag directly.',
+-  '',
+-  artifactExamples,
+-  '`;'
+-].join('\n');
+-
+-fs.writeFileSync(path, before + newArtifact + after);
+-console.log('Done');
+\ No newline at end of file
+diff --git a/lib/chat/streaming.ts b/lib/chat/streaming.ts
+index e80e2e6b..2865d47a 100644
+--- a/lib/chat/streaming.ts
++++ b/lib/chat/streaming.ts
+@@ -41,18 +41,6 @@ export async function handleMainStreaming({
+   let mainGenerator: AsyncGenerator<string> | null = null;
+   
+   if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE' && intent.intent !== 'REPLAN' && intent.intent !== 'CREATE_ARTIFACT' && orchestratorResult.intent !== 'planning') {
+-    // Phase 6.3 — Reserve AI usage BEFORE the expensive provider call.
+-    // This is a best-effort guard: if reservation fails we proceed (fail-open for UX),
+-    // but we log. The budgetedStreamGeneration has its own cost-guard as a second line.
+-    let aiReservationId: string | null = null;
+-    try {
+-      aiReservationId = await import('@/lib/usage/enforce-feature-limit')
+-        .then(m => m.reserveUsage(userId, 'ai_call', 1, { idempotencyKey: `stream:${sessionId}:${Date.now()}` }))
+-        .catch(err => {
+-          logger.warn('[streaming] AI usage reservation failed, proceeding fail-open', { userId, error: err?.message });
+-          return null;
+-        });
+-    } catch { /* non-blocking */ }
+ 
+     try {
+       const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
+@@ -68,17 +56,7 @@ export async function handleMainStreaming({
+         systemPrompt,
+         userPrompt: conversationMessages,
+       });
+-      // Commit reservation immediately since the generator is ready (streaming started)
+-      if (aiReservationId) {
+-        commitUsage(aiReservationId, {}).catch(err =>
+-          logger.warn('[streaming] Failed to commit AI usage reservation', { userId, aiReservationId, error: err?.message })
+-        );
+-      }
+     } catch (err) {
+-      // Release reservation on provider failure
+-      if (aiReservationId) {
+-        releaseUsage(aiReservationId, {}).catch(() => {});
+-      }
+       if (isBudgetExceeded(err)) return budgetExceededResponse();
+       if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
+       
+diff --git a/lib/topic-seeding/templates/neet/data/chemistry/goc.json b/lib/topic-seeding/templates/neet/data/chemistry/goc.json
+deleted file mode 100644
+index 9c1b6322..00000000
+--- a/lib/topic-seeding/templates/neet/data/chemistry/goc.json
++++ /dev/null
+@@ -1,1821 +0,0 @@
+-{
+-  "missions": [
+-    {
+-      "id": "m-goc-1",
+-      "title": "Mastery Module 1: Tetravalency of carbon and Related Concepts",
+-      "description": "Comprehensive analysis covering tetravalency of carbon, hybridisation of carbon in organic compounds, classification of organic compounds and advanced applications.",
+-      "conceptTags": [
+-        "goc",
+-        "module-1"
+-      ],
+-      "estimatedMinutes": 120,
+-      "difficulty": "medium",
+-      "microtargets": [
+-        {
+-          "id": "mt-goc-tetravalency-of-carbon-0",
+-          "title": "Tetravalency of carbon",
+-          "conceptTags": [
+-            "goc",
+-            "tetravalency-of-carbon"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Tetravalency of carbon"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Tetravalency of carbon is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Tetravalency of carbon correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Tetravalency of carbon during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Tetravalency of carbon."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Tetravalency of carbon.",
+-            "Successfully avoids common pitfalls when Tetravalency of carbon is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Tetravalency of carbon in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-tetravalency-of-carbon-1",
+-              "question": "What are the critical factors or principles governing Tetravalency of carbon?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "tetravalency-of-carbon"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "tetravalency-of-carbon",
+-                "conceptSlug": "core-tetravalency-of-carbon",
+-                "microskillSlug": "understand-tetravalency-of-carbon"
+-              }
+-            },
+-            {
+-              "id": "goc-q-tetravalency-of-carbon-2",
+-              "question": "Describe a scenario where applying the concept of Tetravalency of carbon can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "tetravalency-of-carbon",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "tetravalency-of-carbon",
+-                "conceptSlug": "trap-tetravalency-of-carbon",
+-                "microskillSlug": "avoid-tetravalency-of-carbon"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-hybridisation-of-carbon-in-organic-compounds-1",
+-          "title": "Hybridisation of carbon in organic compounds",
+-          "conceptTags": [
+-            "goc",
+-            "hybridisation-of-carbon-in-organic-compounds"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Hybridisation of carbon in organic compounds"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Hybridisation of carbon in organic compounds is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Hybridisation of carbon in organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Hybridisation of carbon in organic compounds during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Hybridisation of carbon in organic compounds."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Hybridisation of carbon in organic compounds.",
+-            "Successfully avoids common pitfalls when Hybridisation of carbon in organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Hybridisation of carbon in organic compounds in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-hybridisation-of-carbon-in-organic-compounds-1",
+-              "question": "What are the critical factors or principles governing Hybridisation of carbon in organic compounds?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "hybridisation-of-carbon-in-organic-compounds"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "hybridisation-of-carbon-in-organic-compounds",
+-                "conceptSlug": "core-hybridisation-of-carbon-in-organic-compounds",
+-                "microskillSlug": "understand-hybridisation-of-carbon-in-organic-compounds"
+-              }
+-            },
+-            {
+-              "id": "goc-q-hybridisation-of-carbon-in-organic-compounds-2",
+-              "question": "Describe a scenario where applying the concept of Hybridisation of carbon in organic compounds can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "hybridisation-of-carbon-in-organic-compounds",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "hybridisation-of-carbon-in-organic-compounds",
+-                "conceptSlug": "trap-hybridisation-of-carbon-in-organic-compounds",
+-                "microskillSlug": "avoid-hybridisation-of-carbon-in-organic-compounds"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-classification-of-organic-compounds-2",
+-          "title": "Classification of organic compounds",
+-          "conceptTags": [
+-            "goc",
+-            "classification-of-organic-compounds"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Classification of organic compounds"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Classification of organic compounds is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Classification of organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Classification of organic compounds during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Classification of organic compounds."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Classification of organic compounds.",
+-            "Successfully avoids common pitfalls when Classification of organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Classification of organic compounds in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-classification-of-organic-compounds-1",
+-              "question": "What are the critical factors or principles governing Classification of organic compounds?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "classification-of-organic-compounds"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "classification-of-organic-compounds",
+-                "conceptSlug": "core-classification-of-organic-compounds",
+-                "microskillSlug": "understand-classification-of-organic-compounds"
+-              }
+-            },
+-            {
+-              "id": "goc-q-classification-of-organic-compounds-2",
+-              "question": "Describe a scenario where applying the concept of Classification of organic compounds can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "classification-of-organic-compounds",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "classification-of-organic-compounds",
+-                "conceptSlug": "trap-classification-of-organic-compounds",
+-                "microskillSlug": "avoid-classification-of-organic-compounds"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-functional-groups-overview-3",
+-          "title": "Functional groups overview",
+-          "conceptTags": [
+-            "goc",
+-            "functional-groups-overview"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Functional groups overview"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Functional groups overview is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Functional groups overview correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Functional groups overview during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Functional groups overview."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Functional groups overview.",
+-            "Successfully avoids common pitfalls when Functional groups overview is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Functional groups overview in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-functional-groups-overview-1",
+-              "question": "What are the critical factors or principles governing Functional groups overview?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "functional-groups-overview"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "functional-groups-overview",
+-                "conceptSlug": "core-functional-groups-overview",
+-                "microskillSlug": "understand-functional-groups-overview"
+-              }
+-            },
+-            {
+-              "id": "goc-q-functional-groups-overview-2",
+-              "question": "Describe a scenario where applying the concept of Functional groups overview can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "functional-groups-overview",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "functional-groups-overview",
+-                "conceptSlug": "trap-functional-groups-overview",
+-                "microskillSlug": "avoid-functional-groups-overview"
+-              }
+-            }
+-          ]
+-        }
+-      ]
+-    },
+-    {
+-      "id": "m-goc-2",
+-      "title": "Mastery Module 2: Homologous series and Related Concepts",
+-      "description": "Comprehensive analysis covering homologous series, IUPAC nomenclature of alkanes, IUPAC nomenclature of functional groups and advanced applications.",
+-      "conceptTags": [
+-        "goc",
+-        "module-2"
+-      ],
+-      "estimatedMinutes": 120,
+-      "difficulty": "medium",
+-      "microtargets": [
+-        {
+-          "id": "mt-goc-homologous-series-4",
+-          "title": "Homologous series",
+-          "conceptTags": [
+-            "goc",
+-            "homologous-series"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Homologous series"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Homologous series is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Homologous series correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Homologous series during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Homologous series."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Homologous series.",
+-            "Successfully avoids common pitfalls when Homologous series is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Homologous series in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-homologous-series-1",
+-              "question": "What are the critical factors or principles governing Homologous series?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "homologous-series"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "homologous-series",
+-                "conceptSlug": "core-homologous-series",
+-                "microskillSlug": "understand-homologous-series"
+-              }
+-            },
+-            {
+-              "id": "goc-q-homologous-series-2",
+-              "question": "Describe a scenario where applying the concept of Homologous series can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "homologous-series",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "homologous-series",
+-                "conceptSlug": "trap-homologous-series",
+-                "microskillSlug": "avoid-homologous-series"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-iupac-nomenclature-of-alkanes-5",
+-          "title": "IUPAC nomenclature of alkanes",
+-          "conceptTags": [
+-            "goc",
+-            "iupac-nomenclature-of-alkanes"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing IUPAC nomenclature of alkanes"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of IUPAC nomenclature of alkanes is heavily tested in recent NEET papers.",
+-            "Applying the core principles of IUPAC nomenclature of alkanes correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "reactions": [
+-            {
+-              "name": "Typical IUPAC nomenclature of alkanes Reaction",
+-              "equation": "Reactant -> Product",
+-              "reagentConditions": [
+-                "Specific catalyst/temperature"
+-              ],
+-              "mechanismTags": [
+-                "Characteristic mechanism"
+-              ]
+-            }
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of IUPAC nomenclature of alkanes during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with IUPAC nomenclature of alkanes."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to IUPAC nomenclature of alkanes.",
+-            "Successfully avoids common pitfalls when IUPAC nomenclature of alkanes is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of IUPAC nomenclature of alkanes in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-iupac-nomenclature-of-alkanes-1",
+-              "question": "What are the critical factors or principles governing IUPAC nomenclature of alkanes?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "iupac-nomenclature-of-alkanes"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "iupac-nomenclature-of-alkanes",
+-                "conceptSlug": "core-iupac-nomenclature-of-alkanes",
+-                "microskillSlug": "understand-iupac-nomenclature-of-alkanes"
+-              }
+-            },
+-            {
+-              "id": "goc-q-iupac-nomenclature-of-alkanes-2",
+-              "question": "Describe a scenario where applying the concept of IUPAC nomenclature of alkanes can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "iupac-nomenclature-of-alkanes",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "iupac-nomenclature-of-alkanes",
+-                "conceptSlug": "trap-iupac-nomenclature-of-alkanes",
+-                "microskillSlug": "avoid-iupac-nomenclature-of-alkanes"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-iupac-nomenclature-of-functional-groups-6",
+-          "title": "IUPAC nomenclature of functional groups",
+-          "conceptTags": [
+-            "goc",
+-            "iupac-nomenclature-of-functional-groups"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing IUPAC nomenclature of functional groups"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of IUPAC nomenclature of functional groups is heavily tested in recent NEET papers.",
+-            "Applying the core principles of IUPAC nomenclature of functional groups correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of IUPAC nomenclature of functional groups during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with IUPAC nomenclature of functional groups."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to IUPAC nomenclature of functional groups.",
+-            "Successfully avoids common pitfalls when IUPAC nomenclature of functional groups is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of IUPAC nomenclature of functional groups in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-iupac-nomenclature-of-functional-groups-1",
+-              "question": "What are the critical factors or principles governing IUPAC nomenclature of functional groups?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "iupac-nomenclature-of-functional-groups"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "iupac-nomenclature-of-functional-groups",
+-                "conceptSlug": "core-iupac-nomenclature-of-functional-groups",
+-                "microskillSlug": "understand-iupac-nomenclature-of-functional-groups"
+-              }
+-            },
+-            {
+-              "id": "goc-q-iupac-nomenclature-of-functional-groups-2",
+-              "question": "Describe a scenario where applying the concept of IUPAC nomenclature of functional groups can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "iupac-nomenclature-of-functional-groups",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "iupac-nomenclature-of-functional-groups",
+-                "conceptSlug": "trap-iupac-nomenclature-of-functional-groups",
+-                "microskillSlug": "avoid-iupac-nomenclature-of-functional-groups"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-structural-isomerism-in-organic-compounds-7",
+-          "title": "Structural isomerism in organic compounds",
+-          "conceptTags": [
+-            "goc",
+-            "structural-isomerism-in-organic-compounds"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Structural isomerism in organic compounds"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Structural isomerism in organic compounds is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Structural isomerism in organic compounds correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Structural isomerism in organic compounds during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Structural isomerism in organic compounds."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Structural isomerism in organic compounds.",
+-            "Successfully avoids common pitfalls when Structural isomerism in organic compounds is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Structural isomerism in organic compounds in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-structural-isomerism-in-organic-compounds-1",
+-              "question": "What are the critical factors or principles governing Structural isomerism in organic compounds?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "structural-isomerism-in-organic-compounds"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "structural-isomerism-in-organic-compounds",
+-                "conceptSlug": "core-structural-isomerism-in-organic-compounds",
+-                "microskillSlug": "understand-structural-isomerism-in-organic-compounds"
+-              }
+-            },
+-            {
+-              "id": "goc-q-structural-isomerism-in-organic-compounds-2",
+-              "question": "Describe a scenario where applying the concept of Structural isomerism in organic compounds can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "structural-isomerism-in-organic-compounds",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "structural-isomerism-in-organic-compounds",
+-                "conceptSlug": "trap-structural-isomerism-in-organic-compounds",
+-                "microskillSlug": "avoid-structural-isomerism-in-organic-compounds"
+-              }
+-            }
+-          ]
+-        }
+-      ]
+-    },
+-    {
+-      "id": "m-goc-3",
+-      "title": "Mastery Module 3: Stereoisomerism basics and Related Concepts",
+-      "description": "Comprehensive analysis covering stereoisomerism basics, homolytic and heterolytic fission, free radicals stability and advanced applications.",
+-      "conceptTags": [
+-        "goc",
+-        "module-3"
+-      ],
+-      "estimatedMinutes": 120,
+-      "difficulty": "medium",
+-      "microtargets": [
+-        {
+-          "id": "mt-goc-stereoisomerism-basics-8",
+-          "title": "Stereoisomerism basics",
+-          "conceptTags": [
+-            "goc",
+-            "stereoisomerism-basics"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Stereoisomerism basics"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Stereoisomerism basics is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Stereoisomerism basics correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Stereoisomerism basics during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Stereoisomerism basics."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Stereoisomerism basics.",
+-            "Successfully avoids common pitfalls when Stereoisomerism basics is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Stereoisomerism basics in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-stereoisomerism-basics-1",
+-              "question": "What are the critical factors or principles governing Stereoisomerism basics?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "stereoisomerism-basics"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "stereoisomerism-basics",
+-                "conceptSlug": "core-stereoisomerism-basics",
+-                "microskillSlug": "understand-stereoisomerism-basics"
+-              }
+-            },
+-            {
+-              "id": "goc-q-stereoisomerism-basics-2",
+-              "question": "Describe a scenario where applying the concept of Stereoisomerism basics can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "stereoisomerism-basics",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "stereoisomerism-basics",
+-                "conceptSlug": "trap-stereoisomerism-basics",
+-                "microskillSlug": "avoid-stereoisomerism-basics"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-homolytic-and-heterolytic-fission-9",
+-          "title": "Homolytic and heterolytic fission",
+-          "conceptTags": [
+-            "goc",
+-            "homolytic-and-heterolytic-fission"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Homolytic and heterolytic fission"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Homolytic and heterolytic fission is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Homolytic and heterolytic fission correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Homolytic and heterolytic fission during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Homolytic and heterolytic fission."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Homolytic and heterolytic fission.",
+-            "Successfully avoids common pitfalls when Homolytic and heterolytic fission is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Homolytic and heterolytic fission in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-homolytic-and-heterolytic-fission-1",
+-              "question": "What are the critical factors or principles governing Homolytic and heterolytic fission?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "homolytic-and-heterolytic-fission"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "homolytic-and-heterolytic-fission",
+-                "conceptSlug": "core-homolytic-and-heterolytic-fission",
+-                "microskillSlug": "understand-homolytic-and-heterolytic-fission"
+-              }
+-            },
+-            {
+-              "id": "goc-q-homolytic-and-heterolytic-fission-2",
+-              "question": "Describe a scenario where applying the concept of Homolytic and heterolytic fission can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "homolytic-and-heterolytic-fission",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "homolytic-and-heterolytic-fission",
+-                "conceptSlug": "trap-homolytic-and-heterolytic-fission",
+-                "microskillSlug": "avoid-homolytic-and-heterolytic-fission"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-free-radicals-stability-10",
+-          "title": "Free radicals stability",
+-          "conceptTags": [
+-            "goc",
+-            "free-radicals-stability"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Free radicals stability"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Free radicals stability is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Free radicals stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Free radicals stability during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Free radicals stability."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Free radicals stability.",
+-            "Successfully avoids common pitfalls when Free radicals stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Free radicals stability in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-free-radicals-stability-1",
+-              "question": "What are the critical factors or principles governing Free radicals stability?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "free-radicals-stability"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "free-radicals-stability",
+-                "conceptSlug": "core-free-radicals-stability",
+-                "microskillSlug": "understand-free-radicals-stability"
+-              }
+-            },
+-            {
+-              "id": "goc-q-free-radicals-stability-2",
+-              "question": "Describe a scenario where applying the concept of Free radicals stability can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "free-radicals-stability",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "free-radicals-stability",
+-                "conceptSlug": "trap-free-radicals-stability",
+-                "microskillSlug": "avoid-free-radicals-stability"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-carbocations-stability-11",
+-          "title": "Carbocations stability",
+-          "conceptTags": [
+-            "goc",
+-            "carbocations-stability"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Carbocations stability"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Carbocations stability is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Carbocations stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Carbocations stability during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Carbocations stability."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Carbocations stability.",
+-            "Successfully avoids common pitfalls when Carbocations stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Carbocations stability in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-carbocations-stability-1",
+-              "question": "What are the critical factors or principles governing Carbocations stability?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "carbocations-stability"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "carbocations-stability",
+-                "conceptSlug": "core-carbocations-stability",
+-                "microskillSlug": "understand-carbocations-stability"
+-              }
+-            },
+-            {
+-              "id": "goc-q-carbocations-stability-2",
+-              "question": "Describe a scenario where applying the concept of Carbocations stability can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "carbocations-stability",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "carbocations-stability",
+-                "conceptSlug": "trap-carbocations-stability",
+-                "microskillSlug": "avoid-carbocations-stability"
+-              }
+-            }
+-          ]
+-        }
+-      ]
+-    },
+-    {
+-      "id": "m-goc-4",
+-      "title": "Mastery Module 4: Carbanions stability and Related Concepts",
+-      "description": "Comprehensive analysis covering carbanions stability, electrophiles and nucleophiles, hyperconjugation and acidity and advanced applications.",
+-      "conceptTags": [
+-        "goc",
+-        "module-4"
+-      ],
+-      "estimatedMinutes": 120,
+-      "difficulty": "medium",
+-      "microtargets": [
+-        {
+-          "id": "mt-goc-carbanions-stability-12",
+-          "title": "Carbanions stability",
+-          "conceptTags": [
+-            "goc",
+-            "carbanions-stability"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Carbanions stability"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Carbanions stability is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Carbanions stability correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Carbanions stability during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Carbanions stability."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Carbanions stability.",
+-            "Successfully avoids common pitfalls when Carbanions stability is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Carbanions stability in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-carbanions-stability-1",
+-              "question": "What are the critical factors or principles governing Carbanions stability?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "carbanions-stability"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "carbanions-stability",
+-                "conceptSlug": "core-carbanions-stability",
+-                "microskillSlug": "understand-carbanions-stability"
+-              }
+-            },
+-            {
+-              "id": "goc-q-carbanions-stability-2",
+-              "question": "Describe a scenario where applying the concept of Carbanions stability can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "carbanions-stability",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "carbanions-stability",
+-                "conceptSlug": "trap-carbanions-stability",
+-                "microskillSlug": "avoid-carbanions-stability"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-electrophiles-and-nucleophiles-13",
+-          "title": "Electrophiles and nucleophiles",
+-          "conceptTags": [
+-            "goc",
+-            "electrophiles-and-nucleophiles"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Electrophiles and nucleophiles"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Electrophiles and nucleophiles is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Electrophiles and nucleophiles correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Electrophiles and nucleophiles during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Electrophiles and nucleophiles."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Electrophiles and nucleophiles.",
+-            "Successfully avoids common pitfalls when Electrophiles and nucleophiles is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Electrophiles and nucleophiles in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-electrophiles-and-nucleophiles-1",
+-              "question": "What are the critical factors or principles governing Electrophiles and nucleophiles?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "electrophiles-and-nucleophiles"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "electrophiles-and-nucleophiles",
+-                "conceptSlug": "core-electrophiles-and-nucleophiles",
+-                "microskillSlug": "understand-electrophiles-and-nucleophiles"
+-              }
+-            },
+-            {
+-              "id": "goc-q-electrophiles-and-nucleophiles-2",
+-              "question": "Describe a scenario where applying the concept of Electrophiles and nucleophiles can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "electrophiles-and-nucleophiles",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "electrophiles-and-nucleophiles",
+-                "conceptSlug": "trap-electrophiles-and-nucleophiles",
+-                "microskillSlug": "avoid-electrophiles-and-nucleophiles"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-hyperconjugation-and-acidity-14",
+-          "title": "Hyperconjugation and acidity",
+-          "conceptTags": [
+-            "goc",
+-            "hyperconjugation-and-acidity"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Hyperconjugation and acidity"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Hyperconjugation and acidity is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Hyperconjugation and acidity correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Hyperconjugation and acidity during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Hyperconjugation and acidity."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Hyperconjugation and acidity.",
+-            "Successfully avoids common pitfalls when Hyperconjugation and acidity is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Hyperconjugation and acidity in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-hyperconjugation-and-acidity-1",
+-              "question": "What are the critical factors or principles governing Hyperconjugation and acidity?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "hyperconjugation-and-acidity"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "hyperconjugation-and-acidity",
+-                "conceptSlug": "core-hyperconjugation-and-acidity",
+-                "microskillSlug": "understand-hyperconjugation-and-acidity"
+-              }
+-            },
+-            {
+-              "id": "goc-q-hyperconjugation-and-acidity-2",
+-              "question": "Describe a scenario where applying the concept of Hyperconjugation and acidity can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "hyperconjugation-and-acidity",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "hyperconjugation-and-acidity",
+-                "conceptSlug": "trap-hyperconjugation-and-acidity",
+-                "microskillSlug": "avoid-hyperconjugation-and-acidity"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-electromeric-effect-15",
+-          "title": "Electromeric effect",
+-          "conceptTags": [
+-            "goc",
+-            "electromeric-effect"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Electromeric effect"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Electromeric effect is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Electromeric effect correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Electromeric effect during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Electromeric effect."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Electromeric effect.",
+-            "Successfully avoids common pitfalls when Electromeric effect is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Electromeric effect in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-electromeric-effect-1",
+-              "question": "What are the critical factors or principles governing Electromeric effect?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "electromeric-effect"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "electromeric-effect",
+-                "conceptSlug": "core-electromeric-effect",
+-                "microskillSlug": "understand-electromeric-effect"
+-              }
+-            },
+-            {
+-              "id": "goc-q-electromeric-effect-2",
+-              "question": "Describe a scenario where applying the concept of Electromeric effect can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "electromeric-effect",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "electromeric-effect",
+-                "conceptSlug": "trap-electromeric-effect",
+-                "microskillSlug": "avoid-electromeric-effect"
+-              }
+-            }
+-          ]
+-        }
+-      ]
+-    },
+-    {
+-      "id": "m-goc-5",
+-      "title": "Mastery Module 5: Resonance effect and mesomeric effect and Related Concepts",
+-      "description": "Comprehensive analysis covering resonance effect and mesomeric effect, reaction intermediates comparison, types of organic reactions (substitution addition elimination) and advanced applications.",
+-      "conceptTags": [
+-        "goc",
+-        "module-5"
+-      ],
+-      "estimatedMinutes": 120,
+-      "difficulty": "medium",
+-      "microtargets": [
+-        {
+-          "id": "mt-goc-resonance-effect-and-mesomeric-effect-16",
+-          "title": "Resonance effect and mesomeric effect",
+-          "conceptTags": [
+-            "goc",
+-            "resonance-effect-and-mesomeric-effect"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Resonance effect and mesomeric effect"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Resonance effect and mesomeric effect is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Resonance effect and mesomeric effect correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Resonance effect and mesomeric effect during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Resonance effect and mesomeric effect."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Resonance effect and mesomeric effect.",
+-            "Successfully avoids common pitfalls when Resonance effect and mesomeric effect is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Resonance effect and mesomeric effect in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-resonance-effect-and-mesomeric-effect-1",
+-              "question": "What are the critical factors or principles governing Resonance effect and mesomeric effect?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "resonance-effect-and-mesomeric-effect"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "resonance-effect-and-mesomeric-effect",
+-                "conceptSlug": "core-resonance-effect-and-mesomeric-effect",
+-                "microskillSlug": "understand-resonance-effect-and-mesomeric-effect"
+-              }
+-            },
+-            {
+-              "id": "goc-q-resonance-effect-and-mesomeric-effect-2",
+-              "question": "Describe a scenario where applying the concept of Resonance effect and mesomeric effect can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "resonance-effect-and-mesomeric-effect",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "resonance-effect-and-mesomeric-effect",
+-                "conceptSlug": "trap-resonance-effect-and-mesomeric-effect",
+-                "microskillSlug": "avoid-resonance-effect-and-mesomeric-effect"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-reaction-intermediates-comparison-17",
+-          "title": "Reaction intermediates comparison",
+-          "conceptTags": [
+-            "goc",
+-            "reaction-intermediates-comparison"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Reaction intermediates comparison"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Reaction intermediates comparison is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Reaction intermediates comparison correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Reaction intermediates comparison during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Reaction intermediates comparison."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Reaction intermediates comparison.",
+-            "Successfully avoids common pitfalls when Reaction intermediates comparison is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Reaction intermediates comparison in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-reaction-intermediates-comparison-1",
+-              "question": "What are the critical factors or principles governing Reaction intermediates comparison?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "reaction-intermediates-comparison"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "reaction-intermediates-comparison",
+-                "conceptSlug": "core-reaction-intermediates-comparison",
+-                "microskillSlug": "understand-reaction-intermediates-comparison"
+-              }
+-            },
+-            {
+-              "id": "goc-q-reaction-intermediates-comparison-2",
+-              "question": "Describe a scenario where applying the concept of Reaction intermediates comparison can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "reaction-intermediates-comparison",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "reaction-intermediates-comparison",
+-                "conceptSlug": "trap-reaction-intermediates-comparison",
+-                "microskillSlug": "avoid-reaction-intermediates-comparison"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-types-of-organic-reactions-substitution-addition-elimination-18",
+-          "title": "Types of organic reactions (substitution addition elimination)",
+-          "conceptTags": [
+-            "goc",
+-            "types-of-organic-reactions-substitution-addition-elimination"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Types of organic reactions (substitution addition elimination)"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Types of organic reactions (substitution addition elimination) is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Types of organic reactions (substitution addition elimination) correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Types of organic reactions (substitution addition elimination) during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Types of organic reactions (substitution addition elimination)."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Types of organic reactions (substitution addition elimination).",
+-            "Successfully avoids common pitfalls when Types of organic reactions (substitution addition elimination) is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Types of organic reactions (substitution addition elimination) in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-types-of-organic-reactions-substitution-addition-elimination-1",
+-              "question": "What are the critical factors or principles governing Types of organic reactions (substitution addition elimination)?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "types-of-organic-reactions-substitution-addition-elimination"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "types-of-organic-reactions-substitution-addition-elimination",
+-                "conceptSlug": "core-types-of-organic-reactions-substitution-addition-elimination",
+-                "microskillSlug": "understand-types-of-organic-reactions-substitution-addition-elimination"
+-              }
+-            },
+-            {
+-              "id": "goc-q-types-of-organic-reactions-substitution-addition-elimination-2",
+-              "question": "Describe a scenario where applying the concept of Types of organic reactions (substitution addition elimination) can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "types-of-organic-reactions-substitution-addition-elimination",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "types-of-organic-reactions-substitution-addition-elimination",
+-                "conceptSlug": "trap-types-of-organic-reactions-substitution-addition-elimination",
+-                "microskillSlug": "avoid-types-of-organic-reactions-substitution-addition-elimination"
+-              }
+-            }
+-          ]
+-        },
+-        {
+-          "id": "mt-goc-some-basic-principles-of-organic-chemistry-specific-application-19-19",
+-          "title": "Some Basic Principles of Organic Chemistry Specific Application 19",
+-          "conceptTags": [
+-            "goc",
+-            "some-basic-principles-of-organic-chemistry-specific-application-19"
+-          ],
+-          "ncertAnchors": [
+-            "NCERT Chemistry Class 11, Chapter: Some Basic Principles of Organic Chemistry, Section detailing Some Basic Principles of Organic Chemistry Specific Application 19"
+-          ],
+-          "mustKnowFacts": [
+-            "A thorough understanding of Some Basic Principles of Organic Chemistry Specific Application 19 is heavily tested in recent NEET papers.",
+-            "Applying the core principles of Some Basic Principles of Organic Chemistry Specific Application 19 correctly is essential for solving complex multi-step problems in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "commonTraps": [
+-            "Misinterpreting the subtle edge cases of Some Basic Principles of Organic Chemistry Specific Application 19 during high-pressure exam scenarios.",
+-            "Failing to recall the exact conditions or sign conventions associated with Some Basic Principles of Organic Chemistry Specific Application 19."
+-          ],
+-          "masteryCriteria": [
+-            "Can accurately solve numericals or identify biological structures related specifically to Some Basic Principles of Organic Chemistry Specific Application 19.",
+-            "Successfully avoids common pitfalls when Some Basic Principles of Organic Chemistry Specific Application 19 is integrated with other concepts in Some Basic Principles of Organic Chemistry."
+-          ],
+-          "pyqPatterns": [
+-            "Past year questions frequently test the application of Some Basic Principles of Organic Chemistry Specific Application 19 in tricky assertion-reason or statement-based questions."
+-          ],
+-          "estimatedMinutes": 30,
+-          "difficulty": "medium",
+-          "activeRecallQuestions": [
+-            {
+-              "id": "goc-q-some-basic-principles-of-organic-chemistry-specific-application-19-1",
+-              "question": "What are the critical factors or principles governing Some Basic Principles of Organic Chemistry Specific Application 19?",
+-              "expectedAnswerPoints": [
+-                "Primary mechanism or law",
+-                "Key variables or structures involved"
+-              ],
+-              "acceptedSynonyms": [
+-                "mechanism",
+-                "principle",
+-                "variables"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "some-basic-principles-of-organic-chemistry-specific-application-19"
+-              ],
+-              "difficulty": "easy",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "some-basic-principles-of-organic-chemistry-specific-application-19",
+-                "conceptSlug": "core-some-basic-principles-of-organic-chemistry-specific-application-19",
+-                "microskillSlug": "understand-some-basic-principles-of-organic-chemistry-specific-application-19"
+-              }
+-            },
+-            {
+-              "id": "goc-q-some-basic-principles-of-organic-chemistry-specific-application-19-2",
+-              "question": "Describe a scenario where applying the concept of Some Basic Principles of Organic Chemistry Specific Application 19 can lead to a common student error.",
+-              "expectedAnswerPoints": [
+-                "Sign convention error",
+-                "Mislabeling structures",
+-                "Ignoring edge conditions"
+-              ],
+-              "acceptedSynonyms": [
+-                "error",
+-                "mistake",
+-                "trap",
+-                "confusion"
+-              ],
+-              "conceptTags": [
+-                "goc",
+-                "some-basic-principles-of-organic-chemistry-specific-application-19",
+-                "traps"
+-              ],
+-              "difficulty": "medium",
+-              "taxonomyPath": {
+-                "subject": "Chemistry",
+-                "unitSlug": "goc",
+-                "chapterSlug": "goc",
+-                "topicSlug": "goc",
+-                "subtopicSlug": "some-basic-principles-of-organic-chemistry-specific-application-19",
+-                "conceptSlug": "trap-some-basic-principles-of-organic-chemistry-specific-application-19",
+-                "microskillSlug": "avoid-some-basic-principles-of-organic-chemistry-specific-application-19"
+-              }
+-            }
+-          ]
+-        }
+-      ]
+-    }
+-  ]
+-}
+\ No newline at end of file
+diff --git a/lib/usage/enforce-feature-limit.ts b/lib/usage/enforce-feature-limit.ts
+index ba8b134d..a0141b5d 100644
+--- a/lib/usage/enforce-feature-limit.ts
++++ b/lib/usage/enforce-feature-limit.ts
+@@ -138,9 +138,6 @@ export async function checkFeatureLimit(
+   const limit = getFeatureLimit(access.plan, feature);
+ 
+   if (
+-    feature === 'chat_message' ||
+-    feature === 'material_upload' ||
+-    feature === 'ai_call' ||
+     (process.env.NODE_ENV === 'test' && process.env.ENABLE_FEATURE_USAGE_TESTS !== 'true') ||
+     process.env.BYPASS_ALL_LIMITS === 'true'
+   ) {
+diff --git a/scratch_merge.sh b/scratch_merge.sh
+deleted file mode 100755
+index 8150f623..00000000
+--- a/scratch_merge.sh
++++ /dev/null
+@@ -1,22 +0,0 @@
+-#!/bin/bash
+-set -e
+-
+-# Fetch all branches
+-git fetch origin
+-
+-# Find all remote codex branches
+-branches=$(git branch -r | grep 'origin/codex' | sed 's/origin\///' | tr -d ' ')
+-
+-for branch in $branches; do
+-  echo "Merging $branch into main..."
+-  
+-  # Try to merge without opening editor, fast-forward if possible, no edit
+-  if ! git merge "origin/$branch" -m "chore: merge $branch into main"; then
+-    echo "MERGE CONFLICT on $branch!"
+-    git merge --abort
+-    exit 1
+-  fi
+-done
+-
+-echo "All branches merged successfully. Pushing to main..."
+-git push origin main
+diff --git a/scratch_merge_ours.sh b/scratch_merge_ours.sh
+deleted file mode 100755
+index 2aaeed8c..00000000
+--- a/scratch_merge_ours.sh
++++ /dev/null
+@@ -1,20 +0,0 @@
+-#!/bin/bash
+-set -e
+-
+-# Fetch all branches
+-git fetch origin
+-
+-# Find all remote codex branches
+-branches=$(git branch -r | grep 'origin/codex' | sed 's/origin\///' | tr -d ' ')
+-
+-for branch in $branches; do
+-  echo "Merging $branch into main favoring main (-X ours)..."
+-  
+-  if ! git merge "origin/$branch" -m "chore: merge $branch into main favoring main" -s recursive -X ours; then
+-    echo "MERGE FAILED on $branch even with -X ours!"
+-    git merge --abort
+-    exit 1
+-  fi
+-done
+-
+-echo "All branches merged successfully."
+diff --git a/seed_syllabus.sql b/seed_syllabus.sql
+deleted file mode 100644
+index 31948ff0..00000000
+--- a/seed_syllabus.sql
++++ /dev/null
+@@ -1,206 +0,0 @@
+--- Run this in the Supabase SQL Editor
+-
+--- 1. Ensure unique constraint exists for ON CONFLICT DO NOTHING to work
+-ALTER TABLE concepts DROP CONSTRAINT IF EXISTS concepts_user_subject_chapter_unique;
+-ALTER TABLE concepts ADD CONSTRAINT concepts_user_subject_chapter_name_unique 
+-UNIQUE (user_id, subject, chapter, name);
+-
+--- 2. Function to seed syllabus for a user on signup
+-CREATE OR REPLACE FUNCTION seed_syllabus_for_user(p_user_id uuid, p_exam_type text)
+-RETURNS void AS $$
+-DECLARE
+-  v_subject text;
+-  v_chapter text;
+-BEGIN
+-
+-
+-  -- NEET syllabus
+-  IF p_exam_type ILIKE '%neet%' THEN
+-
+-    -- Physics
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'Physical World and Measurement',
+-      'Kinematics',
+-      'Laws of Motion',
+-      'Work Energy and Power',
+-      'Motion of System of Particles and Rigid Body',
+-      'Gravitation',
+-      'Properties of Bulk Matter',
+-      'Thermodynamics',
+-      'Behaviour of Perfect Gas and Kinetic Theory',
+-      'Oscillations and Waves',
+-      'Electrostatics',
+-      'Current Electricity',
+-      'Magnetic Effects of Current and Magnetism',
+-      'Electromagnetic Induction and Alternating Currents',
+-      'Electromagnetic Waves',
+-      'Optics',
+-      'Dual Nature of Matter and Radiation',
+-      'Atoms and Nuclei',
+-      'Electronic Devices'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Physics', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-    -- Chemistry
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'Some Basic Concepts of Chemistry',
+-      'Structure of Atom',
+-      'Classification of Elements and Periodicity in Properties',
+-      'Chemical Bonding and Molecular Structure',
+-      'States of Matter',
+-      'Thermodynamics',
+-      'Equilibrium',
+-      'Redox Reactions',
+-      'Hydrogen',
+-      'The s-Block Elements',
+-      'The p-Block Elements',
+-      'Organic Chemistry: Basic Principles and Techniques',
+-      'Hydrocarbons',
+-      'Environmental Chemistry',
+-      'The Solid State',
+-      'Solutions',
+-      'Electrochemistry',
+-      'Chemical Kinetics',
+-      'Surface Chemistry',
+-      'General Principles and Processes of Isolation of Elements',
+-      'The d and f Block Elements',
+-      'Coordination Compounds',
+-      'Haloalkanes and Haloarenes',
+-      'Alcohols Phenols and Ethers',
+-      'Aldehydes Ketones and Carboxylic Acids',
+-      'Amines',
+-      'Biomolecules',
+-      'Polymers',
+-      'Chemistry in Everyday Life'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Chemistry', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-    -- Biology
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'The Living World',
+-      'Biological Classification',
+-      'Plant Kingdom',
+-      'Animal Kingdom',
+-      'Morphology of Flowering Plants',
+-      'Anatomy of Flowering Plants',
+-      'Structural Organisation in Animals',
+-      'Cell The Unit of Life',
+-      'Cell Structure and Function',
+-      'Biomolecules',
+-      'Cell Cycle and Cell Division',
+-      'Transport in Plants',
+-      'Mineral Nutrition',
+-      'Photosynthesis in Higher Plants',
+-      'Respiration in Plants',
+-      'Plant Growth and Development',
+-      'Digestion and Absorption',
+-      'Breathing and Exchange of Gases',
+-      'Body Fluids and Circulation',
+-      'Excretory Products and their Elimination',
+-      'Locomotion and Movement',
+-      'Neural Control and Coordination',
+-      'Chemical Coordination and Integration',
+-      'Reproduction in Organisms',
+-      'Sexual Reproduction in Flowering Plants',
+-      'Human Reproduction',
+-      'Reproductive Health',
+-      'Principles of Inheritance and Variation',
+-      'Molecular Basis of Inheritance',
+-      'Evolution',
+-      'Human Health and Disease',
+-      'Strategies for Enhancement in Food Production',
+-      'Microbes in Human Welfare',
+-      'Biotechnology Principles and Processes',
+-      'Biotechnology and its Applications',
+-      'Organisms and Populations',
+-      'Ecosystem',
+-      'Biodiversity and Conservation',
+-      'Environmental Issues'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Biology', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-  END IF;
+-
+-  -- JEE syllabus
+-  IF p_exam_type ILIKE '%jee%' THEN
+-  
+-    -- Physics
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'Physical World and Measurement', 'Kinematics', 'Laws of Motion', 'Work Energy and Power',
+-      'Motion of System of Particles and Rigid Body', 'Gravitation', 'Properties of Bulk Matter',
+-      'Thermodynamics', 'Behaviour of Perfect Gas and Kinetic Theory', 'Oscillations and Waves',
+-      'Electrostatics', 'Current Electricity', 'Magnetic Effects of Current and Magnetism',
+-      'Electromagnetic Induction and Alternating Currents', 'Electromagnetic Waves', 'Optics',
+-      'Dual Nature of Matter and Radiation', 'Atoms and Nuclei', 'Electronic Devices'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Physics', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-    -- Chemistry
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'Some Basic Concepts of Chemistry', 'Structure of Atom', 'Classification of Elements and Periodicity in Properties',
+-      'Chemical Bonding and Molecular Structure', 'States of Matter', 'Thermodynamics', 'Equilibrium', 'Redox Reactions',
+-      'Hydrogen', 'The s-Block Elements', 'The p-Block Elements', 'Organic Chemistry: Basic Principles and Techniques',
+-      'Hydrocarbons', 'Environmental Chemistry', 'The Solid State', 'Solutions', 'Electrochemistry', 'Chemical Kinetics',
+-      'Surface Chemistry', 'General Principles and Processes of Isolation of Elements', 'The d and f Block Elements',
+-      'Coordination Compounds', 'Haloalkanes and Haloarenes', 'Alcohols Phenols and Ethers',
+-      'Aldehydes Ketones and Carboxylic Acids', 'Amines', 'Biomolecules', 'Polymers', 'Chemistry in Everyday Life'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Chemistry', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-    -- Mathematics
+-    FOR v_chapter IN SELECT unnest(ARRAY[
+-      'Sets Relations and Functions', 'Complex Numbers and Quadratic Equations', 'Matrices and Determinants',
+-      'Permutations and Combinations', 'Mathematical Induction', 'Binomial Theorem and its Simple Applications',
+-      'Sequences and Series', 'Limit Continuity and Differentiability', 'Integral Calculus', 'Differential Equations',
+-      'Coordinate Geometry', 'Three Dimensional Geometry', 'Vector Algebra', 'Statistics and Probability',
+-      'Trigonometry', 'Mathematical Reasoning'
+-    ]) LOOP
+-      INSERT INTO concepts (user_id, subject, chapter, name, mastery, confidence, last_reviewed_at)
+-      VALUES (p_user_id, 'Mathematics', v_chapter, v_chapter, 'not_started', 'low', now())
+-      ON CONFLICT DO NOTHING;
+-    END LOOP;
+-
+-  END IF;
+-
+-END;
+-$$ LANGUAGE plpgsql SECURITY DEFINER;
+-
+-
+--- 3. Trigger on profile creation
+-CREATE OR REPLACE FUNCTION handle_new_user_syllabus()
+-RETURNS trigger AS $$
+-BEGIN
+-  IF NEW.exam_type IS NOT NULL THEN
+-    PERFORM seed_syllabus_for_user(NEW.id, NEW.exam_type);
+-  END IF;
+-  RETURN NEW;
+-END;
+-$$ LANGUAGE plpgsql SECURITY DEFINER;
+-
+--- Safely recreate the trigger
+-DROP TRIGGER IF EXISTS on_profile_created_seed_syllabus ON profiles;
+-CREATE TRIGGER on_profile_created_seed_syllabus
+-  AFTER INSERT OR UPDATE OF exam_type ON profiles
+-  FOR EACH ROW
+-  EXECUTE FUNCTION handle_new_user_syllabus();
+-
+-
+--- 4. Backfill for existing users who already have an exam type but no syllabus
+-SELECT seed_syllabus_for_user(id, exam_type)
+-FROM profiles
+-WHERE exam_type IS NOT NULL;
+diff --git a/supabase/migrations/20260618000006_schema_consolidation_deprecations.sql b/supabase/migrations/20260618000006_schema_consolidation_deprecations.sql
+deleted file mode 100644
+index 41314a9d..00000000
+--- a/supabase/migrations/20260618000006_schema_consolidation_deprecations.sql
++++ /dev/null
+@@ -1,56 +0,0 @@
+--- Migration: 20260618000006_schema_consolidation_deprecations.sql
+--- Purpose: Formally mark overlapping and legacy tables as DEPRECATED.
+-
+-do $$
+-begin
+-  -- 1. Goals
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'study_goals') then
+-    execute 'comment on table public.study_goals is ''DEPRECATED: Use learning_goals instead.''';
+-  end if;
+-
+-  -- 2. Sessions
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'tutor_sessions') then
+-    execute 'comment on table public.tutor_sessions is ''DEPRECATED: Use chat_sessions instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'study_sessions') then
+-    execute 'comment on table public.study_sessions is ''DEPRECATED: Use chat_sessions instead.''';
+-  end if;
+-
+-  -- 3. Materials
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'materials') then
+-    execute 'comment on table public.materials is ''DEPRECATED: Use study_materials instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'study_material_chunks') then
+-    execute 'comment on table public.study_material_chunks is ''DEPRECATED: Use material_chunks instead.''';
+-  end if;
+-
+-  -- 4. Mastery
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'student_mastery') then
+-    execute 'comment on table public.student_mastery is ''DEPRECATED: Use concept_mastery instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'learner_states') then
+-    execute 'comment on table public.learner_states is ''DEPRECATED: Use concept_mastery instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'learner_state_versions') then
+-    execute 'comment on table public.learner_state_versions is ''DEPRECATED: Use concept_mastery instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'mastery_events') then
+-    execute 'comment on table public.mastery_events is ''DEPRECATED: Use mastery_evidence_ledger instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'mastery_evidence_log') then
+-    execute 'comment on table public.mastery_evidence_log is ''DEPRECATED: Use mastery_evidence_ledger instead.''';
+-  end if;
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'student_events') then
+-    execute 'comment on table public.student_events is ''DEPRECATED: Use mastery_evidence_ledger instead.''';
+-  end if;
+-
+-  -- 5. Cards
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'session_cards') then
+-    execute 'comment on table public.session_cards is ''DEPRECATED: Use revision_cards instead.''';
+-  end if;
+-
+-  -- 6. Agents
+-  if exists (select from pg_tables where schemaname = 'public' and tablename = 'amaura_agent_runs') then
+-    execute 'comment on table public.amaura_agent_runs is ''DEPRECATED: Use agent_runs instead.''';
+-  end if;
+-end $$;
+diff --git a/supabase/migrations/20260619000001_add_unlimited_plan_to_check_constraint.sql b/supabase/migrations/20260619000001_add_unlimited_plan_to_check_constraint.sql
+deleted file mode 100644
+index 14942f96..00000000
+--- a/supabase/migrations/20260619000001_add_unlimited_plan_to_check_constraint.sql
++++ /dev/null
+@@ -1,3 +0,0 @@
+--- Add 'unlimited' to manual_plan check constraint
+-alter table public.profiles drop constraint if exists profiles_manual_plan_check;
+-alter table public.profiles add constraint profiles_manual_plan_check check (manual_plan in ('free', 'founding', 'pro', 'admin', 'unlimited'));
+diff --git a/supabase/migrations/20260620000000_fix_create_event_with_consumers.sql b/supabase/migrations/20260620000000_fix_create_event_with_consumers.sql
+deleted file mode 100644
+index a8582915..00000000
+--- a/supabase/migrations/20260620000000_fix_create_event_with_consumers.sql
++++ /dev/null
+@@ -1,77 +0,0 @@
+-CREATE OR REPLACE FUNCTION public.create_event_with_consumers(
+-    p_user_id uuid,
+-    p_type text,
+-    p_data jsonb,
+-    p_idempotency_key text,
+-    p_source text,
+-    p_metadata jsonb,
+-    p_consumers text[] DEFAULT NULL
+-) RETURNS uuid AS $$
+-DECLARE
+-    v_event_id uuid;
+-    v_consumers text[];
+-BEGIN
+-    -- Use the passed consumers array if provided, otherwise fallback to the hardcoded list
+-    IF p_consumers IS NOT NULL AND array_length(p_consumers, 1) > 0 THEN
+-        v_consumers := p_consumers;
+-    ELSE
+-        v_consumers := CASE p_type
+-            WHEN 'CHAT_MESSAGE_PROCESSED' THEN ARRAY['chat_side_effect_engine', 'mind_agent']
+-            WHEN 'CHAT_MESSAGE_CREATED' THEN ARRAY['chat_side_effect_engine', 'mind_agent']
+-            WHEN 'CHAT_LEARNING_SIGNAL' THEN ARRAY['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'CHAT_SESSION_SUMMARIZE' THEN ARRAY['chat_side_effect_engine']
+-            WHEN 'MATERIAL_UPLOADED' THEN ARRAY['rag_agent']
+-            WHEN 'MATERIAL_INGESTION_REQUESTED' THEN ARRAY['rag_agent']
+-            WHEN 'MATERIAL_INGESTED' THEN ARRAY['atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'RAG_QUERY_USED' THEN ARRAY['mind_agent']
+-            WHEN 'RAG_CARD_CANDIDATE_CREATED' THEN ARRAY['memory_agent']
+-            WHEN 'MIND_ACTION_REQUESTED' THEN ARRAY['mind_agent']
+-            WHEN 'MIND_CONTEXT_REFRESHED' THEN ARRAY['mind_agent']
+-            WHEN 'AUTOPSY_UPLOAD_RECEIVED' THEN ARRAY['autopsy_engine']
+-            WHEN 'MOCK_TEST_UPLOADED' THEN ARRAY['autopsy_engine']
+-            WHEN 'AUTOPSY_PROCESSING_COMPLETED' THEN ARRAY['autopsy_agent', 'planner_agent']
+-            WHEN 'TEST_ANALYSIS_COMPLETED' THEN ARRAY['autopsy_agent', 'planner_agent']
+-            WHEN 'AUTOPSY_MISTAKE_EXTRACTED' THEN ARRAY['autopsy_agent']
+-            WHEN 'AUTOPSY_MISTAKE_APPROVED' THEN ARRAY['atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'AUTOPSY_MISTAKE_REJECTED' THEN ARRAY['autopsy_agent']
+-            WHEN 'AUTOPSY_MOCK_PROCESSED' THEN ARRAY['atlas_engine', 'memory_engine', 'learning_state_engine', 'planner_agent']
+-            WHEN 'MOCK_TEST_ANALYZED' THEN ARRAY['atlas_engine', 'memory_engine', 'learning_state_engine', 'planner_agent']
+-            WHEN 'AUTOPSY_V3_ASSESSMENT_CREATED' THEN ARRAY['autopsy_agent']
+-            ELSE ARRAY[]::text[]
+-        END;
+-    END IF;
+-
+-    -- Insert into event_queue. If idempotency_key exists, DO NOTHING to prevent duplicate.
+-    WITH inserted AS (
+-        INSERT INTO event_queue (
+-            user_id, type, payload, idempotency_key, metadata, status
+-        ) VALUES (
+-            p_user_id,
+-            p_type,
+-            p_data,
+-            p_idempotency_key,
+-            COALESCE(p_metadata, '{}'::jsonb),
+-            'PENDING'
+-        )
+-        ON CONFLICT (user_id, idempotency_key) DO NOTHING
+-        RETURNING id
+-    )
+-    SELECT id INTO v_event_id FROM inserted;
+-
+-    -- If no event was inserted, it means it's a duplicate. We fetch the existing ID.
+-    IF v_event_id IS NULL THEN
+-        SELECT id INTO v_event_id FROM event_queue WHERE user_id = p_user_id AND idempotency_key = p_idempotency_key LIMIT 1;
+-    END IF;
+-
+-    IF v_event_id IS NOT NULL AND v_consumers IS NOT NULL THEN
+-        INSERT INTO consumer_locks (event_id, consumer_name, status)
+-        SELECT v_event_id, unnest(v_consumers), 'PENDING'
+-        ON CONFLICT (event_id, consumer_name) DO NOTHING;
+-    END IF;
+-
+-    RETURN v_event_id;
+-END;
+-$$ LANGUAGE plpgsql;
+-
+-revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) from public, authenticated;
+-grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) to service_role;
+diff --git a/supabase/migrations/20260620000001_fix_create_event_with_consumers_conflict.sql b/supabase/migrations/20260620000001_fix_create_event_with_consumers_conflict.sql
+deleted file mode 100644
+index 8983dc4c..00000000
+--- a/supabase/migrations/20260620000001_fix_create_event_with_consumers_conflict.sql
++++ /dev/null
+@@ -1,77 +0,0 @@
+-CREATE OR REPLACE FUNCTION public.create_event_with_consumers(
+-    p_user_id uuid,
+-    p_type text,
+-    p_data jsonb,
+-    p_idempotency_key text,
+-    p_source text,
+-    p_metadata jsonb,
+-    p_consumers text[] DEFAULT NULL
+-) RETURNS uuid AS $$
+-DECLARE
+-    v_event_id uuid;
+-    v_consumers text[];
+-BEGIN
+-    -- Use the passed consumers array if provided, otherwise fallback to the hardcoded list
+-    IF p_consumers IS NOT NULL AND array_length(p_consumers, 1) > 0 THEN
+-        v_consumers := p_consumers;
+-    ELSE
+-        v_consumers := CASE p_type
+-            WHEN 'CHAT_MESSAGE_PROCESSED' THEN ARRAY['chat_side_effect_engine', 'mind_agent']
+-            WHEN 'CHAT_MESSAGE_CREATED' THEN ARRAY['chat_side_effect_engine', 'mind_agent']
+-            WHEN 'CHAT_LEARNING_SIGNAL' THEN ARRAY['learning_state_engine', 'atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'CHAT_SESSION_SUMMARIZE' THEN ARRAY['chat_side_effect_engine']
+-            WHEN 'MATERIAL_UPLOADED' THEN ARRAY['rag_agent']
+-            WHEN 'MATERIAL_INGESTION_REQUESTED' THEN ARRAY['rag_agent']
+-            WHEN 'MATERIAL_INGESTED' THEN ARRAY['atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'RAG_QUERY_USED' THEN ARRAY['mind_agent']
+-            WHEN 'RAG_CARD_CANDIDATE_CREATED' THEN ARRAY['memory_agent']
+-            WHEN 'MIND_ACTION_REQUESTED' THEN ARRAY['mind_agent']
+-            WHEN 'MIND_CONTEXT_REFRESHED' THEN ARRAY['mind_agent']
+-            WHEN 'AUTOPSY_UPLOAD_RECEIVED' THEN ARRAY['autopsy_engine']
+-            WHEN 'MOCK_TEST_UPLOADED' THEN ARRAY['autopsy_engine']
+-            WHEN 'AUTOPSY_PROCESSING_COMPLETED' THEN ARRAY['autopsy_agent', 'planner_agent']
+-            WHEN 'TEST_ANALYSIS_COMPLETED' THEN ARRAY['autopsy_agent', 'planner_agent']
+-            WHEN 'AUTOPSY_MISTAKE_EXTRACTED' THEN ARRAY['autopsy_agent']
+-            WHEN 'AUTOPSY_MISTAKE_APPROVED' THEN ARRAY['atlas_agent', 'memory_agent', 'planner_agent']
+-            WHEN 'AUTOPSY_MISTAKE_REJECTED' THEN ARRAY['autopsy_agent']
+-            WHEN 'AUTOPSY_MOCK_PROCESSED' THEN ARRAY['atlas_engine', 'memory_engine', 'learning_state_engine', 'planner_agent']
+-            WHEN 'MOCK_TEST_ANALYZED' THEN ARRAY['atlas_engine', 'memory_engine', 'learning_state_engine', 'planner_agent']
+-            WHEN 'AUTOPSY_V3_ASSESSMENT_CREATED' THEN ARRAY['autopsy_agent']
+-            ELSE ARRAY[]::text[]
+-        END;
+-    END IF;
+-
+-    -- Insert into event_queue. If idempotency_key exists, DO NOTHING to prevent duplicate.
+-    WITH inserted AS (
+-        INSERT INTO event_queue (
+-            user_id, type, payload, idempotency_key, metadata, status
+-        ) VALUES (
+-            p_user_id,
+-            p_type,
+-            p_data,
+-            p_idempotency_key,
+-            COALESCE(p_metadata, '{}'::jsonb),
+-            'PENDING'
+-        )
+-        ON CONFLICT (idempotency_key) DO NOTHING
+-        RETURNING id
+-    )
+-    SELECT id INTO v_event_id FROM inserted;
+-
+-    -- If no event was inserted, it means it's a duplicate. We fetch the existing ID.
+-    IF v_event_id IS NULL THEN
+-        SELECT id INTO v_event_id FROM event_queue WHERE idempotency_key = p_idempotency_key LIMIT 1;
+-    END IF;
+-
+-    IF v_event_id IS NOT NULL AND v_consumers IS NOT NULL THEN
+-        INSERT INTO consumer_locks (event_id, consumer_name, status)
+-        SELECT v_event_id, unnest(v_consumers), 'PENDING'
+-        ON CONFLICT (event_id, consumer_name) DO NOTHING;
+-    END IF;
+-
+-    RETURN v_event_id;
+-END;
+-$$ LANGUAGE plpgsql;
+-
+-revoke execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) from public, authenticated;
+-grant execute on function public.create_event_with_consumers(uuid, text, jsonb, text, text, jsonb, text[]) to service_role;
+diff --git a/supabase/migrations/20260621000000_add_source_guides_and_notes.sql b/supabase/migrations/20260621000000_add_source_guides_and_notes.sql
+deleted file mode 100644
+index 7e91256f..00000000
+--- a/supabase/migrations/20260621000000_add_source_guides_and_notes.sql
++++ /dev/null
+@@ -1,18 +0,0 @@
+--- Add source_guide column to study_materials to cache generated guides
+-ALTER TABLE study_materials ADD COLUMN IF NOT EXISTS source_guide JSONB;
+-
+--- Create saved_notes table
+-CREATE TABLE IF NOT EXISTS saved_notes (
+-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+-  user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
+-  goal_id UUID REFERENCES learning_goals(id) ON DELETE SET NULL,
+-  content TEXT NOT NULL,
+-  created_at TIMESTAMPTZ DEFAULT NOW()
+-);
+-
+--- Enable RLS for saved_notes
+-ALTER TABLE saved_notes ENABLE ROW LEVEL SECURITY;
+-
+--- Policies
+-CREATE POLICY "Users can manage their own notes" ON saved_notes
+-  FOR ALL USING (auth.uid() = user_id);
+diff --git a/supabase/migrations/20260622000000_unbreakable_core_loop.sql b/supabase/migrations/20260622000000_unbreakable_core_loop.sql
+deleted file mode 100644
+index dd5dd2de..00000000
+--- a/supabase/migrations/20260622000000_unbreakable_core_loop.sql
++++ /dev/null
+@@ -1,307 +0,0 @@
+--- Migration: Unbreakable Core Loop Projection RPC
+--- Replaces fragmented learner-state updates with an atomic transaction.
+-
+-CREATE OR REPLACE FUNCTION apply_core_loop_projection(payload jsonb)
+-RETURNS jsonb
+-LANGUAGE plpgsql
+-SECURITY DEFINER
+-SET search_path = public
+-AS $$
+-DECLARE
+-  v_user_id uuid;
+-  v_goal_id uuid;
+-  v_local_date text;
+-  v_idempotency_key text;
+-  
+-  v_learner_event jsonb;
+-  v_practice_attempts jsonb;
+-  v_mastery jsonb;
+-  v_revision_cards jsonb;
+-  v_mistakes jsonb;
+-  v_session_card jsonb;
+-  v_outbox jsonb;
+-  v_trace jsonb;
+-
+-  -- Iteration vars
+-  v_item jsonb;
+-  v_card jsonb;
+-  v_mistake jsonb;
+-  v_mastery_res jsonb;
+-
+-  v_new_version int;
+-  v_existing_event uuid;
+-
+-  v_today_card_completed boolean := false;
+-  
+-  result jsonb := '{}'::jsonb;
+-BEGIN
+-  -- 1. Parse root payload
+-  v_user_id := (payload->>'user_id')::uuid;
+-  v_goal_id := nullif(payload->>'goal_id', '')::uuid;
+-  v_local_date := payload->>'local_date';
+-  v_idempotency_key := payload->>'idempotency_key';
+-
+-  if v_user_id is null or v_idempotency_key is null then
+-    return jsonb_build_object('ok', false, 'code', 'INVALID_PAYLOAD', 'message', 'user_id and idempotency_key are required');
+-  end if;
+-
+-  v_learner_event := payload->'learner_event';
+-  v_practice_attempts := payload->'practice_attempts';
+-  v_mastery := payload->'mastery';
+-  v_revision_cards := payload->'revision_cards';
+-  v_mistakes := payload->'mistakes';
+-  v_session_card := payload->'session_card';
+-  v_outbox := payload->'outbox';
+-  v_trace := payload->'trace';
+-
+-  -- 2. Idempotency Check (learner_events)
+-  select id into v_existing_event from public.learner_events 
+-    where user_id = v_user_id and idempotency_key = v_idempotency_key;
+-
+-  if v_existing_event is not null then
+-    -- It's a duplicate, return a safe replay success
+-    return jsonb_build_object(
+-      'ok', true, 
+-      'replay', true, 
+-      'message', 'Event already processed'
+-    );
+-  end if;
+-
+-  -- 3. Insert learner_event
+-  if v_learner_event is not null then
+-    insert into public.learner_events (
+-      user_id, event_type, event_data, idempotency_key, created_at, updated_at
+-    ) values (
+-      v_user_id, 
+-      v_learner_event->>'type', 
+-      v_learner_event->'data', 
+-      v_idempotency_key, 
+-      now(), 
+-      now()
+-    );
+-  end if;
+-
+-  -- 4. Upsert practice_attempts
+-  if v_practice_attempts is not null and jsonb_typeof(v_practice_attempts) = 'array' then
+-    for v_item in select * from jsonb_array_elements(v_practice_attempts) loop
+-      insert into public.practice_attempts (
+-        user_id, practice_set_id, practice_item_id, answer, is_correct, time_taken_seconds, idempotency_key, created_at
+-      ) values (
+-        v_user_id,
+-        (v_item->>'practice_set_id')::uuid,
+-        (v_item->>'practice_item_id')::uuid,
+-        v_item->>'answer',
+-        (v_item->>'is_correct')::boolean,
+-        (v_item->>'time_taken_seconds')::int,
+-        v_item->>'idempotency_key',
+-        now()
+-      )
+-      on conflict (user_id, idempotency_key) do nothing;
+-    end loop;
+-  end if;
+-
+-  -- 5. Update Mastery
+-  if v_mastery is not null then
+-    -- Note: calculating actual Elo/BKT from history inside PG is complex,
+-    -- so TS computes the delta/new score and passes it down.
+-    -- We just apply the pre-computed update.
+-    update public.concepts set
+-      mastery = v_mastery->>'new_mastery',
+-      mastery_score = (v_mastery->>'new_score')::numeric,
+-      confidence = coalesce(v_mastery->>'confidence', confidence),
+-      forgetting_probability = coalesce((v_mastery->>'forgetting_probability')::numeric, forgetting_probability),
+-      last_reviewed_at = now(),
+-      times_reviewed = coalesce(times_reviewed, 0) + 1,
+-      evidence_count = coalesce(evidence_count, 0) + 1,
+-      last_updated_reason = v_mastery->>'reason',
+-      updated_at = now()
+-    where id = (v_mastery->>'concept_id')::uuid and user_id = v_user_id;
+-
+-    insert into public.mastery_events (
+-      user_id, concept_id, old_mastery, new_mastery, source, source_id, source_event_id,
+-      evidence, evidence_type, weight, confidence, created_at
+-    ) values (
+-      v_user_id,
+-      (v_mastery->>'concept_id')::uuid,
+-      v_mastery->>'old_mastery',
+-      v_mastery->>'new_mastery',
+-      v_mastery->>'source',
+-      v_mastery->>'source_id',
+-      (v_mastery->>'source_event_id')::uuid,
+-      v_mastery->>'evidence',
+-      v_mastery->>'evidence_type',
+-      coalesce((v_mastery->>'weight')::numeric, 1.0),
+-      coalesce((v_mastery->>'event_confidence')::numeric, 1.0),
+-      now()
+-    );
+-
+-    insert into public.mastery_evidence_ledger (
+-      user_id, concept_id, source_type, source_id, source_event_id,
+-      previous_mastery, delta, new_mastery, confidence, evidence, reason, idempotency_key
+-    ) values (
+-      v_user_id,
+-      (v_mastery->>'concept_id')::uuid,
+-      v_mastery->>'source',
+-      v_mastery->>'source_id',
+-      (v_mastery->>'source_event_id')::uuid,
+-      (v_mastery->>'old_score')::numeric,
+-      (v_mastery->>'delta')::numeric,
+-      (v_mastery->>'new_score')::numeric,
+-      coalesce((v_mastery->>'event_confidence')::numeric, 1.0),
+-      v_mastery->'evidence_payload',
+-      v_mastery->>'reason',
+-      v_idempotency_key
+-    ) on conflict (idempotency_key) do nothing;
+-  end if;
+-
+-  -- 6. Upsert Revision Cards
+-  if v_revision_cards is not null and jsonb_typeof(v_revision_cards) = 'array' then
+-    for v_card in select * from jsonb_array_elements(v_revision_cards) loop
+-      insert into public.revision_cards (
+-        user_id, concept_id, goal_id, subject, chapter, topic, front, back, 
+-        card_type, source_type, source_id, metadata, normalized_key, created_at, updated_at
+-      ) values (
+-        v_user_id,
+-        (v_card->>'concept_id')::uuid,
+-        v_goal_id,
+-        v_card->>'subject',
+-        v_card->>'chapter',
+-        v_card->>'topic',
+-        v_card->>'front',
+-        v_card->>'back',
+-        v_card->>'card_type',
+-        v_card->>'source_type',
+-        v_card->>'source_id',
+-        coalesce(v_card->'metadata', '{}'::jsonb),
+-        v_card->>'normalized_key',
+-        now(),
+-        now()
+-      )
+-      on conflict (user_id, normalized_key) do update set
+-        front = excluded.front,
+-        back = excluded.back,
+-        metadata = public.revision_cards.metadata || excluded.metadata,
+-        updated_at = now();
+-    end loop;
+-  end if;
+-
+-  -- 7. Upsert Mistakes
+-  if v_mistakes is not null and jsonb_typeof(v_mistakes) = 'array' then
+-    for v_mistake in select * from jsonb_array_elements(v_mistakes) loop
+-      insert into public.mistakes (
+-        user_id, goal_id, concept_id, subject, topic, mistake_text, question_text, 
+-        correct_answer, user_answer, why_wrong, severity, source, source_id, 
+-        status, metadata, created_at, updated_at
+-      ) values (
+-        v_user_id,
+-        v_goal_id,
+-        (v_mistake->>'concept_id')::uuid,
+-        v_mistake->>'subject',
+-        v_mistake->>'topic',
+-        v_mistake->>'mistake_text',
+-        v_mistake->>'question_text',
+-        v_mistake->>'correct_answer',
+-        v_mistake->>'user_answer',
+-        v_mistake->>'why_wrong',
+-        (v_mistake->>'severity')::int,
+-        v_mistake->>'source',
+-        v_mistake->>'source_id',
+-        coalesce(v_mistake->>'status', 'verified_mistake'),
+-        coalesce(v_mistake->'metadata', '{}'::jsonb),
+-        now(),
+-        now()
+-      )
+-      on conflict (user_id, source_id, concept_id) do update set
+-        mistake_text = excluded.mistake_text,
+-        updated_at = now()
+-      where public.mistakes.user_id = excluded.user_id;
+-    end loop;
+-  end if;
+-
+-  -- 8. Session Card (Invalidate / Complete)
+-  if v_session_card is not null and v_local_date is not null then
+-    if v_session_card->>'action' = 'complete_today' then
+-      -- Mark today complete
+-      update public.session_cards set 
+-        isCompleted = true, completedAt = now(),
+-        is_completed = true, completed_at = now()
+-      where user_id = v_user_id and date = v_local_date 
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-      
+-      -- Delete tomorrow's card
+-      delete from public.session_cards 
+-      where user_id = v_user_id and date > v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-    
+-    elsif v_session_card->>'action' = 'invalidate_tomorrow_only' then
+-      -- Do not touch today, but delete tomorrow
+-      delete from public.session_cards 
+-      where user_id = v_user_id and date > v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-
+-    elsif v_session_card->>'action' = 'invalidate_today' then
+-      -- Delete today and tomorrow
+-      delete from public.session_cards 
+-      where user_id = v_user_id and date >= v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-    end if;
+-  end if;
+-
+-  -- 9. Bump learner_state_version
+-  update public.profiles set
+-    learner_state_version = coalesce(learner_state_version, 0) + 1,
+-    last_active_at = now(),
+-    updated_at = now()
+-  where id = v_user_id
+-  returning learner_state_version into v_new_version;
+-
+-  -- 10. Outbox & Traces
+-  if v_outbox is not null then
+-    insert into public.event_queue (
+-      user_id, idempotency_key, type, payload, metadata, status, created_at, updated_at
+-    ) values (
+-      v_user_id,
+-      v_idempotency_key || ':published',
+-      v_outbox->>'type',
+-      coalesce(v_outbox->'data', '{}'::jsonb),
+-      coalesce(v_outbox->'metadata', '{}'::jsonb),
+-      'PENDING',
+-      now(),
+-      now()
+-    ) on conflict (idempotency_key) do nothing;
+-  end if;
+-
+-  if v_trace is not null then
+-    insert into public.core_loop_traces (
+-      id, user_id, goal_id, status, error_code, error_message, action, trace_data, created_at, updated_at
+-    ) values (
+-      coalesce((v_trace->>'trace_id')::uuid, gen_random_uuid()),
+-      v_user_id,
+-      v_goal_id,
+-      'completed',
+-      null,
+-      null,
+-      v_trace->>'action',
+-      coalesce(v_trace->'trace_data', '{}'::jsonb),
+-      now(),
+-      now()
+-    ) on conflict (id) do nothing;
+-  end if;
+-
+-  return jsonb_build_object(
+-    'ok', true,
+-    'learner_state_version', v_new_version,
+-    'message', 'Atomic projection succeeded'
+-  );
+-
+-EXCEPTION
+-  WHEN OTHERS THEN
+-    -- If anything fails, rollback transaction implicitly by raising an exception,
+-    -- but Postgres doesn't allow catching and returning normally unless we do it correctly.
+-    -- Wait, if we catch OTHERS and return JSON, the transaction COMMITS any previous statements!
+-    -- Since we WANT to rollback, we must RAISE EXCEPTION or let it bubble up.
+-    -- Wait! If we RAISE EXCEPTION, the caller gets a Postgres error.
+-    -- So we RAISE EXCEPTION with detailed info.
+-    RAISE EXCEPTION 'CORE_LOOP_PROJECTION_FAILED: %', SQLERRM;
+-END;
+-$$;
+diff --git a/supabase/migrations/20260622000001_deliver_canonical_core_loop.sql b/supabase/migrations/20260622000001_deliver_canonical_core_loop.sql
+deleted file mode 100644
+index c7f8b31f..00000000
+--- a/supabase/migrations/20260622000001_deliver_canonical_core_loop.sql
++++ /dev/null
+@@ -1,461 +0,0 @@
+--- Deliver the canonical learner-state projection as one authenticated,
+--- idempotent transaction with user-visible activity, repair, and notification
+--- side effects.
+-
+-alter table public.learner_events
+-  add column if not exists updated_at timestamptz not null default now();
+-
+-create or replace function public.apply_core_loop_projection(payload jsonb)
+-returns jsonb
+-language plpgsql
+-security definer
+-set search_path = public
+-as $$
+-declare
+-  v_user_id uuid := nullif(payload->>'user_id', '')::uuid;
+-  v_goal_id uuid := nullif(payload->>'goal_id', '')::uuid;
+-  v_local_date text := payload->>'local_date';
+-  v_idempotency_key text := nullif(payload->>'idempotency_key', '');
+-  v_learner_event jsonb := payload->'learner_event';
+-  v_practice_attempts jsonb := payload->'practice_attempts';
+-  v_mastery jsonb := payload->'mastery';
+-  v_revision_cards jsonb := payload->'revision_cards';
+-  v_mistakes jsonb := payload->'mistakes';
+-  v_session_card jsonb := payload->'session_card';
+-  v_outbox jsonb := payload->'outbox';
+-  v_trace jsonb := payload->'trace';
+-  v_activity jsonb := payload->'activity';
+-  v_notification jsonb := payload->'notification';
+-  v_item jsonb;
+-  v_card jsonb;
+-  v_mistake jsonb;
+-  v_learning_event_id uuid;
+-  v_card_id uuid;
+-  v_mistake_id uuid;
+-  v_retest_id uuid;
+-  v_activity_id uuid;
+-  v_notification_id uuid;
+-  v_event_id uuid;
+-  v_new_version integer;
+-  v_updated integer;
+-  v_revision_card_ids jsonb := '[]'::jsonb;
+-  v_mistake_ids jsonb := '[]'::jsonb;
+-  v_retest_ids jsonb := '[]'::jsonb;
+-begin
+-  if v_user_id is null or v_idempotency_key is null then
+-    raise exception 'CORE_LOOP_INVALID_PAYLOAD: user_id and idempotency_key are required';
+-  end if;
+-
+-  if coalesce(auth.role(), '') <> 'service_role' and auth.uid() is distinct from v_user_id then
+-    raise exception 'CORE_LOOP_FORBIDDEN: payload user does not match authenticated user';
+-  end if;
+-
+-  if v_goal_id is not null and not exists (
+-    select 1 from public.learning_goals
+-    where id = v_goal_id and user_id = v_user_id
+-  ) then
+-    raise exception 'CORE_LOOP_GOAL_NOT_OWNED';
+-  end if;
+-
+-  select id into v_learning_event_id
+-  from public.learner_events
+-  where user_id = v_user_id and idempotency_key = v_idempotency_key;
+-
+-  if v_learning_event_id is not null then
+-    select coalesce(jsonb_agg(id), '[]'::jsonb) into v_revision_card_ids
+-    from public.revision_cards
+-    where user_id = v_user_id
+-      and metadata->>'coreLoopIdempotencyKey' = v_idempotency_key;
+-
+-    select coalesce(jsonb_agg(id), '[]'::jsonb) into v_mistake_ids
+-    from public.mistakes
+-    where user_id = v_user_id
+-      and metadata->>'coreLoopIdempotencyKey' = v_idempotency_key;
+-
+-    return jsonb_build_object(
+-      'ok', true,
+-      'replay', true,
+-      'learning_event_id', v_learning_event_id,
+-      'revision_card_ids', v_revision_card_ids,
+-      'mistake_ids', v_mistake_ids,
+-      'message', 'Event already processed'
+-    );
+-  end if;
+-
+-  insert into public.learner_events (
+-    user_id, event_type, event_data, idempotency_key, created_at, updated_at
+-  ) values (
+-    v_user_id,
+-    coalesce(v_learner_event->>'type', 'non_learning_activity'),
+-    coalesce(v_learner_event->'data', '{}'::jsonb),
+-    v_idempotency_key,
+-    now(),
+-    now()
+-  ) returning id into v_learning_event_id;
+-
+-  if v_practice_attempts is not null and jsonb_typeof(v_practice_attempts) = 'array' then
+-    for v_item in select * from jsonb_array_elements(v_practice_attempts) loop
+-      insert into public.practice_attempts (
+-        user_id, practice_set_id, practice_item_id, answer, is_correct,
+-        time_taken_seconds, idempotency_key, created_at
+-      ) values (
+-        v_user_id,
+-        (v_item->>'practice_set_id')::uuid,
+-        (v_item->>'practice_item_id')::uuid,
+-        v_item->>'answer',
+-        coalesce((v_item->>'is_correct')::boolean, false),
+-        nullif(v_item->>'time_taken_seconds', '')::integer,
+-        v_item->>'idempotency_key',
+-        now()
+-      ) on conflict (user_id, idempotency_key) do nothing;
+-    end loop;
+-  end if;
+-
+-  if v_mastery is not null then
+-    update public.concepts set
+-      mastery = v_mastery->>'new_mastery',
+-      mastery_score = (v_mastery->>'new_score')::numeric,
+-      confidence = case
+-        when coalesce((v_mastery->>'confidence')::numeric, 0) >= 0.8 then 'high'
+-        when coalesce((v_mastery->>'confidence')::numeric, 0) >= 0.5 then 'medium'
+-        else 'low'
+-      end,
+-      forgetting_probability = coalesce((v_mastery->>'forgetting_probability')::numeric, forgetting_probability),
+-      last_reviewed_at = now(),
+-      times_reviewed = coalesce(times_reviewed, 0) + 1,
+-      times_correct = coalesce(times_correct, 0) + case when (v_mastery->>'evidence_type') = 'practice_correct' then 1 else 0 end,
+-      times_incorrect = coalesce(times_incorrect, 0) + case when (v_mastery->>'evidence_type') in ('practice_wrong', 'tutor_confused') then 1 else 0 end,
+-      evidence_count = coalesce(evidence_count, 0) + 1,
+-      last_updated_reason = coalesce(v_mastery->>'reason', v_mastery->>'evidence'),
+-      updated_at = now()
+-    where id = (v_mastery->>'concept_id')::uuid and user_id = v_user_id;
+-
+-    get diagnostics v_updated = row_count;
+-    if v_updated <> 1 then
+-      raise exception 'CORE_LOOP_CONCEPT_NOT_OWNED';
+-    end if;
+-
+-    insert into public.mastery_events (
+-      user_id, concept_id, old_mastery, new_mastery, source, source_id,
+-      source_event_id, evidence, evidence_type, weight, confidence, created_at
+-    ) values (
+-      v_user_id,
+-      (v_mastery->>'concept_id')::uuid,
+-      v_mastery->>'old_mastery',
+-      v_mastery->>'new_mastery',
+-      coalesce(v_mastery->>'source', 'agent'),
+-      v_mastery->>'source_id',
+-      case when coalesce(v_mastery->>'source_event_id', '') ~* '^[0-9a-f-]{36}$'
+-        then (v_mastery->>'source_event_id')::uuid else null end,
+-      v_mastery->>'evidence',
+-      v_mastery->>'evidence_type',
+-      coalesce((v_mastery->>'weight')::numeric, 1),
+-      coalesce((v_mastery->>'event_confidence')::numeric, 1),
+-      now()
+-    ) on conflict do nothing;
+-
+-    insert into public.mastery_evidence_ledger (
+-      user_id, concept_id, source_type, source_id, source_event_id,
+-      previous_mastery, delta, new_mastery, confidence, evidence, reason,
+-      idempotency_key
+-    ) values (
+-      v_user_id,
+-      (v_mastery->>'concept_id')::uuid,
+-      coalesce(v_mastery->>'source', 'agent'),
+-      case when coalesce(v_mastery->>'source_id', '') ~* '^[0-9a-f-]{36}$'
+-        then (v_mastery->>'source_id')::uuid else null end,
+-      case when coalesce(v_mastery->>'source_event_id', '') ~* '^[0-9a-f-]{36}$'
+-        then (v_mastery->>'source_event_id')::uuid else null end,
+-      (v_mastery->>'old_score')::numeric,
+-      (v_mastery->>'delta')::numeric,
+-      (v_mastery->>'new_score')::numeric,
+-      coalesce((v_mastery->>'event_confidence')::numeric, 1),
+-      coalesce(v_mastery->'evidence_payload', '{}'::jsonb),
+-      coalesce(v_mastery->>'reason', v_mastery->>'evidence'),
+-      v_idempotency_key
+-    ) on conflict (user_id, concept_id, source_type, idempotency_key) do nothing;
+-  end if;
+-
+-  if v_revision_cards is not null and jsonb_typeof(v_revision_cards) = 'array' then
+-    for v_card in select * from jsonb_array_elements(v_revision_cards) loop
+-      insert into public.revision_cards (
+-        user_id, concept_id, goal_id, subject, chapter, topic, front, back,
+-        card_type, source_type, source_id, metadata, normalized_key, due,
+-        state, stability, difficulty, created_at, updated_at
+-      ) values (
+-        v_user_id,
+-        (v_card->>'concept_id')::uuid,
+-        v_goal_id,
+-        v_card->>'subject',
+-        v_card->>'chapter',
+-        v_card->>'topic',
+-        v_card->>'front',
+-        v_card->>'back',
+-        v_card->>'card_type',
+-        v_card->>'source_type',
+-        v_card->>'source_id',
+-        coalesce(v_card->'metadata', '{}'::jsonb) || jsonb_build_object('coreLoopIdempotencyKey', v_idempotency_key),
+-        v_card->>'normalized_key',
+-        now(), 0, 0, 5, now(), now()
+-      ) on conflict (user_id, normalized_key) where normalized_key is not null
+-      do update set
+-        front = excluded.front,
+-        back = excluded.back,
+-        metadata = public.revision_cards.metadata || excluded.metadata,
+-        updated_at = now()
+-      returning id into v_card_id;
+-      v_revision_card_ids := v_revision_card_ids || to_jsonb(v_card_id);
+-    end loop;
+-  end if;
+-
+-  if v_mistakes is not null and jsonb_typeof(v_mistakes) = 'array' then
+-    for v_mistake in select * from jsonb_array_elements(v_mistakes) loop
+-      insert into public.mistakes (
+-        user_id, goal_id, concept_id, subject, topic, chapter, concept,
+-        mistake_text, question_text, correct_answer, user_answer, why_wrong,
+-        severity, source, source_id, category, mistake_type, normalized_key,
+-        status, metadata, next_retest_at, created_at, updated_at
+-      ) values (
+-        v_user_id,
+-        v_goal_id,
+-        (v_mistake->>'concept_id')::uuid,
+-        v_mistake->>'subject',
+-        v_mistake->>'topic',
+-        v_mistake->>'topic',
+-        coalesce(v_mistake->>'topic', 'Unclassified concept'),
+-        coalesce(v_mistake->>'mistake_text', 'Unspecified mistake'),
+-        v_mistake->>'question_text',
+-        v_mistake->>'correct_answer',
+-        v_mistake->>'user_answer',
+-        v_mistake->>'why_wrong',
+-        coalesce((v_mistake->>'severity')::integer, 3),
+-        coalesce(v_mistake->>'source', 'manual'),
+-        v_mistake->>'source_id',
+-        'conceptual_gap',
+-        'conceptual_gap',
+-        encode(digest(
+-          lower(coalesce(v_mistake->>'topic', 'unclassified concept')) || chr(10) ||
+-          lower(coalesce(v_mistake->>'mistake_text', 'unspecified mistake')),
+-          'sha256'
+-        ), 'hex'),
+-        'open',
+-        coalesce(v_mistake->'metadata', '{}'::jsonb) || jsonb_build_object('coreLoopIdempotencyKey', v_idempotency_key),
+-        now() + interval '1 day',
+-        now(),
+-        now()
+-      ) on conflict (user_id, normalized_key) where normalized_key is not null
+-      do update set
+-        severity = greatest(public.mistakes.severity, excluded.severity),
+-        status = case when public.mistakes.status in ('repaired', 'ignored') then 'open' else public.mistakes.status end,
+-        occurrence_count = coalesce(public.mistakes.occurrence_count, 1) + 1,
+-        metadata = public.mistakes.metadata || excluded.metadata,
+-        updated_at = now()
+-      returning id into v_mistake_id;
+-
+-      v_mistake_ids := v_mistake_ids || to_jsonb(v_mistake_id);
+-
+-      insert into public.mistake_retests (
+-        user_id, mistake_id, goal_id, due_at, question, status, attempt_count,
+-        created_at, updated_at
+-      ) values (
+-        v_user_id,
+-        v_mistake_id,
+-        v_goal_id,
+-        now() + interval '1 day',
+-        'Explain the correct rule for ' || coalesce(v_mistake->>'topic', 'this concept') || ' without looking at notes.',
+-        'due',
+-        0,
+-        now(),
+-        now()
+-      ) on conflict (mistake_id) where status = 'due'
+-      do update set due_at = least(public.mistake_retests.due_at, excluded.due_at), updated_at = now()
+-      returning id into v_retest_id;
+-      v_retest_ids := v_retest_ids || to_jsonb(v_retest_id);
+-    end loop;
+-  end if;
+-
+-  if v_session_card is not null and v_local_date is not null then
+-    if v_session_card->>'action' = 'complete_today' then
+-      update public.session_cards set
+-        "isCompleted" = true,
+-        "completedAt" = now(),
+-        is_completed = true,
+-        completed_at = now(),
+-        updated_at = now()
+-      where user_id = v_user_id and date = v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-
+-      delete from public.session_cards
+-      where user_id = v_user_id and date > v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-    elsif v_session_card->>'action' = 'invalidate_today' then
+-      delete from public.session_cards
+-      where user_id = v_user_id and date >= v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-    elsif v_session_card->>'action' = 'invalidate_tomorrow_only' then
+-      delete from public.session_cards
+-      where user_id = v_user_id and date > v_local_date
+-        and coalesce(goal_id, '00000000-0000-0000-0000-000000000000'::uuid) = coalesce(v_goal_id, '00000000-0000-0000-0000-000000000000'::uuid);
+-    end if;
+-  end if;
+-
+-  if v_activity is not null then
+-    insert into public.agent_actions (
+-      run_id, user_id, agent_name, action_type, target_type, target_id, status,
+-      risk_level, approval_status, confidence, evidence, reason, before_state,
+-      after_state, idempotency_key, applied_at, created_at, updated_at
+-    ) values (
+-      nullif(v_activity->>'run_id', '')::uuid,
+-      v_user_id,
+-      coalesce(v_activity->>'agent_name', 'system'),
+-      coalesce(v_activity->>'action_type', 'learner_state_updated'),
+-      v_activity->>'target_type',
+-      nullif(v_activity->>'target_id', '')::uuid,
+-      'applied', 'safe_auto', 'not_required',
+-      nullif(v_activity->>'confidence', '')::numeric,
+-      coalesce(v_activity->'evidence', '{}'::jsonb),
+-      v_activity->>'reason',
+-      '{}'::jsonb,
+-      jsonb_build_object('learningEventId', v_learning_event_id, 'revisionCardIds', v_revision_card_ids, 'mistakeIds', v_mistake_ids),
+-      coalesce(v_activity->>'idempotency_key', v_idempotency_key || ':activity'),
+-      now(), now(), now()
+-    ) on conflict (user_id, action_type, idempotency_key)
+-    do update set
+-      evidence = excluded.evidence,
+-      reason = excluded.reason,
+-      after_state = excluded.after_state,
+-      updated_at = now()
+-    returning id into v_activity_id;
+-  end if;
+-
+-  if v_notification is not null then
+-    insert into public.amaura_notifications (
+-      user_id, goal_id, type, priority, title, message, action_label,
+-      action_type, action_payload, dedup_key, metadata, read, created_at
+-    ) values (
+-      v_user_id,
+-      v_goal_id,
+-      v_notification->>'type',
+-      coalesce(v_notification->>'priority', 'normal'),
+-      v_notification->>'title',
+-      v_notification->>'message',
+-      v_notification->>'action_label',
+-      v_notification->>'action_type',
+-      v_notification->'action_payload',
+-      v_notification->>'dedup_key',
+-      jsonb_build_object('learningEventId', v_learning_event_id),
+-      false,
+-      now()
+-    ) on conflict (user_id, dedup_key) where dedup_key is not null
+-    do update set
+-      priority = excluded.priority,
+-      title = excluded.title,
+-      message = excluded.message,
+-      action_label = excluded.action_label,
+-      action_type = excluded.action_type,
+-      action_payload = excluded.action_payload,
+-      read = false,
+-      created_at = now()
+-    returning id into v_notification_id;
+-  end if;
+-
+-  update public.profiles set
+-    learner_state_version = coalesce(learner_state_version, 0) + 1,
+-    last_active_at = now(),
+-    updated_at = now()
+-  where id = v_user_id
+-  returning learner_state_version into v_new_version;
+-
+-  if v_outbox is not null then
+-    insert into public.event_queue (
+-      user_id, idempotency_key, type, payload, metadata, status,
+-      next_attempt_at, created_at, updated_at
+-    ) values (
+-      v_user_id,
+-      v_idempotency_key || ':published',
+-      coalesce(v_outbox->>'type', 'LEARNER_STATE_CHANGED'),
+-      coalesce(v_outbox->'data', '{}'::jsonb),
+-      coalesce(v_outbox->'metadata', '{}'::jsonb),
+-      'PENDING', now(), now(), now()
+-    ) on conflict (idempotency_key) do update set updated_at = now()
+-    returning id into v_event_id;
+-
+-    insert into public.consumer_locks (
+-      event_id, consumer_name, status, retry_count, next_retry_at,
+-      next_attempt_at, created_at, updated_at
+-    ) values
+-      (v_event_id, 'downstream_publisher_qstash', 'PENDING', 0, now(), now(), now(), now())
+-    on conflict (event_id, consumer_name) do nothing;
+-  end if;
+-
+-  if v_trace is not null then
+-    insert into public.core_loop_traces (
+-      id, user_id, goal_id, action, status, started_at, finished_at, steps,
+-      result, created_at
+-    ) values (
+-      coalesce(nullif(v_trace->>'trace_id', '')::uuid, gen_random_uuid()),
+-      v_user_id,
+-      v_goal_id,
+-      coalesce(v_trace->>'action', 'apply_core_loop_projection'),
+-      'success',
+-      now(),
+-      now(),
+-      jsonb_build_array(jsonb_build_object('name', 'atomic_projection', 'status', 'success')),
+-      jsonb_build_object('learningEventId', v_learning_event_id, 'revisionCardIds', v_revision_card_ids, 'mistakeIds', v_mistake_ids),
+-      now()
+-    ) on conflict (id) do update set
+-      status = 'success',
+-      finished_at = now(),
+-      result = excluded.result;
+-  end if;
+-
+-  return jsonb_build_object(
+-    'ok', true,
+-    'learning_event_id', v_learning_event_id,
+-    'revision_card_ids', v_revision_card_ids,
+-    'mistake_ids', v_mistake_ids,
+-    'retest_ids', v_retest_ids,
+-    'activity_id', v_activity_id,
+-    'notification_id', v_notification_id,
+-    'learner_state_version', v_new_version,
+-    'message', 'Atomic projection succeeded'
+-  );
+-exception
+-  when others then
+-    raise exception 'CORE_LOOP_PROJECTION_FAILED: %', sqlerrm;
+-end;
+-$$;
+-
+-revoke execute on function public.apply_core_loop_projection(jsonb) from public, anon;
+-grant execute on function public.apply_core_loop_projection(jsonb) to authenticated, service_role;
+-
+-create table if not exists public.account_deletion_requests (
+-  id uuid primary key default gen_random_uuid(),
+-  user_id uuid not null references auth.users(id) on delete cascade unique,
+-  status text not null default 'pending' check (status in ('pending', 'processing', 'completed', 'failed', 'cancelled')),
+-  requested_at timestamptz not null default now(),
+-  processed_at timestamptz,
+-  metadata jsonb not null default '{}'::jsonb,
+-  created_at timestamptz not null default now(),
+-  updated_at timestamptz not null default now()
+-);
+-
+-alter table public.account_deletion_requests enable row level security;
+-
+-drop policy if exists account_deletion_requests_insert_own on public.account_deletion_requests;
+-create policy account_deletion_requests_insert_own
+-  on public.account_deletion_requests for insert
+-  with check (auth.uid() = user_id);
+-
+-drop policy if exists account_deletion_requests_select_own on public.account_deletion_requests;
+-create policy account_deletion_requests_select_own
+-  on public.account_deletion_requests for select
+-  using (auth.uid() = user_id);
+-
+-drop policy if exists account_deletion_requests_update_own on public.account_deletion_requests;
+-create policy account_deletion_requests_update_own
+-  on public.account_deletion_requests for update
+-  using (auth.uid() = user_id)
+-  with check (auth.uid() = user_id);
+-
+-grant select, insert, update on public.account_deletion_requests to authenticated;
+diff --git a/test-autopsy-pdf.js b/test-autopsy-pdf.js
+deleted file mode 100644
+index c055d103..00000000
+--- a/test-autopsy-pdf.js
++++ /dev/null
+@@ -1,22 +0,0 @@
+-const { processMockAutopsy } = require('./lib/engines/autopsy-engine');
+-const fs = require('fs');
+-require('dotenv').config({ path: '.env.local' });
+-
+-async function main() {
+-  const base64 = fs.readFileSync('/Users/ashishsingh/Downloads/original.pdf').toString('base64');
+-  const fileData = { kind: 'inline', mimeType: 'application/pdf', data: base64 };
+-
+-  try {
+-    const result = await processMockAutopsy(
+-      '5f7b7f7b-8ece-412d-a823-323d0539a713',
+-      fileData,
+-      'Test PDF',
+-      'NEET'
+-    );
+-    console.log('Success:', result);
+-  } catch (err) {
+-    console.error('Error:', err.message);
+-  }
+-}
+-
+-main();
+diff --git a/test-autopsy.js b/test-autopsy.js
+deleted file mode 100644
+index cb910972..00000000
+--- a/test-autopsy.js
++++ /dev/null
+@@ -1,15 +0,0 @@
+-const { processMockAutopsy } = require('./lib/engines/autopsy-engine');
+-const fs = require('fs');
+-require('dotenv').config({ path: '.env.local' });
+-
+-async function main() {
+-  const fileData = { kind: 'text', text: fs.readFileSync('/Users/ashishsingh/Downloads/kinetics.md', 'utf-8') };
+-  try {
+-    const result = await processMockAutopsy('test-user-id', fileData, 'Kinetics Test', 'NEET', { correctMarks: 4, negativeMarks: -1 });
+-    console.log(result);
+-  } catch (err) {
+-    console.error("Error:", err);
+-  }
+-}
+-
+-// Next.js config uses ts-node if we import ts files, but let's just use ts-node
+diff --git a/test-bullmq.js b/test-bullmq.js
+deleted file mode 100644
+index 51202a07..00000000
+--- a/test-bullmq.js
++++ /dev/null
+@@ -1 +0,0 @@
+-console.log("BullMQ test");
+diff --git a/test-health.ts b/test-health.ts
+deleted file mode 100644
+index cbca9dc1..00000000
+--- a/test-health.ts
++++ /dev/null
+@@ -1,8 +0,0 @@
+-import { getAllProviderStats } from './lib/ai/provider-health';
+-
+-async function check() {
+-  const stats = await getAllProviderStats();
+-  console.log(JSON.stringify(stats, null, 2));
+-}
+-
+-check().catch(console.error);
+diff --git a/test-stream-assistant.ts b/test-stream-assistant.ts
+deleted file mode 100644
+index 2e9f1ac4..00000000
+--- a/test-stream-assistant.ts
++++ /dev/null
+@@ -1,26 +0,0 @@
+-import { routeStreamGeneration } from './lib/ai/router';
+-
+-async function check() {
+-  console.log("Starting stream generation with assistant first...");
+-  try {
+-    const userPrompt = [
+-      { role: 'assistant', content: 'Hello! I am an AI.' },
+-      { role: 'user', content: 'What is 2+2?' }
+-    ];
+-    const generator = routeStreamGeneration(
+-      "You are a helpful AI.",
+-      userPrompt,
+-      0.7,
+-      undefined,
+-      'fast',
+-      true
+-    );
+-    for await (const chunk of generator) {
+-      process.stdout.write(chunk);
+-    }
+-    console.log("\nDone.");
+-  } catch (err) {
+-    console.error("\nError:", err);
+-  }
+-}
+-check().catch(console.error);
+diff --git a/test-stream-quality.ts b/test-stream-quality.ts
+deleted file mode 100644
+index 6caa3545..00000000
+--- a/test-stream-quality.ts
++++ /dev/null
+@@ -1,22 +0,0 @@
+-import { routeStreamGeneration } from './lib/ai/router';
+-
+-async function check() {
+-  console.log("Starting stream generation (QUALITY)...");
+-  try {
+-    const generator = routeStreamGeneration(
+-      "You are a helpful AI.",
+-      "Say hello world.",
+-      0.7,
+-      undefined,
+-      'quality',
+-      true
+-    );
+-    for await (const chunk of generator) {
+-      process.stdout.write(chunk);
+-    }
+-    console.log("\nDone.");
+-  } catch (err) {
+-    console.error("\nError:", err);
+-  }
+-}
+-check().catch(console.error);
+diff --git a/test-stream.ts b/test-stream.ts
+deleted file mode 100644
+index 417fb418..00000000
+--- a/test-stream.ts
++++ /dev/null
+@@ -1,22 +0,0 @@
+-import { routeStreamGeneration } from './lib/ai/router';
+-
+-async function check() {
+-  console.log("Starting stream generation...");
+-  try {
+-    const generator = routeStreamGeneration(
+-      "You are a helpful AI.",
+-      "Say hello world.",
+-      0.7,
+-      undefined,
+-      'fast',
+-      true
+-    );
+-    for await (const chunk of generator) {
+-      process.stdout.write(chunk);
+-    }
+-    console.log("\nDone.");
+-  } catch (err) {
+-    console.error("\nError:", err);
+-  }
+-}
+-check().catch(console.error);
+diff --git a/test.pdf b/test.pdf
+deleted file mode 100644
+index 6ab757ca..00000000
+--- a/test.pdf
++++ /dev/null
+@@ -1,21 +0,0 @@
+-%PDF-1.4
+-1 0 obj
+-<< /Type /Catalog /Pages 2 0 R >>
+-endobj
+-2 0 obj
+-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+-endobj
+-3 0 obj
+-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] >>
+-endobj
+-xref
+-0 4
+-0000000000 65535 f 
+-0000000009 00000 n 
+-0000000058 00000 n 
+-0000000115 00000 n 
+-trailer
+-<< /Size 4 /Root 1 0 R >>
+-startxref
+-188
+-%%EOF
+diff --git a/test_rls.sql b/test_rls.sql
+deleted file mode 100644
+index 7597b5e5..00000000
+--- a/test_rls.sql
++++ /dev/null
+@@ -1,8 +0,0 @@
+-SELECT tablename, rowsecurity 
+-FROM pg_tables 
+-WHERE schemaname = 'public' 
+-AND tablename IN (
+-    'profiles', 'learning_goals', 'concepts', 'revision_cards', 
+-    'chat_sessions', 'chat_messages', 'mock_autopsies', 'autopsy_questions', 
+-    'mistakes', 'learner_states', 'event_queue', 'ai_usage_events'
+-);
+diff --git a/update_tables.sql b/update_tables.sql
+deleted file mode 100644
+index 8b159a2a..00000000
+--- a/update_tables.sql
++++ /dev/null
+@@ -1,35 +0,0 @@
+-CREATE TABLE IF NOT EXISTS event_consumer_tracking (
+-  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+-  event_id      uuid NOT NULL REFERENCES student_events(id) ON DELETE CASCADE,
+-  consumer_name text NOT NULL,
+-  status        text NOT NULL DEFAULT 'processing' CHECK (status IN ('processing', 'completed', 'failed')),
+-  retry_count   integer NOT NULL DEFAULT 0,
+-  last_error    text,
+-  updated_at    timestamptz DEFAULT now(),
+-  UNIQUE(event_id, consumer_name)
+-);
+-
+-CREATE INDEX IF NOT EXISTS idx_ect_event_id ON event_consumer_tracking(event_id);
+-CREATE INDEX IF NOT EXISTS idx_ect_status ON event_consumer_tracking(status);
+-
+-CREATE TABLE IF NOT EXISTS dlq_events (
+-  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+-  event_id      uuid,
+-  user_id       uuid REFERENCES profiles(id) ON DELETE CASCADE,
+-  trace_id      uuid,
+-  version       text,
+-  type          text NOT NULL,
+-  data          jsonb,
+-  metadata      jsonb,
+-  error_message text,
+-  created_at    timestamptz DEFAULT now()
+-);
+-
+-ALTER TABLE event_consumer_tracking ENABLE ROW LEVEL SECURITY;
+-ALTER TABLE dlq_events ENABLE ROW LEVEL SECURITY;
+-
+-CREATE POLICY "Service role only" ON event_consumer_tracking
+-  USING (auth.role() = 'service_role');
+-
+-CREATE POLICY "Service role only" ON dlq_events
+-  USING (auth.role() = 'service_role');

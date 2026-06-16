@@ -190,8 +190,7 @@ export async function POST(req: NextRequest) {
     const uploadIntent = hasUploadedFile ? classifyChatUploadIntent({ message: message || '', mimeType: (imageMimeType || documentMimeType || undefined) as string | undefined }) : 'unsupported';
 
     // 9. Route Uploads (if any)
-    if (hasUploadedFile) {
-    }
+
 
     const uploadResponse = await routeUploads({
       hasUploadedFile, imageBase64, imageMimeType, documentBase64, documentMimeType, orchestratorResult, uploadIntent, userId: user.id, message, profilePreview, messageRequestId, activeGoalId: activeGoalId ?? undefined, sessionId, supabase, finalizeAssistantTurnFn, encoder, systemPrompt, requestId
@@ -204,8 +203,7 @@ export async function POST(req: NextRequest) {
     });
     if (ruleResponse) return ruleResponse;
 
-    if (!hasUploadedFile) {
-    }
+
 
     const { consumeFeatureUsage } = await import('@/lib/usage/enforce-feature-limit');
     await consumeFeatureUsage(user.id, 'chat_message', 1, { idempotencyKey: messageRequestId });

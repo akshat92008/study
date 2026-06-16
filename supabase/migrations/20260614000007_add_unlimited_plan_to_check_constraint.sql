@@ -1,0 +1,3 @@
+-- Add 'unlimited' to manual_plan check constraint
+alter table public.profiles drop constraint if exists profiles_manual_plan_check;
+alter table public.profiles add constraint profiles_manual_plan_check check (manual_plan in ('free', 'founding', 'pro', 'admin', 'unlimited'));

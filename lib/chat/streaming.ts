@@ -41,18 +41,6 @@ export async function handleMainStreaming({
   let mainGenerator: AsyncGenerator<string> | null = null;
   
   if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE' && intent.intent !== 'REPLAN' && intent.intent !== 'CREATE_ARTIFACT' && orchestratorResult.intent !== 'planning') {
-    // Phase 6.3 — Reserve AI usage BEFORE the expensive provider call.
-    // This is a best-effort guard: if reservation fails we proceed (fail-open for UX),
-    // but we log. The budgetedStreamGeneration has its own cost-guard as a second line.
-    let aiReservationId: string | null = null;
-    try {
-      aiReservationId = await import('@/lib/usage/enforce-feature-limit')
-        .then(m => m.reserveUsage(userId, 'ai_call', 1, { idempotencyKey: `stream:${sessionId}:${Date.now()}` }))
-        .catch(err => {
-          logger.warn('[streaming] AI usage reservation failed, proceeding fail-open', { userId, error: err?.message });
-          return null;
-        });
-    } catch { /* non-blocking */ }
 
     try {
       const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
@@ -68,17 +56,7 @@ export async function handleMainStreaming({
         systemPrompt,
         userPrompt: conversationMessages,
       });
-      // Commit reservation immediately since the generator is ready (streaming started)
-      if (aiReservationId) {
-        commitUsage(aiReservationId, {}).catch(err =>
-          logger.warn('[streaming] Failed to commit AI usage reservation', { userId, aiReservationId, error: err?.message })
-        );
-      }
     } catch (err) {
-      // Release reservation on provider failure
-      if (aiReservationId) {
-        releaseUsage(aiReservationId, {}).catch(() => {});
-      }
       if (isBudgetExceeded(err)) return budgetExceededResponse();
       if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
       
