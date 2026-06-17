@@ -21,6 +21,8 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  throw new Error("Testing if error boundary works");
+
   const supabase = await createClient();
   const { data: { user } } = await withTimeout(
     supabase.auth.getUser(), 
@@ -28,7 +30,7 @@ export default async function DashboardLayout({
     "Supabase auth.getUser() timed out!"
   );
 
-  if (!user || !user.id) {
+  if (!user) {
     redirect('/login');
   }
 

@@ -1,0 +1,11 @@
+--- app/(dashboard)/(main)/layout.tsx
++++ app/(dashboard)/(main)/layout.tsx
+@@ -21,6 +21,8 @@
+ }: {
+   children: React.ReactNode;
+ }) {
++  throw new Error("Testing if error boundary works");
++
+   const supabase = await createClient();
+   const { data: { user } } = await withTimeout(
+     supabase.auth.getUser(), 
