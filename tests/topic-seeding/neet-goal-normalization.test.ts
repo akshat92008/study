@@ -35,6 +35,41 @@ describe('NEET Goal Normalization', () => {
     expect(nlm.chapterSlug).toBe('neet-physics-laws-of-motion');
   });
 
+  it('should not match stem inside system', () => {
+    const sys = normalizeGoal('circulatory system in humans biology');
+    expect(sys.chapterSlug).toBe('neet-biology-human-physiology');
+    
+    const particles = normalizeGoal('system of particles');
+    expect(particles.chapterSlug).toBe('neet-physics-rotational-motion');
+  });
+
+  it('should match precise structural organisation phrases', () => {
+    const stemMod = normalizeGoal('stem modification');
+    expect(stemMod.chapterSlug).toBe('neet-biology-structural-organisation');
+
+    const rootStemLeaf = normalizeGoal('root stem leaf');
+    expect(rootStemLeaf.chapterSlug).toBe('neet-biology-structural-organisation');
+  });
+
+  it('should match circulatory system variations correctly', () => {
+    const heart = normalizeGoal('human heart');
+    expect(heart.chapterSlug).toBe('neet-biology-human-physiology');
+
+    const blood = normalizeGoal('blood circulation');
+    expect(blood.chapterSlug).toBe('neet-biology-human-physiology');
+  });
+
+  it('should match specific chemistry and physics aliases', () => {
+    const circuits = normalizeGoal('current electricity circuits');
+    expect(circuits.chapterSlug).toBe('neet-physics-current-electricity');
+
+    const bonding = normalizeGoal('chemical bonding VSEPR');
+    expect(bonding.chapterSlug).toBe('neet-chemistry-chemical-bonding');
+
+    const goc = normalizeGoal('GOC');
+    expect(goc.chapterSlug).toBe('neet-chemistry-goc');
+  });
+
   it('should fall back gracefully for non-NEET goals', () => {
     const nonNeet = normalizeGoal('learn how to bake a cake');
     expect(nonNeet.exam).toBeNull();

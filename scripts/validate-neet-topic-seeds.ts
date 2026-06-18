@@ -19,7 +19,15 @@ function validate() {
     "Standard equation for",
     "Generic subtopic",
     "Mastering X and Y",
-    "Important Concept"
+    "Important Concept",
+    "Detailed Structure",
+    "Key Structure",
+    "critical factors or principles",
+    "subtle edge cases",
+    "complex multi-step problems",
+    "Past year questions frequently test",
+    "Describe a scenario where applying",
+    "heavily tested in recent NEET papers"
   ];
 
   for (const chapter of ALL_NEET_CHAPTER_SEEDS) {

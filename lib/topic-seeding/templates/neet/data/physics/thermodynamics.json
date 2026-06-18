@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Thermal equilibrium"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermal equilibrium is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermal equilibrium correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Thermal equilibrium is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermal equilibrium correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermal equilibrium during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermal equilibrium during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermal equilibrium."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Thermal equilibrium is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermal equilibrium in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermal equilibrium in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-thermal-equilibrium-1",
-              "question": "What are the critical factors or principles governing Thermal equilibrium?",
+              "question": "What are the fundamental laws or mechanisms governing Thermal equilibrium?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "thermodynamics-q-thermal-equilibrium-2",
-              "question": "Describe a scenario where applying the concept of Thermal equilibrium can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermal equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Zeroth law of thermodynamics"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Zeroth law of thermodynamics is heavily tested in recent NEET papers.",
-            "Applying the core principles of Zeroth law of thermodynamics correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Zeroth law of thermodynamics is frequently appears in NEET examinations.",
+            "Applying the core principles of Zeroth law of thermodynamics correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -136,7 +136,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Zeroth law of thermodynamics during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Zeroth law of thermodynamics during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Zeroth law of thermodynamics."
           ],
           "masteryCriteria": [
@@ -144,14 +144,14 @@
             "Successfully avoids common pitfalls when Zeroth law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Zeroth law of thermodynamics in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Zeroth law of thermodynamics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-zeroth-law-of-thermodynamics-1",
-              "question": "What are the critical factors or principles governing Zeroth law of thermodynamics?",
+              "question": "What are the fundamental laws or mechanisms governing Zeroth law of thermodynamics?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -178,7 +178,7 @@
             },
             {
               "id": "thermodynamics-q-zeroth-law-of-thermodynamics-2",
-              "question": "Describe a scenario where applying the concept of Zeroth law of thermodynamics can lead to a common student error.",
+              "question": "Explain an application where using the concept of Zeroth law of thermodynamics can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -219,8 +219,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Concept of temperature"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Concept of temperature is heavily tested in recent NEET papers.",
-            "Applying the core principles of Concept of temperature correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Concept of temperature is frequently appears in NEET examinations.",
+            "Applying the core principles of Concept of temperature correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -235,7 +235,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Concept of temperature during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Concept of temperature during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Concept of temperature."
           ],
           "masteryCriteria": [
@@ -243,14 +243,14 @@
             "Successfully avoids common pitfalls when Concept of temperature is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Concept of temperature in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Concept of temperature in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-concept-of-temperature-1",
-              "question": "What are the critical factors or principles governing Concept of temperature?",
+              "question": "What are the fundamental laws or mechanisms governing Concept of temperature?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -277,7 +277,7 @@
             },
             {
               "id": "thermodynamics-q-concept-of-temperature-2",
-              "question": "Describe a scenario where applying the concept of Concept of temperature can lead to a common student error.",
+              "question": "Explain an application where using the concept of Concept of temperature can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -318,8 +318,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat and work as path functions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat and work as path functions is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat and work as path functions correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Heat and work as path functions is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat and work as path functions correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -333,7 +333,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat and work as path functions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat and work as path functions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat and work as path functions."
           ],
           "masteryCriteria": [
@@ -341,14 +341,14 @@
             "Successfully avoids common pitfalls when Heat and work as path functions is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat and work as path functions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat and work as path functions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-heat-and-work-as-path-functions-1",
-              "question": "What are the critical factors or principles governing Heat and work as path functions?",
+              "question": "What are the fundamental laws or mechanisms governing Heat and work as path functions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -375,7 +375,7 @@
             },
             {
               "id": "thermodynamics-q-heat-and-work-as-path-functions-2",
-              "question": "Describe a scenario where applying the concept of Heat and work as path functions can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat and work as path functions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -416,8 +416,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Internal energy as state function"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Internal energy as state function is heavily tested in recent NEET papers.",
-            "Applying the core principles of Internal energy as state function correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Internal energy as state function is frequently appears in NEET examinations.",
+            "Applying the core principles of Internal energy as state function correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -431,7 +431,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Internal energy as state function during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Internal energy as state function during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Internal energy as state function."
           ],
           "masteryCriteria": [
@@ -439,14 +439,14 @@
             "Successfully avoids common pitfalls when Internal energy as state function is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Internal energy as state function in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Internal energy as state function in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-internal-energy-as-state-function-1",
-              "question": "What are the critical factors or principles governing Internal energy as state function?",
+              "question": "What are the fundamental laws or mechanisms governing Internal energy as state function?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -473,7 +473,7 @@
             },
             {
               "id": "thermodynamics-q-internal-energy-as-state-function-2",
-              "question": "Describe a scenario where applying the concept of Internal energy as state function can lead to a common student error.",
+              "question": "Explain an application where using the concept of Internal energy as state function can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -527,8 +527,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing First law of thermodynamics"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of First law of thermodynamics is heavily tested in recent NEET papers.",
-            "Applying the core principles of First law of thermodynamics correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of First law of thermodynamics is frequently appears in NEET examinations.",
+            "Applying the core principles of First law of thermodynamics correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -542,7 +542,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of First law of thermodynamics during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of First law of thermodynamics during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with First law of thermodynamics."
           ],
           "masteryCriteria": [
@@ -550,14 +550,14 @@
             "Successfully avoids common pitfalls when First law of thermodynamics is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of First law of thermodynamics in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of First law of thermodynamics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-first-law-of-thermodynamics-1",
-              "question": "What are the critical factors or principles governing First law of thermodynamics?",
+              "question": "What are the fundamental laws or mechanisms governing First law of thermodynamics?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -584,7 +584,7 @@
             },
             {
               "id": "thermodynamics-q-first-law-of-thermodynamics-2",
-              "question": "Describe a scenario where applying the concept of First law of thermodynamics can lead to a common student error.",
+              "question": "Explain an application where using the concept of First law of thermodynamics can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -625,8 +625,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Thermodynamic sign convention"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermodynamic sign convention is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermodynamic sign convention correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Thermodynamic sign convention is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermodynamic sign convention correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -640,7 +640,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermodynamic sign convention during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermodynamic sign convention during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamic sign convention."
           ],
           "masteryCriteria": [
@@ -648,14 +648,14 @@
             "Successfully avoids common pitfalls when Thermodynamic sign convention is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermodynamic sign convention in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermodynamic sign convention in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-thermodynamic-sign-convention-1",
-              "question": "What are the critical factors or principles governing Thermodynamic sign convention?",
+              "question": "What are the fundamental laws or mechanisms governing Thermodynamic sign convention?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -682,7 +682,7 @@
             },
             {
               "id": "thermodynamics-q-thermodynamic-sign-convention-2",
-              "question": "Describe a scenario where applying the concept of Thermodynamic sign convention can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermodynamic sign convention can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -723,8 +723,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isothermal process"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Isothermal process is heavily tested in recent NEET papers.",
-            "Applying the core principles of Isothermal process correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Isothermal process is frequently appears in NEET examinations.",
+            "Applying the core principles of Isothermal process correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -739,7 +739,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Isothermal process during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Isothermal process during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Isothermal process."
           ],
           "masteryCriteria": [
@@ -747,14 +747,14 @@
             "Successfully avoids common pitfalls when Isothermal process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Isothermal process in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Isothermal process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-isothermal-process-1",
-              "question": "What are the critical factors or principles governing Isothermal process?",
+              "question": "What are the fundamental laws or mechanisms governing Isothermal process?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -781,7 +781,7 @@
             },
             {
               "id": "thermodynamics-q-isothermal-process-2",
-              "question": "Describe a scenario where applying the concept of Isothermal process can lead to a common student error.",
+              "question": "Explain an application where using the concept of Isothermal process can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -822,8 +822,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Adiabatic process"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Adiabatic process is heavily tested in recent NEET papers.",
-            "Applying the core principles of Adiabatic process correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Adiabatic process is frequently appears in NEET examinations.",
+            "Applying the core principles of Adiabatic process correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -838,7 +838,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Adiabatic process during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Adiabatic process during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Adiabatic process."
           ],
           "masteryCriteria": [
@@ -846,14 +846,14 @@
             "Successfully avoids common pitfalls when Adiabatic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Adiabatic process in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Adiabatic process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-adiabatic-process-1",
-              "question": "What are the critical factors or principles governing Adiabatic process?",
+              "question": "What are the fundamental laws or mechanisms governing Adiabatic process?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -880,7 +880,7 @@
             },
             {
               "id": "thermodynamics-q-adiabatic-process-2",
-              "question": "Describe a scenario where applying the concept of Adiabatic process can lead to a common student error.",
+              "question": "Explain an application where using the concept of Adiabatic process can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -921,8 +921,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isochoric process"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Isochoric process is heavily tested in recent NEET papers.",
-            "Applying the core principles of Isochoric process correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Isochoric process is frequently appears in NEET examinations.",
+            "Applying the core principles of Isochoric process correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -937,7 +937,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Isochoric process during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Isochoric process during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Isochoric process."
           ],
           "masteryCriteria": [
@@ -945,14 +945,14 @@
             "Successfully avoids common pitfalls when Isochoric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Isochoric process in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Isochoric process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-isochoric-process-1",
-              "question": "What are the critical factors or principles governing Isochoric process?",
+              "question": "What are the fundamental laws or mechanisms governing Isochoric process?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -979,7 +979,7 @@
             },
             {
               "id": "thermodynamics-q-isochoric-process-2",
-              "question": "Describe a scenario where applying the concept of Isochoric process can lead to a common student error.",
+              "question": "Explain an application where using the concept of Isochoric process can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1033,8 +1033,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Isobaric process"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Isobaric process is heavily tested in recent NEET papers.",
-            "Applying the core principles of Isobaric process correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Isobaric process is frequently appears in NEET examinations.",
+            "Applying the core principles of Isobaric process correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1049,7 +1049,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Isobaric process during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Isobaric process during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Isobaric process."
           ],
           "masteryCriteria": [
@@ -1057,14 +1057,14 @@
             "Successfully avoids common pitfalls when Isobaric process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Isobaric process in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Isobaric process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-isobaric-process-1",
-              "question": "What are the critical factors or principles governing Isobaric process?",
+              "question": "What are the fundamental laws or mechanisms governing Isobaric process?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1091,7 +1091,7 @@
             },
             {
               "id": "thermodynamics-q-isobaric-process-2",
-              "question": "Describe a scenario where applying the concept of Isobaric process can lead to a common student error.",
+              "question": "Explain an application where using the concept of Isobaric process can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1132,8 +1132,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Cyclic process"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Cyclic process is heavily tested in recent NEET papers.",
-            "Applying the core principles of Cyclic process correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Cyclic process is frequently appears in NEET examinations.",
+            "Applying the core principles of Cyclic process correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1148,7 +1148,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Cyclic process during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Cyclic process during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Cyclic process."
           ],
           "masteryCriteria": [
@@ -1156,14 +1156,14 @@
             "Successfully avoids common pitfalls when Cyclic process is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Cyclic process in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Cyclic process in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-cyclic-process-1",
-              "question": "What are the critical factors or principles governing Cyclic process?",
+              "question": "What are the fundamental laws or mechanisms governing Cyclic process?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1190,7 +1190,7 @@
             },
             {
               "id": "thermodynamics-q-cyclic-process-2",
-              "question": "Describe a scenario where applying the concept of Cyclic process can lead to a common student error.",
+              "question": "Explain an application where using the concept of Cyclic process can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1231,8 +1231,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing PV graph work calculation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of PV graph work calculation is heavily tested in recent NEET papers.",
-            "Applying the core principles of PV graph work calculation correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of PV graph work calculation is frequently appears in NEET examinations.",
+            "Applying the core principles of PV graph work calculation correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1246,7 +1246,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of PV graph work calculation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of PV graph work calculation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with PV graph work calculation."
           ],
           "masteryCriteria": [
@@ -1254,14 +1254,14 @@
             "Successfully avoids common pitfalls when PV graph work calculation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of PV graph work calculation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of PV graph work calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-pv-graph-work-calculation-1",
-              "question": "What are the critical factors or principles governing PV graph work calculation?",
+              "question": "What are the fundamental laws or mechanisms governing PV graph work calculation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1288,7 +1288,7 @@
             },
             {
               "id": "thermodynamics-q-pv-graph-work-calculation-2",
-              "question": "Describe a scenario where applying the concept of PV graph work calculation can lead to a common student error.",
+              "question": "Explain an application where using the concept of PV graph work calculation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1329,8 +1329,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat engine efficiency"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat engine efficiency is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat engine efficiency correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Heat engine efficiency is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat engine efficiency correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1345,7 +1345,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat engine efficiency during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat engine efficiency during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat engine efficiency."
           ],
           "masteryCriteria": [
@@ -1353,14 +1353,14 @@
             "Successfully avoids common pitfalls when Heat engine efficiency is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat engine efficiency in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat engine efficiency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-heat-engine-efficiency-1",
-              "question": "What are the critical factors or principles governing Heat engine efficiency?",
+              "question": "What are the fundamental laws or mechanisms governing Heat engine efficiency?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1387,7 +1387,7 @@
             },
             {
               "id": "thermodynamics-q-heat-engine-efficiency-2",
-              "question": "Describe a scenario where applying the concept of Heat engine efficiency can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat engine efficiency can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1428,8 +1428,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Refrigerator coefficient of performance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Refrigerator coefficient of performance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Refrigerator coefficient of performance correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Refrigerator coefficient of performance is frequently appears in NEET examinations.",
+            "Applying the core principles of Refrigerator coefficient of performance correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1444,7 +1444,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Refrigerator coefficient of performance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Refrigerator coefficient of performance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Refrigerator coefficient of performance."
           ],
           "masteryCriteria": [
@@ -1452,14 +1452,14 @@
             "Successfully avoids common pitfalls when Refrigerator coefficient of performance is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Refrigerator coefficient of performance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Refrigerator coefficient of performance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-refrigerator-coefficient-of-performance-1",
-              "question": "What are the critical factors or principles governing Refrigerator coefficient of performance?",
+              "question": "What are the fundamental laws or mechanisms governing Refrigerator coefficient of performance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1486,7 +1486,7 @@
             },
             {
               "id": "thermodynamics-q-refrigerator-coefficient-of-performance-2",
-              "question": "Describe a scenario where applying the concept of Refrigerator coefficient of performance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Refrigerator coefficient of performance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1540,8 +1540,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Second law of thermodynamics statements"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Second law of thermodynamics statements is heavily tested in recent NEET papers.",
-            "Applying the core principles of Second law of thermodynamics statements correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Second law of thermodynamics statements is frequently appears in NEET examinations.",
+            "Applying the core principles of Second law of thermodynamics statements correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1555,7 +1555,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Second law of thermodynamics statements during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Second law of thermodynamics statements during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Second law of thermodynamics statements."
           ],
           "masteryCriteria": [
@@ -1563,14 +1563,14 @@
             "Successfully avoids common pitfalls when Second law of thermodynamics statements is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Second law of thermodynamics statements in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Second law of thermodynamics statements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-second-law-of-thermodynamics-statements-1",
-              "question": "What are the critical factors or principles governing Second law of thermodynamics statements?",
+              "question": "What are the fundamental laws or mechanisms governing Second law of thermodynamics statements?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1597,7 +1597,7 @@
             },
             {
               "id": "thermodynamics-q-second-law-of-thermodynamics-statements-2",
-              "question": "Describe a scenario where applying the concept of Second law of thermodynamics statements can lead to a common student error.",
+              "question": "Explain an application where using the concept of Second law of thermodynamics statements can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1638,8 +1638,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Reversible and irreversible processes"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Reversible and irreversible processes is heavily tested in recent NEET papers.",
-            "Applying the core principles of Reversible and irreversible processes correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Reversible and irreversible processes is frequently appears in NEET examinations.",
+            "Applying the core principles of Reversible and irreversible processes correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1654,7 +1654,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Reversible and irreversible processes during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Reversible and irreversible processes during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Reversible and irreversible processes."
           ],
           "masteryCriteria": [
@@ -1662,14 +1662,14 @@
             "Successfully avoids common pitfalls when Reversible and irreversible processes is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Reversible and irreversible processes in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Reversible and irreversible processes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-reversible-and-irreversible-processes-1",
-              "question": "What are the critical factors or principles governing Reversible and irreversible processes?",
+              "question": "What are the fundamental laws or mechanisms governing Reversible and irreversible processes?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1696,7 +1696,7 @@
             },
             {
               "id": "thermodynamics-q-reversible-and-irreversible-processes-2",
-              "question": "Describe a scenario where applying the concept of Reversible and irreversible processes can lead to a common student error.",
+              "question": "Explain an application where using the concept of Reversible and irreversible processes can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1737,8 +1737,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Carnot cycle steps"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Carnot cycle steps is heavily tested in recent NEET papers.",
-            "Applying the core principles of Carnot cycle steps correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Carnot cycle steps is frequently appears in NEET examinations.",
+            "Applying the core principles of Carnot cycle steps correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1753,7 +1753,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Carnot cycle steps during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Carnot cycle steps during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Carnot cycle steps."
           ],
           "masteryCriteria": [
@@ -1761,14 +1761,14 @@
             "Successfully avoids common pitfalls when Carnot cycle steps is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Carnot cycle steps in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Carnot cycle steps in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-carnot-cycle-steps-1",
-              "question": "What are the critical factors or principles governing Carnot cycle steps?",
+              "question": "What are the fundamental laws or mechanisms governing Carnot cycle steps?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1795,7 +1795,7 @@
             },
             {
               "id": "thermodynamics-q-carnot-cycle-steps-2",
-              "question": "Describe a scenario where applying the concept of Carnot cycle steps can lead to a common student error.",
+              "question": "Explain an application where using the concept of Carnot cycle steps can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1836,8 +1836,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Carnot efficiency formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Carnot efficiency formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Carnot efficiency formula correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Carnot efficiency formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Carnot efficiency formula correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1852,7 +1852,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Carnot efficiency formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Carnot efficiency formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Carnot efficiency formula."
           ],
           "masteryCriteria": [
@@ -1860,14 +1860,14 @@
             "Successfully avoids common pitfalls when Carnot efficiency formula is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Carnot efficiency formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Carnot efficiency formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-carnot-efficiency-formula-1",
-              "question": "What are the critical factors or principles governing Carnot efficiency formula?",
+              "question": "What are the fundamental laws or mechanisms governing Carnot efficiency formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1894,7 +1894,7 @@
             },
             {
               "id": "thermodynamics-q-carnot-efficiency-formula-2",
-              "question": "Describe a scenario where applying the concept of Carnot efficiency formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Carnot efficiency formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1935,8 +1935,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Specific heat of gases relation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Specific heat of gases relation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Specific heat of gases relation correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Specific heat of gases relation is frequently appears in NEET examinations.",
+            "Applying the core principles of Specific heat of gases relation correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -1951,7 +1951,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Specific heat of gases relation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Specific heat of gases relation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of gases relation."
           ],
           "masteryCriteria": [
@@ -1959,14 +1959,14 @@
             "Successfully avoids common pitfalls when Specific heat of gases relation is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Specific heat of gases relation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Specific heat of gases relation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-specific-heat-of-gases-relation-1",
-              "question": "What are the critical factors or principles governing Specific heat of gases relation?",
+              "question": "What are the fundamental laws or mechanisms governing Specific heat of gases relation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1993,7 +1993,7 @@
             },
             {
               "id": "thermodynamics-q-specific-heat-of-gases-relation-2",
-              "question": "Describe a scenario where applying the concept of Specific heat of gases relation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Specific heat of gases relation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2047,8 +2047,8 @@
             "NCERT Physics Class 11, Chapter: Thermodynamics, Section detailing Heat pump principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat pump principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat pump principle correctly is essential for solving complex multi-step problems in Thermodynamics."
+            "A thorough understanding of Heat pump principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat pump principle correctly is essential for solving integrated numerical and conceptual problems in Thermodynamics."
           ],
           "formulas": [
             {
@@ -2063,7 +2063,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat pump principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat pump principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat pump principle."
           ],
           "masteryCriteria": [
@@ -2071,14 +2071,14 @@
             "Successfully avoids common pitfalls when Heat pump principle is integrated with other concepts in Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat pump principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat pump principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "thermodynamics-q-heat-pump-principle-1",
-              "question": "What are the critical factors or principles governing Heat pump principle?",
+              "question": "What are the fundamental laws or mechanisms governing Heat pump principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2105,7 +2105,7 @@
             },
             {
               "id": "thermodynamics-q-heat-pump-principle-2",
-              "question": "Describe a scenario where applying the concept of Heat pump principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat pump principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

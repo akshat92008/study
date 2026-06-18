@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
       .from('agent_actions')
       .select('id, agent_name, action_type, status, reason, target_type, target_id, created_at, evidence, error, error_code')
       .eq('user_id', user.id)
-      .in('status', ['applied', 'skipped', 'failed'])
+      .eq('status', 'applied')
       .order('created_at', { ascending: false })
       .limit(limit);
 

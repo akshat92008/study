@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Magnetic flux definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic flux definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic flux definition correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Magnetic flux definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic flux definition correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic flux definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic flux definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic flux definition."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Magnetic flux definition is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic flux definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic flux definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-magnetic-flux-definition-1",
-              "question": "What are the critical factors or principles governing Magnetic flux definition?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic flux definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "emi-and-ac-q-magnetic-flux-definition-2",
-              "question": "Describe a scenario where applying the concept of Magnetic flux definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Electromagnetic induction (Lenz law)"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electromagnetic induction (Lenz law) is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electromagnetic induction (Lenz law) correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Electromagnetic induction (Lenz law) is frequently appears in NEET examinations.",
+            "Applying the core principles of Electromagnetic induction (Lenz law) correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electromagnetic induction (Lenz law) during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electromagnetic induction (Lenz law) during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electromagnetic induction (Lenz law)."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Electromagnetic induction (Lenz law) is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electromagnetic induction (Lenz law) in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electromagnetic induction (Lenz law) in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-1",
-              "question": "What are the critical factors or principles governing Electromagnetic induction (Lenz law)?",
+              "question": "What are the fundamental laws or mechanisms governing Electromagnetic induction (Lenz law)?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-2",
-              "question": "Describe a scenario where applying the concept of Electromagnetic induction (Lenz law) can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electromagnetic induction (Lenz law) can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Motional emf"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Motional emf is heavily tested in recent NEET papers.",
-            "Applying the core principles of Motional emf correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Motional emf is frequently appears in NEET examinations.",
+            "Applying the core principles of Motional emf correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Motional emf during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Motional emf during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Motional emf."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Motional emf is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Motional emf in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Motional emf in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-motional-emf-1",
-              "question": "What are the critical factors or principles governing Motional emf?",
+              "question": "What are the fundamental laws or mechanisms governing Motional emf?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "emi-and-ac-q-motional-emf-2",
-              "question": "Describe a scenario where applying the concept of Motional emf can lead to a common student error.",
+              "question": "Explain an application where using the concept of Motional emf can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Induced current calculation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Induced current calculation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Induced current calculation correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Induced current calculation is frequently appears in NEET examinations.",
+            "Applying the core principles of Induced current calculation correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -334,7 +334,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Induced current calculation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Induced current calculation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Induced current calculation."
           ],
           "masteryCriteria": [
@@ -342,14 +342,14 @@
             "Successfully avoids common pitfalls when Induced current calculation is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Induced current calculation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Induced current calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-induced-current-calculation-1",
-              "question": "What are the critical factors or principles governing Induced current calculation?",
+              "question": "What are the fundamental laws or mechanisms governing Induced current calculation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -376,7 +376,7 @@
             },
             {
               "id": "emi-and-ac-q-induced-current-calculation-2",
-              "question": "Describe a scenario where applying the concept of Induced current calculation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Induced current calculation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -417,8 +417,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Eddy currents"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Eddy currents is heavily tested in recent NEET papers.",
-            "Applying the core principles of Eddy currents correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Eddy currents is frequently appears in NEET examinations.",
+            "Applying the core principles of Eddy currents correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -432,7 +432,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Eddy currents during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Eddy currents during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Eddy currents."
           ],
           "masteryCriteria": [
@@ -440,14 +440,14 @@
             "Successfully avoids common pitfalls when Eddy currents is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Eddy currents in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Eddy currents in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-eddy-currents-1",
-              "question": "What are the critical factors or principles governing Eddy currents?",
+              "question": "What are the fundamental laws or mechanisms governing Eddy currents?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -474,7 +474,7 @@
             },
             {
               "id": "emi-and-ac-q-eddy-currents-2",
-              "question": "Describe a scenario where applying the concept of Eddy currents can lead to a common student error.",
+              "question": "Explain an application where using the concept of Eddy currents can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -528,8 +528,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Self inductance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Self inductance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Self inductance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Self inductance is frequently appears in NEET examinations.",
+            "Applying the core principles of Self inductance correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -544,7 +544,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Self inductance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Self inductance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Self inductance."
           ],
           "masteryCriteria": [
@@ -552,14 +552,14 @@
             "Successfully avoids common pitfalls when Self inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Self inductance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Self inductance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-self-inductance-1",
-              "question": "What are the critical factors or principles governing Self inductance?",
+              "question": "What are the fundamental laws or mechanisms governing Self inductance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -586,7 +586,7 @@
             },
             {
               "id": "emi-and-ac-q-self-inductance-2",
-              "question": "Describe a scenario where applying the concept of Self inductance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Self inductance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -627,8 +627,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Mutual inductance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mutual inductance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mutual inductance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Mutual inductance is frequently appears in NEET examinations.",
+            "Applying the core principles of Mutual inductance correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -643,7 +643,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mutual inductance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mutual inductance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mutual inductance."
           ],
           "masteryCriteria": [
@@ -651,14 +651,14 @@
             "Successfully avoids common pitfalls when Mutual inductance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mutual inductance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mutual inductance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-mutual-inductance-1",
-              "question": "What are the critical factors or principles governing Mutual inductance?",
+              "question": "What are the fundamental laws or mechanisms governing Mutual inductance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -685,7 +685,7 @@
             },
             {
               "id": "emi-and-ac-q-mutual-inductance-2",
-              "question": "Describe a scenario where applying the concept of Mutual inductance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mutual inductance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -726,8 +726,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Energy stored in inductor"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Energy stored in inductor is heavily tested in recent NEET papers.",
-            "Applying the core principles of Energy stored in inductor correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Energy stored in inductor is frequently appears in NEET examinations.",
+            "Applying the core principles of Energy stored in inductor correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -741,7 +741,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Energy stored in inductor during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Energy stored in inductor during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Energy stored in inductor."
           ],
           "masteryCriteria": [
@@ -749,14 +749,14 @@
             "Successfully avoids common pitfalls when Energy stored in inductor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Energy stored in inductor in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Energy stored in inductor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-energy-stored-in-inductor-1",
-              "question": "What are the critical factors or principles governing Energy stored in inductor?",
+              "question": "What are the fundamental laws or mechanisms governing Energy stored in inductor?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -783,7 +783,7 @@
             },
             {
               "id": "emi-and-ac-q-energy-stored-in-inductor-2",
-              "question": "Describe a scenario where applying the concept of Energy stored in inductor can lead to a common student error.",
+              "question": "Explain an application where using the concept of Energy stored in inductor can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -824,8 +824,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Alternating current basics"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Alternating current basics is heavily tested in recent NEET papers.",
-            "Applying the core principles of Alternating current basics correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Alternating current basics is frequently appears in NEET examinations.",
+            "Applying the core principles of Alternating current basics correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -839,7 +839,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Alternating current basics during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Alternating current basics during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Alternating current basics."
           ],
           "masteryCriteria": [
@@ -847,14 +847,14 @@
             "Successfully avoids common pitfalls when Alternating current basics is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Alternating current basics in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Alternating current basics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-alternating-current-basics-1",
-              "question": "What are the critical factors or principles governing Alternating current basics?",
+              "question": "What are the fundamental laws or mechanisms governing Alternating current basics?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -881,7 +881,7 @@
             },
             {
               "id": "emi-and-ac-q-alternating-current-basics-2",
-              "question": "Describe a scenario where applying the concept of Alternating current basics can lead to a common student error.",
+              "question": "Explain an application where using the concept of Alternating current basics can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -922,8 +922,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Peak value of AC"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Peak value of AC is heavily tested in recent NEET papers.",
-            "Applying the core principles of Peak value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Peak value of AC is frequently appears in NEET examinations.",
+            "Applying the core principles of Peak value of AC correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -938,7 +938,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Peak value of AC during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Peak value of AC during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Peak value of AC."
           ],
           "masteryCriteria": [
@@ -946,14 +946,14 @@
             "Successfully avoids common pitfalls when Peak value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Peak value of AC in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Peak value of AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-peak-value-of-ac-1",
-              "question": "What are the critical factors or principles governing Peak value of AC?",
+              "question": "What are the fundamental laws or mechanisms governing Peak value of AC?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -980,7 +980,7 @@
             },
             {
               "id": "emi-and-ac-q-peak-value-of-ac-2",
-              "question": "Describe a scenario where applying the concept of Peak value of AC can lead to a common student error.",
+              "question": "Explain an application where using the concept of Peak value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1034,8 +1034,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Rms value of AC"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Rms value of AC is heavily tested in recent NEET papers.",
-            "Applying the core principles of Rms value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Rms value of AC is frequently appears in NEET examinations.",
+            "Applying the core principles of Rms value of AC correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1050,7 +1050,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Rms value of AC during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Rms value of AC during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Rms value of AC."
           ],
           "masteryCriteria": [
@@ -1058,14 +1058,14 @@
             "Successfully avoids common pitfalls when Rms value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Rms value of AC in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Rms value of AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-rms-value-of-ac-1",
-              "question": "What are the critical factors or principles governing Rms value of AC?",
+              "question": "What are the fundamental laws or mechanisms governing Rms value of AC?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1092,7 +1092,7 @@
             },
             {
               "id": "emi-and-ac-q-rms-value-of-ac-2",
-              "question": "Describe a scenario where applying the concept of Rms value of AC can lead to a common student error.",
+              "question": "Explain an application where using the concept of Rms value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1133,8 +1133,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Average value of AC"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Average value of AC is heavily tested in recent NEET papers.",
-            "Applying the core principles of Average value of AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Average value of AC is frequently appears in NEET examinations.",
+            "Applying the core principles of Average value of AC correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1149,7 +1149,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Average value of AC during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Average value of AC during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Average value of AC."
           ],
           "masteryCriteria": [
@@ -1157,14 +1157,14 @@
             "Successfully avoids common pitfalls when Average value of AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Average value of AC in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Average value of AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-average-value-of-ac-1",
-              "question": "What are the critical factors or principles governing Average value of AC?",
+              "question": "What are the fundamental laws or mechanisms governing Average value of AC?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1191,7 +1191,7 @@
             },
             {
               "id": "emi-and-ac-q-average-value-of-ac-2",
-              "question": "Describe a scenario where applying the concept of Average value of AC can lead to a common student error.",
+              "question": "Explain an application where using the concept of Average value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1232,8 +1232,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Inductive reactance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Inductive reactance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Inductive reactance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Inductive reactance is frequently appears in NEET examinations.",
+            "Applying the core principles of Inductive reactance correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1248,7 +1248,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Inductive reactance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Inductive reactance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Inductive reactance."
           ],
           "masteryCriteria": [
@@ -1256,14 +1256,14 @@
             "Successfully avoids common pitfalls when Inductive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Inductive reactance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Inductive reactance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-inductive-reactance-1",
-              "question": "What are the critical factors or principles governing Inductive reactance?",
+              "question": "What are the fundamental laws or mechanisms governing Inductive reactance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1290,7 +1290,7 @@
             },
             {
               "id": "emi-and-ac-q-inductive-reactance-2",
-              "question": "Describe a scenario where applying the concept of Inductive reactance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Inductive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1331,8 +1331,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Capacitive reactance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Capacitive reactance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Capacitive reactance correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Capacitive reactance is frequently appears in NEET examinations.",
+            "Applying the core principles of Capacitive reactance correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1347,7 +1347,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Capacitive reactance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Capacitive reactance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Capacitive reactance."
           ],
           "masteryCriteria": [
@@ -1355,14 +1355,14 @@
             "Successfully avoids common pitfalls when Capacitive reactance is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Capacitive reactance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Capacitive reactance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-capacitive-reactance-1",
-              "question": "What are the critical factors or principles governing Capacitive reactance?",
+              "question": "What are the fundamental laws or mechanisms governing Capacitive reactance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1389,7 +1389,7 @@
             },
             {
               "id": "emi-and-ac-q-capacitive-reactance-2",
-              "question": "Describe a scenario where applying the concept of Capacitive reactance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Capacitive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1430,8 +1430,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Impedance in AC"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Impedance in AC is heavily tested in recent NEET papers.",
-            "Applying the core principles of Impedance in AC correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Impedance in AC is frequently appears in NEET examinations.",
+            "Applying the core principles of Impedance in AC correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1446,7 +1446,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Impedance in AC during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Impedance in AC during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Impedance in AC."
           ],
           "masteryCriteria": [
@@ -1454,14 +1454,14 @@
             "Successfully avoids common pitfalls when Impedance in AC is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Impedance in AC in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Impedance in AC in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-impedance-in-ac-1",
-              "question": "What are the critical factors or principles governing Impedance in AC?",
+              "question": "What are the fundamental laws or mechanisms governing Impedance in AC?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1488,7 +1488,7 @@
             },
             {
               "id": "emi-and-ac-q-impedance-in-ac-2",
-              "question": "Describe a scenario where applying the concept of Impedance in AC can lead to a common student error.",
+              "question": "Explain an application where using the concept of Impedance in AC can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1542,8 +1542,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing AC resonance/LCR"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of AC resonance/LCR is heavily tested in recent NEET papers.",
-            "Applying the core principles of AC resonance/LCR correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of AC resonance/LCR is frequently appears in NEET examinations.",
+            "Applying the core principles of AC resonance/LCR correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1558,7 +1558,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of AC resonance/LCR during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of AC resonance/LCR during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with AC resonance/LCR."
           ],
           "masteryCriteria": [
@@ -1566,14 +1566,14 @@
             "Successfully avoids common pitfalls when AC resonance/LCR is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of AC resonance/LCR in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of AC resonance/LCR in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-ac-resonance-lcr-1",
-              "question": "What are the critical factors or principles governing AC resonance/LCR?",
+              "question": "What are the fundamental laws or mechanisms governing AC resonance/LCR?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1600,7 +1600,7 @@
             },
             {
               "id": "emi-and-ac-q-ac-resonance-lcr-2",
-              "question": "Describe a scenario where applying the concept of AC resonance/LCR can lead to a common student error.",
+              "question": "Explain an application where using the concept of AC resonance/LCR can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1641,8 +1641,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Power in AC circuits"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Power in AC circuits is heavily tested in recent NEET papers.",
-            "Applying the core principles of Power in AC circuits correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Power in AC circuits is frequently appears in NEET examinations.",
+            "Applying the core principles of Power in AC circuits correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1657,7 +1657,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Power in AC circuits during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Power in AC circuits during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Power in AC circuits."
           ],
           "masteryCriteria": [
@@ -1665,14 +1665,14 @@
             "Successfully avoids common pitfalls when Power in AC circuits is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Power in AC circuits in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Power in AC circuits in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-power-in-ac-circuits-1",
-              "question": "What are the critical factors or principles governing Power in AC circuits?",
+              "question": "What are the fundamental laws or mechanisms governing Power in AC circuits?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1699,7 +1699,7 @@
             },
             {
               "id": "emi-and-ac-q-power-in-ac-circuits-2",
-              "question": "Describe a scenario where applying the concept of Power in AC circuits can lead to a common student error.",
+              "question": "Explain an application where using the concept of Power in AC circuits can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1740,8 +1740,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Power factor"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Power factor is heavily tested in recent NEET papers.",
-            "Applying the core principles of Power factor correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Power factor is frequently appears in NEET examinations.",
+            "Applying the core principles of Power factor correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1756,7 +1756,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Power factor during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Power factor during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Power factor."
           ],
           "masteryCriteria": [
@@ -1764,14 +1764,14 @@
             "Successfully avoids common pitfalls when Power factor is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Power factor in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Power factor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-power-factor-1",
-              "question": "What are the critical factors or principles governing Power factor?",
+              "question": "What are the fundamental laws or mechanisms governing Power factor?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1798,7 +1798,7 @@
             },
             {
               "id": "emi-and-ac-q-power-factor-2",
-              "question": "Describe a scenario where applying the concept of Power factor can lead to a common student error.",
+              "question": "Explain an application where using the concept of Power factor can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1839,8 +1839,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Wattless current"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Wattless current is heavily tested in recent NEET papers.",
-            "Applying the core principles of Wattless current correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Wattless current is frequently appears in NEET examinations.",
+            "Applying the core principles of Wattless current correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1854,7 +1854,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Wattless current during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Wattless current during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Wattless current."
           ],
           "masteryCriteria": [
@@ -1862,14 +1862,14 @@
             "Successfully avoids common pitfalls when Wattless current is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Wattless current in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Wattless current in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-wattless-current-1",
-              "question": "What are the critical factors or principles governing Wattless current?",
+              "question": "What are the fundamental laws or mechanisms governing Wattless current?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1896,7 +1896,7 @@
             },
             {
               "id": "emi-and-ac-q-wattless-current-2",
-              "question": "Describe a scenario where applying the concept of Wattless current can lead to a common student error.",
+              "question": "Explain an application where using the concept of Wattless current can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1937,8 +1937,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Transformer principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Transformer principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Transformer principle correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Transformer principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Transformer principle correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -1953,7 +1953,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Transformer principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Transformer principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Transformer principle."
           ],
           "masteryCriteria": [
@@ -1961,14 +1961,14 @@
             "Successfully avoids common pitfalls when Transformer principle is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Transformer principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Transformer principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-transformer-principle-1",
-              "question": "What are the critical factors or principles governing Transformer principle?",
+              "question": "What are the fundamental laws or mechanisms governing Transformer principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1995,7 +1995,7 @@
             },
             {
               "id": "emi-and-ac-q-transformer-principle-2",
-              "question": "Describe a scenario where applying the concept of Transformer principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Transformer principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2049,8 +2049,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing Step-up and step-down transformers"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Step-up and step-down transformers is heavily tested in recent NEET papers.",
-            "Applying the core principles of Step-up and step-down transformers correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of Step-up and step-down transformers is frequently appears in NEET examinations.",
+            "Applying the core principles of Step-up and step-down transformers correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -2065,7 +2065,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Step-up and step-down transformers during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Step-up and step-down transformers during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Step-up and step-down transformers."
           ],
           "masteryCriteria": [
@@ -2073,14 +2073,14 @@
             "Successfully avoids common pitfalls when Step-up and step-down transformers is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Step-up and step-down transformers in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Step-up and step-down transformers in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-step-up-and-step-down-transformers-1",
-              "question": "What are the critical factors or principles governing Step-up and step-down transformers?",
+              "question": "What are the fundamental laws or mechanisms governing Step-up and step-down transformers?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2107,7 +2107,7 @@
             },
             {
               "id": "emi-and-ac-q-step-up-and-step-down-transformers-2",
-              "question": "Describe a scenario where applying the concept of Step-up and step-down transformers can lead to a common student error.",
+              "question": "Explain an application where using the concept of Step-up and step-down transformers can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2148,8 +2148,8 @@
             "NCERT Physics Class 12, Chapter: Electromagnetic Induction and Alternating Currents, Section detailing AC generator"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of AC generator is heavily tested in recent NEET papers.",
-            "Applying the core principles of AC generator correctly is essential for solving complex multi-step problems in Electromagnetic Induction and Alternating Currents."
+            "A thorough understanding of AC generator is frequently appears in NEET examinations.",
+            "Applying the core principles of AC generator correctly is essential for solving integrated numerical and conceptual problems in Electromagnetic Induction and Alternating Currents."
           ],
           "formulas": [
             {
@@ -2164,7 +2164,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of AC generator during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of AC generator during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with AC generator."
           ],
           "masteryCriteria": [
@@ -2172,14 +2172,14 @@
             "Successfully avoids common pitfalls when AC generator is integrated with other concepts in Electromagnetic Induction and Alternating Currents."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of AC generator in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of AC generator in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "emi-and-ac-q-ac-generator-1",
-              "question": "What are the critical factors or principles governing AC generator?",
+              "question": "What are the fundamental laws or mechanisms governing AC generator?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2206,7 +2206,7 @@
             },
             {
               "id": "emi-and-ac-q-ac-generator-2",
-              "question": "Describe a scenario where applying the concept of AC generator can lead to a common student error.",
+              "question": "Explain an application where using the concept of AC generator can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

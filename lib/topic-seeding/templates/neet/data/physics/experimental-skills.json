@@ -22,8 +22,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Vernier calipers measurements"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Vernier calipers measurements is heavily tested in recent NEET papers.",
-            "Applying the core principles of Vernier calipers measurements correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Vernier calipers measurements is frequently appears in NEET examinations.",
+            "Applying the core principles of Vernier calipers measurements correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Vernier calipers measurements during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Vernier calipers measurements during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Vernier calipers measurements."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Vernier calipers measurements is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Vernier calipers measurements in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Vernier calipers measurements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-vernier-calipers-measurements-1",
-              "question": "What are the critical factors or principles governing Vernier calipers measurements?",
+              "question": "What are the fundamental laws or mechanisms governing Vernier calipers measurements?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "experimental-skills-q-vernier-calipers-measurements-2",
-              "question": "Describe a scenario where applying the concept of Vernier calipers measurements can lead to a common student error.",
+              "question": "Explain an application where using the concept of Vernier calipers measurements can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Screw gauge measurements"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Screw gauge measurements is heavily tested in recent NEET papers.",
-            "Applying the core principles of Screw gauge measurements correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Screw gauge measurements is frequently appears in NEET examinations.",
+            "Applying the core principles of Screw gauge measurements correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Screw gauge measurements during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Screw gauge measurements during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Screw gauge measurements."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Screw gauge measurements is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Screw gauge measurements in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Screw gauge measurements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-screw-gauge-measurements-1",
-              "question": "What are the critical factors or principles governing Screw gauge measurements?",
+              "question": "What are the fundamental laws or mechanisms governing Screw gauge measurements?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "experimental-skills-q-screw-gauge-measurements-2",
-              "question": "Describe a scenario where applying the concept of Screw gauge measurements can lead to a common student error.",
+              "question": "Explain an application where using the concept of Screw gauge measurements can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Simple pendulum experiment"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Simple pendulum experiment is heavily tested in recent NEET papers.",
-            "Applying the core principles of Simple pendulum experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Simple pendulum experiment is frequently appears in NEET examinations.",
+            "Applying the core principles of Simple pendulum experiment correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Simple pendulum experiment during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Simple pendulum experiment during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Simple pendulum experiment."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Simple pendulum experiment is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Simple pendulum experiment in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Simple pendulum experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-simple-pendulum-experiment-1",
-              "question": "What are the critical factors or principles governing Simple pendulum experiment?",
+              "question": "What are the fundamental laws or mechanisms governing Simple pendulum experiment?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "experimental-skills-q-simple-pendulum-experiment-2",
-              "question": "Describe a scenario where applying the concept of Simple pendulum experiment can lead to a common student error.",
+              "question": "Explain an application where using the concept of Simple pendulum experiment can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Spring constant determination"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Spring constant determination is heavily tested in recent NEET papers.",
-            "Applying the core principles of Spring constant determination correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Spring constant determination is frequently appears in NEET examinations.",
+            "Applying the core principles of Spring constant determination correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Spring constant determination during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Spring constant determination during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Spring constant determination."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Spring constant determination is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Spring constant determination in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Spring constant determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-spring-constant-determination-1",
-              "question": "What are the critical factors or principles governing Spring constant determination?",
+              "question": "What are the fundamental laws or mechanisms governing Spring constant determination?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "experimental-skills-q-spring-constant-determination-2",
-              "question": "Describe a scenario where applying the concept of Spring constant determination can lead to a common student error.",
+              "question": "Explain an application where using the concept of Spring constant determination can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -431,8 +431,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Ohm’s law verification"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Ohm’s law verification is heavily tested in recent NEET papers.",
-            "Applying the core principles of Ohm’s law verification correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Ohm’s law verification is frequently appears in NEET examinations.",
+            "Applying the core principles of Ohm’s law verification correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -446,7 +446,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Ohm’s law verification during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Ohm’s law verification during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Ohm’s law verification."
           ],
           "masteryCriteria": [
@@ -454,14 +454,14 @@
             "Successfully avoids common pitfalls when Ohm’s law verification is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Ohm’s law verification in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Ohm’s law verification in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-ohm-s-law-verification-1",
-              "question": "What are the critical factors or principles governing Ohm’s law verification?",
+              "question": "What are the fundamental laws or mechanisms governing Ohm’s law verification?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -488,7 +488,7 @@
             },
             {
               "id": "experimental-skills-q-ohm-s-law-verification-2",
-              "question": "Describe a scenario where applying the concept of Ohm’s law verification can lead to a common student error.",
+              "question": "Explain an application where using the concept of Ohm’s law verification can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -529,8 +529,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Meter bridge specific resistance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Meter bridge specific resistance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Meter bridge specific resistance correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Meter bridge specific resistance is frequently appears in NEET examinations.",
+            "Applying the core principles of Meter bridge specific resistance correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -545,7 +545,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Meter bridge specific resistance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Meter bridge specific resistance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Meter bridge specific resistance."
           ],
           "masteryCriteria": [
@@ -553,14 +553,14 @@
             "Successfully avoids common pitfalls when Meter bridge specific resistance is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Meter bridge specific resistance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Meter bridge specific resistance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-meter-bridge-specific-resistance-1",
-              "question": "What are the critical factors or principles governing Meter bridge specific resistance?",
+              "question": "What are the fundamental laws or mechanisms governing Meter bridge specific resistance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -587,7 +587,7 @@
             },
             {
               "id": "experimental-skills-q-meter-bridge-specific-resistance-2",
-              "question": "Describe a scenario where applying the concept of Meter bridge specific resistance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Meter bridge specific resistance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -628,8 +628,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Potentiometer cell comparison"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Potentiometer cell comparison is heavily tested in recent NEET papers.",
-            "Applying the core principles of Potentiometer cell comparison correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Potentiometer cell comparison is frequently appears in NEET examinations.",
+            "Applying the core principles of Potentiometer cell comparison correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -644,7 +644,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Potentiometer cell comparison during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Potentiometer cell comparison during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Potentiometer cell comparison."
           ],
           "masteryCriteria": [
@@ -652,14 +652,14 @@
             "Successfully avoids common pitfalls when Potentiometer cell comparison is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Potentiometer cell comparison in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Potentiometer cell comparison in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-potentiometer-cell-comparison-1",
-              "question": "What are the critical factors or principles governing Potentiometer cell comparison?",
+              "question": "What are the fundamental laws or mechanisms governing Potentiometer cell comparison?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -686,7 +686,7 @@
             },
             {
               "id": "experimental-skills-q-potentiometer-cell-comparison-2",
-              "question": "Describe a scenario where applying the concept of Potentiometer cell comparison can lead to a common student error.",
+              "question": "Explain an application where using the concept of Potentiometer cell comparison can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -727,8 +727,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Diode V-I characteristics experiment"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Diode V-I characteristics experiment is heavily tested in recent NEET papers.",
-            "Applying the core principles of Diode V-I characteristics experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Diode V-I characteristics experiment is frequently appears in NEET examinations.",
+            "Applying the core principles of Diode V-I characteristics experiment correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -743,7 +743,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Diode V-I characteristics experiment during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Diode V-I characteristics experiment during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Diode V-I characteristics experiment."
           ],
           "masteryCriteria": [
@@ -751,14 +751,14 @@
             "Successfully avoids common pitfalls when Diode V-I characteristics experiment is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Diode V-I characteristics experiment in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Diode V-I characteristics experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-diode-v-i-characteristics-experiment-1",
-              "question": "What are the critical factors or principles governing Diode V-I characteristics experiment?",
+              "question": "What are the fundamental laws or mechanisms governing Diode V-I characteristics experiment?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -785,7 +785,7 @@
             },
             {
               "id": "experimental-skills-q-diode-v-i-characteristics-experiment-2",
-              "question": "Describe a scenario where applying the concept of Diode V-I characteristics experiment can lead to a common student error.",
+              "question": "Explain an application where using the concept of Diode V-I characteristics experiment can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -839,8 +839,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Focal length of concave mirror"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Focal length of concave mirror is heavily tested in recent NEET papers.",
-            "Applying the core principles of Focal length of concave mirror correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Focal length of concave mirror is frequently appears in NEET examinations.",
+            "Applying the core principles of Focal length of concave mirror correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -855,7 +855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Focal length of concave mirror during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Focal length of concave mirror during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Focal length of concave mirror."
           ],
           "masteryCriteria": [
@@ -863,14 +863,14 @@
             "Successfully avoids common pitfalls when Focal length of concave mirror is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Focal length of concave mirror in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Focal length of concave mirror in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-focal-length-of-concave-mirror-1",
-              "question": "What are the critical factors or principles governing Focal length of concave mirror?",
+              "question": "What are the fundamental laws or mechanisms governing Focal length of concave mirror?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -897,7 +897,7 @@
             },
             {
               "id": "experimental-skills-q-focal-length-of-concave-mirror-2",
-              "question": "Describe a scenario where applying the concept of Focal length of concave mirror can lead to a common student error.",
+              "question": "Explain an application where using the concept of Focal length of concave mirror can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -938,8 +938,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Focal length of convex lens"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Focal length of convex lens is heavily tested in recent NEET papers.",
-            "Applying the core principles of Focal length of convex lens correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Focal length of convex lens is frequently appears in NEET examinations.",
+            "Applying the core principles of Focal length of convex lens correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -953,7 +953,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Focal length of convex lens during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Focal length of convex lens during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Focal length of convex lens."
           ],
           "masteryCriteria": [
@@ -961,14 +961,14 @@
             "Successfully avoids common pitfalls when Focal length of convex lens is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Focal length of convex lens in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Focal length of convex lens in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-focal-length-of-convex-lens-1",
-              "question": "What are the critical factors or principles governing Focal length of convex lens?",
+              "question": "What are the fundamental laws or mechanisms governing Focal length of convex lens?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -995,7 +995,7 @@
             },
             {
               "id": "experimental-skills-q-focal-length-of-convex-lens-2",
-              "question": "Describe a scenario where applying the concept of Focal length of convex lens can lead to a common student error.",
+              "question": "Explain an application where using the concept of Focal length of convex lens can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1036,8 +1036,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Glass slab refractive index"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Glass slab refractive index is heavily tested in recent NEET papers.",
-            "Applying the core principles of Glass slab refractive index correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Glass slab refractive index is frequently appears in NEET examinations.",
+            "Applying the core principles of Glass slab refractive index correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1052,7 +1052,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Glass slab refractive index during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Glass slab refractive index during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Glass slab refractive index."
           ],
           "masteryCriteria": [
@@ -1060,14 +1060,14 @@
             "Successfully avoids common pitfalls when Glass slab refractive index is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Glass slab refractive index in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Glass slab refractive index in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-glass-slab-refractive-index-1",
-              "question": "What are the critical factors or principles governing Glass slab refractive index?",
+              "question": "What are the fundamental laws or mechanisms governing Glass slab refractive index?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1094,7 +1094,7 @@
             },
             {
               "id": "experimental-skills-q-glass-slab-refractive-index-2",
-              "question": "Describe a scenario where applying the concept of Glass slab refractive index can lead to a common student error.",
+              "question": "Explain an application where using the concept of Glass slab refractive index can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1135,8 +1135,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Graph plotting techniques"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Graph plotting techniques is heavily tested in recent NEET papers.",
-            "Applying the core principles of Graph plotting techniques correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Graph plotting techniques is frequently appears in NEET examinations.",
+            "Applying the core principles of Graph plotting techniques correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1151,7 +1151,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Graph plotting techniques during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Graph plotting techniques during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Graph plotting techniques."
           ],
           "masteryCriteria": [
@@ -1159,14 +1159,14 @@
             "Successfully avoids common pitfalls when Graph plotting techniques is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Graph plotting techniques in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Graph plotting techniques in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-graph-plotting-techniques-1",
-              "question": "What are the critical factors or principles governing Graph plotting techniques?",
+              "question": "What are the fundamental laws or mechanisms governing Graph plotting techniques?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1193,7 +1193,7 @@
             },
             {
               "id": "experimental-skills-q-graph-plotting-techniques-2",
-              "question": "Describe a scenario where applying the concept of Graph plotting techniques can lead to a common student error.",
+              "question": "Explain an application where using the concept of Graph plotting techniques can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1247,8 +1247,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Error calculation from data"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Error calculation from data is heavily tested in recent NEET papers.",
-            "Applying the core principles of Error calculation from data correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Error calculation from data is frequently appears in NEET examinations.",
+            "Applying the core principles of Error calculation from data correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1263,7 +1263,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Error calculation from data during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Error calculation from data during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Error calculation from data."
           ],
           "masteryCriteria": [
@@ -1271,14 +1271,14 @@
             "Successfully avoids common pitfalls when Error calculation from data is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Error calculation from data in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Error calculation from data in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-error-calculation-from-data-1",
-              "question": "What are the critical factors or principles governing Error calculation from data?",
+              "question": "What are the fundamental laws or mechanisms governing Error calculation from data?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1305,7 +1305,7 @@
             },
             {
               "id": "experimental-skills-q-error-calculation-from-data-2",
-              "question": "Describe a scenario where applying the concept of Error calculation from data can lead to a common student error.",
+              "question": "Explain an application where using the concept of Error calculation from data can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1346,8 +1346,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Least count of instruments"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Least count of instruments is heavily tested in recent NEET papers.",
-            "Applying the core principles of Least count of instruments correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Least count of instruments is frequently appears in NEET examinations.",
+            "Applying the core principles of Least count of instruments correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1362,7 +1362,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Least count of instruments during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Least count of instruments during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Least count of instruments."
           ],
           "masteryCriteria": [
@@ -1370,14 +1370,14 @@
             "Successfully avoids common pitfalls when Least count of instruments is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Least count of instruments in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Least count of instruments in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-least-count-of-instruments-1",
-              "question": "What are the critical factors or principles governing Least count of instruments?",
+              "question": "What are the fundamental laws or mechanisms governing Least count of instruments?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1404,7 +1404,7 @@
             },
             {
               "id": "experimental-skills-q-least-count-of-instruments-2",
-              "question": "Describe a scenario where applying the concept of Least count of instruments can lead to a common student error.",
+              "question": "Explain an application where using the concept of Least count of instruments can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1445,8 +1445,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Significant figures in practicals"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Significant figures in practicals is heavily tested in recent NEET papers.",
-            "Applying the core principles of Significant figures in practicals correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Significant figures in practicals is frequently appears in NEET examinations.",
+            "Applying the core principles of Significant figures in practicals correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1461,7 +1461,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Significant figures in practicals during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Significant figures in practicals during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Significant figures in practicals."
           ],
           "masteryCriteria": [
@@ -1469,14 +1469,14 @@
             "Successfully avoids common pitfalls when Significant figures in practicals is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Significant figures in practicals in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Significant figures in practicals in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-significant-figures-in-practicals-1",
-              "question": "What are the critical factors or principles governing Significant figures in practicals?",
+              "question": "What are the fundamental laws or mechanisms governing Significant figures in practicals?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1503,7 +1503,7 @@
             },
             {
               "id": "experimental-skills-q-significant-figures-in-practicals-2",
-              "question": "Describe a scenario where applying the concept of Significant figures in practicals can lead to a common student error.",
+              "question": "Explain an application where using the concept of Significant figures in practicals can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1544,8 +1544,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Half deflection method for galvanometer"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Half deflection method for galvanometer is heavily tested in recent NEET papers.",
-            "Applying the core principles of Half deflection method for galvanometer correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Half deflection method for galvanometer is frequently appears in NEET examinations.",
+            "Applying the core principles of Half deflection method for galvanometer correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1560,7 +1560,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Half deflection method for galvanometer during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Half deflection method for galvanometer during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Half deflection method for galvanometer."
           ],
           "masteryCriteria": [
@@ -1568,14 +1568,14 @@
             "Successfully avoids common pitfalls when Half deflection method for galvanometer is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Half deflection method for galvanometer in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Half deflection method for galvanometer in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-half-deflection-method-for-galvanometer-1",
-              "question": "What are the critical factors or principles governing Half deflection method for galvanometer?",
+              "question": "What are the fundamental laws or mechanisms governing Half deflection method for galvanometer?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1602,7 +1602,7 @@
             },
             {
               "id": "experimental-skills-q-half-deflection-method-for-galvanometer-2",
-              "question": "Describe a scenario where applying the concept of Half deflection method for galvanometer can lead to a common student error.",
+              "question": "Explain an application where using the concept of Half deflection method for galvanometer can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1656,8 +1656,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Zener diode reverse breakdown"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Zener diode reverse breakdown is heavily tested in recent NEET papers.",
-            "Applying the core principles of Zener diode reverse breakdown correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Zener diode reverse breakdown is frequently appears in NEET examinations.",
+            "Applying the core principles of Zener diode reverse breakdown correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1672,7 +1672,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Zener diode reverse breakdown during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Zener diode reverse breakdown during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Zener diode reverse breakdown."
           ],
           "masteryCriteria": [
@@ -1680,14 +1680,14 @@
             "Successfully avoids common pitfalls when Zener diode reverse breakdown is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Zener diode reverse breakdown in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Zener diode reverse breakdown in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-zener-diode-reverse-breakdown-1",
-              "question": "What are the critical factors or principles governing Zener diode reverse breakdown?",
+              "question": "What are the fundamental laws or mechanisms governing Zener diode reverse breakdown?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1714,7 +1714,7 @@
             },
             {
               "id": "experimental-skills-q-zener-diode-reverse-breakdown-2",
-              "question": "Describe a scenario where applying the concept of Zener diode reverse breakdown can lead to a common student error.",
+              "question": "Explain an application where using the concept of Zener diode reverse breakdown can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1755,8 +1755,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Transistor characteristics setup"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Transistor characteristics setup is heavily tested in recent NEET papers.",
-            "Applying the core principles of Transistor characteristics setup correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Transistor characteristics setup is frequently appears in NEET examinations.",
+            "Applying the core principles of Transistor characteristics setup correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1771,7 +1771,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Transistor characteristics setup during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Transistor characteristics setup during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Transistor characteristics setup."
           ],
           "masteryCriteria": [
@@ -1779,14 +1779,14 @@
             "Successfully avoids common pitfalls when Transistor characteristics setup is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Transistor characteristics setup in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Transistor characteristics setup in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-transistor-characteristics-setup-1",
-              "question": "What are the critical factors or principles governing Transistor characteristics setup?",
+              "question": "What are the fundamental laws or mechanisms governing Transistor characteristics setup?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1813,7 +1813,7 @@
             },
             {
               "id": "experimental-skills-q-transistor-characteristics-setup-2",
-              "question": "Describe a scenario where applying the concept of Transistor characteristics setup can lead to a common student error.",
+              "question": "Explain an application where using the concept of Transistor characteristics setup can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1854,8 +1854,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Resonance tube experiment"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Resonance tube experiment is heavily tested in recent NEET papers.",
-            "Applying the core principles of Resonance tube experiment correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Resonance tube experiment is frequently appears in NEET examinations.",
+            "Applying the core principles of Resonance tube experiment correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1870,7 +1870,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Resonance tube experiment during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Resonance tube experiment during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Resonance tube experiment."
           ],
           "masteryCriteria": [
@@ -1878,14 +1878,14 @@
             "Successfully avoids common pitfalls when Resonance tube experiment is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Resonance tube experiment in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Resonance tube experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-resonance-tube-experiment-1",
-              "question": "What are the critical factors or principles governing Resonance tube experiment?",
+              "question": "What are the fundamental laws or mechanisms governing Resonance tube experiment?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1912,7 +1912,7 @@
             },
             {
               "id": "experimental-skills-q-resonance-tube-experiment-2",
-              "question": "Describe a scenario where applying the concept of Resonance tube experiment can lead to a common student error.",
+              "question": "Explain an application where using the concept of Resonance tube experiment can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1953,8 +1953,8 @@
             "NCERT Physics Class mixed, Chapter: Experimental Skills, Section detailing Sonometer frequency measurement"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Sonometer frequency measurement is heavily tested in recent NEET papers.",
-            "Applying the core principles of Sonometer frequency measurement correctly is essential for solving complex multi-step problems in Experimental Skills."
+            "A thorough understanding of Sonometer frequency measurement is frequently appears in NEET examinations.",
+            "Applying the core principles of Sonometer frequency measurement correctly is essential for solving integrated numerical and conceptual problems in Experimental Skills."
           ],
           "formulas": [
             {
@@ -1969,7 +1969,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Sonometer frequency measurement during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Sonometer frequency measurement during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Sonometer frequency measurement."
           ],
           "masteryCriteria": [
@@ -1977,14 +1977,14 @@
             "Successfully avoids common pitfalls when Sonometer frequency measurement is integrated with other concepts in Experimental Skills."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Sonometer frequency measurement in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Sonometer frequency measurement in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "experimental-skills-q-sonometer-frequency-measurement-1",
-              "question": "What are the critical factors or principles governing Sonometer frequency measurement?",
+              "question": "What are the fundamental laws or mechanisms governing Sonometer frequency measurement?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2011,7 +2011,7 @@
             },
             {
               "id": "experimental-skills-q-sonometer-frequency-measurement-2",
-              "question": "Describe a scenario where applying the concept of Sonometer frequency measurement can lead to a common student error.",
+              "question": "Explain an application where using the concept of Sonometer frequency measurement can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

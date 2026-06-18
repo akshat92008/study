@@ -63,10 +63,10 @@ export const NEET_UG_2026_UNITS: NeetUgUnit[] = [
 
   // BIOLOGY (10 Units)
   { subject: 'Biology', unitNumber: 1, unitTitle: 'Diversity in Living World', chapterSlug: 'diversity-in-living-world', aliases: ['the living world', 'biological classification', 'plant kingdom', 'animal kingdom'], ncertMapping: ['The Living World', 'Biological Classification', 'Plant Kingdom', 'Animal Kingdom'], classLevel: '11', keywords: ['diversity', 'taxonomy', 'classification', 'monera', 'protista', 'fungi', 'plantae', 'animalia'] },
-  { subject: 'Biology', unitNumber: 2, unitTitle: 'Structural Organisation in Animals and Plants', chapterSlug: 'structural-organisation', aliases: ['morphology of flowering plants', 'anatomy of flowering plants', 'structural organisation in animals', 'frog'], ncertMapping: ['Morphology of Flowering Plants', 'Anatomy of Flowering Plants', 'Structural Organisation in Animals'], classLevel: '11', keywords: ['structural organisation', 'morphology', 'anatomy', 'tissues', 'root', 'stem', 'leaf', 'flower', 'frog'] },
+  { subject: 'Biology', unitNumber: 2, unitTitle: 'Structural Organisation in Animals and Plants', chapterSlug: 'structural-organisation', aliases: ['morphology of flowering plants', 'anatomy of flowering plants', 'structural organisation in animals', 'frog', 'plant tissue', 'root stem leaf', 'stem modification', 'root morphology', 'leaf modification', 'morphology'], ncertMapping: ['Morphology of Flowering Plants', 'Anatomy of Flowering Plants', 'Structural Organisation in Animals'], classLevel: '11', keywords: ['structural organisation', 'morphology', 'anatomy', 'tissues', 'root', 'stem', 'leaf', 'flower', 'frog'] },
   { subject: 'Biology', unitNumber: 3, unitTitle: 'Cell Structure and Function', chapterSlug: 'cell-structure-and-function', aliases: ['cell the unit of life', 'cell cycle and cell division', 'biomolecules (biology)'], ncertMapping: ['Cell: The Unit of Life', 'Biomolecules', 'Cell Cycle and Cell Division'], classLevel: '11', keywords: ['cell structure', 'organelles', 'biomolecules', 'enzymes', 'mitosis', 'meiosis', 'cell cycle'] },
   { subject: 'Biology', unitNumber: 4, unitTitle: 'Plant Physiology', chapterSlug: 'plant-physiology', aliases: ['photosynthesis in higher plants', 'respiration in plants', 'plant growth and development'], ncertMapping: ['Photosynthesis in Higher Plants', 'Respiration in Plants', 'Plant Growth and Development'], classLevel: '11', keywords: ['plant physiology', 'photosynthesis', 'respiration', 'plant growth', 'hormones', 'auxin'] },
-  { subject: 'Biology', unitNumber: 5, unitTitle: 'Human Physiology', chapterSlug: 'human-physiology', aliases: ['breathing and exchange of gases', 'body fluids and circulation', 'excretory products and their elimination', 'locomotion and movement', 'neural control and coordination', 'chemical coordination and integration'], ncertMapping: ['Breathing and Exchange of Gases', 'Body Fluids and Circulation', 'Excretory Products and Their Elimination', 'Locomotion and Movement', 'Neural Control and Coordination', 'Chemical Coordination and Integration'], classLevel: '11', keywords: ['human physiology', 'digestion', 'breathing', 'circulation', 'excretion', 'locomotion', 'neural control', 'endocrine', 'hormones'] },
+  { subject: 'Biology', unitNumber: 5, unitTitle: 'Human Physiology', chapterSlug: 'human-physiology', aliases: ['breathing and exchange of gases', 'body fluids and circulation', 'excretory products and their elimination', 'locomotion and movement', 'neural control and coordination', 'chemical coordination and integration', 'circulatory system', 'blood vascular system', 'human heart', 'blood circulation', 'human circulatory system', 'digestive system', 'respiratory system', 'excretory system', 'nervous system', 'endocrine system'], ncertMapping: ['Breathing and Exchange of Gases', 'Body Fluids and Circulation', 'Excretory Products and Their Elimination', 'Locomotion and Movement', 'Neural Control and Coordination', 'Chemical Coordination and Integration'], classLevel: '11', keywords: ['human physiology', 'digestion', 'breathing', 'circulation', 'excretion', 'locomotion', 'neural control', 'endocrine', 'hormones', 'heart', 'kidney', 'brain'] },
   { subject: 'Biology', unitNumber: 6, unitTitle: 'Reproduction', chapterSlug: 'reproduction', aliases: ['sexual reproduction in flowering plants', 'human reproduction', 'reproductive health'], ncertMapping: ['Sexual Reproduction in Flowering Plants', 'Human Reproduction', 'Reproductive Health'], classLevel: '12', keywords: ['reproduction', 'flower', 'pollination', 'human reproduction', 'menstrual cycle', 'reproductive health', 'birth control'] },
   { subject: 'Biology', unitNumber: 7, unitTitle: 'Genetics and Evolution', chapterSlug: 'genetics-and-evolution', aliases: ['principles of inheritance and variation', 'molecular basis of inheritance', 'evolution'], ncertMapping: ['Principles of Inheritance and Variation', 'Molecular Basis of Inheritance', 'Evolution'], classLevel: '12', keywords: ['genetics', 'inheritance', 'mendel', 'molecular basis', 'dna', 'rna', 'transcription', 'translation', 'evolution', 'darwin', 'hardy-weinberg'] },
   { subject: 'Biology', unitNumber: 8, unitTitle: 'Biology and Human Welfare', chapterSlug: 'biology-and-human-welfare', aliases: ['human health and disease', 'microbes in human welfare'], ncertMapping: ['Human Health and Disease', 'Microbes in Human Welfare'], classLevel: '12', keywords: ['human welfare', 'health', 'disease', 'immunity', 'hiv', 'cancer', 'drugs', 'microbes', 'sewage'] },
@@ -105,6 +105,12 @@ export function inferMode(text: string): GoalMode {
   return 'unknown';
 }
 
+function matchesWordOrPhrase(text: string, target: string): boolean {
+  if (!target) return false;
+  const regex = new RegExp(`(^|\\s)${target}(\\s|$)`, 'i');
+  return regex.test(text);
+}
+
 export function findNeetUnitByGoalText(goalText: string, activeSubjectContext?: string | null): NeetUgUnit | null {
   const normalizedGoal = normalizeText(goalText);
   let bestMatch: NeetUgUnit | null = null;
@@ -114,17 +120,17 @@ export function findNeetUnitByGoalText(goalText: string, activeSubjectContext?: 
     let score = 0;
     
     // Exact title match
-    if (normalizedGoal.includes(normalizeText(unit.unitTitle))) score += 100;
+    if (matchesWordOrPhrase(normalizedGoal, normalizeText(unit.unitTitle))) score += 100;
     
     // Alias match
     for (const alias of unit.aliases) {
-      if (normalizedGoal.includes(normalizeText(alias))) score += 80;
+      if (matchesWordOrPhrase(normalizedGoal, normalizeText(alias))) score += 80;
     }
     
     // Keyword match
     let keywordHits = 0;
     for (const keyword of unit.keywords) {
-      if (normalizedGoal.includes(keyword)) keywordHits++;
+      if (matchesWordOrPhrase(normalizedGoal, normalizeText(keyword))) keywordHits++;
     }
     score += keywordHits * 10;
     

@@ -22,11 +22,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing System and surroundings"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of System and surroundings is heavily tested in recent NEET papers.",
-            "Applying the core principles of System and surroundings correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of System and surroundings is frequently appears in NEET examinations.",
+            "Applying the core principles of System and surroundings correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of System and surroundings during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of System and surroundings during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with System and surroundings."
           ],
           "masteryCriteria": [
@@ -34,14 +34,14 @@
             "Successfully avoids common pitfalls when System and surroundings is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of System and surroundings in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of System and surroundings in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-system-and-surroundings-1",
-              "question": "What are the critical factors or principles governing System and surroundings?",
+              "question": "What are the fundamental laws or mechanisms governing System and surroundings?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -68,7 +68,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-system-and-surroundings-2",
-              "question": "Describe a scenario where applying the concept of System and surroundings can lead to a common student error.",
+              "question": "Explain an application where using the concept of System and surroundings can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -109,8 +109,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Types of thermodynamic systems"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Types of thermodynamic systems is heavily tested in recent NEET papers.",
-            "Applying the core principles of Types of thermodynamic systems correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Types of thermodynamic systems is frequently appears in NEET examinations.",
+            "Applying the core principles of Types of thermodynamic systems correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "formulas": [
             {
@@ -125,7 +125,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Types of thermodynamic systems during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Types of thermodynamic systems during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Types of thermodynamic systems."
           ],
           "masteryCriteria": [
@@ -133,14 +133,14 @@
             "Successfully avoids common pitfalls when Types of thermodynamic systems is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Types of thermodynamic systems in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Types of thermodynamic systems in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-types-of-thermodynamic-systems-1",
-              "question": "What are the critical factors or principles governing Types of thermodynamic systems?",
+              "question": "What are the fundamental laws or mechanisms governing Types of thermodynamic systems?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -167,7 +167,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-types-of-thermodynamic-systems-2",
-              "question": "Describe a scenario where applying the concept of Types of thermodynamic systems can lead to a common student error.",
+              "question": "Explain an application where using the concept of Types of thermodynamic systems can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -208,11 +208,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing State functions vs path functions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of State functions vs path functions is heavily tested in recent NEET papers.",
-            "Applying the core principles of State functions vs path functions correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of State functions vs path functions is frequently appears in NEET examinations.",
+            "Applying the core principles of State functions vs path functions correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of State functions vs path functions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of State functions vs path functions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with State functions vs path functions."
           ],
           "masteryCriteria": [
@@ -220,14 +220,14 @@
             "Successfully avoids common pitfalls when State functions vs path functions is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of State functions vs path functions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of State functions vs path functions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-state-functions-vs-path-functions-1",
-              "question": "What are the critical factors or principles governing State functions vs path functions?",
+              "question": "What are the fundamental laws or mechanisms governing State functions vs path functions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -254,7 +254,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-state-functions-vs-path-functions-2",
-              "question": "Describe a scenario where applying the concept of State functions vs path functions can lead to a common student error.",
+              "question": "Explain an application where using the concept of State functions vs path functions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -295,11 +295,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Extensive and intensive properties"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Extensive and intensive properties is heavily tested in recent NEET papers.",
-            "Applying the core principles of Extensive and intensive properties correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Extensive and intensive properties is frequently appears in NEET examinations.",
+            "Applying the core principles of Extensive and intensive properties correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Extensive and intensive properties during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Extensive and intensive properties during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Extensive and intensive properties."
           ],
           "masteryCriteria": [
@@ -307,14 +307,14 @@
             "Successfully avoids common pitfalls when Extensive and intensive properties is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Extensive and intensive properties in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Extensive and intensive properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-extensive-and-intensive-properties-1",
-              "question": "What are the critical factors or principles governing Extensive and intensive properties?",
+              "question": "What are the fundamental laws or mechanisms governing Extensive and intensive properties?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -341,7 +341,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-extensive-and-intensive-properties-2",
-              "question": "Describe a scenario where applying the concept of Extensive and intensive properties can lead to a common student error.",
+              "question": "Explain an application where using the concept of Extensive and intensive properties can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -382,8 +382,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Thermodynamic processes"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermodynamic processes is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermodynamic processes correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Thermodynamic processes is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermodynamic processes correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "formulas": [
             {
@@ -398,7 +398,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermodynamic processes during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermodynamic processes during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamic processes."
           ],
           "masteryCriteria": [
@@ -406,14 +406,14 @@
             "Successfully avoids common pitfalls when Thermodynamic processes is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermodynamic processes in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermodynamic processes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-thermodynamic-processes-1",
-              "question": "What are the critical factors or principles governing Thermodynamic processes?",
+              "question": "What are the fundamental laws or mechanisms governing Thermodynamic processes?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -440,7 +440,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-thermodynamic-processes-2",
-              "question": "Describe a scenario where applying the concept of Thermodynamic processes can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermodynamic processes can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -494,11 +494,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Work done in expansion/compression"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Work done in expansion/compression is heavily tested in recent NEET papers.",
-            "Applying the core principles of Work done in expansion/compression correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Work done in expansion/compression is frequently appears in NEET examinations.",
+            "Applying the core principles of Work done in expansion/compression correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Work done in expansion/compression during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Work done in expansion/compression during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Work done in expansion/compression."
           ],
           "masteryCriteria": [
@@ -506,14 +506,14 @@
             "Successfully avoids common pitfalls when Work done in expansion/compression is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Work done in expansion/compression in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Work done in expansion/compression in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-work-done-in-expansion-compression-1",
-              "question": "What are the critical factors or principles governing Work done in expansion/compression?",
+              "question": "What are the fundamental laws or mechanisms governing Work done in expansion/compression?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -540,7 +540,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-work-done-in-expansion-compression-2",
-              "question": "Describe a scenario where applying the concept of Work done in expansion/compression can lead to a common student error.",
+              "question": "Explain an application where using the concept of Work done in expansion/compression can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -581,11 +581,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Heat and internal energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat and internal energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat and internal energy correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Heat and internal energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat and internal energy correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat and internal energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat and internal energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat and internal energy."
           ],
           "masteryCriteria": [
@@ -593,14 +593,14 @@
             "Successfully avoids common pitfalls when Heat and internal energy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat and internal energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat and internal energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-heat-and-internal-energy-1",
-              "question": "What are the critical factors or principles governing Heat and internal energy?",
+              "question": "What are the fundamental laws or mechanisms governing Heat and internal energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -627,7 +627,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-heat-and-internal-energy-2",
-              "question": "Describe a scenario where applying the concept of Heat and internal energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat and internal energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -668,8 +668,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing First law of thermodynamics chemistry"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of First law of thermodynamics chemistry is heavily tested in recent NEET papers.",
-            "Applying the core principles of First law of thermodynamics chemistry correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of First law of thermodynamics chemistry is frequently appears in NEET examinations.",
+            "Applying the core principles of First law of thermodynamics chemistry correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "formulas": [
             {
@@ -684,7 +684,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of First law of thermodynamics chemistry during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of First law of thermodynamics chemistry during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with First law of thermodynamics chemistry."
           ],
           "masteryCriteria": [
@@ -692,14 +692,14 @@
             "Successfully avoids common pitfalls when First law of thermodynamics chemistry is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of First law of thermodynamics chemistry in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of First law of thermodynamics chemistry in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-first-law-of-thermodynamics-chemistry-1",
-              "question": "What are the critical factors or principles governing First law of thermodynamics chemistry?",
+              "question": "What are the fundamental laws or mechanisms governing First law of thermodynamics chemistry?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -726,7 +726,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-first-law-of-thermodynamics-chemistry-2",
-              "question": "Describe a scenario where applying the concept of First law of thermodynamics chemistry can lead to a common student error.",
+              "question": "Explain an application where using the concept of First law of thermodynamics chemistry can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -767,11 +767,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Heat capacity and specific heat"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat capacity and specific heat is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat capacity and specific heat correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Heat capacity and specific heat is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat capacity and specific heat correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat capacity and specific heat during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat capacity and specific heat during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat capacity and specific heat."
           ],
           "masteryCriteria": [
@@ -779,14 +779,14 @@
             "Successfully avoids common pitfalls when Heat capacity and specific heat is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat capacity and specific heat in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat capacity and specific heat in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-heat-capacity-and-specific-heat-1",
-              "question": "What are the critical factors or principles governing Heat capacity and specific heat?",
+              "question": "What are the fundamental laws or mechanisms governing Heat capacity and specific heat?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -813,7 +813,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-heat-capacity-and-specific-heat-2",
-              "question": "Describe a scenario where applying the concept of Heat capacity and specific heat can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat capacity and specific heat can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -854,11 +854,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Relation between Cp and Cv"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Relation between Cp and Cv is heavily tested in recent NEET papers.",
-            "Applying the core principles of Relation between Cp and Cv correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Relation between Cp and Cv is frequently appears in NEET examinations.",
+            "Applying the core principles of Relation between Cp and Cv correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Relation between Cp and Cv during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Relation between Cp and Cv during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Relation between Cp and Cv."
           ],
           "masteryCriteria": [
@@ -866,14 +866,14 @@
             "Successfully avoids common pitfalls when Relation between Cp and Cv is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Relation between Cp and Cv in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Relation between Cp and Cv in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-relation-between-cp-and-cv-1",
-              "question": "What are the critical factors or principles governing Relation between Cp and Cv?",
+              "question": "What are the fundamental laws or mechanisms governing Relation between Cp and Cv?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -900,7 +900,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-relation-between-cp-and-cv-2",
-              "question": "Describe a scenario where applying the concept of Relation between Cp and Cv can lead to a common student error.",
+              "question": "Explain an application where using the concept of Relation between Cp and Cv can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -954,11 +954,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Enthalpy change"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Enthalpy change is heavily tested in recent NEET papers.",
-            "Applying the core principles of Enthalpy change correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Enthalpy change is frequently appears in NEET examinations.",
+            "Applying the core principles of Enthalpy change correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Enthalpy change during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Enthalpy change during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy change."
           ],
           "masteryCriteria": [
@@ -966,14 +966,14 @@
             "Successfully avoids common pitfalls when Enthalpy change is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Enthalpy change in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Enthalpy change in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-enthalpy-change-1",
-              "question": "What are the critical factors or principles governing Enthalpy change?",
+              "question": "What are the fundamental laws or mechanisms governing Enthalpy change?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1000,7 +1000,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-enthalpy-change-2",
-              "question": "Describe a scenario where applying the concept of Enthalpy change can lead to a common student error.",
+              "question": "Explain an application where using the concept of Enthalpy change can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1041,11 +1041,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Hess’s law of constant heat summation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hess’s law of constant heat summation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hess’s law of constant heat summation correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Hess’s law of constant heat summation is frequently appears in NEET examinations.",
+            "Applying the core principles of Hess’s law of constant heat summation correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hess’s law of constant heat summation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hess’s law of constant heat summation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hess’s law of constant heat summation."
           ],
           "masteryCriteria": [
@@ -1053,14 +1053,14 @@
             "Successfully avoids common pitfalls when Hess’s law of constant heat summation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hess’s law of constant heat summation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hess’s law of constant heat summation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-hess-s-law-of-constant-heat-summation-1",
-              "question": "What are the critical factors or principles governing Hess’s law of constant heat summation?",
+              "question": "What are the fundamental laws or mechanisms governing Hess’s law of constant heat summation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1087,7 +1087,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-hess-s-law-of-constant-heat-summation-2",
-              "question": "Describe a scenario where applying the concept of Hess’s law of constant heat summation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hess’s law of constant heat summation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1128,11 +1128,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Standard enthalpy of formation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Standard enthalpy of formation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Standard enthalpy of formation correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Standard enthalpy of formation is frequently appears in NEET examinations.",
+            "Applying the core principles of Standard enthalpy of formation correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Standard enthalpy of formation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Standard enthalpy of formation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Standard enthalpy of formation."
           ],
           "masteryCriteria": [
@@ -1140,14 +1140,14 @@
             "Successfully avoids common pitfalls when Standard enthalpy of formation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Standard enthalpy of formation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Standard enthalpy of formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-standard-enthalpy-of-formation-1",
-              "question": "What are the critical factors or principles governing Standard enthalpy of formation?",
+              "question": "What are the fundamental laws or mechanisms governing Standard enthalpy of formation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1174,7 +1174,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-standard-enthalpy-of-formation-2",
-              "question": "Describe a scenario where applying the concept of Standard enthalpy of formation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Standard enthalpy of formation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1215,11 +1215,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Enthalpy of combustion"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Enthalpy of combustion is heavily tested in recent NEET papers.",
-            "Applying the core principles of Enthalpy of combustion correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Enthalpy of combustion is frequently appears in NEET examinations.",
+            "Applying the core principles of Enthalpy of combustion correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Enthalpy of combustion during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Enthalpy of combustion during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of combustion."
           ],
           "masteryCriteria": [
@@ -1227,14 +1227,14 @@
             "Successfully avoids common pitfalls when Enthalpy of combustion is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Enthalpy of combustion in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Enthalpy of combustion in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-combustion-1",
-              "question": "What are the critical factors or principles governing Enthalpy of combustion?",
+              "question": "What are the fundamental laws or mechanisms governing Enthalpy of combustion?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1261,7 +1261,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-combustion-2",
-              "question": "Describe a scenario where applying the concept of Enthalpy of combustion can lead to a common student error.",
+              "question": "Explain an application where using the concept of Enthalpy of combustion can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1302,11 +1302,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Bond dissociation enthalpy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bond dissociation enthalpy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bond dissociation enthalpy correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Bond dissociation enthalpy is frequently appears in NEET examinations.",
+            "Applying the core principles of Bond dissociation enthalpy correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bond dissociation enthalpy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bond dissociation enthalpy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bond dissociation enthalpy."
           ],
           "masteryCriteria": [
@@ -1314,14 +1314,14 @@
             "Successfully avoids common pitfalls when Bond dissociation enthalpy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bond dissociation enthalpy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bond dissociation enthalpy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-bond-dissociation-enthalpy-1",
-              "question": "What are the critical factors or principles governing Bond dissociation enthalpy?",
+              "question": "What are the fundamental laws or mechanisms governing Bond dissociation enthalpy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1348,7 +1348,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-bond-dissociation-enthalpy-2",
-              "question": "Describe a scenario where applying the concept of Bond dissociation enthalpy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bond dissociation enthalpy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1402,11 +1402,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Enthalpy of atomisation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Enthalpy of atomisation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Enthalpy of atomisation correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Enthalpy of atomisation is frequently appears in NEET examinations.",
+            "Applying the core principles of Enthalpy of atomisation correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Enthalpy of atomisation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Enthalpy of atomisation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of atomisation."
           ],
           "masteryCriteria": [
@@ -1414,14 +1414,14 @@
             "Successfully avoids common pitfalls when Enthalpy of atomisation is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Enthalpy of atomisation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Enthalpy of atomisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-atomisation-1",
-              "question": "What are the critical factors or principles governing Enthalpy of atomisation?",
+              "question": "What are the fundamental laws or mechanisms governing Enthalpy of atomisation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1448,7 +1448,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-atomisation-2",
-              "question": "Describe a scenario where applying the concept of Enthalpy of atomisation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Enthalpy of atomisation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1489,11 +1489,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Enthalpy of phase transition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Enthalpy of phase transition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Enthalpy of phase transition correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Enthalpy of phase transition is frequently appears in NEET examinations.",
+            "Applying the core principles of Enthalpy of phase transition correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Enthalpy of phase transition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Enthalpy of phase transition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Enthalpy of phase transition."
           ],
           "masteryCriteria": [
@@ -1501,14 +1501,14 @@
             "Successfully avoids common pitfalls when Enthalpy of phase transition is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Enthalpy of phase transition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Enthalpy of phase transition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-phase-transition-1",
-              "question": "What are the critical factors or principles governing Enthalpy of phase transition?",
+              "question": "What are the fundamental laws or mechanisms governing Enthalpy of phase transition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1535,7 +1535,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-phase-transition-2",
-              "question": "Describe a scenario where applying the concept of Enthalpy of phase transition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Enthalpy of phase transition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1576,11 +1576,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Entropy concept"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Entropy concept is heavily tested in recent NEET papers.",
-            "Applying the core principles of Entropy concept correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Entropy concept is frequently appears in NEET examinations.",
+            "Applying the core principles of Entropy concept correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Entropy concept during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Entropy concept during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Entropy concept."
           ],
           "masteryCriteria": [
@@ -1588,14 +1588,14 @@
             "Successfully avoids common pitfalls when Entropy concept is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Entropy concept in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Entropy concept in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-entropy-concept-1",
-              "question": "What are the critical factors or principles governing Entropy concept?",
+              "question": "What are the fundamental laws or mechanisms governing Entropy concept?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1622,7 +1622,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-entropy-concept-2",
-              "question": "Describe a scenario where applying the concept of Entropy concept can lead to a common student error.",
+              "question": "Explain an application where using the concept of Entropy concept can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1663,11 +1663,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Gibbs free energy change"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gibbs free energy change is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gibbs free energy change correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Gibbs free energy change is frequently appears in NEET examinations.",
+            "Applying the core principles of Gibbs free energy change correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gibbs free energy change during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gibbs free energy change during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gibbs free energy change."
           ],
           "masteryCriteria": [
@@ -1675,14 +1675,14 @@
             "Successfully avoids common pitfalls when Gibbs free energy change is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gibbs free energy change in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gibbs free energy change in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-gibbs-free-energy-change-1",
-              "question": "What are the critical factors or principles governing Gibbs free energy change?",
+              "question": "What are the fundamental laws or mechanisms governing Gibbs free energy change?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1709,7 +1709,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-gibbs-free-energy-change-2",
-              "question": "Describe a scenario where applying the concept of Gibbs free energy change can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gibbs free energy change can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1750,8 +1750,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Thermodynamics signs/Gibbs free energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermodynamics signs/Gibbs free energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermodynamics signs/Gibbs free energy correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Thermodynamics signs/Gibbs free energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermodynamics signs/Gibbs free energy correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "formulas": [
             {
@@ -1766,7 +1766,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermodynamics signs/Gibbs free energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermodynamics signs/Gibbs free energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermodynamics signs/Gibbs free energy."
           ],
           "masteryCriteria": [
@@ -1774,14 +1774,14 @@
             "Successfully avoids common pitfalls when Thermodynamics signs/Gibbs free energy is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermodynamics signs/Gibbs free energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermodynamics signs/Gibbs free energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-thermodynamics-signs-gibbs-free-energy-1",
-              "question": "What are the critical factors or principles governing Thermodynamics signs/Gibbs free energy?",
+              "question": "What are the fundamental laws or mechanisms governing Thermodynamics signs/Gibbs free energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1808,7 +1808,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-thermodynamics-signs-gibbs-free-energy-2",
-              "question": "Describe a scenario where applying the concept of Thermodynamics signs/Gibbs free energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermodynamics signs/Gibbs free energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1862,11 +1862,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Thermodynamics, Section detailing Spontaneity criteria"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Spontaneity criteria is heavily tested in recent NEET papers.",
-            "Applying the core principles of Spontaneity criteria correctly is essential for solving complex multi-step problems in Chemical Thermodynamics."
+            "A thorough understanding of Spontaneity criteria is frequently appears in NEET examinations.",
+            "Applying the core principles of Spontaneity criteria correctly is essential for solving integrated numerical and conceptual problems in Chemical Thermodynamics."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Spontaneity criteria during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Spontaneity criteria during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Spontaneity criteria."
           ],
           "masteryCriteria": [
@@ -1874,14 +1874,14 @@
             "Successfully avoids common pitfalls when Spontaneity criteria is integrated with other concepts in Chemical Thermodynamics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Spontaneity criteria in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Spontaneity criteria in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-thermodynamics-q-spontaneity-criteria-1",
-              "question": "What are the critical factors or principles governing Spontaneity criteria?",
+              "question": "What are the fundamental laws or mechanisms governing Spontaneity criteria?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1908,7 +1908,7 @@
             },
             {
               "id": "chemical-thermodynamics-q-spontaneity-criteria-2",
-              "question": "Describe a scenario where applying the concept of Spontaneity criteria can lead to a common student error.",
+              "question": "Explain an application where using the concept of Spontaneity criteria can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

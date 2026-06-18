@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Energy bands in solids"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Energy bands in solids is heavily tested in recent NEET papers.",
-            "Applying the core principles of Energy bands in solids correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Energy bands in solids is frequently appears in NEET examinations.",
+            "Applying the core principles of Energy bands in solids correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -37,7 +37,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Energy bands in solids during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Energy bands in solids during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Energy bands in solids."
           ],
           "masteryCriteria": [
@@ -45,14 +45,14 @@
             "Successfully avoids common pitfalls when Energy bands in solids is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Energy bands in solids in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Energy bands in solids in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-energy-bands-in-solids-1",
-              "question": "What are the critical factors or principles governing Energy bands in solids?",
+              "question": "What are the fundamental laws or mechanisms governing Energy bands in solids?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -79,7 +79,7 @@
             },
             {
               "id": "electronic-devices-q-energy-bands-in-solids-2",
-              "question": "Describe a scenario where applying the concept of Energy bands in solids can lead to a common student error.",
+              "question": "Explain an application where using the concept of Energy bands in solids can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -120,8 +120,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Conductors insulators semiconductors"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Conductors insulators semiconductors is heavily tested in recent NEET papers.",
-            "Applying the core principles of Conductors insulators semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Conductors insulators semiconductors is frequently appears in NEET examinations.",
+            "Applying the core principles of Conductors insulators semiconductors correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -136,7 +136,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Conductors insulators semiconductors during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Conductors insulators semiconductors during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Conductors insulators semiconductors."
           ],
           "masteryCriteria": [
@@ -144,14 +144,14 @@
             "Successfully avoids common pitfalls when Conductors insulators semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Conductors insulators semiconductors in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Conductors insulators semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-conductors-insulators-semiconductors-1",
-              "question": "What are the critical factors or principles governing Conductors insulators semiconductors?",
+              "question": "What are the fundamental laws or mechanisms governing Conductors insulators semiconductors?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -178,7 +178,7 @@
             },
             {
               "id": "electronic-devices-q-conductors-insulators-semiconductors-2",
-              "question": "Describe a scenario where applying the concept of Conductors insulators semiconductors can lead to a common student error.",
+              "question": "Explain an application where using the concept of Conductors insulators semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -219,8 +219,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Band gap"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Band gap is heavily tested in recent NEET papers.",
-            "Applying the core principles of Band gap correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Band gap is frequently appears in NEET examinations.",
+            "Applying the core principles of Band gap correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -235,7 +235,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Band gap during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Band gap during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Band gap."
           ],
           "masteryCriteria": [
@@ -243,14 +243,14 @@
             "Successfully avoids common pitfalls when Band gap is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Band gap in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Band gap in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-band-gap-1",
-              "question": "What are the critical factors or principles governing Band gap?",
+              "question": "What are the fundamental laws or mechanisms governing Band gap?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -277,7 +277,7 @@
             },
             {
               "id": "electronic-devices-q-band-gap-2",
-              "question": "Describe a scenario where applying the concept of Band gap can lead to a common student error.",
+              "question": "Explain an application where using the concept of Band gap can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -318,8 +318,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Intrinsic semiconductors"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Intrinsic semiconductors is heavily tested in recent NEET papers.",
-            "Applying the core principles of Intrinsic semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Intrinsic semiconductors is frequently appears in NEET examinations.",
+            "Applying the core principles of Intrinsic semiconductors correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -334,7 +334,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Intrinsic semiconductors during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Intrinsic semiconductors during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Intrinsic semiconductors."
           ],
           "masteryCriteria": [
@@ -342,14 +342,14 @@
             "Successfully avoids common pitfalls when Intrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Intrinsic semiconductors in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Intrinsic semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-intrinsic-semiconductors-1",
-              "question": "What are the critical factors or principles governing Intrinsic semiconductors?",
+              "question": "What are the fundamental laws or mechanisms governing Intrinsic semiconductors?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -376,7 +376,7 @@
             },
             {
               "id": "electronic-devices-q-intrinsic-semiconductors-2",
-              "question": "Describe a scenario where applying the concept of Intrinsic semiconductors can lead to a common student error.",
+              "question": "Explain an application where using the concept of Intrinsic semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -430,8 +430,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Extrinsic semiconductors"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Extrinsic semiconductors is heavily tested in recent NEET papers.",
-            "Applying the core principles of Extrinsic semiconductors correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Extrinsic semiconductors is frequently appears in NEET examinations.",
+            "Applying the core principles of Extrinsic semiconductors correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -446,7 +446,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Extrinsic semiconductors during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Extrinsic semiconductors during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Extrinsic semiconductors."
           ],
           "masteryCriteria": [
@@ -454,14 +454,14 @@
             "Successfully avoids common pitfalls when Extrinsic semiconductors is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Extrinsic semiconductors in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Extrinsic semiconductors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-extrinsic-semiconductors-1",
-              "question": "What are the critical factors or principles governing Extrinsic semiconductors?",
+              "question": "What are the fundamental laws or mechanisms governing Extrinsic semiconductors?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -488,7 +488,7 @@
             },
             {
               "id": "electronic-devices-q-extrinsic-semiconductors-2",
-              "question": "Describe a scenario where applying the concept of Extrinsic semiconductors can lead to a common student error.",
+              "question": "Explain an application where using the concept of Extrinsic semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -529,8 +529,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing N-type and p-type doping"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of N-type and p-type doping is heavily tested in recent NEET papers.",
-            "Applying the core principles of N-type and p-type doping correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of N-type and p-type doping is frequently appears in NEET examinations.",
+            "Applying the core principles of N-type and p-type doping correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -545,7 +545,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of N-type and p-type doping during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of N-type and p-type doping during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with N-type and p-type doping."
           ],
           "masteryCriteria": [
@@ -553,14 +553,14 @@
             "Successfully avoids common pitfalls when N-type and p-type doping is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of N-type and p-type doping in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of N-type and p-type doping in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-n-type-and-p-type-doping-1",
-              "question": "What are the critical factors or principles governing N-type and p-type doping?",
+              "question": "What are the fundamental laws or mechanisms governing N-type and p-type doping?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -587,7 +587,7 @@
             },
             {
               "id": "electronic-devices-q-n-type-and-p-type-doping-2",
-              "question": "Describe a scenario where applying the concept of N-type and p-type doping can lead to a common student error.",
+              "question": "Explain an application where using the concept of N-type and p-type doping can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -628,8 +628,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Semiconductor diode/logic gates"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Semiconductor diode/logic gates is heavily tested in recent NEET papers.",
-            "Applying the core principles of Semiconductor diode/logic gates correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Semiconductor diode/logic gates is frequently appears in NEET examinations.",
+            "Applying the core principles of Semiconductor diode/logic gates correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -644,7 +644,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Semiconductor diode/logic gates during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Semiconductor diode/logic gates during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Semiconductor diode/logic gates."
           ],
           "masteryCriteria": [
@@ -652,14 +652,14 @@
             "Successfully avoids common pitfalls when Semiconductor diode/logic gates is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Semiconductor diode/logic gates in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Semiconductor diode/logic gates in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-semiconductor-diode-logic-gates-1",
-              "question": "What are the critical factors or principles governing Semiconductor diode/logic gates?",
+              "question": "What are the fundamental laws or mechanisms governing Semiconductor diode/logic gates?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -686,7 +686,7 @@
             },
             {
               "id": "electronic-devices-q-semiconductor-diode-logic-gates-2",
-              "question": "Describe a scenario where applying the concept of Semiconductor diode/logic gates can lead to a common student error.",
+              "question": "Explain an application where using the concept of Semiconductor diode/logic gates can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -727,8 +727,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing P-n junction formation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of P-n junction formation is heavily tested in recent NEET papers.",
-            "Applying the core principles of P-n junction formation correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of P-n junction formation is frequently appears in NEET examinations.",
+            "Applying the core principles of P-n junction formation correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -743,7 +743,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of P-n junction formation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of P-n junction formation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with P-n junction formation."
           ],
           "masteryCriteria": [
@@ -751,14 +751,14 @@
             "Successfully avoids common pitfalls when P-n junction formation is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of P-n junction formation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of P-n junction formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-p-n-junction-formation-1",
-              "question": "What are the critical factors or principles governing P-n junction formation?",
+              "question": "What are the fundamental laws or mechanisms governing P-n junction formation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -785,7 +785,7 @@
             },
             {
               "id": "electronic-devices-q-p-n-junction-formation-2",
-              "question": "Describe a scenario where applying the concept of P-n junction formation can lead to a common student error.",
+              "question": "Explain an application where using the concept of P-n junction formation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -839,8 +839,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Depletion region"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Depletion region is heavily tested in recent NEET papers.",
-            "Applying the core principles of Depletion region correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Depletion region is frequently appears in NEET examinations.",
+            "Applying the core principles of Depletion region correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -855,7 +855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Depletion region during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Depletion region during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Depletion region."
           ],
           "masteryCriteria": [
@@ -863,14 +863,14 @@
             "Successfully avoids common pitfalls when Depletion region is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Depletion region in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Depletion region in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-depletion-region-1",
-              "question": "What are the critical factors or principles governing Depletion region?",
+              "question": "What are the fundamental laws or mechanisms governing Depletion region?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -897,7 +897,7 @@
             },
             {
               "id": "electronic-devices-q-depletion-region-2",
-              "question": "Describe a scenario where applying the concept of Depletion region can lead to a common student error.",
+              "question": "Explain an application where using the concept of Depletion region can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -938,8 +938,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Forward and reverse bias"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Forward and reverse bias is heavily tested in recent NEET papers.",
-            "Applying the core principles of Forward and reverse bias correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Forward and reverse bias is frequently appears in NEET examinations.",
+            "Applying the core principles of Forward and reverse bias correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -954,7 +954,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Forward and reverse bias during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Forward and reverse bias during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Forward and reverse bias."
           ],
           "masteryCriteria": [
@@ -962,14 +962,14 @@
             "Successfully avoids common pitfalls when Forward and reverse bias is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Forward and reverse bias in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Forward and reverse bias in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-forward-and-reverse-bias-1",
-              "question": "What are the critical factors or principles governing Forward and reverse bias?",
+              "question": "What are the fundamental laws or mechanisms governing Forward and reverse bias?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -996,7 +996,7 @@
             },
             {
               "id": "electronic-devices-q-forward-and-reverse-bias-2",
-              "question": "Describe a scenario where applying the concept of Forward and reverse bias can lead to a common student error.",
+              "question": "Explain an application where using the concept of Forward and reverse bias can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1037,8 +1037,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing V-I characteristics of p-n junction"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of V-I characteristics of p-n junction is heavily tested in recent NEET papers.",
-            "Applying the core principles of V-I characteristics of p-n junction correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of V-I characteristics of p-n junction is frequently appears in NEET examinations.",
+            "Applying the core principles of V-I characteristics of p-n junction correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1053,7 +1053,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of V-I characteristics of p-n junction during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of V-I characteristics of p-n junction during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with V-I characteristics of p-n junction."
           ],
           "masteryCriteria": [
@@ -1061,14 +1061,14 @@
             "Successfully avoids common pitfalls when V-I characteristics of p-n junction is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of V-I characteristics of p-n junction in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of V-I characteristics of p-n junction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-1",
-              "question": "What are the critical factors or principles governing V-I characteristics of p-n junction?",
+              "question": "What are the fundamental laws or mechanisms governing V-I characteristics of p-n junction?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1095,7 +1095,7 @@
             },
             {
               "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-2",
-              "question": "Describe a scenario where applying the concept of V-I characteristics of p-n junction can lead to a common student error.",
+              "question": "Explain an application where using the concept of V-I characteristics of p-n junction can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1136,8 +1136,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Half wave rectifier"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Half wave rectifier is heavily tested in recent NEET papers.",
-            "Applying the core principles of Half wave rectifier correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Half wave rectifier is frequently appears in NEET examinations.",
+            "Applying the core principles of Half wave rectifier correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1151,7 +1151,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Half wave rectifier during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Half wave rectifier during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Half wave rectifier."
           ],
           "masteryCriteria": [
@@ -1159,14 +1159,14 @@
             "Successfully avoids common pitfalls when Half wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Half wave rectifier in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Half wave rectifier in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-half-wave-rectifier-1",
-              "question": "What are the critical factors or principles governing Half wave rectifier?",
+              "question": "What are the fundamental laws or mechanisms governing Half wave rectifier?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1193,7 +1193,7 @@
             },
             {
               "id": "electronic-devices-q-half-wave-rectifier-2",
-              "question": "Describe a scenario where applying the concept of Half wave rectifier can lead to a common student error.",
+              "question": "Explain an application where using the concept of Half wave rectifier can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1247,8 +1247,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Full wave rectifier"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Full wave rectifier is heavily tested in recent NEET papers.",
-            "Applying the core principles of Full wave rectifier correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Full wave rectifier is frequently appears in NEET examinations.",
+            "Applying the core principles of Full wave rectifier correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1262,7 +1262,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Full wave rectifier during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Full wave rectifier during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Full wave rectifier."
           ],
           "masteryCriteria": [
@@ -1270,14 +1270,14 @@
             "Successfully avoids common pitfalls when Full wave rectifier is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Full wave rectifier in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Full wave rectifier in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-full-wave-rectifier-1",
-              "question": "What are the critical factors or principles governing Full wave rectifier?",
+              "question": "What are the fundamental laws or mechanisms governing Full wave rectifier?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1304,7 +1304,7 @@
             },
             {
               "id": "electronic-devices-q-full-wave-rectifier-2",
-              "question": "Describe a scenario where applying the concept of Full wave rectifier can lead to a common student error.",
+              "question": "Explain an application where using the concept of Full wave rectifier can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1345,8 +1345,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Zener diode as voltage regulator"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Zener diode as voltage regulator is heavily tested in recent NEET papers.",
-            "Applying the core principles of Zener diode as voltage regulator correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Zener diode as voltage regulator is frequently appears in NEET examinations.",
+            "Applying the core principles of Zener diode as voltage regulator correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1361,7 +1361,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Zener diode as voltage regulator during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Zener diode as voltage regulator during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Zener diode as voltage regulator."
           ],
           "masteryCriteria": [
@@ -1369,14 +1369,14 @@
             "Successfully avoids common pitfalls when Zener diode as voltage regulator is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Zener diode as voltage regulator in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Zener diode as voltage regulator in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-zener-diode-as-voltage-regulator-1",
-              "question": "What are the critical factors or principles governing Zener diode as voltage regulator?",
+              "question": "What are the fundamental laws or mechanisms governing Zener diode as voltage regulator?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1403,7 +1403,7 @@
             },
             {
               "id": "electronic-devices-q-zener-diode-as-voltage-regulator-2",
-              "question": "Describe a scenario where applying the concept of Zener diode as voltage regulator can lead to a common student error.",
+              "question": "Explain an application where using the concept of Zener diode as voltage regulator can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1444,8 +1444,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Light emitting diode"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Light emitting diode is heavily tested in recent NEET papers.",
-            "Applying the core principles of Light emitting diode correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Light emitting diode is frequently appears in NEET examinations.",
+            "Applying the core principles of Light emitting diode correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1460,7 +1460,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Light emitting diode during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Light emitting diode during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Light emitting diode."
           ],
           "masteryCriteria": [
@@ -1468,14 +1468,14 @@
             "Successfully avoids common pitfalls when Light emitting diode is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Light emitting diode in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Light emitting diode in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-light-emitting-diode-1",
-              "question": "What are the critical factors or principles governing Light emitting diode?",
+              "question": "What are the fundamental laws or mechanisms governing Light emitting diode?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1502,7 +1502,7 @@
             },
             {
               "id": "electronic-devices-q-light-emitting-diode-2",
-              "question": "Describe a scenario where applying the concept of Light emitting diode can lead to a common student error.",
+              "question": "Explain an application where using the concept of Light emitting diode can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1543,8 +1543,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Photodiode"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Photodiode is heavily tested in recent NEET papers.",
-            "Applying the core principles of Photodiode correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Photodiode is frequently appears in NEET examinations.",
+            "Applying the core principles of Photodiode correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1559,7 +1559,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Photodiode during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Photodiode during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Photodiode."
           ],
           "masteryCriteria": [
@@ -1567,14 +1567,14 @@
             "Successfully avoids common pitfalls when Photodiode is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Photodiode in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Photodiode in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-photodiode-1",
-              "question": "What are the critical factors or principles governing Photodiode?",
+              "question": "What are the fundamental laws or mechanisms governing Photodiode?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1601,7 +1601,7 @@
             },
             {
               "id": "electronic-devices-q-photodiode-2",
-              "question": "Describe a scenario where applying the concept of Photodiode can lead to a common student error.",
+              "question": "Explain an application where using the concept of Photodiode can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1655,8 +1655,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Solar cell"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Solar cell is heavily tested in recent NEET papers.",
-            "Applying the core principles of Solar cell correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Solar cell is frequently appears in NEET examinations.",
+            "Applying the core principles of Solar cell correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1671,7 +1671,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Solar cell during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Solar cell during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Solar cell."
           ],
           "masteryCriteria": [
@@ -1679,14 +1679,14 @@
             "Successfully avoids common pitfalls when Solar cell is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Solar cell in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Solar cell in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-solar-cell-1",
-              "question": "What are the critical factors or principles governing Solar cell?",
+              "question": "What are the fundamental laws or mechanisms governing Solar cell?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1713,7 +1713,7 @@
             },
             {
               "id": "electronic-devices-q-solar-cell-2",
-              "question": "Describe a scenario where applying the concept of Solar cell can lead to a common student error.",
+              "question": "Explain an application where using the concept of Solar cell can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1754,8 +1754,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Logic gate OR AND NOT"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Logic gate OR AND NOT is heavily tested in recent NEET papers.",
-            "Applying the core principles of Logic gate OR AND NOT correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Logic gate OR AND NOT is frequently appears in NEET examinations.",
+            "Applying the core principles of Logic gate OR AND NOT correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1770,7 +1770,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Logic gate OR AND NOT during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Logic gate OR AND NOT during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Logic gate OR AND NOT."
           ],
           "masteryCriteria": [
@@ -1778,14 +1778,14 @@
             "Successfully avoids common pitfalls when Logic gate OR AND NOT is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Logic gate OR AND NOT in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Logic gate OR AND NOT in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-logic-gate-or-and-not-1",
-              "question": "What are the critical factors or principles governing Logic gate OR AND NOT?",
+              "question": "What are the fundamental laws or mechanisms governing Logic gate OR AND NOT?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1812,7 +1812,7 @@
             },
             {
               "id": "electronic-devices-q-logic-gate-or-and-not-2",
-              "question": "Describe a scenario where applying the concept of Logic gate OR AND NOT can lead to a common student error.",
+              "question": "Explain an application where using the concept of Logic gate OR AND NOT can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1853,8 +1853,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing NAND and NOR gates"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of NAND and NOR gates is heavily tested in recent NEET papers.",
-            "Applying the core principles of NAND and NOR gates correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of NAND and NOR gates is frequently appears in NEET examinations.",
+            "Applying the core principles of NAND and NOR gates correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1869,7 +1869,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of NAND and NOR gates during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of NAND and NOR gates during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with NAND and NOR gates."
           ],
           "masteryCriteria": [
@@ -1877,14 +1877,14 @@
             "Successfully avoids common pitfalls when NAND and NOR gates is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of NAND and NOR gates in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of NAND and NOR gates in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-nand-and-nor-gates-1",
-              "question": "What are the critical factors or principles governing NAND and NOR gates?",
+              "question": "What are the fundamental laws or mechanisms governing NAND and NOR gates?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1911,7 +1911,7 @@
             },
             {
               "id": "electronic-devices-q-nand-and-nor-gates-2",
-              "question": "Describe a scenario where applying the concept of NAND and NOR gates can lead to a common student error.",
+              "question": "Explain an application where using the concept of NAND and NOR gates can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1952,8 +1952,8 @@
             "NCERT Physics Class 12, Chapter: Electronic Devices, Section detailing Integrated circuits basics"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Integrated circuits basics is heavily tested in recent NEET papers.",
-            "Applying the core principles of Integrated circuits basics correctly is essential for solving complex multi-step problems in Electronic Devices."
+            "A thorough understanding of Integrated circuits basics is frequently appears in NEET examinations.",
+            "Applying the core principles of Integrated circuits basics correctly is essential for solving integrated numerical and conceptual problems in Electronic Devices."
           ],
           "formulas": [
             {
@@ -1968,7 +1968,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Integrated circuits basics during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Integrated circuits basics during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Integrated circuits basics."
           ],
           "masteryCriteria": [
@@ -1976,14 +1976,14 @@
             "Successfully avoids common pitfalls when Integrated circuits basics is integrated with other concepts in Electronic Devices."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Integrated circuits basics in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Integrated circuits basics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electronic-devices-q-integrated-circuits-basics-1",
-              "question": "What are the critical factors or principles governing Integrated circuits basics?",
+              "question": "What are the fundamental laws or mechanisms governing Integrated circuits basics?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2010,7 +2010,7 @@
             },
             {
               "id": "electronic-devices-q-integrated-circuits-basics-2",
-              "question": "Describe a scenario where applying the concept of Integrated circuits basics can lead to a common student error.",
+              "question": "Explain an application where using the concept of Integrated circuits basics can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic force on moving charge"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic force on moving charge is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic force on moving charge correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic force on moving charge is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic force on moving charge correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -37,7 +37,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic force on moving charge during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic force on moving charge during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic force on moving charge."
           ],
           "masteryCriteria": [
@@ -45,14 +45,14 @@
             "Successfully avoids common pitfalls when Magnetic force on moving charge is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic force on moving charge in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic force on moving charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-1",
-              "question": "What are the critical factors or principles governing Magnetic force on moving charge?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic force on moving charge?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -79,7 +79,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-2",
-              "question": "Describe a scenario where applying the concept of Magnetic force on moving charge can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic force on moving charge can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -120,8 +120,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Lorentz force equation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lorentz force equation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lorentz force equation correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Lorentz force equation is frequently appears in NEET examinations.",
+            "Applying the core principles of Lorentz force equation correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -135,7 +135,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lorentz force equation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lorentz force equation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lorentz force equation."
           ],
           "masteryCriteria": [
@@ -143,14 +143,14 @@
             "Successfully avoids common pitfalls when Lorentz force equation is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lorentz force equation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lorentz force equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-1",
-              "question": "What are the critical factors or principles governing Lorentz force equation?",
+              "question": "What are the fundamental laws or mechanisms governing Lorentz force equation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -177,7 +177,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-2",
-              "question": "Describe a scenario where applying the concept of Lorentz force equation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lorentz force equation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -218,8 +218,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Circular motion in magnetic field"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Circular motion in magnetic field is heavily tested in recent NEET papers.",
-            "Applying the core principles of Circular motion in magnetic field correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Circular motion in magnetic field is frequently appears in NEET examinations.",
+            "Applying the core principles of Circular motion in magnetic field correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -234,7 +234,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Circular motion in magnetic field during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Circular motion in magnetic field during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Circular motion in magnetic field."
           ],
           "masteryCriteria": [
@@ -242,14 +242,14 @@
             "Successfully avoids common pitfalls when Circular motion in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Circular motion in magnetic field in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Circular motion in magnetic field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-1",
-              "question": "What are the critical factors or principles governing Circular motion in magnetic field?",
+              "question": "What are the fundamental laws or mechanisms governing Circular motion in magnetic field?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -276,7 +276,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-2",
-              "question": "Describe a scenario where applying the concept of Circular motion in magnetic field can lead to a common student error.",
+              "question": "Explain an application where using the concept of Circular motion in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -317,8 +317,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Helical path in magnetic field"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Helical path in magnetic field is heavily tested in recent NEET papers.",
-            "Applying the core principles of Helical path in magnetic field correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Helical path in magnetic field is frequently appears in NEET examinations.",
+            "Applying the core principles of Helical path in magnetic field correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -333,7 +333,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Helical path in magnetic field during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Helical path in magnetic field during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Helical path in magnetic field."
           ],
           "masteryCriteria": [
@@ -341,14 +341,14 @@
             "Successfully avoids common pitfalls when Helical path in magnetic field is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Helical path in magnetic field in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Helical path in magnetic field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-1",
-              "question": "What are the critical factors or principles governing Helical path in magnetic field?",
+              "question": "What are the fundamental laws or mechanisms governing Helical path in magnetic field?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -375,7 +375,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-2",
-              "question": "Describe a scenario where applying the concept of Helical path in magnetic field can lead to a common student error.",
+              "question": "Explain an application where using the concept of Helical path in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -416,8 +416,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Velocity selector"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Velocity selector is heavily tested in recent NEET papers.",
-            "Applying the core principles of Velocity selector correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Velocity selector is frequently appears in NEET examinations.",
+            "Applying the core principles of Velocity selector correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -431,7 +431,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Velocity selector during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Velocity selector during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Velocity selector."
           ],
           "masteryCriteria": [
@@ -439,14 +439,14 @@
             "Successfully avoids common pitfalls when Velocity selector is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Velocity selector in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Velocity selector in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-velocity-selector-1",
-              "question": "What are the critical factors or principles governing Velocity selector?",
+              "question": "What are the fundamental laws or mechanisms governing Velocity selector?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -473,7 +473,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-velocity-selector-2",
-              "question": "Describe a scenario where applying the concept of Velocity selector can lead to a common student error.",
+              "question": "Explain an application where using the concept of Velocity selector can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -527,8 +527,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Cyclotron principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Cyclotron principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Cyclotron principle correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Cyclotron principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Cyclotron principle correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -543,7 +543,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Cyclotron principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Cyclotron principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Cyclotron principle."
           ],
           "masteryCriteria": [
@@ -551,14 +551,14 @@
             "Successfully avoids common pitfalls when Cyclotron principle is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Cyclotron principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Cyclotron principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-1",
-              "question": "What are the critical factors or principles governing Cyclotron principle?",
+              "question": "What are the fundamental laws or mechanisms governing Cyclotron principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -585,7 +585,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-2",
-              "question": "Describe a scenario where applying the concept of Cyclotron principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Cyclotron principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -626,8 +626,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Biot-Savart law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Biot-Savart law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Biot-Savart law correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Biot-Savart law is frequently appears in NEET examinations.",
+            "Applying the core principles of Biot-Savart law correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -642,7 +642,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Biot-Savart law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Biot-Savart law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Biot-Savart law."
           ],
           "masteryCriteria": [
@@ -650,14 +650,14 @@
             "Successfully avoids common pitfalls when Biot-Savart law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Biot-Savart law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Biot-Savart law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-biot-savart-law-1",
-              "question": "What are the critical factors or principles governing Biot-Savart law?",
+              "question": "What are the fundamental laws or mechanisms governing Biot-Savart law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -684,7 +684,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-biot-savart-law-2",
-              "question": "Describe a scenario where applying the concept of Biot-Savart law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Biot-Savart law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -725,8 +725,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of circular loop"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic field of circular loop is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic field of circular loop correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic field of circular loop is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic field of circular loop correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -741,7 +741,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic field of circular loop during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic field of circular loop during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of circular loop."
           ],
           "masteryCriteria": [
@@ -749,14 +749,14 @@
             "Successfully avoids common pitfalls when Magnetic field of circular loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic field of circular loop in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic field of circular loop in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-1",
-              "question": "What are the critical factors or principles governing Magnetic field of circular loop?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic field of circular loop?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -783,7 +783,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-2",
-              "question": "Describe a scenario where applying the concept of Magnetic field of circular loop can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic field of circular loop can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -824,8 +824,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Ampere’s circuital law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Ampere’s circuital law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Ampere’s circuital law correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Ampere’s circuital law is frequently appears in NEET examinations.",
+            "Applying the core principles of Ampere’s circuital law correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -840,7 +840,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Ampere’s circuital law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Ampere’s circuital law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Ampere’s circuital law."
           ],
           "masteryCriteria": [
@@ -848,14 +848,14 @@
             "Successfully avoids common pitfalls when Ampere’s circuital law is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Ampere’s circuital law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Ampere’s circuital law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-1",
-              "question": "What are the critical factors or principles governing Ampere’s circuital law?",
+              "question": "What are the fundamental laws or mechanisms governing Ampere’s circuital law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -882,7 +882,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-2",
-              "question": "Describe a scenario where applying the concept of Ampere’s circuital law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Ampere’s circuital law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -923,8 +923,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of straight wire"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic field of straight wire is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic field of straight wire correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic field of straight wire is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic field of straight wire correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -939,7 +939,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic field of straight wire during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic field of straight wire during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of straight wire."
           ],
           "masteryCriteria": [
@@ -947,14 +947,14 @@
             "Successfully avoids common pitfalls when Magnetic field of straight wire is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic field of straight wire in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic field of straight wire in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-1",
-              "question": "What are the critical factors or principles governing Magnetic field of straight wire?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic field of straight wire?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -981,7 +981,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-2",
-              "question": "Describe a scenario where applying the concept of Magnetic field of straight wire can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic field of straight wire can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1035,8 +1035,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of solenoid"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic field of solenoid is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic field of solenoid correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic field of solenoid is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic field of solenoid correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1051,7 +1051,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic field of solenoid during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic field of solenoid during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of solenoid."
           ],
           "masteryCriteria": [
@@ -1059,14 +1059,14 @@
             "Successfully avoids common pitfalls when Magnetic field of solenoid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic field of solenoid in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic field of solenoid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-1",
-              "question": "What are the critical factors or principles governing Magnetic field of solenoid?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic field of solenoid?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1093,7 +1093,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-2",
-              "question": "Describe a scenario where applying the concept of Magnetic field of solenoid can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic field of solenoid can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1134,8 +1134,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field of toroid"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic field of toroid is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic field of toroid correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic field of toroid is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic field of toroid correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1150,7 +1150,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic field of toroid during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic field of toroid during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field of toroid."
           ],
           "masteryCriteria": [
@@ -1158,14 +1158,14 @@
             "Successfully avoids common pitfalls when Magnetic field of toroid is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic field of toroid in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic field of toroid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-1",
-              "question": "What are the critical factors or principles governing Magnetic field of toroid?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic field of toroid?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1192,7 +1192,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-2",
-              "question": "Describe a scenario where applying the concept of Magnetic field of toroid can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic field of toroid can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1233,8 +1233,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Force on current-carrying conductor"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Force on current-carrying conductor is heavily tested in recent NEET papers.",
-            "Applying the core principles of Force on current-carrying conductor correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Force on current-carrying conductor is frequently appears in NEET examinations.",
+            "Applying the core principles of Force on current-carrying conductor correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1248,7 +1248,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Force on current-carrying conductor during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Force on current-carrying conductor during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Force on current-carrying conductor."
           ],
           "masteryCriteria": [
@@ -1256,14 +1256,14 @@
             "Successfully avoids common pitfalls when Force on current-carrying conductor is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Force on current-carrying conductor in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Force on current-carrying conductor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-1",
-              "question": "What are the critical factors or principles governing Force on current-carrying conductor?",
+              "question": "What are the fundamental laws or mechanisms governing Force on current-carrying conductor?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1290,7 +1290,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-2",
-              "question": "Describe a scenario where applying the concept of Force on current-carrying conductor can lead to a common student error.",
+              "question": "Explain an application where using the concept of Force on current-carrying conductor can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1331,8 +1331,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Force between parallel currents"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Force between parallel currents is heavily tested in recent NEET papers.",
-            "Applying the core principles of Force between parallel currents correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Force between parallel currents is frequently appears in NEET examinations.",
+            "Applying the core principles of Force between parallel currents correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1346,7 +1346,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Force between parallel currents during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Force between parallel currents during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Force between parallel currents."
           ],
           "masteryCriteria": [
@@ -1354,14 +1354,14 @@
             "Successfully avoids common pitfalls when Force between parallel currents is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Force between parallel currents in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Force between parallel currents in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-1",
-              "question": "What are the critical factors or principles governing Force between parallel currents?",
+              "question": "What are the fundamental laws or mechanisms governing Force between parallel currents?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1388,7 +1388,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-2",
-              "question": "Describe a scenario where applying the concept of Force between parallel currents can lead to a common student error.",
+              "question": "Explain an application where using the concept of Force between parallel currents can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1429,8 +1429,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Torque on current loop"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Torque on current loop is heavily tested in recent NEET papers.",
-            "Applying the core principles of Torque on current loop correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Torque on current loop is frequently appears in NEET examinations.",
+            "Applying the core principles of Torque on current loop correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1444,7 +1444,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Torque on current loop during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Torque on current loop during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Torque on current loop."
           ],
           "masteryCriteria": [
@@ -1452,14 +1452,14 @@
             "Successfully avoids common pitfalls when Torque on current loop is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Torque on current loop in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Torque on current loop in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-1",
-              "question": "What are the critical factors or principles governing Torque on current loop?",
+              "question": "What are the fundamental laws or mechanisms governing Torque on current loop?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1486,7 +1486,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-2",
-              "question": "Describe a scenario where applying the concept of Torque on current loop can lead to a common student error.",
+              "question": "Explain an application where using the concept of Torque on current loop can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1540,8 +1540,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic dipole moment"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic dipole moment is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic dipole moment correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic dipole moment is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic dipole moment correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1556,7 +1556,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic dipole moment during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic dipole moment during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic dipole moment."
           ],
           "masteryCriteria": [
@@ -1564,14 +1564,14 @@
             "Successfully avoids common pitfalls when Magnetic dipole moment is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic dipole moment in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic dipole moment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-1",
-              "question": "What are the critical factors or principles governing Magnetic dipole moment?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic dipole moment?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1598,7 +1598,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-2",
-              "question": "Describe a scenario where applying the concept of Magnetic dipole moment can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic dipole moment can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1639,8 +1639,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Moving coil galvanometer"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Moving coil galvanometer is heavily tested in recent NEET papers.",
-            "Applying the core principles of Moving coil galvanometer correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Moving coil galvanometer is frequently appears in NEET examinations.",
+            "Applying the core principles of Moving coil galvanometer correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1655,7 +1655,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Moving coil galvanometer during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Moving coil galvanometer during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Moving coil galvanometer."
           ],
           "masteryCriteria": [
@@ -1663,14 +1663,14 @@
             "Successfully avoids common pitfalls when Moving coil galvanometer is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Moving coil galvanometer in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Moving coil galvanometer in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-1",
-              "question": "What are the critical factors or principles governing Moving coil galvanometer?",
+              "question": "What are the fundamental laws or mechanisms governing Moving coil galvanometer?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1697,7 +1697,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-2",
-              "question": "Describe a scenario where applying the concept of Moving coil galvanometer can lead to a common student error.",
+              "question": "Explain an application where using the concept of Moving coil galvanometer can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1738,8 +1738,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Bar magnet properties"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bar magnet properties is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bar magnet properties correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Bar magnet properties is frequently appears in NEET examinations.",
+            "Applying the core principles of Bar magnet properties correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1754,7 +1754,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bar magnet properties during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bar magnet properties during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bar magnet properties."
           ],
           "masteryCriteria": [
@@ -1762,14 +1762,14 @@
             "Successfully avoids common pitfalls when Bar magnet properties is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bar magnet properties in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bar magnet properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-1",
-              "question": "What are the critical factors or principles governing Bar magnet properties?",
+              "question": "What are the fundamental laws or mechanisms governing Bar magnet properties?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1796,7 +1796,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-2",
-              "question": "Describe a scenario where applying the concept of Bar magnet properties can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bar magnet properties can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1837,8 +1837,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Magnetic field lines"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic field lines is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic field lines correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Magnetic field lines is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic field lines correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1853,7 +1853,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic field lines during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic field lines during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic field lines."
           ],
           "masteryCriteria": [
@@ -1861,14 +1861,14 @@
             "Successfully avoids common pitfalls when Magnetic field lines is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic field lines in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic field lines in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-1",
-              "question": "What are the critical factors or principles governing Magnetic field lines?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic field lines?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1895,7 +1895,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-2",
-              "question": "Describe a scenario where applying the concept of Magnetic field lines can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic field lines can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1936,8 +1936,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Earth magnetism elements"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Earth magnetism elements is heavily tested in recent NEET papers.",
-            "Applying the core principles of Earth magnetism elements correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Earth magnetism elements is frequently appears in NEET examinations.",
+            "Applying the core principles of Earth magnetism elements correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -1952,7 +1952,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Earth magnetism elements during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Earth magnetism elements during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Earth magnetism elements."
           ],
           "masteryCriteria": [
@@ -1960,14 +1960,14 @@
             "Successfully avoids common pitfalls when Earth magnetism elements is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Earth magnetism elements in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Earth magnetism elements in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-1",
-              "question": "What are the critical factors or principles governing Earth magnetism elements?",
+              "question": "What are the fundamental laws or mechanisms governing Earth magnetism elements?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1994,7 +1994,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-2",
-              "question": "Describe a scenario where applying the concept of Earth magnetism elements can lead to a common student error.",
+              "question": "Explain an application where using the concept of Earth magnetism elements can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2048,8 +2048,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Diamagnetism"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Diamagnetism is heavily tested in recent NEET papers.",
-            "Applying the core principles of Diamagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Diamagnetism is frequently appears in NEET examinations.",
+            "Applying the core principles of Diamagnetism correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -2064,7 +2064,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Diamagnetism during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Diamagnetism during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Diamagnetism."
           ],
           "masteryCriteria": [
@@ -2072,14 +2072,14 @@
             "Successfully avoids common pitfalls when Diamagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Diamagnetism in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Diamagnetism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-diamagnetism-1",
-              "question": "What are the critical factors or principles governing Diamagnetism?",
+              "question": "What are the fundamental laws or mechanisms governing Diamagnetism?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2106,7 +2106,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-diamagnetism-2",
-              "question": "Describe a scenario where applying the concept of Diamagnetism can lead to a common student error.",
+              "question": "Explain an application where using the concept of Diamagnetism can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2147,8 +2147,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Paramagnetism"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Paramagnetism is heavily tested in recent NEET papers.",
-            "Applying the core principles of Paramagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Paramagnetism is frequently appears in NEET examinations.",
+            "Applying the core principles of Paramagnetism correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -2163,7 +2163,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Paramagnetism during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Paramagnetism during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Paramagnetism."
           ],
           "masteryCriteria": [
@@ -2171,14 +2171,14 @@
             "Successfully avoids common pitfalls when Paramagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Paramagnetism in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Paramagnetism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-paramagnetism-1",
-              "question": "What are the critical factors or principles governing Paramagnetism?",
+              "question": "What are the fundamental laws or mechanisms governing Paramagnetism?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2205,7 +2205,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-paramagnetism-2",
-              "question": "Describe a scenario where applying the concept of Paramagnetism can lead to a common student error.",
+              "question": "Explain an application where using the concept of Paramagnetism can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2246,8 +2246,8 @@
             "NCERT Physics Class 12, Chapter: Magnetic Effects of Current and Magnetism, Section detailing Ferromagnetism"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Ferromagnetism is heavily tested in recent NEET papers.",
-            "Applying the core principles of Ferromagnetism correctly is essential for solving complex multi-step problems in Magnetic Effects of Current and Magnetism."
+            "A thorough understanding of Ferromagnetism is frequently appears in NEET examinations.",
+            "Applying the core principles of Ferromagnetism correctly is essential for solving integrated numerical and conceptual problems in Magnetic Effects of Current and Magnetism."
           ],
           "formulas": [
             {
@@ -2262,7 +2262,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Ferromagnetism during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Ferromagnetism during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Ferromagnetism."
           ],
           "masteryCriteria": [
@@ -2270,14 +2270,14 @@
             "Successfully avoids common pitfalls when Ferromagnetism is integrated with other concepts in Magnetic Effects of Current and Magnetism."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Ferromagnetism in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Ferromagnetism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "magnetic-effects-and-magnetism-q-ferromagnetism-1",
-              "question": "What are the critical factors or principles governing Ferromagnetism?",
+              "question": "What are the fundamental laws or mechanisms governing Ferromagnetism?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2304,7 +2304,7 @@
             },
             {
               "id": "magnetic-effects-and-magnetism-q-ferromagnetism-2",
-              "question": "Describe a scenario where applying the concept of Ferromagnetism can lead to a common student error.",
+              "question": "Explain an application where using the concept of Ferromagnetism can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

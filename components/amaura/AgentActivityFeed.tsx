@@ -48,15 +48,15 @@ export function AgentActivityFeed() {
   const getAgentLabel = (activity: AgentAction) => {
     if (activity.title) return activity.title;
     const subsystem: Record<string, string> = {
-      mind: 'Amaura Runtime',
-      atlas: 'Practice Loop',
-      autopsy: 'Autopsy Loop',
-      memory: 'Memory Loop',
-      planner: 'Session Planner',
-      command: 'Session Planner',
-      system: 'Amaura Runtime',
+      mind: 'Cognition Engine',
+      atlas: 'Progress Engine',
+      autopsy: 'Autopsy Engine',
+      memory: 'Memory Engine',
+      planner: 'Mission Planner',
+      command: 'Mission Planner',
+      system: 'Cognition Engine',
     };
-    return `${subsystem[activity.agent_name] ?? 'Amaura Runtime'}: ${activity.action_type.replace(/_/g, ' ')}`;
+    return `${subsystem[activity.agent_name] ?? 'Cognition Engine'}: ${activity.action_type.replace(/_/g, ' ')}`;
   };
 
   const getStatusIcon = (status: string) => {
@@ -69,7 +69,7 @@ export function AgentActivityFeed() {
   };
 
   if (loading && activities.length === 0) {
-    return <div style={{ padding: 16, color: 'var(--text-secondary)' }}><Loader2 className="animate-spin" size={16}/> Loading Amaura activity...</div>;
+    return <div style={{ padding: 16, color: 'var(--text-secondary)' }}><Loader2 className="animate-spin" size={16}/> Loading Cognition OS activity...</div>;
   }
 
   return (
@@ -92,7 +92,7 @@ export function AgentActivityFeed() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Activity size={18} color="var(--accent-primary, #8b5cf6)" />
-          <h3 style={{ fontSize: '14px', fontWeight: 600, margin: 0 }}>Amaura Activity</h3>
+          <h3 style={{ fontSize: '14px', fontWeight: 600, margin: 0 }}>Cognition OS Activity</h3>
         </div>
         <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Real learner-state changes</span>
       </div>
@@ -105,7 +105,7 @@ export function AgentActivityFeed() {
           </div>
         ) : activities.length === 0 ? (
           <div style={{ padding: '24px 16px', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '13px' }}>
-            Amaura activity will appear after you study, practice, or upload a test.
+            Cognition OS activity will appear after you study, practice, or upload a test.
           </div>
         ) : (
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>

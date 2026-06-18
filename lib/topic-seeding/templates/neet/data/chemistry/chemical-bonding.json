@@ -22,11 +22,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Kossel-Lewis approach to bonding"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kossel-Lewis approach to bonding is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kossel-Lewis approach to bonding correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Kossel-Lewis approach to bonding is frequently appears in NEET examinations.",
+            "Applying the core principles of Kossel-Lewis approach to bonding correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kossel-Lewis approach to bonding during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kossel-Lewis approach to bonding during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kossel-Lewis approach to bonding."
           ],
           "masteryCriteria": [
@@ -34,14 +34,14 @@
             "Successfully avoids common pitfalls when Kossel-Lewis approach to bonding is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kossel-Lewis approach to bonding in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kossel-Lewis approach to bonding in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-kossel-lewis-approach-to-bonding-1",
-              "question": "What are the critical factors or principles governing Kossel-Lewis approach to bonding?",
+              "question": "What are the fundamental laws or mechanisms governing Kossel-Lewis approach to bonding?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -68,7 +68,7 @@
             },
             {
               "id": "chemical-bonding-q-kossel-lewis-approach-to-bonding-2",
-              "question": "Describe a scenario where applying the concept of Kossel-Lewis approach to bonding can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kossel-Lewis approach to bonding can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -109,11 +109,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Lewis dot structures"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lewis dot structures is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lewis dot structures correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Lewis dot structures is frequently appears in NEET examinations.",
+            "Applying the core principles of Lewis dot structures correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lewis dot structures during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lewis dot structures during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lewis dot structures."
           ],
           "masteryCriteria": [
@@ -121,14 +121,14 @@
             "Successfully avoids common pitfalls when Lewis dot structures is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lewis dot structures in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lewis dot structures in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-lewis-dot-structures-1",
-              "question": "What are the critical factors or principles governing Lewis dot structures?",
+              "question": "What are the fundamental laws or mechanisms governing Lewis dot structures?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -155,7 +155,7 @@
             },
             {
               "id": "chemical-bonding-q-lewis-dot-structures-2",
-              "question": "Describe a scenario where applying the concept of Lewis dot structures can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lewis dot structures can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -196,11 +196,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Formal charge calculation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Formal charge calculation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Formal charge calculation correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Formal charge calculation is frequently appears in NEET examinations.",
+            "Applying the core principles of Formal charge calculation correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Formal charge calculation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Formal charge calculation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Formal charge calculation."
           ],
           "masteryCriteria": [
@@ -208,14 +208,14 @@
             "Successfully avoids common pitfalls when Formal charge calculation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Formal charge calculation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Formal charge calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-formal-charge-calculation-1",
-              "question": "What are the critical factors or principles governing Formal charge calculation?",
+              "question": "What are the fundamental laws or mechanisms governing Formal charge calculation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -242,7 +242,7 @@
             },
             {
               "id": "chemical-bonding-q-formal-charge-calculation-2",
-              "question": "Describe a scenario where applying the concept of Formal charge calculation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Formal charge calculation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -283,11 +283,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Octet rule exceptions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Octet rule exceptions is heavily tested in recent NEET papers.",
-            "Applying the core principles of Octet rule exceptions correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Octet rule exceptions is frequently appears in NEET examinations.",
+            "Applying the core principles of Octet rule exceptions correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Octet rule exceptions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Octet rule exceptions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Octet rule exceptions."
           ],
           "masteryCriteria": [
@@ -295,14 +295,14 @@
             "Successfully avoids common pitfalls when Octet rule exceptions is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Octet rule exceptions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Octet rule exceptions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-octet-rule-exceptions-1",
-              "question": "What are the critical factors or principles governing Octet rule exceptions?",
+              "question": "What are the fundamental laws or mechanisms governing Octet rule exceptions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -329,7 +329,7 @@
             },
             {
               "id": "chemical-bonding-q-octet-rule-exceptions-2",
-              "question": "Describe a scenario where applying the concept of Octet rule exceptions can lead to a common student error.",
+              "question": "Explain an application where using the concept of Octet rule exceptions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -370,11 +370,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Ionic bond formation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Ionic bond formation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Ionic bond formation correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Ionic bond formation is frequently appears in NEET examinations.",
+            "Applying the core principles of Ionic bond formation correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Ionic bond formation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Ionic bond formation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Ionic bond formation."
           ],
           "masteryCriteria": [
@@ -382,14 +382,14 @@
             "Successfully avoids common pitfalls when Ionic bond formation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Ionic bond formation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Ionic bond formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-ionic-bond-formation-1",
-              "question": "What are the critical factors or principles governing Ionic bond formation?",
+              "question": "What are the fundamental laws or mechanisms governing Ionic bond formation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -416,7 +416,7 @@
             },
             {
               "id": "chemical-bonding-q-ionic-bond-formation-2",
-              "question": "Describe a scenario where applying the concept of Ionic bond formation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Ionic bond formation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -470,11 +470,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Lattice enthalpy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lattice enthalpy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lattice enthalpy correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Lattice enthalpy is frequently appears in NEET examinations.",
+            "Applying the core principles of Lattice enthalpy correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lattice enthalpy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lattice enthalpy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lattice enthalpy."
           ],
           "masteryCriteria": [
@@ -482,14 +482,14 @@
             "Successfully avoids common pitfalls when Lattice enthalpy is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lattice enthalpy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lattice enthalpy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-lattice-enthalpy-1",
-              "question": "What are the critical factors or principles governing Lattice enthalpy?",
+              "question": "What are the fundamental laws or mechanisms governing Lattice enthalpy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -516,7 +516,7 @@
             },
             {
               "id": "chemical-bonding-q-lattice-enthalpy-2",
-              "question": "Describe a scenario where applying the concept of Lattice enthalpy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lattice enthalpy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -557,11 +557,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Covalent bond parameters"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Covalent bond parameters is heavily tested in recent NEET papers.",
-            "Applying the core principles of Covalent bond parameters correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Covalent bond parameters is frequently appears in NEET examinations.",
+            "Applying the core principles of Covalent bond parameters correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Covalent bond parameters during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Covalent bond parameters during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Covalent bond parameters."
           ],
           "masteryCriteria": [
@@ -569,14 +569,14 @@
             "Successfully avoids common pitfalls when Covalent bond parameters is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Covalent bond parameters in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Covalent bond parameters in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-covalent-bond-parameters-1",
-              "question": "What are the critical factors or principles governing Covalent bond parameters?",
+              "question": "What are the fundamental laws or mechanisms governing Covalent bond parameters?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -603,7 +603,7 @@
             },
             {
               "id": "chemical-bonding-q-covalent-bond-parameters-2",
-              "question": "Describe a scenario where applying the concept of Covalent bond parameters can lead to a common student error.",
+              "question": "Explain an application where using the concept of Covalent bond parameters can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -644,11 +644,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Electronegativity and bond polarity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electronegativity and bond polarity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electronegativity and bond polarity correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Electronegativity and bond polarity is frequently appears in NEET examinations.",
+            "Applying the core principles of Electronegativity and bond polarity correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electronegativity and bond polarity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electronegativity and bond polarity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electronegativity and bond polarity."
           ],
           "masteryCriteria": [
@@ -656,14 +656,14 @@
             "Successfully avoids common pitfalls when Electronegativity and bond polarity is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electronegativity and bond polarity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electronegativity and bond polarity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-electronegativity-and-bond-polarity-1",
-              "question": "What are the critical factors or principles governing Electronegativity and bond polarity?",
+              "question": "What are the fundamental laws or mechanisms governing Electronegativity and bond polarity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -690,7 +690,7 @@
             },
             {
               "id": "chemical-bonding-q-electronegativity-and-bond-polarity-2",
-              "question": "Describe a scenario where applying the concept of Electronegativity and bond polarity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electronegativity and bond polarity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -731,11 +731,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Fajan’s rule for covalent character"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Fajan’s rule for covalent character is heavily tested in recent NEET papers.",
-            "Applying the core principles of Fajan’s rule for covalent character correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Fajan’s rule for covalent character is frequently appears in NEET examinations.",
+            "Applying the core principles of Fajan’s rule for covalent character correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Fajan’s rule for covalent character during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Fajan’s rule for covalent character during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Fajan’s rule for covalent character."
           ],
           "masteryCriteria": [
@@ -743,14 +743,14 @@
             "Successfully avoids common pitfalls when Fajan’s rule for covalent character is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Fajan’s rule for covalent character in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Fajan’s rule for covalent character in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-fajan-s-rule-for-covalent-character-1",
-              "question": "What are the critical factors or principles governing Fajan’s rule for covalent character?",
+              "question": "What are the fundamental laws or mechanisms governing Fajan’s rule for covalent character?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -777,7 +777,7 @@
             },
             {
               "id": "chemical-bonding-q-fajan-s-rule-for-covalent-character-2",
-              "question": "Describe a scenario where applying the concept of Fajan’s rule for covalent character can lead to a common student error.",
+              "question": "Explain an application where using the concept of Fajan’s rule for covalent character can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -818,11 +818,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Dipole moment applications"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dipole moment applications is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dipole moment applications correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Dipole moment applications is frequently appears in NEET examinations.",
+            "Applying the core principles of Dipole moment applications correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dipole moment applications during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dipole moment applications during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dipole moment applications."
           ],
           "masteryCriteria": [
@@ -830,14 +830,14 @@
             "Successfully avoids common pitfalls when Dipole moment applications is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dipole moment applications in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dipole moment applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-dipole-moment-applications-1",
-              "question": "What are the critical factors or principles governing Dipole moment applications?",
+              "question": "What are the fundamental laws or mechanisms governing Dipole moment applications?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -864,7 +864,7 @@
             },
             {
               "id": "chemical-bonding-q-dipole-moment-applications-2",
-              "question": "Describe a scenario where applying the concept of Dipole moment applications can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dipole moment applications can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -918,11 +918,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing VSEPR/hybridisation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of VSEPR/hybridisation is heavily tested in recent NEET papers.",
-            "Applying the core principles of VSEPR/hybridisation correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of VSEPR/hybridisation is frequently appears in NEET examinations.",
+            "Applying the core principles of VSEPR/hybridisation correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of VSEPR/hybridisation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of VSEPR/hybridisation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with VSEPR/hybridisation."
           ],
           "masteryCriteria": [
@@ -930,14 +930,14 @@
             "Successfully avoids common pitfalls when VSEPR/hybridisation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of VSEPR/hybridisation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of VSEPR/hybridisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-vsepr-hybridisation-1",
-              "question": "What are the critical factors or principles governing VSEPR/hybridisation?",
+              "question": "What are the fundamental laws or mechanisms governing VSEPR/hybridisation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -964,7 +964,7 @@
             },
             {
               "id": "chemical-bonding-q-vsepr-hybridisation-2",
-              "question": "Describe a scenario where applying the concept of VSEPR/hybridisation can lead to a common student error.",
+              "question": "Explain an application where using the concept of VSEPR/hybridisation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1005,8 +1005,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Geometry of molecules without lone pairs"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Geometry of molecules without lone pairs is heavily tested in recent NEET papers.",
-            "Applying the core principles of Geometry of molecules without lone pairs correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Geometry of molecules without lone pairs is frequently appears in NEET examinations.",
+            "Applying the core principles of Geometry of molecules without lone pairs correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "formulas": [
             {
@@ -1020,7 +1020,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Geometry of molecules without lone pairs during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Geometry of molecules without lone pairs during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Geometry of molecules without lone pairs."
           ],
           "masteryCriteria": [
@@ -1028,14 +1028,14 @@
             "Successfully avoids common pitfalls when Geometry of molecules without lone pairs is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Geometry of molecules without lone pairs in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Geometry of molecules without lone pairs in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-geometry-of-molecules-without-lone-pairs-1",
-              "question": "What are the critical factors or principles governing Geometry of molecules without lone pairs?",
+              "question": "What are the fundamental laws or mechanisms governing Geometry of molecules without lone pairs?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1062,7 +1062,7 @@
             },
             {
               "id": "chemical-bonding-q-geometry-of-molecules-without-lone-pairs-2",
-              "question": "Describe a scenario where applying the concept of Geometry of molecules without lone pairs can lead to a common student error.",
+              "question": "Explain an application where using the concept of Geometry of molecules without lone pairs can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1103,8 +1103,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Geometry of molecules with lone pairs"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Geometry of molecules with lone pairs is heavily tested in recent NEET papers.",
-            "Applying the core principles of Geometry of molecules with lone pairs correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Geometry of molecules with lone pairs is frequently appears in NEET examinations.",
+            "Applying the core principles of Geometry of molecules with lone pairs correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "formulas": [
             {
@@ -1118,7 +1118,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Geometry of molecules with lone pairs during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Geometry of molecules with lone pairs during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Geometry of molecules with lone pairs."
           ],
           "masteryCriteria": [
@@ -1126,14 +1126,14 @@
             "Successfully avoids common pitfalls when Geometry of molecules with lone pairs is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Geometry of molecules with lone pairs in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Geometry of molecules with lone pairs in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-geometry-of-molecules-with-lone-pairs-1",
-              "question": "What are the critical factors or principles governing Geometry of molecules with lone pairs?",
+              "question": "What are the fundamental laws or mechanisms governing Geometry of molecules with lone pairs?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1160,7 +1160,7 @@
             },
             {
               "id": "chemical-bonding-q-geometry-of-molecules-with-lone-pairs-2",
-              "question": "Describe a scenario where applying the concept of Geometry of molecules with lone pairs can lead to a common student error.",
+              "question": "Explain an application where using the concept of Geometry of molecules with lone pairs can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1201,11 +1201,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Hybridisation types sp sp2 sp3"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hybridisation types sp sp2 sp3 is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hybridisation types sp sp2 sp3 correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Hybridisation types sp sp2 sp3 is frequently appears in NEET examinations.",
+            "Applying the core principles of Hybridisation types sp sp2 sp3 correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hybridisation types sp sp2 sp3 during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hybridisation types sp sp2 sp3 during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hybridisation types sp sp2 sp3."
           ],
           "masteryCriteria": [
@@ -1213,14 +1213,14 @@
             "Successfully avoids common pitfalls when Hybridisation types sp sp2 sp3 is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hybridisation types sp sp2 sp3 in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hybridisation types sp sp2 sp3 in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-hybridisation-types-sp-sp2-sp3-1",
-              "question": "What are the critical factors or principles governing Hybridisation types sp sp2 sp3?",
+              "question": "What are the fundamental laws or mechanisms governing Hybridisation types sp sp2 sp3?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1247,7 +1247,7 @@
             },
             {
               "id": "chemical-bonding-q-hybridisation-types-sp-sp2-sp3-2",
-              "question": "Describe a scenario where applying the concept of Hybridisation types sp sp2 sp3 can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hybridisation types sp sp2 sp3 can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1288,11 +1288,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Hybridisation involving d orbitals"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hybridisation involving d orbitals is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hybridisation involving d orbitals correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Hybridisation involving d orbitals is frequently appears in NEET examinations.",
+            "Applying the core principles of Hybridisation involving d orbitals correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hybridisation involving d orbitals during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hybridisation involving d orbitals during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hybridisation involving d orbitals."
           ],
           "masteryCriteria": [
@@ -1300,14 +1300,14 @@
             "Successfully avoids common pitfalls when Hybridisation involving d orbitals is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hybridisation involving d orbitals in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hybridisation involving d orbitals in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-hybridisation-involving-d-orbitals-1",
-              "question": "What are the critical factors or principles governing Hybridisation involving d orbitals?",
+              "question": "What are the fundamental laws or mechanisms governing Hybridisation involving d orbitals?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1334,7 +1334,7 @@
             },
             {
               "id": "chemical-bonding-q-hybridisation-involving-d-orbitals-2",
-              "question": "Describe a scenario where applying the concept of Hybridisation involving d orbitals can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hybridisation involving d orbitals can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1388,11 +1388,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Resonance structures and stability"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Resonance structures and stability is heavily tested in recent NEET papers.",
-            "Applying the core principles of Resonance structures and stability correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Resonance structures and stability is frequently appears in NEET examinations.",
+            "Applying the core principles of Resonance structures and stability correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Resonance structures and stability during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Resonance structures and stability during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Resonance structures and stability."
           ],
           "masteryCriteria": [
@@ -1400,14 +1400,14 @@
             "Successfully avoids common pitfalls when Resonance structures and stability is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Resonance structures and stability in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Resonance structures and stability in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-resonance-structures-and-stability-1",
-              "question": "What are the critical factors or principles governing Resonance structures and stability?",
+              "question": "What are the fundamental laws or mechanisms governing Resonance structures and stability?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1434,7 +1434,7 @@
             },
             {
               "id": "chemical-bonding-q-resonance-structures-and-stability-2",
-              "question": "Describe a scenario where applying the concept of Resonance structures and stability can lead to a common student error.",
+              "question": "Explain an application where using the concept of Resonance structures and stability can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1475,11 +1475,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Valence bond theory postulates"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Valence bond theory postulates is heavily tested in recent NEET papers.",
-            "Applying the core principles of Valence bond theory postulates correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Valence bond theory postulates is frequently appears in NEET examinations.",
+            "Applying the core principles of Valence bond theory postulates correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Valence bond theory postulates during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Valence bond theory postulates during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Valence bond theory postulates."
           ],
           "masteryCriteria": [
@@ -1487,14 +1487,14 @@
             "Successfully avoids common pitfalls when Valence bond theory postulates is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Valence bond theory postulates in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Valence bond theory postulates in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-valence-bond-theory-postulates-1",
-              "question": "What are the critical factors or principles governing Valence bond theory postulates?",
+              "question": "What are the fundamental laws or mechanisms governing Valence bond theory postulates?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1521,7 +1521,7 @@
             },
             {
               "id": "chemical-bonding-q-valence-bond-theory-postulates-2",
-              "question": "Describe a scenario where applying the concept of Valence bond theory postulates can lead to a common student error.",
+              "question": "Explain an application where using the concept of Valence bond theory postulates can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1562,11 +1562,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Sigma and pi bond formation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Sigma and pi bond formation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Sigma and pi bond formation correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Sigma and pi bond formation is frequently appears in NEET examinations.",
+            "Applying the core principles of Sigma and pi bond formation correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Sigma and pi bond formation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Sigma and pi bond formation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Sigma and pi bond formation."
           ],
           "masteryCriteria": [
@@ -1574,14 +1574,14 @@
             "Successfully avoids common pitfalls when Sigma and pi bond formation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Sigma and pi bond formation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Sigma and pi bond formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-sigma-and-pi-bond-formation-1",
-              "question": "What are the critical factors or principles governing Sigma and pi bond formation?",
+              "question": "What are the fundamental laws or mechanisms governing Sigma and pi bond formation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1608,7 +1608,7 @@
             },
             {
               "id": "chemical-bonding-q-sigma-and-pi-bond-formation-2",
-              "question": "Describe a scenario where applying the concept of Sigma and pi bond formation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Sigma and pi bond formation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1649,8 +1649,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Molecular orbital theory"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Molecular orbital theory is heavily tested in recent NEET papers.",
-            "Applying the core principles of Molecular orbital theory correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Molecular orbital theory is frequently appears in NEET examinations.",
+            "Applying the core principles of Molecular orbital theory correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "formulas": [
             {
@@ -1664,7 +1664,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Molecular orbital theory during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Molecular orbital theory during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Molecular orbital theory."
           ],
           "masteryCriteria": [
@@ -1672,14 +1672,14 @@
             "Successfully avoids common pitfalls when Molecular orbital theory is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Molecular orbital theory in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Molecular orbital theory in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-molecular-orbital-theory-1",
-              "question": "What are the critical factors or principles governing Molecular orbital theory?",
+              "question": "What are the fundamental laws or mechanisms governing Molecular orbital theory?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1706,7 +1706,7 @@
             },
             {
               "id": "chemical-bonding-q-molecular-orbital-theory-2",
-              "question": "Describe a scenario where applying the concept of Molecular orbital theory can lead to a common student error.",
+              "question": "Explain an application where using the concept of Molecular orbital theory can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1747,8 +1747,8 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Bonding and antibonding molecular orbitals"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bonding and antibonding molecular orbitals is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bonding and antibonding molecular orbitals correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Bonding and antibonding molecular orbitals is frequently appears in NEET examinations.",
+            "Applying the core principles of Bonding and antibonding molecular orbitals correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "formulas": [
             {
@@ -1762,7 +1762,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bonding and antibonding molecular orbitals during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bonding and antibonding molecular orbitals during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bonding and antibonding molecular orbitals."
           ],
           "masteryCriteria": [
@@ -1770,14 +1770,14 @@
             "Successfully avoids common pitfalls when Bonding and antibonding molecular orbitals is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bonding and antibonding molecular orbitals in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bonding and antibonding molecular orbitals in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-bonding-and-antibonding-molecular-orbitals-1",
-              "question": "What are the critical factors or principles governing Bonding and antibonding molecular orbitals?",
+              "question": "What are the fundamental laws or mechanisms governing Bonding and antibonding molecular orbitals?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1804,7 +1804,7 @@
             },
             {
               "id": "chemical-bonding-q-bonding-and-antibonding-molecular-orbitals-2",
-              "question": "Describe a scenario where applying the concept of Bonding and antibonding molecular orbitals can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bonding and antibonding molecular orbitals can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1858,11 +1858,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Bond order calculation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bond order calculation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bond order calculation correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Bond order calculation is frequently appears in NEET examinations.",
+            "Applying the core principles of Bond order calculation correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bond order calculation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bond order calculation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bond order calculation."
           ],
           "masteryCriteria": [
@@ -1870,14 +1870,14 @@
             "Successfully avoids common pitfalls when Bond order calculation is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bond order calculation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bond order calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-bond-order-calculation-1",
-              "question": "What are the critical factors or principles governing Bond order calculation?",
+              "question": "What are the fundamental laws or mechanisms governing Bond order calculation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1904,7 +1904,7 @@
             },
             {
               "id": "chemical-bonding-q-bond-order-calculation-2",
-              "question": "Describe a scenario where applying the concept of Bond order calculation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bond order calculation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1945,11 +1945,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Magnetic character from MOT"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Magnetic character from MOT is heavily tested in recent NEET papers.",
-            "Applying the core principles of Magnetic character from MOT correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Magnetic character from MOT is frequently appears in NEET examinations.",
+            "Applying the core principles of Magnetic character from MOT correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Magnetic character from MOT during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Magnetic character from MOT during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Magnetic character from MOT."
           ],
           "masteryCriteria": [
@@ -1957,14 +1957,14 @@
             "Successfully avoids common pitfalls when Magnetic character from MOT is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Magnetic character from MOT in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Magnetic character from MOT in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-magnetic-character-from-mot-1",
-              "question": "What are the critical factors or principles governing Magnetic character from MOT?",
+              "question": "What are the fundamental laws or mechanisms governing Magnetic character from MOT?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1991,7 +1991,7 @@
             },
             {
               "id": "chemical-bonding-q-magnetic-character-from-mot-2",
-              "question": "Describe a scenario where applying the concept of Magnetic character from MOT can lead to a common student error.",
+              "question": "Explain an application where using the concept of Magnetic character from MOT can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2032,11 +2032,11 @@
             "NCERT Chemistry Class 11, Chapter: Chemical Bonding and Molecular Structure, Section detailing Hydrogen bonding types and effects"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hydrogen bonding types and effects is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hydrogen bonding types and effects correctly is essential for solving complex multi-step problems in Chemical Bonding and Molecular Structure."
+            "A thorough understanding of Hydrogen bonding types and effects is frequently appears in NEET examinations.",
+            "Applying the core principles of Hydrogen bonding types and effects correctly is essential for solving integrated numerical and conceptual problems in Chemical Bonding and Molecular Structure."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hydrogen bonding types and effects during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hydrogen bonding types and effects during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hydrogen bonding types and effects."
           ],
           "masteryCriteria": [
@@ -2044,14 +2044,14 @@
             "Successfully avoids common pitfalls when Hydrogen bonding types and effects is integrated with other concepts in Chemical Bonding and Molecular Structure."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hydrogen bonding types and effects in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hydrogen bonding types and effects in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "chemical-bonding-q-hydrogen-bonding-types-and-effects-1",
-              "question": "What are the critical factors or principles governing Hydrogen bonding types and effects?",
+              "question": "What are the fundamental laws or mechanisms governing Hydrogen bonding types and effects?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2078,7 +2078,7 @@
             },
             {
               "id": "chemical-bonding-q-hydrogen-bonding-types-and-effects-2",
-              "question": "Describe a scenario where applying the concept of Hydrogen bonding types and effects can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hydrogen bonding types and effects can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

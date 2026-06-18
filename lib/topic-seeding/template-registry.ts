@@ -30,11 +30,34 @@ export function getSeedForGoal(goalText: string, activeGoalContext?: string | nu
   if (unit) {
     const seed = getNeetSeedBySlug(unit.chapterSlug);
     if (seed) {
+      let targetMicrotargetSlug: string | undefined = undefined;
+      const normalizedGoal = normalizeText(goalText);
+      
+      // Try to find a matching microtarget based on the goal text
+      outer: for (const mission of seed.missions) {
+        for (const mt of mission.microtargets) {
+          const mtNormalized = normalizeText(mt.title);
+          // If the exact microtarget title is in the goal or vice versa
+          if (normalizedGoal.includes(mtNormalized) || mtNormalized.includes(normalizedGoal)) {
+            targetMicrotargetSlug = mt.id || mtNormalized.replace(/\s+/g, '-');
+            break outer;
+          }
+          // Or if any tag matches
+          for (const tag of mt.conceptTags || []) {
+            if (normalizedGoal.includes(normalizeText(tag))) {
+              targetMicrotargetSlug = mt.id || mtNormalized.replace(/\s+/g, '-');
+              break outer;
+            }
+          }
+        }
+      }
+
       return {
         template: seed,
         templateKey: `neet-${unit.subject.toLowerCase()}-${unit.chapterSlug}`,
         source: 'seeded_template',
         confidence: 0.99,
+        targetMicrotargetSlug,
       };
     }
   }

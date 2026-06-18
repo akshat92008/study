@@ -22,11 +22,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Purification by crystallisation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Purification by crystallisation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Purification by crystallisation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Purification by crystallisation is frequently appears in NEET examinations.",
+            "Applying the core principles of Purification by crystallisation correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Purification by crystallisation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Purification by crystallisation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Purification by crystallisation."
           ],
           "masteryCriteria": [
@@ -34,14 +34,14 @@
             "Successfully avoids common pitfalls when Purification by crystallisation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Purification by crystallisation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Purification by crystallisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-purification-by-crystallisation-1",
-              "question": "What are the critical factors or principles governing Purification by crystallisation?",
+              "question": "What are the fundamental laws or mechanisms governing Purification by crystallisation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -68,7 +68,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-purification-by-crystallisation-2",
-              "question": "Describe a scenario where applying the concept of Purification by crystallisation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Purification by crystallisation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -109,11 +109,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Purification by sublimation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Purification by sublimation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Purification by sublimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Purification by sublimation is frequently appears in NEET examinations.",
+            "Applying the core principles of Purification by sublimation correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Purification by sublimation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Purification by sublimation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Purification by sublimation."
           ],
           "masteryCriteria": [
@@ -121,14 +121,14 @@
             "Successfully avoids common pitfalls when Purification by sublimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Purification by sublimation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Purification by sublimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-purification-by-sublimation-1",
-              "question": "What are the critical factors or principles governing Purification by sublimation?",
+              "question": "What are the fundamental laws or mechanisms governing Purification by sublimation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -155,7 +155,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-purification-by-sublimation-2",
-              "question": "Describe a scenario where applying the concept of Purification by sublimation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Purification by sublimation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -196,11 +196,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Simple distillation technique"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Simple distillation technique is heavily tested in recent NEET papers.",
-            "Applying the core principles of Simple distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Simple distillation technique is frequently appears in NEET examinations.",
+            "Applying the core principles of Simple distillation technique correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Simple distillation technique during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Simple distillation technique during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Simple distillation technique."
           ],
           "masteryCriteria": [
@@ -208,14 +208,14 @@
             "Successfully avoids common pitfalls when Simple distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Simple distillation technique in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Simple distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-simple-distillation-technique-1",
-              "question": "What are the critical factors or principles governing Simple distillation technique?",
+              "question": "What are the fundamental laws or mechanisms governing Simple distillation technique?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -242,7 +242,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-simple-distillation-technique-2",
-              "question": "Describe a scenario where applying the concept of Simple distillation technique can lead to a common student error.",
+              "question": "Explain an application where using the concept of Simple distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -283,11 +283,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Fractional distillation technique"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Fractional distillation technique is heavily tested in recent NEET papers.",
-            "Applying the core principles of Fractional distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Fractional distillation technique is frequently appears in NEET examinations.",
+            "Applying the core principles of Fractional distillation technique correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Fractional distillation technique during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Fractional distillation technique during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Fractional distillation technique."
           ],
           "masteryCriteria": [
@@ -295,14 +295,14 @@
             "Successfully avoids common pitfalls when Fractional distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Fractional distillation technique in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Fractional distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-fractional-distillation-technique-1",
-              "question": "What are the critical factors or principles governing Fractional distillation technique?",
+              "question": "What are the fundamental laws or mechanisms governing Fractional distillation technique?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -329,7 +329,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-fractional-distillation-technique-2",
-              "question": "Describe a scenario where applying the concept of Fractional distillation technique can lead to a common student error.",
+              "question": "Explain an application where using the concept of Fractional distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -383,11 +383,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Steam distillation technique"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Steam distillation technique is heavily tested in recent NEET papers.",
-            "Applying the core principles of Steam distillation technique correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Steam distillation technique is frequently appears in NEET examinations.",
+            "Applying the core principles of Steam distillation technique correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Steam distillation technique during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Steam distillation technique during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Steam distillation technique."
           ],
           "masteryCriteria": [
@@ -395,14 +395,14 @@
             "Successfully avoids common pitfalls when Steam distillation technique is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Steam distillation technique in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Steam distillation technique in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-steam-distillation-technique-1",
-              "question": "What are the critical factors or principles governing Steam distillation technique?",
+              "question": "What are the fundamental laws or mechanisms governing Steam distillation technique?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -429,7 +429,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-steam-distillation-technique-2",
-              "question": "Describe a scenario where applying the concept of Steam distillation technique can lead to a common student error.",
+              "question": "Explain an application where using the concept of Steam distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -470,11 +470,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Distillation under reduced pressure"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Distillation under reduced pressure is heavily tested in recent NEET papers.",
-            "Applying the core principles of Distillation under reduced pressure correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Distillation under reduced pressure is frequently appears in NEET examinations.",
+            "Applying the core principles of Distillation under reduced pressure correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Distillation under reduced pressure during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Distillation under reduced pressure during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Distillation under reduced pressure."
           ],
           "masteryCriteria": [
@@ -482,14 +482,14 @@
             "Successfully avoids common pitfalls when Distillation under reduced pressure is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Distillation under reduced pressure in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Distillation under reduced pressure in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-1",
-              "question": "What are the critical factors or principles governing Distillation under reduced pressure?",
+              "question": "What are the fundamental laws or mechanisms governing Distillation under reduced pressure?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -516,7 +516,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-2",
-              "question": "Describe a scenario where applying the concept of Distillation under reduced pressure can lead to a common student error.",
+              "question": "Explain an application where using the concept of Distillation under reduced pressure can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -557,11 +557,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Differential extraction"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Differential extraction is heavily tested in recent NEET papers.",
-            "Applying the core principles of Differential extraction correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Differential extraction is frequently appears in NEET examinations.",
+            "Applying the core principles of Differential extraction correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Differential extraction during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Differential extraction during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Differential extraction."
           ],
           "masteryCriteria": [
@@ -569,14 +569,14 @@
             "Successfully avoids common pitfalls when Differential extraction is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Differential extraction in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Differential extraction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-differential-extraction-1",
-              "question": "What are the critical factors or principles governing Differential extraction?",
+              "question": "What are the fundamental laws or mechanisms governing Differential extraction?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -603,7 +603,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-differential-extraction-2",
-              "question": "Describe a scenario where applying the concept of Differential extraction can lead to a common student error.",
+              "question": "Explain an application where using the concept of Differential extraction can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -644,11 +644,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Chromatography principles"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Chromatography principles is heavily tested in recent NEET papers.",
-            "Applying the core principles of Chromatography principles correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Chromatography principles is frequently appears in NEET examinations.",
+            "Applying the core principles of Chromatography principles correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Chromatography principles during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Chromatography principles during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Chromatography principles."
           ],
           "masteryCriteria": [
@@ -656,14 +656,14 @@
             "Successfully avoids common pitfalls when Chromatography principles is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Chromatography principles in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Chromatography principles in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-chromatography-principles-1",
-              "question": "What are the critical factors or principles governing Chromatography principles?",
+              "question": "What are the fundamental laws or mechanisms governing Chromatography principles?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -690,7 +690,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-chromatography-principles-2",
-              "question": "Describe a scenario where applying the concept of Chromatography principles can lead to a common student error.",
+              "question": "Explain an application where using the concept of Chromatography principles can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -744,11 +744,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for nitrogen"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lassaigne’s test for nitrogen is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lassaigne’s test for nitrogen correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Lassaigne’s test for nitrogen is frequently appears in NEET examinations.",
+            "Applying the core principles of Lassaigne’s test for nitrogen correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lassaigne’s test for nitrogen during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lassaigne’s test for nitrogen during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for nitrogen."
           ],
           "masteryCriteria": [
@@ -756,14 +756,14 @@
             "Successfully avoids common pitfalls when Lassaigne’s test for nitrogen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lassaigne’s test for nitrogen in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lassaigne’s test for nitrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-1",
-              "question": "What are the critical factors or principles governing Lassaigne’s test for nitrogen?",
+              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for nitrogen?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -790,7 +790,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-2",
-              "question": "Describe a scenario where applying the concept of Lassaigne’s test for nitrogen can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lassaigne’s test for nitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -831,11 +831,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for sulphur"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lassaigne’s test for sulphur is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lassaigne’s test for sulphur correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Lassaigne’s test for sulphur is frequently appears in NEET examinations.",
+            "Applying the core principles of Lassaigne’s test for sulphur correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lassaigne’s test for sulphur during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lassaigne’s test for sulphur during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for sulphur."
           ],
           "masteryCriteria": [
@@ -843,14 +843,14 @@
             "Successfully avoids common pitfalls when Lassaigne’s test for sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lassaigne’s test for sulphur in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lassaigne’s test for sulphur in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-1",
-              "question": "What are the critical factors or principles governing Lassaigne’s test for sulphur?",
+              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for sulphur?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -877,7 +877,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-2",
-              "question": "Describe a scenario where applying the concept of Lassaigne’s test for sulphur can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lassaigne’s test for sulphur can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -918,8 +918,8 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Lassaigne’s test for halogens"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lassaigne’s test for halogens is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lassaigne’s test for halogens correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Lassaigne’s test for halogens is frequently appears in NEET examinations.",
+            "Applying the core principles of Lassaigne’s test for halogens correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "reactions": [
             {
@@ -934,7 +934,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lassaigne’s test for halogens during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lassaigne’s test for halogens during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lassaigne’s test for halogens."
           ],
           "masteryCriteria": [
@@ -942,14 +942,14 @@
             "Successfully avoids common pitfalls when Lassaigne’s test for halogens is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lassaigne’s test for halogens in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lassaigne’s test for halogens in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-1",
-              "question": "What are the critical factors or principles governing Lassaigne’s test for halogens?",
+              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for halogens?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -976,7 +976,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-2",
-              "question": "Describe a scenario where applying the concept of Lassaigne’s test for halogens can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lassaigne’s test for halogens can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1017,11 +1017,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Test for phosphorus"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Test for phosphorus is heavily tested in recent NEET papers.",
-            "Applying the core principles of Test for phosphorus correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Test for phosphorus is frequently appears in NEET examinations.",
+            "Applying the core principles of Test for phosphorus correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Test for phosphorus during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Test for phosphorus during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Test for phosphorus."
           ],
           "masteryCriteria": [
@@ -1029,14 +1029,14 @@
             "Successfully avoids common pitfalls when Test for phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Test for phosphorus in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Test for phosphorus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-test-for-phosphorus-1",
-              "question": "What are the critical factors or principles governing Test for phosphorus?",
+              "question": "What are the fundamental laws or mechanisms governing Test for phosphorus?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1063,7 +1063,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-test-for-phosphorus-2",
-              "question": "Describe a scenario where applying the concept of Test for phosphorus can lead to a common student error.",
+              "question": "Explain an application where using the concept of Test for phosphorus can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1117,11 +1117,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Dumas method for nitrogen estimation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dumas method for nitrogen estimation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dumas method for nitrogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Dumas method for nitrogen estimation is frequently appears in NEET examinations.",
+            "Applying the core principles of Dumas method for nitrogen estimation correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dumas method for nitrogen estimation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dumas method for nitrogen estimation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dumas method for nitrogen estimation."
           ],
           "masteryCriteria": [
@@ -1129,14 +1129,14 @@
             "Successfully avoids common pitfalls when Dumas method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dumas method for nitrogen estimation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dumas method for nitrogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-1",
-              "question": "What are the critical factors or principles governing Dumas method for nitrogen estimation?",
+              "question": "What are the fundamental laws or mechanisms governing Dumas method for nitrogen estimation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1163,7 +1163,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-2",
-              "question": "Describe a scenario where applying the concept of Dumas method for nitrogen estimation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dumas method for nitrogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1204,11 +1204,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Kjeldahl method for nitrogen estimation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kjeldahl method for nitrogen estimation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kjeldahl method for nitrogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Kjeldahl method for nitrogen estimation is frequently appears in NEET examinations.",
+            "Applying the core principles of Kjeldahl method for nitrogen estimation correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kjeldahl method for nitrogen estimation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kjeldahl method for nitrogen estimation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kjeldahl method for nitrogen estimation."
           ],
           "masteryCriteria": [
@@ -1216,14 +1216,14 @@
             "Successfully avoids common pitfalls when Kjeldahl method for nitrogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kjeldahl method for nitrogen estimation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kjeldahl method for nitrogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-1",
-              "question": "What are the critical factors or principles governing Kjeldahl method for nitrogen estimation?",
+              "question": "What are the fundamental laws or mechanisms governing Kjeldahl method for nitrogen estimation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1250,7 +1250,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-2",
-              "question": "Describe a scenario where applying the concept of Kjeldahl method for nitrogen estimation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kjeldahl method for nitrogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1291,8 +1291,8 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Carius method for halogen estimation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Carius method for halogen estimation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Carius method for halogen estimation correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Carius method for halogen estimation is frequently appears in NEET examinations.",
+            "Applying the core principles of Carius method for halogen estimation correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "reactions": [
             {
@@ -1307,7 +1307,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Carius method for halogen estimation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Carius method for halogen estimation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Carius method for halogen estimation."
           ],
           "masteryCriteria": [
@@ -1315,14 +1315,14 @@
             "Successfully avoids common pitfalls when Carius method for halogen estimation is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Carius method for halogen estimation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Carius method for halogen estimation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-1",
-              "question": "What are the critical factors or principles governing Carius method for halogen estimation?",
+              "question": "What are the fundamental laws or mechanisms governing Carius method for halogen estimation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1349,7 +1349,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-2",
-              "question": "Describe a scenario where applying the concept of Carius method for halogen estimation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Carius method for halogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1390,11 +1390,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of sulphur"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Estimation of sulphur is heavily tested in recent NEET papers.",
-            "Applying the core principles of Estimation of sulphur correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Estimation of sulphur is frequently appears in NEET examinations.",
+            "Applying the core principles of Estimation of sulphur correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Estimation of sulphur during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Estimation of sulphur during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Estimation of sulphur."
           ],
           "masteryCriteria": [
@@ -1402,14 +1402,14 @@
             "Successfully avoids common pitfalls when Estimation of sulphur is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Estimation of sulphur in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Estimation of sulphur in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-estimation-of-sulphur-1",
-              "question": "What are the critical factors or principles governing Estimation of sulphur?",
+              "question": "What are the fundamental laws or mechanisms governing Estimation of sulphur?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1436,7 +1436,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-estimation-of-sulphur-2",
-              "question": "Describe a scenario where applying the concept of Estimation of sulphur can lead to a common student error.",
+              "question": "Explain an application where using the concept of Estimation of sulphur can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1490,11 +1490,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of phosphorus"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Estimation of phosphorus is heavily tested in recent NEET papers.",
-            "Applying the core principles of Estimation of phosphorus correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Estimation of phosphorus is frequently appears in NEET examinations.",
+            "Applying the core principles of Estimation of phosphorus correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Estimation of phosphorus during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Estimation of phosphorus during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Estimation of phosphorus."
           ],
           "masteryCriteria": [
@@ -1502,14 +1502,14 @@
             "Successfully avoids common pitfalls when Estimation of phosphorus is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Estimation of phosphorus in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Estimation of phosphorus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-estimation-of-phosphorus-1",
-              "question": "What are the critical factors or principles governing Estimation of phosphorus?",
+              "question": "What are the fundamental laws or mechanisms governing Estimation of phosphorus?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1536,7 +1536,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-estimation-of-phosphorus-2",
-              "question": "Describe a scenario where applying the concept of Estimation of phosphorus can lead to a common student error.",
+              "question": "Explain an application where using the concept of Estimation of phosphorus can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1577,11 +1577,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Estimation of oxygen"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Estimation of oxygen is heavily tested in recent NEET papers.",
-            "Applying the core principles of Estimation of oxygen correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Estimation of oxygen is frequently appears in NEET examinations.",
+            "Applying the core principles of Estimation of oxygen correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Estimation of oxygen during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Estimation of oxygen during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Estimation of oxygen."
           ],
           "masteryCriteria": [
@@ -1589,14 +1589,14 @@
             "Successfully avoids common pitfalls when Estimation of oxygen is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Estimation of oxygen in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Estimation of oxygen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-estimation-of-oxygen-1",
-              "question": "What are the critical factors or principles governing Estimation of oxygen?",
+              "question": "What are the fundamental laws or mechanisms governing Estimation of oxygen?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1623,7 +1623,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-estimation-of-oxygen-2",
-              "question": "Describe a scenario where applying the concept of Estimation of oxygen can lead to a common student error.",
+              "question": "Explain an application where using the concept of Estimation of oxygen can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1664,11 +1664,11 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Calculation of empirical formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Calculation of empirical formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Calculation of empirical formula correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Calculation of empirical formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Calculation of empirical formula correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Calculation of empirical formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Calculation of empirical formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Calculation of empirical formula."
           ],
           "masteryCriteria": [
@@ -1676,14 +1676,14 @@
             "Successfully avoids common pitfalls when Calculation of empirical formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Calculation of empirical formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Calculation of empirical formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-1",
-              "question": "What are the critical factors or principles governing Calculation of empirical formula?",
+              "question": "What are the fundamental laws or mechanisms governing Calculation of empirical formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1710,7 +1710,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-2",
-              "question": "Describe a scenario where applying the concept of Calculation of empirical formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Calculation of empirical formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1751,8 +1751,8 @@
             "NCERT Chemistry Class 11, Chapter: Purification and Characterisation of Organic Compounds, Section detailing Calculation of molecular formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Calculation of molecular formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Calculation of molecular formula correctly is essential for solving complex multi-step problems in Purification and Characterisation of Organic Compounds."
+            "A thorough understanding of Calculation of molecular formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Calculation of molecular formula correctly is essential for solving integrated numerical and conceptual problems in Purification and Characterisation of Organic Compounds."
           ],
           "formulas": [
             {
@@ -1766,7 +1766,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Calculation of molecular formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Calculation of molecular formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Calculation of molecular formula."
           ],
           "masteryCriteria": [
@@ -1774,14 +1774,14 @@
             "Successfully avoids common pitfalls when Calculation of molecular formula is integrated with other concepts in Purification and Characterisation of Organic Compounds."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Calculation of molecular formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Calculation of molecular formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-1",
-              "question": "What are the critical factors or principles governing Calculation of molecular formula?",
+              "question": "What are the fundamental laws or mechanisms governing Calculation of molecular formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1808,7 +1808,7 @@
             },
             {
               "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-2",
-              "question": "Describe a scenario where applying the concept of Calculation of molecular formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Calculation of molecular formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

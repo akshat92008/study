@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Reflection of light"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Reflection of light is heavily tested in recent NEET papers.",
-            "Applying the core principles of Reflection of light correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Reflection of light is frequently appears in NEET examinations.",
+            "Applying the core principles of Reflection of light correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Reflection of light during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Reflection of light during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Reflection of light."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Reflection of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Reflection of light in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Reflection of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-reflection-of-light-1",
-              "question": "What are the critical factors or principles governing Reflection of light?",
+              "question": "What are the fundamental laws or mechanisms governing Reflection of light?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "optics-q-reflection-of-light-2",
-              "question": "Describe a scenario where applying the concept of Reflection of light can lead to a common student error.",
+              "question": "Explain an application where using the concept of Reflection of light can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Spherical mirrors"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Spherical mirrors is heavily tested in recent NEET papers.",
-            "Applying the core principles of Spherical mirrors correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Spherical mirrors is frequently appears in NEET examinations.",
+            "Applying the core principles of Spherical mirrors correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Spherical mirrors during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Spherical mirrors during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Spherical mirrors."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Spherical mirrors is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Spherical mirrors in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Spherical mirrors in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-spherical-mirrors-1",
-              "question": "What are the critical factors or principles governing Spherical mirrors?",
+              "question": "What are the fundamental laws or mechanisms governing Spherical mirrors?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "optics-q-spherical-mirrors-2",
-              "question": "Describe a scenario where applying the concept of Spherical mirrors can lead to a common student error.",
+              "question": "Explain an application where using the concept of Spherical mirrors can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Mirror formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mirror formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mirror formula correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Mirror formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Mirror formula correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mirror formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mirror formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mirror formula."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Mirror formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mirror formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mirror formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-mirror-formula-1",
-              "question": "What are the critical factors or principles governing Mirror formula?",
+              "question": "What are the fundamental laws or mechanisms governing Mirror formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "optics-q-mirror-formula-2",
-              "question": "Describe a scenario where applying the concept of Mirror formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mirror formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Linear magnification"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Linear magnification is heavily tested in recent NEET papers.",
-            "Applying the core principles of Linear magnification correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Linear magnification is frequently appears in NEET examinations.",
+            "Applying the core principles of Linear magnification correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Linear magnification during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Linear magnification during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Linear magnification."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Linear magnification is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Linear magnification in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Linear magnification in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-linear-magnification-1",
-              "question": "What are the critical factors or principles governing Linear magnification?",
+              "question": "What are the fundamental laws or mechanisms governing Linear magnification?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "optics-q-linear-magnification-2",
-              "question": "Describe a scenario where applying the concept of Linear magnification can lead to a common student error.",
+              "question": "Explain an application where using the concept of Linear magnification can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -418,8 +418,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction of light"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Refraction of light is heavily tested in recent NEET papers.",
-            "Applying the core principles of Refraction of light correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Refraction of light is frequently appears in NEET examinations.",
+            "Applying the core principles of Refraction of light correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -434,7 +434,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Refraction of light during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Refraction of light during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Refraction of light."
           ],
           "masteryCriteria": [
@@ -442,14 +442,14 @@
             "Successfully avoids common pitfalls when Refraction of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Refraction of light in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Refraction of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-refraction-of-light-1",
-              "question": "What are the critical factors or principles governing Refraction of light?",
+              "question": "What are the fundamental laws or mechanisms governing Refraction of light?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -476,7 +476,7 @@
             },
             {
               "id": "optics-q-refraction-of-light-2",
-              "question": "Describe a scenario where applying the concept of Refraction of light can lead to a common student error.",
+              "question": "Explain an application where using the concept of Refraction of light can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -517,8 +517,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Snell’s law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Snell’s law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Snell’s law correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Snell’s law is frequently appears in NEET examinations.",
+            "Applying the core principles of Snell’s law correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -533,7 +533,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Snell’s law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Snell’s law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Snell’s law."
           ],
           "masteryCriteria": [
@@ -541,14 +541,14 @@
             "Successfully avoids common pitfalls when Snell’s law is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Snell’s law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Snell’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-snell-s-law-1",
-              "question": "What are the critical factors or principles governing Snell’s law?",
+              "question": "What are the fundamental laws or mechanisms governing Snell’s law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -575,7 +575,7 @@
             },
             {
               "id": "optics-q-snell-s-law-2",
-              "question": "Describe a scenario where applying the concept of Snell’s law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Snell’s law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -629,8 +629,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Total internal reflection"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Total internal reflection is heavily tested in recent NEET papers.",
-            "Applying the core principles of Total internal reflection correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Total internal reflection is frequently appears in NEET examinations.",
+            "Applying the core principles of Total internal reflection correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -645,7 +645,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Total internal reflection during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Total internal reflection during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Total internal reflection."
           ],
           "masteryCriteria": [
@@ -653,14 +653,14 @@
             "Successfully avoids common pitfalls when Total internal reflection is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Total internal reflection in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Total internal reflection in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-total-internal-reflection-1",
-              "question": "What are the critical factors or principles governing Total internal reflection?",
+              "question": "What are the fundamental laws or mechanisms governing Total internal reflection?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -687,7 +687,7 @@
             },
             {
               "id": "optics-q-total-internal-reflection-2",
-              "question": "Describe a scenario where applying the concept of Total internal reflection can lead to a common student error.",
+              "question": "Explain an application where using the concept of Total internal reflection can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -728,8 +728,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Critical angle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Critical angle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Critical angle correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Critical angle is frequently appears in NEET examinations.",
+            "Applying the core principles of Critical angle correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -744,7 +744,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Critical angle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Critical angle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Critical angle."
           ],
           "masteryCriteria": [
@@ -752,14 +752,14 @@
             "Successfully avoids common pitfalls when Critical angle is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Critical angle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Critical angle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-critical-angle-1",
-              "question": "What are the critical factors or principles governing Critical angle?",
+              "question": "What are the fundamental laws or mechanisms governing Critical angle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -786,7 +786,7 @@
             },
             {
               "id": "optics-q-critical-angle-2",
-              "question": "Describe a scenario where applying the concept of Critical angle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Critical angle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -827,8 +827,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Optical fibres application"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Optical fibres application is heavily tested in recent NEET papers.",
-            "Applying the core principles of Optical fibres application correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Optical fibres application is frequently appears in NEET examinations.",
+            "Applying the core principles of Optical fibres application correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -843,7 +843,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Optical fibres application during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Optical fibres application during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Optical fibres application."
           ],
           "masteryCriteria": [
@@ -851,14 +851,14 @@
             "Successfully avoids common pitfalls when Optical fibres application is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Optical fibres application in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Optical fibres application in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-optical-fibres-application-1",
-              "question": "What are the critical factors or principles governing Optical fibres application?",
+              "question": "What are the fundamental laws or mechanisms governing Optical fibres application?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -885,7 +885,7 @@
             },
             {
               "id": "optics-q-optical-fibres-application-2",
-              "question": "Describe a scenario where applying the concept of Optical fibres application can lead to a common student error.",
+              "question": "Explain an application where using the concept of Optical fibres application can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -926,8 +926,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction at spherical surface"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Refraction at spherical surface is heavily tested in recent NEET papers.",
-            "Applying the core principles of Refraction at spherical surface correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Refraction at spherical surface is frequently appears in NEET examinations.",
+            "Applying the core principles of Refraction at spherical surface correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -942,7 +942,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Refraction at spherical surface during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Refraction at spherical surface during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Refraction at spherical surface."
           ],
           "masteryCriteria": [
@@ -950,14 +950,14 @@
             "Successfully avoids common pitfalls when Refraction at spherical surface is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Refraction at spherical surface in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Refraction at spherical surface in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-refraction-at-spherical-surface-1",
-              "question": "What are the critical factors or principles governing Refraction at spherical surface?",
+              "question": "What are the fundamental laws or mechanisms governing Refraction at spherical surface?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -984,7 +984,7 @@
             },
             {
               "id": "optics-q-refraction-at-spherical-surface-2",
-              "question": "Describe a scenario where applying the concept of Refraction at spherical surface can lead to a common student error.",
+              "question": "Explain an application where using the concept of Refraction at spherical surface can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1025,8 +1025,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Lens formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lens formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lens formula correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Lens formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Lens formula correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1040,7 +1040,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lens formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lens formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lens formula."
           ],
           "masteryCriteria": [
@@ -1048,14 +1048,14 @@
             "Successfully avoids common pitfalls when Lens formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lens formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lens formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-lens-formula-1",
-              "question": "What are the critical factors or principles governing Lens formula?",
+              "question": "What are the fundamental laws or mechanisms governing Lens formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1082,7 +1082,7 @@
             },
             {
               "id": "optics-q-lens-formula-2",
-              "question": "Describe a scenario where applying the concept of Lens formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lens formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1123,8 +1123,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Lens maker’s formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Lens maker’s formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Lens maker’s formula correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Lens maker’s formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Lens maker’s formula correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1138,7 +1138,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Lens maker’s formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Lens maker’s formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Lens maker’s formula."
           ],
           "masteryCriteria": [
@@ -1146,14 +1146,14 @@
             "Successfully avoids common pitfalls when Lens maker’s formula is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Lens maker’s formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Lens maker’s formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-lens-maker-s-formula-1",
-              "question": "What are the critical factors or principles governing Lens maker’s formula?",
+              "question": "What are the fundamental laws or mechanisms governing Lens maker’s formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1180,7 +1180,7 @@
             },
             {
               "id": "optics-q-lens-maker-s-formula-2",
-              "question": "Describe a scenario where applying the concept of Lens maker’s formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Lens maker’s formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1234,8 +1234,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Power of a lens"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Power of a lens is heavily tested in recent NEET papers.",
-            "Applying the core principles of Power of a lens correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Power of a lens is frequently appears in NEET examinations.",
+            "Applying the core principles of Power of a lens correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1249,7 +1249,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Power of a lens during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Power of a lens during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Power of a lens."
           ],
           "masteryCriteria": [
@@ -1257,14 +1257,14 @@
             "Successfully avoids common pitfalls when Power of a lens is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Power of a lens in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Power of a lens in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-power-of-a-lens-1",
-              "question": "What are the critical factors or principles governing Power of a lens?",
+              "question": "What are the fundamental laws or mechanisms governing Power of a lens?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1291,7 +1291,7 @@
             },
             {
               "id": "optics-q-power-of-a-lens-2",
-              "question": "Describe a scenario where applying the concept of Power of a lens can lead to a common student error.",
+              "question": "Explain an application where using the concept of Power of a lens can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1332,8 +1332,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Combination of thin lenses"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Combination of thin lenses is heavily tested in recent NEET papers.",
-            "Applying the core principles of Combination of thin lenses correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Combination of thin lenses is frequently appears in NEET examinations.",
+            "Applying the core principles of Combination of thin lenses correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1347,7 +1347,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Combination of thin lenses during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Combination of thin lenses during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Combination of thin lenses."
           ],
           "masteryCriteria": [
@@ -1355,14 +1355,14 @@
             "Successfully avoids common pitfalls when Combination of thin lenses is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Combination of thin lenses in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Combination of thin lenses in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-combination-of-thin-lenses-1",
-              "question": "What are the critical factors or principles governing Combination of thin lenses?",
+              "question": "What are the fundamental laws or mechanisms governing Combination of thin lenses?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1389,7 +1389,7 @@
             },
             {
               "id": "optics-q-combination-of-thin-lenses-2",
-              "question": "Describe a scenario where applying the concept of Combination of thin lenses can lead to a common student error.",
+              "question": "Explain an application where using the concept of Combination of thin lenses can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1430,8 +1430,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Refraction through prism"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Refraction through prism is heavily tested in recent NEET papers.",
-            "Applying the core principles of Refraction through prism correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Refraction through prism is frequently appears in NEET examinations.",
+            "Applying the core principles of Refraction through prism correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1446,7 +1446,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Refraction through prism during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Refraction through prism during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Refraction through prism."
           ],
           "masteryCriteria": [
@@ -1454,14 +1454,14 @@
             "Successfully avoids common pitfalls when Refraction through prism is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Refraction through prism in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Refraction through prism in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-refraction-through-prism-1",
-              "question": "What are the critical factors or principles governing Refraction through prism?",
+              "question": "What are the fundamental laws or mechanisms governing Refraction through prism?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1488,7 +1488,7 @@
             },
             {
               "id": "optics-q-refraction-through-prism-2",
-              "question": "Describe a scenario where applying the concept of Refraction through prism can lead to a common student error.",
+              "question": "Explain an application where using the concept of Refraction through prism can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1529,8 +1529,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Dispersion of light"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dispersion of light is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dispersion of light correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Dispersion of light is frequently appears in NEET examinations.",
+            "Applying the core principles of Dispersion of light correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1545,7 +1545,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dispersion of light during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dispersion of light during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dispersion of light."
           ],
           "masteryCriteria": [
@@ -1553,14 +1553,14 @@
             "Successfully avoids common pitfalls when Dispersion of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dispersion of light in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dispersion of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-dispersion-of-light-1",
-              "question": "What are the critical factors or principles governing Dispersion of light?",
+              "question": "What are the fundamental laws or mechanisms governing Dispersion of light?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1587,7 +1587,7 @@
             },
             {
               "id": "optics-q-dispersion-of-light-2",
-              "question": "Describe a scenario where applying the concept of Dispersion of light can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dispersion of light can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1628,8 +1628,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Simple microscope"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Simple microscope is heavily tested in recent NEET papers.",
-            "Applying the core principles of Simple microscope correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Simple microscope is frequently appears in NEET examinations.",
+            "Applying the core principles of Simple microscope correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1644,7 +1644,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Simple microscope during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Simple microscope during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Simple microscope."
           ],
           "masteryCriteria": [
@@ -1652,14 +1652,14 @@
             "Successfully avoids common pitfalls when Simple microscope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Simple microscope in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Simple microscope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-simple-microscope-1",
-              "question": "What are the critical factors or principles governing Simple microscope?",
+              "question": "What are the fundamental laws or mechanisms governing Simple microscope?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1686,7 +1686,7 @@
             },
             {
               "id": "optics-q-simple-microscope-2",
-              "question": "Describe a scenario where applying the concept of Simple microscope can lead to a common student error.",
+              "question": "Explain an application where using the concept of Simple microscope can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1727,8 +1727,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Compound microscope"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Compound microscope is heavily tested in recent NEET papers.",
-            "Applying the core principles of Compound microscope correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Compound microscope is frequently appears in NEET examinations.",
+            "Applying the core principles of Compound microscope correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1743,7 +1743,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Compound microscope during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Compound microscope during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Compound microscope."
           ],
           "masteryCriteria": [
@@ -1751,14 +1751,14 @@
             "Successfully avoids common pitfalls when Compound microscope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Compound microscope in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Compound microscope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-compound-microscope-1",
-              "question": "What are the critical factors or principles governing Compound microscope?",
+              "question": "What are the fundamental laws or mechanisms governing Compound microscope?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1785,7 +1785,7 @@
             },
             {
               "id": "optics-q-compound-microscope-2",
-              "question": "Describe a scenario where applying the concept of Compound microscope can lead to a common student error.",
+              "question": "Explain an application where using the concept of Compound microscope can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1839,8 +1839,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Astronomical telescope"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Astronomical telescope is heavily tested in recent NEET papers.",
-            "Applying the core principles of Astronomical telescope correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Astronomical telescope is frequently appears in NEET examinations.",
+            "Applying the core principles of Astronomical telescope correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1855,7 +1855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Astronomical telescope during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Astronomical telescope during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Astronomical telescope."
           ],
           "masteryCriteria": [
@@ -1863,14 +1863,14 @@
             "Successfully avoids common pitfalls when Astronomical telescope is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Astronomical telescope in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Astronomical telescope in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-astronomical-telescope-1",
-              "question": "What are the critical factors or principles governing Astronomical telescope?",
+              "question": "What are the fundamental laws or mechanisms governing Astronomical telescope?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1897,7 +1897,7 @@
             },
             {
               "id": "optics-q-astronomical-telescope-2",
-              "question": "Describe a scenario where applying the concept of Astronomical telescope can lead to a common student error.",
+              "question": "Explain an application where using the concept of Astronomical telescope can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1938,8 +1938,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Wavefront concept"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Wavefront concept is heavily tested in recent NEET papers.",
-            "Applying the core principles of Wavefront concept correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Wavefront concept is frequently appears in NEET examinations.",
+            "Applying the core principles of Wavefront concept correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -1953,7 +1953,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Wavefront concept during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Wavefront concept during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Wavefront concept."
           ],
           "masteryCriteria": [
@@ -1961,14 +1961,14 @@
             "Successfully avoids common pitfalls when Wavefront concept is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Wavefront concept in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Wavefront concept in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-wavefront-concept-1",
-              "question": "What are the critical factors or principles governing Wavefront concept?",
+              "question": "What are the fundamental laws or mechanisms governing Wavefront concept?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1995,7 +1995,7 @@
             },
             {
               "id": "optics-q-wavefront-concept-2",
-              "question": "Describe a scenario where applying the concept of Wavefront concept can lead to a common student error.",
+              "question": "Explain an application where using the concept of Wavefront concept can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2036,8 +2036,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Huygens principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Huygens principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Huygens principle correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Huygens principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Huygens principle correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2052,7 +2052,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Huygens principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Huygens principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Huygens principle."
           ],
           "masteryCriteria": [
@@ -2060,14 +2060,14 @@
             "Successfully avoids common pitfalls when Huygens principle is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Huygens principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Huygens principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-huygens-principle-1",
-              "question": "What are the critical factors or principles governing Huygens principle?",
+              "question": "What are the fundamental laws or mechanisms governing Huygens principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2094,7 +2094,7 @@
             },
             {
               "id": "optics-q-huygens-principle-2",
-              "question": "Describe a scenario where applying the concept of Huygens principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Huygens principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2135,8 +2135,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Young's double slit experiment"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Young's double slit experiment is heavily tested in recent NEET papers.",
-            "Applying the core principles of Young's double slit experiment correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Young's double slit experiment is frequently appears in NEET examinations.",
+            "Applying the core principles of Young's double slit experiment correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2151,7 +2151,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Young's double slit experiment during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Young's double slit experiment during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Young's double slit experiment."
           ],
           "masteryCriteria": [
@@ -2159,14 +2159,14 @@
             "Successfully avoids common pitfalls when Young's double slit experiment is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Young's double slit experiment in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Young's double slit experiment in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-young-s-double-slit-experiment-1",
-              "question": "What are the critical factors or principles governing Young's double slit experiment?",
+              "question": "What are the fundamental laws or mechanisms governing Young's double slit experiment?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2193,7 +2193,7 @@
             },
             {
               "id": "optics-q-young-s-double-slit-experiment-2",
-              "question": "Describe a scenario where applying the concept of Young's double slit experiment can lead to a common student error.",
+              "question": "Explain an application where using the concept of Young's double slit experiment can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2234,8 +2234,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Coherent sources"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Coherent sources is heavily tested in recent NEET papers.",
-            "Applying the core principles of Coherent sources correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Coherent sources is frequently appears in NEET examinations.",
+            "Applying the core principles of Coherent sources correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2250,7 +2250,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Coherent sources during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Coherent sources during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Coherent sources."
           ],
           "masteryCriteria": [
@@ -2258,14 +2258,14 @@
             "Successfully avoids common pitfalls when Coherent sources is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Coherent sources in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Coherent sources in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-coherent-sources-1",
-              "question": "What are the critical factors or principles governing Coherent sources?",
+              "question": "What are the fundamental laws or mechanisms governing Coherent sources?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2292,7 +2292,7 @@
             },
             {
               "id": "optics-q-coherent-sources-2",
-              "question": "Describe a scenario where applying the concept of Coherent sources can lead to a common student error.",
+              "question": "Explain an application where using the concept of Coherent sources can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2333,8 +2333,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Diffraction of light at single slit"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Diffraction of light at single slit is heavily tested in recent NEET papers.",
-            "Applying the core principles of Diffraction of light at single slit correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Diffraction of light at single slit is frequently appears in NEET examinations.",
+            "Applying the core principles of Diffraction of light at single slit correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2349,7 +2349,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Diffraction of light at single slit during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Diffraction of light at single slit during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Diffraction of light at single slit."
           ],
           "masteryCriteria": [
@@ -2357,14 +2357,14 @@
             "Successfully avoids common pitfalls when Diffraction of light at single slit is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Diffraction of light at single slit in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Diffraction of light at single slit in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-diffraction-of-light-at-single-slit-1",
-              "question": "What are the critical factors or principles governing Diffraction of light at single slit?",
+              "question": "What are the fundamental laws or mechanisms governing Diffraction of light at single slit?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2391,7 +2391,7 @@
             },
             {
               "id": "optics-q-diffraction-of-light-at-single-slit-2",
-              "question": "Describe a scenario where applying the concept of Diffraction of light at single slit can lead to a common student error.",
+              "question": "Explain an application where using the concept of Diffraction of light at single slit can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2445,8 +2445,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Resolving power of optical instruments"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Resolving power of optical instruments is heavily tested in recent NEET papers.",
-            "Applying the core principles of Resolving power of optical instruments correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Resolving power of optical instruments is frequently appears in NEET examinations.",
+            "Applying the core principles of Resolving power of optical instruments correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2461,7 +2461,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Resolving power of optical instruments during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Resolving power of optical instruments during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Resolving power of optical instruments."
           ],
           "masteryCriteria": [
@@ -2469,14 +2469,14 @@
             "Successfully avoids common pitfalls when Resolving power of optical instruments is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Resolving power of optical instruments in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Resolving power of optical instruments in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-resolving-power-of-optical-instruments-1",
-              "question": "What are the critical factors or principles governing Resolving power of optical instruments?",
+              "question": "What are the fundamental laws or mechanisms governing Resolving power of optical instruments?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2503,7 +2503,7 @@
             },
             {
               "id": "optics-q-resolving-power-of-optical-instruments-2",
-              "question": "Describe a scenario where applying the concept of Resolving power of optical instruments can lead to a common student error.",
+              "question": "Explain an application where using the concept of Resolving power of optical instruments can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2544,8 +2544,8 @@
             "NCERT Physics Class 12, Chapter: Optics, Section detailing Polarisation of light"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Polarisation of light is heavily tested in recent NEET papers.",
-            "Applying the core principles of Polarisation of light correctly is essential for solving complex multi-step problems in Optics."
+            "A thorough understanding of Polarisation of light is frequently appears in NEET examinations.",
+            "Applying the core principles of Polarisation of light correctly is essential for solving integrated numerical and conceptual problems in Optics."
           ],
           "formulas": [
             {
@@ -2560,7 +2560,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Polarisation of light during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Polarisation of light during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Polarisation of light."
           ],
           "masteryCriteria": [
@@ -2568,14 +2568,14 @@
             "Successfully avoids common pitfalls when Polarisation of light is integrated with other concepts in Optics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Polarisation of light in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Polarisation of light in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "optics-q-polarisation-of-light-1",
-              "question": "What are the critical factors or principles governing Polarisation of light?",
+              "question": "What are the fundamental laws or mechanisms governing Polarisation of light?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2602,7 +2602,7 @@
             },
             {
               "id": "optics-q-polarisation-of-light-2",
-              "question": "Describe a scenario where applying the concept of Polarisation of light can lead to a common student error.",
+              "question": "Explain an application where using the concept of Polarisation of light can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

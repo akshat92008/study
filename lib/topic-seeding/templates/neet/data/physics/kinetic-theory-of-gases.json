@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Ideal gas equation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Ideal gas equation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Ideal gas equation correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Ideal gas equation is frequently appears in NEET examinations.",
+            "Applying the core principles of Ideal gas equation correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Ideal gas equation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Ideal gas equation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Ideal gas equation."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Ideal gas equation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Ideal gas equation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Ideal gas equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-ideal-gas-equation-1",
-              "question": "What are the critical factors or principles governing Ideal gas equation?",
+              "question": "What are the fundamental laws or mechanisms governing Ideal gas equation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-ideal-gas-equation-2",
-              "question": "Describe a scenario where applying the concept of Ideal gas equation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Ideal gas equation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Assumptions of kinetic theory"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Assumptions of kinetic theory is heavily tested in recent NEET papers.",
-            "Applying the core principles of Assumptions of kinetic theory correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Assumptions of kinetic theory is frequently appears in NEET examinations.",
+            "Applying the core principles of Assumptions of kinetic theory correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Assumptions of kinetic theory during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Assumptions of kinetic theory during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Assumptions of kinetic theory."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Assumptions of kinetic theory is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Assumptions of kinetic theory in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Assumptions of kinetic theory in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-assumptions-of-kinetic-theory-1",
-              "question": "What are the critical factors or principles governing Assumptions of kinetic theory?",
+              "question": "What are the fundamental laws or mechanisms governing Assumptions of kinetic theory?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-assumptions-of-kinetic-theory-2",
-              "question": "Describe a scenario where applying the concept of Assumptions of kinetic theory can lead to a common student error.",
+              "question": "Explain an application where using the concept of Assumptions of kinetic theory can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Pressure of an ideal gas"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Pressure of an ideal gas is heavily tested in recent NEET papers.",
-            "Applying the core principles of Pressure of an ideal gas correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Pressure of an ideal gas is frequently appears in NEET examinations.",
+            "Applying the core principles of Pressure of an ideal gas correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Pressure of an ideal gas during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Pressure of an ideal gas during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Pressure of an ideal gas."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Pressure of an ideal gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Pressure of an ideal gas in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Pressure of an ideal gas in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-pressure-of-an-ideal-gas-1",
-              "question": "What are the critical factors or principles governing Pressure of an ideal gas?",
+              "question": "What are the fundamental laws or mechanisms governing Pressure of an ideal gas?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-pressure-of-an-ideal-gas-2",
-              "question": "Describe a scenario where applying the concept of Pressure of an ideal gas can lead to a common student error.",
+              "question": "Explain an application where using the concept of Pressure of an ideal gas can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Root mean square speed"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Root mean square speed is heavily tested in recent NEET papers.",
-            "Applying the core principles of Root mean square speed correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Root mean square speed is frequently appears in NEET examinations.",
+            "Applying the core principles of Root mean square speed correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Root mean square speed during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Root mean square speed during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Root mean square speed."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Root mean square speed is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Root mean square speed in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Root mean square speed in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-root-mean-square-speed-1",
-              "question": "What are the critical factors or principles governing Root mean square speed?",
+              "question": "What are the fundamental laws or mechanisms governing Root mean square speed?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-root-mean-square-speed-2",
-              "question": "Describe a scenario where applying the concept of Root mean square speed can lead to a common student error.",
+              "question": "Explain an application where using the concept of Root mean square speed can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -418,8 +418,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Average speed of gas molecules"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Average speed of gas molecules is heavily tested in recent NEET papers.",
-            "Applying the core principles of Average speed of gas molecules correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Average speed of gas molecules is frequently appears in NEET examinations.",
+            "Applying the core principles of Average speed of gas molecules correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -434,7 +434,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Average speed of gas molecules during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Average speed of gas molecules during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Average speed of gas molecules."
           ],
           "masteryCriteria": [
@@ -442,14 +442,14 @@
             "Successfully avoids common pitfalls when Average speed of gas molecules is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Average speed of gas molecules in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Average speed of gas molecules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-average-speed-of-gas-molecules-1",
-              "question": "What are the critical factors or principles governing Average speed of gas molecules?",
+              "question": "What are the fundamental laws or mechanisms governing Average speed of gas molecules?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -476,7 +476,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-average-speed-of-gas-molecules-2",
-              "question": "Describe a scenario where applying the concept of Average speed of gas molecules can lead to a common student error.",
+              "question": "Explain an application where using the concept of Average speed of gas molecules can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -530,8 +530,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Most probable speed"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Most probable speed is heavily tested in recent NEET papers.",
-            "Applying the core principles of Most probable speed correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Most probable speed is frequently appears in NEET examinations.",
+            "Applying the core principles of Most probable speed correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -546,7 +546,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Most probable speed during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Most probable speed during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Most probable speed."
           ],
           "masteryCriteria": [
@@ -554,14 +554,14 @@
             "Successfully avoids common pitfalls when Most probable speed is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Most probable speed in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Most probable speed in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-most-probable-speed-1",
-              "question": "What are the critical factors or principles governing Most probable speed?",
+              "question": "What are the fundamental laws or mechanisms governing Most probable speed?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -588,7 +588,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-most-probable-speed-2",
-              "question": "Describe a scenario where applying the concept of Most probable speed can lead to a common student error.",
+              "question": "Explain an application where using the concept of Most probable speed can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -629,8 +629,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Temperature and kinetic energy relation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Temperature and kinetic energy relation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Temperature and kinetic energy relation correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Temperature and kinetic energy relation is frequently appears in NEET examinations.",
+            "Applying the core principles of Temperature and kinetic energy relation correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -644,7 +644,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Temperature and kinetic energy relation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Temperature and kinetic energy relation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Temperature and kinetic energy relation."
           ],
           "masteryCriteria": [
@@ -652,14 +652,14 @@
             "Successfully avoids common pitfalls when Temperature and kinetic energy relation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Temperature and kinetic energy relation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Temperature and kinetic energy relation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-temperature-and-kinetic-energy-relation-1",
-              "question": "What are the critical factors or principles governing Temperature and kinetic energy relation?",
+              "question": "What are the fundamental laws or mechanisms governing Temperature and kinetic energy relation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -686,7 +686,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-temperature-and-kinetic-energy-relation-2",
-              "question": "Describe a scenario where applying the concept of Temperature and kinetic energy relation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Temperature and kinetic energy relation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -727,8 +727,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Degrees of freedom"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Degrees of freedom is heavily tested in recent NEET papers.",
-            "Applying the core principles of Degrees of freedom correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Degrees of freedom is frequently appears in NEET examinations.",
+            "Applying the core principles of Degrees of freedom correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -743,7 +743,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Degrees of freedom during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Degrees of freedom during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Degrees of freedom."
           ],
           "masteryCriteria": [
@@ -751,14 +751,14 @@
             "Successfully avoids common pitfalls when Degrees of freedom is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Degrees of freedom in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Degrees of freedom in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-degrees-of-freedom-1",
-              "question": "What are the critical factors or principles governing Degrees of freedom?",
+              "question": "What are the fundamental laws or mechanisms governing Degrees of freedom?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -785,7 +785,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-degrees-of-freedom-2",
-              "question": "Describe a scenario where applying the concept of Degrees of freedom can lead to a common student error.",
+              "question": "Explain an application where using the concept of Degrees of freedom can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -826,8 +826,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Law of equipartition of energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Law of equipartition of energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Law of equipartition of energy correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Law of equipartition of energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Law of equipartition of energy correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -841,7 +841,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Law of equipartition of energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Law of equipartition of energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Law of equipartition of energy."
           ],
           "masteryCriteria": [
@@ -849,14 +849,14 @@
             "Successfully avoids common pitfalls when Law of equipartition of energy is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Law of equipartition of energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Law of equipartition of energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-law-of-equipartition-of-energy-1",
-              "question": "What are the critical factors or principles governing Law of equipartition of energy?",
+              "question": "What are the fundamental laws or mechanisms governing Law of equipartition of energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -883,7 +883,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-law-of-equipartition-of-energy-2",
-              "question": "Describe a scenario where applying the concept of Law of equipartition of energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Law of equipartition of energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -924,8 +924,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Specific heat of monoatomic gas"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Specific heat of monoatomic gas is heavily tested in recent NEET papers.",
-            "Applying the core principles of Specific heat of monoatomic gas correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Specific heat of monoatomic gas is frequently appears in NEET examinations.",
+            "Applying the core principles of Specific heat of monoatomic gas correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -940,7 +940,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Specific heat of monoatomic gas during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Specific heat of monoatomic gas during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of monoatomic gas."
           ],
           "masteryCriteria": [
@@ -948,14 +948,14 @@
             "Successfully avoids common pitfalls when Specific heat of monoatomic gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Specific heat of monoatomic gas in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Specific heat of monoatomic gas in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-monoatomic-gas-1",
-              "question": "What are the critical factors or principles governing Specific heat of monoatomic gas?",
+              "question": "What are the fundamental laws or mechanisms governing Specific heat of monoatomic gas?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -982,7 +982,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-monoatomic-gas-2",
-              "question": "Describe a scenario where applying the concept of Specific heat of monoatomic gas can lead to a common student error.",
+              "question": "Explain an application where using the concept of Specific heat of monoatomic gas can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1036,8 +1036,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Specific heat of diatomic gas"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Specific heat of diatomic gas is heavily tested in recent NEET papers.",
-            "Applying the core principles of Specific heat of diatomic gas correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Specific heat of diatomic gas is frequently appears in NEET examinations.",
+            "Applying the core principles of Specific heat of diatomic gas correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1052,7 +1052,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Specific heat of diatomic gas during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Specific heat of diatomic gas during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Specific heat of diatomic gas."
           ],
           "masteryCriteria": [
@@ -1060,14 +1060,14 @@
             "Successfully avoids common pitfalls when Specific heat of diatomic gas is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Specific heat of diatomic gas in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Specific heat of diatomic gas in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-diatomic-gas-1",
-              "question": "What are the critical factors or principles governing Specific heat of diatomic gas?",
+              "question": "What are the fundamental laws or mechanisms governing Specific heat of diatomic gas?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1094,7 +1094,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-diatomic-gas-2",
-              "question": "Describe a scenario where applying the concept of Specific heat of diatomic gas can lead to a common student error.",
+              "question": "Explain an application where using the concept of Specific heat of diatomic gas can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1135,8 +1135,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Mean free path formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mean free path formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mean free path formula correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Mean free path formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Mean free path formula correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1151,7 +1151,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mean free path formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mean free path formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mean free path formula."
           ],
           "masteryCriteria": [
@@ -1159,14 +1159,14 @@
             "Successfully avoids common pitfalls when Mean free path formula is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mean free path formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mean free path formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-mean-free-path-formula-1",
-              "question": "What are the critical factors or principles governing Mean free path formula?",
+              "question": "What are the fundamental laws or mechanisms governing Mean free path formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1193,7 +1193,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-mean-free-path-formula-2",
-              "question": "Describe a scenario where applying the concept of Mean free path formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mean free path formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1234,8 +1234,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Avogadro number significance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Avogadro number significance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Avogadro number significance correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Avogadro number significance is frequently appears in NEET examinations.",
+            "Applying the core principles of Avogadro number significance correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1250,7 +1250,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Avogadro number significance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Avogadro number significance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Avogadro number significance."
           ],
           "masteryCriteria": [
@@ -1258,14 +1258,14 @@
             "Successfully avoids common pitfalls when Avogadro number significance is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Avogadro number significance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Avogadro number significance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-avogadro-number-significance-1",
-              "question": "What are the critical factors or principles governing Avogadro number significance?",
+              "question": "What are the fundamental laws or mechanisms governing Avogadro number significance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1292,7 +1292,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-avogadro-number-significance-2",
-              "question": "Describe a scenario where applying the concept of Avogadro number significance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Avogadro number significance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1333,8 +1333,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Kinetic energy per molecule"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kinetic energy per molecule is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kinetic energy per molecule correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Kinetic energy per molecule is frequently appears in NEET examinations.",
+            "Applying the core principles of Kinetic energy per molecule correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1348,7 +1348,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kinetic energy per molecule during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kinetic energy per molecule during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kinetic energy per molecule."
           ],
           "masteryCriteria": [
@@ -1356,14 +1356,14 @@
             "Successfully avoids common pitfalls when Kinetic energy per molecule is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kinetic energy per molecule in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kinetic energy per molecule in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-kinetic-energy-per-molecule-1",
-              "question": "What are the critical factors or principles governing Kinetic energy per molecule?",
+              "question": "What are the fundamental laws or mechanisms governing Kinetic energy per molecule?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1390,7 +1390,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-kinetic-energy-per-molecule-2",
-              "question": "Describe a scenario where applying the concept of Kinetic energy per molecule can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kinetic energy per molecule can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1431,8 +1431,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Gas mixture properties"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gas mixture properties is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gas mixture properties correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Gas mixture properties is frequently appears in NEET examinations.",
+            "Applying the core principles of Gas mixture properties correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1447,7 +1447,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gas mixture properties during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gas mixture properties during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gas mixture properties."
           ],
           "masteryCriteria": [
@@ -1455,14 +1455,14 @@
             "Successfully avoids common pitfalls when Gas mixture properties is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gas mixture properties in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gas mixture properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-gas-mixture-properties-1",
-              "question": "What are the critical factors or principles governing Gas mixture properties?",
+              "question": "What are the fundamental laws or mechanisms governing Gas mixture properties?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1489,7 +1489,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-gas-mixture-properties-2",
-              "question": "Describe a scenario where applying the concept of Gas mixture properties can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gas mixture properties can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1543,8 +1543,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Maxwell Boltzmann velocity distribution"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Maxwell Boltzmann velocity distribution is heavily tested in recent NEET papers.",
-            "Applying the core principles of Maxwell Boltzmann velocity distribution correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Maxwell Boltzmann velocity distribution is frequently appears in NEET examinations.",
+            "Applying the core principles of Maxwell Boltzmann velocity distribution correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1558,7 +1558,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Maxwell Boltzmann velocity distribution during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Maxwell Boltzmann velocity distribution during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Maxwell Boltzmann velocity distribution."
           ],
           "masteryCriteria": [
@@ -1566,14 +1566,14 @@
             "Successfully avoids common pitfalls when Maxwell Boltzmann velocity distribution is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Maxwell Boltzmann velocity distribution in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Maxwell Boltzmann velocity distribution in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-maxwell-boltzmann-velocity-distribution-1",
-              "question": "What are the critical factors or principles governing Maxwell Boltzmann velocity distribution?",
+              "question": "What are the fundamental laws or mechanisms governing Maxwell Boltzmann velocity distribution?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1600,7 +1600,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-maxwell-boltzmann-velocity-distribution-2",
-              "question": "Describe a scenario where applying the concept of Maxwell Boltzmann velocity distribution can lead to a common student error.",
+              "question": "Explain an application where using the concept of Maxwell Boltzmann velocity distribution can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1641,8 +1641,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Collision frequency"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Collision frequency is heavily tested in recent NEET papers.",
-            "Applying the core principles of Collision frequency correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Collision frequency is frequently appears in NEET examinations.",
+            "Applying the core principles of Collision frequency correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1657,7 +1657,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Collision frequency during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Collision frequency during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Collision frequency."
           ],
           "masteryCriteria": [
@@ -1665,14 +1665,14 @@
             "Successfully avoids common pitfalls when Collision frequency is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Collision frequency in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Collision frequency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-collision-frequency-1",
-              "question": "What are the critical factors or principles governing Collision frequency?",
+              "question": "What are the fundamental laws or mechanisms governing Collision frequency?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1699,7 +1699,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-collision-frequency-2",
-              "question": "Describe a scenario where applying the concept of Collision frequency can lead to a common student error.",
+              "question": "Explain an application where using the concept of Collision frequency can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1740,8 +1740,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Real gas deviation from ideal behaviour"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Real gas deviation from ideal behaviour is heavily tested in recent NEET papers.",
-            "Applying the core principles of Real gas deviation from ideal behaviour correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Real gas deviation from ideal behaviour is frequently appears in NEET examinations.",
+            "Applying the core principles of Real gas deviation from ideal behaviour correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1756,7 +1756,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Real gas deviation from ideal behaviour during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Real gas deviation from ideal behaviour during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Real gas deviation from ideal behaviour."
           ],
           "masteryCriteria": [
@@ -1764,14 +1764,14 @@
             "Successfully avoids common pitfalls when Real gas deviation from ideal behaviour is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Real gas deviation from ideal behaviour in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Real gas deviation from ideal behaviour in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-real-gas-deviation-from-ideal-behaviour-1",
-              "question": "What are the critical factors or principles governing Real gas deviation from ideal behaviour?",
+              "question": "What are the fundamental laws or mechanisms governing Real gas deviation from ideal behaviour?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1798,7 +1798,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-real-gas-deviation-from-ideal-behaviour-2",
-              "question": "Describe a scenario where applying the concept of Real gas deviation from ideal behaviour can lead to a common student error.",
+              "question": "Explain an application where using the concept of Real gas deviation from ideal behaviour can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1839,8 +1839,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Van der Waals equation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Van der Waals equation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Van der Waals equation correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Van der Waals equation is frequently appears in NEET examinations.",
+            "Applying the core principles of Van der Waals equation correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1855,7 +1855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Van der Waals equation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Van der Waals equation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Van der Waals equation."
           ],
           "masteryCriteria": [
@@ -1863,14 +1863,14 @@
             "Successfully avoids common pitfalls when Van der Waals equation is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Van der Waals equation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Van der Waals equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-van-der-waals-equation-1",
-              "question": "What are the critical factors or principles governing Van der Waals equation?",
+              "question": "What are the fundamental laws or mechanisms governing Van der Waals equation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1897,7 +1897,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-van-der-waals-equation-2",
-              "question": "Describe a scenario where applying the concept of Van der Waals equation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Van der Waals equation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1938,8 +1938,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Critical temperature"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Critical temperature is heavily tested in recent NEET papers.",
-            "Applying the core principles of Critical temperature correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Critical temperature is frequently appears in NEET examinations.",
+            "Applying the core principles of Critical temperature correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -1954,7 +1954,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Critical temperature during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Critical temperature during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Critical temperature."
           ],
           "masteryCriteria": [
@@ -1962,14 +1962,14 @@
             "Successfully avoids common pitfalls when Critical temperature is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Critical temperature in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Critical temperature in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-critical-temperature-1",
-              "question": "What are the critical factors or principles governing Critical temperature?",
+              "question": "What are the fundamental laws or mechanisms governing Critical temperature?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1996,7 +1996,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-critical-temperature-2",
-              "question": "Describe a scenario where applying the concept of Critical temperature can lead to a common student error.",
+              "question": "Explain an application where using the concept of Critical temperature can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2050,8 +2050,8 @@
             "NCERT Physics Class 11, Chapter: Kinetic Theory of Gases, Section detailing Compressibility factor"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Compressibility factor is heavily tested in recent NEET papers.",
-            "Applying the core principles of Compressibility factor correctly is essential for solving complex multi-step problems in Kinetic Theory of Gases."
+            "A thorough understanding of Compressibility factor is frequently appears in NEET examinations.",
+            "Applying the core principles of Compressibility factor correctly is essential for solving integrated numerical and conceptual problems in Kinetic Theory of Gases."
           ],
           "formulas": [
             {
@@ -2066,7 +2066,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Compressibility factor during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Compressibility factor during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Compressibility factor."
           ],
           "masteryCriteria": [
@@ -2074,14 +2074,14 @@
             "Successfully avoids common pitfalls when Compressibility factor is integrated with other concepts in Kinetic Theory of Gases."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Compressibility factor in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Compressibility factor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "kinetic-theory-of-gases-q-compressibility-factor-1",
-              "question": "What are the critical factors or principles governing Compressibility factor?",
+              "question": "What are the fundamental laws or mechanisms governing Compressibility factor?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2108,7 +2108,7 @@
             },
             {
               "id": "kinetic-theory-of-gases-q-compressibility-factor-2",
-              "question": "Describe a scenario where applying the concept of Compressibility factor can lead to a common student error.",
+              "question": "Explain an application where using the concept of Compressibility factor can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

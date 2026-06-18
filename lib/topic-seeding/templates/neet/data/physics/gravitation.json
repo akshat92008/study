@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Universal law of gravitation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Universal law of gravitation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Universal law of gravitation correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Universal law of gravitation is frequently appears in NEET examinations.",
+            "Applying the core principles of Universal law of gravitation correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -39,7 +39,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Universal law of gravitation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Universal law of gravitation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Universal law of gravitation."
           ],
           "masteryCriteria": [
@@ -47,14 +47,14 @@
             "Successfully avoids common pitfalls when Universal law of gravitation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Universal law of gravitation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Universal law of gravitation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-universal-law-of-gravitation-1",
-              "question": "What are the critical factors or principles governing Universal law of gravitation?",
+              "question": "What are the fundamental laws or mechanisms governing Universal law of gravitation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -81,7 +81,7 @@
             },
             {
               "id": "gravitation-q-universal-law-of-gravitation-2",
-              "question": "Describe a scenario where applying the concept of Universal law of gravitation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Universal law of gravitation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -122,8 +122,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational constant"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gravitational constant is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gravitational constant correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Gravitational constant is frequently appears in NEET examinations.",
+            "Applying the core principles of Gravitational constant correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -139,7 +139,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gravitational constant during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gravitational constant during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gravitational constant."
           ],
           "masteryCriteria": [
@@ -147,14 +147,14 @@
             "Successfully avoids common pitfalls when Gravitational constant is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gravitational constant in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gravitational constant in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-constant-1",
-              "question": "What are the critical factors or principles governing Gravitational constant?",
+              "question": "What are the fundamental laws or mechanisms governing Gravitational constant?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -181,7 +181,7 @@
             },
             {
               "id": "gravitation-q-gravitational-constant-2",
-              "question": "Describe a scenario where applying the concept of Gravitational constant can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gravitational constant can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -222,8 +222,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational field intensity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gravitational field intensity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gravitational field intensity correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Gravitational field intensity is frequently appears in NEET examinations.",
+            "Applying the core principles of Gravitational field intensity correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -239,7 +239,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gravitational field intensity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gravitational field intensity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gravitational field intensity."
           ],
           "masteryCriteria": [
@@ -247,14 +247,14 @@
             "Successfully avoids common pitfalls when Gravitational field intensity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gravitational field intensity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gravitational field intensity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-field-intensity-1",
-              "question": "What are the critical factors or principles governing Gravitational field intensity?",
+              "question": "What are the fundamental laws or mechanisms governing Gravitational field intensity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -281,7 +281,7 @@
             },
             {
               "id": "gravitation-q-gravitational-field-intensity-2",
-              "question": "Describe a scenario where applying the concept of Gravitational field intensity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gravitational field intensity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -322,8 +322,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Acceleration due to gravity formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Acceleration due to gravity formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Acceleration due to gravity formula correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Acceleration due to gravity formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Acceleration due to gravity formula correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -337,7 +337,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Acceleration due to gravity formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Acceleration due to gravity formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Acceleration due to gravity formula."
           ],
           "masteryCriteria": [
@@ -345,14 +345,14 @@
             "Successfully avoids common pitfalls when Acceleration due to gravity formula is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Acceleration due to gravity formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Acceleration due to gravity formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-acceleration-due-to-gravity-formula-1",
-              "question": "What are the critical factors or principles governing Acceleration due to gravity formula?",
+              "question": "What are the fundamental laws or mechanisms governing Acceleration due to gravity formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -379,7 +379,7 @@
             },
             {
               "id": "gravitation-q-acceleration-due-to-gravity-formula-2",
-              "question": "Describe a scenario where applying the concept of Acceleration due to gravity formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Acceleration due to gravity formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -420,8 +420,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with altitude"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Variation of g with altitude is heavily tested in recent NEET papers.",
-            "Applying the core principles of Variation of g with altitude correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Variation of g with altitude is frequently appears in NEET examinations.",
+            "Applying the core principles of Variation of g with altitude correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -436,7 +436,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Variation of g with altitude during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Variation of g with altitude during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with altitude."
           ],
           "masteryCriteria": [
@@ -444,14 +444,14 @@
             "Successfully avoids common pitfalls when Variation of g with altitude is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Variation of g with altitude in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Variation of g with altitude in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-variation-of-g-with-altitude-1",
-              "question": "What are the critical factors or principles governing Variation of g with altitude?",
+              "question": "What are the fundamental laws or mechanisms governing Variation of g with altitude?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -478,7 +478,7 @@
             },
             {
               "id": "gravitation-q-variation-of-g-with-altitude-2",
-              "question": "Describe a scenario where applying the concept of Variation of g with altitude can lead to a common student error.",
+              "question": "Explain an application where using the concept of Variation of g with altitude can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -532,8 +532,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with depth"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Variation of g with depth is heavily tested in recent NEET papers.",
-            "Applying the core principles of Variation of g with depth correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Variation of g with depth is frequently appears in NEET examinations.",
+            "Applying the core principles of Variation of g with depth correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -548,7 +548,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Variation of g with depth during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Variation of g with depth during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with depth."
           ],
           "masteryCriteria": [
@@ -556,14 +556,14 @@
             "Successfully avoids common pitfalls when Variation of g with depth is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Variation of g with depth in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Variation of g with depth in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-variation-of-g-with-depth-1",
-              "question": "What are the critical factors or principles governing Variation of g with depth?",
+              "question": "What are the fundamental laws or mechanisms governing Variation of g with depth?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -590,7 +590,7 @@
             },
             {
               "id": "gravitation-q-variation-of-g-with-depth-2",
-              "question": "Describe a scenario where applying the concept of Variation of g with depth can lead to a common student error.",
+              "question": "Explain an application where using the concept of Variation of g with depth can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -631,8 +631,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Variation of g with latitude/rotation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Variation of g with latitude/rotation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Variation of g with latitude/rotation correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Variation of g with latitude/rotation is frequently appears in NEET examinations.",
+            "Applying the core principles of Variation of g with latitude/rotation correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -647,7 +647,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Variation of g with latitude/rotation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Variation of g with latitude/rotation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Variation of g with latitude/rotation."
           ],
           "masteryCriteria": [
@@ -655,14 +655,14 @@
             "Successfully avoids common pitfalls when Variation of g with latitude/rotation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Variation of g with latitude/rotation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Variation of g with latitude/rotation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-variation-of-g-with-latitude-rotation-1",
-              "question": "What are the critical factors or principles governing Variation of g with latitude/rotation?",
+              "question": "What are the fundamental laws or mechanisms governing Variation of g with latitude/rotation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -689,7 +689,7 @@
             },
             {
               "id": "gravitation-q-variation-of-g-with-latitude-rotation-2",
-              "question": "Describe a scenario where applying the concept of Variation of g with latitude/rotation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Variation of g with latitude/rotation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -730,8 +730,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational potential"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gravitational potential is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gravitational potential correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Gravitational potential is frequently appears in NEET examinations.",
+            "Applying the core principles of Gravitational potential correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -747,7 +747,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gravitational potential during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gravitational potential during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gravitational potential."
           ],
           "masteryCriteria": [
@@ -755,14 +755,14 @@
             "Successfully avoids common pitfalls when Gravitational potential is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gravitational potential in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gravitational potential in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-potential-1",
-              "question": "What are the critical factors or principles governing Gravitational potential?",
+              "question": "What are the fundamental laws or mechanisms governing Gravitational potential?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -789,7 +789,7 @@
             },
             {
               "id": "gravitation-q-gravitational-potential-2",
-              "question": "Describe a scenario where applying the concept of Gravitational potential can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gravitational potential can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -830,8 +830,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational potential energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gravitational potential energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gravitational potential energy correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Gravitational potential energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Gravitational potential energy correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -845,7 +845,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gravitational potential energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gravitational potential energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gravitational potential energy."
           ],
           "masteryCriteria": [
@@ -853,14 +853,14 @@
             "Successfully avoids common pitfalls when Gravitational potential energy is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gravitational potential energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gravitational potential energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-potential-energy-1",
-              "question": "What are the critical factors or principles governing Gravitational potential energy?",
+              "question": "What are the fundamental laws or mechanisms governing Gravitational potential energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -887,7 +887,7 @@
             },
             {
               "id": "gravitation-q-gravitational-potential-energy-2",
-              "question": "Describe a scenario where applying the concept of Gravitational potential energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gravitational potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -928,8 +928,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Escape velocity derivation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Escape velocity derivation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Escape velocity derivation correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Escape velocity derivation is frequently appears in NEET examinations.",
+            "Applying the core principles of Escape velocity derivation correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -943,7 +943,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Escape velocity derivation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Escape velocity derivation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Escape velocity derivation."
           ],
           "masteryCriteria": [
@@ -951,14 +951,14 @@
             "Successfully avoids common pitfalls when Escape velocity derivation is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Escape velocity derivation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Escape velocity derivation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-escape-velocity-derivation-1",
-              "question": "What are the critical factors or principles governing Escape velocity derivation?",
+              "question": "What are the fundamental laws or mechanisms governing Escape velocity derivation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -985,7 +985,7 @@
             },
             {
               "id": "gravitation-q-escape-velocity-derivation-2",
-              "question": "Describe a scenario where applying the concept of Escape velocity derivation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Escape velocity derivation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1039,8 +1039,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Orbital velocity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Orbital velocity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Orbital velocity correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Orbital velocity is frequently appears in NEET examinations.",
+            "Applying the core principles of Orbital velocity correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1054,7 +1054,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Orbital velocity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Orbital velocity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Orbital velocity."
           ],
           "masteryCriteria": [
@@ -1062,14 +1062,14 @@
             "Successfully avoids common pitfalls when Orbital velocity is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Orbital velocity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Orbital velocity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-orbital-velocity-1",
-              "question": "What are the critical factors or principles governing Orbital velocity?",
+              "question": "What are the fundamental laws or mechanisms governing Orbital velocity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1096,7 +1096,7 @@
             },
             {
               "id": "gravitation-q-orbital-velocity-2",
-              "question": "Describe a scenario where applying the concept of Orbital velocity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Orbital velocity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1137,8 +1137,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Satellite time period"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Satellite time period is heavily tested in recent NEET papers.",
-            "Applying the core principles of Satellite time period correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Satellite time period is frequently appears in NEET examinations.",
+            "Applying the core principles of Satellite time period correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1153,7 +1153,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Satellite time period during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Satellite time period during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Satellite time period."
           ],
           "masteryCriteria": [
@@ -1161,14 +1161,14 @@
             "Successfully avoids common pitfalls when Satellite time period is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Satellite time period in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Satellite time period in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-satellite-time-period-1",
-              "question": "What are the critical factors or principles governing Satellite time period?",
+              "question": "What are the fundamental laws or mechanisms governing Satellite time period?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1195,7 +1195,7 @@
             },
             {
               "id": "gravitation-q-satellite-time-period-2",
-              "question": "Describe a scenario where applying the concept of Satellite time period can lead to a common student error.",
+              "question": "Explain an application where using the concept of Satellite time period can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1236,8 +1236,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Total energy of orbiting satellite"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Total energy of orbiting satellite is heavily tested in recent NEET papers.",
-            "Applying the core principles of Total energy of orbiting satellite correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Total energy of orbiting satellite is frequently appears in NEET examinations.",
+            "Applying the core principles of Total energy of orbiting satellite correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1251,7 +1251,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Total energy of orbiting satellite during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Total energy of orbiting satellite during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Total energy of orbiting satellite."
           ],
           "masteryCriteria": [
@@ -1259,14 +1259,14 @@
             "Successfully avoids common pitfalls when Total energy of orbiting satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Total energy of orbiting satellite in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Total energy of orbiting satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-total-energy-of-orbiting-satellite-1",
-              "question": "What are the critical factors or principles governing Total energy of orbiting satellite?",
+              "question": "What are the fundamental laws or mechanisms governing Total energy of orbiting satellite?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1293,7 +1293,7 @@
             },
             {
               "id": "gravitation-q-total-energy-of-orbiting-satellite-2",
-              "question": "Describe a scenario where applying the concept of Total energy of orbiting satellite can lead to a common student error.",
+              "question": "Explain an application where using the concept of Total energy of orbiting satellite can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1334,8 +1334,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s first law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kepler’s first law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kepler’s first law correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Kepler’s first law is frequently appears in NEET examinations.",
+            "Applying the core principles of Kepler’s first law correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1350,7 +1350,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kepler’s first law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kepler’s first law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s first law."
           ],
           "masteryCriteria": [
@@ -1358,14 +1358,14 @@
             "Successfully avoids common pitfalls when Kepler’s first law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kepler’s first law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kepler’s first law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-kepler-s-first-law-1",
-              "question": "What are the critical factors or principles governing Kepler’s first law?",
+              "question": "What are the fundamental laws or mechanisms governing Kepler’s first law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1392,7 +1392,7 @@
             },
             {
               "id": "gravitation-q-kepler-s-first-law-2",
-              "question": "Describe a scenario where applying the concept of Kepler’s first law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kepler’s first law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1433,8 +1433,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s second law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kepler’s second law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kepler’s second law correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Kepler’s second law is frequently appears in NEET examinations.",
+            "Applying the core principles of Kepler’s second law correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1449,7 +1449,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kepler’s second law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kepler’s second law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s second law."
           ],
           "masteryCriteria": [
@@ -1457,14 +1457,14 @@
             "Successfully avoids common pitfalls when Kepler’s second law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kepler’s second law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kepler’s second law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-kepler-s-second-law-1",
-              "question": "What are the critical factors or principles governing Kepler’s second law?",
+              "question": "What are the fundamental laws or mechanisms governing Kepler’s second law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1491,7 +1491,7 @@
             },
             {
               "id": "gravitation-q-kepler-s-second-law-2",
-              "question": "Describe a scenario where applying the concept of Kepler’s second law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kepler’s second law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1545,8 +1545,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Kepler’s third law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kepler’s third law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kepler’s third law correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Kepler’s third law is frequently appears in NEET examinations.",
+            "Applying the core principles of Kepler’s third law correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1561,7 +1561,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kepler’s third law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kepler’s third law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kepler’s third law."
           ],
           "masteryCriteria": [
@@ -1569,14 +1569,14 @@
             "Successfully avoids common pitfalls when Kepler’s third law is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kepler’s third law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kepler’s third law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-kepler-s-third-law-1",
-              "question": "What are the critical factors or principles governing Kepler’s third law?",
+              "question": "What are the fundamental laws or mechanisms governing Kepler’s third law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1603,7 +1603,7 @@
             },
             {
               "id": "gravitation-q-kepler-s-third-law-2",
-              "question": "Describe a scenario where applying the concept of Kepler’s third law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kepler’s third law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1644,8 +1644,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Geostationary satellite"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Geostationary satellite is heavily tested in recent NEET papers.",
-            "Applying the core principles of Geostationary satellite correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Geostationary satellite is frequently appears in NEET examinations.",
+            "Applying the core principles of Geostationary satellite correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1660,7 +1660,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Geostationary satellite during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Geostationary satellite during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Geostationary satellite."
           ],
           "masteryCriteria": [
@@ -1668,14 +1668,14 @@
             "Successfully avoids common pitfalls when Geostationary satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Geostationary satellite in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Geostationary satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-geostationary-satellite-1",
-              "question": "What are the critical factors or principles governing Geostationary satellite?",
+              "question": "What are the fundamental laws or mechanisms governing Geostationary satellite?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1702,7 +1702,7 @@
             },
             {
               "id": "gravitation-q-geostationary-satellite-2",
-              "question": "Describe a scenario where applying the concept of Geostationary satellite can lead to a common student error.",
+              "question": "Explain an application where using the concept of Geostationary satellite can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1743,8 +1743,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Polar satellite"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Polar satellite is heavily tested in recent NEET papers.",
-            "Applying the core principles of Polar satellite correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Polar satellite is frequently appears in NEET examinations.",
+            "Applying the core principles of Polar satellite correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1759,7 +1759,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Polar satellite during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Polar satellite during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Polar satellite."
           ],
           "masteryCriteria": [
@@ -1767,14 +1767,14 @@
             "Successfully avoids common pitfalls when Polar satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Polar satellite in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Polar satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-polar-satellite-1",
-              "question": "What are the critical factors or principles governing Polar satellite?",
+              "question": "What are the fundamental laws or mechanisms governing Polar satellite?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1801,7 +1801,7 @@
             },
             {
               "id": "gravitation-q-polar-satellite-2",
-              "question": "Describe a scenario where applying the concept of Polar satellite can lead to a common student error.",
+              "question": "Explain an application where using the concept of Polar satellite can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1842,8 +1842,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Weightlessness condition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Weightlessness condition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Weightlessness condition correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Weightlessness condition is frequently appears in NEET examinations.",
+            "Applying the core principles of Weightlessness condition correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1858,7 +1858,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Weightlessness condition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Weightlessness condition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Weightlessness condition."
           ],
           "masteryCriteria": [
@@ -1866,14 +1866,14 @@
             "Successfully avoids common pitfalls when Weightlessness condition is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Weightlessness condition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Weightlessness condition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-weightlessness-condition-1",
-              "question": "What are the critical factors or principles governing Weightlessness condition?",
+              "question": "What are the fundamental laws or mechanisms governing Weightlessness condition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1900,7 +1900,7 @@
             },
             {
               "id": "gravitation-q-weightlessness-condition-2",
-              "question": "Describe a scenario where applying the concept of Weightlessness condition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Weightlessness condition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1941,8 +1941,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Binding energy of satellite"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Binding energy of satellite is heavily tested in recent NEET papers.",
-            "Applying the core principles of Binding energy of satellite correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Binding energy of satellite is frequently appears in NEET examinations.",
+            "Applying the core principles of Binding energy of satellite correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -1956,7 +1956,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Binding energy of satellite during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Binding energy of satellite during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Binding energy of satellite."
           ],
           "masteryCriteria": [
@@ -1964,14 +1964,14 @@
             "Successfully avoids common pitfalls when Binding energy of satellite is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Binding energy of satellite in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Binding energy of satellite in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-binding-energy-of-satellite-1",
-              "question": "What are the critical factors or principles governing Binding energy of satellite?",
+              "question": "What are the fundamental laws or mechanisms governing Binding energy of satellite?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1998,7 +1998,7 @@
             },
             {
               "id": "gravitation-q-binding-energy-of-satellite-2",
-              "question": "Describe a scenario where applying the concept of Binding energy of satellite can lead to a common student error.",
+              "question": "Explain an application where using the concept of Binding energy of satellite can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2052,8 +2052,8 @@
             "NCERT Physics Class 11, Chapter: Gravitation, Section detailing Gravitational mass vs inertial mass"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gravitational mass vs inertial mass is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gravitational mass vs inertial mass correctly is essential for solving complex multi-step problems in Gravitation."
+            "A thorough understanding of Gravitational mass vs inertial mass is frequently appears in NEET examinations.",
+            "Applying the core principles of Gravitational mass vs inertial mass correctly is essential for solving integrated numerical and conceptual problems in Gravitation."
           ],
           "formulas": [
             {
@@ -2067,7 +2067,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gravitational mass vs inertial mass during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gravitational mass vs inertial mass during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gravitational mass vs inertial mass."
           ],
           "masteryCriteria": [
@@ -2075,14 +2075,14 @@
             "Successfully avoids common pitfalls when Gravitational mass vs inertial mass is integrated with other concepts in Gravitation."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gravitational mass vs inertial mass in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gravitational mass vs inertial mass in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "gravitation-q-gravitational-mass-vs-inertial-mass-1",
-              "question": "What are the critical factors or principles governing Gravitational mass vs inertial mass?",
+              "question": "What are the fundamental laws or mechanisms governing Gravitational mass vs inertial mass?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2109,7 +2109,7 @@
             },
             {
               "id": "gravitation-q-gravitational-mass-vs-inertial-mass-2",
-              "question": "Describe a scenario where applying the concept of Gravitational mass vs inertial mass can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gravitational mass vs inertial mass can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

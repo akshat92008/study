@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Periodic motion"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Periodic motion is heavily tested in recent NEET papers.",
-            "Applying the core principles of Periodic motion correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Periodic motion is frequently appears in NEET examinations.",
+            "Applying the core principles of Periodic motion correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Periodic motion during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Periodic motion during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Periodic motion."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Periodic motion is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Periodic motion in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Periodic motion in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-periodic-motion-1",
-              "question": "What are the critical factors or principles governing Periodic motion?",
+              "question": "What are the fundamental laws or mechanisms governing Periodic motion?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "oscillations-and-waves-q-periodic-motion-2",
-              "question": "Describe a scenario where applying the concept of Periodic motion can lead to a common student error.",
+              "question": "Explain an application where using the concept of Periodic motion can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Simple harmonic motion equation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Simple harmonic motion equation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Simple harmonic motion equation correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Simple harmonic motion equation is frequently appears in NEET examinations.",
+            "Applying the core principles of Simple harmonic motion equation correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Simple harmonic motion equation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Simple harmonic motion equation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Simple harmonic motion equation."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Simple harmonic motion equation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Simple harmonic motion equation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Simple harmonic motion equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-simple-harmonic-motion-equation-1",
-              "question": "What are the critical factors or principles governing Simple harmonic motion equation?",
+              "question": "What are the fundamental laws or mechanisms governing Simple harmonic motion equation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "oscillations-and-waves-q-simple-harmonic-motion-equation-2",
-              "question": "Describe a scenario where applying the concept of Simple harmonic motion equation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Simple harmonic motion equation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Amplitude and phase"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Amplitude and phase is heavily tested in recent NEET papers.",
-            "Applying the core principles of Amplitude and phase correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Amplitude and phase is frequently appears in NEET examinations.",
+            "Applying the core principles of Amplitude and phase correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Amplitude and phase during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Amplitude and phase during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Amplitude and phase."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Amplitude and phase is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Amplitude and phase in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Amplitude and phase in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-amplitude-and-phase-1",
-              "question": "What are the critical factors or principles governing Amplitude and phase?",
+              "question": "What are the fundamental laws or mechanisms governing Amplitude and phase?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "oscillations-and-waves-q-amplitude-and-phase-2",
-              "question": "Describe a scenario where applying the concept of Amplitude and phase can lead to a common student error.",
+              "question": "Explain an application where using the concept of Amplitude and phase can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Angular frequency"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Angular frequency is heavily tested in recent NEET papers.",
-            "Applying the core principles of Angular frequency correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Angular frequency is frequently appears in NEET examinations.",
+            "Applying the core principles of Angular frequency correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Angular frequency during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Angular frequency during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Angular frequency."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Angular frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Angular frequency in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Angular frequency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-angular-frequency-1",
-              "question": "What are the critical factors or principles governing Angular frequency?",
+              "question": "What are the fundamental laws or mechanisms governing Angular frequency?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "oscillations-and-waves-q-angular-frequency-2",
-              "question": "Describe a scenario where applying the concept of Angular frequency can lead to a common student error.",
+              "question": "Explain an application where using the concept of Angular frequency can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -418,8 +418,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Time period and frequency"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Time period and frequency is heavily tested in recent NEET papers.",
-            "Applying the core principles of Time period and frequency correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Time period and frequency is frequently appears in NEET examinations.",
+            "Applying the core principles of Time period and frequency correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -434,7 +434,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Time period and frequency during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Time period and frequency during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Time period and frequency."
           ],
           "masteryCriteria": [
@@ -442,14 +442,14 @@
             "Successfully avoids common pitfalls when Time period and frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Time period and frequency in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Time period and frequency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-time-period-and-frequency-1",
-              "question": "What are the critical factors or principles governing Time period and frequency?",
+              "question": "What are the fundamental laws or mechanisms governing Time period and frequency?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -476,7 +476,7 @@
             },
             {
               "id": "oscillations-and-waves-q-time-period-and-frequency-2",
-              "question": "Describe a scenario where applying the concept of Time period and frequency can lead to a common student error.",
+              "question": "Explain an application where using the concept of Time period and frequency can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -517,8 +517,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Velocity in SHM"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Velocity in SHM is heavily tested in recent NEET papers.",
-            "Applying the core principles of Velocity in SHM correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Velocity in SHM is frequently appears in NEET examinations.",
+            "Applying the core principles of Velocity in SHM correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -532,7 +532,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Velocity in SHM during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Velocity in SHM during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Velocity in SHM."
           ],
           "masteryCriteria": [
@@ -540,14 +540,14 @@
             "Successfully avoids common pitfalls when Velocity in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Velocity in SHM in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Velocity in SHM in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-velocity-in-shm-1",
-              "question": "What are the critical factors or principles governing Velocity in SHM?",
+              "question": "What are the fundamental laws or mechanisms governing Velocity in SHM?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -574,7 +574,7 @@
             },
             {
               "id": "oscillations-and-waves-q-velocity-in-shm-2",
-              "question": "Describe a scenario where applying the concept of Velocity in SHM can lead to a common student error.",
+              "question": "Explain an application where using the concept of Velocity in SHM can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -628,8 +628,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Acceleration in SHM"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Acceleration in SHM is heavily tested in recent NEET papers.",
-            "Applying the core principles of Acceleration in SHM correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Acceleration in SHM is frequently appears in NEET examinations.",
+            "Applying the core principles of Acceleration in SHM correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -643,7 +643,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Acceleration in SHM during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Acceleration in SHM during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Acceleration in SHM."
           ],
           "masteryCriteria": [
@@ -651,14 +651,14 @@
             "Successfully avoids common pitfalls when Acceleration in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Acceleration in SHM in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Acceleration in SHM in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-acceleration-in-shm-1",
-              "question": "What are the critical factors or principles governing Acceleration in SHM?",
+              "question": "What are the fundamental laws or mechanisms governing Acceleration in SHM?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -685,7 +685,7 @@
             },
             {
               "id": "oscillations-and-waves-q-acceleration-in-shm-2",
-              "question": "Describe a scenario where applying the concept of Acceleration in SHM can lead to a common student error.",
+              "question": "Explain an application where using the concept of Acceleration in SHM can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -726,8 +726,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Kinetic and potential energy in SHM"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Kinetic and potential energy in SHM is heavily tested in recent NEET papers.",
-            "Applying the core principles of Kinetic and potential energy in SHM correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Kinetic and potential energy in SHM is frequently appears in NEET examinations.",
+            "Applying the core principles of Kinetic and potential energy in SHM correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -741,7 +741,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Kinetic and potential energy in SHM during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Kinetic and potential energy in SHM during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Kinetic and potential energy in SHM."
           ],
           "masteryCriteria": [
@@ -749,14 +749,14 @@
             "Successfully avoids common pitfalls when Kinetic and potential energy in SHM is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Kinetic and potential energy in SHM in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Kinetic and potential energy in SHM in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-kinetic-and-potential-energy-in-shm-1",
-              "question": "What are the critical factors or principles governing Kinetic and potential energy in SHM?",
+              "question": "What are the fundamental laws or mechanisms governing Kinetic and potential energy in SHM?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -783,7 +783,7 @@
             },
             {
               "id": "oscillations-and-waves-q-kinetic-and-potential-energy-in-shm-2",
-              "question": "Describe a scenario where applying the concept of Kinetic and potential energy in SHM can lead to a common student error.",
+              "question": "Explain an application where using the concept of Kinetic and potential energy in SHM can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -824,8 +824,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Spring oscillator time period"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Spring oscillator time period is heavily tested in recent NEET papers.",
-            "Applying the core principles of Spring oscillator time period correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Spring oscillator time period is frequently appears in NEET examinations.",
+            "Applying the core principles of Spring oscillator time period correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -840,7 +840,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Spring oscillator time period during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Spring oscillator time period during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Spring oscillator time period."
           ],
           "masteryCriteria": [
@@ -848,14 +848,14 @@
             "Successfully avoids common pitfalls when Spring oscillator time period is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Spring oscillator time period in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Spring oscillator time period in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-spring-oscillator-time-period-1",
-              "question": "What are the critical factors or principles governing Spring oscillator time period?",
+              "question": "What are the fundamental laws or mechanisms governing Spring oscillator time period?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -882,7 +882,7 @@
             },
             {
               "id": "oscillations-and-waves-q-spring-oscillator-time-period-2",
-              "question": "Describe a scenario where applying the concept of Spring oscillator time period can lead to a common student error.",
+              "question": "Explain an application where using the concept of Spring oscillator time period can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -923,8 +923,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Simple pendulum time period"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Simple pendulum time period is heavily tested in recent NEET papers.",
-            "Applying the core principles of Simple pendulum time period correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Simple pendulum time period is frequently appears in NEET examinations.",
+            "Applying the core principles of Simple pendulum time period correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -939,7 +939,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Simple pendulum time period during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Simple pendulum time period during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Simple pendulum time period."
           ],
           "masteryCriteria": [
@@ -947,14 +947,14 @@
             "Successfully avoids common pitfalls when Simple pendulum time period is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Simple pendulum time period in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Simple pendulum time period in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-simple-pendulum-time-period-1",
-              "question": "What are the critical factors or principles governing Simple pendulum time period?",
+              "question": "What are the fundamental laws or mechanisms governing Simple pendulum time period?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -981,7 +981,7 @@
             },
             {
               "id": "oscillations-and-waves-q-simple-pendulum-time-period-2",
-              "question": "Describe a scenario where applying the concept of Simple pendulum time period can lead to a common student error.",
+              "question": "Explain an application where using the concept of Simple pendulum time period can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1022,8 +1022,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Damped oscillations basics"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Damped oscillations basics is heavily tested in recent NEET papers.",
-            "Applying the core principles of Damped oscillations basics correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Damped oscillations basics is frequently appears in NEET examinations.",
+            "Applying the core principles of Damped oscillations basics correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1039,7 +1039,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Damped oscillations basics during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Damped oscillations basics during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Damped oscillations basics."
           ],
           "masteryCriteria": [
@@ -1047,14 +1047,14 @@
             "Successfully avoids common pitfalls when Damped oscillations basics is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Damped oscillations basics in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Damped oscillations basics in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-damped-oscillations-basics-1",
-              "question": "What are the critical factors or principles governing Damped oscillations basics?",
+              "question": "What are the fundamental laws or mechanisms governing Damped oscillations basics?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1081,7 +1081,7 @@
             },
             {
               "id": "oscillations-and-waves-q-damped-oscillations-basics-2",
-              "question": "Describe a scenario where applying the concept of Damped oscillations basics can lead to a common student error.",
+              "question": "Explain an application where using the concept of Damped oscillations basics can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1122,8 +1122,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Forced oscillations"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Forced oscillations is heavily tested in recent NEET papers.",
-            "Applying the core principles of Forced oscillations correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Forced oscillations is frequently appears in NEET examinations.",
+            "Applying the core principles of Forced oscillations correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1137,7 +1137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Forced oscillations during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Forced oscillations during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Forced oscillations."
           ],
           "masteryCriteria": [
@@ -1145,14 +1145,14 @@
             "Successfully avoids common pitfalls when Forced oscillations is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Forced oscillations in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Forced oscillations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-forced-oscillations-1",
-              "question": "What are the critical factors or principles governing Forced oscillations?",
+              "question": "What are the fundamental laws or mechanisms governing Forced oscillations?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1179,7 +1179,7 @@
             },
             {
               "id": "oscillations-and-waves-q-forced-oscillations-2",
-              "question": "Describe a scenario where applying the concept of Forced oscillations can lead to a common student error.",
+              "question": "Explain an application where using the concept of Forced oscillations can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1233,8 +1233,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Resonance condition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Resonance condition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Resonance condition correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Resonance condition is frequently appears in NEET examinations.",
+            "Applying the core principles of Resonance condition correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1249,7 +1249,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Resonance condition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Resonance condition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Resonance condition."
           ],
           "masteryCriteria": [
@@ -1257,14 +1257,14 @@
             "Successfully avoids common pitfalls when Resonance condition is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Resonance condition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Resonance condition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-resonance-condition-1",
-              "question": "What are the critical factors or principles governing Resonance condition?",
+              "question": "What are the fundamental laws or mechanisms governing Resonance condition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1291,7 +1291,7 @@
             },
             {
               "id": "oscillations-and-waves-q-resonance-condition-2",
-              "question": "Describe a scenario where applying the concept of Resonance condition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Resonance condition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1332,8 +1332,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Wave motion definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Wave motion definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Wave motion definition correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Wave motion definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Wave motion definition correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1347,7 +1347,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Wave motion definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Wave motion definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Wave motion definition."
           ],
           "masteryCriteria": [
@@ -1355,14 +1355,14 @@
             "Successfully avoids common pitfalls when Wave motion definition is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Wave motion definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Wave motion definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-wave-motion-definition-1",
-              "question": "What are the critical factors or principles governing Wave motion definition?",
+              "question": "What are the fundamental laws or mechanisms governing Wave motion definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1389,7 +1389,7 @@
             },
             {
               "id": "oscillations-and-waves-q-wave-motion-definition-2",
-              "question": "Describe a scenario where applying the concept of Wave motion definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Wave motion definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1430,8 +1430,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Longitudinal waves"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Longitudinal waves is heavily tested in recent NEET papers.",
-            "Applying the core principles of Longitudinal waves correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Longitudinal waves is frequently appears in NEET examinations.",
+            "Applying the core principles of Longitudinal waves correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1445,7 +1445,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Longitudinal waves during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Longitudinal waves during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Longitudinal waves."
           ],
           "masteryCriteria": [
@@ -1453,14 +1453,14 @@
             "Successfully avoids common pitfalls when Longitudinal waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Longitudinal waves in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Longitudinal waves in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-longitudinal-waves-1",
-              "question": "What are the critical factors or principles governing Longitudinal waves?",
+              "question": "What are the fundamental laws or mechanisms governing Longitudinal waves?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1487,7 +1487,7 @@
             },
             {
               "id": "oscillations-and-waves-q-longitudinal-waves-2",
-              "question": "Describe a scenario where applying the concept of Longitudinal waves can lead to a common student error.",
+              "question": "Explain an application where using the concept of Longitudinal waves can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1528,8 +1528,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Transverse waves"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Transverse waves is heavily tested in recent NEET papers.",
-            "Applying the core principles of Transverse waves correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Transverse waves is frequently appears in NEET examinations.",
+            "Applying the core principles of Transverse waves correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1543,7 +1543,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Transverse waves during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Transverse waves during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Transverse waves."
           ],
           "masteryCriteria": [
@@ -1551,14 +1551,14 @@
             "Successfully avoids common pitfalls when Transverse waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Transverse waves in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Transverse waves in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-transverse-waves-1",
-              "question": "What are the critical factors or principles governing Transverse waves?",
+              "question": "What are the fundamental laws or mechanisms governing Transverse waves?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1585,7 +1585,7 @@
             },
             {
               "id": "oscillations-and-waves-q-transverse-waves-2",
-              "question": "Describe a scenario where applying the concept of Transverse waves can lead to a common student error.",
+              "question": "Explain an application where using the concept of Transverse waves can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1626,8 +1626,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Wave speed formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Wave speed formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Wave speed formula correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Wave speed formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Wave speed formula correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1641,7 +1641,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Wave speed formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Wave speed formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Wave speed formula."
           ],
           "masteryCriteria": [
@@ -1649,14 +1649,14 @@
             "Successfully avoids common pitfalls when Wave speed formula is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Wave speed formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Wave speed formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-wave-speed-formula-1",
-              "question": "What are the critical factors or principles governing Wave speed formula?",
+              "question": "What are the fundamental laws or mechanisms governing Wave speed formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1683,7 +1683,7 @@
             },
             {
               "id": "oscillations-and-waves-q-wave-speed-formula-2",
-              "question": "Describe a scenario where applying the concept of Wave speed formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Wave speed formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1724,8 +1724,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Progressive wave equation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Progressive wave equation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Progressive wave equation correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Progressive wave equation is frequently appears in NEET examinations.",
+            "Applying the core principles of Progressive wave equation correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1739,7 +1739,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Progressive wave equation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Progressive wave equation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Progressive wave equation."
           ],
           "masteryCriteria": [
@@ -1747,14 +1747,14 @@
             "Successfully avoids common pitfalls when Progressive wave equation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Progressive wave equation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Progressive wave equation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-progressive-wave-equation-1",
-              "question": "What are the critical factors or principles governing Progressive wave equation?",
+              "question": "What are the fundamental laws or mechanisms governing Progressive wave equation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1781,7 +1781,7 @@
             },
             {
               "id": "oscillations-and-waves-q-progressive-wave-equation-2",
-              "question": "Describe a scenario where applying the concept of Progressive wave equation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Progressive wave equation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1835,8 +1835,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Superposition principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Superposition principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Superposition principle correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Superposition principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Superposition principle correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1851,7 +1851,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Superposition principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Superposition principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Superposition principle."
           ],
           "masteryCriteria": [
@@ -1859,14 +1859,14 @@
             "Successfully avoids common pitfalls when Superposition principle is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Superposition principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Superposition principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-superposition-principle-1",
-              "question": "What are the critical factors or principles governing Superposition principle?",
+              "question": "What are the fundamental laws or mechanisms governing Superposition principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1893,7 +1893,7 @@
             },
             {
               "id": "oscillations-and-waves-q-superposition-principle-2",
-              "question": "Describe a scenario where applying the concept of Superposition principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Superposition principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1934,8 +1934,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Reflection of waves"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Reflection of waves is heavily tested in recent NEET papers.",
-            "Applying the core principles of Reflection of waves correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Reflection of waves is frequently appears in NEET examinations.",
+            "Applying the core principles of Reflection of waves correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -1949,7 +1949,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Reflection of waves during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Reflection of waves during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Reflection of waves."
           ],
           "masteryCriteria": [
@@ -1957,14 +1957,14 @@
             "Successfully avoids common pitfalls when Reflection of waves is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Reflection of waves in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Reflection of waves in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-reflection-of-waves-1",
-              "question": "What are the critical factors or principles governing Reflection of waves?",
+              "question": "What are the fundamental laws or mechanisms governing Reflection of waves?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1991,7 +1991,7 @@
             },
             {
               "id": "oscillations-and-waves-q-reflection-of-waves-2",
-              "question": "Describe a scenario where applying the concept of Reflection of waves can lead to a common student error.",
+              "question": "Explain an application where using the concept of Reflection of waves can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2032,8 +2032,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Standing waves formation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Standing waves formation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Standing waves formation correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Standing waves formation is frequently appears in NEET examinations.",
+            "Applying the core principles of Standing waves formation correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2047,7 +2047,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Standing waves formation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Standing waves formation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Standing waves formation."
           ],
           "masteryCriteria": [
@@ -2055,14 +2055,14 @@
             "Successfully avoids common pitfalls when Standing waves formation is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Standing waves formation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Standing waves formation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-standing-waves-formation-1",
-              "question": "What are the critical factors or principles governing Standing waves formation?",
+              "question": "What are the fundamental laws or mechanisms governing Standing waves formation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2089,7 +2089,7 @@
             },
             {
               "id": "oscillations-and-waves-q-standing-waves-formation-2",
-              "question": "Describe a scenario where applying the concept of Standing waves formation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Standing waves formation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2130,8 +2130,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Standing waves in strings"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Standing waves in strings is heavily tested in recent NEET papers.",
-            "Applying the core principles of Standing waves in strings correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Standing waves in strings is frequently appears in NEET examinations.",
+            "Applying the core principles of Standing waves in strings correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2145,7 +2145,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Standing waves in strings during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Standing waves in strings during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in strings."
           ],
           "masteryCriteria": [
@@ -2153,14 +2153,14 @@
             "Successfully avoids common pitfalls when Standing waves in strings is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Standing waves in strings in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Standing waves in strings in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-standing-waves-in-strings-1",
-              "question": "What are the critical factors or principles governing Standing waves in strings?",
+              "question": "What are the fundamental laws or mechanisms governing Standing waves in strings?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2187,7 +2187,7 @@
             },
             {
               "id": "oscillations-and-waves-q-standing-waves-in-strings-2",
-              "question": "Describe a scenario where applying the concept of Standing waves in strings can lead to a common student error.",
+              "question": "Explain an application where using the concept of Standing waves in strings can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2228,8 +2228,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Standing waves in closed organ pipes"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Standing waves in closed organ pipes is heavily tested in recent NEET papers.",
-            "Applying the core principles of Standing waves in closed organ pipes correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Standing waves in closed organ pipes is frequently appears in NEET examinations.",
+            "Applying the core principles of Standing waves in closed organ pipes correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2243,7 +2243,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Standing waves in closed organ pipes during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Standing waves in closed organ pipes during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in closed organ pipes."
           ],
           "masteryCriteria": [
@@ -2251,14 +2251,14 @@
             "Successfully avoids common pitfalls when Standing waves in closed organ pipes is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Standing waves in closed organ pipes in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Standing waves in closed organ pipes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-standing-waves-in-closed-organ-pipes-1",
-              "question": "What are the critical factors or principles governing Standing waves in closed organ pipes?",
+              "question": "What are the fundamental laws or mechanisms governing Standing waves in closed organ pipes?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2285,7 +2285,7 @@
             },
             {
               "id": "oscillations-and-waves-q-standing-waves-in-closed-organ-pipes-2",
-              "question": "Describe a scenario where applying the concept of Standing waves in closed organ pipes can lead to a common student error.",
+              "question": "Explain an application where using the concept of Standing waves in closed organ pipes can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2326,8 +2326,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Standing waves in open organ pipes"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Standing waves in open organ pipes is heavily tested in recent NEET papers.",
-            "Applying the core principles of Standing waves in open organ pipes correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Standing waves in open organ pipes is frequently appears in NEET examinations.",
+            "Applying the core principles of Standing waves in open organ pipes correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2341,7 +2341,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Standing waves in open organ pipes during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Standing waves in open organ pipes during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Standing waves in open organ pipes."
           ],
           "masteryCriteria": [
@@ -2349,14 +2349,14 @@
             "Successfully avoids common pitfalls when Standing waves in open organ pipes is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Standing waves in open organ pipes in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Standing waves in open organ pipes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-standing-waves-in-open-organ-pipes-1",
-              "question": "What are the critical factors or principles governing Standing waves in open organ pipes?",
+              "question": "What are the fundamental laws or mechanisms governing Standing waves in open organ pipes?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2383,7 +2383,7 @@
             },
             {
               "id": "oscillations-and-waves-q-standing-waves-in-open-organ-pipes-2",
-              "question": "Describe a scenario where applying the concept of Standing waves in open organ pipes can lead to a common student error.",
+              "question": "Explain an application where using the concept of Standing waves in open organ pipes can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2437,8 +2437,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Harmonics and overtones"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Harmonics and overtones is heavily tested in recent NEET papers.",
-            "Applying the core principles of Harmonics and overtones correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Harmonics and overtones is frequently appears in NEET examinations.",
+            "Applying the core principles of Harmonics and overtones correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2453,7 +2453,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Harmonics and overtones during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Harmonics and overtones during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Harmonics and overtones."
           ],
           "masteryCriteria": [
@@ -2461,14 +2461,14 @@
             "Successfully avoids common pitfalls when Harmonics and overtones is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Harmonics and overtones in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Harmonics and overtones in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-harmonics-and-overtones-1",
-              "question": "What are the critical factors or principles governing Harmonics and overtones?",
+              "question": "What are the fundamental laws or mechanisms governing Harmonics and overtones?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2495,7 +2495,7 @@
             },
             {
               "id": "oscillations-and-waves-q-harmonics-and-overtones-2",
-              "question": "Describe a scenario where applying the concept of Harmonics and overtones can lead to a common student error.",
+              "question": "Explain an application where using the concept of Harmonics and overtones can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2536,8 +2536,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Beats frequency"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Beats frequency is heavily tested in recent NEET papers.",
-            "Applying the core principles of Beats frequency correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Beats frequency is frequently appears in NEET examinations.",
+            "Applying the core principles of Beats frequency correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2552,7 +2552,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Beats frequency during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Beats frequency during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Beats frequency."
           ],
           "masteryCriteria": [
@@ -2560,14 +2560,14 @@
             "Successfully avoids common pitfalls when Beats frequency is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Beats frequency in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Beats frequency in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-beats-frequency-1",
-              "question": "What are the critical factors or principles governing Beats frequency?",
+              "question": "What are the fundamental laws or mechanisms governing Beats frequency?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2594,7 +2594,7 @@
             },
             {
               "id": "oscillations-and-waves-q-beats-frequency-2",
-              "question": "Describe a scenario where applying the concept of Beats frequency can lead to a common student error.",
+              "question": "Explain an application where using the concept of Beats frequency can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2635,8 +2635,8 @@
             "NCERT Physics Class 11, Chapter: Oscillations and Waves, Section detailing Doppler effect in sound"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Doppler effect in sound is heavily tested in recent NEET papers.",
-            "Applying the core principles of Doppler effect in sound correctly is essential for solving complex multi-step problems in Oscillations and Waves."
+            "A thorough understanding of Doppler effect in sound is frequently appears in NEET examinations.",
+            "Applying the core principles of Doppler effect in sound correctly is essential for solving integrated numerical and conceptual problems in Oscillations and Waves."
           ],
           "formulas": [
             {
@@ -2651,7 +2651,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Doppler effect in sound during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Doppler effect in sound during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Doppler effect in sound."
           ],
           "masteryCriteria": [
@@ -2659,14 +2659,14 @@
             "Successfully avoids common pitfalls when Doppler effect in sound is integrated with other concepts in Oscillations and Waves."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Doppler effect in sound in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Doppler effect in sound in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "oscillations-and-waves-q-doppler-effect-in-sound-1",
-              "question": "What are the critical factors or principles governing Doppler effect in sound?",
+              "question": "What are the fundamental laws or mechanisms governing Doppler effect in sound?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2693,7 +2693,7 @@
             },
             {
               "id": "oscillations-and-waves-q-doppler-effect-in-sound-2",
-              "question": "Describe a scenario where applying the concept of Doppler effect in sound can lead to a common student error.",
+              "question": "Explain an application where using the concept of Doppler effect in sound can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

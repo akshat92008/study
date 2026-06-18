@@ -177,7 +177,7 @@ export default function DashboardPage() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
         <div>
           <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
-            Cognition Dashboard
+            Today's Mission
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
             {activeGoal

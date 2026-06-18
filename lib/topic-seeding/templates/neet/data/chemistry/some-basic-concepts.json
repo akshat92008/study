@@ -22,11 +22,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Classification of matter"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Classification of matter is heavily tested in recent NEET papers.",
-            "Applying the core principles of Classification of matter correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Classification of matter is frequently appears in NEET examinations.",
+            "Applying the core principles of Classification of matter correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Classification of matter during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Classification of matter during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Classification of matter."
           ],
           "masteryCriteria": [
@@ -34,14 +34,14 @@
             "Successfully avoids common pitfalls when Classification of matter is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Classification of matter in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Classification of matter in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-classification-of-matter-1",
-              "question": "What are the critical factors or principles governing Classification of matter?",
+              "question": "What are the fundamental laws or mechanisms governing Classification of matter?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -68,7 +68,7 @@
             },
             {
               "id": "some-basic-concepts-q-classification-of-matter-2",
-              "question": "Describe a scenario where applying the concept of Classification of matter can lead to a common student error.",
+              "question": "Explain an application where using the concept of Classification of matter can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -109,8 +109,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Atoms and molecules"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Atoms and molecules is heavily tested in recent NEET papers.",
-            "Applying the core principles of Atoms and molecules correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Atoms and molecules is frequently appears in NEET examinations.",
+            "Applying the core principles of Atoms and molecules correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -124,7 +124,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Atoms and molecules during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Atoms and molecules during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Atoms and molecules."
           ],
           "masteryCriteria": [
@@ -132,14 +132,14 @@
             "Successfully avoids common pitfalls when Atoms and molecules is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Atoms and molecules in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Atoms and molecules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-atoms-and-molecules-1",
-              "question": "What are the critical factors or principles governing Atoms and molecules?",
+              "question": "What are the fundamental laws or mechanisms governing Atoms and molecules?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -166,7 +166,7 @@
             },
             {
               "id": "some-basic-concepts-q-atoms-and-molecules-2",
-              "question": "Describe a scenario where applying the concept of Atoms and molecules can lead to a common student error.",
+              "question": "Explain an application where using the concept of Atoms and molecules can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -207,11 +207,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Elements and compounds"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Elements and compounds is heavily tested in recent NEET papers.",
-            "Applying the core principles of Elements and compounds correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Elements and compounds is frequently appears in NEET examinations.",
+            "Applying the core principles of Elements and compounds correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Elements and compounds during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Elements and compounds during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Elements and compounds."
           ],
           "masteryCriteria": [
@@ -219,14 +219,14 @@
             "Successfully avoids common pitfalls when Elements and compounds is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Elements and compounds in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Elements and compounds in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-elements-and-compounds-1",
-              "question": "What are the critical factors or principles governing Elements and compounds?",
+              "question": "What are the fundamental laws or mechanisms governing Elements and compounds?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -253,7 +253,7 @@
             },
             {
               "id": "some-basic-concepts-q-elements-and-compounds-2",
-              "question": "Describe a scenario where applying the concept of Elements and compounds can lead to a common student error.",
+              "question": "Explain an application where using the concept of Elements and compounds can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -294,11 +294,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of conservation of mass"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Law of conservation of mass is heavily tested in recent NEET papers.",
-            "Applying the core principles of Law of conservation of mass correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Law of conservation of mass is frequently appears in NEET examinations.",
+            "Applying the core principles of Law of conservation of mass correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Law of conservation of mass during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Law of conservation of mass during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Law of conservation of mass."
           ],
           "masteryCriteria": [
@@ -306,14 +306,14 @@
             "Successfully avoids common pitfalls when Law of conservation of mass is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Law of conservation of mass in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Law of conservation of mass in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-law-of-conservation-of-mass-1",
-              "question": "What are the critical factors or principles governing Law of conservation of mass?",
+              "question": "What are the fundamental laws or mechanisms governing Law of conservation of mass?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -340,7 +340,7 @@
             },
             {
               "id": "some-basic-concepts-q-law-of-conservation-of-mass-2",
-              "question": "Describe a scenario where applying the concept of Law of conservation of mass can lead to a common student error.",
+              "question": "Explain an application where using the concept of Law of conservation of mass can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -381,11 +381,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of definite proportions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Law of definite proportions is heavily tested in recent NEET papers.",
-            "Applying the core principles of Law of definite proportions correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Law of definite proportions is frequently appears in NEET examinations.",
+            "Applying the core principles of Law of definite proportions correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Law of definite proportions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Law of definite proportions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Law of definite proportions."
           ],
           "masteryCriteria": [
@@ -393,14 +393,14 @@
             "Successfully avoids common pitfalls when Law of definite proportions is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Law of definite proportions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Law of definite proportions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-law-of-definite-proportions-1",
-              "question": "What are the critical factors or principles governing Law of definite proportions?",
+              "question": "What are the fundamental laws or mechanisms governing Law of definite proportions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -427,7 +427,7 @@
             },
             {
               "id": "some-basic-concepts-q-law-of-definite-proportions-2",
-              "question": "Describe a scenario where applying the concept of Law of definite proportions can lead to a common student error.",
+              "question": "Explain an application where using the concept of Law of definite proportions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -481,11 +481,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Law of multiple proportions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Law of multiple proportions is heavily tested in recent NEET papers.",
-            "Applying the core principles of Law of multiple proportions correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Law of multiple proportions is frequently appears in NEET examinations.",
+            "Applying the core principles of Law of multiple proportions correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Law of multiple proportions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Law of multiple proportions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Law of multiple proportions."
           ],
           "masteryCriteria": [
@@ -493,14 +493,14 @@
             "Successfully avoids common pitfalls when Law of multiple proportions is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Law of multiple proportions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Law of multiple proportions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-law-of-multiple-proportions-1",
-              "question": "What are the critical factors or principles governing Law of multiple proportions?",
+              "question": "What are the fundamental laws or mechanisms governing Law of multiple proportions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -527,7 +527,7 @@
             },
             {
               "id": "some-basic-concepts-q-law-of-multiple-proportions-2",
-              "question": "Describe a scenario where applying the concept of Law of multiple proportions can lead to a common student error.",
+              "question": "Explain an application where using the concept of Law of multiple proportions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -568,11 +568,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Gay Lussac’s law of gaseous volumes"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gay Lussac’s law of gaseous volumes is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gay Lussac’s law of gaseous volumes correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Gay Lussac’s law of gaseous volumes is frequently appears in NEET examinations.",
+            "Applying the core principles of Gay Lussac’s law of gaseous volumes correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gay Lussac’s law of gaseous volumes during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gay Lussac’s law of gaseous volumes during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gay Lussac’s law of gaseous volumes."
           ],
           "masteryCriteria": [
@@ -580,14 +580,14 @@
             "Successfully avoids common pitfalls when Gay Lussac’s law of gaseous volumes is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gay Lussac’s law of gaseous volumes in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gay Lussac’s law of gaseous volumes in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-1",
-              "question": "What are the critical factors or principles governing Gay Lussac’s law of gaseous volumes?",
+              "question": "What are the fundamental laws or mechanisms governing Gay Lussac’s law of gaseous volumes?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -614,7 +614,7 @@
             },
             {
               "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-2",
-              "question": "Describe a scenario where applying the concept of Gay Lussac’s law of gaseous volumes can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gay Lussac’s law of gaseous volumes can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -655,8 +655,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Atomic mass and molecular mass"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Atomic mass and molecular mass is heavily tested in recent NEET papers.",
-            "Applying the core principles of Atomic mass and molecular mass correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Atomic mass and molecular mass is frequently appears in NEET examinations.",
+            "Applying the core principles of Atomic mass and molecular mass correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -670,7 +670,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Atomic mass and molecular mass during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Atomic mass and molecular mass during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Atomic mass and molecular mass."
           ],
           "masteryCriteria": [
@@ -678,14 +678,14 @@
             "Successfully avoids common pitfalls when Atomic mass and molecular mass is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Atomic mass and molecular mass in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Atomic mass and molecular mass in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-1",
-              "question": "What are the critical factors or principles governing Atomic mass and molecular mass?",
+              "question": "What are the fundamental laws or mechanisms governing Atomic mass and molecular mass?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -712,7 +712,7 @@
             },
             {
               "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-2",
-              "question": "Describe a scenario where applying the concept of Atomic mass and molecular mass can lead to a common student error.",
+              "question": "Explain an application where using the concept of Atomic mass and molecular mass can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -753,8 +753,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Mole concept"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mole concept is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mole concept correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Mole concept is frequently appears in NEET examinations.",
+            "Applying the core principles of Mole concept correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -768,7 +768,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mole concept during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mole concept during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mole concept."
           ],
           "masteryCriteria": [
@@ -776,14 +776,14 @@
             "Successfully avoids common pitfalls when Mole concept is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mole concept in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mole concept in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-mole-concept-1",
-              "question": "What are the critical factors or principles governing Mole concept?",
+              "question": "What are the fundamental laws or mechanisms governing Mole concept?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -810,7 +810,7 @@
             },
             {
               "id": "some-basic-concepts-q-mole-concept-2",
-              "question": "Describe a scenario where applying the concept of Mole concept can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mole concept can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -851,11 +851,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Avogadro number application"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Avogadro number application is heavily tested in recent NEET papers.",
-            "Applying the core principles of Avogadro number application correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Avogadro number application is frequently appears in NEET examinations.",
+            "Applying the core principles of Avogadro number application correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Avogadro number application during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Avogadro number application during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Avogadro number application."
           ],
           "masteryCriteria": [
@@ -863,14 +863,14 @@
             "Successfully avoids common pitfalls when Avogadro number application is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Avogadro number application in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Avogadro number application in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-avogadro-number-application-1",
-              "question": "What are the critical factors or principles governing Avogadro number application?",
+              "question": "What are the fundamental laws or mechanisms governing Avogadro number application?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -897,7 +897,7 @@
             },
             {
               "id": "some-basic-concepts-q-avogadro-number-application-2",
-              "question": "Describe a scenario where applying the concept of Avogadro number application can lead to a common student error.",
+              "question": "Explain an application where using the concept of Avogadro number application can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -951,11 +951,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molar mass calculations"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Molar mass calculations is heavily tested in recent NEET papers.",
-            "Applying the core principles of Molar mass calculations correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Molar mass calculations is frequently appears in NEET examinations.",
+            "Applying the core principles of Molar mass calculations correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Molar mass calculations during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Molar mass calculations during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Molar mass calculations."
           ],
           "masteryCriteria": [
@@ -963,14 +963,14 @@
             "Successfully avoids common pitfalls when Molar mass calculations is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Molar mass calculations in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Molar mass calculations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-molar-mass-calculations-1",
-              "question": "What are the critical factors or principles governing Molar mass calculations?",
+              "question": "What are the fundamental laws or mechanisms governing Molar mass calculations?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -997,7 +997,7 @@
             },
             {
               "id": "some-basic-concepts-q-molar-mass-calculations-2",
-              "question": "Describe a scenario where applying the concept of Molar mass calculations can lead to a common student error.",
+              "question": "Explain an application where using the concept of Molar mass calculations can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1038,11 +1038,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Percentage composition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Percentage composition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Percentage composition correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Percentage composition is frequently appears in NEET examinations.",
+            "Applying the core principles of Percentage composition correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Percentage composition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Percentage composition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Percentage composition."
           ],
           "masteryCriteria": [
@@ -1050,14 +1050,14 @@
             "Successfully avoids common pitfalls when Percentage composition is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Percentage composition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Percentage composition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-percentage-composition-1",
-              "question": "What are the critical factors or principles governing Percentage composition?",
+              "question": "What are the fundamental laws or mechanisms governing Percentage composition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1084,7 +1084,7 @@
             },
             {
               "id": "some-basic-concepts-q-percentage-composition-2",
-              "question": "Describe a scenario where applying the concept of Percentage composition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Percentage composition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1125,11 +1125,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Empirical formula determination"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Empirical formula determination is heavily tested in recent NEET papers.",
-            "Applying the core principles of Empirical formula determination correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Empirical formula determination is frequently appears in NEET examinations.",
+            "Applying the core principles of Empirical formula determination correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Empirical formula determination during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Empirical formula determination during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Empirical formula determination."
           ],
           "masteryCriteria": [
@@ -1137,14 +1137,14 @@
             "Successfully avoids common pitfalls when Empirical formula determination is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Empirical formula determination in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Empirical formula determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-empirical-formula-determination-1",
-              "question": "What are the critical factors or principles governing Empirical formula determination?",
+              "question": "What are the fundamental laws or mechanisms governing Empirical formula determination?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1171,7 +1171,7 @@
             },
             {
               "id": "some-basic-concepts-q-empirical-formula-determination-2",
-              "question": "Describe a scenario where applying the concept of Empirical formula determination can lead to a common student error.",
+              "question": "Explain an application where using the concept of Empirical formula determination can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1212,8 +1212,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molecular formula determination"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Molecular formula determination is heavily tested in recent NEET papers.",
-            "Applying the core principles of Molecular formula determination correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Molecular formula determination is frequently appears in NEET examinations.",
+            "Applying the core principles of Molecular formula determination correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -1227,7 +1227,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Molecular formula determination during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Molecular formula determination during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Molecular formula determination."
           ],
           "masteryCriteria": [
@@ -1235,14 +1235,14 @@
             "Successfully avoids common pitfalls when Molecular formula determination is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Molecular formula determination in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Molecular formula determination in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-molecular-formula-determination-1",
-              "question": "What are the critical factors or principles governing Molecular formula determination?",
+              "question": "What are the fundamental laws or mechanisms governing Molecular formula determination?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1269,7 +1269,7 @@
             },
             {
               "id": "some-basic-concepts-q-molecular-formula-determination-2",
-              "question": "Describe a scenario where applying the concept of Molecular formula determination can lead to a common student error.",
+              "question": "Explain an application where using the concept of Molecular formula determination can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1310,8 +1310,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Stoichiometry calculations"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Stoichiometry calculations is heavily tested in recent NEET papers.",
-            "Applying the core principles of Stoichiometry calculations correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Stoichiometry calculations is frequently appears in NEET examinations.",
+            "Applying the core principles of Stoichiometry calculations correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -1325,7 +1325,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Stoichiometry calculations during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Stoichiometry calculations during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Stoichiometry calculations."
           ],
           "masteryCriteria": [
@@ -1333,14 +1333,14 @@
             "Successfully avoids common pitfalls when Stoichiometry calculations is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Stoichiometry calculations in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Stoichiometry calculations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-stoichiometry-calculations-1",
-              "question": "What are the critical factors or principles governing Stoichiometry calculations?",
+              "question": "What are the fundamental laws or mechanisms governing Stoichiometry calculations?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1367,7 +1367,7 @@
             },
             {
               "id": "some-basic-concepts-q-stoichiometry-calculations-2",
-              "question": "Describe a scenario where applying the concept of Stoichiometry calculations can lead to a common student error.",
+              "question": "Explain an application where using the concept of Stoichiometry calculations can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1421,11 +1421,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Limiting reagent"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Limiting reagent is heavily tested in recent NEET papers.",
-            "Applying the core principles of Limiting reagent correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Limiting reagent is frequently appears in NEET examinations.",
+            "Applying the core principles of Limiting reagent correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Limiting reagent during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Limiting reagent during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Limiting reagent."
           ],
           "masteryCriteria": [
@@ -1433,14 +1433,14 @@
             "Successfully avoids common pitfalls when Limiting reagent is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Limiting reagent in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Limiting reagent in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-limiting-reagent-1",
-              "question": "What are the critical factors or principles governing Limiting reagent?",
+              "question": "What are the fundamental laws or mechanisms governing Limiting reagent?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1467,7 +1467,7 @@
             },
             {
               "id": "some-basic-concepts-q-limiting-reagent-2",
-              "question": "Describe a scenario where applying the concept of Limiting reagent can lead to a common student error.",
+              "question": "Explain an application where using the concept of Limiting reagent can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1508,11 +1508,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Reaction yield and purity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Reaction yield and purity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Reaction yield and purity correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Reaction yield and purity is frequently appears in NEET examinations.",
+            "Applying the core principles of Reaction yield and purity correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Reaction yield and purity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Reaction yield and purity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Reaction yield and purity."
           ],
           "masteryCriteria": [
@@ -1520,14 +1520,14 @@
             "Successfully avoids common pitfalls when Reaction yield and purity is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Reaction yield and purity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Reaction yield and purity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-reaction-yield-and-purity-1",
-              "question": "What are the critical factors or principles governing Reaction yield and purity?",
+              "question": "What are the fundamental laws or mechanisms governing Reaction yield and purity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1554,7 +1554,7 @@
             },
             {
               "id": "some-basic-concepts-q-reaction-yield-and-purity-2",
-              "question": "Describe a scenario where applying the concept of Reaction yield and purity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Reaction yield and purity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1595,11 +1595,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molarity definition and problems"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Molarity definition and problems is heavily tested in recent NEET papers.",
-            "Applying the core principles of Molarity definition and problems correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Molarity definition and problems is frequently appears in NEET examinations.",
+            "Applying the core principles of Molarity definition and problems correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Molarity definition and problems during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Molarity definition and problems during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Molarity definition and problems."
           ],
           "masteryCriteria": [
@@ -1607,14 +1607,14 @@
             "Successfully avoids common pitfalls when Molarity definition and problems is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Molarity definition and problems in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Molarity definition and problems in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-molarity-definition-and-problems-1",
-              "question": "What are the critical factors or principles governing Molarity definition and problems?",
+              "question": "What are the fundamental laws or mechanisms governing Molarity definition and problems?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1641,7 +1641,7 @@
             },
             {
               "id": "some-basic-concepts-q-molarity-definition-and-problems-2",
-              "question": "Describe a scenario where applying the concept of Molarity definition and problems can lead to a common student error.",
+              "question": "Explain an application where using the concept of Molarity definition and problems can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1682,11 +1682,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Molality definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Molality definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Molality definition correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Molality definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Molality definition correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Molality definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Molality definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Molality definition."
           ],
           "masteryCriteria": [
@@ -1694,14 +1694,14 @@
             "Successfully avoids common pitfalls when Molality definition is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Molality definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Molality definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-molality-definition-1",
-              "question": "What are the critical factors or principles governing Molality definition?",
+              "question": "What are the fundamental laws or mechanisms governing Molality definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1728,7 +1728,7 @@
             },
             {
               "id": "some-basic-concepts-q-molality-definition-2",
-              "question": "Describe a scenario where applying the concept of Molality definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Molality definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1769,8 +1769,8 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Mole fraction"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mole fraction is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mole fraction correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Mole fraction is frequently appears in NEET examinations.",
+            "Applying the core principles of Mole fraction correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "formulas": [
             {
@@ -1784,7 +1784,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mole fraction during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mole fraction during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mole fraction."
           ],
           "masteryCriteria": [
@@ -1792,14 +1792,14 @@
             "Successfully avoids common pitfalls when Mole fraction is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mole fraction in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mole fraction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-mole-fraction-1",
-              "question": "What are the critical factors or principles governing Mole fraction?",
+              "question": "What are the fundamental laws or mechanisms governing Mole fraction?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1826,7 +1826,7 @@
             },
             {
               "id": "some-basic-concepts-q-mole-fraction-2",
-              "question": "Describe a scenario where applying the concept of Mole fraction can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mole fraction can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1880,11 +1880,11 @@
             "NCERT Chemistry Class 11, Chapter: Some Basic Concepts in Chemistry, Section detailing Equivalent mass concept"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Equivalent mass concept is heavily tested in recent NEET papers.",
-            "Applying the core principles of Equivalent mass concept correctly is essential for solving complex multi-step problems in Some Basic Concepts in Chemistry."
+            "A thorough understanding of Equivalent mass concept is frequently appears in NEET examinations.",
+            "Applying the core principles of Equivalent mass concept correctly is essential for solving integrated numerical and conceptual problems in Some Basic Concepts in Chemistry."
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Equivalent mass concept during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Equivalent mass concept during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Equivalent mass concept."
           ],
           "masteryCriteria": [
@@ -1892,14 +1892,14 @@
             "Successfully avoids common pitfalls when Equivalent mass concept is integrated with other concepts in Some Basic Concepts in Chemistry."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Equivalent mass concept in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Equivalent mass concept in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "some-basic-concepts-q-equivalent-mass-concept-1",
-              "question": "What are the critical factors or principles governing Equivalent mass concept?",
+              "question": "What are the fundamental laws or mechanisms governing Equivalent mass concept?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1926,7 +1926,7 @@
             },
             {
               "id": "some-basic-concepts-q-equivalent-mass-concept-2",
-              "question": "Describe a scenario where applying the concept of Equivalent mass concept can lead to a common student error.",
+              "question": "Explain an application where using the concept of Equivalent mass concept can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

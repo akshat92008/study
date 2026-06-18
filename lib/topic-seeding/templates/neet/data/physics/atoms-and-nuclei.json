@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Rutherford alpha scattering"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Rutherford alpha scattering is heavily tested in recent NEET papers.",
-            "Applying the core principles of Rutherford alpha scattering correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Rutherford alpha scattering is frequently appears in NEET examinations.",
+            "Applying the core principles of Rutherford alpha scattering correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Rutherford alpha scattering during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Rutherford alpha scattering during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Rutherford alpha scattering."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Rutherford alpha scattering is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Rutherford alpha scattering in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Rutherford alpha scattering in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-1",
-              "question": "What are the critical factors or principles governing Rutherford alpha scattering?",
+              "question": "What are the fundamental laws or mechanisms governing Rutherford alpha scattering?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-2",
-              "question": "Describe a scenario where applying the concept of Rutherford alpha scattering can lead to a common student error.",
+              "question": "Explain an application where using the concept of Rutherford alpha scattering can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Rutherford model limitations"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Rutherford model limitations is heavily tested in recent NEET papers.",
-            "Applying the core principles of Rutherford model limitations correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Rutherford model limitations is frequently appears in NEET examinations.",
+            "Applying the core principles of Rutherford model limitations correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Rutherford model limitations during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Rutherford model limitations during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Rutherford model limitations."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Rutherford model limitations is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Rutherford model limitations in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Rutherford model limitations in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-rutherford-model-limitations-1",
-              "question": "What are the critical factors or principles governing Rutherford model limitations?",
+              "question": "What are the fundamental laws or mechanisms governing Rutherford model limitations?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-rutherford-model-limitations-2",
-              "question": "Describe a scenario where applying the concept of Rutherford model limitations can lead to a common student error.",
+              "question": "Explain an application where using the concept of Rutherford model limitations can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Bohr model/hydrogen spectrum"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bohr model/hydrogen spectrum is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bohr model/hydrogen spectrum correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Bohr model/hydrogen spectrum is frequently appears in NEET examinations.",
+            "Applying the core principles of Bohr model/hydrogen spectrum correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bohr model/hydrogen spectrum during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bohr model/hydrogen spectrum during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bohr model/hydrogen spectrum."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Bohr model/hydrogen spectrum is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bohr model/hydrogen spectrum in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bohr model/hydrogen spectrum in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-1",
-              "question": "What are the critical factors or principles governing Bohr model/hydrogen spectrum?",
+              "question": "What are the fundamental laws or mechanisms governing Bohr model/hydrogen spectrum?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-2",
-              "question": "Describe a scenario where applying the concept of Bohr model/hydrogen spectrum can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bohr model/hydrogen spectrum can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Energy levels in hydrogen"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Energy levels in hydrogen is heavily tested in recent NEET papers.",
-            "Applying the core principles of Energy levels in hydrogen correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Energy levels in hydrogen is frequently appears in NEET examinations.",
+            "Applying the core principles of Energy levels in hydrogen correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -334,7 +334,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Energy levels in hydrogen during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Energy levels in hydrogen during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Energy levels in hydrogen."
           ],
           "masteryCriteria": [
@@ -342,14 +342,14 @@
             "Successfully avoids common pitfalls when Energy levels in hydrogen is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Energy levels in hydrogen in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Energy levels in hydrogen in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-1",
-              "question": "What are the critical factors or principles governing Energy levels in hydrogen?",
+              "question": "What are the fundamental laws or mechanisms governing Energy levels in hydrogen?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -376,7 +376,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-2",
-              "question": "Describe a scenario where applying the concept of Energy levels in hydrogen can lead to a common student error.",
+              "question": "Explain an application where using the concept of Energy levels in hydrogen can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -430,8 +430,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Radius of Bohr orbit"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Radius of Bohr orbit is heavily tested in recent NEET papers.",
-            "Applying the core principles of Radius of Bohr orbit correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Radius of Bohr orbit is frequently appears in NEET examinations.",
+            "Applying the core principles of Radius of Bohr orbit correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -446,7 +446,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Radius of Bohr orbit during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Radius of Bohr orbit during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Radius of Bohr orbit."
           ],
           "masteryCriteria": [
@@ -454,14 +454,14 @@
             "Successfully avoids common pitfalls when Radius of Bohr orbit is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Radius of Bohr orbit in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Radius of Bohr orbit in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-1",
-              "question": "What are the critical factors or principles governing Radius of Bohr orbit?",
+              "question": "What are the fundamental laws or mechanisms governing Radius of Bohr orbit?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -488,7 +488,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-2",
-              "question": "Describe a scenario where applying the concept of Radius of Bohr orbit can lead to a common student error.",
+              "question": "Explain an application where using the concept of Radius of Bohr orbit can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -529,8 +529,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Spectral series"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Spectral series is heavily tested in recent NEET papers.",
-            "Applying the core principles of Spectral series correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Spectral series is frequently appears in NEET examinations.",
+            "Applying the core principles of Spectral series correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -545,7 +545,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Spectral series during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Spectral series during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Spectral series."
           ],
           "masteryCriteria": [
@@ -553,14 +553,14 @@
             "Successfully avoids common pitfalls when Spectral series is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Spectral series in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Spectral series in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-spectral-series-1",
-              "question": "What are the critical factors or principles governing Spectral series?",
+              "question": "What are the fundamental laws or mechanisms governing Spectral series?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -587,7 +587,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-spectral-series-2",
-              "question": "Describe a scenario where applying the concept of Spectral series can lead to a common student error.",
+              "question": "Explain an application where using the concept of Spectral series can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -628,8 +628,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear composition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Nuclear composition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Nuclear composition correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Nuclear composition is frequently appears in NEET examinations.",
+            "Applying the core principles of Nuclear composition correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -644,7 +644,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Nuclear composition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Nuclear composition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Nuclear composition."
           ],
           "masteryCriteria": [
@@ -652,14 +652,14 @@
             "Successfully avoids common pitfalls when Nuclear composition is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Nuclear composition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Nuclear composition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-composition-1",
-              "question": "What are the critical factors or principles governing Nuclear composition?",
+              "question": "What are the fundamental laws or mechanisms governing Nuclear composition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -686,7 +686,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-composition-2",
-              "question": "Describe a scenario where applying the concept of Nuclear composition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Nuclear composition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -727,8 +727,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Isotopes isobars isotones"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Isotopes isobars isotones is heavily tested in recent NEET papers.",
-            "Applying the core principles of Isotopes isobars isotones correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Isotopes isobars isotones is frequently appears in NEET examinations.",
+            "Applying the core principles of Isotopes isobars isotones correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -743,7 +743,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Isotopes isobars isotones during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Isotopes isobars isotones during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Isotopes isobars isotones."
           ],
           "masteryCriteria": [
@@ -751,14 +751,14 @@
             "Successfully avoids common pitfalls when Isotopes isobars isotones is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Isotopes isobars isotones in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Isotopes isobars isotones in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-1",
-              "question": "What are the critical factors or principles governing Isotopes isobars isotones?",
+              "question": "What are the fundamental laws or mechanisms governing Isotopes isobars isotones?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -785,7 +785,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-2",
-              "question": "Describe a scenario where applying the concept of Isotopes isobars isotones can lead to a common student error.",
+              "question": "Explain an application where using the concept of Isotopes isobars isotones can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -839,8 +839,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear size and density"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Nuclear size and density is heavily tested in recent NEET papers.",
-            "Applying the core principles of Nuclear size and density correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Nuclear size and density is frequently appears in NEET examinations.",
+            "Applying the core principles of Nuclear size and density correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -855,7 +855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Nuclear size and density during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Nuclear size and density during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Nuclear size and density."
           ],
           "masteryCriteria": [
@@ -863,14 +863,14 @@
             "Successfully avoids common pitfalls when Nuclear size and density is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Nuclear size and density in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Nuclear size and density in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-size-and-density-1",
-              "question": "What are the critical factors or principles governing Nuclear size and density?",
+              "question": "What are the fundamental laws or mechanisms governing Nuclear size and density?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -897,7 +897,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-size-and-density-2",
-              "question": "Describe a scenario where applying the concept of Nuclear size and density can lead to a common student error.",
+              "question": "Explain an application where using the concept of Nuclear size and density can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -938,8 +938,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Mass defect"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mass defect is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mass defect correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Mass defect is frequently appears in NEET examinations.",
+            "Applying the core principles of Mass defect correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -954,7 +954,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mass defect during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mass defect during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mass defect."
           ],
           "masteryCriteria": [
@@ -962,14 +962,14 @@
             "Successfully avoids common pitfalls when Mass defect is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mass defect in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mass defect in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-mass-defect-1",
-              "question": "What are the critical factors or principles governing Mass defect?",
+              "question": "What are the fundamental laws or mechanisms governing Mass defect?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -996,7 +996,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-mass-defect-2",
-              "question": "Describe a scenario where applying the concept of Mass defect can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mass defect can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1037,8 +1037,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear binding energy per nucleon"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Nuclear binding energy per nucleon is heavily tested in recent NEET papers.",
-            "Applying the core principles of Nuclear binding energy per nucleon correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Nuclear binding energy per nucleon is frequently appears in NEET examinations.",
+            "Applying the core principles of Nuclear binding energy per nucleon correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1052,7 +1052,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Nuclear binding energy per nucleon during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Nuclear binding energy per nucleon during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Nuclear binding energy per nucleon."
           ],
           "masteryCriteria": [
@@ -1060,14 +1060,14 @@
             "Successfully avoids common pitfalls when Nuclear binding energy per nucleon is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Nuclear binding energy per nucleon in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Nuclear binding energy per nucleon in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-1",
-              "question": "What are the critical factors or principles governing Nuclear binding energy per nucleon?",
+              "question": "What are the fundamental laws or mechanisms governing Nuclear binding energy per nucleon?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1094,7 +1094,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-2",
-              "question": "Describe a scenario where applying the concept of Nuclear binding energy per nucleon can lead to a common student error.",
+              "question": "Explain an application where using the concept of Nuclear binding energy per nucleon can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1135,8 +1135,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Radioactivity laws"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Radioactivity laws is heavily tested in recent NEET papers.",
-            "Applying the core principles of Radioactivity laws correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Radioactivity laws is frequently appears in NEET examinations.",
+            "Applying the core principles of Radioactivity laws correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1151,7 +1151,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Radioactivity laws during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Radioactivity laws during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Radioactivity laws."
           ],
           "masteryCriteria": [
@@ -1159,14 +1159,14 @@
             "Successfully avoids common pitfalls when Radioactivity laws is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Radioactivity laws in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Radioactivity laws in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-radioactivity-laws-1",
-              "question": "What are the critical factors or principles governing Radioactivity laws?",
+              "question": "What are the fundamental laws or mechanisms governing Radioactivity laws?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1193,7 +1193,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-radioactivity-laws-2",
-              "question": "Describe a scenario where applying the concept of Radioactivity laws can lead to a common student error.",
+              "question": "Explain an application where using the concept of Radioactivity laws can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1247,8 +1247,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Alpha decay"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Alpha decay is heavily tested in recent NEET papers.",
-            "Applying the core principles of Alpha decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Alpha decay is frequently appears in NEET examinations.",
+            "Applying the core principles of Alpha decay correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1263,7 +1263,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Alpha decay during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Alpha decay during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Alpha decay."
           ],
           "masteryCriteria": [
@@ -1271,14 +1271,14 @@
             "Successfully avoids common pitfalls when Alpha decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Alpha decay in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Alpha decay in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-alpha-decay-1",
-              "question": "What are the critical factors or principles governing Alpha decay?",
+              "question": "What are the fundamental laws or mechanisms governing Alpha decay?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1305,7 +1305,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-alpha-decay-2",
-              "question": "Describe a scenario where applying the concept of Alpha decay can lead to a common student error.",
+              "question": "Explain an application where using the concept of Alpha decay can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1346,8 +1346,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Beta decay"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Beta decay is heavily tested in recent NEET papers.",
-            "Applying the core principles of Beta decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Beta decay is frequently appears in NEET examinations.",
+            "Applying the core principles of Beta decay correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1362,7 +1362,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Beta decay during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Beta decay during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Beta decay."
           ],
           "masteryCriteria": [
@@ -1370,14 +1370,14 @@
             "Successfully avoids common pitfalls when Beta decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Beta decay in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Beta decay in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-beta-decay-1",
-              "question": "What are the critical factors or principles governing Beta decay?",
+              "question": "What are the fundamental laws or mechanisms governing Beta decay?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1404,7 +1404,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-beta-decay-2",
-              "question": "Describe a scenario where applying the concept of Beta decay can lead to a common student error.",
+              "question": "Explain an application where using the concept of Beta decay can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1445,8 +1445,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Gamma decay"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gamma decay is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gamma decay correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Gamma decay is frequently appears in NEET examinations.",
+            "Applying the core principles of Gamma decay correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1461,7 +1461,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gamma decay during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gamma decay during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gamma decay."
           ],
           "masteryCriteria": [
@@ -1469,14 +1469,14 @@
             "Successfully avoids common pitfalls when Gamma decay is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gamma decay in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gamma decay in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-gamma-decay-1",
-              "question": "What are the critical factors or principles governing Gamma decay?",
+              "question": "What are the fundamental laws or mechanisms governing Gamma decay?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1503,7 +1503,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-gamma-decay-2",
-              "question": "Describe a scenario where applying the concept of Gamma decay can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gamma decay can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1544,8 +1544,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Half-life definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Half-life definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Half-life definition correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Half-life definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Half-life definition correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1560,7 +1560,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Half-life definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Half-life definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Half-life definition."
           ],
           "masteryCriteria": [
@@ -1568,14 +1568,14 @@
             "Successfully avoids common pitfalls when Half-life definition is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Half-life definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Half-life definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-half-life-definition-1",
-              "question": "What are the critical factors or principles governing Half-life definition?",
+              "question": "What are the fundamental laws or mechanisms governing Half-life definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1602,7 +1602,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-half-life-definition-2",
-              "question": "Describe a scenario where applying the concept of Half-life definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Half-life definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1656,8 +1656,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Mean life"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Mean life is heavily tested in recent NEET papers.",
-            "Applying the core principles of Mean life correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Mean life is frequently appears in NEET examinations.",
+            "Applying the core principles of Mean life correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1672,7 +1672,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Mean life during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Mean life during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Mean life."
           ],
           "masteryCriteria": [
@@ -1680,14 +1680,14 @@
             "Successfully avoids common pitfalls when Mean life is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Mean life in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Mean life in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-mean-life-1",
-              "question": "What are the critical factors or principles governing Mean life?",
+              "question": "What are the fundamental laws or mechanisms governing Mean life?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1714,7 +1714,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-mean-life-2",
-              "question": "Describe a scenario where applying the concept of Mean life can lead to a common student error.",
+              "question": "Explain an application where using the concept of Mean life can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1755,8 +1755,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear fission"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Nuclear fission is heavily tested in recent NEET papers.",
-            "Applying the core principles of Nuclear fission correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Nuclear fission is frequently appears in NEET examinations.",
+            "Applying the core principles of Nuclear fission correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1771,7 +1771,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Nuclear fission during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Nuclear fission during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Nuclear fission."
           ],
           "masteryCriteria": [
@@ -1779,14 +1779,14 @@
             "Successfully avoids common pitfalls when Nuclear fission is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Nuclear fission in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Nuclear fission in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-fission-1",
-              "question": "What are the critical factors or principles governing Nuclear fission?",
+              "question": "What are the fundamental laws or mechanisms governing Nuclear fission?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1813,7 +1813,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-fission-2",
-              "question": "Describe a scenario where applying the concept of Nuclear fission can lead to a common student error.",
+              "question": "Explain an application where using the concept of Nuclear fission can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1854,8 +1854,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Nuclear fusion"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Nuclear fusion is heavily tested in recent NEET papers.",
-            "Applying the core principles of Nuclear fusion correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Nuclear fusion is frequently appears in NEET examinations.",
+            "Applying the core principles of Nuclear fusion correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1870,7 +1870,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Nuclear fusion during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Nuclear fusion during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Nuclear fusion."
           ],
           "masteryCriteria": [
@@ -1878,14 +1878,14 @@
             "Successfully avoids common pitfalls when Nuclear fusion is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Nuclear fusion in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Nuclear fusion in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-nuclear-fusion-1",
-              "question": "What are the critical factors or principles governing Nuclear fusion?",
+              "question": "What are the fundamental laws or mechanisms governing Nuclear fusion?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1912,7 +1912,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-nuclear-fusion-2",
-              "question": "Describe a scenario where applying the concept of Nuclear fusion can lead to a common student error.",
+              "question": "Explain an application where using the concept of Nuclear fusion can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1953,8 +1953,8 @@
             "NCERT Physics Class 12, Chapter: Atoms and Nuclei, Section detailing Stellar energy source"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Stellar energy source is heavily tested in recent NEET papers.",
-            "Applying the core principles of Stellar energy source correctly is essential for solving complex multi-step problems in Atoms and Nuclei."
+            "A thorough understanding of Stellar energy source is frequently appears in NEET examinations.",
+            "Applying the core principles of Stellar energy source correctly is essential for solving integrated numerical and conceptual problems in Atoms and Nuclei."
           ],
           "formulas": [
             {
@@ -1968,7 +1968,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Stellar energy source during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Stellar energy source during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Stellar energy source."
           ],
           "masteryCriteria": [
@@ -1976,14 +1976,14 @@
             "Successfully avoids common pitfalls when Stellar energy source is integrated with other concepts in Atoms and Nuclei."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Stellar energy source in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Stellar energy source in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "atoms-and-nuclei-q-stellar-energy-source-1",
-              "question": "What are the critical factors or principles governing Stellar energy source?",
+              "question": "What are the fundamental laws or mechanisms governing Stellar energy source?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2010,7 +2010,7 @@
             },
             {
               "id": "atoms-and-nuclei-q-stellar-energy-source-2",
-              "question": "Describe a scenario where applying the concept of Stellar energy source can lead to a common student error.",
+              "question": "Explain an application where using the concept of Stellar energy source can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

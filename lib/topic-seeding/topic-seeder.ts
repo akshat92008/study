@@ -12,10 +12,9 @@ function isChapterSeed(template: SeedTemplate | ChapterSeed): template is Chapte
 
 function buildSeededTopicRows(
   params: SeedTopicParams,
-  template: SeedTemplate | ChapterSeed,
-  templateKey: string,
-  source: SeedSource
+  selected: SelectedSeedTemplate
 ) {
+  const { template, templateKey, source, targetMicrotargetSlug } = selected;
   if (isChapterSeed(template)) {
     const rows: any[] = [];
     let globalIndex = 1;
@@ -34,7 +33,7 @@ function buildSeededTopicRows(
           microtarget_slug: slugify(mt.title),
           template_key: templateKey,
           source,
-          status: globalIndex === 1 ? 'active' : 'not_started',
+          status: 'not_started', // We will set the active one later
           mastery_score: 0,
           confidence: 'low',
           metadata: {
@@ -66,6 +65,17 @@ function buildSeededTopicRows(
         globalIndex++;
       }
     }
+    
+    // Set the active topic
+    let activeIndex = 0;
+    if (targetMicrotargetSlug) {
+      const idx = rows.findIndex(r => r.microtarget_slug === slugify(targetMicrotargetSlug) || r.metadata.microtargetId === targetMicrotargetSlug);
+      if (idx !== -1) activeIndex = idx;
+    }
+    if (rows.length > 0) {
+      rows[activeIndex].status = 'active';
+    }
+
     return rows;
   }
 
@@ -83,7 +93,7 @@ function buildSeededTopicRows(
       microtarget_slug: slugify(item.microtarget),
       template_key: templateKey,
       source,
-      status: orderIndex === 1 ? 'active' : 'not_started',
+      status: 'not_started',
       mastery_score: 0,
       confidence: 'low',
       metadata: {
@@ -96,6 +106,18 @@ function buildSeededTopicRows(
       },
     };
   });
+  
+  // Set the active topic
+  let activeIndex = 0;
+  if (targetMicrotargetSlug) {
+    const idx = rows.findIndex(r => r.microtarget_slug === slugify(targetMicrotargetSlug) || (r.metadata.microtargets && r.metadata.microtargets[0]?.id === targetMicrotargetSlug));
+    if (idx !== -1) activeIndex = idx;
+  }
+  if (rows.length > 0) {
+    rows[activeIndex].status = 'active';
+  }
+  
+  return rows;
 }
 export async function seedTopicsForGoal(
   supabase: SupabaseLike,
@@ -125,7 +147,7 @@ export async function seedTopicsForGoal(
       goalTitle: params.goalTitle,
     });
   }
-  const rows = buildSeededTopicRows(params, selected.template, selected.templateKey, selected.source);
+  const rows = buildSeededTopicRows(params, selected);
   const { error: upsertError } = await supabase
     .from('seeded_topics')
     .upsert(rows, {

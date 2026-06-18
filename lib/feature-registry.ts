@@ -84,23 +84,22 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
     atlas: boolFromEnv('ATLAS_ENABLED', true),
     debug_page: boolFromEnv('DEBUG_PAGES_ENABLED', true),
     autopsy_ui: true,
-    analytics_ui: true,
-    atlas_ui: true,
-    flashcards_ui: true,
-    voice_chat: true,
-    knowledge_ui: true,
+    analytics_ui: false,
+    atlas_ui: false,
+    flashcards_ui: false,
+    voice_chat: false,
+    knowledge_ui: false,
     ai_global: true,
     paid_gate: boolFromEnv('PAID_BETA_GATE_ENABLED', true),
   };
 
-  // In public_paid mode, we normally force unapproved or experimental features OFF
-  // but for now we are enabling everything as requested.
+  // In public_paid mode, we force unapproved or experimental features OFF
   if (mode === 'public_paid') {
-    features.debug_page = true;
-    features.worker_ai = true; // Turn on worker AI
-    features.analytics_ui = true;
-    features.atlas_ui = true;
-    features.voice_chat = true;
+    features.debug_page = false;
+    features.worker_ai = true; 
+    features.analytics_ui = false;
+    features.atlas_ui = false;
+    features.voice_chat = false;
   }
 
   return features[feature];

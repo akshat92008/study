@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Stress types"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Stress types is heavily tested in recent NEET papers.",
-            "Applying the core principles of Stress types correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Stress types is frequently appears in NEET examinations.",
+            "Applying the core principles of Stress types correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Stress types during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Stress types during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Stress types."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Stress types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Stress types in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Stress types in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-stress-types-1",
-              "question": "What are the critical factors or principles governing Stress types?",
+              "question": "What are the fundamental laws or mechanisms governing Stress types?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-stress-types-2",
-              "question": "Describe a scenario where applying the concept of Stress types can lead to a common student error.",
+              "question": "Explain an application where using the concept of Stress types can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Strain types"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Strain types is heavily tested in recent NEET papers.",
-            "Applying the core principles of Strain types correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Strain types is frequently appears in NEET examinations.",
+            "Applying the core principles of Strain types correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Strain types during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Strain types during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Strain types."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Strain types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Strain types in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Strain types in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-strain-types-1",
-              "question": "What are the critical factors or principles governing Strain types?",
+              "question": "What are the fundamental laws or mechanisms governing Strain types?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-strain-types-2",
-              "question": "Describe a scenario where applying the concept of Strain types can lead to a common student error.",
+              "question": "Explain an application where using the concept of Strain types can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Hooke’s law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hooke’s law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hooke’s law correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Hooke’s law is frequently appears in NEET examinations.",
+            "Applying the core principles of Hooke’s law correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hooke’s law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hooke’s law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hooke’s law."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Hooke’s law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hooke’s law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hooke’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-hooke-s-law-1",
-              "question": "What are the critical factors or principles governing Hooke’s law?",
+              "question": "What are the fundamental laws or mechanisms governing Hooke’s law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-hooke-s-law-2",
-              "question": "Describe a scenario where applying the concept of Hooke’s law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hooke’s law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Young modulus"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Young modulus is heavily tested in recent NEET papers.",
-            "Applying the core principles of Young modulus correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Young modulus is frequently appears in NEET examinations.",
+            "Applying the core principles of Young modulus correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Young modulus during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Young modulus during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Young modulus."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Young modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Young modulus in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Young modulus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-young-modulus-1",
-              "question": "What are the critical factors or principles governing Young modulus?",
+              "question": "What are the fundamental laws or mechanisms governing Young modulus?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-young-modulus-2",
-              "question": "Describe a scenario where applying the concept of Young modulus can lead to a common student error.",
+              "question": "Explain an application where using the concept of Young modulus can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -418,8 +418,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Bulk modulus"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bulk modulus is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bulk modulus correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Bulk modulus is frequently appears in NEET examinations.",
+            "Applying the core principles of Bulk modulus correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -434,7 +434,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bulk modulus during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bulk modulus during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bulk modulus."
           ],
           "masteryCriteria": [
@@ -442,14 +442,14 @@
             "Successfully avoids common pitfalls when Bulk modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bulk modulus in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bulk modulus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-bulk-modulus-1",
-              "question": "What are the critical factors or principles governing Bulk modulus?",
+              "question": "What are the fundamental laws or mechanisms governing Bulk modulus?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -476,7 +476,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-bulk-modulus-2",
-              "question": "Describe a scenario where applying the concept of Bulk modulus can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bulk modulus can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -517,8 +517,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Shear modulus"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Shear modulus is heavily tested in recent NEET papers.",
-            "Applying the core principles of Shear modulus correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Shear modulus is frequently appears in NEET examinations.",
+            "Applying the core principles of Shear modulus correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -533,7 +533,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Shear modulus during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Shear modulus during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Shear modulus."
           ],
           "masteryCriteria": [
@@ -541,14 +541,14 @@
             "Successfully avoids common pitfalls when Shear modulus is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Shear modulus in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Shear modulus in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-shear-modulus-1",
-              "question": "What are the critical factors or principles governing Shear modulus?",
+              "question": "What are the fundamental laws or mechanisms governing Shear modulus?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -575,7 +575,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-shear-modulus-2",
-              "question": "Describe a scenario where applying the concept of Shear modulus can lead to a common student error.",
+              "question": "Explain an application where using the concept of Shear modulus can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -616,8 +616,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Stress-strain curve"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Stress-strain curve is heavily tested in recent NEET papers.",
-            "Applying the core principles of Stress-strain curve correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Stress-strain curve is frequently appears in NEET examinations.",
+            "Applying the core principles of Stress-strain curve correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -632,7 +632,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Stress-strain curve during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Stress-strain curve during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Stress-strain curve."
           ],
           "masteryCriteria": [
@@ -640,14 +640,14 @@
             "Successfully avoids common pitfalls when Stress-strain curve is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Stress-strain curve in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Stress-strain curve in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-stress-strain-curve-1",
-              "question": "What are the critical factors or principles governing Stress-strain curve?",
+              "question": "What are the fundamental laws or mechanisms governing Stress-strain curve?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -674,7 +674,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-stress-strain-curve-2",
-              "question": "Describe a scenario where applying the concept of Stress-strain curve can lead to a common student error.",
+              "question": "Explain an application where using the concept of Stress-strain curve can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -715,8 +715,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Elastic after effect"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Elastic after effect is heavily tested in recent NEET papers.",
-            "Applying the core principles of Elastic after effect correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Elastic after effect is frequently appears in NEET examinations.",
+            "Applying the core principles of Elastic after effect correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -731,7 +731,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Elastic after effect during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Elastic after effect during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Elastic after effect."
           ],
           "masteryCriteria": [
@@ -739,14 +739,14 @@
             "Successfully avoids common pitfalls when Elastic after effect is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Elastic after effect in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Elastic after effect in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-elastic-after-effect-1",
-              "question": "What are the critical factors or principles governing Elastic after effect?",
+              "question": "What are the fundamental laws or mechanisms governing Elastic after effect?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -773,7 +773,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-elastic-after-effect-2",
-              "question": "Describe a scenario where applying the concept of Elastic after effect can lead to a common student error.",
+              "question": "Explain an application where using the concept of Elastic after effect can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -827,8 +827,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Elastic hysteresis"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Elastic hysteresis is heavily tested in recent NEET papers.",
-            "Applying the core principles of Elastic hysteresis correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Elastic hysteresis is frequently appears in NEET examinations.",
+            "Applying the core principles of Elastic hysteresis correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -843,7 +843,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Elastic hysteresis during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Elastic hysteresis during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Elastic hysteresis."
           ],
           "masteryCriteria": [
@@ -851,14 +851,14 @@
             "Successfully avoids common pitfalls when Elastic hysteresis is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Elastic hysteresis in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Elastic hysteresis in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-elastic-hysteresis-1",
-              "question": "What are the critical factors or principles governing Elastic hysteresis?",
+              "question": "What are the fundamental laws or mechanisms governing Elastic hysteresis?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -885,7 +885,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-elastic-hysteresis-2",
-              "question": "Describe a scenario where applying the concept of Elastic hysteresis can lead to a common student error.",
+              "question": "Explain an application where using the concept of Elastic hysteresis can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -926,8 +926,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Pressure in fluid"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Pressure in fluid is heavily tested in recent NEET papers.",
-            "Applying the core principles of Pressure in fluid correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Pressure in fluid is frequently appears in NEET examinations.",
+            "Applying the core principles of Pressure in fluid correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -942,7 +942,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Pressure in fluid during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Pressure in fluid during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Pressure in fluid."
           ],
           "masteryCriteria": [
@@ -950,14 +950,14 @@
             "Successfully avoids common pitfalls when Pressure in fluid is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Pressure in fluid in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Pressure in fluid in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-pressure-in-fluid-1",
-              "question": "What are the critical factors or principles governing Pressure in fluid?",
+              "question": "What are the fundamental laws or mechanisms governing Pressure in fluid?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -984,7 +984,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-pressure-in-fluid-2",
-              "question": "Describe a scenario where applying the concept of Pressure in fluid can lead to a common student error.",
+              "question": "Explain an application where using the concept of Pressure in fluid can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1025,8 +1025,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Pascal’s law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Pascal’s law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Pascal’s law correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Pascal’s law is frequently appears in NEET examinations.",
+            "Applying the core principles of Pascal’s law correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1041,7 +1041,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Pascal’s law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Pascal’s law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Pascal’s law."
           ],
           "masteryCriteria": [
@@ -1049,14 +1049,14 @@
             "Successfully avoids common pitfalls when Pascal’s law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Pascal’s law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Pascal’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-pascal-s-law-1",
-              "question": "What are the critical factors or principles governing Pascal’s law?",
+              "question": "What are the fundamental laws or mechanisms governing Pascal’s law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1083,7 +1083,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-pascal-s-law-2",
-              "question": "Describe a scenario where applying the concept of Pascal’s law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Pascal’s law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1124,8 +1124,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Hydraulic lift"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Hydraulic lift is heavily tested in recent NEET papers.",
-            "Applying the core principles of Hydraulic lift correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Hydraulic lift is frequently appears in NEET examinations.",
+            "Applying the core principles of Hydraulic lift correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1140,7 +1140,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Hydraulic lift during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Hydraulic lift during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Hydraulic lift."
           ],
           "masteryCriteria": [
@@ -1148,14 +1148,14 @@
             "Successfully avoids common pitfalls when Hydraulic lift is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Hydraulic lift in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Hydraulic lift in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-hydraulic-lift-1",
-              "question": "What are the critical factors or principles governing Hydraulic lift?",
+              "question": "What are the fundamental laws or mechanisms governing Hydraulic lift?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1182,7 +1182,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-hydraulic-lift-2",
-              "question": "Describe a scenario where applying the concept of Hydraulic lift can lead to a common student error.",
+              "question": "Explain an application where using the concept of Hydraulic lift can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1223,8 +1223,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Buoyancy and upthrust"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Buoyancy and upthrust is heavily tested in recent NEET papers.",
-            "Applying the core principles of Buoyancy and upthrust correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Buoyancy and upthrust is frequently appears in NEET examinations.",
+            "Applying the core principles of Buoyancy and upthrust correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1239,7 +1239,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Buoyancy and upthrust during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Buoyancy and upthrust during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Buoyancy and upthrust."
           ],
           "masteryCriteria": [
@@ -1247,14 +1247,14 @@
             "Successfully avoids common pitfalls when Buoyancy and upthrust is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Buoyancy and upthrust in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Buoyancy and upthrust in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-buoyancy-and-upthrust-1",
-              "question": "What are the critical factors or principles governing Buoyancy and upthrust?",
+              "question": "What are the fundamental laws or mechanisms governing Buoyancy and upthrust?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1281,7 +1281,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-buoyancy-and-upthrust-2",
-              "question": "Describe a scenario where applying the concept of Buoyancy and upthrust can lead to a common student error.",
+              "question": "Explain an application where using the concept of Buoyancy and upthrust can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1322,8 +1322,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Archimedes principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Archimedes principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Archimedes principle correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Archimedes principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Archimedes principle correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1338,7 +1338,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Archimedes principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Archimedes principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Archimedes principle."
           ],
           "masteryCriteria": [
@@ -1346,14 +1346,14 @@
             "Successfully avoids common pitfalls when Archimedes principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Archimedes principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Archimedes principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-archimedes-principle-1",
-              "question": "What are the critical factors or principles governing Archimedes principle?",
+              "question": "What are the fundamental laws or mechanisms governing Archimedes principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1380,7 +1380,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-archimedes-principle-2",
-              "question": "Describe a scenario where applying the concept of Archimedes principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Archimedes principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1421,8 +1421,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Fluid flow types"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Fluid flow types is heavily tested in recent NEET papers.",
-            "Applying the core principles of Fluid flow types correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Fluid flow types is frequently appears in NEET examinations.",
+            "Applying the core principles of Fluid flow types correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1437,7 +1437,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Fluid flow types during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Fluid flow types during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Fluid flow types."
           ],
           "masteryCriteria": [
@@ -1445,14 +1445,14 @@
             "Successfully avoids common pitfalls when Fluid flow types is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Fluid flow types in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Fluid flow types in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-fluid-flow-types-1",
-              "question": "What are the critical factors or principles governing Fluid flow types?",
+              "question": "What are the fundamental laws or mechanisms governing Fluid flow types?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1479,7 +1479,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-fluid-flow-types-2",
-              "question": "Describe a scenario where applying the concept of Fluid flow types can lead to a common student error.",
+              "question": "Explain an application where using the concept of Fluid flow types can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1520,8 +1520,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Streamline and turbulent flow"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Streamline and turbulent flow is heavily tested in recent NEET papers.",
-            "Applying the core principles of Streamline and turbulent flow correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Streamline and turbulent flow is frequently appears in NEET examinations.",
+            "Applying the core principles of Streamline and turbulent flow correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1536,7 +1536,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Streamline and turbulent flow during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Streamline and turbulent flow during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Streamline and turbulent flow."
           ],
           "masteryCriteria": [
@@ -1544,14 +1544,14 @@
             "Successfully avoids common pitfalls when Streamline and turbulent flow is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Streamline and turbulent flow in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Streamline and turbulent flow in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-streamline-and-turbulent-flow-1",
-              "question": "What are the critical factors or principles governing Streamline and turbulent flow?",
+              "question": "What are the fundamental laws or mechanisms governing Streamline and turbulent flow?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1578,7 +1578,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-streamline-and-turbulent-flow-2",
-              "question": "Describe a scenario where applying the concept of Streamline and turbulent flow can lead to a common student error.",
+              "question": "Explain an application where using the concept of Streamline and turbulent flow can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1632,8 +1632,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Critical velocity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Critical velocity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Critical velocity correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Critical velocity is frequently appears in NEET examinations.",
+            "Applying the core principles of Critical velocity correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1647,7 +1647,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Critical velocity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Critical velocity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Critical velocity."
           ],
           "masteryCriteria": [
@@ -1655,14 +1655,14 @@
             "Successfully avoids common pitfalls when Critical velocity is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Critical velocity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Critical velocity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-critical-velocity-1",
-              "question": "What are the critical factors or principles governing Critical velocity?",
+              "question": "What are the fundamental laws or mechanisms governing Critical velocity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1689,7 +1689,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-critical-velocity-2",
-              "question": "Describe a scenario where applying the concept of Critical velocity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Critical velocity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1730,8 +1730,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Viscosity coefficient"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Viscosity coefficient is heavily tested in recent NEET papers.",
-            "Applying the core principles of Viscosity coefficient correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Viscosity coefficient is frequently appears in NEET examinations.",
+            "Applying the core principles of Viscosity coefficient correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1746,7 +1746,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Viscosity coefficient during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Viscosity coefficient during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Viscosity coefficient."
           ],
           "masteryCriteria": [
@@ -1754,14 +1754,14 @@
             "Successfully avoids common pitfalls when Viscosity coefficient is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Viscosity coefficient in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Viscosity coefficient in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-viscosity-coefficient-1",
-              "question": "What are the critical factors or principles governing Viscosity coefficient?",
+              "question": "What are the fundamental laws or mechanisms governing Viscosity coefficient?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1788,7 +1788,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-viscosity-coefficient-2",
-              "question": "Describe a scenario where applying the concept of Viscosity coefficient can lead to a common student error.",
+              "question": "Explain an application where using the concept of Viscosity coefficient can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1829,8 +1829,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Stokes law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Stokes law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Stokes law correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Stokes law is frequently appears in NEET examinations.",
+            "Applying the core principles of Stokes law correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1845,7 +1845,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Stokes law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Stokes law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Stokes law."
           ],
           "masteryCriteria": [
@@ -1853,14 +1853,14 @@
             "Successfully avoids common pitfalls when Stokes law is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Stokes law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Stokes law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-stokes-law-1",
-              "question": "What are the critical factors or principles governing Stokes law?",
+              "question": "What are the fundamental laws or mechanisms governing Stokes law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1887,7 +1887,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-stokes-law-2",
-              "question": "Describe a scenario where applying the concept of Stokes law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Stokes law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1928,8 +1928,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Terminal velocity derivation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Terminal velocity derivation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Terminal velocity derivation correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Terminal velocity derivation is frequently appears in NEET examinations.",
+            "Applying the core principles of Terminal velocity derivation correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -1943,7 +1943,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Terminal velocity derivation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Terminal velocity derivation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Terminal velocity derivation."
           ],
           "masteryCriteria": [
@@ -1951,14 +1951,14 @@
             "Successfully avoids common pitfalls when Terminal velocity derivation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Terminal velocity derivation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Terminal velocity derivation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-terminal-velocity-derivation-1",
-              "question": "What are the critical factors or principles governing Terminal velocity derivation?",
+              "question": "What are the fundamental laws or mechanisms governing Terminal velocity derivation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1985,7 +1985,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-terminal-velocity-derivation-2",
-              "question": "Describe a scenario where applying the concept of Terminal velocity derivation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Terminal velocity derivation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2026,8 +2026,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Bernoulli principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Bernoulli principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Bernoulli principle correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Bernoulli principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Bernoulli principle correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2042,7 +2042,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Bernoulli principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Bernoulli principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Bernoulli principle."
           ],
           "masteryCriteria": [
@@ -2050,14 +2050,14 @@
             "Successfully avoids common pitfalls when Bernoulli principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Bernoulli principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Bernoulli principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-bernoulli-principle-1",
-              "question": "What are the critical factors or principles governing Bernoulli principle?",
+              "question": "What are the fundamental laws or mechanisms governing Bernoulli principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2084,7 +2084,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-bernoulli-principle-2",
-              "question": "Describe a scenario where applying the concept of Bernoulli principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Bernoulli principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2125,8 +2125,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Torricelli theorem"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Torricelli theorem is heavily tested in recent NEET papers.",
-            "Applying the core principles of Torricelli theorem correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Torricelli theorem is frequently appears in NEET examinations.",
+            "Applying the core principles of Torricelli theorem correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2141,7 +2141,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Torricelli theorem during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Torricelli theorem during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Torricelli theorem."
           ],
           "masteryCriteria": [
@@ -2149,14 +2149,14 @@
             "Successfully avoids common pitfalls when Torricelli theorem is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Torricelli theorem in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Torricelli theorem in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-torricelli-theorem-1",
-              "question": "What are the critical factors or principles governing Torricelli theorem?",
+              "question": "What are the fundamental laws or mechanisms governing Torricelli theorem?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2183,7 +2183,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-torricelli-theorem-2",
-              "question": "Describe a scenario where applying the concept of Torricelli theorem can lead to a common student error.",
+              "question": "Explain an application where using the concept of Torricelli theorem can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2224,8 +2224,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Surface tension phenomenon"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Surface tension phenomenon is heavily tested in recent NEET papers.",
-            "Applying the core principles of Surface tension phenomenon correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Surface tension phenomenon is frequently appears in NEET examinations.",
+            "Applying the core principles of Surface tension phenomenon correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2240,7 +2240,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Surface tension phenomenon during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Surface tension phenomenon during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Surface tension phenomenon."
           ],
           "masteryCriteria": [
@@ -2248,14 +2248,14 @@
             "Successfully avoids common pitfalls when Surface tension phenomenon is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Surface tension phenomenon in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Surface tension phenomenon in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-surface-tension-phenomenon-1",
-              "question": "What are the critical factors or principles governing Surface tension phenomenon?",
+              "question": "What are the fundamental laws or mechanisms governing Surface tension phenomenon?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2282,7 +2282,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-surface-tension-phenomenon-2",
-              "question": "Describe a scenario where applying the concept of Surface tension phenomenon can lead to a common student error.",
+              "question": "Explain an application where using the concept of Surface tension phenomenon can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2323,8 +2323,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Surface energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Surface energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Surface energy correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Surface energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Surface energy correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2338,7 +2338,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Surface energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Surface energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Surface energy."
           ],
           "masteryCriteria": [
@@ -2346,14 +2346,14 @@
             "Successfully avoids common pitfalls when Surface energy is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Surface energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Surface energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-surface-energy-1",
-              "question": "What are the critical factors or principles governing Surface energy?",
+              "question": "What are the fundamental laws or mechanisms governing Surface energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2380,7 +2380,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-surface-energy-2",
-              "question": "Describe a scenario where applying the concept of Surface energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Surface energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2434,8 +2434,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Angle of contact"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Angle of contact is heavily tested in recent NEET papers.",
-            "Applying the core principles of Angle of contact correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Angle of contact is frequently appears in NEET examinations.",
+            "Applying the core principles of Angle of contact correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2450,7 +2450,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Angle of contact during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Angle of contact during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Angle of contact."
           ],
           "masteryCriteria": [
@@ -2458,14 +2458,14 @@
             "Successfully avoids common pitfalls when Angle of contact is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Angle of contact in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Angle of contact in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-angle-of-contact-1",
-              "question": "What are the critical factors or principles governing Angle of contact?",
+              "question": "What are the fundamental laws or mechanisms governing Angle of contact?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2492,7 +2492,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-angle-of-contact-2",
-              "question": "Describe a scenario where applying the concept of Angle of contact can lead to a common student error.",
+              "question": "Explain an application where using the concept of Angle of contact can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2533,8 +2533,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Capillary rise formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Capillary rise formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Capillary rise formula correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Capillary rise formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Capillary rise formula correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2549,7 +2549,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Capillary rise formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Capillary rise formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Capillary rise formula."
           ],
           "masteryCriteria": [
@@ -2557,14 +2557,14 @@
             "Successfully avoids common pitfalls when Capillary rise formula is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Capillary rise formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Capillary rise formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-capillary-rise-formula-1",
-              "question": "What are the critical factors or principles governing Capillary rise formula?",
+              "question": "What are the fundamental laws or mechanisms governing Capillary rise formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2591,7 +2591,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-capillary-rise-formula-2",
-              "question": "Describe a scenario where applying the concept of Capillary rise formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Capillary rise formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2632,8 +2632,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Excess pressure in liquid drop"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Excess pressure in liquid drop is heavily tested in recent NEET papers.",
-            "Applying the core principles of Excess pressure in liquid drop correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Excess pressure in liquid drop is frequently appears in NEET examinations.",
+            "Applying the core principles of Excess pressure in liquid drop correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2648,7 +2648,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Excess pressure in liquid drop during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Excess pressure in liquid drop during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Excess pressure in liquid drop."
           ],
           "masteryCriteria": [
@@ -2656,14 +2656,14 @@
             "Successfully avoids common pitfalls when Excess pressure in liquid drop is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Excess pressure in liquid drop in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Excess pressure in liquid drop in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-liquid-drop-1",
-              "question": "What are the critical factors or principles governing Excess pressure in liquid drop?",
+              "question": "What are the fundamental laws or mechanisms governing Excess pressure in liquid drop?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2690,7 +2690,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-liquid-drop-2",
-              "question": "Describe a scenario where applying the concept of Excess pressure in liquid drop can lead to a common student error.",
+              "question": "Explain an application where using the concept of Excess pressure in liquid drop can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2731,8 +2731,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Excess pressure in soap bubble"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Excess pressure in soap bubble is heavily tested in recent NEET papers.",
-            "Applying the core principles of Excess pressure in soap bubble correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Excess pressure in soap bubble is frequently appears in NEET examinations.",
+            "Applying the core principles of Excess pressure in soap bubble correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2747,7 +2747,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Excess pressure in soap bubble during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Excess pressure in soap bubble during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Excess pressure in soap bubble."
           ],
           "masteryCriteria": [
@@ -2755,14 +2755,14 @@
             "Successfully avoids common pitfalls when Excess pressure in soap bubble is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Excess pressure in soap bubble in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Excess pressure in soap bubble in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-soap-bubble-1",
-              "question": "What are the critical factors or principles governing Excess pressure in soap bubble?",
+              "question": "What are the fundamental laws or mechanisms governing Excess pressure in soap bubble?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2789,7 +2789,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-soap-bubble-2",
-              "question": "Describe a scenario where applying the concept of Excess pressure in soap bubble can lead to a common student error.",
+              "question": "Explain an application where using the concept of Excess pressure in soap bubble can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2830,8 +2830,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Thermal expansion of solids"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermal expansion of solids is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermal expansion of solids correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Thermal expansion of solids is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermal expansion of solids correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2846,7 +2846,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermal expansion of solids during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermal expansion of solids during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermal expansion of solids."
           ],
           "masteryCriteria": [
@@ -2854,14 +2854,14 @@
             "Successfully avoids common pitfalls when Thermal expansion of solids is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermal expansion of solids in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermal expansion of solids in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-solids-1",
-              "question": "What are the critical factors or principles governing Thermal expansion of solids?",
+              "question": "What are the fundamental laws or mechanisms governing Thermal expansion of solids?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2888,7 +2888,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-solids-2",
-              "question": "Describe a scenario where applying the concept of Thermal expansion of solids can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermal expansion of solids can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2929,8 +2929,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Thermal expansion of liquids"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Thermal expansion of liquids is heavily tested in recent NEET papers.",
-            "Applying the core principles of Thermal expansion of liquids correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Thermal expansion of liquids is frequently appears in NEET examinations.",
+            "Applying the core principles of Thermal expansion of liquids correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -2945,7 +2945,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Thermal expansion of liquids during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Thermal expansion of liquids during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Thermal expansion of liquids."
           ],
           "masteryCriteria": [
@@ -2953,14 +2953,14 @@
             "Successfully avoids common pitfalls when Thermal expansion of liquids is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Thermal expansion of liquids in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Thermal expansion of liquids in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-liquids-1",
-              "question": "What are the critical factors or principles governing Thermal expansion of liquids?",
+              "question": "What are the fundamental laws or mechanisms governing Thermal expansion of liquids?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2987,7 +2987,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-liquids-2",
-              "question": "Describe a scenario where applying the concept of Thermal expansion of liquids can lead to a common student error.",
+              "question": "Explain an application where using the concept of Thermal expansion of liquids can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3028,8 +3028,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Calorimetry principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Calorimetry principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Calorimetry principle correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Calorimetry principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Calorimetry principle correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3044,7 +3044,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Calorimetry principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Calorimetry principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Calorimetry principle."
           ],
           "masteryCriteria": [
@@ -3052,14 +3052,14 @@
             "Successfully avoids common pitfalls when Calorimetry principle is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Calorimetry principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Calorimetry principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-calorimetry-principle-1",
-              "question": "What are the critical factors or principles governing Calorimetry principle?",
+              "question": "What are the fundamental laws or mechanisms governing Calorimetry principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3086,7 +3086,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-calorimetry-principle-2",
-              "question": "Describe a scenario where applying the concept of Calorimetry principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Calorimetry principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3127,8 +3127,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Specific heat capacity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Specific heat capacity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Specific heat capacity correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Specific heat capacity is frequently appears in NEET examinations.",
+            "Applying the core principles of Specific heat capacity correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3143,7 +3143,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Specific heat capacity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Specific heat capacity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Specific heat capacity."
           ],
           "masteryCriteria": [
@@ -3151,14 +3151,14 @@
             "Successfully avoids common pitfalls when Specific heat capacity is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Specific heat capacity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Specific heat capacity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-specific-heat-capacity-1",
-              "question": "What are the critical factors or principles governing Specific heat capacity?",
+              "question": "What are the fundamental laws or mechanisms governing Specific heat capacity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3185,7 +3185,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-specific-heat-capacity-2",
-              "question": "Describe a scenario where applying the concept of Specific heat capacity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Specific heat capacity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3239,8 +3239,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Latent heat of fusion"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Latent heat of fusion is heavily tested in recent NEET papers.",
-            "Applying the core principles of Latent heat of fusion correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Latent heat of fusion is frequently appears in NEET examinations.",
+            "Applying the core principles of Latent heat of fusion correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3255,7 +3255,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Latent heat of fusion during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Latent heat of fusion during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Latent heat of fusion."
           ],
           "masteryCriteria": [
@@ -3263,14 +3263,14 @@
             "Successfully avoids common pitfalls when Latent heat of fusion is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Latent heat of fusion in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Latent heat of fusion in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-fusion-1",
-              "question": "What are the critical factors or principles governing Latent heat of fusion?",
+              "question": "What are the fundamental laws or mechanisms governing Latent heat of fusion?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3297,7 +3297,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-fusion-2",
-              "question": "Describe a scenario where applying the concept of Latent heat of fusion can lead to a common student error.",
+              "question": "Explain an application where using the concept of Latent heat of fusion can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3338,8 +3338,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Latent heat of vaporisation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Latent heat of vaporisation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Latent heat of vaporisation correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Latent heat of vaporisation is frequently appears in NEET examinations.",
+            "Applying the core principles of Latent heat of vaporisation correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3354,7 +3354,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Latent heat of vaporisation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Latent heat of vaporisation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Latent heat of vaporisation."
           ],
           "masteryCriteria": [
@@ -3362,14 +3362,14 @@
             "Successfully avoids common pitfalls when Latent heat of vaporisation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Latent heat of vaporisation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Latent heat of vaporisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-vaporisation-1",
-              "question": "What are the critical factors or principles governing Latent heat of vaporisation?",
+              "question": "What are the fundamental laws or mechanisms governing Latent heat of vaporisation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3396,7 +3396,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-vaporisation-2",
-              "question": "Describe a scenario where applying the concept of Latent heat of vaporisation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Latent heat of vaporisation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3437,8 +3437,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Heat transfer conduction"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Heat transfer conduction is heavily tested in recent NEET papers.",
-            "Applying the core principles of Heat transfer conduction correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Heat transfer conduction is frequently appears in NEET examinations.",
+            "Applying the core principles of Heat transfer conduction correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3453,7 +3453,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Heat transfer conduction during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Heat transfer conduction during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Heat transfer conduction."
           ],
           "masteryCriteria": [
@@ -3461,14 +3461,14 @@
             "Successfully avoids common pitfalls when Heat transfer conduction is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Heat transfer conduction in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Heat transfer conduction in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-heat-transfer-conduction-1",
-              "question": "What are the critical factors or principles governing Heat transfer conduction?",
+              "question": "What are the fundamental laws or mechanisms governing Heat transfer conduction?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3495,7 +3495,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-heat-transfer-conduction-2",
-              "question": "Describe a scenario where applying the concept of Heat transfer conduction can lead to a common student error.",
+              "question": "Explain an application where using the concept of Heat transfer conduction can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3536,8 +3536,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Convection"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Convection is heavily tested in recent NEET papers.",
-            "Applying the core principles of Convection correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Convection is frequently appears in NEET examinations.",
+            "Applying the core principles of Convection correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3552,7 +3552,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Convection during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Convection during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Convection."
           ],
           "masteryCriteria": [
@@ -3560,14 +3560,14 @@
             "Successfully avoids common pitfalls when Convection is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Convection in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Convection in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-convection-1",
-              "question": "What are the critical factors or principles governing Convection?",
+              "question": "What are the fundamental laws or mechanisms governing Convection?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3594,7 +3594,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-convection-2",
-              "question": "Describe a scenario where applying the concept of Convection can lead to a common student error.",
+              "question": "Explain an application where using the concept of Convection can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -3635,8 +3635,8 @@
             "NCERT Physics Class 11, Chapter: Properties of Solids and Liquids, Section detailing Radiation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Radiation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Radiation correctly is essential for solving complex multi-step problems in Properties of Solids and Liquids."
+            "A thorough understanding of Radiation is frequently appears in NEET examinations.",
+            "Applying the core principles of Radiation correctly is essential for solving integrated numerical and conceptual problems in Properties of Solids and Liquids."
           ],
           "formulas": [
             {
@@ -3651,7 +3651,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Radiation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Radiation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Radiation."
           ],
           "masteryCriteria": [
@@ -3659,14 +3659,14 @@
             "Successfully avoids common pitfalls when Radiation is integrated with other concepts in Properties of Solids and Liquids."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Radiation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Radiation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "properties-of-solids-and-liquids-q-radiation-1",
-              "question": "What are the critical factors or principles governing Radiation?",
+              "question": "What are the fundamental laws or mechanisms governing Radiation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -3693,7 +3693,7 @@
             },
             {
               "id": "properties-of-solids-and-liquids-q-radiation-2",
-              "question": "Describe a scenario where applying the concept of Radiation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Radiation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

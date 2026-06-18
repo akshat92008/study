@@ -22,8 +22,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing SI units"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of SI units is heavily tested in recent NEET papers.",
-            "Applying the core principles of SI units correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of SI units is frequently appears in NEET examinations.",
+            "Applying the core principles of SI units correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of SI units during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of SI units during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with SI units."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when SI units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of SI units in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of SI units in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-si-units-1",
-              "question": "What are the critical factors or principles governing SI units?",
+              "question": "What are the fundamental laws or mechanisms governing SI units?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "physics-and-measurement-q-si-units-2",
-              "question": "Describe a scenario where applying the concept of SI units can lead to a common student error.",
+              "question": "Explain an application where using the concept of SI units can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Fundamental units"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Fundamental units is heavily tested in recent NEET papers.",
-            "Applying the core principles of Fundamental units correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Fundamental units is frequently appears in NEET examinations.",
+            "Applying the core principles of Fundamental units correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -137,7 +137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Fundamental units during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Fundamental units during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Fundamental units."
           ],
           "masteryCriteria": [
@@ -145,14 +145,14 @@
             "Successfully avoids common pitfalls when Fundamental units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Fundamental units in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Fundamental units in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-fundamental-units-1",
-              "question": "What are the critical factors or principles governing Fundamental units?",
+              "question": "What are the fundamental laws or mechanisms governing Fundamental units?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -179,7 +179,7 @@
             },
             {
               "id": "physics-and-measurement-q-fundamental-units-2",
-              "question": "Describe a scenario where applying the concept of Fundamental units can lead to a common student error.",
+              "question": "Explain an application where using the concept of Fundamental units can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -220,8 +220,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Derived units"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Derived units is heavily tested in recent NEET papers.",
-            "Applying the core principles of Derived units correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Derived units is frequently appears in NEET examinations.",
+            "Applying the core principles of Derived units correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -236,7 +236,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Derived units during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Derived units during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Derived units."
           ],
           "masteryCriteria": [
@@ -244,14 +244,14 @@
             "Successfully avoids common pitfalls when Derived units is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Derived units in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Derived units in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-derived-units-1",
-              "question": "What are the critical factors or principles governing Derived units?",
+              "question": "What are the fundamental laws or mechanisms governing Derived units?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -278,7 +278,7 @@
             },
             {
               "id": "physics-and-measurement-q-derived-units-2",
-              "question": "Describe a scenario where applying the concept of Derived units can lead to a common student error.",
+              "question": "Explain an application where using the concept of Derived units can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -319,8 +319,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Dimensions"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dimensions is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dimensions correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Dimensions is frequently appears in NEET examinations.",
+            "Applying the core principles of Dimensions correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -335,7 +335,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dimensions during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dimensions during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dimensions."
           ],
           "masteryCriteria": [
@@ -343,14 +343,14 @@
             "Successfully avoids common pitfalls when Dimensions is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dimensions in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dimensions in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-dimensions-1",
-              "question": "What are the critical factors or principles governing Dimensions?",
+              "question": "What are the fundamental laws or mechanisms governing Dimensions?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -377,7 +377,7 @@
             },
             {
               "id": "physics-and-measurement-q-dimensions-2",
-              "question": "Describe a scenario where applying the concept of Dimensions can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dimensions can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -418,8 +418,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Dimensional formula of mechanical quantities"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dimensional formula of mechanical quantities is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dimensional formula of mechanical quantities correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Dimensional formula of mechanical quantities is frequently appears in NEET examinations.",
+            "Applying the core principles of Dimensional formula of mechanical quantities correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -434,7 +434,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dimensional formula of mechanical quantities during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dimensional formula of mechanical quantities during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dimensional formula of mechanical quantities."
           ],
           "masteryCriteria": [
@@ -442,14 +442,14 @@
             "Successfully avoids common pitfalls when Dimensional formula of mechanical quantities is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dimensional formula of mechanical quantities in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dimensional formula of mechanical quantities in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-dimensional-formula-of-mechanical-quantities-1",
-              "question": "What are the critical factors or principles governing Dimensional formula of mechanical quantities?",
+              "question": "What are the fundamental laws or mechanisms governing Dimensional formula of mechanical quantities?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -476,7 +476,7 @@
             },
             {
               "id": "physics-and-measurement-q-dimensional-formula-of-mechanical-quantities-2",
-              "question": "Describe a scenario where applying the concept of Dimensional formula of mechanical quantities can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dimensional formula of mechanical quantities can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -530,8 +530,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Dimensional formula of electromagnetic quantities"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dimensional formula of electromagnetic quantities is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dimensional formula of electromagnetic quantities correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Dimensional formula of electromagnetic quantities is frequently appears in NEET examinations.",
+            "Applying the core principles of Dimensional formula of electromagnetic quantities correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -546,7 +546,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dimensional formula of electromagnetic quantities during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dimensional formula of electromagnetic quantities during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dimensional formula of electromagnetic quantities."
           ],
           "masteryCriteria": [
@@ -554,14 +554,14 @@
             "Successfully avoids common pitfalls when Dimensional formula of electromagnetic quantities is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dimensional formula of electromagnetic quantities in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dimensional formula of electromagnetic quantities in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-dimensional-formula-of-electromagnetic-quantities-1",
-              "question": "What are the critical factors or principles governing Dimensional formula of electromagnetic quantities?",
+              "question": "What are the fundamental laws or mechanisms governing Dimensional formula of electromagnetic quantities?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -588,7 +588,7 @@
             },
             {
               "id": "physics-and-measurement-q-dimensional-formula-of-electromagnetic-quantities-2",
-              "question": "Describe a scenario where applying the concept of Dimensional formula of electromagnetic quantities can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dimensional formula of electromagnetic quantities can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -629,8 +629,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Dimensional analysis applications"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dimensional analysis applications is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dimensional analysis applications correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Dimensional analysis applications is frequently appears in NEET examinations.",
+            "Applying the core principles of Dimensional analysis applications correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -645,7 +645,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dimensional analysis applications during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dimensional analysis applications during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dimensional analysis applications."
           ],
           "masteryCriteria": [
@@ -653,14 +653,14 @@
             "Successfully avoids common pitfalls when Dimensional analysis applications is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dimensional analysis applications in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dimensional analysis applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-dimensional-analysis-applications-1",
-              "question": "What are the critical factors or principles governing Dimensional analysis applications?",
+              "question": "What are the fundamental laws or mechanisms governing Dimensional analysis applications?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -687,7 +687,7 @@
             },
             {
               "id": "physics-and-measurement-q-dimensional-analysis-applications-2",
-              "question": "Describe a scenario where applying the concept of Dimensional analysis applications can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dimensional analysis applications can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -728,8 +728,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Limitations of dimensional analysis"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Limitations of dimensional analysis is heavily tested in recent NEET papers.",
-            "Applying the core principles of Limitations of dimensional analysis correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Limitations of dimensional analysis is frequently appears in NEET examinations.",
+            "Applying the core principles of Limitations of dimensional analysis correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -744,7 +744,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Limitations of dimensional analysis during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Limitations of dimensional analysis during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Limitations of dimensional analysis."
           ],
           "masteryCriteria": [
@@ -752,14 +752,14 @@
             "Successfully avoids common pitfalls when Limitations of dimensional analysis is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Limitations of dimensional analysis in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Limitations of dimensional analysis in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-limitations-of-dimensional-analysis-1",
-              "question": "What are the critical factors or principles governing Limitations of dimensional analysis?",
+              "question": "What are the fundamental laws or mechanisms governing Limitations of dimensional analysis?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -786,7 +786,7 @@
             },
             {
               "id": "physics-and-measurement-q-limitations-of-dimensional-analysis-2",
-              "question": "Describe a scenario where applying the concept of Limitations of dimensional analysis can lead to a common student error.",
+              "question": "Explain an application where using the concept of Limitations of dimensional analysis can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -827,8 +827,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Least count"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Least count is heavily tested in recent NEET papers.",
-            "Applying the core principles of Least count correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Least count is frequently appears in NEET examinations.",
+            "Applying the core principles of Least count correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -843,7 +843,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Least count during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Least count during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Least count."
           ],
           "masteryCriteria": [
@@ -851,14 +851,14 @@
             "Successfully avoids common pitfalls when Least count is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Least count in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Least count in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-least-count-1",
-              "question": "What are the critical factors or principles governing Least count?",
+              "question": "What are the fundamental laws or mechanisms governing Least count?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -885,7 +885,7 @@
             },
             {
               "id": "physics-and-measurement-q-least-count-2",
-              "question": "Describe a scenario where applying the concept of Least count can lead to a common student error.",
+              "question": "Explain an application where using the concept of Least count can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -926,8 +926,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Significant figures rules"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Significant figures rules is heavily tested in recent NEET papers.",
-            "Applying the core principles of Significant figures rules correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Significant figures rules is frequently appears in NEET examinations.",
+            "Applying the core principles of Significant figures rules correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -942,7 +942,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Significant figures rules during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Significant figures rules during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Significant figures rules."
           ],
           "masteryCriteria": [
@@ -950,14 +950,14 @@
             "Successfully avoids common pitfalls when Significant figures rules is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Significant figures rules in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Significant figures rules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-significant-figures-rules-1",
-              "question": "What are the critical factors or principles governing Significant figures rules?",
+              "question": "What are the fundamental laws or mechanisms governing Significant figures rules?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -984,7 +984,7 @@
             },
             {
               "id": "physics-and-measurement-q-significant-figures-rules-2",
-              "question": "Describe a scenario where applying the concept of Significant figures rules can lead to a common student error.",
+              "question": "Explain an application where using the concept of Significant figures rules can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1038,8 +1038,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Rounding off rules"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Rounding off rules is heavily tested in recent NEET papers.",
-            "Applying the core principles of Rounding off rules correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Rounding off rules is frequently appears in NEET examinations.",
+            "Applying the core principles of Rounding off rules correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1054,7 +1054,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Rounding off rules during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Rounding off rules during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Rounding off rules."
           ],
           "masteryCriteria": [
@@ -1062,14 +1062,14 @@
             "Successfully avoids common pitfalls when Rounding off rules is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Rounding off rules in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Rounding off rules in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-rounding-off-rules-1",
-              "question": "What are the critical factors or principles governing Rounding off rules?",
+              "question": "What are the fundamental laws or mechanisms governing Rounding off rules?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1096,7 +1096,7 @@
             },
             {
               "id": "physics-and-measurement-q-rounding-off-rules-2",
-              "question": "Describe a scenario where applying the concept of Rounding off rules can lead to a common student error.",
+              "question": "Explain an application where using the concept of Rounding off rules can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1137,8 +1137,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Absolute error calculation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Absolute error calculation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Absolute error calculation correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Absolute error calculation is frequently appears in NEET examinations.",
+            "Applying the core principles of Absolute error calculation correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1153,7 +1153,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Absolute error calculation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Absolute error calculation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Absolute error calculation."
           ],
           "masteryCriteria": [
@@ -1161,14 +1161,14 @@
             "Successfully avoids common pitfalls when Absolute error calculation is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Absolute error calculation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Absolute error calculation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-absolute-error-calculation-1",
-              "question": "What are the critical factors or principles governing Absolute error calculation?",
+              "question": "What are the fundamental laws or mechanisms governing Absolute error calculation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1195,7 +1195,7 @@
             },
             {
               "id": "physics-and-measurement-q-absolute-error-calculation-2",
-              "question": "Describe a scenario where applying the concept of Absolute error calculation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Absolute error calculation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1236,8 +1236,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Relative error"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Relative error is heavily tested in recent NEET papers.",
-            "Applying the core principles of Relative error correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Relative error is frequently appears in NEET examinations.",
+            "Applying the core principles of Relative error correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1252,7 +1252,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Relative error during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Relative error during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Relative error."
           ],
           "masteryCriteria": [
@@ -1260,14 +1260,14 @@
             "Successfully avoids common pitfalls when Relative error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Relative error in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Relative error in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-relative-error-1",
-              "question": "What are the critical factors or principles governing Relative error?",
+              "question": "What are the fundamental laws or mechanisms governing Relative error?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1294,7 +1294,7 @@
             },
             {
               "id": "physics-and-measurement-q-relative-error-2",
-              "question": "Describe a scenario where applying the concept of Relative error can lead to a common student error.",
+              "question": "Explain an application where using the concept of Relative error can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1335,8 +1335,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Percentage error"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Percentage error is heavily tested in recent NEET papers.",
-            "Applying the core principles of Percentage error correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Percentage error is frequently appears in NEET examinations.",
+            "Applying the core principles of Percentage error correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1351,7 +1351,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Percentage error during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Percentage error during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Percentage error."
           ],
           "masteryCriteria": [
@@ -1359,14 +1359,14 @@
             "Successfully avoids common pitfalls when Percentage error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Percentage error in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Percentage error in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-percentage-error-1",
-              "question": "What are the critical factors or principles governing Percentage error?",
+              "question": "What are the fundamental laws or mechanisms governing Percentage error?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1393,7 +1393,7 @@
             },
             {
               "id": "physics-and-measurement-q-percentage-error-2",
-              "question": "Describe a scenario where applying the concept of Percentage error can lead to a common student error.",
+              "question": "Explain an application where using the concept of Percentage error can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1434,8 +1434,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Propagation of errors in addition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Propagation of errors in addition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Propagation of errors in addition correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Propagation of errors in addition is frequently appears in NEET examinations.",
+            "Applying the core principles of Propagation of errors in addition correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1450,7 +1450,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Propagation of errors in addition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Propagation of errors in addition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Propagation of errors in addition."
           ],
           "masteryCriteria": [
@@ -1458,14 +1458,14 @@
             "Successfully avoids common pitfalls when Propagation of errors in addition is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Propagation of errors in addition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Propagation of errors in addition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-propagation-of-errors-in-addition-1",
-              "question": "What are the critical factors or principles governing Propagation of errors in addition?",
+              "question": "What are the fundamental laws or mechanisms governing Propagation of errors in addition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1492,7 +1492,7 @@
             },
             {
               "id": "physics-and-measurement-q-propagation-of-errors-in-addition-2",
-              "question": "Describe a scenario where applying the concept of Propagation of errors in addition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Propagation of errors in addition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1546,8 +1546,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Propagation of errors in multiplication"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Propagation of errors in multiplication is heavily tested in recent NEET papers.",
-            "Applying the core principles of Propagation of errors in multiplication correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Propagation of errors in multiplication is frequently appears in NEET examinations.",
+            "Applying the core principles of Propagation of errors in multiplication correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1562,7 +1562,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Propagation of errors in multiplication during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Propagation of errors in multiplication during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Propagation of errors in multiplication."
           ],
           "masteryCriteria": [
@@ -1570,14 +1570,14 @@
             "Successfully avoids common pitfalls when Propagation of errors in multiplication is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Propagation of errors in multiplication in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Propagation of errors in multiplication in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-propagation-of-errors-in-multiplication-1",
-              "question": "What are the critical factors or principles governing Propagation of errors in multiplication?",
+              "question": "What are the fundamental laws or mechanisms governing Propagation of errors in multiplication?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1604,7 +1604,7 @@
             },
             {
               "id": "physics-and-measurement-q-propagation-of-errors-in-multiplication-2",
-              "question": "Describe a scenario where applying the concept of Propagation of errors in multiplication can lead to a common student error.",
+              "question": "Explain an application where using the concept of Propagation of errors in multiplication can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1645,8 +1645,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Precision vs accuracy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Precision vs accuracy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Precision vs accuracy correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Precision vs accuracy is frequently appears in NEET examinations.",
+            "Applying the core principles of Precision vs accuracy correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1661,7 +1661,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Precision vs accuracy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Precision vs accuracy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Precision vs accuracy."
           ],
           "masteryCriteria": [
@@ -1669,14 +1669,14 @@
             "Successfully avoids common pitfalls when Precision vs accuracy is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Precision vs accuracy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Precision vs accuracy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-precision-vs-accuracy-1",
-              "question": "What are the critical factors or principles governing Precision vs accuracy?",
+              "question": "What are the fundamental laws or mechanisms governing Precision vs accuracy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1703,7 +1703,7 @@
             },
             {
               "id": "physics-and-measurement-q-precision-vs-accuracy-2",
-              "question": "Describe a scenario where applying the concept of Precision vs accuracy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Precision vs accuracy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1744,8 +1744,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Vernier calipers principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Vernier calipers principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Vernier calipers principle correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Vernier calipers principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Vernier calipers principle correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1760,7 +1760,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Vernier calipers principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Vernier calipers principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Vernier calipers principle."
           ],
           "masteryCriteria": [
@@ -1768,14 +1768,14 @@
             "Successfully avoids common pitfalls when Vernier calipers principle is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Vernier calipers principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Vernier calipers principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-vernier-calipers-principle-1",
-              "question": "What are the critical factors or principles governing Vernier calipers principle?",
+              "question": "What are the fundamental laws or mechanisms governing Vernier calipers principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1802,7 +1802,7 @@
             },
             {
               "id": "physics-and-measurement-q-vernier-calipers-principle-2",
-              "question": "Describe a scenario where applying the concept of Vernier calipers principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Vernier calipers principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1843,8 +1843,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Vernier calipers zero error"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Vernier calipers zero error is heavily tested in recent NEET papers.",
-            "Applying the core principles of Vernier calipers zero error correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Vernier calipers zero error is frequently appears in NEET examinations.",
+            "Applying the core principles of Vernier calipers zero error correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1859,7 +1859,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Vernier calipers zero error during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Vernier calipers zero error during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Vernier calipers zero error."
           ],
           "masteryCriteria": [
@@ -1867,14 +1867,14 @@
             "Successfully avoids common pitfalls when Vernier calipers zero error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Vernier calipers zero error in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Vernier calipers zero error in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-vernier-calipers-zero-error-1",
-              "question": "What are the critical factors or principles governing Vernier calipers zero error?",
+              "question": "What are the fundamental laws or mechanisms governing Vernier calipers zero error?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1901,7 +1901,7 @@
             },
             {
               "id": "physics-and-measurement-q-vernier-calipers-zero-error-2",
-              "question": "Describe a scenario where applying the concept of Vernier calipers zero error can lead to a common student error.",
+              "question": "Explain an application where using the concept of Vernier calipers zero error can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1942,8 +1942,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Screw gauge principle"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Screw gauge principle is heavily tested in recent NEET papers.",
-            "Applying the core principles of Screw gauge principle correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Screw gauge principle is frequently appears in NEET examinations.",
+            "Applying the core principles of Screw gauge principle correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -1958,7 +1958,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Screw gauge principle during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Screw gauge principle during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Screw gauge principle."
           ],
           "masteryCriteria": [
@@ -1966,14 +1966,14 @@
             "Successfully avoids common pitfalls when Screw gauge principle is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Screw gauge principle in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Screw gauge principle in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-screw-gauge-principle-1",
-              "question": "What are the critical factors or principles governing Screw gauge principle?",
+              "question": "What are the fundamental laws or mechanisms governing Screw gauge principle?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2000,7 +2000,7 @@
             },
             {
               "id": "physics-and-measurement-q-screw-gauge-principle-2",
-              "question": "Describe a scenario where applying the concept of Screw gauge principle can lead to a common student error.",
+              "question": "Explain an application where using the concept of Screw gauge principle can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2054,8 +2054,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Screw gauge zero error"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Screw gauge zero error is heavily tested in recent NEET papers.",
-            "Applying the core principles of Screw gauge zero error correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Screw gauge zero error is frequently appears in NEET examinations.",
+            "Applying the core principles of Screw gauge zero error correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -2070,7 +2070,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Screw gauge zero error during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Screw gauge zero error during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Screw gauge zero error."
           ],
           "masteryCriteria": [
@@ -2078,14 +2078,14 @@
             "Successfully avoids common pitfalls when Screw gauge zero error is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Screw gauge zero error in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Screw gauge zero error in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-screw-gauge-zero-error-1",
-              "question": "What are the critical factors or principles governing Screw gauge zero error?",
+              "question": "What are the fundamental laws or mechanisms governing Screw gauge zero error?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2112,7 +2112,7 @@
             },
             {
               "id": "physics-and-measurement-q-screw-gauge-zero-error-2",
-              "question": "Describe a scenario where applying the concept of Screw gauge zero error can lead to a common student error.",
+              "question": "Explain an application where using the concept of Screw gauge zero error can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2154,8 +2154,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Graph slope usage"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Graph slope usage is heavily tested in recent NEET papers.",
-            "Applying the core principles of Graph slope usage correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Graph slope usage is frequently appears in NEET examinations.",
+            "Applying the core principles of Graph slope usage correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -2170,7 +2170,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Graph slope usage during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Graph slope usage during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Graph slope usage."
           ],
           "masteryCriteria": [
@@ -2178,14 +2178,14 @@
             "Successfully avoids common pitfalls when Graph slope usage is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Graph slope usage in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Graph slope usage in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-graph-slope-usage-1",
-              "question": "What are the critical factors or principles governing Graph slope usage?",
+              "question": "What are the fundamental laws or mechanisms governing Graph slope usage?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2213,7 +2213,7 @@
             },
             {
               "id": "physics-and-measurement-q-graph-slope-usage-2",
-              "question": "Describe a scenario where applying the concept of Graph slope usage can lead to a common student error.",
+              "question": "Explain an application where using the concept of Graph slope usage can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2255,8 +2255,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Graph intercept usage"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Graph intercept usage is heavily tested in recent NEET papers.",
-            "Applying the core principles of Graph intercept usage correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Graph intercept usage is frequently appears in NEET examinations.",
+            "Applying the core principles of Graph intercept usage correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -2271,7 +2271,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Graph intercept usage during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Graph intercept usage during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Graph intercept usage."
           ],
           "masteryCriteria": [
@@ -2279,14 +2279,14 @@
             "Successfully avoids common pitfalls when Graph intercept usage is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Graph intercept usage in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Graph intercept usage in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-graph-intercept-usage-1",
-              "question": "What are the critical factors or principles governing Graph intercept usage?",
+              "question": "What are the fundamental laws or mechanisms governing Graph intercept usage?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2313,7 +2313,7 @@
             },
             {
               "id": "physics-and-measurement-q-graph-intercept-usage-2",
-              "question": "Describe a scenario where applying the concept of Graph intercept usage can lead to a common student error.",
+              "question": "Explain an application where using the concept of Graph intercept usage can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2354,8 +2354,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Order of magnitude"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Order of magnitude is heavily tested in recent NEET papers.",
-            "Applying the core principles of Order of magnitude correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Order of magnitude is frequently appears in NEET examinations.",
+            "Applying the core principles of Order of magnitude correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -2370,7 +2370,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Order of magnitude during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Order of magnitude during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Order of magnitude."
           ],
           "masteryCriteria": [
@@ -2378,14 +2378,14 @@
             "Successfully avoids common pitfalls when Order of magnitude is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Order of magnitude in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Order of magnitude in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-order-of-magnitude-1",
-              "question": "What are the critical factors or principles governing Order of magnitude?",
+              "question": "What are the fundamental laws or mechanisms governing Order of magnitude?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2412,7 +2412,7 @@
             },
             {
               "id": "physics-and-measurement-q-order-of-magnitude-2",
-              "question": "Describe a scenario where applying the concept of Order of magnitude can lead to a common student error.",
+              "question": "Explain an application where using the concept of Order of magnitude can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2453,8 +2453,8 @@
             "NCERT Physics Class 11, Chapter: Physics and Measurement, Section detailing Unit conversion techniques"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Unit conversion techniques is heavily tested in recent NEET papers.",
-            "Applying the core principles of Unit conversion techniques correctly is essential for solving complex multi-step problems in Physics and Measurement."
+            "A thorough understanding of Unit conversion techniques is frequently appears in NEET examinations.",
+            "Applying the core principles of Unit conversion techniques correctly is essential for solving integrated numerical and conceptual problems in Physics and Measurement."
           ],
           "formulas": [
             {
@@ -2469,7 +2469,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Unit conversion techniques during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Unit conversion techniques during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Unit conversion techniques."
           ],
           "masteryCriteria": [
@@ -2477,14 +2477,14 @@
             "Successfully avoids common pitfalls when Unit conversion techniques is integrated with other concepts in Physics and Measurement."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Unit conversion techniques in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Unit conversion techniques in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "physics-and-measurement-q-unit-conversion-techniques-1",
-              "question": "What are the critical factors or principles governing Unit conversion techniques?",
+              "question": "What are the fundamental laws or mechanisms governing Unit conversion techniques?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2511,7 +2511,7 @@
             },
             {
               "id": "physics-and-measurement-q-unit-conversion-techniques-2",
-              "question": "Describe a scenario where applying the concept of Unit conversion techniques can lead to a common student error.",
+              "question": "Explain an application where using the concept of Unit conversion techniques can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",

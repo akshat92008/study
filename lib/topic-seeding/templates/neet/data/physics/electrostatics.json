@@ -22,8 +22,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric charge properties"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric charge properties is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric charge properties correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric charge properties is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric charge properties correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -38,7 +38,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric charge properties during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric charge properties during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric charge properties."
           ],
           "masteryCriteria": [
@@ -46,14 +46,14 @@
             "Successfully avoids common pitfalls when Electric charge properties is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric charge properties in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric charge properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-charge-properties-1",
-              "question": "What are the critical factors or principles governing Electric charge properties?",
+              "question": "What are the fundamental laws or mechanisms governing Electric charge properties?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -80,7 +80,7 @@
             },
             {
               "id": "electrostatics-q-electric-charge-properties-2",
-              "question": "Describe a scenario where applying the concept of Electric charge properties can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric charge properties can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -121,8 +121,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Conservation of charge"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Conservation of charge is heavily tested in recent NEET papers.",
-            "Applying the core principles of Conservation of charge correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Conservation of charge is frequently appears in NEET examinations.",
+            "Applying the core principles of Conservation of charge correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -136,7 +136,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Conservation of charge during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Conservation of charge during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Conservation of charge."
           ],
           "masteryCriteria": [
@@ -144,14 +144,14 @@
             "Successfully avoids common pitfalls when Conservation of charge is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Conservation of charge in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Conservation of charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-conservation-of-charge-1",
-              "question": "What are the critical factors or principles governing Conservation of charge?",
+              "question": "What are the fundamental laws or mechanisms governing Conservation of charge?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -178,7 +178,7 @@
             },
             {
               "id": "electrostatics-q-conservation-of-charge-2",
-              "question": "Describe a scenario where applying the concept of Conservation of charge can lead to a common student error.",
+              "question": "Explain an application where using the concept of Conservation of charge can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -219,8 +219,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Quantisation of charge"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Quantisation of charge is heavily tested in recent NEET papers.",
-            "Applying the core principles of Quantisation of charge correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Quantisation of charge is frequently appears in NEET examinations.",
+            "Applying the core principles of Quantisation of charge correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -235,7 +235,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Quantisation of charge during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Quantisation of charge during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Quantisation of charge."
           ],
           "masteryCriteria": [
@@ -243,14 +243,14 @@
             "Successfully avoids common pitfalls when Quantisation of charge is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Quantisation of charge in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Quantisation of charge in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-quantisation-of-charge-1",
-              "question": "What are the critical factors or principles governing Quantisation of charge?",
+              "question": "What are the fundamental laws or mechanisms governing Quantisation of charge?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -277,7 +277,7 @@
             },
             {
               "id": "electrostatics-q-quantisation-of-charge-2",
-              "question": "Describe a scenario where applying the concept of Quantisation of charge can lead to a common student error.",
+              "question": "Explain an application where using the concept of Quantisation of charge can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -318,8 +318,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Coulomb’s law"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Coulomb’s law is heavily tested in recent NEET papers.",
-            "Applying the core principles of Coulomb’s law correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Coulomb’s law is frequently appears in NEET examinations.",
+            "Applying the core principles of Coulomb’s law correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -334,7 +334,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Coulomb’s law during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Coulomb’s law during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Coulomb’s law."
           ],
           "masteryCriteria": [
@@ -342,14 +342,14 @@
             "Successfully avoids common pitfalls when Coulomb’s law is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Coulomb’s law in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Coulomb’s law in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-coulomb-s-law-1",
-              "question": "What are the critical factors or principles governing Coulomb’s law?",
+              "question": "What are the fundamental laws or mechanisms governing Coulomb’s law?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -376,7 +376,7 @@
             },
             {
               "id": "electrostatics-q-coulomb-s-law-2",
-              "question": "Describe a scenario where applying the concept of Coulomb’s law can lead to a common student error.",
+              "question": "Explain an application where using the concept of Coulomb’s law can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -417,8 +417,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Superposition principle for forces"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Superposition principle for forces is heavily tested in recent NEET papers.",
-            "Applying the core principles of Superposition principle for forces correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Superposition principle for forces is frequently appears in NEET examinations.",
+            "Applying the core principles of Superposition principle for forces correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -432,7 +432,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Superposition principle for forces during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Superposition principle for forces during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Superposition principle for forces."
           ],
           "masteryCriteria": [
@@ -440,14 +440,14 @@
             "Successfully avoids common pitfalls when Superposition principle for forces is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Superposition principle for forces in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Superposition principle for forces in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-superposition-principle-for-forces-1",
-              "question": "What are the critical factors or principles governing Superposition principle for forces?",
+              "question": "What are the fundamental laws or mechanisms governing Superposition principle for forces?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -474,7 +474,7 @@
             },
             {
               "id": "electrostatics-q-superposition-principle-for-forces-2",
-              "question": "Describe a scenario where applying the concept of Superposition principle for forces can lead to a common student error.",
+              "question": "Explain an application where using the concept of Superposition principle for forces can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -515,8 +515,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field intensity"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field intensity is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field intensity correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field intensity is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field intensity correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -531,7 +531,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field intensity during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field intensity during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field intensity."
           ],
           "masteryCriteria": [
@@ -539,14 +539,14 @@
             "Successfully avoids common pitfalls when Electric field intensity is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field intensity in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field intensity in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-intensity-1",
-              "question": "What are the critical factors or principles governing Electric field intensity?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field intensity?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -573,7 +573,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-intensity-2",
-              "question": "Describe a scenario where applying the concept of Electric field intensity can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field intensity can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -627,8 +627,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field lines properties"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field lines properties is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field lines properties correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field lines properties is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field lines properties correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -643,7 +643,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field lines properties during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field lines properties during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field lines properties."
           ],
           "masteryCriteria": [
@@ -651,14 +651,14 @@
             "Successfully avoids common pitfalls when Electric field lines properties is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field lines properties in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field lines properties in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-lines-properties-1",
-              "question": "What are the critical factors or principles governing Electric field lines properties?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field lines properties?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -685,7 +685,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-lines-properties-2",
-              "question": "Describe a scenario where applying the concept of Electric field lines properties can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field lines properties can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -726,8 +726,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric dipole"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric dipole is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric dipole correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric dipole is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric dipole correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -742,7 +742,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric dipole during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric dipole during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric dipole."
           ],
           "masteryCriteria": [
@@ -750,14 +750,14 @@
             "Successfully avoids common pitfalls when Electric dipole is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric dipole in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric dipole in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-dipole-1",
-              "question": "What are the critical factors or principles governing Electric dipole?",
+              "question": "What are the fundamental laws or mechanisms governing Electric dipole?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -784,7 +784,7 @@
             },
             {
               "id": "electrostatics-q-electric-dipole-2",
-              "question": "Describe a scenario where applying the concept of Electric dipole can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric dipole can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -825,8 +825,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field due to dipole"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field due to dipole is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field due to dipole correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field due to dipole is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field due to dipole correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -841,7 +841,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field due to dipole during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field due to dipole during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field due to dipole."
           ],
           "masteryCriteria": [
@@ -849,14 +849,14 @@
             "Successfully avoids common pitfalls when Electric field due to dipole is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field due to dipole in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field due to dipole in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-due-to-dipole-1",
-              "question": "What are the critical factors or principles governing Electric field due to dipole?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field due to dipole?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -883,7 +883,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-due-to-dipole-2",
-              "question": "Describe a scenario where applying the concept of Electric field due to dipole can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field due to dipole can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -924,8 +924,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Torque on dipole in uniform field"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Torque on dipole in uniform field is heavily tested in recent NEET papers.",
-            "Applying the core principles of Torque on dipole in uniform field correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Torque on dipole in uniform field is frequently appears in NEET examinations.",
+            "Applying the core principles of Torque on dipole in uniform field correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -939,7 +939,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Torque on dipole in uniform field during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Torque on dipole in uniform field during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Torque on dipole in uniform field."
           ],
           "masteryCriteria": [
@@ -947,14 +947,14 @@
             "Successfully avoids common pitfalls when Torque on dipole in uniform field is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Torque on dipole in uniform field in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Torque on dipole in uniform field in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-torque-on-dipole-in-uniform-field-1",
-              "question": "What are the critical factors or principles governing Torque on dipole in uniform field?",
+              "question": "What are the fundamental laws or mechanisms governing Torque on dipole in uniform field?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -981,7 +981,7 @@
             },
             {
               "id": "electrostatics-q-torque-on-dipole-in-uniform-field-2",
-              "question": "Describe a scenario where applying the concept of Torque on dipole in uniform field can lead to a common student error.",
+              "question": "Explain an application where using the concept of Torque on dipole in uniform field can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1022,8 +1022,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric flux definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric flux definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric flux definition correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric flux definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric flux definition correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1038,7 +1038,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric flux definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric flux definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric flux definition."
           ],
           "masteryCriteria": [
@@ -1046,14 +1046,14 @@
             "Successfully avoids common pitfalls when Electric flux definition is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric flux definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric flux definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-flux-definition-1",
-              "question": "What are the critical factors or principles governing Electric flux definition?",
+              "question": "What are the fundamental laws or mechanisms governing Electric flux definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1080,7 +1080,7 @@
             },
             {
               "id": "electrostatics-q-electric-flux-definition-2",
-              "question": "Describe a scenario where applying the concept of Electric flux definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1121,8 +1121,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Gauss law applications"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Gauss law applications is heavily tested in recent NEET papers.",
-            "Applying the core principles of Gauss law applications correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Gauss law applications is frequently appears in NEET examinations.",
+            "Applying the core principles of Gauss law applications correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1137,7 +1137,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Gauss law applications during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Gauss law applications during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Gauss law applications."
           ],
           "masteryCriteria": [
@@ -1145,14 +1145,14 @@
             "Successfully avoids common pitfalls when Gauss law applications is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Gauss law applications in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Gauss law applications in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-gauss-law-applications-1",
-              "question": "What are the critical factors or principles governing Gauss law applications?",
+              "question": "What are the fundamental laws or mechanisms governing Gauss law applications?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1179,7 +1179,7 @@
             },
             {
               "id": "electrostatics-q-gauss-law-applications-2",
-              "question": "Describe a scenario where applying the concept of Gauss law applications can lead to a common student error.",
+              "question": "Explain an application where using the concept of Gauss law applications can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1233,8 +1233,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of straight wire"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field of straight wire is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field of straight wire correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field of straight wire is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field of straight wire correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1249,7 +1249,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field of straight wire during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field of straight wire during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field of straight wire."
           ],
           "masteryCriteria": [
@@ -1257,14 +1257,14 @@
             "Successfully avoids common pitfalls when Electric field of straight wire is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field of straight wire in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field of straight wire in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-of-straight-wire-1",
-              "question": "What are the critical factors or principles governing Electric field of straight wire?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field of straight wire?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1291,7 +1291,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-of-straight-wire-2",
-              "question": "Describe a scenario where applying the concept of Electric field of straight wire can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field of straight wire can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1332,8 +1332,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of infinite sheet"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field of infinite sheet is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field of infinite sheet correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field of infinite sheet is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field of infinite sheet correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1348,7 +1348,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field of infinite sheet during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field of infinite sheet during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field of infinite sheet."
           ],
           "masteryCriteria": [
@@ -1356,14 +1356,14 @@
             "Successfully avoids common pitfalls when Electric field of infinite sheet is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field of infinite sheet in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field of infinite sheet in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-of-infinite-sheet-1",
-              "question": "What are the critical factors or principles governing Electric field of infinite sheet?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field of infinite sheet?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1390,7 +1390,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-of-infinite-sheet-2",
-              "question": "Describe a scenario where applying the concept of Electric field of infinite sheet can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field of infinite sheet can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1431,8 +1431,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric field of spherical shell"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric field of spherical shell is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric field of spherical shell correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric field of spherical shell is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric field of spherical shell correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1447,7 +1447,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric field of spherical shell during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric field of spherical shell during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric field of spherical shell."
           ],
           "masteryCriteria": [
@@ -1455,14 +1455,14 @@
             "Successfully avoids common pitfalls when Electric field of spherical shell is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric field of spherical shell in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric field of spherical shell in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-field-of-spherical-shell-1",
-              "question": "What are the critical factors or principles governing Electric field of spherical shell?",
+              "question": "What are the fundamental laws or mechanisms governing Electric field of spherical shell?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1489,7 +1489,7 @@
             },
             {
               "id": "electrostatics-q-electric-field-of-spherical-shell-2",
-              "question": "Describe a scenario where applying the concept of Electric field of spherical shell can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric field of spherical shell can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1530,8 +1530,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric potential"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric potential is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric potential correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric potential is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric potential correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1546,7 +1546,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric potential during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric potential during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric potential."
           ],
           "masteryCriteria": [
@@ -1554,14 +1554,14 @@
             "Successfully avoids common pitfalls when Electric potential is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric potential in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric potential in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-potential-1",
-              "question": "What are the critical factors or principles governing Electric potential?",
+              "question": "What are the fundamental laws or mechanisms governing Electric potential?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1588,7 +1588,7 @@
             },
             {
               "id": "electrostatics-q-electric-potential-2",
-              "question": "Describe a scenario where applying the concept of Electric potential can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric potential can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1629,8 +1629,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Potential difference"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Potential difference is heavily tested in recent NEET papers.",
-            "Applying the core principles of Potential difference correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Potential difference is frequently appears in NEET examinations.",
+            "Applying the core principles of Potential difference correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1645,7 +1645,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Potential difference during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Potential difference during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Potential difference."
           ],
           "masteryCriteria": [
@@ -1653,14 +1653,14 @@
             "Successfully avoids common pitfalls when Potential difference is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Potential difference in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Potential difference in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-potential-difference-1",
-              "question": "What are the critical factors or principles governing Potential difference?",
+              "question": "What are the fundamental laws or mechanisms governing Potential difference?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1687,7 +1687,7 @@
             },
             {
               "id": "electrostatics-q-potential-difference-2",
-              "question": "Describe a scenario where applying the concept of Potential difference can lead to a common student error.",
+              "question": "Explain an application where using the concept of Potential difference can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1728,8 +1728,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Equipotential surfaces"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Equipotential surfaces is heavily tested in recent NEET papers.",
-            "Applying the core principles of Equipotential surfaces correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Equipotential surfaces is frequently appears in NEET examinations.",
+            "Applying the core principles of Equipotential surfaces correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1744,7 +1744,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Equipotential surfaces during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Equipotential surfaces during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Equipotential surfaces."
           ],
           "masteryCriteria": [
@@ -1752,14 +1752,14 @@
             "Successfully avoids common pitfalls when Equipotential surfaces is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Equipotential surfaces in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Equipotential surfaces in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-equipotential-surfaces-1",
-              "question": "What are the critical factors or principles governing Equipotential surfaces?",
+              "question": "What are the fundamental laws or mechanisms governing Equipotential surfaces?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1786,7 +1786,7 @@
             },
             {
               "id": "electrostatics-q-equipotential-surfaces-2",
-              "question": "Describe a scenario where applying the concept of Equipotential surfaces can lead to a common student error.",
+              "question": "Explain an application where using the concept of Equipotential surfaces can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1840,8 +1840,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Electric potential energy"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Electric potential energy is heavily tested in recent NEET papers.",
-            "Applying the core principles of Electric potential energy correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Electric potential energy is frequently appears in NEET examinations.",
+            "Applying the core principles of Electric potential energy correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1855,7 +1855,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Electric potential energy during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Electric potential energy during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Electric potential energy."
           ],
           "masteryCriteria": [
@@ -1863,14 +1863,14 @@
             "Successfully avoids common pitfalls when Electric potential energy is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Electric potential energy in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Electric potential energy in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-electric-potential-energy-1",
-              "question": "What are the critical factors or principles governing Electric potential energy?",
+              "question": "What are the fundamental laws or mechanisms governing Electric potential energy?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1897,7 +1897,7 @@
             },
             {
               "id": "electrostatics-q-electric-potential-energy-2",
-              "question": "Describe a scenario where applying the concept of Electric potential energy can lead to a common student error.",
+              "question": "Explain an application where using the concept of Electric potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -1938,8 +1938,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Conductors and insulators"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Conductors and insulators is heavily tested in recent NEET papers.",
-            "Applying the core principles of Conductors and insulators correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Conductors and insulators is frequently appears in NEET examinations.",
+            "Applying the core principles of Conductors and insulators correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -1954,7 +1954,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Conductors and insulators during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Conductors and insulators during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Conductors and insulators."
           ],
           "masteryCriteria": [
@@ -1962,14 +1962,14 @@
             "Successfully avoids common pitfalls when Conductors and insulators is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Conductors and insulators in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Conductors and insulators in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-conductors-and-insulators-1",
-              "question": "What are the critical factors or principles governing Conductors and insulators?",
+              "question": "What are the fundamental laws or mechanisms governing Conductors and insulators?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -1996,7 +1996,7 @@
             },
             {
               "id": "electrostatics-q-conductors-and-insulators-2",
-              "question": "Describe a scenario where applying the concept of Conductors and insulators can lead to a common student error.",
+              "question": "Explain an application where using the concept of Conductors and insulators can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2037,8 +2037,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Dielectrics and polarisation"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Dielectrics and polarisation is heavily tested in recent NEET papers.",
-            "Applying the core principles of Dielectrics and polarisation correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Dielectrics and polarisation is frequently appears in NEET examinations.",
+            "Applying the core principles of Dielectrics and polarisation correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2053,7 +2053,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Dielectrics and polarisation during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Dielectrics and polarisation during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Dielectrics and polarisation."
           ],
           "masteryCriteria": [
@@ -2061,14 +2061,14 @@
             "Successfully avoids common pitfalls when Dielectrics and polarisation is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Dielectrics and polarisation in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Dielectrics and polarisation in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-dielectrics-and-polarisation-1",
-              "question": "What are the critical factors or principles governing Dielectrics and polarisation?",
+              "question": "What are the fundamental laws or mechanisms governing Dielectrics and polarisation?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2095,7 +2095,7 @@
             },
             {
               "id": "electrostatics-q-dielectrics-and-polarisation-2",
-              "question": "Describe a scenario where applying the concept of Dielectrics and polarisation can lead to a common student error.",
+              "question": "Explain an application where using the concept of Dielectrics and polarisation can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2136,8 +2136,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Capacitance definition"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Capacitance definition is heavily tested in recent NEET papers.",
-            "Applying the core principles of Capacitance definition correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Capacitance definition is frequently appears in NEET examinations.",
+            "Applying the core principles of Capacitance definition correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2152,7 +2152,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Capacitance definition during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Capacitance definition during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Capacitance definition."
           ],
           "masteryCriteria": [
@@ -2160,14 +2160,14 @@
             "Successfully avoids common pitfalls when Capacitance definition is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Capacitance definition in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Capacitance definition in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-capacitance-definition-1",
-              "question": "What are the critical factors or principles governing Capacitance definition?",
+              "question": "What are the fundamental laws or mechanisms governing Capacitance definition?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2194,7 +2194,7 @@
             },
             {
               "id": "electrostatics-q-capacitance-definition-2",
-              "question": "Describe a scenario where applying the concept of Capacitance definition can lead to a common student error.",
+              "question": "Explain an application where using the concept of Capacitance definition can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2235,8 +2235,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Capacitors in series and parallel"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Capacitors in series and parallel is heavily tested in recent NEET papers.",
-            "Applying the core principles of Capacitors in series and parallel correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Capacitors in series and parallel is frequently appears in NEET examinations.",
+            "Applying the core principles of Capacitors in series and parallel correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2251,7 +2251,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Capacitors in series and parallel during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Capacitors in series and parallel during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Capacitors in series and parallel."
           ],
           "masteryCriteria": [
@@ -2259,14 +2259,14 @@
             "Successfully avoids common pitfalls when Capacitors in series and parallel is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Capacitors in series and parallel in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Capacitors in series and parallel in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-capacitors-in-series-and-parallel-1",
-              "question": "What are the critical factors or principles governing Capacitors in series and parallel?",
+              "question": "What are the fundamental laws or mechanisms governing Capacitors in series and parallel?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2293,7 +2293,7 @@
             },
             {
               "id": "electrostatics-q-capacitors-in-series-and-parallel-2",
-              "question": "Describe a scenario where applying the concept of Capacitors in series and parallel can lead to a common student error.",
+              "question": "Explain an application where using the concept of Capacitors in series and parallel can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2334,8 +2334,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Parallel plate capacitor formula"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Parallel plate capacitor formula is heavily tested in recent NEET papers.",
-            "Applying the core principles of Parallel plate capacitor formula correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Parallel plate capacitor formula is frequently appears in NEET examinations.",
+            "Applying the core principles of Parallel plate capacitor formula correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2350,7 +2350,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Parallel plate capacitor formula during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Parallel plate capacitor formula during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Parallel plate capacitor formula."
           ],
           "masteryCriteria": [
@@ -2358,14 +2358,14 @@
             "Successfully avoids common pitfalls when Parallel plate capacitor formula is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Parallel plate capacitor formula in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Parallel plate capacitor formula in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-parallel-plate-capacitor-formula-1",
-              "question": "What are the critical factors or principles governing Parallel plate capacitor formula?",
+              "question": "What are the fundamental laws or mechanisms governing Parallel plate capacitor formula?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2392,7 +2392,7 @@
             },
             {
               "id": "electrostatics-q-parallel-plate-capacitor-formula-2",
-              "question": "Describe a scenario where applying the concept of Parallel plate capacitor formula can lead to a common student error.",
+              "question": "Explain an application where using the concept of Parallel plate capacitor formula can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2446,8 +2446,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Effect of dielectric on capacitance"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Effect of dielectric on capacitance is heavily tested in recent NEET papers.",
-            "Applying the core principles of Effect of dielectric on capacitance correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Effect of dielectric on capacitance is frequently appears in NEET examinations.",
+            "Applying the core principles of Effect of dielectric on capacitance correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2462,7 +2462,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Effect of dielectric on capacitance during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Effect of dielectric on capacitance during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Effect of dielectric on capacitance."
           ],
           "masteryCriteria": [
@@ -2470,14 +2470,14 @@
             "Successfully avoids common pitfalls when Effect of dielectric on capacitance is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Effect of dielectric on capacitance in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Effect of dielectric on capacitance in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-effect-of-dielectric-on-capacitance-1",
-              "question": "What are the critical factors or principles governing Effect of dielectric on capacitance?",
+              "question": "What are the fundamental laws or mechanisms governing Effect of dielectric on capacitance?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2504,7 +2504,7 @@
             },
             {
               "id": "electrostatics-q-effect-of-dielectric-on-capacitance-2",
-              "question": "Describe a scenario where applying the concept of Effect of dielectric on capacitance can lead to a common student error.",
+              "question": "Explain an application where using the concept of Effect of dielectric on capacitance can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
@@ -2545,8 +2545,8 @@
             "NCERT Physics Class 12, Chapter: Electrostatics, Section detailing Energy stored in capacitor"
           ],
           "mustKnowFacts": [
-            "A thorough understanding of Energy stored in capacitor is heavily tested in recent NEET papers.",
-            "Applying the core principles of Energy stored in capacitor correctly is essential for solving complex multi-step problems in Electrostatics."
+            "A thorough understanding of Energy stored in capacitor is frequently appears in NEET examinations.",
+            "Applying the core principles of Energy stored in capacitor correctly is essential for solving integrated numerical and conceptual problems in Electrostatics."
           ],
           "formulas": [
             {
@@ -2560,7 +2560,7 @@
             }
           ],
           "commonTraps": [
-            "Misinterpreting the subtle edge cases of Energy stored in capacitor during high-pressure exam scenarios.",
+            "Misinterpreting the advanced application scenarios of Energy stored in capacitor during high-pressure exam scenarios.",
             "Failing to recall the exact conditions or sign conventions associated with Energy stored in capacitor."
           ],
           "masteryCriteria": [
@@ -2568,14 +2568,14 @@
             "Successfully avoids common pitfalls when Energy stored in capacitor is integrated with other concepts in Electrostatics."
           ],
           "pyqPatterns": [
-            "Past year questions frequently test the application of Energy stored in capacitor in tricky assertion-reason or statement-based questions."
+            "NEET PyQs emphasize the application of Energy stored in capacitor in tricky assertion-reason or statement-based questions."
           ],
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
               "id": "electrostatics-q-energy-stored-in-capacitor-1",
-              "question": "What are the critical factors or principles governing Energy stored in capacitor?",
+              "question": "What are the fundamental laws or mechanisms governing Energy stored in capacitor?",
               "expectedAnswerPoints": [
                 "Primary mechanism or law",
                 "Key variables or structures involved"
@@ -2602,7 +2602,7 @@
             },
             {
               "id": "electrostatics-q-energy-stored-in-capacitor-2",
-              "question": "Describe a scenario where applying the concept of Energy stored in capacitor can lead to a common student error.",
+              "question": "Explain an application where using the concept of Energy stored in capacitor can lead to a common student error.",
               "expectedAnswerPoints": [
                 "Sign convention error",
                 "Mislabeling structures",
