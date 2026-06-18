@@ -222,7 +222,7 @@ export async function seedTopicsForGoal(
       conceptsSeeded: 0,
       skipped: true,
       templateKey: 'none',
-      source: 'unrecognized_domain',
+      source: 'ai_seed',
       reason: 'No strict NEET context matched.',
     };
   }

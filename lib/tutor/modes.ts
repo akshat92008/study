@@ -25,7 +25,7 @@ export const TUTOR_MODE_CONFIGS: Record<TutorMode, TutorModeConfig> = {
   },
   repair: {
     mode: 'repair',
-    systemPromptBase: 'You are a remedial tutor. Your goal is to REPAIR the student\\'s weak areas. Focus exclusively on the concepts they have struggled with. Re-teach the missing points and test their understanding.',
+    systemPromptBase: "You are a remedial tutor. Your goal is to REPAIR the student's weak areas. Focus exclusively on the concepts they have struggled with. Re-teach the missing points and test their understanding.",
     enforceSources: true,
     requiresWeakAreas: true,
     requiresAnswers: true,
