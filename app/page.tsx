@@ -24,6 +24,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function LandingPage() {
   let user = null;
+  let redirectUrl = null;
 
   try {
     const supabase = await createClient();
@@ -46,13 +47,13 @@ export default async function LandingPage() {
           .maybeSingle()
       : { data: null };
 
-    const redirectUrl = await getAuthRedirectUrl(user, profile, '/');
-
-    if (redirectUrl) {
-      redirect(redirectUrl);
-    }
+    redirectUrl = await getAuthRedirectUrl(user, profile, '/');
   } catch (error) {
     console.error('[LANDING_AUTH_ERROR]', error);
+  }
+
+  if (redirectUrl) {
+    redirect(redirectUrl);
   }
 
   return <CinematicLandingPage availableVideos={getAvailableLandingVideos()} />;

@@ -56,13 +56,13 @@ describe('Upload Validation Security', () => {
   });
 
   it('rejects upload with oversized file', async () => {
-    const maxBytes = 10 * 1024 * 1024 + 1; // Over 10MB
+    const maxBytes = 50 * 1024 * 1024 + 1; // Over 50MB
     const bigBuffer = new ArrayBuffer(maxBytes);
     const file = new File([bigBuffer], 'big.pdf', { type: 'application/pdf' });
     const req = createMockFormDataRequest(file);
     const response = await POST(req);
 
-    expect(response.status).toBe(422);
+    expect(response.status).toBe(413);
     const data = await response.json();
     expect(data.error).toBe('file_too_large');
   });

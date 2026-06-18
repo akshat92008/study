@@ -89,7 +89,7 @@ describe('Module 5 — completion idempotency in migrations', () => {
   it('projector marks today completed instead of deleting for session_completed', () => {
     const projectorFile = path.join(root, 'lib', 'learner-state', 'projector.ts');
     const content = fs.readFileSync(projectorFile, 'utf8');
-    expect(content).toContain('markSessionCardCompleted');
+    expect(content).toContain("action: 'complete_today'");
     expect(content).toContain("signal.type === 'session_completed'");
   });
 });
