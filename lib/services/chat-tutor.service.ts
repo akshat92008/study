@@ -5,7 +5,8 @@ import { logger } from '@/lib/utils/logger';
 import { MIN_MIND_TUTOR_COVERAGE_TURNS } from '@/lib/mind/tutor-completion';
 import { evaluateAnswer, persistAnswerEvaluation } from '@/lib/tutor/evaluate-answer';
 import { findQuestionByText, getNextQuestion } from '@/lib/tutor/question-engine';
-import { loadTutorContext } from '@/lib/tutor/context';
+import { loadActiveLearningContext } from '@/lib/learning-context/active-context';
+import { buildTutorRetrievalPacket } from '@/lib/tutor/context';
 import { isExplicitRagRequest } from '@/lib/rag/retrieval';
 import { getDegradationMessage } from '@/lib/ai/degradation-messages';
 import { getSourceGroundingState } from '@/lib/rag/source-grounding';
@@ -36,13 +37,13 @@ export class ChatTutorService {
     controller: ReadableStreamDefaultController,
     encoder: TextEncoder
   ) {
-    const tutorContext = await loadTutorContext({
+    const tutorContext = await loadActiveLearningContext({
       supabase,
       userId,
-      activeGoalId: mindContext?.activeGoal?.id ?? null,
+      requestedGoalId: mindContext?.activeGoal?.id ?? null,
     });
 
-    if (!tutorContext.activeGoalId) {
+    if (!tutorContext.goalId) {
       const response = 'Create or select a learning goal first, then I can keep every question and progress update tied to it.';
       enqueueTextToStream(controller, encoder, response);
       return { fullResponse: response, metadataPayload: { tutorMode: 'goal_required' } };
@@ -84,9 +85,9 @@ export class ChatTutorService {
           userAnswer: message,
           conceptTags: answeredQuestion.conceptTags,
           chapterSlug: activeChapterSlug,
-          goalId: tutorContext.activeGoalId,
-          missionId: tutorContext.currentMissionId,
-          microtargetId: tutorContext.currentMicrotargetId,
+          goalId: tutorContext.goalId,
+          missionId: tutorContext.topicId,
+          microtargetId: tutorContext.topicId,
         });
 
         await persistAnswerEvaluation({
@@ -96,20 +97,20 @@ export class ChatTutorService {
           userAnswer: message,
           evaluation,
           chapterSlug: activeChapterSlug,
-          goalId: tutorContext.activeGoalId,
-          missionId: tutorContext.currentMissionId,
-          microtargetId: tutorContext.currentMicrotargetId,
+          goalId: tutorContext.goalId,
+          missionId: tutorContext.topicId,
+          microtargetId: tutorContext.topicId,
         }).catch((error) => {
           logger.error('answer_evaluation_persistence_failed', error, {
             userId,
-            goalId: tutorContext.activeGoalId,
+            goalId: tutorContext.goalId,
             questionId: answeredQuestion.questionId,
           });
         });
 
         logger.info('answer_evaluated', {
           userId,
-          goalId: tutorContext.activeGoalId,
+          goalId: tutorContext.goalId,
           questionId: answeredQuestion.questionId,
           score: evaluation.score,
           missingPoints: evaluation.missingPoints,
@@ -128,10 +129,10 @@ export class ChatTutorService {
       ];
       const nextQuestion = getNextQuestion({
         chapterSlug: activeChapterSlug,
-        currentMicrotargetId: tutorContext.currentMicrotargetId,
+        currentMicrotargetId: tutorContext.topicId,
         weakAreas,
         recentQuestions,
-        mode: tutorContext.normalizedGoal?.mode,
+        mode: tutorContext.mode,
       });
 
       const response = [
@@ -142,7 +143,7 @@ export class ChatTutorService {
 
       logger.info('tutor_question_generated', {
         userId,
-        goalId: tutorContext.activeGoalId,
+        goalId: tutorContext.goalId,
         chapterSlug: activeChapterSlug,
         questionId: nextQuestion?.questionId,
         source: nextQuestion?.source,
@@ -160,9 +161,10 @@ export class ChatTutorService {
       };
     }
 
-    const topic = requestedTopicChange ? (intent.topic || message) : (tutorContext.chapter || intent.topic || 'General');
-    const subject = requestedTopicChange ? (intent.subject || 'General') : (tutorContext.subject || intent.subject || 'General');
-    const tutorSystemPrompt = `${systemPrompt}\n\nACTIVE TUTOR CONTEXT:\nGoal: ${tutorContext.goalTitle}\nExam: ${tutorContext.exam ?? 'Unknown'}\nSubject: ${subject}\nChapter: ${topic}\nChapter slug: ${tutorContext.chapterSlug ?? 'unknown'}\nStay inside this chapter unless the learner explicitly changes the topic. Ask one question at a time.`;
+    const topic = requestedTopicChange ? (intent.topic || message) : (tutorContext.chapterId || intent.topic || 'General');
+    const subject = requestedTopicChange ? (intent.subject || 'General') : (tutorContext.subjectId || intent.subject || 'General');
+    const packet = buildTutorRetrievalPacket(tutorContext);
+    const tutorSystemPrompt = `${systemPrompt}\n\n${packet.systemPromptAddendum}`;
     let fullResponse = '';
 
     try {
@@ -182,7 +184,7 @@ export class ChatTutorService {
     } catch (error) {
       logger.warn('provider_failed', {
         userId,
-        goalId: tutorContext.activeGoalId,
+        goalId: tutorContext.goalId,
         error: error instanceof Error ? error.message : String(error),
       });
       const fallback = getNextQuestion({ chapterSlug: activeChapterSlug, recentQuestions: tutorContext.recentQuestions });
@@ -190,7 +192,7 @@ export class ChatTutorService {
         ? `Using offline tutor mode for this turn.\n\n${fallback.question}`
         : getDegradationMessage('provider_overloaded');
       enqueueTextToStream(controller, encoder, fullResponse);
-      logger.info('offline_tutor_fallback_used', { userId, goalId: tutorContext.activeGoalId });
+      logger.info('offline_tutor_fallback_used', { userId, goalId: tutorContext.goalId });
     }
 
     const coverageTurns = sessionTurnsCount ?? recentHistory.filter((turn) => turn.role === 'user').length + 1;

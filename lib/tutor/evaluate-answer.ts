@@ -235,9 +235,14 @@ export async function persistAnswerEvaluation(input: {
   const tp = input.evaluation.taxonomyPath;
   const wac = input.evaluation.weakAreaCandidate;
 
+  // Enforce Mapping: Unmapped attempts do not update mastery or weak areas
+  if (!tp) {
+    return { attemptId: attempt?.id ?? null };
+  }
+
   // Persist concept mastery
   // We can track this at the concept level or microskill level. We will use microskill if present, else concept.
-  const granularSlug = tp?.microskillSlug || tp?.conceptSlug || 'general';
+  const granularSlug = tp.microskillSlug || tp.conceptSlug || 'general';
   
   const { data: existing } = await input.supabase
     .from('concept_mastery')
@@ -245,10 +250,10 @@ export async function persistAnswerEvaluation(input: {
     .eq('user_id', input.userId)
     .eq('goal_id', input.goalId)
     .eq('chapter_slug', input.chapterSlug)
-    .eq('topic_slug', tp?.topicSlug || input.chapterSlug)
-    .eq('subtopic_slug', tp?.subtopicSlug || '')
-    .eq('concept_slug', tp?.conceptSlug || '')
-    .eq('microskill_slug', tp?.microskillSlug || '')
+    .eq('topic_slug', tp.topicSlug || input.chapterSlug)
+    .eq('subtopic_slug', tp.subtopicSlug || '')
+    .eq('concept_slug', tp.conceptSlug || '')
+    .eq('microskill_slug', tp.microskillSlug || '')
     .maybeSingle();
 
   const next = nextMasteryState({
@@ -263,13 +268,13 @@ export async function persistAnswerEvaluation(input: {
     id: existing?.id,
     user_id: input.userId,
     goal_id: input.goalId,
-    subject: tp?.subject || '',
-    unit_slug: tp?.unitSlug || '',
+    subject: tp.subject || '',
+    unit_slug: tp.unitSlug || '',
     chapter_slug: input.chapterSlug,
-    topic_slug: tp?.topicSlug || input.chapterSlug,
-    subtopic_slug: tp?.subtopicSlug || '',
-    concept_slug: tp?.conceptSlug || '',
-    microskill_slug: tp?.microskillSlug || '',
+    topic_slug: tp.topicSlug || input.chapterSlug,
+    subtopic_slug: tp.subtopicSlug || '',
+    concept_slug: tp.conceptSlug || '',
+    microskill_slug: tp.microskillSlug || '',
     concept_tag: input.question.conceptTags[0] || 'general',
     mastery_score: next.masteryScore,
     correct_count: next.correctCount,
@@ -322,10 +327,10 @@ export async function persistAnswerEvaluation(input: {
       .eq('user_id', input.userId)
       .eq('goal_id', input.goalId)
       .eq('chapter_slug', input.chapterSlug)
-      .eq('topic_slug', tp?.topicSlug || input.chapterSlug)
-      .eq('subtopic_slug', tp?.subtopicSlug || '')
-      .eq('concept_slug', tp?.conceptSlug || '')
-      .eq('microskill_slug', tp?.microskillSlug || '')
+      .eq('topic_slug', tp.topicSlug || input.chapterSlug)
+      .eq('subtopic_slug', tp.subtopicSlug || '')
+      .eq('concept_slug', tp.conceptSlug || '')
+      .eq('microskill_slug', tp.microskillSlug || '')
       .is('resolved_at', null);
   }
 

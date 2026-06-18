@@ -998,6 +998,10 @@ export function isPlaceholderTitle(title: string): boolean {
   if (/\b(features|concepts|principles|mechanisms|applications)\s+\d+\s*$/i.test(title)) return true;
   // Pattern: "Mastery Module N:"  with generic description
   if (/^Mastery Module \d+:.*and Related Concepts$/i.test(title)) return true;
+  // Pattern: "Topic N of [slug]"
+  if (/^Topic \d+ of .*/i.test(title)) return true;
+  // Pattern: "Mastery Module: [slug]"
+  if (/^Mastery Module: .*/i.test(title)) return true;
   return false;
 }
 

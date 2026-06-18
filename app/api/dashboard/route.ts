@@ -6,7 +6,7 @@ import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
 import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/lib/api/errors';
 import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
-import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
+import { loadActiveLearningContext } from '@/lib/learning-context/active-context';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,9 +26,14 @@ export async function GET(request: Request) {
     const localDate = new Date().toISOString().split('T')[0];
     const { searchParams } = new URL(request.url);
     const requestedGoalId = searchParams.get('goalId');
-    const activeGoalResolution = await resolveActiveGoalForUser(supabase, user.id, requestedGoalId);
-    const goalId = activeGoalResolution.goalId;
-    const activeGoal = activeGoalResolution.goal;
+    const activeContext = await loadActiveLearningContext({
+      supabase,
+      userId: user.id,
+      requestedGoalId: requestedGoalId,
+      requestId,
+    });
+    const goalId = activeContext.goalId;
+    const activeGoal = activeContext.rawGoal;
 
     let allCardsQuery = supabase.from('revision_cards')
       .select('id, due, stability, difficulty, state, subject, chapter')

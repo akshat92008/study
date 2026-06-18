@@ -208,18 +208,22 @@ export async function gatherChatContext({
   let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
 
 const RAG_GROUNDING_RULES = `
-SOURCE-GROUNDED STUDY MATERIAL RULES:
-- Uploaded sources are grounding evidence, not decoration.
-- NEVER claim you cannot read, access, or view uploaded files or PDFs. The system has already parsed them and provided the relevant text chunks to you below. Act as if you have read the relevant parts of the document.
-- If SOURCE-GROUNDED MODE is explicit, answer from the retrieved source chunks first.
-- If explicit mode has no chunks, say: "I could not find this in your uploaded material." Then optionally provide a general answer separately if helpful.
+# CITING INSTRUCTIONS
+
+When referencing information from the source or its insights, you MUST ALWAYS include citations using the document IDs. This helps users track the specific content you're referencing.
+
+## Citation Format
+- For source content: [source:id] (e.g. [source:550e8400-e29b-41d4-a716-446655440000])
+
+## IMPORTANT RULES
+
+- **Do not make up document IDs or insight IDs.** Only use the IDs that are actually available in the RETRIEVED SOURCE CHUNKS.
+- **Use complete IDs exactly as provided**, including their type prefix (source:, insight:, etc.). Do not modify the ID.
+- **Always reference specific content** when citing to help users locate the information.
+- Focus on the specific source. If SOURCE-GROUNDED MODE is explicit, answer exclusively from the retrieved source chunks.
+- If explicit mode has no chunks, or the answer is not in the chunks, say exactly: "I could not find this in your uploaded material." Do not hallucinate.
 - If SOURCE-GROUNDED MODE is implicit, use source chunks to improve accuracy when relevant, but answer naturally.
-- Never invent citations.
-- Cite only the provided source chunks.
-- Use compact citations like [Source 1], [Source 2].
-- Do not quote long copyrighted passages. Summarize/paraphrase unless a short exact phrase is necessary.
-- For NCERT/NEET, prefer NCERT wording/facts when source chunks are available.
-- For flashcards/MCQs generated from sources, mention that they are source-grounded and cite the source briefly.
+- For flashcards/MCQs generated from sources, include the citation [source:id] so the user can verify the facts.
 `;
 
   if (mindRag?.ragPromptBlock) {

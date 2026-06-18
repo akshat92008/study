@@ -4,12 +4,13 @@ export type WeakAreaQueryOptions = {
   userId: string;
   goalId: string;
   chapterSlug?: string;
+  topicSlug?: string;
   granularity?: "chapter" | "topic" | "subtopic" | "concept" | "microskill" | "error_pattern";
   limit?: number;
 };
 
 export async function getWeakAreasForUser(supabase: any, options: WeakAreaQueryOptions) {
-  const { userId, goalId, chapterSlug, granularity = "concept", limit = 10 } = options;
+  const { userId, goalId, chapterSlug, topicSlug, granularity = "concept", limit = 10 } = options;
 
   let query = supabase
     .from('weak_area_events')
@@ -22,6 +23,9 @@ export async function getWeakAreasForUser(supabase: any, options: WeakAreaQueryO
 
   if (chapterSlug) {
     query = query.eq('chapter_slug', chapterSlug);
+  }
+  if (topicSlug) {
+    query = query.eq('topic_slug', topicSlug);
   }
 
   const { data: rawEvents, error } = await query;

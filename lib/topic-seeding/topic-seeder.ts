@@ -216,19 +216,24 @@ export async function seedTopicsForGoal(
     };
   }
   const selected = selectSeedTemplate(params);
+  if (!selected) {
+    return {
+      seeded: 0,
+      conceptsSeeded: 0,
+      skipped: true,
+      templateKey: 'none',
+      source: 'unrecognized_domain',
+      reason: 'No strict NEET context matched.',
+    };
+  }
+
   logger.info('mission_template_selected', {
     userId: params.userId,
     goalId: params.goalId,
     templateKey: selected.templateKey,
     source: selected.source,
   });
-  if (selected.source === 'custom_seed') {
-    logger.warn('mission_fallback_used', {
-      userId: params.userId,
-      goalId: params.goalId,
-      goalTitle: params.goalTitle,
-    });
-  }
+  
   const rows = buildSeededTopicRows(params, selected);
   const { error: upsertError } = await supabase
     .from('seeded_topics')

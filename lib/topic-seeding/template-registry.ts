@@ -143,45 +143,17 @@ function isTemplateCompatible(template: SeedTemplate, params: SeedTopicParams): 
   return true;
 }
 
-export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplate {
+export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplate | null {
   const haystack = buildGoalHaystack(params);
   
-  // First attempt rigorous NEET detection
-  const isNeetContext = (params.exam || params.presetId || params.goalType)?.toLowerCase().includes('neet') || false;
-  if (isNeetContext || haystack) {
-     const neetSeed = getSeedForGoal(haystack, params.subject);
-     if (neetSeed) {
-       logger.info('mission_template_selected', { goalText: haystack, matchedSlug: neetSeed.templateKey, confidence: 0.99 });
-       return neetSeed;
-     }
+  // Strict NEET detection
+  const neetSeed = getSeedForGoal(haystack, params.subject);
+  if (neetSeed) {
+    logger.info('mission_template_selected', { goalText: haystack, matchedSlug: neetSeed.templateKey, confidence: 0.99 });
+    return neetSeed;
   }
 
-  // Fallback to older generic matching for coding/academics
-  let best: { template: SeedTemplate; score: number } | null = null;
-  for (const template of ALL_SEED_TEMPLATES) {
-    if (!isTemplateCompatible(template, params)) continue;
-    const score = scoreTemplate(template, haystack, params);
-    if (!best || score > best.score) {
-      best = { template, score };
-    }
-  }
-  
-  if (best && best.score >= 45) {
-    logger.info('mission_template_selected', { goalText: haystack, matchedSlug: best.template.templateKey, confidence: best.score });
-    return {
-      template: best.template,
-      templateKey: best.template.templateKey,
-      source: 'seeded_template',
-      confidence: best.score,
-    };
-  }
-  
-  logger.warn('mission_fallback_used', { goalText: haystack, confidence: 10 });
-  const fallback = buildFallbackTemplate(params);
-  return {
-    template: fallback,
-    templateKey: fallback.templateKey,
-    source: 'custom_seed',
-    confidence: 10,
-  };
+  // No fallback allowed for strict ground-truth tutoring
+  logger.warn('mission_template_rejected', { goalText: haystack, reason: 'unrecognized_domain' });
+  return null;
 }
