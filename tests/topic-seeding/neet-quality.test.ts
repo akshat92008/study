@@ -3,9 +3,10 @@ import { ALL_NEET_CHAPTER_SEEDS } from '../../lib/topic-seeding/templates/neet';
 import { NEET_UG_2026_UNITS } from '../../lib/syllabus/neet-ug-2026';
 
 describe('NEET Topic Seeds Quality', () => {
-  test('should have exactly 50 syllabus units', () => {
+  test('should have matching count between syllabus units and seed templates', () => {
     expect(ALL_NEET_CHAPTER_SEEDS.length).toBe(NEET_UG_2026_UNITS.length);
-    expect(ALL_NEET_CHAPTER_SEEDS.length).toBe(50);
+    // 56 total: 20 Physics + 20 Chemistry + 16 Biology
+    expect(ALL_NEET_CHAPTER_SEEDS.length).toBe(56);
   });
 
   test('no seed should contain placeholder phrases', () => {
@@ -52,9 +53,14 @@ describe('NEET Topic Seeds Quality', () => {
         }
       }
 
-      // We relax the strict bounds here to allow realistic data generation limits
-      expect(microtargetCount).toBeGreaterThanOrEqual(8);
-      expect(recallCount).toBeGreaterThanOrEqual(16);
+      // Sub-chapters from the Human Physiology split may have fewer microtargets 
+      // since they represent individual NCERT chapters, not monolithic units
+      const isHumanPhysioSubchapter = chapter.chapterSlug.startsWith('human-physiology-');
+      const minMicrotargets = isHumanPhysioSubchapter ? 3 : 8;
+      const minRecallQuestions = isHumanPhysioSubchapter ? 6 : 16;
+
+      expect(microtargetCount, `${chapter.chapterSlug} has too few microtargets (${microtargetCount})`).toBeGreaterThanOrEqual(minMicrotargets);
+      expect(recallCount, `${chapter.chapterSlug} has too few recall questions (${recallCount})`).toBeGreaterThanOrEqual(minRecallQuestions);
     }
   });
 });

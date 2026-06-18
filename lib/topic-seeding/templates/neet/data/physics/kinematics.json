@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-frame-of-reference-1",
-              "question": "What are the fundamental laws or mechanisms governing Frame of reference?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "frame-of-reference"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "frame-of-reference",
-                "conceptSlug": "core-frame-of-reference",
-                "microskillSlug": "understand-frame-of-reference"
-              }
-            },
-            {
               "id": "kinematics-q-frame-of-reference-2",
               "question": "Explain an application where using the concept of Frame of reference can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-rest-and-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Rest and motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "rest-and-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "rest-and-motion",
-                "conceptSlug": "core-rest-and-motion",
-                "microskillSlug": "understand-rest-and-motion"
-              }
-            },
             {
               "id": "kinematics-q-rest-and-motion-2",
               "question": "Explain an application where using the concept of Rest and motion can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-position-vector-1",
-              "question": "What are the fundamental laws or mechanisms governing Position vector?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "position-vector"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "position-vector",
-                "conceptSlug": "core-position-vector",
-                "microskillSlug": "understand-position-vector"
-              }
-            },
-            {
               "id": "kinematics-q-position-vector-2",
               "question": "Explain an application where using the concept of Position vector can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-path-length-vs-distance-1",
-              "question": "What are the fundamental laws or mechanisms governing Path length vs distance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "path-length-vs-distance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "path-length-vs-distance",
-                "conceptSlug": "core-path-length-vs-distance",
-                "microskillSlug": "understand-path-length-vs-distance"
-              }
-            },
             {
               "id": "kinematics-q-path-length-vs-distance-2",
               "question": "Explain an application where using the concept of Path length vs distance can lead to a common student error.",
@@ -448,33 +340,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-displacement-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Displacement definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "displacement-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "displacement-definition",
-                "conceptSlug": "core-displacement-definition",
-                "microskillSlug": "understand-displacement-definition"
-              }
-            },
-            {
               "id": "kinematics-q-displacement-definition-2",
               "question": "Explain an application where using the concept of Displacement definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -547,33 +412,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-average-speed-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Average speed calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "average-speed-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "average-speed-calculation",
-                "conceptSlug": "core-average-speed-calculation",
-                "microskillSlug": "understand-average-speed-calculation"
-              }
-            },
-            {
               "id": "kinematics-q-average-speed-calculation-2",
               "question": "Explain an application where using the concept of Average speed calculation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -644,33 +482,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-average-velocity-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Average velocity calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "average-velocity-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "average-velocity-calculation",
-                "conceptSlug": "core-average-velocity-calculation",
-                "microskillSlug": "understand-average-velocity-calculation"
-              }
-            },
             {
               "id": "kinematics-q-average-velocity-calculation-2",
               "question": "Explain an application where using the concept of Average velocity calculation can lead to a common student error.",
@@ -743,33 +554,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-instantaneous-speed-1",
-              "question": "What are the fundamental laws or mechanisms governing Instantaneous speed?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "instantaneous-speed"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "instantaneous-speed",
-                "conceptSlug": "core-instantaneous-speed",
-                "microskillSlug": "understand-instantaneous-speed"
-              }
-            },
             {
               "id": "kinematics-q-instantaneous-speed-2",
               "question": "Explain an application where using the concept of Instantaneous speed can lead to a common student error.",
@@ -855,33 +639,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-instantaneous-velocity-1",
-              "question": "What are the fundamental laws or mechanisms governing Instantaneous velocity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "instantaneous-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "instantaneous-velocity",
-                "conceptSlug": "core-instantaneous-velocity",
-                "microskillSlug": "understand-instantaneous-velocity"
-              }
-            },
-            {
               "id": "kinematics-q-instantaneous-velocity-2",
               "question": "Explain an application where using the concept of Instantaneous velocity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-acceleration-1",
-              "question": "What are the fundamental laws or mechanisms governing Acceleration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "acceleration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "acceleration",
-                "conceptSlug": "core-acceleration",
-                "microskillSlug": "understand-acceleration"
-              }
-            },
             {
               "id": "kinematics-q-acceleration-2",
               "question": "Explain an application where using the concept of Acceleration can lead to a common student error.",
@@ -1052,33 +782,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-retardation-1",
-              "question": "What are the fundamental laws or mechanisms governing Retardation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "retardation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "retardation",
-                "conceptSlug": "core-retardation",
-                "microskillSlug": "understand-retardation"
-              }
-            },
-            {
               "id": "kinematics-q-retardation-2",
               "question": "Explain an application where using the concept of Retardation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1151,34 +854,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-x-t-graph-slope-1",
-              "question": "What are the fundamental laws or mechanisms governing X-t graph slope?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "x-t-graph-slope",
-                "slope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "x-t-graph-slope",
-                "conceptSlug": "core-x-t-graph-slope",
-                "microskillSlug": "understand-x-t-graph-slope"
-              }
-            },
             {
               "id": "kinematics-q-x-t-graph-slope-2",
               "question": "Explain an application where using the concept of X-t graph slope can lead to a common student error.",
@@ -1254,34 +929,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-v-t-graph-slope-1",
-              "question": "What are the fundamental laws or mechanisms governing V-t graph slope?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "v-t-graph-slope",
-                "slope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "v-t-graph-slope",
-                "conceptSlug": "core-v-t-graph-slope",
-                "microskillSlug": "understand-v-t-graph-slope"
-              }
-            },
-            {
               "id": "kinematics-q-v-t-graph-slope-2",
               "question": "Explain an application where using the concept of V-t graph slope can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1354,34 +1001,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-velocity-time-graph-area-1",
-              "question": "What are the fundamental laws or mechanisms governing Velocity-time graph area?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "velocity-time-graph-area",
-                "area"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "velocity-time-graph-area",
-                "conceptSlug": "core-velocity-time-graph-area",
-                "microskillSlug": "understand-velocity-time-graph-area"
-              }
-            },
             {
               "id": "kinematics-q-velocity-time-graph-area-2",
               "question": "Explain an application where using the concept of Velocity-time graph area can lead to a common student error.",
@@ -1457,34 +1076,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-a-t-graph-area-1",
-              "question": "What are the fundamental laws or mechanisms governing A-t graph area?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "a-t-graph-area",
-                "area"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "a-t-graph-area",
-                "conceptSlug": "core-a-t-graph-area",
-                "microskillSlug": "understand-a-t-graph-area"
-              }
-            },
-            {
               "id": "kinematics-q-a-t-graph-area-2",
               "question": "Explain an application where using the concept of A-t graph area can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1557,33 +1148,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-uniform-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Uniform motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "uniform-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "uniform-motion",
-                "conceptSlug": "core-uniform-motion",
-                "microskillSlug": "understand-uniform-motion"
-              }
-            },
             {
               "id": "kinematics-q-uniform-motion-2",
               "question": "Explain an application where using the concept of Uniform motion can lead to a common student error.",
@@ -1670,33 +1234,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-non-uniform-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Non-uniform motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "non-uniform-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "non-uniform-motion",
-                "conceptSlug": "core-non-uniform-motion",
-                "microskillSlug": "understand-non-uniform-motion"
-              }
-            },
-            {
               "id": "kinematics-q-non-uniform-motion-2",
               "question": "Explain an application where using the concept of Non-uniform motion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1768,33 +1305,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-equations-of-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Equations of motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "equations-of-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "equations-of-motion",
-                "conceptSlug": "core-equations-of-motion",
-                "microskillSlug": "understand-equations-of-motion"
-              }
-            },
             {
               "id": "kinematics-q-equations-of-motion-2",
               "question": "Explain an application where using the concept of Equations of motion can lead to a common student error.",
@@ -1868,33 +1378,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-free-fall-1",
-              "question": "What are the fundamental laws or mechanisms governing Free fall?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "free-fall"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "free-fall",
-                "conceptSlug": "core-free-fall",
-                "microskillSlug": "understand-free-fall"
-              }
-            },
-            {
               "id": "kinematics-q-free-fall-2",
               "question": "Explain an application where using the concept of Free fall can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1966,33 +1449,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-vertical-motion-sign-convention-1",
-              "question": "What are the fundamental laws or mechanisms governing Vertical motion sign convention?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "vertical-motion-sign-convention"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "vertical-motion-sign-convention",
-                "conceptSlug": "core-vertical-motion-sign-convention",
-                "microskillSlug": "understand-vertical-motion-sign-convention"
-              }
-            },
             {
               "id": "kinematics-q-vertical-motion-sign-convention-2",
               "question": "Explain an application where using the concept of Vertical motion sign convention can lead to a common student error.",
@@ -2066,33 +1522,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-scalar-vs-vector-1",
-              "question": "What are the fundamental laws or mechanisms governing Scalar vs vector?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "scalar-vs-vector"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "scalar-vs-vector",
-                "conceptSlug": "core-scalar-vs-vector",
-                "microskillSlug": "understand-scalar-vs-vector"
-              }
-            },
-            {
               "id": "kinematics-q-scalar-vs-vector-2",
               "question": "Explain an application where using the concept of Scalar vs vector can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2164,33 +1593,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-vector-addition-rules-1",
-              "question": "What are the fundamental laws or mechanisms governing Vector addition rules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "vector-addition-rules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "vector-addition-rules",
-                "conceptSlug": "core-vector-addition-rules",
-                "microskillSlug": "understand-vector-addition-rules"
-              }
-            },
             {
               "id": "kinematics-q-vector-addition-rules-2",
               "question": "Explain an application where using the concept of Vector addition rules can lead to a common student error.",
@@ -2264,33 +1666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-vector-subtraction-1",
-              "question": "What are the fundamental laws or mechanisms governing Vector subtraction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "vector-subtraction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "vector-subtraction",
-                "conceptSlug": "core-vector-subtraction",
-                "microskillSlug": "understand-vector-subtraction"
-              }
-            },
-            {
               "id": "kinematics-q-vector-subtraction-2",
               "question": "Explain an application where using the concept of Vector subtraction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2362,33 +1737,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-unit-vectors-and-resolution-1",
-              "question": "What are the fundamental laws or mechanisms governing Unit vectors and resolution?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "unit-vectors-and-resolution"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "unit-vectors-and-resolution",
-                "conceptSlug": "core-unit-vectors-and-resolution",
-                "microskillSlug": "understand-unit-vectors-and-resolution"
-              }
-            },
             {
               "id": "kinematics-q-unit-vectors-and-resolution-2",
               "question": "Explain an application where using the concept of Unit vectors and resolution can lead to a common student error.",
@@ -2475,33 +1823,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-dot-product-1",
-              "question": "What are the fundamental laws or mechanisms governing Dot product?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "dot-product"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "dot-product",
-                "conceptSlug": "core-dot-product",
-                "microskillSlug": "understand-dot-product"
-              }
-            },
-            {
               "id": "kinematics-q-dot-product-2",
               "question": "Explain an application where using the concept of Dot product can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2574,33 +1895,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-cross-product-1",
-              "question": "What are the fundamental laws or mechanisms governing Cross product?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "cross-product"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "cross-product",
-                "conceptSlug": "core-cross-product",
-                "microskillSlug": "understand-cross-product"
-              }
-            },
-            {
               "id": "kinematics-q-cross-product-2",
               "question": "Explain an application where using the concept of Cross product can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2672,33 +1966,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-relative-velocity-in-1d-1",
-              "question": "What are the fundamental laws or mechanisms governing Relative velocity in 1D?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "relative-velocity-in-1d"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "relative-velocity-in-1d",
-                "conceptSlug": "core-relative-velocity-in-1d",
-                "microskillSlug": "understand-relative-velocity-in-1d"
-              }
-            },
-            {
               "id": "kinematics-q-relative-velocity-in-1d-2",
               "question": "Explain an application where using the concept of Relative velocity in 1D can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2769,33 +2036,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-relative-velocity-in-2d-1",
-              "question": "What are the fundamental laws or mechanisms governing Relative velocity in 2D?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "relative-velocity-in-2d"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "relative-velocity-in-2d",
-                "conceptSlug": "core-relative-velocity-in-2d",
-                "microskillSlug": "understand-relative-velocity-in-2d"
-              }
-            },
             {
               "id": "kinematics-q-relative-velocity-in-2d-2",
               "question": "Explain an application where using the concept of Relative velocity in 2D can lead to a common student error.",
@@ -2869,33 +2109,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-projectile-motion-parameters-1",
-              "question": "What are the fundamental laws or mechanisms governing Projectile motion parameters?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "projectile-motion-parameters"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "projectile-motion-parameters",
-                "conceptSlug": "core-projectile-motion-parameters",
-                "microskillSlug": "understand-projectile-motion-parameters"
-              }
-            },
-            {
               "id": "kinematics-q-projectile-motion-parameters-2",
               "question": "Explain an application where using the concept of Projectile motion parameters can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2967,33 +2180,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-time-of-flight-1",
-              "question": "What are the fundamental laws or mechanisms governing Time of flight?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "time-of-flight"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "time-of-flight",
-                "conceptSlug": "core-time-of-flight",
-                "microskillSlug": "understand-time-of-flight"
-              }
-            },
             {
               "id": "kinematics-q-time-of-flight-2",
               "question": "Explain an application where using the concept of Time of flight can lead to a common student error.",
@@ -3067,33 +2253,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-range-1",
-              "question": "What are the fundamental laws or mechanisms governing Range?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "range"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "range",
-                "conceptSlug": "core-range",
-                "microskillSlug": "understand-range"
-              }
-            },
-            {
               "id": "kinematics-q-range-2",
               "question": "Explain an application where using the concept of Range can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3165,33 +2324,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-maximum-height-1",
-              "question": "What are the fundamental laws or mechanisms governing Maximum height?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "maximum-height"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "maximum-height",
-                "conceptSlug": "core-maximum-height",
-                "microskillSlug": "understand-maximum-height"
-              }
-            },
             {
               "id": "kinematics-q-maximum-height-2",
               "question": "Explain an application where using the concept of Maximum height can lead to a common student error.",
@@ -3278,33 +2410,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-projectile-motion-trajectory-1",
-              "question": "What are the fundamental laws or mechanisms governing Projectile motion trajectory?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "projectile-motion-trajectory"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "projectile-motion-trajectory",
-                "conceptSlug": "core-projectile-motion-trajectory",
-                "microskillSlug": "understand-projectile-motion-trajectory"
-              }
-            },
-            {
               "id": "kinematics-q-projectile-motion-trajectory-2",
               "question": "Explain an application where using the concept of Projectile motion trajectory can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3377,33 +2482,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-uniform-circular-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Uniform circular motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "uniform-circular-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "uniform-circular-motion",
-                "conceptSlug": "core-uniform-circular-motion",
-                "microskillSlug": "understand-uniform-circular-motion"
-              }
-            },
-            {
               "id": "kinematics-q-uniform-circular-motion-2",
               "question": "Explain an application where using the concept of Uniform circular motion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3474,33 +2552,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-angular-velocity-1",
-              "question": "What are the fundamental laws or mechanisms governing Angular velocity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "angular-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "angular-velocity",
-                "conceptSlug": "core-angular-velocity",
-                "microskillSlug": "understand-angular-velocity"
-              }
-            },
             {
               "id": "kinematics-q-angular-velocity-2",
               "question": "Explain an application where using the concept of Angular velocity can lead to a common student error.",
@@ -3573,33 +2624,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinematics-q-centripetal-acceleration-1",
-              "question": "What are the fundamental laws or mechanisms governing Centripetal acceleration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "centripetal-acceleration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "centripetal-acceleration",
-                "conceptSlug": "core-centripetal-acceleration",
-                "microskillSlug": "understand-centripetal-acceleration"
-              }
-            },
-            {
               "id": "kinematics-q-centripetal-acceleration-2",
               "question": "Explain an application where using the concept of Centripetal acceleration can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3670,33 +2694,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinematics-q-tangential-acceleration-1",
-              "question": "What are the fundamental laws or mechanisms governing Tangential acceleration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinematics",
-                "tangential-acceleration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinematics",
-                "chapterSlug": "kinematics",
-                "topicSlug": "kinematics",
-                "subtopicSlug": "tangential-acceleration",
-                "conceptSlug": "core-tangential-acceleration",
-                "microskillSlug": "understand-tangential-acceleration"
-              }
-            },
             {
               "id": "kinematics-q-tangential-acceleration-2",
               "question": "Explain an application where using the concept of Tangential acceleration can lead to a common student error.",

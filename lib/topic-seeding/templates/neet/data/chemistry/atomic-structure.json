@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-electromagnetic-radiation-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Electromagnetic radiation properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "electromagnetic-radiation-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "electromagnetic-radiation-properties",
-                "conceptSlug": "core-electromagnetic-radiation-properties",
-                "microskillSlug": "understand-electromagnetic-radiation-properties"
-              }
-            },
-            {
               "id": "atomic-structure-q-electromagnetic-radiation-properties-2",
               "question": "Explain an application where using the concept of Electromagnetic radiation properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-photoelectric-effect-in-chemistry-1",
-              "question": "What are the fundamental laws or mechanisms governing Photoelectric effect in chemistry?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "photoelectric-effect-in-chemistry"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "photoelectric-effect-in-chemistry",
-                "conceptSlug": "core-photoelectric-effect-in-chemistry",
-                "microskillSlug": "understand-photoelectric-effect-in-chemistry"
-              }
-            },
             {
               "id": "atomic-structure-q-photoelectric-effect-in-chemistry-2",
               "question": "Explain an application where using the concept of Photoelectric effect in chemistry can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-hydrogen-line-spectrum-1",
-              "question": "What are the fundamental laws or mechanisms governing Hydrogen line spectrum?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "hydrogen-line-spectrum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "hydrogen-line-spectrum",
-                "conceptSlug": "core-hydrogen-line-spectrum",
-                "microskillSlug": "understand-hydrogen-line-spectrum"
-              }
-            },
-            {
               "id": "atomic-structure-q-hydrogen-line-spectrum-2",
               "question": "Explain an application where using the concept of Hydrogen line spectrum can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-bohr-model-for-hydrogenic-species-1",
-              "question": "What are the fundamental laws or mechanisms governing Bohr model for hydrogenic species?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "bohr-model-for-hydrogenic-species"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "bohr-model-for-hydrogenic-species",
-                "conceptSlug": "core-bohr-model-for-hydrogenic-species",
-                "microskillSlug": "understand-bohr-model-for-hydrogenic-species"
-              }
-            },
             {
               "id": "atomic-structure-q-bohr-model-for-hydrogenic-species-2",
               "question": "Explain an application where using the concept of Bohr model for hydrogenic species can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-radius-and-energy-of-bohr-orbits-1",
-              "question": "What are the fundamental laws or mechanisms governing Radius and energy of Bohr orbits?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "radius-and-energy-of-bohr-orbits"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "radius-and-energy-of-bohr-orbits",
-                "conceptSlug": "core-radius-and-energy-of-bohr-orbits",
-                "microskillSlug": "understand-radius-and-energy-of-bohr-orbits"
-              }
-            },
-            {
               "id": "atomic-structure-q-radius-and-energy-of-bohr-orbits-2",
               "question": "Explain an application where using the concept of Radius and energy of Bohr orbits can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-limitations-of-bohr-model-1",
-              "question": "What are the fundamental laws or mechanisms governing Limitations of Bohr model?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "limitations-of-bohr-model"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "limitations-of-bohr-model",
-                "conceptSlug": "core-limitations-of-bohr-model",
-                "microskillSlug": "understand-limitations-of-bohr-model"
-              }
-            },
             {
               "id": "atomic-structure-q-limitations-of-bohr-model-2",
               "question": "Explain an application where using the concept of Limitations of Bohr model can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-de-broglie-wavelength-relation-1",
-              "question": "What are the fundamental laws or mechanisms governing De Broglie wavelength relation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "de-broglie-wavelength-relation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "de-broglie-wavelength-relation",
-                "conceptSlug": "core-de-broglie-wavelength-relation",
-                "microskillSlug": "understand-de-broglie-wavelength-relation"
-              }
-            },
-            {
               "id": "atomic-structure-q-de-broglie-wavelength-relation-2",
               "question": "Explain an application where using the concept of De Broglie wavelength relation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-heisenberg-uncertainty-principle-chemistry-1",
-              "question": "What are the fundamental laws or mechanisms governing Heisenberg uncertainty principle chemistry?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "heisenberg-uncertainty-principle-chemistry"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "heisenberg-uncertainty-principle-chemistry",
-                "conceptSlug": "core-heisenberg-uncertainty-principle-chemistry",
-                "microskillSlug": "understand-heisenberg-uncertainty-principle-chemistry"
-              }
-            },
             {
               "id": "atomic-structure-q-heisenberg-uncertainty-principle-chemistry-2",
               "question": "Explain an application where using the concept of Heisenberg uncertainty principle chemistry can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-quantum-mechanical-model-of-atom-1",
-              "question": "What are the fundamental laws or mechanisms governing Quantum mechanical model of atom?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "quantum-mechanical-model-of-atom"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "quantum-mechanical-model-of-atom",
-                "conceptSlug": "core-quantum-mechanical-model-of-atom",
-                "microskillSlug": "understand-quantum-mechanical-model-of-atom"
-              }
-            },
-            {
               "id": "atomic-structure-q-quantum-mechanical-model-of-atom-2",
               "question": "Explain an application where using the concept of Quantum mechanical model of atom can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-quantum-numbers-electronic-configuration-1",
-              "question": "What are the fundamental laws or mechanisms governing Quantum numbers/electronic configuration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "quantum-numbers-electronic-configuration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "quantum-numbers-electronic-configuration",
-                "conceptSlug": "core-quantum-numbers-electronic-configuration",
-                "microskillSlug": "understand-quantum-numbers-electronic-configuration"
-              }
-            },
             {
               "id": "atomic-structure-q-quantum-numbers-electronic-configuration-2",
               "question": "Explain an application where using the concept of Quantum numbers/electronic configuration can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-principal-and-azimuthal-quantum-numbers-1",
-              "question": "What are the fundamental laws or mechanisms governing Principal and azimuthal quantum numbers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "principal-and-azimuthal-quantum-numbers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "principal-and-azimuthal-quantum-numbers",
-                "conceptSlug": "core-principal-and-azimuthal-quantum-numbers",
-                "microskillSlug": "understand-principal-and-azimuthal-quantum-numbers"
-              }
-            },
-            {
               "id": "atomic-structure-q-principal-and-azimuthal-quantum-numbers-2",
               "question": "Explain an application where using the concept of Principal and azimuthal quantum numbers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1022,33 +725,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-magnetic-and-spin-quantum-numbers-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic and spin quantum numbers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "magnetic-and-spin-quantum-numbers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "magnetic-and-spin-quantum-numbers",
-                "conceptSlug": "core-magnetic-and-spin-quantum-numbers",
-                "microskillSlug": "understand-magnetic-and-spin-quantum-numbers"
-              }
-            },
             {
               "id": "atomic-structure-q-magnetic-and-spin-quantum-numbers-2",
               "question": "Explain an application where using the concept of Magnetic and spin quantum numbers can lead to a common student error.",
@@ -1123,33 +799,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-shapes-of-s-p-d-orbitals-1",
-              "question": "What are the fundamental laws or mechanisms governing Shapes of s p d orbitals?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "shapes-of-s-p-d-orbitals"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "shapes-of-s-p-d-orbitals",
-                "conceptSlug": "core-shapes-of-s-p-d-orbitals",
-                "microskillSlug": "understand-shapes-of-s-p-d-orbitals"
-              }
-            },
-            {
               "id": "atomic-structure-q-shapes-of-s-p-d-orbitals-2",
               "question": "Explain an application where using the concept of Shapes of s p d orbitals can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1209,33 +858,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-nodes-and-nodal-planes-1",
-              "question": "What are the fundamental laws or mechanisms governing Nodes and nodal planes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "nodes-and-nodal-planes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "nodes-and-nodal-planes",
-                "conceptSlug": "core-nodes-and-nodal-planes",
-                "microskillSlug": "understand-nodes-and-nodal-planes"
-              }
-            },
             {
               "id": "atomic-structure-q-nodes-and-nodal-planes-2",
               "question": "Explain an application where using the concept of Nodes and nodal planes can lead to a common student error.",
@@ -1297,33 +919,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-aufbau-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Aufbau principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "aufbau-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "aufbau-principle",
-                "conceptSlug": "core-aufbau-principle",
-                "microskillSlug": "understand-aufbau-principle"
-              }
-            },
-            {
               "id": "atomic-structure-q-aufbau-principle-2",
               "question": "Explain an application where using the concept of Aufbau principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1383,33 +978,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-pauli-exclusion-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Pauli exclusion principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "pauli-exclusion-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "pauli-exclusion-principle",
-                "conceptSlug": "core-pauli-exclusion-principle",
-                "microskillSlug": "understand-pauli-exclusion-principle"
-              }
-            },
             {
               "id": "atomic-structure-q-pauli-exclusion-principle-2",
               "question": "Explain an application where using the concept of Pauli exclusion principle can lead to a common student error.",
@@ -1484,33 +1052,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-hund-s-rule-of-maximum-multiplicity-1",
-              "question": "What are the fundamental laws or mechanisms governing Hund’s rule of maximum multiplicity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "hund-s-rule-of-maximum-multiplicity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "hund-s-rule-of-maximum-multiplicity",
-                "conceptSlug": "core-hund-s-rule-of-maximum-multiplicity",
-                "microskillSlug": "understand-hund-s-rule-of-maximum-multiplicity"
-              }
-            },
-            {
               "id": "atomic-structure-q-hund-s-rule-of-maximum-multiplicity-2",
               "question": "Explain an application where using the concept of Hund’s rule of maximum multiplicity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1570,33 +1111,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-electronic-configuration-of-elements-1",
-              "question": "What are the fundamental laws or mechanisms governing Electronic configuration of elements?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "electronic-configuration-of-elements"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "electronic-configuration-of-elements",
-                "conceptSlug": "core-electronic-configuration-of-elements",
-                "microskillSlug": "understand-electronic-configuration-of-elements"
-              }
-            },
             {
               "id": "atomic-structure-q-electronic-configuration-of-elements-2",
               "question": "Explain an application where using the concept of Electronic configuration of elements can lead to a common student error.",
@@ -1658,33 +1172,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atomic-structure-q-stability-of-half-filled-and-completely-filled-orbitals-1",
-              "question": "What are the fundamental laws or mechanisms governing Stability of half-filled and completely filled orbitals?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "stability-of-half-filled-and-completely-filled-orbitals"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "stability-of-half-filled-and-completely-filled-orbitals",
-                "conceptSlug": "core-stability-of-half-filled-and-completely-filled-orbitals",
-                "microskillSlug": "understand-stability-of-half-filled-and-completely-filled-orbitals"
-              }
-            },
-            {
               "id": "atomic-structure-q-stability-of-half-filled-and-completely-filled-orbitals-2",
               "question": "Explain an application where using the concept of Stability of half-filled and completely filled orbitals can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1744,33 +1231,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atomic-structure-q-atomic-structure-specific-application-19-1",
-              "question": "What are the fundamental laws or mechanisms governing Atomic Structure Specific Application 19?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atomic-structure",
-                "atomic-structure-specific-application-19"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "atomic-structure",
-                "chapterSlug": "atomic-structure",
-                "topicSlug": "atomic-structure",
-                "subtopicSlug": "atomic-structure-specific-application-19",
-                "conceptSlug": "core-atomic-structure-specific-application-19",
-                "microskillSlug": "understand-atomic-structure-specific-application-19"
-              }
-            },
             {
               "id": "atomic-structure-q-atomic-structure-specific-application-19-2",
               "question": "Explain an application where using the concept of Atomic Structure Specific Application 19 can lead to a common student error.",

@@ -54,6 +54,7 @@ export interface SelectedSeedTemplate {
   source: SeedSource;
   confidence: number;
   targetMicrotargetSlug?: string;
+  targetTopicSlugs?: string[];
 }
 
 export type NeetSubject = "Physics" | "Chemistry" | "Biology";

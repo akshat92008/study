@@ -19,7 +19,7 @@ describe('NEET Goal Normalization', () => {
     expect(explicitPlantGoal.chapterSlug).toBe('neet-biology-plant-physiology');
     
     const humanGoal = normalizeGoal('breathing and exchange of gases');
-    expect(humanGoal.chapterSlug).toBe('neet-biology-human-physiology');
+    expect(humanGoal.chapterSlug).toBe('neet-biology-human-physiology-breathing');
   });
 
   it('should resolve common aliases correctly', () => {
@@ -37,7 +37,7 @@ describe('NEET Goal Normalization', () => {
 
   it('should not match stem inside system', () => {
     const sys = normalizeGoal('circulatory system in humans biology');
-    expect(sys.chapterSlug).toBe('neet-biology-human-physiology');
+    expect(sys.chapterSlug).toBe('neet-biology-human-physiology-circulation');
     
     const particles = normalizeGoal('system of particles');
     expect(particles.chapterSlug).toBe('neet-physics-rotational-motion');
@@ -53,10 +53,10 @@ describe('NEET Goal Normalization', () => {
 
   it('should match circulatory system variations correctly', () => {
     const heart = normalizeGoal('human heart');
-    expect(heart.chapterSlug).toBe('neet-biology-human-physiology');
+    expect(heart.chapterSlug).toBe('neet-biology-human-physiology-circulation');
 
     const blood = normalizeGoal('blood circulation');
-    expect(blood.chapterSlug).toBe('neet-biology-human-physiology');
+    expect(blood.chapterSlug).toBe('neet-biology-human-physiology-circulation');
   });
 
   it('should match specific chemistry and physics aliases', () => {

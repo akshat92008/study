@@ -8,18 +8,90 @@ export default function DashboardError({
   reset: () => void;
 }) {
   return (
-    <div style={{ padding: '2rem', background: '#ef4444', color: 'white', minHeight: '100vh', zIndex: 9999, position: 'relative' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>DASHBOARD CRASHED</h1>
-      <p style={{ marginTop: '1rem', fontSize: '1.2rem' }}>{error?.message || "Unknown error"}</p>
-      <pre style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(0,0,0,0.5)', overflow: 'auto' }}>
-        {error?.stack}
-      </pre>
-      <button 
-        onClick={() => reset()}
-        style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: 'white', color: 'black', borderRadius: '4px' }}
-      >
-        Try again
-      </button>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--bg-root, #0a0a0d)',
+      color: 'var(--text-primary, #e2e8f0)',
+      padding: '2rem',
+    }}>
+      <div style={{
+        maxWidth: 480,
+        width: '100%',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.25rem',
+        alignItems: 'center',
+      }}>
+        <div style={{
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: 'rgba(239, 68, 68, 0.1)',
+          border: '1px solid rgba(239, 68, 68, 0.2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 24,
+        }}>
+          ⚠️
+        </div>
+        <h1 style={{
+          fontSize: '1.5rem',
+          fontWeight: 700,
+          margin: 0,
+        }}>
+          Dashboard ran into an issue
+        </h1>
+        <p style={{
+          color: 'var(--text-secondary, #94a3b8)',
+          fontSize: '0.875rem',
+          lineHeight: 1.5,
+          margin: 0,
+        }}>
+          Something went wrong loading this page. Your data is safe — try refreshing.
+          {error?.digest && (
+            <span style={{ display: 'block', marginTop: 8, fontFamily: 'monospace', fontSize: '0.75rem', color: 'var(--text-tertiary, #64748b)' }}>
+              Error ID: {error.digest}
+            </span>
+          )}
+        </p>
+        <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+          <button
+            onClick={() => reset()}
+            style={{
+              padding: '10px 20px',
+              borderRadius: 8,
+              border: 'none',
+              background: 'var(--accent-blue, #3b82f6)',
+              color: 'white',
+              fontWeight: 600,
+              fontSize: '0.875rem',
+              cursor: 'pointer',
+            }}
+          >
+            Try again
+          </button>
+          <button
+            onClick={() => { window.location.href = '/dashboard'; }}
+            style={{
+              padding: '10px 20px',
+              borderRadius: 8,
+              border: '1px solid var(--border-default, #334155)',
+              background: 'transparent',
+              color: 'var(--text-secondary, #94a3b8)',
+              fontWeight: 600,
+              fontSize: '0.875rem',
+              cursor: 'pointer',
+            }}
+          >
+            Reload Dashboard
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

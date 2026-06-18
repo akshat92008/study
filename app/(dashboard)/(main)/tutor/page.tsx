@@ -1,5 +1,2 @@
-import TutorChat from '@/components/tutor/TutorChat';
-
-export default function TutorPage() {
-  return <TutorChat />;
-}
+import { redirect } from 'next/navigation';
+export default function TutorRedirect() { redirect('/chat'); }

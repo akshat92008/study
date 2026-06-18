@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-structure-and-classification-of-amines-1",
-              "question": "What are the fundamental laws or mechanisms governing Structure and classification of amines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "structure-and-classification-of-amines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "structure-and-classification-of-amines",
-                "conceptSlug": "core-structure-and-classification-of-amines",
-                "microskillSlug": "understand-structure-and-classification-of-amines"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-structure-and-classification-of-amines-2",
               "question": "Explain an application where using the concept of Structure and classification of amines can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-nomenclature-of-amines-1",
-              "question": "What are the fundamental laws or mechanisms governing Nomenclature of amines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "nomenclature-of-amines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "nomenclature-of-amines",
-                "conceptSlug": "core-nomenclature-of-amines",
-                "microskillSlug": "understand-nomenclature-of-amines"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-nomenclature-of-amines-2",
               "question": "Explain an application where using the concept of Nomenclature of amines can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-preparation-of-amines-by-reduction-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of amines by reduction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "preparation-of-amines-by-reduction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "preparation-of-amines-by-reduction",
-                "conceptSlug": "core-preparation-of-amines-by-reduction",
-                "microskillSlug": "understand-preparation-of-amines-by-reduction"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-preparation-of-amines-by-reduction-2",
               "question": "Explain an application where using the concept of Preparation of amines by reduction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-preparation-of-amines-by-ammonolysis-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of amines by ammonolysis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "preparation-of-amines-by-ammonolysis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "preparation-of-amines-by-ammonolysis",
-                "conceptSlug": "core-preparation-of-amines-by-ammonolysis",
-                "microskillSlug": "understand-preparation-of-amines-by-ammonolysis"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-preparation-of-amines-by-ammonolysis-2",
               "question": "Explain an application where using the concept of Preparation of amines by ammonolysis can lead to a common student error.",
@@ -449,33 +341,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-gabriel-phthalimide-synthesis-1",
-              "question": "What are the fundamental laws or mechanisms governing Gabriel phthalimide synthesis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "gabriel-phthalimide-synthesis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "gabriel-phthalimide-synthesis",
-                "conceptSlug": "core-gabriel-phthalimide-synthesis",
-                "microskillSlug": "understand-gabriel-phthalimide-synthesis"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-gabriel-phthalimide-synthesis-2",
               "question": "Explain an application where using the concept of Gabriel phthalimide synthesis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -535,33 +400,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-hoffmann-bromamide-degradation-1",
-              "question": "What are the fundamental laws or mechanisms governing Hoffmann bromamide degradation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "hoffmann-bromamide-degradation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "hoffmann-bromamide-degradation",
-                "conceptSlug": "core-hoffmann-bromamide-degradation",
-                "microskillSlug": "understand-hoffmann-bromamide-degradation"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-hoffmann-bromamide-degradation-2",
               "question": "Explain an application where using the concept of Hoffmann bromamide degradation can lead to a common student error.",
@@ -635,33 +473,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-physical-properties-of-amines-1",
-              "question": "What are the fundamental laws or mechanisms governing Physical properties of amines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "physical-properties-of-amines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "physical-properties-of-amines",
-                "conceptSlug": "core-physical-properties-of-amines",
-                "microskillSlug": "understand-physical-properties-of-amines"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-physical-properties-of-amines-2",
               "question": "Explain an application where using the concept of Physical properties of amines can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -733,33 +544,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-basic-character-of-amines-1",
-              "question": "What are the fundamental laws or mechanisms governing Basic character of amines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "basic-character-of-amines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "basic-character-of-amines",
-                "conceptSlug": "core-basic-character-of-amines",
-                "microskillSlug": "understand-basic-character-of-amines"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-basic-character-of-amines-2",
               "question": "Explain an application where using the concept of Basic character of amines can lead to a common student error.",
@@ -846,33 +630,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-alkylation-and-acylation-of-amines-1",
-              "question": "What are the fundamental laws or mechanisms governing Alkylation and acylation of amines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "alkylation-and-acylation-of-amines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "alkylation-and-acylation-of-amines",
-                "conceptSlug": "core-alkylation-and-acylation-of-amines",
-                "microskillSlug": "understand-alkylation-and-acylation-of-amines"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-alkylation-and-acylation-of-amines-2",
               "question": "Explain an application where using the concept of Alkylation and acylation of amines can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -945,33 +702,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-carbylamine-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Carbylamine reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "carbylamine-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "carbylamine-reaction",
-                "conceptSlug": "core-carbylamine-reaction",
-                "microskillSlug": "understand-carbylamine-reaction"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-carbylamine-reaction-2",
               "question": "Explain an application where using the concept of Carbylamine reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1032,33 +762,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-reaction-with-nitrous-acid-1",
-              "question": "What are the fundamental laws or mechanisms governing Reaction with nitrous acid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "reaction-with-nitrous-acid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "reaction-with-nitrous-acid",
-                "conceptSlug": "core-reaction-with-nitrous-acid",
-                "microskillSlug": "understand-reaction-with-nitrous-acid"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-reaction-with-nitrous-acid-2",
               "question": "Explain an application where using the concept of Reaction with nitrous acid can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1118,33 +821,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-reaction-with-arylsulphonyl-chloride-hinsberg-test-1",
-              "question": "What are the fundamental laws or mechanisms governing Reaction with arylsulphonyl chloride (Hinsberg test)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "reaction-with-arylsulphonyl-chloride-hinsberg-test"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "reaction-with-arylsulphonyl-chloride-hinsberg-test",
-                "conceptSlug": "core-reaction-with-arylsulphonyl-chloride-hinsberg-test",
-                "microskillSlug": "understand-reaction-with-arylsulphonyl-chloride-hinsberg-test"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-reaction-with-arylsulphonyl-chloride-hinsberg-test-2",
               "question": "Explain an application where using the concept of Reaction with arylsulphonyl chloride (Hinsberg test) can lead to a common student error.",
@@ -1231,33 +907,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-electrophilic-substitution-in-arylamines-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrophilic substitution in arylamines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "electrophilic-substitution-in-arylamines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "electrophilic-substitution-in-arylamines",
-                "conceptSlug": "core-electrophilic-substitution-in-arylamines",
-                "microskillSlug": "understand-electrophilic-substitution-in-arylamines"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-electrophilic-substitution-in-arylamines-2",
               "question": "Explain an application where using the concept of Electrophilic substitution in arylamines can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1330,33 +979,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-diazonium-salts-preparation-and-stability-1",
-              "question": "What are the fundamental laws or mechanisms governing Diazonium salts preparation and stability?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "diazonium-salts-preparation-and-stability"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "diazonium-salts-preparation-and-stability",
-                "conceptSlug": "core-diazonium-salts-preparation-and-stability",
-                "microskillSlug": "understand-diazonium-salts-preparation-and-stability"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-diazonium-salts-preparation-and-stability-2",
               "question": "Explain an application where using the concept of Diazonium salts preparation and stability can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1416,33 +1038,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-sandmeyer-and-gattermann-reactions-1",
-              "question": "What are the fundamental laws or mechanisms governing Sandmeyer and Gattermann reactions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "sandmeyer-and-gattermann-reactions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "sandmeyer-and-gattermann-reactions",
-                "conceptSlug": "core-sandmeyer-and-gattermann-reactions",
-                "microskillSlug": "understand-sandmeyer-and-gattermann-reactions"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-sandmeyer-and-gattermann-reactions-2",
               "question": "Explain an application where using the concept of Sandmeyer and Gattermann reactions can lead to a common student error.",
@@ -1515,33 +1110,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-replacement-reactions-of-diazonium-group-1",
-              "question": "What are the fundamental laws or mechanisms governing Replacement reactions of diazonium group?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "replacement-reactions-of-diazonium-group"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "replacement-reactions-of-diazonium-group",
-                "conceptSlug": "core-replacement-reactions-of-diazonium-group",
-                "microskillSlug": "understand-replacement-reactions-of-diazonium-group"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-replacement-reactions-of-diazonium-group-2",
               "question": "Explain an application where using the concept of Replacement reactions of diazonium group can lead to a common student error.",
@@ -1628,33 +1196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-coupling-reactions-of-diazonium-salts-1",
-              "question": "What are the fundamental laws or mechanisms governing Coupling reactions of diazonium salts?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "coupling-reactions-of-diazonium-salts"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "coupling-reactions-of-diazonium-salts",
-                "conceptSlug": "core-coupling-reactions-of-diazonium-salts",
-                "microskillSlug": "understand-coupling-reactions-of-diazonium-salts"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-coupling-reactions-of-diazonium-salts-2",
               "question": "Explain an application where using the concept of Coupling reactions of diazonium salts can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1727,33 +1268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-importance-of-diazonium-salts-in-synthesis-1",
-              "question": "What are the fundamental laws or mechanisms governing Importance of diazonium salts in synthesis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "importance-of-diazonium-salts-in-synthesis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "importance-of-diazonium-salts-in-synthesis",
-                "conceptSlug": "core-importance-of-diazonium-salts-in-synthesis",
-                "microskillSlug": "understand-importance-of-diazonium-salts-in-synthesis"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-importance-of-diazonium-salts-in-synthesis-2",
               "question": "Explain an application where using the concept of Importance of diazonium salts in synthesis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1814,33 +1328,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "nitrogen-containing-compounds-q-cyanides-and-isocyanides-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Cyanides and isocyanides properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "cyanides-and-isocyanides-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "cyanides-and-isocyanides-properties",
-                "conceptSlug": "core-cyanides-and-isocyanides-properties",
-                "microskillSlug": "understand-cyanides-and-isocyanides-properties"
-              }
-            },
-            {
               "id": "nitrogen-containing-compounds-q-cyanides-and-isocyanides-properties-2",
               "question": "Explain an application where using the concept of Cyanides and isocyanides properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1900,33 +1387,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "nitrogen-containing-compounds-q-organic-compounds-containing-nitrogen-specific-application-19-1",
-              "question": "What are the fundamental laws or mechanisms governing Organic Compounds Containing Nitrogen Specific Application 19?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "nitrogen-containing-compounds",
-                "organic-compounds-containing-nitrogen-specific-application-19"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "nitrogen-containing-compounds",
-                "chapterSlug": "nitrogen-containing-compounds",
-                "topicSlug": "nitrogen-containing-compounds",
-                "subtopicSlug": "organic-compounds-containing-nitrogen-specific-application-19",
-                "conceptSlug": "core-organic-compounds-containing-nitrogen-specific-application-19",
-                "microskillSlug": "understand-organic-compounds-containing-nitrogen-specific-application-19"
-              }
-            },
             {
               "id": "nitrogen-containing-compounds-q-organic-compounds-containing-nitrogen-specific-application-19-2",
               "question": "Explain an application where using the concept of Organic Compounds Containing Nitrogen Specific Application 19 can lead to a common student error.",

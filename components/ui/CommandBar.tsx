@@ -4,7 +4,7 @@ import { useAppStore } from '@/stores/appStore';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Modal from './Modal';
-import { Search, Home, MessageSquare, Brain, RefreshCw, Activity } from 'lucide-react';
+import { Search, Home, MessageSquare, Activity, Settings } from 'lucide-react';
 
 export default function CommandBar() {
   const { isCommandBarOpen, setCommandBarOpen } = useAppStore();
@@ -23,11 +23,10 @@ export default function CommandBar() {
   }, [isCommandBarOpen, setCommandBarOpen]);
 
   const actions = [
-    { name: "Today's Mission", icon: Home, route: '/dashboard' },
-    { name: 'AI Tutor', icon: MessageSquare, route: '/chat' },
-    { name: 'Mistake Review', icon: Activity, route: '/autopsy' },
-    { name: 'Progress', icon: Brain, route: '/cognition' },
-    { name: 'Review', icon: RefreshCw, route: '/revision' }
+    { name: 'Dashboard', icon: Home, route: '/dashboard' },
+    { name: 'Tutor', icon: MessageSquare, route: '/chat' },
+    { name: 'Mistake Review', icon: Activity, route: '/autopsy/deep' },
+    { name: 'Settings', icon: Settings, route: '/settings' }
   ];
 
   const filtered = actions.filter(a => a.name.toLowerCase().includes(query.toLowerCase()));

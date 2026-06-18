@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-1",
-              "question": "What are the fundamental laws or mechanisms governing Rutherford alpha scattering?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "rutherford-alpha-scattering"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "rutherford-alpha-scattering",
-                "conceptSlug": "core-rutherford-alpha-scattering",
-                "microskillSlug": "understand-rutherford-alpha-scattering"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-rutherford-alpha-scattering-2",
               "question": "Explain an application where using the concept of Rutherford alpha scattering can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-rutherford-model-limitations-1",
-              "question": "What are the fundamental laws or mechanisms governing Rutherford model limitations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "rutherford-model-limitations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "rutherford-model-limitations",
-                "conceptSlug": "core-rutherford-model-limitations",
-                "microskillSlug": "understand-rutherford-model-limitations"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-rutherford-model-limitations-2",
               "question": "Explain an application where using the concept of Rutherford model limitations can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-1",
-              "question": "What are the fundamental laws or mechanisms governing Bohr model/hydrogen spectrum?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "bohr-model-hydrogen-spectrum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "bohr-model-hydrogen-spectrum",
-                "conceptSlug": "core-bohr-model-hydrogen-spectrum",
-                "microskillSlug": "understand-bohr-model-hydrogen-spectrum"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-bohr-model-hydrogen-spectrum-2",
               "question": "Explain an application where using the concept of Bohr model/hydrogen spectrum can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy levels in hydrogen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "energy-levels-in-hydrogen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "energy-levels-in-hydrogen",
-                "conceptSlug": "core-energy-levels-in-hydrogen",
-                "microskillSlug": "understand-energy-levels-in-hydrogen"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-energy-levels-in-hydrogen-2",
               "question": "Explain an application where using the concept of Energy levels in hydrogen can lead to a common student error.",
@@ -460,33 +352,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-1",
-              "question": "What are the fundamental laws or mechanisms governing Radius of Bohr orbit?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "radius-of-bohr-orbit"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radius-of-bohr-orbit",
-                "conceptSlug": "core-radius-of-bohr-orbit",
-                "microskillSlug": "understand-radius-of-bohr-orbit"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-radius-of-bohr-orbit-2",
               "question": "Explain an application where using the concept of Radius of Bohr orbit can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -558,33 +423,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-spectral-series-1",
-              "question": "What are the fundamental laws or mechanisms governing Spectral series?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "spectral-series"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "spectral-series",
-                "conceptSlug": "core-spectral-series",
-                "microskillSlug": "understand-spectral-series"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-spectral-series-2",
               "question": "Explain an application where using the concept of Spectral series can lead to a common student error.",
@@ -658,33 +496,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-nuclear-composition-1",
-              "question": "What are the fundamental laws or mechanisms governing Nuclear composition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "nuclear-composition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "nuclear-composition",
-                "conceptSlug": "core-nuclear-composition",
-                "microskillSlug": "understand-nuclear-composition"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-nuclear-composition-2",
               "question": "Explain an application where using the concept of Nuclear composition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -756,33 +567,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-1",
-              "question": "What are the fundamental laws or mechanisms governing Isotopes isobars isotones?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "isotopes-isobars-isotones"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "isotopes-isobars-isotones",
-                "conceptSlug": "core-isotopes-isobars-isotones",
-                "microskillSlug": "understand-isotopes-isobars-isotones"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-isotopes-isobars-isotones-2",
               "question": "Explain an application where using the concept of Isotopes isobars isotones can lead to a common student error.",
@@ -869,33 +653,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-nuclear-size-and-density-1",
-              "question": "What are the fundamental laws or mechanisms governing Nuclear size and density?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "nuclear-size-and-density"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "nuclear-size-and-density",
-                "conceptSlug": "core-nuclear-size-and-density",
-                "microskillSlug": "understand-nuclear-size-and-density"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-nuclear-size-and-density-2",
               "question": "Explain an application where using the concept of Nuclear size and density can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -968,33 +725,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-mass-defect-1",
-              "question": "What are the fundamental laws or mechanisms governing Mass defect?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "mass-defect"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mass-defect",
-                "conceptSlug": "core-mass-defect",
-                "microskillSlug": "understand-mass-defect"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-mass-defect-2",
               "question": "Explain an application where using the concept of Mass defect can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1065,33 +795,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-1",
-              "question": "What are the fundamental laws or mechanisms governing Nuclear binding energy per nucleon?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "nuclear-binding-energy-per-nucleon"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "nuclear-binding-energy-per-nucleon",
-                "conceptSlug": "core-nuclear-binding-energy-per-nucleon",
-                "microskillSlug": "understand-nuclear-binding-energy-per-nucleon"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-nuclear-binding-energy-per-nucleon-2",
               "question": "Explain an application where using the concept of Nuclear binding energy per nucleon can lead to a common student error.",
@@ -1164,33 +867,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-radioactivity-laws-1",
-              "question": "What are the fundamental laws or mechanisms governing Radioactivity laws?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "radioactivity-laws"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "radioactivity-laws",
-                "conceptSlug": "core-radioactivity-laws",
-                "microskillSlug": "understand-radioactivity-laws"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-radioactivity-laws-2",
               "question": "Explain an application where using the concept of Radioactivity laws can lead to a common student error.",
@@ -1277,33 +953,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-alpha-decay-1",
-              "question": "What are the fundamental laws or mechanisms governing Alpha decay?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "alpha-decay"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "alpha-decay",
-                "conceptSlug": "core-alpha-decay",
-                "microskillSlug": "understand-alpha-decay"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-alpha-decay-2",
               "question": "Explain an application where using the concept of Alpha decay can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1375,33 +1024,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-beta-decay-1",
-              "question": "What are the fundamental laws or mechanisms governing Beta decay?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "beta-decay"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "beta-decay",
-                "conceptSlug": "core-beta-decay",
-                "microskillSlug": "understand-beta-decay"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-beta-decay-2",
               "question": "Explain an application where using the concept of Beta decay can lead to a common student error.",
@@ -1475,33 +1097,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-gamma-decay-1",
-              "question": "What are the fundamental laws or mechanisms governing Gamma decay?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "gamma-decay"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "gamma-decay",
-                "conceptSlug": "core-gamma-decay",
-                "microskillSlug": "understand-gamma-decay"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-gamma-decay-2",
               "question": "Explain an application where using the concept of Gamma decay can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1573,33 +1168,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-half-life-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Half-life definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "half-life-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "half-life-definition",
-                "conceptSlug": "core-half-life-definition",
-                "microskillSlug": "understand-half-life-definition"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-half-life-definition-2",
               "question": "Explain an application where using the concept of Half-life definition can lead to a common student error.",
@@ -1686,33 +1254,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-mean-life-1",
-              "question": "What are the fundamental laws or mechanisms governing Mean life?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "mean-life"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "mean-life",
-                "conceptSlug": "core-mean-life",
-                "microskillSlug": "understand-mean-life"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-mean-life-2",
               "question": "Explain an application where using the concept of Mean life can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1784,33 +1325,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-nuclear-fission-1",
-              "question": "What are the fundamental laws or mechanisms governing Nuclear fission?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "nuclear-fission"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "nuclear-fission",
-                "conceptSlug": "core-nuclear-fission",
-                "microskillSlug": "understand-nuclear-fission"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-nuclear-fission-2",
               "question": "Explain an application where using the concept of Nuclear fission can lead to a common student error.",
@@ -1884,33 +1398,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "atoms-and-nuclei-q-nuclear-fusion-1",
-              "question": "What are the fundamental laws or mechanisms governing Nuclear fusion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "nuclear-fusion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "nuclear-fusion",
-                "conceptSlug": "core-nuclear-fusion",
-                "microskillSlug": "understand-nuclear-fusion"
-              }
-            },
-            {
               "id": "atoms-and-nuclei-q-nuclear-fusion-2",
               "question": "Explain an application where using the concept of Nuclear fusion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1981,33 +1468,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "atoms-and-nuclei-q-stellar-energy-source-1",
-              "question": "What are the fundamental laws or mechanisms governing Stellar energy source?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "atoms-and-nuclei",
-                "stellar-energy-source"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "atoms-and-nuclei",
-                "chapterSlug": "atoms-and-nuclei",
-                "topicSlug": "atoms-and-nuclei",
-                "subtopicSlug": "stellar-energy-source",
-                "conceptSlug": "core-stellar-energy-source",
-                "microskillSlug": "understand-stellar-energy-source"
-              }
-            },
             {
               "id": "atoms-and-nuclei-q-stellar-energy-source-2",
               "question": "Explain an application where using the concept of Stellar energy source can lead to a common student error.",

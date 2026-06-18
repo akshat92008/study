@@ -51,33 +51,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-work-done-by-constant-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Work done by constant force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "work-done-by-constant-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "work-done-by-constant-force",
-                "conceptSlug": "core-work-done-by-constant-force",
-                "microskillSlug": "understand-work-done-by-constant-force"
-              }
-            },
-            {
               "id": "work-energy-power-q-work-done-by-constant-force-2",
               "question": "Explain an application where using the concept of Work done by constant force can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -148,33 +121,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-work-done-by-variable-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Work done by variable force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "work-done-by-variable-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "work-done-by-variable-force",
-                "conceptSlug": "core-work-done-by-variable-force",
-                "microskillSlug": "understand-work-done-by-variable-force"
-              }
-            },
             {
               "id": "work-energy-power-q-work-done-by-variable-force-2",
               "question": "Explain an application where using the concept of Work done by variable force can lead to a common student error.",
@@ -247,33 +193,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-work-calculation-from-f-x-graph-1",
-              "question": "What are the fundamental laws or mechanisms governing Work calculation from F-x graph?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "work-calculation-from-f-x-graph"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "work-calculation-from-f-x-graph",
-                "conceptSlug": "core-work-calculation-from-f-x-graph",
-                "microskillSlug": "understand-work-calculation-from-f-x-graph"
-              }
-            },
-            {
               "id": "work-energy-power-q-work-calculation-from-f-x-graph-2",
               "question": "Explain an application where using the concept of Work calculation from F-x graph can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -344,33 +263,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-kinetic-energy-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Kinetic energy formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "kinetic-energy-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "kinetic-energy-formula",
-                "conceptSlug": "core-kinetic-energy-formula",
-                "microskillSlug": "understand-kinetic-energy-formula"
-              }
-            },
             {
               "id": "work-energy-power-q-kinetic-energy-formula-2",
               "question": "Explain an application where using the concept of Kinetic energy formula can lead to a common student error.",
@@ -456,33 +348,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-work-energy-theorem-1",
-              "question": "What are the fundamental laws or mechanisms governing Work-energy theorem?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "work-energy-theorem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "work-energy-theorem",
-                "conceptSlug": "core-work-energy-theorem",
-                "microskillSlug": "understand-work-energy-theorem"
-              }
-            },
-            {
               "id": "work-energy-power-q-work-energy-theorem-2",
               "question": "Explain an application where using the concept of Work-energy theorem can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -553,33 +418,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-potential-energy-of-conservative-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Potential energy of conservative force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "potential-energy-of-conservative-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "potential-energy-of-conservative-force",
-                "conceptSlug": "core-potential-energy-of-conservative-force",
-                "microskillSlug": "understand-potential-energy-of-conservative-force"
-              }
-            },
             {
               "id": "work-energy-power-q-potential-energy-of-conservative-force-2",
               "question": "Explain an application where using the concept of Potential energy of conservative force can lead to a common student error.",
@@ -652,33 +490,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-conservative-vs-non-conservative-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Conservative vs non-conservative force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "conservative-vs-non-conservative-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "conservative-vs-non-conservative-force",
-                "conceptSlug": "core-conservative-vs-non-conservative-force",
-                "microskillSlug": "understand-conservative-vs-non-conservative-force"
-              }
-            },
-            {
               "id": "work-energy-power-q-conservative-vs-non-conservative-force-2",
               "question": "Explain an application where using the concept of Conservative vs non-conservative force can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -749,33 +560,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-spring-potential-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Spring potential energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "spring-potential-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "spring-potential-energy",
-                "conceptSlug": "core-spring-potential-energy",
-                "microskillSlug": "understand-spring-potential-energy"
-              }
-            },
             {
               "id": "work-energy-power-q-spring-potential-energy-2",
               "question": "Explain an application where using the concept of Spring potential energy can lead to a common student error.",
@@ -861,33 +645,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-mechanical-energy-conservation-1",
-              "question": "What are the fundamental laws or mechanisms governing Mechanical energy conservation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "mechanical-energy-conservation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "mechanical-energy-conservation",
-                "conceptSlug": "core-mechanical-energy-conservation",
-                "microskillSlug": "understand-mechanical-energy-conservation"
-              }
-            },
-            {
               "id": "work-energy-power-q-mechanical-energy-conservation-2",
               "question": "Explain an application where using the concept of Mechanical energy conservation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -959,33 +716,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-power-definition-and-units-1",
-              "question": "What are the fundamental laws or mechanisms governing Power definition and units?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "power-definition-and-units"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "power-definition-and-units",
-                "conceptSlug": "core-power-definition-and-units",
-                "microskillSlug": "understand-power-definition-and-units"
-              }
-            },
             {
               "id": "work-energy-power-q-power-definition-and-units-2",
               "question": "Explain an application where using the concept of Power definition and units can lead to a common student error.",
@@ -1059,33 +789,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-collision-terminology-1",
-              "question": "What are the fundamental laws or mechanisms governing Collision terminology?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "collision-terminology"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "collision-terminology",
-                "conceptSlug": "core-collision-terminology",
-                "microskillSlug": "understand-collision-terminology"
-              }
-            },
-            {
               "id": "work-energy-power-q-collision-terminology-2",
               "question": "Explain an application where using the concept of Collision terminology can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1157,33 +860,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-elastic-collision-in-1d-1",
-              "question": "What are the fundamental laws or mechanisms governing Elastic collision in 1D?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "elastic-collision-in-1d"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "elastic-collision-in-1d",
-                "conceptSlug": "core-elastic-collision-in-1d",
-                "microskillSlug": "understand-elastic-collision-in-1d"
-              }
-            },
             {
               "id": "work-energy-power-q-elastic-collision-in-1d-2",
               "question": "Explain an application where using the concept of Elastic collision in 1D can lead to a common student error.",
@@ -1270,33 +946,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-inelastic-collision-1",
-              "question": "What are the fundamental laws or mechanisms governing Inelastic collision?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "inelastic-collision"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "inelastic-collision",
-                "conceptSlug": "core-inelastic-collision",
-                "microskillSlug": "understand-inelastic-collision"
-              }
-            },
-            {
               "id": "work-energy-power-q-inelastic-collision-2",
               "question": "Explain an application where using the concept of Inelastic collision can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1368,33 +1017,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-coefficient-of-restitution-1",
-              "question": "What are the fundamental laws or mechanisms governing Coefficient of restitution?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "coefficient-of-restitution"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "coefficient-of-restitution",
-                "conceptSlug": "core-coefficient-of-restitution",
-                "microskillSlug": "understand-coefficient-of-restitution"
-              }
-            },
             {
               "id": "work-energy-power-q-coefficient-of-restitution-2",
               "question": "Explain an application where using the concept of Coefficient of restitution can lead to a common student error.",
@@ -1468,33 +1090,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-perfectly-inelastic-collision-1",
-              "question": "What are the fundamental laws or mechanisms governing Perfectly inelastic collision?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "perfectly-inelastic-collision"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "perfectly-inelastic-collision",
-                "conceptSlug": "core-perfectly-inelastic-collision",
-                "microskillSlug": "understand-perfectly-inelastic-collision"
-              }
-            },
-            {
               "id": "work-energy-power-q-perfectly-inelastic-collision-2",
               "question": "Explain an application where using the concept of Perfectly inelastic collision can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1566,33 +1161,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-collision-in-2d-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Collision in 2D basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "collision-in-2d-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "collision-in-2d-basics",
-                "conceptSlug": "core-collision-in-2d-basics",
-                "microskillSlug": "understand-collision-in-2d-basics"
-              }
-            },
             {
               "id": "work-energy-power-q-collision-in-2d-basics-2",
               "question": "Explain an application where using the concept of Collision in 2D basics can lead to a common student error.",
@@ -1679,33 +1247,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-vertical-circle-dynamics-1",
-              "question": "What are the fundamental laws or mechanisms governing Vertical circle dynamics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "vertical-circle-dynamics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "vertical-circle-dynamics",
-                "conceptSlug": "core-vertical-circle-dynamics",
-                "microskillSlug": "understand-vertical-circle-dynamics"
-              }
-            },
-            {
               "id": "work-energy-power-q-vertical-circle-dynamics-2",
               "question": "Explain an application where using the concept of Vertical circle dynamics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1777,33 +1318,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-minimum-speed-at-highest-point-1",
-              "question": "What are the fundamental laws or mechanisms governing Minimum speed at highest point?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "minimum-speed-at-highest-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "minimum-speed-at-highest-point",
-                "conceptSlug": "core-minimum-speed-at-highest-point",
-                "microskillSlug": "understand-minimum-speed-at-highest-point"
-              }
-            },
             {
               "id": "work-energy-power-q-minimum-speed-at-highest-point-2",
               "question": "Explain an application where using the concept of Minimum speed at highest point can lead to a common student error.",
@@ -1877,33 +1391,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "work-energy-power-q-minimum-speed-at-lowest-point-1",
-              "question": "What are the fundamental laws or mechanisms governing Minimum speed at lowest point?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "minimum-speed-at-lowest-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "minimum-speed-at-lowest-point",
-                "conceptSlug": "core-minimum-speed-at-lowest-point",
-                "microskillSlug": "understand-minimum-speed-at-lowest-point"
-              }
-            },
-            {
               "id": "work-energy-power-q-minimum-speed-at-lowest-point-2",
               "question": "Explain an application where using the concept of Minimum speed at lowest point can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1974,33 +1461,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "work-energy-power-q-energy-in-vertical-circle-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy in vertical circle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "work-energy-power",
-                "energy-in-vertical-circle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "work-energy-power",
-                "chapterSlug": "work-energy-power",
-                "topicSlug": "work-energy-power",
-                "subtopicSlug": "energy-in-vertical-circle",
-                "conceptSlug": "core-energy-in-vertical-circle",
-                "microskillSlug": "understand-energy-in-vertical-circle"
-              }
-            },
             {
               "id": "work-energy-power-q-energy-in-vertical-circle-2",
               "question": "Explain an application where using the concept of Energy in vertical circle can lead to a common student error.",

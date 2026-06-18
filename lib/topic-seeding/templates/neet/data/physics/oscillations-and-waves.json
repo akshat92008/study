@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-periodic-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Periodic motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "periodic-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "periodic-motion",
-                "conceptSlug": "core-periodic-motion",
-                "microskillSlug": "understand-periodic-motion"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-periodic-motion-2",
               "question": "Explain an application where using the concept of Periodic motion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-simple-harmonic-motion-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Simple harmonic motion equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "simple-harmonic-motion-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "simple-harmonic-motion-equation",
-                "conceptSlug": "core-simple-harmonic-motion-equation",
-                "microskillSlug": "understand-simple-harmonic-motion-equation"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-simple-harmonic-motion-equation-2",
               "question": "Explain an application where using the concept of Simple harmonic motion equation can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-amplitude-and-phase-1",
-              "question": "What are the fundamental laws or mechanisms governing Amplitude and phase?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "amplitude-and-phase"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "amplitude-and-phase",
-                "conceptSlug": "core-amplitude-and-phase",
-                "microskillSlug": "understand-amplitude-and-phase"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-amplitude-and-phase-2",
               "question": "Explain an application where using the concept of Amplitude and phase can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-angular-frequency-1",
-              "question": "What are the fundamental laws or mechanisms governing Angular frequency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "angular-frequency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "angular-frequency",
-                "conceptSlug": "core-angular-frequency",
-                "microskillSlug": "understand-angular-frequency"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-angular-frequency-2",
               "question": "Explain an application where using the concept of Angular frequency can lead to a common student error.",
@@ -448,33 +340,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-time-period-and-frequency-1",
-              "question": "What are the fundamental laws or mechanisms governing Time period and frequency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "time-period-and-frequency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "time-period-and-frequency",
-                "conceptSlug": "core-time-period-and-frequency",
-                "microskillSlug": "understand-time-period-and-frequency"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-time-period-and-frequency-2",
               "question": "Explain an application where using the concept of Time period and frequency can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -545,33 +410,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-velocity-in-shm-1",
-              "question": "What are the fundamental laws or mechanisms governing Velocity in SHM?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "velocity-in-shm"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "velocity-in-shm",
-                "conceptSlug": "core-velocity-in-shm",
-                "microskillSlug": "understand-velocity-in-shm"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-velocity-in-shm-2",
               "question": "Explain an application where using the concept of Velocity in SHM can lead to a common student error.",
@@ -657,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-acceleration-in-shm-1",
-              "question": "What are the fundamental laws or mechanisms governing Acceleration in SHM?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "acceleration-in-shm"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "acceleration-in-shm",
-                "conceptSlug": "core-acceleration-in-shm",
-                "microskillSlug": "understand-acceleration-in-shm"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-acceleration-in-shm-2",
               "question": "Explain an application where using the concept of Acceleration in SHM can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -754,33 +565,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-kinetic-and-potential-energy-in-shm-1",
-              "question": "What are the fundamental laws or mechanisms governing Kinetic and potential energy in SHM?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "kinetic-and-potential-energy-in-shm"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "kinetic-and-potential-energy-in-shm",
-                "conceptSlug": "core-kinetic-and-potential-energy-in-shm",
-                "microskillSlug": "understand-kinetic-and-potential-energy-in-shm"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-kinetic-and-potential-energy-in-shm-2",
               "question": "Explain an application where using the concept of Kinetic and potential energy in SHM can lead to a common student error.",
@@ -854,33 +638,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-spring-oscillator-time-period-1",
-              "question": "What are the fundamental laws or mechanisms governing Spring oscillator time period?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "spring-oscillator-time-period"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "spring-oscillator-time-period",
-                "conceptSlug": "core-spring-oscillator-time-period",
-                "microskillSlug": "understand-spring-oscillator-time-period"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-spring-oscillator-time-period-2",
               "question": "Explain an application where using the concept of Spring oscillator time period can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-simple-pendulum-time-period-1",
-              "question": "What are the fundamental laws or mechanisms governing Simple pendulum time period?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "simple-pendulum-time-period"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "simple-pendulum-time-period",
-                "conceptSlug": "core-simple-pendulum-time-period",
-                "microskillSlug": "understand-simple-pendulum-time-period"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-simple-pendulum-time-period-2",
               "question": "Explain an application where using the concept of Simple pendulum time period can lead to a common student error.",
@@ -1053,33 +783,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-damped-oscillations-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Damped oscillations basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "damped-oscillations-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "damped-oscillations-basics",
-                "conceptSlug": "core-damped-oscillations-basics",
-                "microskillSlug": "understand-damped-oscillations-basics"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-damped-oscillations-basics-2",
               "question": "Explain an application where using the concept of Damped oscillations basics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1150,33 +853,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-forced-oscillations-1",
-              "question": "What are the fundamental laws or mechanisms governing Forced oscillations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "forced-oscillations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "forced-oscillations",
-                "conceptSlug": "core-forced-oscillations",
-                "microskillSlug": "understand-forced-oscillations"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-forced-oscillations-2",
               "question": "Explain an application where using the concept of Forced oscillations can lead to a common student error.",
@@ -1263,33 +939,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-resonance-condition-1",
-              "question": "What are the fundamental laws or mechanisms governing Resonance condition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "resonance-condition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "resonance-condition",
-                "conceptSlug": "core-resonance-condition",
-                "microskillSlug": "understand-resonance-condition"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-resonance-condition-2",
               "question": "Explain an application where using the concept of Resonance condition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1360,33 +1009,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-wave-motion-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Wave motion definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "wave-motion-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "wave-motion-definition",
-                "conceptSlug": "core-wave-motion-definition",
-                "microskillSlug": "understand-wave-motion-definition"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-wave-motion-definition-2",
               "question": "Explain an application where using the concept of Wave motion definition can lead to a common student error.",
@@ -1459,33 +1081,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-longitudinal-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Longitudinal waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "longitudinal-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "longitudinal-waves",
-                "conceptSlug": "core-longitudinal-waves",
-                "microskillSlug": "understand-longitudinal-waves"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-longitudinal-waves-2",
               "question": "Explain an application where using the concept of Longitudinal waves can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1556,33 +1151,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-transverse-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Transverse waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "transverse-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "transverse-waves",
-                "conceptSlug": "core-transverse-waves",
-                "microskillSlug": "understand-transverse-waves"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-transverse-waves-2",
               "question": "Explain an application where using the concept of Transverse waves can lead to a common student error.",
@@ -1655,33 +1223,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-wave-speed-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Wave speed formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "wave-speed-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "wave-speed-formula",
-                "conceptSlug": "core-wave-speed-formula",
-                "microskillSlug": "understand-wave-speed-formula"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-wave-speed-formula-2",
               "question": "Explain an application where using the concept of Wave speed formula can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1752,33 +1293,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-progressive-wave-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Progressive wave equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "progressive-wave-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "progressive-wave-equation",
-                "conceptSlug": "core-progressive-wave-equation",
-                "microskillSlug": "understand-progressive-wave-equation"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-progressive-wave-equation-2",
               "question": "Explain an application where using the concept of Progressive wave equation can lead to a common student error.",
@@ -1865,33 +1379,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-superposition-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Superposition principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "superposition-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "superposition-principle",
-                "conceptSlug": "core-superposition-principle",
-                "microskillSlug": "understand-superposition-principle"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-superposition-principle-2",
               "question": "Explain an application where using the concept of Superposition principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1962,33 +1449,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-reflection-of-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Reflection of waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "reflection-of-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "reflection-of-waves",
-                "conceptSlug": "core-reflection-of-waves",
-                "microskillSlug": "understand-reflection-of-waves"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-reflection-of-waves-2",
               "question": "Explain an application where using the concept of Reflection of waves can lead to a common student error.",
@@ -2061,33 +1521,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-standing-waves-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Standing waves formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "standing-waves-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "standing-waves-formation",
-                "conceptSlug": "core-standing-waves-formation",
-                "microskillSlug": "understand-standing-waves-formation"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-standing-waves-formation-2",
               "question": "Explain an application where using the concept of Standing waves formation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2158,33 +1591,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-standing-waves-in-strings-1",
-              "question": "What are the fundamental laws or mechanisms governing Standing waves in strings?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "standing-waves-in-strings"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "standing-waves-in-strings",
-                "conceptSlug": "core-standing-waves-in-strings",
-                "microskillSlug": "understand-standing-waves-in-strings"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-standing-waves-in-strings-2",
               "question": "Explain an application where using the concept of Standing waves in strings can lead to a common student error.",
@@ -2257,33 +1663,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-standing-waves-in-closed-organ-pipes-1",
-              "question": "What are the fundamental laws or mechanisms governing Standing waves in closed organ pipes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "standing-waves-in-closed-organ-pipes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "standing-waves-in-closed-organ-pipes",
-                "conceptSlug": "core-standing-waves-in-closed-organ-pipes",
-                "microskillSlug": "understand-standing-waves-in-closed-organ-pipes"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-standing-waves-in-closed-organ-pipes-2",
               "question": "Explain an application where using the concept of Standing waves in closed organ pipes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2354,33 +1733,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-standing-waves-in-open-organ-pipes-1",
-              "question": "What are the fundamental laws or mechanisms governing Standing waves in open organ pipes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "standing-waves-in-open-organ-pipes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "standing-waves-in-open-organ-pipes",
-                "conceptSlug": "core-standing-waves-in-open-organ-pipes",
-                "microskillSlug": "understand-standing-waves-in-open-organ-pipes"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-standing-waves-in-open-organ-pipes-2",
               "question": "Explain an application where using the concept of Standing waves in open organ pipes can lead to a common student error.",
@@ -2467,33 +1819,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-harmonics-and-overtones-1",
-              "question": "What are the fundamental laws or mechanisms governing Harmonics and overtones?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "harmonics-and-overtones"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "harmonics-and-overtones",
-                "conceptSlug": "core-harmonics-and-overtones",
-                "microskillSlug": "understand-harmonics-and-overtones"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-harmonics-and-overtones-2",
               "question": "Explain an application where using the concept of Harmonics and overtones can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2566,33 +1891,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oscillations-and-waves-q-beats-frequency-1",
-              "question": "What are the fundamental laws or mechanisms governing Beats frequency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "beats-frequency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "beats-frequency",
-                "conceptSlug": "core-beats-frequency",
-                "microskillSlug": "understand-beats-frequency"
-              }
-            },
-            {
               "id": "oscillations-and-waves-q-beats-frequency-2",
               "question": "Explain an application where using the concept of Beats frequency can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2664,33 +1962,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oscillations-and-waves-q-doppler-effect-in-sound-1",
-              "question": "What are the fundamental laws or mechanisms governing Doppler effect in sound?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oscillations-and-waves",
-                "doppler-effect-in-sound"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "oscillations-and-waves",
-                "chapterSlug": "oscillations-and-waves",
-                "topicSlug": "oscillations-and-waves",
-                "subtopicSlug": "doppler-effect-in-sound",
-                "conceptSlug": "core-doppler-effect-in-sound",
-                "microskillSlug": "understand-doppler-effect-in-sound"
-              }
-            },
             {
               "id": "oscillations-and-waves-q-doppler-effect-in-sound-2",
               "question": "Explain an application where using the concept of Doppler effect in sound can lead to a common student error.",

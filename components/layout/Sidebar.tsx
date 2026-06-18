@@ -34,13 +34,9 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
     loadSessions,
   } = useAppStore();
   const navItems = [
-    { label: 'Today', href: '/dashboard', icon: Home },
-    ...(isDeliveredModule('practice_sets') ? [{ label: 'Practice', href: '/chat?intent=practice', icon: BookOpenCheck }] : []),
-    ...(isDeliveredModule('repair') ? [{ label: 'Repair', href: '/mistakes', icon: Wrench }] : []),
-    { label: 'Sources', href: '/knowledge', icon: Database, feature: 'knowledge_ui' },
-    { label: 'Review', href: '/revision', icon: RefreshCw, feature: 'flashcards_ui' },
-    { label: 'Mistake Review', href: '/autopsy', icon: Activity, feature: 'autopsy_ui' },
-    { label: 'Progress', href: '/cognition', icon: Brain, feature: 'atlas_ui' },
+    { label: 'Dashboard', href: '/dashboard', icon: Home },
+    { label: 'Tutor', href: '/chat', icon: MessageCircle },
+    { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'autopsy_ui' },
     { label: 'Settings', href: '/settings', icon: Settings },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature as any));
 

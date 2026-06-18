@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-classification-of-matter-1",
-              "question": "What are the fundamental laws or mechanisms governing Classification of matter?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "classification-of-matter"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "classification-of-matter",
-                "conceptSlug": "core-classification-of-matter",
-                "microskillSlug": "understand-classification-of-matter"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-classification-of-matter-2",
               "question": "Explain an application where using the concept of Classification of matter can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -138,33 +111,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-atoms-and-molecules-1",
-              "question": "What are the fundamental laws or mechanisms governing Atoms and molecules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "atoms-and-molecules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atoms-and-molecules",
-                "conceptSlug": "core-atoms-and-molecules",
-                "microskillSlug": "understand-atoms-and-molecules"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-atoms-and-molecules-2",
               "question": "Explain an application where using the concept of Atoms and molecules can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -224,33 +170,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-elements-and-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Elements and compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "elements-and-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "elements-and-compounds",
-                "conceptSlug": "core-elements-and-compounds",
-                "microskillSlug": "understand-elements-and-compounds"
-              }
-            },
             {
               "id": "some-basic-concepts-q-elements-and-compounds-2",
               "question": "Explain an application where using the concept of Elements and compounds can lead to a common student error.",
@@ -312,33 +231,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-law-of-conservation-of-mass-1",
-              "question": "What are the fundamental laws or mechanisms governing Law of conservation of mass?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "law-of-conservation-of-mass"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "law-of-conservation-of-mass",
-                "conceptSlug": "core-law-of-conservation-of-mass",
-                "microskillSlug": "understand-law-of-conservation-of-mass"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-law-of-conservation-of-mass-2",
               "question": "Explain an application where using the concept of Law of conservation of mass can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -398,33 +290,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-law-of-definite-proportions-1",
-              "question": "What are the fundamental laws or mechanisms governing Law of definite proportions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "law-of-definite-proportions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "law-of-definite-proportions",
-                "conceptSlug": "core-law-of-definite-proportions",
-                "microskillSlug": "understand-law-of-definite-proportions"
-              }
-            },
             {
               "id": "some-basic-concepts-q-law-of-definite-proportions-2",
               "question": "Explain an application where using the concept of Law of definite proportions can lead to a common student error.",
@@ -499,33 +364,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-law-of-multiple-proportions-1",
-              "question": "What are the fundamental laws or mechanisms governing Law of multiple proportions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "law-of-multiple-proportions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "law-of-multiple-proportions",
-                "conceptSlug": "core-law-of-multiple-proportions",
-                "microskillSlug": "understand-law-of-multiple-proportions"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-law-of-multiple-proportions-2",
               "question": "Explain an application where using the concept of Law of multiple proportions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -585,33 +423,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-1",
-              "question": "What are the fundamental laws or mechanisms governing Gay Lussac’s law of gaseous volumes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "gay-lussac-s-law-of-gaseous-volumes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "gay-lussac-s-law-of-gaseous-volumes",
-                "conceptSlug": "core-gay-lussac-s-law-of-gaseous-volumes",
-                "microskillSlug": "understand-gay-lussac-s-law-of-gaseous-volumes"
-              }
-            },
             {
               "id": "some-basic-concepts-q-gay-lussac-s-law-of-gaseous-volumes-2",
               "question": "Explain an application where using the concept of Gay Lussac’s law of gaseous volumes can lead to a common student error.",
@@ -684,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-1",
-              "question": "What are the fundamental laws or mechanisms governing Atomic mass and molecular mass?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "atomic-mass-and-molecular-mass"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "atomic-mass-and-molecular-mass",
-                "conceptSlug": "core-atomic-mass-and-molecular-mass",
-                "microskillSlug": "understand-atomic-mass-and-molecular-mass"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-atomic-mass-and-molecular-mass-2",
               "question": "Explain an application where using the concept of Atomic mass and molecular mass can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -782,33 +566,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-mole-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Mole concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "mole-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "mole-concept",
-                "conceptSlug": "core-mole-concept",
-                "microskillSlug": "understand-mole-concept"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-mole-concept-2",
               "question": "Explain an application where using the concept of Mole concept can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -868,33 +625,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-avogadro-number-application-1",
-              "question": "What are the fundamental laws or mechanisms governing Avogadro number application?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "avogadro-number-application"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "avogadro-number-application",
-                "conceptSlug": "core-avogadro-number-application",
-                "microskillSlug": "understand-avogadro-number-application"
-              }
-            },
             {
               "id": "some-basic-concepts-q-avogadro-number-application-2",
               "question": "Explain an application where using the concept of Avogadro number application can lead to a common student error.",
@@ -969,33 +699,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-molar-mass-calculations-1",
-              "question": "What are the fundamental laws or mechanisms governing Molar mass calculations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "molar-mass-calculations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molar-mass-calculations",
-                "conceptSlug": "core-molar-mass-calculations",
-                "microskillSlug": "understand-molar-mass-calculations"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-molar-mass-calculations-2",
               "question": "Explain an application where using the concept of Molar mass calculations can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1056,33 +759,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-percentage-composition-1",
-              "question": "What are the fundamental laws or mechanisms governing Percentage composition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "percentage-composition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "percentage-composition",
-                "conceptSlug": "core-percentage-composition",
-                "microskillSlug": "understand-percentage-composition"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-percentage-composition-2",
               "question": "Explain an application where using the concept of Percentage composition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1142,33 +818,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-empirical-formula-determination-1",
-              "question": "What are the fundamental laws or mechanisms governing Empirical formula determination?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "empirical-formula-determination"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "empirical-formula-determination",
-                "conceptSlug": "core-empirical-formula-determination",
-                "microskillSlug": "understand-empirical-formula-determination"
-              }
-            },
             {
               "id": "some-basic-concepts-q-empirical-formula-determination-2",
               "question": "Explain an application where using the concept of Empirical formula determination can lead to a common student error.",
@@ -1241,33 +890,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-molecular-formula-determination-1",
-              "question": "What are the fundamental laws or mechanisms governing Molecular formula determination?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "molecular-formula-determination"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molecular-formula-determination",
-                "conceptSlug": "core-molecular-formula-determination",
-                "microskillSlug": "understand-molecular-formula-determination"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-molecular-formula-determination-2",
               "question": "Explain an application where using the concept of Molecular formula determination can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1338,33 +960,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-stoichiometry-calculations-1",
-              "question": "What are the fundamental laws or mechanisms governing Stoichiometry calculations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "stoichiometry-calculations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "stoichiometry-calculations",
-                "conceptSlug": "core-stoichiometry-calculations",
-                "microskillSlug": "understand-stoichiometry-calculations"
-              }
-            },
             {
               "id": "some-basic-concepts-q-stoichiometry-calculations-2",
               "question": "Explain an application where using the concept of Stoichiometry calculations can lead to a common student error.",
@@ -1439,33 +1034,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-limiting-reagent-1",
-              "question": "What are the fundamental laws or mechanisms governing Limiting reagent?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "limiting-reagent"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "limiting-reagent",
-                "conceptSlug": "core-limiting-reagent",
-                "microskillSlug": "understand-limiting-reagent"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-limiting-reagent-2",
               "question": "Explain an application where using the concept of Limiting reagent can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1525,33 +1093,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-reaction-yield-and-purity-1",
-              "question": "What are the fundamental laws or mechanisms governing Reaction yield and purity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "reaction-yield-and-purity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "reaction-yield-and-purity",
-                "conceptSlug": "core-reaction-yield-and-purity",
-                "microskillSlug": "understand-reaction-yield-and-purity"
-              }
-            },
             {
               "id": "some-basic-concepts-q-reaction-yield-and-purity-2",
               "question": "Explain an application where using the concept of Reaction yield and purity can lead to a common student error.",
@@ -1613,33 +1154,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "some-basic-concepts-q-molarity-definition-and-problems-1",
-              "question": "What are the fundamental laws or mechanisms governing Molarity definition and problems?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "molarity-definition-and-problems"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molarity-definition-and-problems",
-                "conceptSlug": "core-molarity-definition-and-problems",
-                "microskillSlug": "understand-molarity-definition-and-problems"
-              }
-            },
-            {
               "id": "some-basic-concepts-q-molarity-definition-and-problems-2",
               "question": "Explain an application where using the concept of Molarity definition and problems can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1699,33 +1213,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-molality-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Molality definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "molality-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "molality-definition",
-                "conceptSlug": "core-molality-definition",
-                "microskillSlug": "understand-molality-definition"
-              }
-            },
             {
               "id": "some-basic-concepts-q-molality-definition-2",
               "question": "Explain an application where using the concept of Molality definition can lead to a common student error.",
@@ -1797,33 +1284,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-mole-fraction-1",
-              "question": "What are the fundamental laws or mechanisms governing Mole fraction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "mole-fraction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "mole-fraction",
-                "conceptSlug": "core-mole-fraction",
-                "microskillSlug": "understand-mole-fraction"
-              }
-            },
             {
               "id": "some-basic-concepts-q-mole-fraction-2",
               "question": "Explain an application where using the concept of Mole fraction can lead to a common student error.",
@@ -1897,33 +1357,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "some-basic-concepts-q-equivalent-mass-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Equivalent mass concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "some-basic-concepts",
-                "equivalent-mass-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "some-basic-concepts",
-                "chapterSlug": "some-basic-concepts",
-                "topicSlug": "some-basic-concepts",
-                "subtopicSlug": "equivalent-mass-concept",
-                "conceptSlug": "core-equivalent-mass-concept",
-                "microskillSlug": "understand-equivalent-mass-concept"
-              }
-            },
             {
               "id": "some-basic-concepts-q-equivalent-mass-concept-2",
               "question": "Explain an application where using the concept of Equivalent mass concept can lead to a common student error.",

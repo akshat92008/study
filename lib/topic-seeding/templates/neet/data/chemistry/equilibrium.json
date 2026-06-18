@@ -53,33 +53,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-equilibrium-in-physical-processes-1",
-              "question": "What are the fundamental laws or mechanisms governing Equilibrium in physical processes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "equilibrium-in-physical-processes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "equilibrium-in-physical-processes",
-                "conceptSlug": "core-equilibrium-in-physical-processes",
-                "microskillSlug": "understand-equilibrium-in-physical-processes"
-              }
-            },
-            {
               "id": "equilibrium-q-equilibrium-in-physical-processes-2",
               "question": "Explain an application where using the concept of Equilibrium in physical processes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -152,33 +125,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-dynamic-nature-of-chemical-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Dynamic nature of chemical equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "dynamic-nature-of-chemical-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "dynamic-nature-of-chemical-equilibrium",
-                "conceptSlug": "core-dynamic-nature-of-chemical-equilibrium",
-                "microskillSlug": "understand-dynamic-nature-of-chemical-equilibrium"
-              }
-            },
             {
               "id": "equilibrium-q-dynamic-nature-of-chemical-equilibrium-2",
               "question": "Explain an application where using the concept of Dynamic nature of chemical equilibrium can lead to a common student error.",
@@ -253,33 +199,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-law-of-chemical-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Law of chemical equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "law-of-chemical-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "law-of-chemical-equilibrium",
-                "conceptSlug": "core-law-of-chemical-equilibrium",
-                "microskillSlug": "understand-law-of-chemical-equilibrium"
-              }
-            },
-            {
               "id": "equilibrium-q-law-of-chemical-equilibrium-2",
               "question": "Explain an application where using the concept of Law of chemical equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -352,33 +271,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-equilibrium-constant-kc-1",
-              "question": "What are the fundamental laws or mechanisms governing Equilibrium constant Kc?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "equilibrium-constant-kc"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "equilibrium-constant-kc",
-                "conceptSlug": "core-equilibrium-constant-kc",
-                "microskillSlug": "understand-equilibrium-constant-kc"
-              }
-            },
             {
               "id": "equilibrium-q-equilibrium-constant-kc-2",
               "question": "Explain an application where using the concept of Equilibrium constant Kc can lead to a common student error.",
@@ -453,33 +345,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-equilibrium-constant-kp-1",
-              "question": "What are the fundamental laws or mechanisms governing Equilibrium constant Kp?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "equilibrium-constant-kp"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "equilibrium-constant-kp",
-                "conceptSlug": "core-equilibrium-constant-kp",
-                "microskillSlug": "understand-equilibrium-constant-kp"
-              }
-            },
-            {
               "id": "equilibrium-q-equilibrium-constant-kp-2",
               "question": "Explain an application where using the concept of Equilibrium constant Kp can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -553,33 +418,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-relation-between-kp-and-kc-1",
-              "question": "What are the fundamental laws or mechanisms governing Relation between Kp and Kc?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "relation-between-kp-and-kc"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "relation-between-kp-and-kc",
-                "conceptSlug": "core-relation-between-kp-and-kc",
-                "microskillSlug": "understand-relation-between-kp-and-kc"
-              }
-            },
-            {
               "id": "equilibrium-q-relation-between-kp-and-kc-2",
               "question": "Explain an application where using the concept of Relation between Kp and Kc can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -640,33 +478,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-reaction-quotient-q-1",
-              "question": "What are the fundamental laws or mechanisms governing Reaction quotient Q?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "reaction-quotient-q"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "reaction-quotient-q",
-                "conceptSlug": "core-reaction-quotient-q",
-                "microskillSlug": "understand-reaction-quotient-q"
-              }
-            },
-            {
               "id": "equilibrium-q-reaction-quotient-q-2",
               "question": "Explain an application where using the concept of Reaction quotient Q can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -726,33 +537,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-le-chatelier-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Le Chatelier principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "le-chatelier-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "le-chatelier-principle",
-                "conceptSlug": "core-le-chatelier-principle",
-                "microskillSlug": "understand-le-chatelier-principle"
-              }
-            },
             {
               "id": "equilibrium-q-le-chatelier-principle-2",
               "question": "Explain an application where using the concept of Le Chatelier principle can lead to a common student error.",
@@ -827,33 +611,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-effect-of-concentration-change-on-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of concentration change on equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "effect-of-concentration-change-on-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "effect-of-concentration-change-on-equilibrium",
-                "conceptSlug": "core-effect-of-concentration-change-on-equilibrium",
-                "microskillSlug": "understand-effect-of-concentration-change-on-equilibrium"
-              }
-            },
-            {
               "id": "equilibrium-q-effect-of-concentration-change-on-equilibrium-2",
               "question": "Explain an application where using the concept of Effect of concentration change on equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -926,33 +683,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-effect-of-pressure-change-on-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of pressure change on equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "effect-of-pressure-change-on-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "effect-of-pressure-change-on-equilibrium",
-                "conceptSlug": "core-effect-of-pressure-change-on-equilibrium",
-                "microskillSlug": "understand-effect-of-pressure-change-on-equilibrium"
-              }
-            },
             {
               "id": "equilibrium-q-effect-of-pressure-change-on-equilibrium-2",
               "question": "Explain an application where using the concept of Effect of pressure change on equilibrium can lead to a common student error.",
@@ -1040,33 +770,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-effect-of-temperature-change-on-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of temperature change on equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "effect-of-temperature-change-on-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "effect-of-temperature-change-on-equilibrium",
-                "conceptSlug": "core-effect-of-temperature-change-on-equilibrium",
-                "microskillSlug": "understand-effect-of-temperature-change-on-equilibrium"
-              }
-            },
-            {
               "id": "equilibrium-q-effect-of-temperature-change-on-equilibrium-2",
               "question": "Explain an application where using the concept of Effect of temperature change on equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1140,33 +843,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-ionic-equilibrium-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionic equilibrium basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "ionic-equilibrium-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "ionic-equilibrium-basics",
-                "conceptSlug": "core-ionic-equilibrium-basics",
-                "microskillSlug": "understand-ionic-equilibrium-basics"
-              }
-            },
-            {
               "id": "equilibrium-q-ionic-equilibrium-basics-2",
               "question": "Explain an application where using the concept of Ionic equilibrium basics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1226,33 +902,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-strong-and-weak-electrolytes-1",
-              "question": "What are the fundamental laws or mechanisms governing Strong and weak electrolytes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "strong-and-weak-electrolytes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "strong-and-weak-electrolytes",
-                "conceptSlug": "core-strong-and-weak-electrolytes",
-                "microskillSlug": "understand-strong-and-weak-electrolytes"
-              }
-            },
             {
               "id": "equilibrium-q-strong-and-weak-electrolytes-2",
               "question": "Explain an application where using the concept of Strong and weak electrolytes can lead to a common student error.",
@@ -1314,33 +963,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-arrhenius-concept-of-acids-and-bases-1",
-              "question": "What are the fundamental laws or mechanisms governing Arrhenius concept of acids and bases?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "arrhenius-concept-of-acids-and-bases"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "arrhenius-concept-of-acids-and-bases",
-                "conceptSlug": "core-arrhenius-concept-of-acids-and-bases",
-                "microskillSlug": "understand-arrhenius-concept-of-acids-and-bases"
-              }
-            },
-            {
               "id": "equilibrium-q-arrhenius-concept-of-acids-and-bases-2",
               "question": "Explain an application where using the concept of Arrhenius concept of acids and bases can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1400,33 +1022,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-bronsted-lowry-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Bronsted-Lowry concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "bronsted-lowry-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "bronsted-lowry-concept",
-                "conceptSlug": "core-bronsted-lowry-concept",
-                "microskillSlug": "understand-bronsted-lowry-concept"
-              }
-            },
             {
               "id": "equilibrium-q-bronsted-lowry-concept-2",
               "question": "Explain an application where using the concept of Bronsted-Lowry concept can lead to a common student error.",
@@ -1501,33 +1096,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-lewis-concept-of-acids-and-bases-1",
-              "question": "What are the fundamental laws or mechanisms governing Lewis concept of acids and bases?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "lewis-concept-of-acids-and-bases"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "lewis-concept-of-acids-and-bases",
-                "conceptSlug": "core-lewis-concept-of-acids-and-bases",
-                "microskillSlug": "understand-lewis-concept-of-acids-and-bases"
-              }
-            },
-            {
               "id": "equilibrium-q-lewis-concept-of-acids-and-bases-2",
               "question": "Explain an application where using the concept of Lewis concept of acids and bases can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1587,33 +1155,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-ionisation-of-weak-acids-ka-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionisation of weak acids Ka?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "ionisation-of-weak-acids-ka"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "ionisation-of-weak-acids-ka",
-                "conceptSlug": "core-ionisation-of-weak-acids-ka",
-                "microskillSlug": "understand-ionisation-of-weak-acids-ka"
-              }
-            },
             {
               "id": "equilibrium-q-ionisation-of-weak-acids-ka-2",
               "question": "Explain an application where using the concept of Ionisation of weak acids Ka can lead to a common student error.",
@@ -1675,33 +1216,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-ionisation-of-weak-bases-kb-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionisation of weak bases Kb?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "ionisation-of-weak-bases-kb"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "ionisation-of-weak-bases-kb",
-                "conceptSlug": "core-ionisation-of-weak-bases-kb",
-                "microskillSlug": "understand-ionisation-of-weak-bases-kb"
-              }
-            },
-            {
               "id": "equilibrium-q-ionisation-of-weak-bases-kb-2",
               "question": "Explain an application where using the concept of Ionisation of weak bases Kb can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1762,33 +1276,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-ionic-product-of-water-kw-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionic product of water Kw?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "ionic-product-of-water-kw"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "ionic-product-of-water-kw",
-                "conceptSlug": "core-ionic-product-of-water-kw",
-                "microskillSlug": "understand-ionic-product-of-water-kw"
-              }
-            },
-            {
               "id": "equilibrium-q-ionic-product-of-water-kw-2",
               "question": "Explain an application where using the concept of Ionic product of water Kw can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1848,33 +1335,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-ph-scale-and-calculations-1",
-              "question": "What are the fundamental laws or mechanisms governing PH scale and calculations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "ph-scale-and-calculations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "ph-scale-and-calculations",
-                "conceptSlug": "core-ph-scale-and-calculations",
-                "microskillSlug": "understand-ph-scale-and-calculations"
-              }
-            },
             {
               "id": "equilibrium-q-ph-scale-and-calculations-2",
               "question": "Explain an application where using the concept of PH scale and calculations can lead to a common student error.",
@@ -1949,33 +1409,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-hydrolysis-of-salts-1",
-              "question": "What are the fundamental laws or mechanisms governing Hydrolysis of salts?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "hydrolysis-of-salts"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "hydrolysis-of-salts",
-                "conceptSlug": "core-hydrolysis-of-salts",
-                "microskillSlug": "understand-hydrolysis-of-salts"
-              }
-            },
-            {
               "id": "equilibrium-q-hydrolysis-of-salts-2",
               "question": "Explain an application where using the concept of Hydrolysis of salts can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2035,33 +1468,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-henderson-hasselbalch-buffer-action-1",
-              "question": "What are the fundamental laws or mechanisms governing Henderson-Hasselbalch/buffer action?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "henderson-hasselbalch-buffer-action"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "henderson-hasselbalch-buffer-action",
-                "conceptSlug": "core-henderson-hasselbalch-buffer-action",
-                "microskillSlug": "understand-henderson-hasselbalch-buffer-action"
-              }
-            },
             {
               "id": "equilibrium-q-henderson-hasselbalch-buffer-action-2",
               "question": "Explain an application where using the concept of Henderson-Hasselbalch/buffer action can lead to a common student error.",
@@ -2123,33 +1529,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "equilibrium-q-solubility-product-1",
-              "question": "What are the fundamental laws or mechanisms governing Solubility product?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "solubility-product"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "solubility-product",
-                "conceptSlug": "core-solubility-product",
-                "microskillSlug": "understand-solubility-product"
-              }
-            },
-            {
               "id": "equilibrium-q-solubility-product-2",
               "question": "Explain an application where using the concept of Solubility product can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2209,33 +1588,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "equilibrium-q-common-ion-effect-in-precipitation-1",
-              "question": "What are the fundamental laws or mechanisms governing Common ion effect in precipitation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "equilibrium",
-                "common-ion-effect-in-precipitation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "equilibrium",
-                "chapterSlug": "equilibrium",
-                "topicSlug": "equilibrium",
-                "subtopicSlug": "common-ion-effect-in-precipitation",
-                "conceptSlug": "core-common-ion-effect-in-precipitation",
-                "microskillSlug": "understand-common-ion-effect-in-precipitation"
-              }
-            },
             {
               "id": "equilibrium-q-common-ion-effect-in-precipitation-2",
               "question": "Explain an application where using the concept of Common ion effect in precipitation can lead to a common student error.",

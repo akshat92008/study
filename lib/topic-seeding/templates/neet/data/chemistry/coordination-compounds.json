@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-werner-s-theory-of-coordination-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Werner’s theory of coordination compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "werner-s-theory-of-coordination-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "werner-s-theory-of-coordination-compounds",
-                "conceptSlug": "core-werner-s-theory-of-coordination-compounds",
-                "microskillSlug": "understand-werner-s-theory-of-coordination-compounds"
-              }
-            },
-            {
               "id": "coordination-compounds-q-werner-s-theory-of-coordination-compounds-2",
               "question": "Explain an application where using the concept of Werner’s theory of coordination compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-coordination-entity-and-central-atom-1",
-              "question": "What are the fundamental laws or mechanisms governing Coordination entity and central atom?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "coordination-entity-and-central-atom"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "coordination-entity-and-central-atom",
-                "conceptSlug": "core-coordination-entity-and-central-atom",
-                "microskillSlug": "understand-coordination-entity-and-central-atom"
-              }
-            },
             {
               "id": "coordination-compounds-q-coordination-entity-and-central-atom-2",
               "question": "Explain an application where using the concept of Coordination entity and central atom can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-ligands-types-and-denticity-1",
-              "question": "What are the fundamental laws or mechanisms governing Ligands types and denticity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "ligands-types-and-denticity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "ligands-types-and-denticity",
-                "conceptSlug": "core-ligands-types-and-denticity",
-                "microskillSlug": "understand-ligands-types-and-denticity"
-              }
-            },
-            {
               "id": "coordination-compounds-q-ligands-types-and-denticity-2",
               "question": "Explain an application where using the concept of Ligands types and denticity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-chelation-effect-1",
-              "question": "What are the fundamental laws or mechanisms governing Chelation effect?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "chelation-effect"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "chelation-effect",
-                "conceptSlug": "core-chelation-effect",
-                "microskillSlug": "understand-chelation-effect"
-              }
-            },
             {
               "id": "coordination-compounds-q-chelation-effect-2",
               "question": "Explain an application where using the concept of Chelation effect can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-coordination-number-1",
-              "question": "What are the fundamental laws or mechanisms governing Coordination number?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "coordination-number"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "coordination-number",
-                "conceptSlug": "core-coordination-number",
-                "microskillSlug": "understand-coordination-number"
-              }
-            },
-            {
               "id": "coordination-compounds-q-coordination-number-2",
               "question": "Explain an application where using the concept of Coordination number can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-oxidation-number-of-central-atom-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation number of central atom?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "oxidation-number-of-central-atom"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "oxidation-number-of-central-atom",
-                "conceptSlug": "core-oxidation-number-of-central-atom",
-                "microskillSlug": "understand-oxidation-number-of-central-atom"
-              }
-            },
             {
               "id": "coordination-compounds-q-oxidation-number-of-central-atom-2",
               "question": "Explain an application where using the concept of Oxidation number of central atom can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-iupac-nomenclature-of-mononuclear-coordination-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing IUPAC nomenclature of mononuclear coordination compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "iupac-nomenclature-of-mononuclear-coordination-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "iupac-nomenclature-of-mononuclear-coordination-compounds",
-                "conceptSlug": "core-iupac-nomenclature-of-mononuclear-coordination-compounds",
-                "microskillSlug": "understand-iupac-nomenclature-of-mononuclear-coordination-compounds"
-              }
-            },
-            {
               "id": "coordination-compounds-q-iupac-nomenclature-of-mononuclear-coordination-compounds-2",
               "question": "Explain an application where using the concept of IUPAC nomenclature of mononuclear coordination compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-structural-isomerism-in-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural isomerism in complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "structural-isomerism-in-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "structural-isomerism-in-complexes",
-                "conceptSlug": "core-structural-isomerism-in-complexes",
-                "microskillSlug": "understand-structural-isomerism-in-complexes"
-              }
-            },
             {
               "id": "coordination-compounds-q-structural-isomerism-in-complexes-2",
               "question": "Explain an application where using the concept of Structural isomerism in complexes can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-stereoisomerism-in-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing Stereoisomerism in complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "stereoisomerism-in-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "stereoisomerism-in-complexes",
-                "conceptSlug": "core-stereoisomerism-in-complexes",
-                "microskillSlug": "understand-stereoisomerism-in-complexes"
-              }
-            },
-            {
               "id": "coordination-compounds-q-stereoisomerism-in-complexes-2",
               "question": "Explain an application where using the concept of Stereoisomerism in complexes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-valence-bond-theory-vbt-in-coordination-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Valence bond theory (VBT) in coordination compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "valence-bond-theory-vbt-in-coordination-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "valence-bond-theory-vbt-in-coordination-compounds",
-                "conceptSlug": "core-valence-bond-theory-vbt-in-coordination-compounds",
-                "microskillSlug": "understand-valence-bond-theory-vbt-in-coordination-compounds"
-              }
-            },
             {
               "id": "coordination-compounds-q-valence-bond-theory-vbt-in-coordination-compounds-2",
               "question": "Explain an application where using the concept of Valence bond theory (VBT) in coordination compounds can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-hybridisation-and-magnetic-properties-of-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing Hybridisation and magnetic properties of complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "hybridisation-and-magnetic-properties-of-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "hybridisation-and-magnetic-properties-of-complexes",
-                "conceptSlug": "core-hybridisation-and-magnetic-properties-of-complexes",
-                "microskillSlug": "understand-hybridisation-and-magnetic-properties-of-complexes"
-              }
-            },
-            {
               "id": "coordination-compounds-q-hybridisation-and-magnetic-properties-of-complexes-2",
               "question": "Explain an application where using the concept of Hybridisation and magnetic properties of complexes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1022,33 +725,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-crystal-field-theory-cft-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Crystal field theory (CFT) basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "crystal-field-theory-cft-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "crystal-field-theory-cft-basics",
-                "conceptSlug": "core-crystal-field-theory-cft-basics",
-                "microskillSlug": "understand-crystal-field-theory-cft-basics"
-              }
-            },
             {
               "id": "coordination-compounds-q-crystal-field-theory-cft-basics-2",
               "question": "Explain an application where using the concept of Crystal field theory (CFT) basics can lead to a common student error.",
@@ -1123,33 +799,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-crystal-field-splitting-in-octahedral-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing Crystal field splitting in octahedral complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "crystal-field-splitting-in-octahedral-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "crystal-field-splitting-in-octahedral-complexes",
-                "conceptSlug": "core-crystal-field-splitting-in-octahedral-complexes",
-                "microskillSlug": "understand-crystal-field-splitting-in-octahedral-complexes"
-              }
-            },
-            {
               "id": "coordination-compounds-q-crystal-field-splitting-in-octahedral-complexes-2",
               "question": "Explain an application where using the concept of Crystal field splitting in octahedral complexes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1209,33 +858,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-crystal-field-splitting-in-tetrahedral-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing Crystal field splitting in tetrahedral complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "crystal-field-splitting-in-tetrahedral-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "crystal-field-splitting-in-tetrahedral-complexes",
-                "conceptSlug": "core-crystal-field-splitting-in-tetrahedral-complexes",
-                "microskillSlug": "understand-crystal-field-splitting-in-tetrahedral-complexes"
-              }
-            },
             {
               "id": "coordination-compounds-q-crystal-field-splitting-in-tetrahedral-complexes-2",
               "question": "Explain an application where using the concept of Crystal field splitting in tetrahedral complexes can lead to a common student error.",
@@ -1297,33 +919,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-spectrochemical-series-1",
-              "question": "What are the fundamental laws or mechanisms governing Spectrochemical series?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "spectrochemical-series"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "spectrochemical-series",
-                "conceptSlug": "core-spectrochemical-series",
-                "microskillSlug": "understand-spectrochemical-series"
-              }
-            },
-            {
               "id": "coordination-compounds-q-spectrochemical-series-2",
               "question": "Explain an application where using the concept of Spectrochemical series can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1383,33 +978,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-high-spin-and-low-spin-complexes-1",
-              "question": "What are the fundamental laws or mechanisms governing High spin and low spin complexes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "high-spin-and-low-spin-complexes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "high-spin-and-low-spin-complexes",
-                "conceptSlug": "core-high-spin-and-low-spin-complexes",
-                "microskillSlug": "understand-high-spin-and-low-spin-complexes"
-              }
-            },
             {
               "id": "coordination-compounds-q-high-spin-and-low-spin-complexes-2",
               "question": "Explain an application where using the concept of High spin and low spin complexes can lead to a common student error.",
@@ -1484,33 +1052,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-colour-in-coordination-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Colour in coordination compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "colour-in-coordination-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "colour-in-coordination-compounds",
-                "conceptSlug": "core-colour-in-coordination-compounds",
-                "microskillSlug": "understand-colour-in-coordination-compounds"
-              }
-            },
-            {
               "id": "coordination-compounds-q-colour-in-coordination-compounds-2",
               "question": "Explain an application where using the concept of Colour in coordination compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1570,33 +1111,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-stability-of-coordination-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Stability of coordination compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "stability-of-coordination-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "stability-of-coordination-compounds",
-                "conceptSlug": "core-stability-of-coordination-compounds",
-                "microskillSlug": "understand-stability-of-coordination-compounds"
-              }
-            },
             {
               "id": "coordination-compounds-q-stability-of-coordination-compounds-2",
               "question": "Explain an application where using the concept of Stability of coordination compounds can lead to a common student error.",
@@ -1658,33 +1172,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "coordination-compounds-q-importance-of-coordination-compounds-in-biology-1",
-              "question": "What are the fundamental laws or mechanisms governing Importance of coordination compounds in biology?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "importance-of-coordination-compounds-in-biology"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "importance-of-coordination-compounds-in-biology",
-                "conceptSlug": "core-importance-of-coordination-compounds-in-biology",
-                "microskillSlug": "understand-importance-of-coordination-compounds-in-biology"
-              }
-            },
-            {
               "id": "coordination-compounds-q-importance-of-coordination-compounds-in-biology-2",
               "question": "Explain an application where using the concept of Importance of coordination compounds in biology can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1744,33 +1231,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "coordination-compounds-q-applications-of-coordination-compounds-in-metallurgy-1",
-              "question": "What are the fundamental laws or mechanisms governing Applications of coordination compounds in metallurgy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "coordination-compounds",
-                "applications-of-coordination-compounds-in-metallurgy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "coordination-compounds",
-                "chapterSlug": "coordination-compounds",
-                "topicSlug": "coordination-compounds",
-                "subtopicSlug": "applications-of-coordination-compounds-in-metallurgy",
-                "conceptSlug": "core-applications-of-coordination-compounds-in-metallurgy",
-                "microskillSlug": "understand-applications-of-coordination-compounds-in-metallurgy"
-              }
-            },
             {
               "id": "coordination-compounds-q-applications-of-coordination-compounds-in-metallurgy-2",
               "question": "Explain an application where using the concept of Applications of coordination compounds in metallurgy can lead to a common student error.",

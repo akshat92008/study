@@ -12,6 +12,7 @@ import RevisionQueue from '@/components/revision/RevisionQueue';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
+import Skeleton from '@/components/ui/Skeleton';
 import CurrentTaskCard from '@/components/dashboard/CurrentTaskCard';
 import MicrotargetsCard from '@/components/dashboard/MicrotargetsCard';
 import { AgentActivityFeed } from '@/components/amaura/AgentActivityFeed';
@@ -39,6 +40,7 @@ export default function DashboardPage() {
 
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [masteryData, setMasteryData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [showGoalModal, setShowGoalModal] = useState(false);
   const [showGoalSettingsModal, setShowGoalSettingsModal] = useState(false);
   const router = useRouter();
@@ -49,6 +51,7 @@ export default function DashboardPage() {
 
   // 1. Initial Data Loading
   const loadTelemetry = useCallback(async () => {
+    setIsLoading(true);
     try {
       const suffix = activeGoalId ? `?goalId=${activeGoalId}` : '';
       const [resDash, resMastery] = await Promise.all([
@@ -65,6 +68,8 @@ export default function DashboardPage() {
       }
     } catch (e) {
       console.error('Failed to load dashboard data', e);
+    } finally {
+      setIsLoading(false);
     }
   }, [activeGoalId]);
 
@@ -96,8 +101,10 @@ export default function DashboardPage() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
-      if (params.get('magic') === 'true') {
+      if (params.get('magic') === 'true' || params.get('drawer') === 'cognition') {
         setActiveDrawer('cognition');
+      } else if (params.get('drawer') === 'revision') {
+        setActiveDrawer('revision');
       }
     }
   }, [setActiveDrawer]);
@@ -115,7 +122,7 @@ export default function DashboardPage() {
   // Use preset scoring model for display
   const preset = activeGoal ? getPreset(activeGoal.preset_id) : getPreset('custom_learning_goal');
   const scoreLabel = preset.dashboard_labels.score_label || 'Progress';
-  
+
   let displayScore = `${overallMastery}%`;
   if (preset.scoring_model.type === 'marks' && preset.scoring_model.max_score) {
     const rawMarks = Math.round((overallMastery / 100) * preset.scoring_model.max_score);
@@ -127,7 +134,7 @@ export default function DashboardPage() {
 
   return (
     <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 'var(--sp-6)', minHeight: '100%' }}>
-      
+
       {/* Floating Telemetry Toolbar */}
       <div style={{
         padding: 'var(--sp-3) var(--sp-4)',
@@ -175,113 +182,144 @@ export default function DashboardPage() {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-        <div>
-          <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
-            Today's Mission
-          </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
-            {activeGoal
-              ? `What mark are you at risk of losing again today? Cognition OS will repair that first, then use Progress and Review as support.`
-              : 'Create or select a learning goal to start.'}
-          </p>
-        </div>
         {!activeGoal ? (
-          <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
-            <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, marginBottom: 'var(--sp-2)' }}>Create or select a learning goal</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginBottom: 'var(--sp-4)' }}>
-              Each goal gets its own mission, sources, AI tutor, review queue, progress, and mistake review.
+          <div style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: 'var(--sp-12) var(--sp-4)', textAlign: 'center',
+            background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)', border: '1px dashed var(--border-subtle)',
+            marginTop: 'var(--sp-8)'
+          }}>
+            <Brain size={48} style={{ color: 'var(--accent-purple)', marginBottom: 'var(--sp-4)', opacity: 0.8 }} />
+            <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', marginBottom: 'var(--sp-2)' }}>
+              Welcome to Cognition OS
+            </h1>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-md)', maxWidth: '500px', marginBottom: 'var(--sp-6)', lineHeight: 1.6 }}>
+              Cognition OS is an AI learning environment built for serious students. To get started, you need a <strong>Learning Goal</strong>.
+              <br /><br />
+              Each goal tracks its own syllabus, generates targeted missions, provides an AI tutor, and tracks your revision schedule.
             </p>
-            <Button onClick={() => setShowGoalModal(true)}>Create Learning Goal</Button>
-          </Card>
+            <div style={{ display: 'flex', gap: 'var(--sp-4)' }}>
+              <Button size="lg" onClick={() => setShowGoalModal(true)} style={{ background: 'var(--accent-purple)', color: '#fff', border: 'none' }}>
+                Create Your First Goal
+              </Button>
+            </div>
+          </div>
         ) : (
-          <CurrentTaskCard goalId={activeGoalId ?? undefined} onSessionComplete={loadTelemetry} />
+          <>
+            <div>
+              <h1 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--text-primary)', margin: 0 }}>
+                Today's Mission
+              </h1>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)', marginTop: 4, lineHeight: 1.5 }}>
+                What mark are you at risk of losing again today? Cognition OS will repair that first, then use Progress and Review as support.
+              </p>
+            </div>
+            <CurrentTaskCard goalId={activeGoalId ?? undefined} onSessionComplete={loadTelemetry} />
+          </>
         )}
 
-        {activeGoal && dashboardData?.tasks && (
-          <MicrotargetsCard tasks={dashboardData.tasks} />
-        )}
+        {activeGoal && isLoading ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
+            <Card padding="lg">
+              <Skeleton height="200px" width="100%" />
+            </Card>
+            <Card padding="lg">
+              <Skeleton height="150px" width="100%" />
+            </Card>
+          </div>
+        ) : (
+          <>
+            {activeGoal && dashboardData?.tasks && (
+              <MicrotargetsCard tasks={dashboardData.tasks} />
+            )}
 
-        {activeGoal && dashboardData?.seededTopics && dashboardData.seededTopics.length > 0 && (
-          <SeededTopicsCard topics={dashboardData.seededTopics} adaptation={dashboardData.learningAdaptation} />
+            {activeGoal && dashboardData?.seededTopics && dashboardData.seededTopics.length > 0 && (
+              <SeededTopicsCard topics={dashboardData.seededTopics} adaptation={dashboardData.learningAdaptation} />
+            )}
+
+            {activeGoal && (
+              <DeepAutopsyCard deepAutopsy={dashboardData?.deepAutopsy} />
+            )}
+          </>
         )}
 
         {activeGoal && (
-          <DeepAutopsyCard deepAutopsy={dashboardData?.deepAutopsy} />
-        )}
-        
-        <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-          <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Profile</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
-              Progress and Review support the repair loop: weak concepts show what is fragile, MEMORY shows what must be recalled before forgetting.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
-              <button
-                onClick={() => setActiveDrawer(activeDrawer === 'cognition' ? null : 'cognition')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'cognition' ? 'var(--accent-purple-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'cognition' ? 'var(--accent-purple)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  <Brain size={12} style={{ color: 'var(--accent-purple)' }} />
-                  {scoreLabel}
-                </div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-purple)', marginTop: 4 }}>{displayScore}</div>
-              </button>
+          <>
+            <Card padding="lg" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
+              <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'bold', marginBottom: 'var(--sp-2)' }}>Study Profile</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', marginBottom: 'var(--sp-4)' }}>
+                Progress and Review support the repair loop: weak concepts show what is fragile, MEMORY shows what must be recalled before forgetting.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--sp-4)' }}>
+                <button
+                  onClick={() => setActiveDrawer(activeDrawer === 'cognition' ? null : 'cognition')}
+                  style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'cognition' ? 'var(--accent-purple-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'cognition' ? 'var(--accent-purple)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                    <Brain size={12} style={{ color: 'var(--accent-purple)' }} />
+                    {scoreLabel}
+                  </div>
+                  <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-purple)', marginTop: 4 }}>{displayScore}</div>
+                </button>
 
-              <button
-                onClick={() => router.push('/chat')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--accent-cyan-dim)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--accent-cyan)`, transition: 'all 0.2s' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  <MessageSquare size={12} style={{ color: 'var(--accent-cyan)' }} />
-                  AI Tutor
+                <button
+                  onClick={() => router.push('/chat')}
+                  style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--accent-cyan-dim)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--accent-cyan)`, transition: 'all 0.2s' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                    <MessageSquare size={12} style={{ color: 'var(--accent-cyan)' }} />
+                    AI Tutor
+                  </div>
+                  <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', marginTop: 4 }}>Chat</div>
+                </button>
+
+                <button
+                  onClick={() => setActiveDrawer(activeDrawer === 'revision' ? null : 'revision')}
+                  style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'revision' ? 'var(--accent-blue-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'revision' ? 'var(--accent-blue)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                    <RefreshCw size={12} style={{ color: 'var(--accent-blue)' }} />
+                    Revision Due
+                  </div>
+                  <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', marginTop: 4 }}>{cardsDue}</div>
+                </button>
+
+                <button
+                  onClick={() => router.push('/autopsy/deep')}
+                  style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--border-subtle)`, transition: 'all 0.2s' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
+                    <Activity size={12} style={{ color: 'var(--danger)' }} />
+                    Mistake Review
+                  </div>
+                  <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
+                </button>
+              </div>
+            </Card>
+
+            {/* Agent Activity Read-only Feedback */}
+            {(marksLost > 0 || cardsDue > 0) && (
+              <div style={{
+                background: 'var(--bg-glass)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-lg)',
+                padding: 'var(--sp-4)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 'var(--sp-3)',
+                marginTop: 'var(--sp-2)'
+              }}>
+                <div style={{ background: 'var(--accent-cyan-dim)', padding: 8, borderRadius: '50%', marginTop: 2 }}>
+                  <Brain size={16} color="var(--accent-cyan)" />
                 </div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-cyan)', marginTop: 4 }}>Chat</div>
-              </button>
-              
-              <button
-                onClick={() => setActiveDrawer(activeDrawer === 'revision' ? null : 'revision')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: activeDrawer === 'revision' ? 'var(--accent-blue-dim)' : 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid ${activeDrawer === 'revision' ? 'var(--accent-blue)' : 'var(--border-subtle)'}`, transition: 'all 0.2s' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  <RefreshCw size={12} style={{ color: 'var(--accent-blue)' }} />
-                  Revision Due
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
+                  <strong style={{ color: 'var(--text-primary)' }}>Agent Detection:</strong>{' '}
+                  {marksLost > 0 && `Identified ${marksLost} mistake patterns from your recent activity. `}
+                  {cardsDue > 0 && `Added ${cardsDue} concepts to your priority revision queue.`}
                 </div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--accent-blue)', marginTop: 4 }}>{cardsDue}</div>
-              </button>
-              
-              <button
-                onClick={() => router.push('/autopsy/deep')}
-                style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--bg-primary)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--border-subtle)`, transition: 'all 0.2s' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                  <Activity size={12} style={{ color: 'var(--danger)' }} />
-                  Mistake Review
-                </div>
-                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-black)', color: 'var(--danger)', marginTop: 4 }}>{marksLost} mistakes found</div>
-              </button>
-            </div>
-          </Card>
-          
-        {/* Agent Activity Read-only Feedback */}
-        {(marksLost > 0 || cardsDue > 0) && (
-          <div style={{
-            background: 'var(--bg-glass)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: 'var(--radius-lg)',
-            padding: 'var(--sp-4)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: 'var(--sp-3)',
-            marginTop: 'var(--sp-2)'
-          }}>
-            <div style={{ background: 'var(--accent-cyan-dim)', padding: 8, borderRadius: '50%', marginTop: 2 }}>
-              <Brain size={16} color="var(--accent-cyan)" />
-            </div>
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>Agent Detection:</strong>{' '}
-              {marksLost > 0 && `Identified ${marksLost} mistake patterns from your recent activity. `}
-              {cardsDue > 0 && `Added ${cardsDue} concepts to your priority revision queue.`}
-            </div>
-          </div>
+              </div>
+            )}
+          </>
         )}
       </div>
 

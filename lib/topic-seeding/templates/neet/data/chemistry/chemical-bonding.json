@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-kossel-lewis-approach-to-bonding-1",
-              "question": "What are the fundamental laws or mechanisms governing Kossel-Lewis approach to bonding?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "kossel-lewis-approach-to-bonding"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "kossel-lewis-approach-to-bonding",
-                "conceptSlug": "core-kossel-lewis-approach-to-bonding",
-                "microskillSlug": "understand-kossel-lewis-approach-to-bonding"
-              }
-            },
-            {
               "id": "chemical-bonding-q-kossel-lewis-approach-to-bonding-2",
               "question": "Explain an application where using the concept of Kossel-Lewis approach to bonding can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-lewis-dot-structures-1",
-              "question": "What are the fundamental laws or mechanisms governing Lewis dot structures?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "lewis-dot-structures"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "lewis-dot-structures",
-                "conceptSlug": "core-lewis-dot-structures",
-                "microskillSlug": "understand-lewis-dot-structures"
-              }
-            },
             {
               "id": "chemical-bonding-q-lewis-dot-structures-2",
               "question": "Explain an application where using the concept of Lewis dot structures can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-formal-charge-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Formal charge calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "formal-charge-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "formal-charge-calculation",
-                "conceptSlug": "core-formal-charge-calculation",
-                "microskillSlug": "understand-formal-charge-calculation"
-              }
-            },
-            {
               "id": "chemical-bonding-q-formal-charge-calculation-2",
               "question": "Explain an application where using the concept of Formal charge calculation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -301,33 +220,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-octet-rule-exceptions-1",
-              "question": "What are the fundamental laws or mechanisms governing Octet rule exceptions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "octet-rule-exceptions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "octet-rule-exceptions",
-                "conceptSlug": "core-octet-rule-exceptions",
-                "microskillSlug": "understand-octet-rule-exceptions"
-              }
-            },
-            {
               "id": "chemical-bonding-q-octet-rule-exceptions-2",
               "question": "Explain an application where using the concept of Octet rule exceptions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -387,33 +279,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-ionic-bond-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionic bond formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "ionic-bond-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "ionic-bond-formation",
-                "conceptSlug": "core-ionic-bond-formation",
-                "microskillSlug": "understand-ionic-bond-formation"
-              }
-            },
             {
               "id": "chemical-bonding-q-ionic-bond-formation-2",
               "question": "Explain an application where using the concept of Ionic bond formation can lead to a common student error.",
@@ -488,33 +353,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-lattice-enthalpy-1",
-              "question": "What are the fundamental laws or mechanisms governing Lattice enthalpy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "lattice-enthalpy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "lattice-enthalpy",
-                "conceptSlug": "core-lattice-enthalpy",
-                "microskillSlug": "understand-lattice-enthalpy"
-              }
-            },
-            {
               "id": "chemical-bonding-q-lattice-enthalpy-2",
               "question": "Explain an application where using the concept of Lattice enthalpy can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -574,33 +412,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-covalent-bond-parameters-1",
-              "question": "What are the fundamental laws or mechanisms governing Covalent bond parameters?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "covalent-bond-parameters"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "covalent-bond-parameters",
-                "conceptSlug": "core-covalent-bond-parameters",
-                "microskillSlug": "understand-covalent-bond-parameters"
-              }
-            },
             {
               "id": "chemical-bonding-q-covalent-bond-parameters-2",
               "question": "Explain an application where using the concept of Covalent bond parameters can lead to a common student error.",
@@ -662,33 +473,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-electronegativity-and-bond-polarity-1",
-              "question": "What are the fundamental laws or mechanisms governing Electronegativity and bond polarity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "electronegativity-and-bond-polarity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "electronegativity-and-bond-polarity",
-                "conceptSlug": "core-electronegativity-and-bond-polarity",
-                "microskillSlug": "understand-electronegativity-and-bond-polarity"
-              }
-            },
-            {
               "id": "chemical-bonding-q-electronegativity-and-bond-polarity-2",
               "question": "Explain an application where using the concept of Electronegativity and bond polarity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -749,33 +533,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-fajan-s-rule-for-covalent-character-1",
-              "question": "What are the fundamental laws or mechanisms governing Fajan’s rule for covalent character?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "fajan-s-rule-for-covalent-character"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "fajan-s-rule-for-covalent-character",
-                "conceptSlug": "core-fajan-s-rule-for-covalent-character",
-                "microskillSlug": "understand-fajan-s-rule-for-covalent-character"
-              }
-            },
-            {
               "id": "chemical-bonding-q-fajan-s-rule-for-covalent-character-2",
               "question": "Explain an application where using the concept of Fajan’s rule for covalent character can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -835,33 +592,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-dipole-moment-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Dipole moment applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "dipole-moment-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "dipole-moment-applications",
-                "conceptSlug": "core-dipole-moment-applications",
-                "microskillSlug": "understand-dipole-moment-applications"
-              }
-            },
             {
               "id": "chemical-bonding-q-dipole-moment-applications-2",
               "question": "Explain an application where using the concept of Dipole moment applications can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-vsepr-hybridisation-1",
-              "question": "What are the fundamental laws or mechanisms governing VSEPR/hybridisation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "vsepr-hybridisation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "vsepr-hybridisation",
-                "conceptSlug": "core-vsepr-hybridisation",
-                "microskillSlug": "understand-vsepr-hybridisation"
-              }
-            },
-            {
               "id": "chemical-bonding-q-vsepr-hybridisation-2",
               "question": "Explain an application where using the concept of VSEPR/hybridisation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1033,33 +736,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-geometry-of-molecules-without-lone-pairs-1",
-              "question": "What are the fundamental laws or mechanisms governing Geometry of molecules without lone pairs?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "geometry-of-molecules-without-lone-pairs"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "geometry-of-molecules-without-lone-pairs",
-                "conceptSlug": "core-geometry-of-molecules-without-lone-pairs",
-                "microskillSlug": "understand-geometry-of-molecules-without-lone-pairs"
-              }
-            },
             {
               "id": "chemical-bonding-q-geometry-of-molecules-without-lone-pairs-2",
               "question": "Explain an application where using the concept of Geometry of molecules without lone pairs can lead to a common student error.",
@@ -1132,33 +808,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-geometry-of-molecules-with-lone-pairs-1",
-              "question": "What are the fundamental laws or mechanisms governing Geometry of molecules with lone pairs?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "geometry-of-molecules-with-lone-pairs"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "geometry-of-molecules-with-lone-pairs",
-                "conceptSlug": "core-geometry-of-molecules-with-lone-pairs",
-                "microskillSlug": "understand-geometry-of-molecules-with-lone-pairs"
-              }
-            },
-            {
               "id": "chemical-bonding-q-geometry-of-molecules-with-lone-pairs-2",
               "question": "Explain an application where using the concept of Geometry of molecules with lone pairs can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1219,33 +868,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-hybridisation-types-sp-sp2-sp3-1",
-              "question": "What are the fundamental laws or mechanisms governing Hybridisation types sp sp2 sp3?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "hybridisation-types-sp-sp2-sp3"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "hybridisation-types-sp-sp2-sp3",
-                "conceptSlug": "core-hybridisation-types-sp-sp2-sp3",
-                "microskillSlug": "understand-hybridisation-types-sp-sp2-sp3"
-              }
-            },
-            {
               "id": "chemical-bonding-q-hybridisation-types-sp-sp2-sp3-2",
               "question": "Explain an application where using the concept of Hybridisation types sp sp2 sp3 can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1305,33 +927,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-hybridisation-involving-d-orbitals-1",
-              "question": "What are the fundamental laws or mechanisms governing Hybridisation involving d orbitals?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "hybridisation-involving-d-orbitals"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "hybridisation-involving-d-orbitals",
-                "conceptSlug": "core-hybridisation-involving-d-orbitals",
-                "microskillSlug": "understand-hybridisation-involving-d-orbitals"
-              }
-            },
             {
               "id": "chemical-bonding-q-hybridisation-involving-d-orbitals-2",
               "question": "Explain an application where using the concept of Hybridisation involving d orbitals can lead to a common student error.",
@@ -1406,33 +1001,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-resonance-structures-and-stability-1",
-              "question": "What are the fundamental laws or mechanisms governing Resonance structures and stability?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "resonance-structures-and-stability"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "resonance-structures-and-stability",
-                "conceptSlug": "core-resonance-structures-and-stability",
-                "microskillSlug": "understand-resonance-structures-and-stability"
-              }
-            },
-            {
               "id": "chemical-bonding-q-resonance-structures-and-stability-2",
               "question": "Explain an application where using the concept of Resonance structures and stability can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1493,33 +1061,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-valence-bond-theory-postulates-1",
-              "question": "What are the fundamental laws or mechanisms governing Valence bond theory postulates?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "valence-bond-theory-postulates"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "valence-bond-theory-postulates",
-                "conceptSlug": "core-valence-bond-theory-postulates",
-                "microskillSlug": "understand-valence-bond-theory-postulates"
-              }
-            },
-            {
               "id": "chemical-bonding-q-valence-bond-theory-postulates-2",
               "question": "Explain an application where using the concept of Valence bond theory postulates can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1579,33 +1120,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-sigma-and-pi-bond-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Sigma and pi bond formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "sigma-and-pi-bond-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "sigma-and-pi-bond-formation",
-                "conceptSlug": "core-sigma-and-pi-bond-formation",
-                "microskillSlug": "understand-sigma-and-pi-bond-formation"
-              }
-            },
             {
               "id": "chemical-bonding-q-sigma-and-pi-bond-formation-2",
               "question": "Explain an application where using the concept of Sigma and pi bond formation can lead to a common student error.",
@@ -1678,33 +1192,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-molecular-orbital-theory-1",
-              "question": "What are the fundamental laws or mechanisms governing Molecular orbital theory?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "molecular-orbital-theory"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "molecular-orbital-theory",
-                "conceptSlug": "core-molecular-orbital-theory",
-                "microskillSlug": "understand-molecular-orbital-theory"
-              }
-            },
-            {
               "id": "chemical-bonding-q-molecular-orbital-theory-2",
               "question": "Explain an application where using the concept of Molecular orbital theory can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1775,33 +1262,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-bonding-and-antibonding-molecular-orbitals-1",
-              "question": "What are the fundamental laws or mechanisms governing Bonding and antibonding molecular orbitals?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "bonding-and-antibonding-molecular-orbitals"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "bonding-and-antibonding-molecular-orbitals",
-                "conceptSlug": "core-bonding-and-antibonding-molecular-orbitals",
-                "microskillSlug": "understand-bonding-and-antibonding-molecular-orbitals"
-              }
-            },
             {
               "id": "chemical-bonding-q-bonding-and-antibonding-molecular-orbitals-2",
               "question": "Explain an application where using the concept of Bonding and antibonding molecular orbitals can lead to a common student error.",
@@ -1876,33 +1336,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-bond-order-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Bond order calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "bond-order-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "bond-order-calculation",
-                "conceptSlug": "core-bond-order-calculation",
-                "microskillSlug": "understand-bond-order-calculation"
-              }
-            },
-            {
               "id": "chemical-bonding-q-bond-order-calculation-2",
               "question": "Explain an application where using the concept of Bond order calculation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1963,33 +1396,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-bonding-q-magnetic-character-from-mot-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic character from MOT?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "magnetic-character-from-mot"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "magnetic-character-from-mot",
-                "conceptSlug": "core-magnetic-character-from-mot",
-                "microskillSlug": "understand-magnetic-character-from-mot"
-              }
-            },
-            {
               "id": "chemical-bonding-q-magnetic-character-from-mot-2",
               "question": "Explain an application where using the concept of Magnetic character from MOT can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2049,33 +1455,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-bonding-q-hydrogen-bonding-types-and-effects-1",
-              "question": "What are the fundamental laws or mechanisms governing Hydrogen bonding types and effects?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-bonding",
-                "hydrogen-bonding-types-and-effects"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-bonding",
-                "chapterSlug": "chemical-bonding",
-                "topicSlug": "chemical-bonding",
-                "subtopicSlug": "hydrogen-bonding-types-and-effects",
-                "conceptSlug": "core-hydrogen-bonding-types-and-effects",
-                "microskillSlug": "understand-hydrogen-bonding-types-and-effects"
-              }
-            },
             {
               "id": "chemical-bonding-q-hydrogen-bonding-types-and-effects-2",
               "question": "Explain an application where using the concept of Hydrogen bonding types and effects can lead to a common student error.",

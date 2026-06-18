@@ -51,33 +51,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-energy-bands-in-solids-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy bands in solids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "energy-bands-in-solids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "energy-bands-in-solids",
-                "conceptSlug": "core-energy-bands-in-solids",
-                "microskillSlug": "understand-energy-bands-in-solids"
-              }
-            },
-            {
               "id": "electronic-devices-q-energy-bands-in-solids-2",
               "question": "Explain an application where using the concept of Energy bands in solids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -149,33 +122,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-conductors-insulators-semiconductors-1",
-              "question": "What are the fundamental laws or mechanisms governing Conductors insulators semiconductors?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "conductors-insulators-semiconductors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "conductors-insulators-semiconductors",
-                "conceptSlug": "core-conductors-insulators-semiconductors",
-                "microskillSlug": "understand-conductors-insulators-semiconductors"
-              }
-            },
             {
               "id": "electronic-devices-q-conductors-insulators-semiconductors-2",
               "question": "Explain an application where using the concept of Conductors insulators semiconductors can lead to a common student error.",
@@ -249,33 +195,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-band-gap-1",
-              "question": "What are the fundamental laws or mechanisms governing Band gap?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "band-gap"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "band-gap",
-                "conceptSlug": "core-band-gap",
-                "microskillSlug": "understand-band-gap"
-              }
-            },
-            {
               "id": "electronic-devices-q-band-gap-2",
               "question": "Explain an application where using the concept of Band gap can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-intrinsic-semiconductors-1",
-              "question": "What are the fundamental laws or mechanisms governing Intrinsic semiconductors?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "intrinsic-semiconductors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "intrinsic-semiconductors",
-                "conceptSlug": "core-intrinsic-semiconductors",
-                "microskillSlug": "understand-intrinsic-semiconductors"
-              }
-            },
             {
               "id": "electronic-devices-q-intrinsic-semiconductors-2",
               "question": "Explain an application where using the concept of Intrinsic semiconductors can lead to a common student error.",
@@ -460,33 +352,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-extrinsic-semiconductors-1",
-              "question": "What are the fundamental laws or mechanisms governing Extrinsic semiconductors?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "extrinsic-semiconductors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "extrinsic-semiconductors",
-                "conceptSlug": "core-extrinsic-semiconductors",
-                "microskillSlug": "understand-extrinsic-semiconductors"
-              }
-            },
-            {
               "id": "electronic-devices-q-extrinsic-semiconductors-2",
               "question": "Explain an application where using the concept of Extrinsic semiconductors can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -558,33 +423,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-n-type-and-p-type-doping-1",
-              "question": "What are the fundamental laws or mechanisms governing N-type and p-type doping?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "n-type-and-p-type-doping"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "n-type-and-p-type-doping",
-                "conceptSlug": "core-n-type-and-p-type-doping",
-                "microskillSlug": "understand-n-type-and-p-type-doping"
-              }
-            },
             {
               "id": "electronic-devices-q-n-type-and-p-type-doping-2",
               "question": "Explain an application where using the concept of N-type and p-type doping can lead to a common student error.",
@@ -658,33 +496,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-semiconductor-diode-logic-gates-1",
-              "question": "What are the fundamental laws or mechanisms governing Semiconductor diode/logic gates?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "semiconductor-diode-logic-gates"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "semiconductor-diode-logic-gates",
-                "conceptSlug": "core-semiconductor-diode-logic-gates",
-                "microskillSlug": "understand-semiconductor-diode-logic-gates"
-              }
-            },
-            {
               "id": "electronic-devices-q-semiconductor-diode-logic-gates-2",
               "question": "Explain an application where using the concept of Semiconductor diode/logic gates can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -756,33 +567,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-p-n-junction-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing P-n junction formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "p-n-junction-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "p-n-junction-formation",
-                "conceptSlug": "core-p-n-junction-formation",
-                "microskillSlug": "understand-p-n-junction-formation"
-              }
-            },
             {
               "id": "electronic-devices-q-p-n-junction-formation-2",
               "question": "Explain an application where using the concept of P-n junction formation can lead to a common student error.",
@@ -869,33 +653,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-depletion-region-1",
-              "question": "What are the fundamental laws or mechanisms governing Depletion region?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "depletion-region"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "depletion-region",
-                "conceptSlug": "core-depletion-region",
-                "microskillSlug": "understand-depletion-region"
-              }
-            },
-            {
               "id": "electronic-devices-q-depletion-region-2",
               "question": "Explain an application where using the concept of Depletion region can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -967,33 +724,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-forward-and-reverse-bias-1",
-              "question": "What are the fundamental laws or mechanisms governing Forward and reverse bias?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "forward-and-reverse-bias"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "forward-and-reverse-bias",
-                "conceptSlug": "core-forward-and-reverse-bias",
-                "microskillSlug": "understand-forward-and-reverse-bias"
-              }
-            },
             {
               "id": "electronic-devices-q-forward-and-reverse-bias-2",
               "question": "Explain an application where using the concept of Forward and reverse bias can lead to a common student error.",
@@ -1067,33 +797,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-1",
-              "question": "What are the fundamental laws or mechanisms governing V-I characteristics of p-n junction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "v-i-characteristics-of-p-n-junction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "v-i-characteristics-of-p-n-junction",
-                "conceptSlug": "core-v-i-characteristics-of-p-n-junction",
-                "microskillSlug": "understand-v-i-characteristics-of-p-n-junction"
-              }
-            },
-            {
               "id": "electronic-devices-q-v-i-characteristics-of-p-n-junction-2",
               "question": "Explain an application where using the concept of V-I characteristics of p-n junction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1164,33 +867,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-half-wave-rectifier-1",
-              "question": "What are the fundamental laws or mechanisms governing Half wave rectifier?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "half-wave-rectifier"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "half-wave-rectifier",
-                "conceptSlug": "core-half-wave-rectifier",
-                "microskillSlug": "understand-half-wave-rectifier"
-              }
-            },
             {
               "id": "electronic-devices-q-half-wave-rectifier-2",
               "question": "Explain an application where using the concept of Half wave rectifier can lead to a common student error.",
@@ -1276,33 +952,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-full-wave-rectifier-1",
-              "question": "What are the fundamental laws or mechanisms governing Full wave rectifier?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "full-wave-rectifier"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "full-wave-rectifier",
-                "conceptSlug": "core-full-wave-rectifier",
-                "microskillSlug": "understand-full-wave-rectifier"
-              }
-            },
-            {
               "id": "electronic-devices-q-full-wave-rectifier-2",
               "question": "Explain an application where using the concept of Full wave rectifier can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1374,33 +1023,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-zener-diode-as-voltage-regulator-1",
-              "question": "What are the fundamental laws or mechanisms governing Zener diode as voltage regulator?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "zener-diode-as-voltage-regulator"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "zener-diode-as-voltage-regulator",
-                "conceptSlug": "core-zener-diode-as-voltage-regulator",
-                "microskillSlug": "understand-zener-diode-as-voltage-regulator"
-              }
-            },
             {
               "id": "electronic-devices-q-zener-diode-as-voltage-regulator-2",
               "question": "Explain an application where using the concept of Zener diode as voltage regulator can lead to a common student error.",
@@ -1474,33 +1096,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-light-emitting-diode-1",
-              "question": "What are the fundamental laws or mechanisms governing Light emitting diode?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "light-emitting-diode"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "light-emitting-diode",
-                "conceptSlug": "core-light-emitting-diode",
-                "microskillSlug": "understand-light-emitting-diode"
-              }
-            },
-            {
               "id": "electronic-devices-q-light-emitting-diode-2",
               "question": "Explain an application where using the concept of Light emitting diode can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1572,33 +1167,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-photodiode-1",
-              "question": "What are the fundamental laws or mechanisms governing Photodiode?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "photodiode"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "photodiode",
-                "conceptSlug": "core-photodiode",
-                "microskillSlug": "understand-photodiode"
-              }
-            },
             {
               "id": "electronic-devices-q-photodiode-2",
               "question": "Explain an application where using the concept of Photodiode can lead to a common student error.",
@@ -1685,33 +1253,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-solar-cell-1",
-              "question": "What are the fundamental laws or mechanisms governing Solar cell?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "solar-cell"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "solar-cell",
-                "conceptSlug": "core-solar-cell",
-                "microskillSlug": "understand-solar-cell"
-              }
-            },
-            {
               "id": "electronic-devices-q-solar-cell-2",
               "question": "Explain an application where using the concept of Solar cell can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1783,33 +1324,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-logic-gate-or-and-not-1",
-              "question": "What are the fundamental laws or mechanisms governing Logic gate OR AND NOT?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "logic-gate-or-and-not"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "logic-gate-or-and-not",
-                "conceptSlug": "core-logic-gate-or-and-not",
-                "microskillSlug": "understand-logic-gate-or-and-not"
-              }
-            },
             {
               "id": "electronic-devices-q-logic-gate-or-and-not-2",
               "question": "Explain an application where using the concept of Logic gate OR AND NOT can lead to a common student error.",
@@ -1883,33 +1397,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electronic-devices-q-nand-and-nor-gates-1",
-              "question": "What are the fundamental laws or mechanisms governing NAND and NOR gates?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "nand-and-nor-gates"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "nand-and-nor-gates",
-                "conceptSlug": "core-nand-and-nor-gates",
-                "microskillSlug": "understand-nand-and-nor-gates"
-              }
-            },
-            {
               "id": "electronic-devices-q-nand-and-nor-gates-2",
               "question": "Explain an application where using the concept of NAND and NOR gates can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1981,33 +1468,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electronic-devices-q-integrated-circuits-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Integrated circuits basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electronic-devices",
-                "integrated-circuits-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electronic-devices",
-                "chapterSlug": "electronic-devices",
-                "topicSlug": "electronic-devices",
-                "subtopicSlug": "integrated-circuits-basics",
-                "conceptSlug": "core-integrated-circuits-basics",
-                "microskillSlug": "understand-integrated-circuits-basics"
-              }
-            },
             {
               "id": "electronic-devices-q-integrated-circuits-basics-2",
               "question": "Explain an application where using the concept of Integrated circuits basics can lead to a common student error.",

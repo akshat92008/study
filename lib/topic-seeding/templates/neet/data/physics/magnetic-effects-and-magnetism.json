@@ -51,33 +51,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic force on moving charge?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-force-on-moving-charge"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-force-on-moving-charge",
-                "conceptSlug": "core-magnetic-force-on-moving-charge",
-                "microskillSlug": "understand-magnetic-force-on-moving-charge"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-force-on-moving-charge-2",
               "question": "Explain an application where using the concept of Magnetic force on moving charge can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -148,33 +121,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Lorentz force equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "lorentz-force-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "lorentz-force-equation",
-                "conceptSlug": "core-lorentz-force-equation",
-                "microskillSlug": "understand-lorentz-force-equation"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-lorentz-force-equation-2",
               "question": "Explain an application where using the concept of Lorentz force equation can lead to a common student error.",
@@ -248,33 +194,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-1",
-              "question": "What are the fundamental laws or mechanisms governing Circular motion in magnetic field?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "circular-motion-in-magnetic-field"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "circular-motion-in-magnetic-field",
-                "conceptSlug": "core-circular-motion-in-magnetic-field",
-                "microskillSlug": "understand-circular-motion-in-magnetic-field"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-circular-motion-in-magnetic-field-2",
               "question": "Explain an application where using the concept of Circular motion in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-1",
-              "question": "What are the fundamental laws or mechanisms governing Helical path in magnetic field?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "helical-path-in-magnetic-field"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "helical-path-in-magnetic-field",
-                "conceptSlug": "core-helical-path-in-magnetic-field",
-                "microskillSlug": "understand-helical-path-in-magnetic-field"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-helical-path-in-magnetic-field-2",
               "question": "Explain an application where using the concept of Helical path in magnetic field can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -444,33 +336,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-velocity-selector-1",
-              "question": "What are the fundamental laws or mechanisms governing Velocity selector?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "velocity-selector"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "velocity-selector",
-                "conceptSlug": "core-velocity-selector",
-                "microskillSlug": "understand-velocity-selector"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-velocity-selector-2",
               "question": "Explain an application where using the concept of Velocity selector can lead to a common student error.",
@@ -557,33 +422,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Cyclotron principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "cyclotron-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "cyclotron-principle",
-                "conceptSlug": "core-cyclotron-principle",
-                "microskillSlug": "understand-cyclotron-principle"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-cyclotron-principle-2",
               "question": "Explain an application where using the concept of Cyclotron principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -655,33 +493,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-biot-savart-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Biot-Savart law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "biot-savart-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "biot-savart-law",
-                "conceptSlug": "core-biot-savart-law",
-                "microskillSlug": "understand-biot-savart-law"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-biot-savart-law-2",
               "question": "Explain an application where using the concept of Biot-Savart law can lead to a common student error.",
@@ -755,33 +566,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic field of circular loop?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-field-of-circular-loop"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-field-of-circular-loop",
-                "conceptSlug": "core-magnetic-field-of-circular-loop",
-                "microskillSlug": "understand-magnetic-field-of-circular-loop"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-circular-loop-2",
               "question": "Explain an application where using the concept of Magnetic field of circular loop can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -854,33 +638,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Ampere’s circuital law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "ampere-s-circuital-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "ampere-s-circuital-law",
-                "conceptSlug": "core-ampere-s-circuital-law",
-                "microskillSlug": "understand-ampere-s-circuital-law"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-ampere-s-circuital-law-2",
               "question": "Explain an application where using the concept of Ampere’s circuital law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic field of straight wire?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-field-of-straight-wire"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-field-of-straight-wire",
-                "conceptSlug": "core-magnetic-field-of-straight-wire",
-                "microskillSlug": "understand-magnetic-field-of-straight-wire"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-straight-wire-2",
               "question": "Explain an application where using the concept of Magnetic field of straight wire can lead to a common student error.",
@@ -1065,33 +795,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic field of solenoid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-field-of-solenoid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-field-of-solenoid",
-                "conceptSlug": "core-magnetic-field-of-solenoid",
-                "microskillSlug": "understand-magnetic-field-of-solenoid"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-solenoid-2",
               "question": "Explain an application where using the concept of Magnetic field of solenoid can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1164,33 +867,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic field of toroid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-field-of-toroid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-field-of-toroid",
-                "conceptSlug": "core-magnetic-field-of-toroid",
-                "microskillSlug": "understand-magnetic-field-of-toroid"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-of-toroid-2",
               "question": "Explain an application where using the concept of Magnetic field of toroid can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1261,33 +937,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-1",
-              "question": "What are the fundamental laws or mechanisms governing Force on current-carrying conductor?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "force-on-current-carrying-conductor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "force-on-current-carrying-conductor",
-                "conceptSlug": "core-force-on-current-carrying-conductor",
-                "microskillSlug": "understand-force-on-current-carrying-conductor"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-force-on-current-carrying-conductor-2",
               "question": "Explain an application where using the concept of Force on current-carrying conductor can lead to a common student error.",
@@ -1360,33 +1009,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-1",
-              "question": "What are the fundamental laws or mechanisms governing Force between parallel currents?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "force-between-parallel-currents"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "force-between-parallel-currents",
-                "conceptSlug": "core-force-between-parallel-currents",
-                "microskillSlug": "understand-force-between-parallel-currents"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-force-between-parallel-currents-2",
               "question": "Explain an application where using the concept of Force between parallel currents can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1457,33 +1079,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-1",
-              "question": "What are the fundamental laws or mechanisms governing Torque on current loop?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "torque-on-current-loop"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "torque-on-current-loop",
-                "conceptSlug": "core-torque-on-current-loop",
-                "microskillSlug": "understand-torque-on-current-loop"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-torque-on-current-loop-2",
               "question": "Explain an application where using the concept of Torque on current loop can lead to a common student error.",
@@ -1570,33 +1165,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic dipole moment?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-dipole-moment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-dipole-moment",
-                "conceptSlug": "core-magnetic-dipole-moment",
-                "microskillSlug": "understand-magnetic-dipole-moment"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-dipole-moment-2",
               "question": "Explain an application where using the concept of Magnetic dipole moment can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1668,33 +1236,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-1",
-              "question": "What are the fundamental laws or mechanisms governing Moving coil galvanometer?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "moving-coil-galvanometer"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "moving-coil-galvanometer",
-                "conceptSlug": "core-moving-coil-galvanometer",
-                "microskillSlug": "understand-moving-coil-galvanometer"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-moving-coil-galvanometer-2",
               "question": "Explain an application where using the concept of Moving coil galvanometer can lead to a common student error.",
@@ -1768,33 +1309,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Bar magnet properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "bar-magnet-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "bar-magnet-properties",
-                "conceptSlug": "core-bar-magnet-properties",
-                "microskillSlug": "understand-bar-magnet-properties"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-bar-magnet-properties-2",
               "question": "Explain an application where using the concept of Bar magnet properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1867,33 +1381,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic field lines?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "magnetic-field-lines"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "magnetic-field-lines",
-                "conceptSlug": "core-magnetic-field-lines",
-                "microskillSlug": "understand-magnetic-field-lines"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-magnetic-field-lines-2",
               "question": "Explain an application where using the concept of Magnetic field lines can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1965,33 +1452,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-1",
-              "question": "What are the fundamental laws or mechanisms governing Earth magnetism elements?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "earth-magnetism-elements"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "earth-magnetism-elements",
-                "conceptSlug": "core-earth-magnetism-elements",
-                "microskillSlug": "understand-earth-magnetism-elements"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-earth-magnetism-elements-2",
               "question": "Explain an application where using the concept of Earth magnetism elements can lead to a common student error.",
@@ -2078,33 +1538,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-diamagnetism-1",
-              "question": "What are the fundamental laws or mechanisms governing Diamagnetism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "diamagnetism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "diamagnetism",
-                "conceptSlug": "core-diamagnetism",
-                "microskillSlug": "understand-diamagnetism"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-diamagnetism-2",
               "question": "Explain an application where using the concept of Diamagnetism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2177,33 +1610,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "magnetic-effects-and-magnetism-q-paramagnetism-1",
-              "question": "What are the fundamental laws or mechanisms governing Paramagnetism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "paramagnetism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "paramagnetism",
-                "conceptSlug": "core-paramagnetism",
-                "microskillSlug": "understand-paramagnetism"
-              }
-            },
-            {
               "id": "magnetic-effects-and-magnetism-q-paramagnetism-2",
               "question": "Explain an application where using the concept of Paramagnetism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2275,33 +1681,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "magnetic-effects-and-magnetism-q-ferromagnetism-1",
-              "question": "What are the fundamental laws or mechanisms governing Ferromagnetism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "magnetic-effects-and-magnetism",
-                "ferromagnetism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "magnetic-effects-and-magnetism",
-                "chapterSlug": "magnetic-effects-and-magnetism",
-                "topicSlug": "magnetic-effects-and-magnetism",
-                "subtopicSlug": "ferromagnetism",
-                "conceptSlug": "core-ferromagnetism",
-                "microskillSlug": "understand-ferromagnetism"
-              }
-            },
             {
               "id": "magnetic-effects-and-magnetism-q-ferromagnetism-2",
               "question": "Explain an application where using the concept of Ferromagnetism can lead to a common student error.",

@@ -51,33 +51,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-concept-of-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Concept of force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "concept-of-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "concept-of-force",
-                "conceptSlug": "core-concept-of-force",
-                "microskillSlug": "understand-concept-of-force"
-              }
-            },
-            {
               "id": "laws-of-motion-q-concept-of-force-2",
               "question": "Explain an application where using the concept of Concept of force can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -148,33 +121,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-inertia-of-rest-1",
-              "question": "What are the fundamental laws or mechanisms governing Inertia of rest?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "inertia-of-rest"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "inertia-of-rest",
-                "conceptSlug": "core-inertia-of-rest",
-                "microskillSlug": "understand-inertia-of-rest"
-              }
-            },
             {
               "id": "laws-of-motion-q-inertia-of-rest-2",
               "question": "Explain an application where using the concept of Inertia of rest can lead to a common student error.",
@@ -247,33 +193,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-inertia-of-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Inertia of motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "inertia-of-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "inertia-of-motion",
-                "conceptSlug": "core-inertia-of-motion",
-                "microskillSlug": "understand-inertia-of-motion"
-              }
-            },
-            {
               "id": "laws-of-motion-q-inertia-of-motion-2",
               "question": "Explain an application where using the concept of Inertia of motion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -344,33 +263,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-newton-s-first-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Newton’s first law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "newton-s-first-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-first-law",
-                "conceptSlug": "core-newton-s-first-law",
-                "microskillSlug": "understand-newton-s-first-law"
-              }
-            },
             {
               "id": "laws-of-motion-q-newton-s-first-law-2",
               "question": "Explain an application where using the concept of Newton’s first law can lead to a common student error.",
@@ -444,33 +336,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-momentum-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Momentum definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "momentum-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "momentum-definition",
-                "conceptSlug": "core-momentum-definition",
-                "microskillSlug": "understand-momentum-definition"
-              }
-            },
-            {
               "id": "laws-of-motion-q-momentum-definition-2",
               "question": "Explain an application where using the concept of Momentum definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -541,33 +406,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-impulse-and-impulsive-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Impulse and impulsive force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "impulse-and-impulsive-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "impulse-and-impulsive-force",
-                "conceptSlug": "core-impulse-and-impulsive-force",
-                "microskillSlug": "understand-impulse-and-impulsive-force"
-              }
-            },
             {
               "id": "laws-of-motion-q-impulse-and-impulsive-force-2",
               "question": "Explain an application where using the concept of Impulse and impulsive force can lead to a common student error.",
@@ -653,33 +491,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-newton-s-second-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Newton’s second law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "newton-s-second-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-second-law",
-                "conceptSlug": "core-newton-s-second-law",
-                "microskillSlug": "understand-newton-s-second-law"
-              }
-            },
-            {
               "id": "laws-of-motion-q-newton-s-second-law-2",
               "question": "Explain an application where using the concept of Newton’s second law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -750,33 +561,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-newton-s-third-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Newton’s third law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "newton-s-third-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "newton-s-third-law",
-                "conceptSlug": "core-newton-s-third-law",
-                "microskillSlug": "understand-newton-s-third-law"
-              }
-            },
             {
               "id": "laws-of-motion-q-newton-s-third-law-2",
               "question": "Explain an application where using the concept of Newton’s third law can lead to a common student error.",
@@ -849,33 +633,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-free-body-diagram-newton-laws-1",
-              "question": "What are the fundamental laws or mechanisms governing Free body diagram/Newton laws?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "free-body-diagram-newton-laws"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "free-body-diagram-newton-laws",
-                "conceptSlug": "core-free-body-diagram-newton-laws",
-                "microskillSlug": "understand-free-body-diagram-newton-laws"
-              }
-            },
-            {
               "id": "laws-of-motion-q-free-body-diagram-newton-laws-2",
               "question": "Explain an application where using the concept of Free body diagram/Newton laws can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -946,33 +703,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-conservation-of-linear-momentum-1",
-              "question": "What are the fundamental laws or mechanisms governing Conservation of linear momentum?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "conservation-of-linear-momentum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "conservation-of-linear-momentum",
-                "conceptSlug": "core-conservation-of-linear-momentum",
-                "microskillSlug": "understand-conservation-of-linear-momentum"
-              }
-            },
             {
               "id": "laws-of-motion-q-conservation-of-linear-momentum-2",
               "question": "Explain an application where using the concept of Conservation of linear momentum can lead to a common student error.",
@@ -1046,33 +776,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-recoil-of-gun-1",
-              "question": "What are the fundamental laws or mechanisms governing Recoil of gun?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "recoil-of-gun"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "recoil-of-gun",
-                "conceptSlug": "core-recoil-of-gun",
-                "microskillSlug": "understand-recoil-of-gun"
-              }
-            },
-            {
               "id": "laws-of-motion-q-recoil-of-gun-2",
               "question": "Explain an application where using the concept of Recoil of gun can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1143,33 +846,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-equilibrium-of-concurrent-forces-1",
-              "question": "What are the fundamental laws or mechanisms governing Equilibrium of concurrent forces?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "equilibrium-of-concurrent-forces"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "equilibrium-of-concurrent-forces",
-                "conceptSlug": "core-equilibrium-of-concurrent-forces",
-                "microskillSlug": "understand-equilibrium-of-concurrent-forces"
-              }
-            },
             {
               "id": "laws-of-motion-q-equilibrium-of-concurrent-forces-2",
               "question": "Explain an application where using the concept of Equilibrium of concurrent forces can lead to a common student error.",
@@ -1256,33 +932,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-types-of-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Types of friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "types-of-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "types-of-friction",
-                "conceptSlug": "core-types-of-friction",
-                "microskillSlug": "understand-types-of-friction"
-              }
-            },
-            {
               "id": "laws-of-motion-q-types-of-friction-2",
               "question": "Explain an application where using the concept of Types of friction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1354,33 +1003,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-limiting-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Limiting friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "limiting-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "limiting-friction",
-                "conceptSlug": "core-limiting-friction",
-                "microskillSlug": "understand-limiting-friction"
-              }
-            },
             {
               "id": "laws-of-motion-q-limiting-friction-2",
               "question": "Explain an application where using the concept of Limiting friction can lead to a common student error.",
@@ -1454,33 +1076,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-static-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Static friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "static-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "static-friction",
-                "conceptSlug": "core-static-friction",
-                "microskillSlug": "understand-static-friction"
-              }
-            },
-            {
               "id": "laws-of-motion-q-static-friction-2",
               "question": "Explain an application where using the concept of Static friction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1552,33 +1147,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-kinetic-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Kinetic friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "kinetic-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "kinetic-friction",
-                "conceptSlug": "core-kinetic-friction",
-                "microskillSlug": "understand-kinetic-friction"
-              }
-            },
             {
               "id": "laws-of-motion-q-kinetic-friction-2",
               "question": "Explain an application where using the concept of Kinetic friction can lead to a common student error.",
@@ -1652,33 +1220,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-coefficient-of-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Coefficient of friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "coefficient-of-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "coefficient-of-friction",
-                "conceptSlug": "core-coefficient-of-friction",
-                "microskillSlug": "understand-coefficient-of-friction"
-              }
-            },
-            {
               "id": "laws-of-motion-q-coefficient-of-friction-2",
               "question": "Explain an application where using the concept of Coefficient of friction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1750,33 +1291,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-angle-of-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Angle of friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "angle-of-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "angle-of-friction",
-                "conceptSlug": "core-angle-of-friction",
-                "microskillSlug": "understand-angle-of-friction"
-              }
-            },
             {
               "id": "laws-of-motion-q-angle-of-friction-2",
               "question": "Explain an application where using the concept of Angle of friction can lead to a common student error.",
@@ -1863,33 +1377,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-angle-of-repose-1",
-              "question": "What are the fundamental laws or mechanisms governing Angle of repose?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "angle-of-repose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "angle-of-repose",
-                "conceptSlug": "core-angle-of-repose",
-                "microskillSlug": "understand-angle-of-repose"
-              }
-            },
-            {
               "id": "laws-of-motion-q-angle-of-repose-2",
               "question": "Explain an application where using the concept of Angle of repose can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1961,33 +1448,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-rolling-friction-1",
-              "question": "What are the fundamental laws or mechanisms governing Rolling friction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "rolling-friction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "rolling-friction",
-                "conceptSlug": "core-rolling-friction",
-                "microskillSlug": "understand-rolling-friction"
-              }
-            },
             {
               "id": "laws-of-motion-q-rolling-friction-2",
               "question": "Explain an application where using the concept of Rolling friction can lead to a common student error.",
@@ -2061,33 +1521,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-motion-of-connected-bodies-1",
-              "question": "What are the fundamental laws or mechanisms governing Motion of connected bodies?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "motion-of-connected-bodies"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "motion-of-connected-bodies",
-                "conceptSlug": "core-motion-of-connected-bodies",
-                "microskillSlug": "understand-motion-of-connected-bodies"
-              }
-            },
-            {
               "id": "laws-of-motion-q-motion-of-connected-bodies-2",
               "question": "Explain an application where using the concept of Motion of connected bodies can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2160,33 +1593,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-pulley-systems-1",
-              "question": "What are the fundamental laws or mechanisms governing Pulley systems?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "pulley-systems"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pulley-systems",
-                "conceptSlug": "core-pulley-systems",
-                "microskillSlug": "understand-pulley-systems"
-              }
-            },
-            {
               "id": "laws-of-motion-q-pulley-systems-2",
               "question": "Explain an application where using the concept of Pulley systems can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2257,33 +1663,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-pseudo-force-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Pseudo force applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "pseudo-force-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "pseudo-force-applications",
-                "conceptSlug": "core-pseudo-force-applications",
-                "microskillSlug": "understand-pseudo-force-applications"
-              }
-            },
             {
               "id": "laws-of-motion-q-pseudo-force-applications-2",
               "question": "Explain an application where using the concept of Pseudo force applications can lead to a common student error.",
@@ -2356,33 +1735,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-circular-motion-dynamics-1",
-              "question": "What are the fundamental laws or mechanisms governing Circular motion dynamics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "circular-motion-dynamics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "circular-motion-dynamics",
-                "conceptSlug": "core-circular-motion-dynamics",
-                "microskillSlug": "understand-circular-motion-dynamics"
-              }
-            },
             {
               "id": "laws-of-motion-q-circular-motion-dynamics-2",
               "question": "Explain an application where using the concept of Circular motion dynamics can lead to a common student error.",
@@ -2469,33 +1821,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-vehicle-on-level-circular-road-1",
-              "question": "What are the fundamental laws or mechanisms governing Vehicle on level circular road?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "vehicle-on-level-circular-road"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "vehicle-on-level-circular-road",
-                "conceptSlug": "core-vehicle-on-level-circular-road",
-                "microskillSlug": "understand-vehicle-on-level-circular-road"
-              }
-            },
-            {
               "id": "laws-of-motion-q-vehicle-on-level-circular-road-2",
               "question": "Explain an application where using the concept of Vehicle on level circular road can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2568,33 +1893,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "laws-of-motion-q-banking-of-roads-1",
-              "question": "What are the fundamental laws or mechanisms governing Banking of roads?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "banking-of-roads"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "banking-of-roads",
-                "conceptSlug": "core-banking-of-roads",
-                "microskillSlug": "understand-banking-of-roads"
-              }
-            },
-            {
               "id": "laws-of-motion-q-banking-of-roads-2",
               "question": "Explain an application where using the concept of Banking of roads can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2666,33 +1964,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "laws-of-motion-q-bending-of-cyclist-1",
-              "question": "What are the fundamental laws or mechanisms governing Bending of cyclist?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "laws-of-motion",
-                "bending-of-cyclist"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "laws-of-motion",
-                "chapterSlug": "laws-of-motion",
-                "topicSlug": "laws-of-motion",
-                "subtopicSlug": "bending-of-cyclist",
-                "conceptSlug": "core-bending-of-cyclist",
-                "microskillSlug": "understand-bending-of-cyclist"
-              }
-            },
             {
               "id": "laws-of-motion-q-bending-of-cyclist-2",
               "question": "Explain an application where using the concept of Bending of cyclist can lead to a common student error.",

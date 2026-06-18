@@ -51,33 +51,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-displacement-current-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Displacement current concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "displacement-current-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "displacement-current-concept",
-                "conceptSlug": "core-displacement-current-concept",
-                "microskillSlug": "understand-displacement-current-concept"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-displacement-current-concept-2",
               "question": "Explain an application where using the concept of Displacement current concept can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-maxwell-s-equations-modification-1",
-              "question": "What are the fundamental laws or mechanisms governing Maxwell’s equations modification?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "maxwell-s-equations-modification"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "maxwell-s-equations-modification",
-                "conceptSlug": "core-maxwell-s-equations-modification",
-                "microskillSlug": "understand-maxwell-s-equations-modification"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-maxwell-s-equations-modification-2",
               "question": "Explain an application where using the concept of Maxwell’s equations modification can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -248,33 +194,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-em-wave-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing EM wave characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "em-wave-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "em-wave-characteristics",
-                "conceptSlug": "core-em-wave-characteristics",
-                "microskillSlug": "understand-em-wave-characteristics"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-em-wave-characteristics-2",
               "question": "Explain an application where using the concept of EM wave characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -345,33 +264,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-transverse-nature-of-em-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Transverse nature of EM waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "transverse-nature-of-em-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "transverse-nature-of-em-waves",
-                "conceptSlug": "core-transverse-nature-of-em-waves",
-                "microskillSlug": "understand-transverse-nature-of-em-waves"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-transverse-nature-of-em-waves-2",
               "question": "Explain an application where using the concept of Transverse nature of EM waves can lead to a common student error.",
@@ -457,33 +349,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-speed-of-electromagnetic-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Speed of electromagnetic waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "speed-of-electromagnetic-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "speed-of-electromagnetic-waves",
-                "conceptSlug": "core-speed-of-electromagnetic-waves",
-                "microskillSlug": "understand-speed-of-electromagnetic-waves"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-speed-of-electromagnetic-waves-2",
               "question": "Explain an application where using the concept of Speed of electromagnetic waves can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -554,33 +419,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-energy-density-of-em-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy density of EM waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "energy-density-of-em-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "energy-density-of-em-waves",
-                "conceptSlug": "core-energy-density-of-em-waves",
-                "microskillSlug": "understand-energy-density-of-em-waves"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-energy-density-of-em-waves-2",
               "question": "Explain an application where using the concept of Energy density of EM waves can lead to a common student error.",
@@ -653,33 +491,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-momentum-of-em-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Momentum of EM waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "momentum-of-em-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "momentum-of-em-waves",
-                "conceptSlug": "core-momentum-of-em-waves",
-                "microskillSlug": "understand-momentum-of-em-waves"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-momentum-of-em-waves-2",
               "question": "Explain an application where using the concept of Momentum of EM waves can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -751,33 +562,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-electromagnetic-spectrum-overview-1",
-              "question": "What are the fundamental laws or mechanisms governing Electromagnetic spectrum overview?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "electromagnetic-spectrum-overview"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "electromagnetic-spectrum-overview",
-                "conceptSlug": "core-electromagnetic-spectrum-overview",
-                "microskillSlug": "understand-electromagnetic-spectrum-overview"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-electromagnetic-spectrum-overview-2",
               "question": "Explain an application where using the concept of Electromagnetic spectrum overview can lead to a common student error.",
@@ -863,33 +647,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-radio-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Radio waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "radio-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "radio-waves",
-                "conceptSlug": "core-radio-waves",
-                "microskillSlug": "understand-radio-waves"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-radio-waves-2",
               "question": "Explain an application where using the concept of Radio waves can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -960,33 +717,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-microwaves-1",
-              "question": "What are the fundamental laws or mechanisms governing Microwaves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "microwaves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "microwaves",
-                "conceptSlug": "core-microwaves",
-                "microskillSlug": "understand-microwaves"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-microwaves-2",
               "question": "Explain an application where using the concept of Microwaves can lead to a common student error.",
@@ -1059,33 +789,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-infrared-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Infrared waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "infrared-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "infrared-waves",
-                "conceptSlug": "core-infrared-waves",
-                "microskillSlug": "understand-infrared-waves"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-infrared-waves-2",
               "question": "Explain an application where using the concept of Infrared waves can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1157,33 +860,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-visible-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Visible light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "visible-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "visible-light",
-                "conceptSlug": "core-visible-light",
-                "microskillSlug": "understand-visible-light"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-visible-light-2",
               "question": "Explain an application where using the concept of Visible light can lead to a common student error.",
@@ -1270,33 +946,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-ultraviolet-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing Ultraviolet rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "ultraviolet-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "ultraviolet-rays",
-                "conceptSlug": "core-ultraviolet-rays",
-                "microskillSlug": "understand-ultraviolet-rays"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-ultraviolet-rays-2",
               "question": "Explain an application where using the concept of Ultraviolet rays can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1368,33 +1017,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-x-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing X-rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "x-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "x-rays",
-                "conceptSlug": "core-x-rays",
-                "microskillSlug": "understand-x-rays"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-x-rays-2",
               "question": "Explain an application where using the concept of X-rays can lead to a common student error.",
@@ -1468,33 +1090,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-gamma-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing Gamma rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "gamma-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "gamma-rays",
-                "conceptSlug": "core-gamma-rays",
-                "microskillSlug": "understand-gamma-rays"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-gamma-rays-2",
               "question": "Explain an application where using the concept of Gamma rays can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1565,33 +1160,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-uses-of-different-em-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Uses of different EM waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "uses-of-different-em-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "uses-of-different-em-waves",
-                "conceptSlug": "core-uses-of-different-em-waves",
-                "microskillSlug": "understand-uses-of-different-em-waves"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-uses-of-different-em-waves-2",
               "question": "Explain an application where using the concept of Uses of different EM waves can lead to a common student error.",
@@ -1678,33 +1246,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-poynting-vector-1",
-              "question": "What are the fundamental laws or mechanisms governing Poynting vector?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "poynting-vector"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "poynting-vector",
-                "conceptSlug": "core-poynting-vector",
-                "microskillSlug": "understand-poynting-vector"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-poynting-vector-2",
               "question": "Explain an application where using the concept of Poynting vector can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1777,33 +1318,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-radiation-pressure-1",
-              "question": "What are the fundamental laws or mechanisms governing Radiation pressure?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "radiation-pressure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "radiation-pressure",
-                "conceptSlug": "core-radiation-pressure",
-                "microskillSlug": "understand-radiation-pressure"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-radiation-pressure-2",
               "question": "Explain an application where using the concept of Radiation pressure can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1875,33 +1389,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electromagnetic-waves-q-wave-equation-for-e-and-b-fields-1",
-              "question": "What are the fundamental laws or mechanisms governing Wave equation for E and B fields?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "wave-equation-for-e-and-b-fields"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "wave-equation-for-e-and-b-fields",
-                "conceptSlug": "core-wave-equation-for-e-and-b-fields",
-                "microskillSlug": "understand-wave-equation-for-e-and-b-fields"
-              }
-            },
-            {
               "id": "electromagnetic-waves-q-wave-equation-for-e-and-b-fields-2",
               "question": "Explain an application where using the concept of Wave equation for E and B fields can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1972,33 +1459,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electromagnetic-waves-q-production-of-em-waves-1",
-              "question": "What are the fundamental laws or mechanisms governing Production of EM waves?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electromagnetic-waves",
-                "production-of-em-waves"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electromagnetic-waves",
-                "chapterSlug": "electromagnetic-waves",
-                "topicSlug": "electromagnetic-waves",
-                "subtopicSlug": "production-of-em-waves",
-                "conceptSlug": "core-production-of-em-waves",
-                "microskillSlug": "understand-production-of-em-waves"
-              }
-            },
             {
               "id": "electromagnetic-waves-q-production-of-em-waves-2",
               "question": "Explain an application where using the concept of Production of EM waves can lead to a common student error.",

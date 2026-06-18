@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-centre-of-mass-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Centre of mass definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "centre-of-mass-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "centre-of-mass-definition",
-                "conceptSlug": "core-centre-of-mass-definition",
-                "microskillSlug": "understand-centre-of-mass-definition"
-              }
-            },
-            {
               "id": "rotational-motion-q-centre-of-mass-definition-2",
               "question": "Explain an application where using the concept of Centre of mass definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-com-of-two-particle-system-1",
-              "question": "What are the fundamental laws or mechanisms governing COM of two particle system?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "com-of-two-particle-system"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-two-particle-system",
-                "conceptSlug": "core-com-of-two-particle-system",
-                "microskillSlug": "understand-com-of-two-particle-system"
-              }
-            },
             {
               "id": "rotational-motion-q-com-of-two-particle-system-2",
               "question": "Explain an application where using the concept of COM of two particle system can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-com-of-continuous-bodies-1",
-              "question": "What are the fundamental laws or mechanisms governing COM of continuous bodies?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "com-of-continuous-bodies"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "com-of-continuous-bodies",
-                "conceptSlug": "core-com-of-continuous-bodies",
-                "microskillSlug": "understand-com-of-continuous-bodies"
-              }
-            },
-            {
               "id": "rotational-motion-q-com-of-continuous-bodies-2",
               "question": "Explain an application where using the concept of COM of continuous bodies can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-torque-definition-and-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Torque definition and formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "torque-definition-and-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "torque-definition-and-formula",
-                "conceptSlug": "core-torque-definition-and-formula",
-                "microskillSlug": "understand-torque-definition-and-formula"
-              }
-            },
             {
               "id": "rotational-motion-q-torque-definition-and-formula-2",
               "question": "Explain an application where using the concept of Torque definition and formula can lead to a common student error.",
@@ -446,33 +338,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-moment-arm-1",
-              "question": "What are the fundamental laws or mechanisms governing Moment arm?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "moment-arm"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "moment-arm",
-                "conceptSlug": "core-moment-arm",
-                "microskillSlug": "understand-moment-arm"
-              }
-            },
             {
               "id": "rotational-motion-q-moment-arm-2",
               "question": "Explain an application where using the concept of Moment arm can lead to a common student error.",
@@ -559,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-angular-momentum-1",
-              "question": "What are the fundamental laws or mechanisms governing Angular momentum?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "angular-momentum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-momentum",
-                "conceptSlug": "core-angular-momentum",
-                "microskillSlug": "understand-angular-momentum"
-              }
-            },
-            {
               "id": "rotational-motion-q-angular-momentum-2",
               "question": "Explain an application where using the concept of Angular momentum can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -657,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-conservation-of-angular-momentum-1",
-              "question": "What are the fundamental laws or mechanisms governing Conservation of angular momentum?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "conservation-of-angular-momentum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "conservation-of-angular-momentum",
-                "conceptSlug": "core-conservation-of-angular-momentum",
-                "microskillSlug": "understand-conservation-of-angular-momentum"
-              }
-            },
-            {
               "id": "rotational-motion-q-conservation-of-angular-momentum-2",
               "question": "Explain an application where using the concept of Conservation of angular momentum can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -754,33 +565,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-moment-of-inertia-torque-1",
-              "question": "What are the fundamental laws or mechanisms governing Moment of inertia/torque?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "moment-of-inertia-torque"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "moment-of-inertia-torque",
-                "conceptSlug": "core-moment-of-inertia-torque",
-                "microskillSlug": "understand-moment-of-inertia-torque"
-              }
-            },
             {
               "id": "rotational-motion-q-moment-of-inertia-torque-2",
               "question": "Explain an application where using the concept of Moment of inertia/torque can lead to a common student error.",
@@ -854,33 +638,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-radius-of-gyration-1",
-              "question": "What are the fundamental laws or mechanisms governing Radius of gyration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "radius-of-gyration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "radius-of-gyration",
-                "conceptSlug": "core-radius-of-gyration",
-                "microskillSlug": "understand-radius-of-gyration"
-              }
-            },
-            {
               "id": "rotational-motion-q-radius-of-gyration-2",
               "question": "Explain an application where using the concept of Radius of gyration can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-parallel-axis-theorem-1",
-              "question": "What are the fundamental laws or mechanisms governing Parallel axis theorem?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "parallel-axis-theorem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "parallel-axis-theorem",
-                "conceptSlug": "core-parallel-axis-theorem",
-                "microskillSlug": "understand-parallel-axis-theorem"
-              }
-            },
             {
               "id": "rotational-motion-q-parallel-axis-theorem-2",
               "question": "Explain an application where using the concept of Parallel axis theorem can lead to a common student error.",
@@ -1065,33 +795,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-perpendicular-axis-theorem-1",
-              "question": "What are the fundamental laws or mechanisms governing Perpendicular axis theorem?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "perpendicular-axis-theorem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "perpendicular-axis-theorem",
-                "conceptSlug": "core-perpendicular-axis-theorem",
-                "microskillSlug": "understand-perpendicular-axis-theorem"
-              }
-            },
-            {
               "id": "rotational-motion-q-perpendicular-axis-theorem-2",
               "question": "Explain an application where using the concept of Perpendicular axis theorem can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1163,33 +866,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-mi-of-ring-and-disc-1",
-              "question": "What are the fundamental laws or mechanisms governing MI of ring and disc?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "mi-of-ring-and-disc"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "mi-of-ring-and-disc",
-                "conceptSlug": "core-mi-of-ring-and-disc",
-                "microskillSlug": "understand-mi-of-ring-and-disc"
-              }
-            },
             {
               "id": "rotational-motion-q-mi-of-ring-and-disc-2",
               "question": "Explain an application where using the concept of MI of ring and disc can lead to a common student error.",
@@ -1263,33 +939,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-mi-of-cylinder-and-sphere-1",
-              "question": "What are the fundamental laws or mechanisms governing MI of cylinder and sphere?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "mi-of-cylinder-and-sphere"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "mi-of-cylinder-and-sphere",
-                "conceptSlug": "core-mi-of-cylinder-and-sphere",
-                "microskillSlug": "understand-mi-of-cylinder-and-sphere"
-              }
-            },
-            {
               "id": "rotational-motion-q-mi-of-cylinder-and-sphere-2",
               "question": "Explain an application where using the concept of MI of cylinder and sphere can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1362,33 +1011,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-angular-displacement-1",
-              "question": "What are the fundamental laws or mechanisms governing Angular displacement?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "angular-displacement"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-displacement",
-                "conceptSlug": "core-angular-displacement",
-                "microskillSlug": "understand-angular-displacement"
-              }
-            },
-            {
               "id": "rotational-motion-q-angular-displacement-2",
               "question": "Explain an application where using the concept of Angular displacement can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1459,33 +1081,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-angular-velocity-and-acceleration-1",
-              "question": "What are the fundamental laws or mechanisms governing Angular velocity and acceleration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "angular-velocity-and-acceleration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "angular-velocity-and-acceleration",
-                "conceptSlug": "core-angular-velocity-and-acceleration",
-                "microskillSlug": "understand-angular-velocity-and-acceleration"
-              }
-            },
             {
               "id": "rotational-motion-q-angular-velocity-and-acceleration-2",
               "question": "Explain an application where using the concept of Angular velocity and acceleration can lead to a common student error.",
@@ -1571,33 +1166,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-rotational-kinematic-equations-1",
-              "question": "What are the fundamental laws or mechanisms governing Rotational kinematic equations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "rotational-kinematic-equations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinematic-equations",
-                "conceptSlug": "core-rotational-kinematic-equations",
-                "microskillSlug": "understand-rotational-kinematic-equations"
-              }
-            },
-            {
               "id": "rotational-motion-q-rotational-kinematic-equations-2",
               "question": "Explain an application where using the concept of Rotational kinematic equations can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1668,33 +1236,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-rotational-kinetic-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Rotational kinetic energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "rotational-kinetic-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rotational-kinetic-energy",
-                "conceptSlug": "core-rotational-kinetic-energy",
-                "microskillSlug": "understand-rotational-kinetic-energy"
-              }
-            },
             {
               "id": "rotational-motion-q-rotational-kinetic-energy-2",
               "question": "Explain an application where using the concept of Rotational kinetic energy can lead to a common student error.",
@@ -1768,33 +1309,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-pure-rolling-motion-1",
-              "question": "What are the fundamental laws or mechanisms governing Pure rolling motion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "pure-rolling-motion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "pure-rolling-motion",
-                "conceptSlug": "core-pure-rolling-motion",
-                "microskillSlug": "understand-pure-rolling-motion"
-              }
-            },
-            {
               "id": "rotational-motion-q-pure-rolling-motion-2",
               "question": "Explain an application where using the concept of Pure rolling motion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1867,33 +1381,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-rolling-motion-on-incline-1",
-              "question": "What are the fundamental laws or mechanisms governing Rolling motion on incline?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "rolling-motion-on-incline"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "rolling-motion-on-incline",
-                "conceptSlug": "core-rolling-motion-on-incline",
-                "microskillSlug": "understand-rolling-motion-on-incline"
-              }
-            },
-            {
               "id": "rotational-motion-q-rolling-motion-on-incline-2",
               "question": "Explain an application where using the concept of Rolling motion on incline can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1965,33 +1452,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-friction-in-rolling-1",
-              "question": "What are the fundamental laws or mechanisms governing Friction in rolling?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "friction-in-rolling"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "friction-in-rolling",
-                "conceptSlug": "core-friction-in-rolling",
-                "microskillSlug": "understand-friction-in-rolling"
-              }
-            },
             {
               "id": "rotational-motion-q-friction-in-rolling-2",
               "question": "Explain an application where using the concept of Friction in rolling can lead to a common student error.",
@@ -2078,33 +1538,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "rotational-motion-q-equilibrium-of-rigid-body-1",
-              "question": "What are the fundamental laws or mechanisms governing Equilibrium of rigid body?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "equilibrium-of-rigid-body"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "equilibrium-of-rigid-body",
-                "conceptSlug": "core-equilibrium-of-rigid-body",
-                "microskillSlug": "understand-equilibrium-of-rigid-body"
-              }
-            },
-            {
               "id": "rotational-motion-q-equilibrium-of-rigid-body-2",
               "question": "Explain an application where using the concept of Equilibrium of rigid body can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2175,33 +1608,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "rotational-motion-q-comparison-of-linear-and-rotational-1",
-              "question": "What are the fundamental laws or mechanisms governing Comparison of linear and rotational?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "rotational-motion",
-                "comparison-of-linear-and-rotational"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "rotational-motion",
-                "chapterSlug": "rotational-motion",
-                "topicSlug": "rotational-motion",
-                "subtopicSlug": "comparison-of-linear-and-rotational",
-                "conceptSlug": "core-comparison-of-linear-and-rotational",
-                "microskillSlug": "understand-comparison-of-linear-and-rotational"
-              }
-            },
             {
               "id": "rotational-motion-q-comparison-of-linear-and-rotational-2",
               "question": "Explain an application where using the concept of Comparison of linear and rotational can lead to a common student error.",

@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-reflection-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Reflection of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "reflection-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "reflection-of-light",
-                "conceptSlug": "core-reflection-of-light",
-                "microskillSlug": "understand-reflection-of-light"
-              }
-            },
-            {
               "id": "optics-q-reflection-of-light-2",
               "question": "Explain an application where using the concept of Reflection of light can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-spherical-mirrors-1",
-              "question": "What are the fundamental laws or mechanisms governing Spherical mirrors?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "spherical-mirrors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "spherical-mirrors",
-                "conceptSlug": "core-spherical-mirrors",
-                "microskillSlug": "understand-spherical-mirrors"
-              }
-            },
             {
               "id": "optics-q-spherical-mirrors-2",
               "question": "Explain an application where using the concept of Spherical mirrors can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-mirror-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Mirror formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "mirror-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "mirror-formula",
-                "conceptSlug": "core-mirror-formula",
-                "microskillSlug": "understand-mirror-formula"
-              }
-            },
-            {
               "id": "optics-q-mirror-formula-2",
               "question": "Explain an application where using the concept of Mirror formula can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-linear-magnification-1",
-              "question": "What are the fundamental laws or mechanisms governing Linear magnification?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "linear-magnification"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "linear-magnification",
-                "conceptSlug": "core-linear-magnification",
-                "microskillSlug": "understand-linear-magnification"
-              }
-            },
             {
               "id": "optics-q-linear-magnification-2",
               "question": "Explain an application where using the concept of Linear magnification can lead to a common student error.",
@@ -448,33 +340,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-refraction-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Refraction of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "refraction-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "refraction-of-light",
-                "conceptSlug": "core-refraction-of-light",
-                "microskillSlug": "understand-refraction-of-light"
-              }
-            },
-            {
               "id": "optics-q-refraction-of-light-2",
               "question": "Explain an application where using the concept of Refraction of light can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -546,33 +411,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-snell-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Snell’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "snell-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "snell-s-law",
-                "conceptSlug": "core-snell-s-law",
-                "microskillSlug": "understand-snell-s-law"
-              }
-            },
             {
               "id": "optics-q-snell-s-law-2",
               "question": "Explain an application where using the concept of Snell’s law can lead to a common student error.",
@@ -659,33 +497,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-total-internal-reflection-1",
-              "question": "What are the fundamental laws or mechanisms governing Total internal reflection?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "total-internal-reflection"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "total-internal-reflection",
-                "conceptSlug": "core-total-internal-reflection",
-                "microskillSlug": "understand-total-internal-reflection"
-              }
-            },
-            {
               "id": "optics-q-total-internal-reflection-2",
               "question": "Explain an application where using the concept of Total internal reflection can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -757,33 +568,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-critical-angle-1",
-              "question": "What are the fundamental laws or mechanisms governing Critical angle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "critical-angle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "critical-angle",
-                "conceptSlug": "core-critical-angle",
-                "microskillSlug": "understand-critical-angle"
-              }
-            },
             {
               "id": "optics-q-critical-angle-2",
               "question": "Explain an application where using the concept of Critical angle can lead to a common student error.",
@@ -857,33 +641,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-optical-fibres-application-1",
-              "question": "What are the fundamental laws or mechanisms governing Optical fibres application?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "optical-fibres-application"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "optical-fibres-application",
-                "conceptSlug": "core-optical-fibres-application",
-                "microskillSlug": "understand-optical-fibres-application"
-              }
-            },
-            {
               "id": "optics-q-optical-fibres-application-2",
               "question": "Explain an application where using the concept of Optical fibres application can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -956,33 +713,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-refraction-at-spherical-surface-1",
-              "question": "What are the fundamental laws or mechanisms governing Refraction at spherical surface?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "refraction-at-spherical-surface"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "refraction-at-spherical-surface",
-                "conceptSlug": "core-refraction-at-spherical-surface",
-                "microskillSlug": "understand-refraction-at-spherical-surface"
-              }
-            },
-            {
               "id": "optics-q-refraction-at-spherical-surface-2",
               "question": "Explain an application where using the concept of Refraction at spherical surface can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1054,33 +784,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-lens-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Lens formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "lens-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "lens-formula",
-                "conceptSlug": "core-lens-formula",
-                "microskillSlug": "understand-lens-formula"
-              }
-            },
-            {
               "id": "optics-q-lens-formula-2",
               "question": "Explain an application where using the concept of Lens formula can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1151,33 +854,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-lens-maker-s-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Lens maker’s formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "lens-maker-s-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "lens-maker-s-formula",
-                "conceptSlug": "core-lens-maker-s-formula",
-                "microskillSlug": "understand-lens-maker-s-formula"
-              }
-            },
             {
               "id": "optics-q-lens-maker-s-formula-2",
               "question": "Explain an application where using the concept of Lens maker’s formula can lead to a common student error.",
@@ -1263,33 +939,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-power-of-a-lens-1",
-              "question": "What are the fundamental laws or mechanisms governing Power of a lens?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "power-of-a-lens"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "power-of-a-lens",
-                "conceptSlug": "core-power-of-a-lens",
-                "microskillSlug": "understand-power-of-a-lens"
-              }
-            },
-            {
               "id": "optics-q-power-of-a-lens-2",
               "question": "Explain an application where using the concept of Power of a lens can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1360,33 +1009,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-combination-of-thin-lenses-1",
-              "question": "What are the fundamental laws or mechanisms governing Combination of thin lenses?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "combination-of-thin-lenses"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "combination-of-thin-lenses",
-                "conceptSlug": "core-combination-of-thin-lenses",
-                "microskillSlug": "understand-combination-of-thin-lenses"
-              }
-            },
             {
               "id": "optics-q-combination-of-thin-lenses-2",
               "question": "Explain an application where using the concept of Combination of thin lenses can lead to a common student error.",
@@ -1460,33 +1082,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-refraction-through-prism-1",
-              "question": "What are the fundamental laws or mechanisms governing Refraction through prism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "refraction-through-prism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "refraction-through-prism",
-                "conceptSlug": "core-refraction-through-prism",
-                "microskillSlug": "understand-refraction-through-prism"
-              }
-            },
-            {
               "id": "optics-q-refraction-through-prism-2",
               "question": "Explain an application where using the concept of Refraction through prism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1558,33 +1153,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-dispersion-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Dispersion of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "dispersion-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "dispersion-of-light",
-                "conceptSlug": "core-dispersion-of-light",
-                "microskillSlug": "understand-dispersion-of-light"
-              }
-            },
             {
               "id": "optics-q-dispersion-of-light-2",
               "question": "Explain an application where using the concept of Dispersion of light can lead to a common student error.",
@@ -1658,33 +1226,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-simple-microscope-1",
-              "question": "What are the fundamental laws or mechanisms governing Simple microscope?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "simple-microscope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "simple-microscope",
-                "conceptSlug": "core-simple-microscope",
-                "microskillSlug": "understand-simple-microscope"
-              }
-            },
-            {
               "id": "optics-q-simple-microscope-2",
               "question": "Explain an application where using the concept of Simple microscope can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1756,33 +1297,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-compound-microscope-1",
-              "question": "What are the fundamental laws or mechanisms governing Compound microscope?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "compound-microscope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "compound-microscope",
-                "conceptSlug": "core-compound-microscope",
-                "microskillSlug": "understand-compound-microscope"
-              }
-            },
             {
               "id": "optics-q-compound-microscope-2",
               "question": "Explain an application where using the concept of Compound microscope can lead to a common student error.",
@@ -1869,33 +1383,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-astronomical-telescope-1",
-              "question": "What are the fundamental laws or mechanisms governing Astronomical telescope?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "astronomical-telescope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "astronomical-telescope",
-                "conceptSlug": "core-astronomical-telescope",
-                "microskillSlug": "understand-astronomical-telescope"
-              }
-            },
-            {
               "id": "optics-q-astronomical-telescope-2",
               "question": "Explain an application where using the concept of Astronomical telescope can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1966,33 +1453,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-wavefront-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Wavefront concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "wavefront-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "wavefront-concept",
-                "conceptSlug": "core-wavefront-concept",
-                "microskillSlug": "understand-wavefront-concept"
-              }
-            },
             {
               "id": "optics-q-wavefront-concept-2",
               "question": "Explain an application where using the concept of Wavefront concept can lead to a common student error.",
@@ -2066,33 +1526,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-huygens-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Huygens principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "huygens-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "huygens-principle",
-                "conceptSlug": "core-huygens-principle",
-                "microskillSlug": "understand-huygens-principle"
-              }
-            },
-            {
               "id": "optics-q-huygens-principle-2",
               "question": "Explain an application where using the concept of Huygens principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2164,33 +1597,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-young-s-double-slit-experiment-1",
-              "question": "What are the fundamental laws or mechanisms governing Young's double slit experiment?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "young-s-double-slit-experiment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "young-s-double-slit-experiment",
-                "conceptSlug": "core-young-s-double-slit-experiment",
-                "microskillSlug": "understand-young-s-double-slit-experiment"
-              }
-            },
             {
               "id": "optics-q-young-s-double-slit-experiment-2",
               "question": "Explain an application where using the concept of Young's double slit experiment can lead to a common student error.",
@@ -2264,33 +1670,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-coherent-sources-1",
-              "question": "What are the fundamental laws or mechanisms governing Coherent sources?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "coherent-sources"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "coherent-sources",
-                "conceptSlug": "core-coherent-sources",
-                "microskillSlug": "understand-coherent-sources"
-              }
-            },
-            {
               "id": "optics-q-coherent-sources-2",
               "question": "Explain an application where using the concept of Coherent sources can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2362,33 +1741,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-diffraction-of-light-at-single-slit-1",
-              "question": "What are the fundamental laws or mechanisms governing Diffraction of light at single slit?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "diffraction-of-light-at-single-slit"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "diffraction-of-light-at-single-slit",
-                "conceptSlug": "core-diffraction-of-light-at-single-slit",
-                "microskillSlug": "understand-diffraction-of-light-at-single-slit"
-              }
-            },
             {
               "id": "optics-q-diffraction-of-light-at-single-slit-2",
               "question": "Explain an application where using the concept of Diffraction of light at single slit can lead to a common student error.",
@@ -2475,33 +1827,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "optics-q-resolving-power-of-optical-instruments-1",
-              "question": "What are the fundamental laws or mechanisms governing Resolving power of optical instruments?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "resolving-power-of-optical-instruments"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "resolving-power-of-optical-instruments",
-                "conceptSlug": "core-resolving-power-of-optical-instruments",
-                "microskillSlug": "understand-resolving-power-of-optical-instruments"
-              }
-            },
-            {
               "id": "optics-q-resolving-power-of-optical-instruments-2",
               "question": "Explain an application where using the concept of Resolving power of optical instruments can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2573,33 +1898,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "optics-q-polarisation-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Polarisation of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "optics",
-                "polarisation-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "optics",
-                "chapterSlug": "optics",
-                "topicSlug": "optics",
-                "subtopicSlug": "polarisation-of-light",
-                "conceptSlug": "core-polarisation-of-light",
-                "microskillSlug": "understand-polarisation-of-light"
-              }
-            },
             {
               "id": "optics-q-polarisation-of-light-2",
               "question": "Explain an application where using the concept of Polarisation of light can lead to a common student error.",

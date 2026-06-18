@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-alkanes-nomenclature-and-isomerism-1",
-              "question": "What are the fundamental laws or mechanisms governing Alkanes nomenclature and isomerism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "alkanes-nomenclature-and-isomerism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "alkanes-nomenclature-and-isomerism",
-                "conceptSlug": "core-alkanes-nomenclature-and-isomerism",
-                "microskillSlug": "understand-alkanes-nomenclature-and-isomerism"
-              }
-            },
-            {
               "id": "hydrocarbons-q-alkanes-nomenclature-and-isomerism-2",
               "question": "Explain an application where using the concept of Alkanes nomenclature and isomerism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-preparation-of-alkanes-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of alkanes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "preparation-of-alkanes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "preparation-of-alkanes",
-                "conceptSlug": "core-preparation-of-alkanes",
-                "microskillSlug": "understand-preparation-of-alkanes"
-              }
-            },
             {
               "id": "hydrocarbons-q-preparation-of-alkanes-2",
               "question": "Explain an application where using the concept of Preparation of alkanes can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-physical-properties-of-alkanes-1",
-              "question": "What are the fundamental laws or mechanisms governing Physical properties of alkanes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "physical-properties-of-alkanes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "physical-properties-of-alkanes",
-                "conceptSlug": "core-physical-properties-of-alkanes",
-                "microskillSlug": "understand-physical-properties-of-alkanes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-physical-properties-of-alkanes-2",
               "question": "Explain an application where using the concept of Physical properties of alkanes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -349,33 +268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-free-radical-halogenation-of-alkanes-1",
-              "question": "What are the fundamental laws or mechanisms governing Free radical halogenation of alkanes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "free-radical-halogenation-of-alkanes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "free-radical-halogenation-of-alkanes",
-                "conceptSlug": "core-free-radical-halogenation-of-alkanes",
-                "microskillSlug": "understand-free-radical-halogenation-of-alkanes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-free-radical-halogenation-of-alkanes-2",
               "question": "Explain an application where using the concept of Free radical halogenation of alkanes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -435,33 +327,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-conformations-of-ethane-1",
-              "question": "What are the fundamental laws or mechanisms governing Conformations of ethane?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "conformations-of-ethane"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "conformations-of-ethane",
-                "conceptSlug": "core-conformations-of-ethane",
-                "microskillSlug": "understand-conformations-of-ethane"
-              }
-            },
             {
               "id": "hydrocarbons-q-conformations-of-ethane-2",
               "question": "Explain an application where using the concept of Conformations of ethane can lead to a common student error.",
@@ -536,33 +401,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-newman-and-sawhorse-projections-1",
-              "question": "What are the fundamental laws or mechanisms governing Newman and sawhorse projections?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "newman-and-sawhorse-projections"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "newman-and-sawhorse-projections",
-                "conceptSlug": "core-newman-and-sawhorse-projections",
-                "microskillSlug": "understand-newman-and-sawhorse-projections"
-              }
-            },
-            {
               "id": "hydrocarbons-q-newman-and-sawhorse-projections-2",
               "question": "Explain an application where using the concept of Newman and sawhorse projections can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -634,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-alkenes-nomenclature-and-isomerism-1",
-              "question": "What are the fundamental laws or mechanisms governing Alkenes nomenclature and isomerism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "alkenes-nomenclature-and-isomerism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "alkenes-nomenclature-and-isomerism",
-                "conceptSlug": "core-alkenes-nomenclature-and-isomerism",
-                "microskillSlug": "understand-alkenes-nomenclature-and-isomerism"
-              }
-            },
             {
               "id": "hydrocarbons-q-alkenes-nomenclature-and-isomerism-2",
               "question": "Explain an application where using the concept of Alkenes nomenclature and isomerism can lead to a common student error.",
@@ -734,33 +545,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-preparation-of-alkenes-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of alkenes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "preparation-of-alkenes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "preparation-of-alkenes",
-                "conceptSlug": "core-preparation-of-alkenes",
-                "microskillSlug": "understand-preparation-of-alkenes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-preparation-of-alkenes-2",
               "question": "Explain an application where using the concept of Preparation of alkenes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -833,33 +617,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-markovnikov-addition-1",
-              "question": "What are the fundamental laws or mechanisms governing Markovnikov addition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "markovnikov-addition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "markovnikov-addition",
-                "conceptSlug": "core-markovnikov-addition",
-                "microskillSlug": "understand-markovnikov-addition"
-              }
-            },
-            {
               "id": "hydrocarbons-q-markovnikov-addition-2",
               "question": "Explain an application where using the concept of Markovnikov addition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -931,33 +688,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-anti-markovnikov-addition-1",
-              "question": "What are the fundamental laws or mechanisms governing Anti-Markovnikov addition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "anti-markovnikov-addition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "anti-markovnikov-addition",
-                "conceptSlug": "core-anti-markovnikov-addition",
-                "microskillSlug": "understand-anti-markovnikov-addition"
-              }
-            },
             {
               "id": "hydrocarbons-q-anti-markovnikov-addition-2",
               "question": "Explain an application where using the concept of Anti-Markovnikov addition can lead to a common student error.",
@@ -1044,33 +774,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-ozonolysis-of-alkenes-1",
-              "question": "What are the fundamental laws or mechanisms governing Ozonolysis of alkenes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "ozonolysis-of-alkenes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "ozonolysis-of-alkenes",
-                "conceptSlug": "core-ozonolysis-of-alkenes",
-                "microskillSlug": "understand-ozonolysis-of-alkenes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-ozonolysis-of-alkenes-2",
               "question": "Explain an application where using the concept of Ozonolysis of alkenes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1142,33 +845,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-alkynes-nomenclature-and-isomerism-1",
-              "question": "What are the fundamental laws or mechanisms governing Alkynes nomenclature and isomerism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "alkynes-nomenclature-and-isomerism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "alkynes-nomenclature-and-isomerism",
-                "conceptSlug": "core-alkynes-nomenclature-and-isomerism",
-                "microskillSlug": "understand-alkynes-nomenclature-and-isomerism"
-              }
-            },
             {
               "id": "hydrocarbons-q-alkynes-nomenclature-and-isomerism-2",
               "question": "Explain an application where using the concept of Alkynes nomenclature and isomerism can lead to a common student error.",
@@ -1242,33 +918,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-preparation-of-alkynes-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of alkynes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "preparation-of-alkynes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "preparation-of-alkynes",
-                "conceptSlug": "core-preparation-of-alkynes",
-                "microskillSlug": "understand-preparation-of-alkynes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-preparation-of-alkynes-2",
               "question": "Explain an application where using the concept of Preparation of alkynes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1341,33 +990,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-acidic-character-of-alkynes-1",
-              "question": "What are the fundamental laws or mechanisms governing Acidic character of alkynes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "acidic-character-of-alkynes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "acidic-character-of-alkynes",
-                "conceptSlug": "core-acidic-character-of-alkynes",
-                "microskillSlug": "understand-acidic-character-of-alkynes"
-              }
-            },
-            {
               "id": "hydrocarbons-q-acidic-character-of-alkynes-2",
               "question": "Explain an application where using the concept of Acidic character of alkynes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1439,33 +1061,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-addition-reactions-of-alkynes-1",
-              "question": "What are the fundamental laws or mechanisms governing Addition reactions of alkynes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "addition-reactions-of-alkynes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "addition-reactions-of-alkynes",
-                "conceptSlug": "core-addition-reactions-of-alkynes",
-                "microskillSlug": "understand-addition-reactions-of-alkynes"
-              }
-            },
             {
               "id": "hydrocarbons-q-addition-reactions-of-alkynes-2",
               "question": "Explain an application where using the concept of Addition reactions of alkynes can lead to a common student error.",
@@ -1540,33 +1135,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-benzene-structure-and-resonance-1",
-              "question": "What are the fundamental laws or mechanisms governing Benzene structure and resonance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "benzene-structure-and-resonance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "benzene-structure-and-resonance",
-                "conceptSlug": "core-benzene-structure-and-resonance",
-                "microskillSlug": "understand-benzene-structure-and-resonance"
-              }
-            },
-            {
               "id": "hydrocarbons-q-benzene-structure-and-resonance-2",
               "question": "Explain an application where using the concept of Benzene structure and resonance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1626,33 +1194,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-aromaticity-huckel-rule-1",
-              "question": "What are the fundamental laws or mechanisms governing Aromaticity Huckel rule?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "aromaticity-huckel-rule"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "aromaticity-huckel-rule",
-                "conceptSlug": "core-aromaticity-huckel-rule",
-                "microskillSlug": "understand-aromaticity-huckel-rule"
-              }
-            },
             {
               "id": "hydrocarbons-q-aromaticity-huckel-rule-2",
               "question": "Explain an application where using the concept of Aromaticity Huckel rule can lead to a common student error.",
@@ -1727,34 +1268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-electrophilic-aromatic-substitution-mechanism-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrophilic aromatic substitution mechanism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "electrophilic-aromatic-substitution-mechanism",
-                "mechanism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "electrophilic-aromatic-substitution-mechanism",
-                "conceptSlug": "core-electrophilic-aromatic-substitution-mechanism",
-                "microskillSlug": "understand-electrophilic-aromatic-substitution-mechanism"
-              }
-            },
-            {
               "id": "hydrocarbons-q-electrophilic-aromatic-substitution-mechanism-2",
               "question": "Explain an application where using the concept of Electrophilic aromatic substitution mechanism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1828,33 +1341,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "hydrocarbons-q-nitration-and-halogenation-of-benzene-1",
-              "question": "What are the fundamental laws or mechanisms governing Nitration and halogenation of benzene?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "nitration-and-halogenation-of-benzene"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "nitration-and-halogenation-of-benzene",
-                "conceptSlug": "core-nitration-and-halogenation-of-benzene",
-                "microskillSlug": "understand-nitration-and-halogenation-of-benzene"
-              }
-            },
-            {
               "id": "hydrocarbons-q-nitration-and-halogenation-of-benzene-2",
               "question": "Explain an application where using the concept of Nitration and halogenation of benzene can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1926,33 +1412,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-friedel-crafts-alkylation-and-acylation-1",
-              "question": "What are the fundamental laws or mechanisms governing Friedel-Crafts alkylation and acylation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "friedel-crafts-alkylation-and-acylation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "friedel-crafts-alkylation-and-acylation",
-                "conceptSlug": "core-friedel-crafts-alkylation-and-acylation",
-                "microskillSlug": "understand-friedel-crafts-alkylation-and-acylation"
-              }
-            },
             {
               "id": "hydrocarbons-q-friedel-crafts-alkylation-and-acylation-2",
               "question": "Explain an application where using the concept of Friedel-Crafts alkylation and acylation can lead to a common student error.",
@@ -2026,33 +1485,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "hydrocarbons-q-directive-influence-of-functional-groups-1",
-              "question": "What are the fundamental laws or mechanisms governing Directive influence of functional groups?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "hydrocarbons",
-                "directive-influence-of-functional-groups"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "hydrocarbons",
-                "chapterSlug": "hydrocarbons",
-                "topicSlug": "hydrocarbons",
-                "subtopicSlug": "directive-influence-of-functional-groups",
-                "conceptSlug": "core-directive-influence-of-functional-groups",
-                "microskillSlug": "understand-directive-influence-of-functional-groups"
-              }
-            },
             {
               "id": "hydrocarbons-q-directive-influence-of-functional-groups-2",
               "question": "Explain an application where using the concept of Directive influence of functional groups can lead to a common student error.",

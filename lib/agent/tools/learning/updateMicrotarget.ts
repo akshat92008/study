@@ -3,6 +3,7 @@ import { ToolResultSchema, UpdateMicrotargetInputSchema } from '@/lib/agent/tool
 import { assertGoalOwned } from '@/lib/agent/guardrails/mutationGuardrails';
 import { updateOrCreateMicrotarget } from '@/lib/mission/microtargetEngine';
 import { recordAgentActivity, stableKey } from '@/lib/agent/tools/learning/common';
+import { isPlaceholderTitle } from '@/lib/topic-seeding/templates/neet/topic-skeleton';
 
 export const updateMicrotargetTool: AgentToolDefinition<typeof UpdateMicrotargetInputSchema, typeof ToolResultSchema> = {
   name: 'update_microtarget',
@@ -14,6 +15,16 @@ export const updateMicrotargetTool: AgentToolDefinition<typeof UpdateMicrotarget
   maxCallsPerTurn: 12,
   requiresAuth: true,
   async handler(input, context) {
+    if ((input.topic && isPlaceholderTitle(input.topic)) || (input.concept && isPlaceholderTitle(input.concept))) {
+      return {
+        success: false,
+        changed: false,
+        entityType: 'daily_microtask',
+        entityIds: [],
+        summary: 'Ignored placeholder topic. Agents should not update or create placeholder topics.',
+      };
+    }
+
     const goalId = input.goalId ?? context.goalId ?? null;
     await assertGoalOwned(context.supabase, { userId: context.userId, goalId });
     const result = await updateOrCreateMicrotarget(context.supabase, {

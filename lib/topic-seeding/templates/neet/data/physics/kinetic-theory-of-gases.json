@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-ideal-gas-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Ideal gas equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "ideal-gas-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "ideal-gas-equation",
-                "conceptSlug": "core-ideal-gas-equation",
-                "microskillSlug": "understand-ideal-gas-equation"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-ideal-gas-equation-2",
               "question": "Explain an application where using the concept of Ideal gas equation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-assumptions-of-kinetic-theory-1",
-              "question": "What are the fundamental laws or mechanisms governing Assumptions of kinetic theory?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "assumptions-of-kinetic-theory"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "assumptions-of-kinetic-theory",
-                "conceptSlug": "core-assumptions-of-kinetic-theory",
-                "microskillSlug": "understand-assumptions-of-kinetic-theory"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-assumptions-of-kinetic-theory-2",
               "question": "Explain an application where using the concept of Assumptions of kinetic theory can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-pressure-of-an-ideal-gas-1",
-              "question": "What are the fundamental laws or mechanisms governing Pressure of an ideal gas?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "pressure-of-an-ideal-gas"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "pressure-of-an-ideal-gas",
-                "conceptSlug": "core-pressure-of-an-ideal-gas",
-                "microskillSlug": "understand-pressure-of-an-ideal-gas"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-pressure-of-an-ideal-gas-2",
               "question": "Explain an application where using the concept of Pressure of an ideal gas can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -349,33 +268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-root-mean-square-speed-1",
-              "question": "What are the fundamental laws or mechanisms governing Root mean square speed?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "root-mean-square-speed"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "root-mean-square-speed",
-                "conceptSlug": "core-root-mean-square-speed",
-                "microskillSlug": "understand-root-mean-square-speed"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-root-mean-square-speed-2",
               "question": "Explain an application where using the concept of Root mean square speed can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -447,33 +339,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-average-speed-of-gas-molecules-1",
-              "question": "What are the fundamental laws or mechanisms governing Average speed of gas molecules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "average-speed-of-gas-molecules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "average-speed-of-gas-molecules",
-                "conceptSlug": "core-average-speed-of-gas-molecules",
-                "microskillSlug": "understand-average-speed-of-gas-molecules"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-average-speed-of-gas-molecules-2",
               "question": "Explain an application where using the concept of Average speed of gas molecules can lead to a common student error.",
@@ -560,33 +425,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-most-probable-speed-1",
-              "question": "What are the fundamental laws or mechanisms governing Most probable speed?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "most-probable-speed"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "most-probable-speed",
-                "conceptSlug": "core-most-probable-speed",
-                "microskillSlug": "understand-most-probable-speed"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-most-probable-speed-2",
               "question": "Explain an application where using the concept of Most probable speed can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -657,33 +495,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-temperature-and-kinetic-energy-relation-1",
-              "question": "What are the fundamental laws or mechanisms governing Temperature and kinetic energy relation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "temperature-and-kinetic-energy-relation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "temperature-and-kinetic-energy-relation",
-                "conceptSlug": "core-temperature-and-kinetic-energy-relation",
-                "microskillSlug": "understand-temperature-and-kinetic-energy-relation"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-temperature-and-kinetic-energy-relation-2",
               "question": "Explain an application where using the concept of Temperature and kinetic energy relation can lead to a common student error.",
@@ -757,33 +568,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-degrees-of-freedom-1",
-              "question": "What are the fundamental laws or mechanisms governing Degrees of freedom?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "degrees-of-freedom"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "degrees-of-freedom",
-                "conceptSlug": "core-degrees-of-freedom",
-                "microskillSlug": "understand-degrees-of-freedom"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-degrees-of-freedom-2",
               "question": "Explain an application where using the concept of Degrees of freedom can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -854,33 +638,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-law-of-equipartition-of-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Law of equipartition of energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "law-of-equipartition-of-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "law-of-equipartition-of-energy",
-                "conceptSlug": "core-law-of-equipartition-of-energy",
-                "microskillSlug": "understand-law-of-equipartition-of-energy"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-law-of-equipartition-of-energy-2",
               "question": "Explain an application where using the concept of Law of equipartition of energy can lead to a common student error.",
@@ -953,33 +710,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-specific-heat-of-monoatomic-gas-1",
-              "question": "What are the fundamental laws or mechanisms governing Specific heat of monoatomic gas?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "specific-heat-of-monoatomic-gas"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "specific-heat-of-monoatomic-gas",
-                "conceptSlug": "core-specific-heat-of-monoatomic-gas",
-                "microskillSlug": "understand-specific-heat-of-monoatomic-gas"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-monoatomic-gas-2",
               "question": "Explain an application where using the concept of Specific heat of monoatomic gas can lead to a common student error.",
@@ -1066,33 +796,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-specific-heat-of-diatomic-gas-1",
-              "question": "What are the fundamental laws or mechanisms governing Specific heat of diatomic gas?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "specific-heat-of-diatomic-gas"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "specific-heat-of-diatomic-gas",
-                "conceptSlug": "core-specific-heat-of-diatomic-gas",
-                "microskillSlug": "understand-specific-heat-of-diatomic-gas"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-specific-heat-of-diatomic-gas-2",
               "question": "Explain an application where using the concept of Specific heat of diatomic gas can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1164,33 +867,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-mean-free-path-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Mean free path formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "mean-free-path-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "mean-free-path-formula",
-                "conceptSlug": "core-mean-free-path-formula",
-                "microskillSlug": "understand-mean-free-path-formula"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-mean-free-path-formula-2",
               "question": "Explain an application where using the concept of Mean free path formula can lead to a common student error.",
@@ -1264,33 +940,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-avogadro-number-significance-1",
-              "question": "What are the fundamental laws or mechanisms governing Avogadro number significance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "avogadro-number-significance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "avogadro-number-significance",
-                "conceptSlug": "core-avogadro-number-significance",
-                "microskillSlug": "understand-avogadro-number-significance"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-avogadro-number-significance-2",
               "question": "Explain an application where using the concept of Avogadro number significance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1361,33 +1010,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-kinetic-energy-per-molecule-1",
-              "question": "What are the fundamental laws or mechanisms governing Kinetic energy per molecule?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "kinetic-energy-per-molecule"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "kinetic-energy-per-molecule",
-                "conceptSlug": "core-kinetic-energy-per-molecule",
-                "microskillSlug": "understand-kinetic-energy-per-molecule"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-kinetic-energy-per-molecule-2",
               "question": "Explain an application where using the concept of Kinetic energy per molecule can lead to a common student error.",
@@ -1460,33 +1082,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-gas-mixture-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Gas mixture properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "gas-mixture-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "gas-mixture-properties",
-                "conceptSlug": "core-gas-mixture-properties",
-                "microskillSlug": "understand-gas-mixture-properties"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-gas-mixture-properties-2",
               "question": "Explain an application where using the concept of Gas mixture properties can lead to a common student error.",
@@ -1572,33 +1167,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-maxwell-boltzmann-velocity-distribution-1",
-              "question": "What are the fundamental laws or mechanisms governing Maxwell Boltzmann velocity distribution?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "maxwell-boltzmann-velocity-distribution"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "maxwell-boltzmann-velocity-distribution",
-                "conceptSlug": "core-maxwell-boltzmann-velocity-distribution",
-                "microskillSlug": "understand-maxwell-boltzmann-velocity-distribution"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-maxwell-boltzmann-velocity-distribution-2",
               "question": "Explain an application where using the concept of Maxwell Boltzmann velocity distribution can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1670,33 +1238,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-collision-frequency-1",
-              "question": "What are the fundamental laws or mechanisms governing Collision frequency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "collision-frequency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "collision-frequency",
-                "conceptSlug": "core-collision-frequency",
-                "microskillSlug": "understand-collision-frequency"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-collision-frequency-2",
               "question": "Explain an application where using the concept of Collision frequency can lead to a common student error.",
@@ -1770,33 +1311,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-real-gas-deviation-from-ideal-behaviour-1",
-              "question": "What are the fundamental laws or mechanisms governing Real gas deviation from ideal behaviour?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "real-gas-deviation-from-ideal-behaviour"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "real-gas-deviation-from-ideal-behaviour",
-                "conceptSlug": "core-real-gas-deviation-from-ideal-behaviour",
-                "microskillSlug": "understand-real-gas-deviation-from-ideal-behaviour"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-real-gas-deviation-from-ideal-behaviour-2",
               "question": "Explain an application where using the concept of Real gas deviation from ideal behaviour can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1869,33 +1383,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "kinetic-theory-of-gases-q-van-der-waals-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Van der Waals equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "van-der-waals-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "van-der-waals-equation",
-                "conceptSlug": "core-van-der-waals-equation",
-                "microskillSlug": "understand-van-der-waals-equation"
-              }
-            },
-            {
               "id": "kinetic-theory-of-gases-q-van-der-waals-equation-2",
               "question": "Explain an application where using the concept of Van der Waals equation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1967,33 +1454,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-critical-temperature-1",
-              "question": "What are the fundamental laws or mechanisms governing Critical temperature?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "critical-temperature"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "critical-temperature",
-                "conceptSlug": "core-critical-temperature",
-                "microskillSlug": "understand-critical-temperature"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-critical-temperature-2",
               "question": "Explain an application where using the concept of Critical temperature can lead to a common student error.",
@@ -2079,33 +1539,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "kinetic-theory-of-gases-q-compressibility-factor-1",
-              "question": "What are the fundamental laws or mechanisms governing Compressibility factor?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "kinetic-theory-of-gases",
-                "compressibility-factor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "kinetic-theory-of-gases",
-                "chapterSlug": "kinetic-theory-of-gases",
-                "topicSlug": "kinetic-theory-of-gases",
-                "subtopicSlug": "compressibility-factor",
-                "conceptSlug": "core-compressibility-factor",
-                "microskillSlug": "understand-compressibility-factor"
-              }
-            },
             {
               "id": "kinetic-theory-of-gases-q-compressibility-factor-2",
               "question": "Explain an application where using the concept of Compressibility factor can lead to a common student error.",

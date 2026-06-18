@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-qualitative-analysis-of-functional-groups-1",
-              "question": "What are the fundamental laws or mechanisms governing Qualitative analysis of functional groups?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "qualitative-analysis-of-functional-groups"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "qualitative-analysis-of-functional-groups",
-                "conceptSlug": "core-qualitative-analysis-of-functional-groups",
-                "microskillSlug": "understand-qualitative-analysis-of-functional-groups"
-              }
-            },
-            {
               "id": "practical-chemistry-q-qualitative-analysis-of-functional-groups-2",
               "question": "Explain an application where using the concept of Qualitative analysis of functional groups can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-tests-for-carbohydrates-1",
-              "question": "What are the fundamental laws or mechanisms governing Tests for carbohydrates?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "tests-for-carbohydrates"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "tests-for-carbohydrates",
-                "conceptSlug": "core-tests-for-carbohydrates",
-                "microskillSlug": "understand-tests-for-carbohydrates"
-              }
-            },
             {
               "id": "practical-chemistry-q-tests-for-carbohydrates-2",
               "question": "Explain an application where using the concept of Tests for carbohydrates can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-tests-for-proteins-and-amino-acids-1",
-              "question": "What are the fundamental laws or mechanisms governing Tests for proteins and amino acids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "tests-for-proteins-and-amino-acids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "tests-for-proteins-and-amino-acids",
-                "conceptSlug": "core-tests-for-proteins-and-amino-acids",
-                "microskillSlug": "understand-tests-for-proteins-and-amino-acids"
-              }
-            },
-            {
               "id": "practical-chemistry-q-tests-for-proteins-and-amino-acids-2",
               "question": "Explain an application where using the concept of Tests for proteins and amino acids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-tests-for-fats-and-oils-1",
-              "question": "What are the fundamental laws or mechanisms governing Tests for fats and oils?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "tests-for-fats-and-oils"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "tests-for-fats-and-oils",
-                "conceptSlug": "core-tests-for-fats-and-oils",
-                "microskillSlug": "understand-tests-for-fats-and-oils"
-              }
-            },
             {
               "id": "practical-chemistry-q-tests-for-fats-and-oils-2",
               "question": "Explain an application where using the concept of Tests for fats and oils can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-preparation-of-inorganic-compounds-mohr-salt-alum-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of inorganic compounds (Mohr salt alum)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "preparation-of-inorganic-compounds-mohr-salt-alum"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "preparation-of-inorganic-compounds-mohr-salt-alum",
-                "conceptSlug": "core-preparation-of-inorganic-compounds-mohr-salt-alum",
-                "microskillSlug": "understand-preparation-of-inorganic-compounds-mohr-salt-alum"
-              }
-            },
-            {
               "id": "practical-chemistry-q-preparation-of-inorganic-compounds-mohr-salt-alum-2",
               "question": "Explain an application where using the concept of Preparation of inorganic compounds (Mohr salt alum) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of organic compounds (acetanilide p-nitroacetanilide)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
-                "conceptSlug": "core-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide",
-                "microskillSlug": "understand-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide"
-              }
-            },
             {
               "id": "practical-chemistry-q-preparation-of-organic-compounds-acetanilide-p-nitroacetanilide-2",
               "question": "Explain an application where using the concept of Preparation of organic compounds (acetanilide p-nitroacetanilide) can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-titrimetric-exercises-acid-base-1",
-              "question": "What are the fundamental laws or mechanisms governing Titrimetric exercises (acid-base)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "titrimetric-exercises-acid-base"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "titrimetric-exercises-acid-base",
-                "conceptSlug": "core-titrimetric-exercises-acid-base",
-                "microskillSlug": "understand-titrimetric-exercises-acid-base"
-              }
-            },
-            {
               "id": "practical-chemistry-q-titrimetric-exercises-acid-base-2",
               "question": "Explain an application where using the concept of Titrimetric exercises (acid-base) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-potassium-permanganate-titrations-1",
-              "question": "What are the fundamental laws or mechanisms governing Potassium permanganate titrations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "potassium-permanganate-titrations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "potassium-permanganate-titrations",
-                "conceptSlug": "core-potassium-permanganate-titrations",
-                "microskillSlug": "understand-potassium-permanganate-titrations"
-              }
-            },
             {
               "id": "practical-chemistry-q-potassium-permanganate-titrations-2",
               "question": "Explain an application where using the concept of Potassium permanganate titrations can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-qualitative-salt-analysis-cations-1",
-              "question": "What are the fundamental laws or mechanisms governing Qualitative salt analysis cations?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "qualitative-salt-analysis-cations"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "qualitative-salt-analysis-cations",
-                "conceptSlug": "core-qualitative-salt-analysis-cations",
-                "microskillSlug": "understand-qualitative-salt-analysis-cations"
-              }
-            },
-            {
               "id": "practical-chemistry-q-qualitative-salt-analysis-cations-2",
               "question": "Explain an application where using the concept of Qualitative salt analysis cations can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-qualitative-salt-analysis-anions-1",
-              "question": "What are the fundamental laws or mechanisms governing Qualitative salt analysis anions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "qualitative-salt-analysis-anions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "qualitative-salt-analysis-anions",
-                "conceptSlug": "core-qualitative-salt-analysis-anions",
-                "microskillSlug": "understand-qualitative-salt-analysis-anions"
-              }
-            },
             {
               "id": "practical-chemistry-q-qualitative-salt-analysis-anions-2",
               "question": "Explain an application where using the concept of Qualitative salt analysis anions can lead to a common student error.",
@@ -947,33 +677,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-enthalpy-of-dissolution-experiment-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy of dissolution experiment?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "enthalpy-of-dissolution-experiment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "enthalpy-of-dissolution-experiment",
-                "conceptSlug": "core-enthalpy-of-dissolution-experiment",
-                "microskillSlug": "understand-enthalpy-of-dissolution-experiment"
-              }
-            },
-            {
               "id": "practical-chemistry-q-enthalpy-of-dissolution-experiment-2",
               "question": "Explain an application where using the concept of Enthalpy of dissolution experiment can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1033,33 +736,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-enthalpy-of-neutralisation-experiment-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy of neutralisation experiment?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "enthalpy-of-neutralisation-experiment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "enthalpy-of-neutralisation-experiment",
-                "conceptSlug": "core-enthalpy-of-neutralisation-experiment",
-                "microskillSlug": "understand-enthalpy-of-neutralisation-experiment"
-              }
-            },
             {
               "id": "practical-chemistry-q-enthalpy-of-neutralisation-experiment-2",
               "question": "Explain an application where using the concept of Enthalpy of neutralisation experiment can lead to a common student error.",
@@ -1134,33 +810,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-preparation-of-lyophilic-and-lyophobic-sols-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of lyophilic and lyophobic sols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "preparation-of-lyophilic-and-lyophobic-sols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "preparation-of-lyophilic-and-lyophobic-sols",
-                "conceptSlug": "core-preparation-of-lyophilic-and-lyophobic-sols",
-                "microskillSlug": "understand-preparation-of-lyophilic-and-lyophobic-sols"
-              }
-            },
-            {
               "id": "practical-chemistry-q-preparation-of-lyophilic-and-lyophobic-sols-2",
               "question": "Explain an application where using the concept of Preparation of lyophilic and lyophobic sols can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1220,33 +869,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-kinetic-study-of-reaction-rate-1",
-              "question": "What are the fundamental laws or mechanisms governing Kinetic study of reaction rate?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "kinetic-study-of-reaction-rate"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "kinetic-study-of-reaction-rate",
-                "conceptSlug": "core-kinetic-study-of-reaction-rate",
-                "microskillSlug": "understand-kinetic-study-of-reaction-rate"
-              }
-            },
             {
               "id": "practical-chemistry-q-kinetic-study-of-reaction-rate-2",
               "question": "Explain an application where using the concept of Kinetic study of reaction rate can lead to a common student error.",
@@ -1308,33 +930,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-chromatography-separation-techniques-1",
-              "question": "What are the fundamental laws or mechanisms governing Chromatography separation techniques?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "chromatography-separation-techniques"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "chromatography-separation-techniques",
-                "conceptSlug": "core-chromatography-separation-techniques",
-                "microskillSlug": "understand-chromatography-separation-techniques"
-              }
-            },
-            {
               "id": "practical-chemistry-q-chromatography-separation-techniques-2",
               "question": "Explain an application where using the concept of Chromatography separation techniques can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1394,33 +989,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-determination-of-melting-point-1",
-              "question": "What are the fundamental laws or mechanisms governing Determination of melting point?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "determination-of-melting-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "determination-of-melting-point",
-                "conceptSlug": "core-determination-of-melting-point",
-                "microskillSlug": "understand-determination-of-melting-point"
-              }
-            },
             {
               "id": "practical-chemistry-q-determination-of-melting-point-2",
               "question": "Explain an application where using the concept of Determination of melting point can lead to a common student error.",
@@ -1495,33 +1063,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-determination-of-boiling-point-1",
-              "question": "What are the fundamental laws or mechanisms governing Determination of boiling point?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "determination-of-boiling-point"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "determination-of-boiling-point",
-                "conceptSlug": "core-determination-of-boiling-point",
-                "microskillSlug": "understand-determination-of-boiling-point"
-              }
-            },
-            {
               "id": "practical-chemistry-q-determination-of-boiling-point-2",
               "question": "Explain an application where using the concept of Determination of boiling point can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1581,33 +1122,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-17-1",
-              "question": "What are the fundamental laws or mechanisms governing Principles Related to Practical Chemistry Specific Application 17?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "principles-related-to-practical-chemistry-specific-application-17"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-17",
-                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-17",
-                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-17"
-              }
-            },
             {
               "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-17-2",
               "question": "Explain an application where using the concept of Principles Related to Practical Chemistry Specific Application 17 can lead to a common student error.",
@@ -1669,33 +1183,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-18-1",
-              "question": "What are the fundamental laws or mechanisms governing Principles Related to Practical Chemistry Specific Application 18?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "principles-related-to-practical-chemistry-specific-application-18"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-18",
-                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-18",
-                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-18"
-              }
-            },
-            {
               "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-18-2",
               "question": "Explain an application where using the concept of Principles Related to Practical Chemistry Specific Application 18 can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1755,33 +1242,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-19-1",
-              "question": "What are the fundamental laws or mechanisms governing Principles Related to Practical Chemistry Specific Application 19?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "practical-chemistry",
-                "principles-related-to-practical-chemistry-specific-application-19"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "practical-chemistry",
-                "chapterSlug": "practical-chemistry",
-                "topicSlug": "practical-chemistry",
-                "subtopicSlug": "principles-related-to-practical-chemistry-specific-application-19",
-                "conceptSlug": "core-principles-related-to-practical-chemistry-specific-application-19",
-                "microskillSlug": "understand-principles-related-to-practical-chemistry-specific-application-19"
-              }
-            },
             {
               "id": "practical-chemistry-q-principles-related-to-practical-chemistry-specific-application-19-2",
               "question": "Explain an application where using the concept of Principles Related to Practical Chemistry Specific Application 19 can lead to a common student error.",

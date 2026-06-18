@@ -62,6 +62,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: '/cognition', destination: '/dashboard', permanent: false },
+      { source: '/autopsy', destination: '/autopsy/deep', permanent: false },
+      { source: '/revision', destination: '/dashboard', permanent: false },
+      { source: '/mistakes', destination: '/autopsy/deep', permanent: false },
+      { source: '/mentor', destination: '/chat', permanent: false },
+      { source: '/tutor', destination: '/chat', permanent: false },
+      { source: '/knowledge', destination: '/dashboard', permanent: false },
+    ];
+  },
 };
 
 const withSentryConfig = getWithSentryConfig();

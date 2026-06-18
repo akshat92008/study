@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-stress-types-1",
-              "question": "What are the fundamental laws or mechanisms governing Stress types?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "stress-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "stress-types",
-                "conceptSlug": "core-stress-types",
-                "microskillSlug": "understand-stress-types"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-stress-types-2",
               "question": "Explain an application where using the concept of Stress types can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-strain-types-1",
-              "question": "What are the fundamental laws or mechanisms governing Strain types?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "strain-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "strain-types",
-                "conceptSlug": "core-strain-types",
-                "microskillSlug": "understand-strain-types"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-strain-types-2",
               "question": "Explain an application where using the concept of Strain types can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-hooke-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Hooke’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "hooke-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "hooke-s-law",
-                "conceptSlug": "core-hooke-s-law",
-                "microskillSlug": "understand-hooke-s-law"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-hooke-s-law-2",
               "question": "Explain an application where using the concept of Hooke’s law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-young-modulus-1",
-              "question": "What are the fundamental laws or mechanisms governing Young modulus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "young-modulus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "young-modulus",
-                "conceptSlug": "core-young-modulus",
-                "microskillSlug": "understand-young-modulus"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-young-modulus-2",
               "question": "Explain an application where using the concept of Young modulus can lead to a common student error.",
@@ -448,33 +340,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-bulk-modulus-1",
-              "question": "What are the fundamental laws or mechanisms governing Bulk modulus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "bulk-modulus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "bulk-modulus",
-                "conceptSlug": "core-bulk-modulus",
-                "microskillSlug": "understand-bulk-modulus"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-bulk-modulus-2",
               "question": "Explain an application where using the concept of Bulk modulus can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -546,33 +411,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-shear-modulus-1",
-              "question": "What are the fundamental laws or mechanisms governing Shear modulus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "shear-modulus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "shear-modulus",
-                "conceptSlug": "core-shear-modulus",
-                "microskillSlug": "understand-shear-modulus"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-shear-modulus-2",
               "question": "Explain an application where using the concept of Shear modulus can lead to a common student error.",
@@ -646,33 +484,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-stress-strain-curve-1",
-              "question": "What are the fundamental laws or mechanisms governing Stress-strain curve?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "stress-strain-curve"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "stress-strain-curve",
-                "conceptSlug": "core-stress-strain-curve",
-                "microskillSlug": "understand-stress-strain-curve"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-stress-strain-curve-2",
               "question": "Explain an application where using the concept of Stress-strain curve can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -744,33 +555,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-elastic-after-effect-1",
-              "question": "What are the fundamental laws or mechanisms governing Elastic after effect?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "elastic-after-effect"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "elastic-after-effect",
-                "conceptSlug": "core-elastic-after-effect",
-                "microskillSlug": "understand-elastic-after-effect"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-elastic-after-effect-2",
               "question": "Explain an application where using the concept of Elastic after effect can lead to a common student error.",
@@ -857,33 +641,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-elastic-hysteresis-1",
-              "question": "What are the fundamental laws or mechanisms governing Elastic hysteresis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "elastic-hysteresis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "elastic-hysteresis",
-                "conceptSlug": "core-elastic-hysteresis",
-                "microskillSlug": "understand-elastic-hysteresis"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-elastic-hysteresis-2",
               "question": "Explain an application where using the concept of Elastic hysteresis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -955,33 +712,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-pressure-in-fluid-1",
-              "question": "What are the fundamental laws or mechanisms governing Pressure in fluid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "pressure-in-fluid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "pressure-in-fluid",
-                "conceptSlug": "core-pressure-in-fluid",
-                "microskillSlug": "understand-pressure-in-fluid"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-pressure-in-fluid-2",
               "question": "Explain an application where using the concept of Pressure in fluid can lead to a common student error.",
@@ -1055,33 +785,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-pascal-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Pascal’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "pascal-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "pascal-s-law",
-                "conceptSlug": "core-pascal-s-law",
-                "microskillSlug": "understand-pascal-s-law"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-pascal-s-law-2",
               "question": "Explain an application where using the concept of Pascal’s law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1153,33 +856,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-hydraulic-lift-1",
-              "question": "What are the fundamental laws or mechanisms governing Hydraulic lift?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "hydraulic-lift"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "hydraulic-lift",
-                "conceptSlug": "core-hydraulic-lift",
-                "microskillSlug": "understand-hydraulic-lift"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-hydraulic-lift-2",
               "question": "Explain an application where using the concept of Hydraulic lift can lead to a common student error.",
@@ -1253,33 +929,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-buoyancy-and-upthrust-1",
-              "question": "What are the fundamental laws or mechanisms governing Buoyancy and upthrust?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "buoyancy-and-upthrust"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "buoyancy-and-upthrust",
-                "conceptSlug": "core-buoyancy-and-upthrust",
-                "microskillSlug": "understand-buoyancy-and-upthrust"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-buoyancy-and-upthrust-2",
               "question": "Explain an application where using the concept of Buoyancy and upthrust can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1351,33 +1000,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-archimedes-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Archimedes principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "archimedes-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "archimedes-principle",
-                "conceptSlug": "core-archimedes-principle",
-                "microskillSlug": "understand-archimedes-principle"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-archimedes-principle-2",
               "question": "Explain an application where using the concept of Archimedes principle can lead to a common student error.",
@@ -1451,33 +1073,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-fluid-flow-types-1",
-              "question": "What are the fundamental laws or mechanisms governing Fluid flow types?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "fluid-flow-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "fluid-flow-types",
-                "conceptSlug": "core-fluid-flow-types",
-                "microskillSlug": "understand-fluid-flow-types"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-fluid-flow-types-2",
               "question": "Explain an application where using the concept of Fluid flow types can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1549,33 +1144,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-streamline-and-turbulent-flow-1",
-              "question": "What are the fundamental laws or mechanisms governing Streamline and turbulent flow?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "streamline-and-turbulent-flow"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "streamline-and-turbulent-flow",
-                "conceptSlug": "core-streamline-and-turbulent-flow",
-                "microskillSlug": "understand-streamline-and-turbulent-flow"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-streamline-and-turbulent-flow-2",
               "question": "Explain an application where using the concept of Streamline and turbulent flow can lead to a common student error.",
@@ -1661,33 +1229,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-critical-velocity-1",
-              "question": "What are the fundamental laws or mechanisms governing Critical velocity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "critical-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "critical-velocity",
-                "conceptSlug": "core-critical-velocity",
-                "microskillSlug": "understand-critical-velocity"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-critical-velocity-2",
               "question": "Explain an application where using the concept of Critical velocity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1759,33 +1300,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-viscosity-coefficient-1",
-              "question": "What are the fundamental laws or mechanisms governing Viscosity coefficient?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "viscosity-coefficient"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "viscosity-coefficient",
-                "conceptSlug": "core-viscosity-coefficient",
-                "microskillSlug": "understand-viscosity-coefficient"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-viscosity-coefficient-2",
               "question": "Explain an application where using the concept of Viscosity coefficient can lead to a common student error.",
@@ -1859,33 +1373,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-stokes-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Stokes law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "stokes-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "stokes-law",
-                "conceptSlug": "core-stokes-law",
-                "microskillSlug": "understand-stokes-law"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-stokes-law-2",
               "question": "Explain an application where using the concept of Stokes law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1956,33 +1443,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-terminal-velocity-derivation-1",
-              "question": "What are the fundamental laws or mechanisms governing Terminal velocity derivation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "terminal-velocity-derivation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "terminal-velocity-derivation",
-                "conceptSlug": "core-terminal-velocity-derivation",
-                "microskillSlug": "understand-terminal-velocity-derivation"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-terminal-velocity-derivation-2",
               "question": "Explain an application where using the concept of Terminal velocity derivation can lead to a common student error.",
@@ -2056,33 +1516,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-bernoulli-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Bernoulli principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "bernoulli-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "bernoulli-principle",
-                "conceptSlug": "core-bernoulli-principle",
-                "microskillSlug": "understand-bernoulli-principle"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-bernoulli-principle-2",
               "question": "Explain an application where using the concept of Bernoulli principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2154,33 +1587,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-torricelli-theorem-1",
-              "question": "What are the fundamental laws or mechanisms governing Torricelli theorem?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "torricelli-theorem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "torricelli-theorem",
-                "conceptSlug": "core-torricelli-theorem",
-                "microskillSlug": "understand-torricelli-theorem"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-torricelli-theorem-2",
               "question": "Explain an application where using the concept of Torricelli theorem can lead to a common student error.",
@@ -2254,33 +1660,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-surface-tension-phenomenon-1",
-              "question": "What are the fundamental laws or mechanisms governing Surface tension phenomenon?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "surface-tension-phenomenon"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "surface-tension-phenomenon",
-                "conceptSlug": "core-surface-tension-phenomenon",
-                "microskillSlug": "understand-surface-tension-phenomenon"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-surface-tension-phenomenon-2",
               "question": "Explain an application where using the concept of Surface tension phenomenon can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2351,33 +1730,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-surface-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Surface energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "surface-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "surface-energy",
-                "conceptSlug": "core-surface-energy",
-                "microskillSlug": "understand-surface-energy"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-surface-energy-2",
               "question": "Explain an application where using the concept of Surface energy can lead to a common student error.",
@@ -2464,33 +1816,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-angle-of-contact-1",
-              "question": "What are the fundamental laws or mechanisms governing Angle of contact?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "angle-of-contact"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "angle-of-contact",
-                "conceptSlug": "core-angle-of-contact",
-                "microskillSlug": "understand-angle-of-contact"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-angle-of-contact-2",
               "question": "Explain an application where using the concept of Angle of contact can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2562,33 +1887,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-capillary-rise-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Capillary rise formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "capillary-rise-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "capillary-rise-formula",
-                "conceptSlug": "core-capillary-rise-formula",
-                "microskillSlug": "understand-capillary-rise-formula"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-capillary-rise-formula-2",
               "question": "Explain an application where using the concept of Capillary rise formula can lead to a common student error.",
@@ -2662,33 +1960,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-excess-pressure-in-liquid-drop-1",
-              "question": "What are the fundamental laws or mechanisms governing Excess pressure in liquid drop?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "excess-pressure-in-liquid-drop"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "excess-pressure-in-liquid-drop",
-                "conceptSlug": "core-excess-pressure-in-liquid-drop",
-                "microskillSlug": "understand-excess-pressure-in-liquid-drop"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-liquid-drop-2",
               "question": "Explain an application where using the concept of Excess pressure in liquid drop can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2760,33 +2031,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-excess-pressure-in-soap-bubble-1",
-              "question": "What are the fundamental laws or mechanisms governing Excess pressure in soap bubble?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "excess-pressure-in-soap-bubble"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "excess-pressure-in-soap-bubble",
-                "conceptSlug": "core-excess-pressure-in-soap-bubble",
-                "microskillSlug": "understand-excess-pressure-in-soap-bubble"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-excess-pressure-in-soap-bubble-2",
               "question": "Explain an application where using the concept of Excess pressure in soap bubble can lead to a common student error.",
@@ -2860,33 +2104,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-solids-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermal expansion of solids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "thermal-expansion-of-solids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "thermal-expansion-of-solids",
-                "conceptSlug": "core-thermal-expansion-of-solids",
-                "microskillSlug": "understand-thermal-expansion-of-solids"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-solids-2",
               "question": "Explain an application where using the concept of Thermal expansion of solids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2958,33 +2175,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-liquids-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermal expansion of liquids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "thermal-expansion-of-liquids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "thermal-expansion-of-liquids",
-                "conceptSlug": "core-thermal-expansion-of-liquids",
-                "microskillSlug": "understand-thermal-expansion-of-liquids"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-thermal-expansion-of-liquids-2",
               "question": "Explain an application where using the concept of Thermal expansion of liquids can lead to a common student error.",
@@ -3058,33 +2248,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-calorimetry-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Calorimetry principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "calorimetry-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "calorimetry-principle",
-                "conceptSlug": "core-calorimetry-principle",
-                "microskillSlug": "understand-calorimetry-principle"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-calorimetry-principle-2",
               "question": "Explain an application where using the concept of Calorimetry principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3156,33 +2319,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-specific-heat-capacity-1",
-              "question": "What are the fundamental laws or mechanisms governing Specific heat capacity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "specific-heat-capacity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "specific-heat-capacity",
-                "conceptSlug": "core-specific-heat-capacity",
-                "microskillSlug": "understand-specific-heat-capacity"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-specific-heat-capacity-2",
               "question": "Explain an application where using the concept of Specific heat capacity can lead to a common student error.",
@@ -3269,33 +2405,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-latent-heat-of-fusion-1",
-              "question": "What are the fundamental laws or mechanisms governing Latent heat of fusion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "latent-heat-of-fusion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "latent-heat-of-fusion",
-                "conceptSlug": "core-latent-heat-of-fusion",
-                "microskillSlug": "understand-latent-heat-of-fusion"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-fusion-2",
               "question": "Explain an application where using the concept of Latent heat of fusion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3367,33 +2476,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-latent-heat-of-vaporisation-1",
-              "question": "What are the fundamental laws or mechanisms governing Latent heat of vaporisation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "latent-heat-of-vaporisation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "latent-heat-of-vaporisation",
-                "conceptSlug": "core-latent-heat-of-vaporisation",
-                "microskillSlug": "understand-latent-heat-of-vaporisation"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-latent-heat-of-vaporisation-2",
               "question": "Explain an application where using the concept of Latent heat of vaporisation can lead to a common student error.",
@@ -3467,33 +2549,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-heat-transfer-conduction-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat transfer conduction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "heat-transfer-conduction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "heat-transfer-conduction",
-                "conceptSlug": "core-heat-transfer-conduction",
-                "microskillSlug": "understand-heat-transfer-conduction"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-heat-transfer-conduction-2",
               "question": "Explain an application where using the concept of Heat transfer conduction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3566,33 +2621,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "properties-of-solids-and-liquids-q-convection-1",
-              "question": "What are the fundamental laws or mechanisms governing Convection?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "convection"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "convection",
-                "conceptSlug": "core-convection",
-                "microskillSlug": "understand-convection"
-              }
-            },
-            {
               "id": "properties-of-solids-and-liquids-q-convection-2",
               "question": "Explain an application where using the concept of Convection can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -3664,33 +2692,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "properties-of-solids-and-liquids-q-radiation-1",
-              "question": "What are the fundamental laws or mechanisms governing Radiation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "properties-of-solids-and-liquids",
-                "radiation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "properties-of-solids-and-liquids",
-                "chapterSlug": "properties-of-solids-and-liquids",
-                "topicSlug": "properties-of-solids-and-liquids",
-                "subtopicSlug": "radiation",
-                "conceptSlug": "core-radiation",
-                "microskillSlug": "understand-radiation"
-              }
-            },
             {
               "id": "properties-of-solids-and-liquids-q-radiation-2",
               "question": "Explain an application where using the concept of Radiation can lead to a common student error.",

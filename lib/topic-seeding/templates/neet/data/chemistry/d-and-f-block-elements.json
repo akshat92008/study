@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-transition-elements-position-in-periodic-table-1",
-              "question": "What are the fundamental laws or mechanisms governing Transition elements position in periodic table?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "transition-elements-position-in-periodic-table"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "transition-elements-position-in-periodic-table",
-                "conceptSlug": "core-transition-elements-position-in-periodic-table",
-                "microskillSlug": "understand-transition-elements-position-in-periodic-table"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-transition-elements-position-in-periodic-table-2",
               "question": "Explain an application where using the concept of Transition elements position in periodic table can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-electronic-configuration-of-d-block-1",
-              "question": "What are the fundamental laws or mechanisms governing Electronic configuration of d-block?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "electronic-configuration-of-d-block"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "electronic-configuration-of-d-block",
-                "conceptSlug": "core-electronic-configuration-of-d-block",
-                "microskillSlug": "understand-electronic-configuration-of-d-block"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-electronic-configuration-of-d-block-2",
               "question": "Explain an application where using the concept of Electronic configuration of d-block can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-general-properties-of-transition-elements-1",
-              "question": "What are the fundamental laws or mechanisms governing General properties of transition elements?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "general-properties-of-transition-elements"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "general-properties-of-transition-elements",
-                "conceptSlug": "core-general-properties-of-transition-elements",
-                "microskillSlug": "understand-general-properties-of-transition-elements"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-general-properties-of-transition-elements-2",
               "question": "Explain an application where using the concept of General properties of transition elements can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-atomic-and-ionic-radii-of-d-block-1",
-              "question": "What are the fundamental laws or mechanisms governing Atomic and ionic radii of d-block?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "atomic-and-ionic-radii-of-d-block"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "atomic-and-ionic-radii-of-d-block",
-                "conceptSlug": "core-atomic-and-ionic-radii-of-d-block",
-                "microskillSlug": "understand-atomic-and-ionic-radii-of-d-block"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-atomic-and-ionic-radii-of-d-block-2",
               "question": "Explain an application where using the concept of Atomic and ionic radii of d-block can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-ionisation-enthalpies-of-d-block-1",
-              "question": "What are the fundamental laws or mechanisms governing Ionisation enthalpies of d-block?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "ionisation-enthalpies-of-d-block"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "ionisation-enthalpies-of-d-block",
-                "conceptSlug": "core-ionisation-enthalpies-of-d-block",
-                "microskillSlug": "understand-ionisation-enthalpies-of-d-block"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-ionisation-enthalpies-of-d-block-2",
               "question": "Explain an application where using the concept of Ionisation enthalpies of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-oxidation-states-of-d-block-elements-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation states of d-block elements?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "oxidation-states-of-d-block-elements"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "oxidation-states-of-d-block-elements",
-                "conceptSlug": "core-oxidation-states-of-d-block-elements",
-                "microskillSlug": "understand-oxidation-states-of-d-block-elements"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-oxidation-states-of-d-block-elements-2",
               "question": "Explain an application where using the concept of Oxidation states of d-block elements can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-coloured-ions-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Coloured ions formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "coloured-ions-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "coloured-ions-formation",
-                "conceptSlug": "core-coloured-ions-formation",
-                "microskillSlug": "understand-coloured-ions-formation"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-coloured-ions-formation-2",
               "question": "Explain an application where using the concept of Coloured ions formation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-magnetic-properties-of-transition-metals-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic properties of transition metals?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "magnetic-properties-of-transition-metals"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "magnetic-properties-of-transition-metals",
-                "conceptSlug": "core-magnetic-properties-of-transition-metals",
-                "microskillSlug": "understand-magnetic-properties-of-transition-metals"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-magnetic-properties-of-transition-metals-2",
               "question": "Explain an application where using the concept of Magnetic properties of transition metals can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-catalytic-properties-of-d-block-1",
-              "question": "What are the fundamental laws or mechanisms governing Catalytic properties of d-block?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "catalytic-properties-of-d-block"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "catalytic-properties-of-d-block",
-                "conceptSlug": "core-catalytic-properties-of-d-block",
-                "microskillSlug": "understand-catalytic-properties-of-d-block"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-catalytic-properties-of-d-block-2",
               "question": "Explain an application where using the concept of Catalytic properties of d-block can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-complex-compound-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Complex compound formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "complex-compound-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "complex-compound-formation",
-                "conceptSlug": "core-complex-compound-formation",
-                "microskillSlug": "understand-complex-compound-formation"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-complex-compound-formation-2",
               "question": "Explain an application where using the concept of Complex compound formation can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-interstitial-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Interstitial compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "interstitial-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "interstitial-compounds",
-                "conceptSlug": "core-interstitial-compounds",
-                "microskillSlug": "understand-interstitial-compounds"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-interstitial-compounds-2",
               "question": "Explain an application where using the concept of Interstitial compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1022,33 +725,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-alloy-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Alloy formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "alloy-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "alloy-formation",
-                "conceptSlug": "core-alloy-formation",
-                "microskillSlug": "understand-alloy-formation"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-alloy-formation-2",
               "question": "Explain an application where using the concept of Alloy formation can lead to a common student error.",
@@ -1123,33 +799,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-potassium-dichromate-preparation-and-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Potassium dichromate preparation and properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "potassium-dichromate-preparation-and-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "potassium-dichromate-preparation-and-properties",
-                "conceptSlug": "core-potassium-dichromate-preparation-and-properties",
-                "microskillSlug": "understand-potassium-dichromate-preparation-and-properties"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-potassium-dichromate-preparation-and-properties-2",
               "question": "Explain an application where using the concept of Potassium dichromate preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1209,33 +858,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-potassium-permanganate-preparation-and-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Potassium permanganate preparation and properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "potassium-permanganate-preparation-and-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "potassium-permanganate-preparation-and-properties",
-                "conceptSlug": "core-potassium-permanganate-preparation-and-properties",
-                "microskillSlug": "understand-potassium-permanganate-preparation-and-properties"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-potassium-permanganate-preparation-and-properties-2",
               "question": "Explain an application where using the concept of Potassium permanganate preparation and properties can lead to a common student error.",
@@ -1297,33 +919,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-lanthanoids-electronic-configuration-1",
-              "question": "What are the fundamental laws or mechanisms governing Lanthanoids electronic configuration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "lanthanoids-electronic-configuration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "lanthanoids-electronic-configuration",
-                "conceptSlug": "core-lanthanoids-electronic-configuration",
-                "microskillSlug": "understand-lanthanoids-electronic-configuration"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-lanthanoids-electronic-configuration-2",
               "question": "Explain an application where using the concept of Lanthanoids electronic configuration can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1383,33 +978,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-lanthanoid-contraction-and-consequences-1",
-              "question": "What are the fundamental laws or mechanisms governing Lanthanoid contraction and consequences?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "lanthanoid-contraction-and-consequences"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "lanthanoid-contraction-and-consequences",
-                "conceptSlug": "core-lanthanoid-contraction-and-consequences",
-                "microskillSlug": "understand-lanthanoid-contraction-and-consequences"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-lanthanoid-contraction-and-consequences-2",
               "question": "Explain an application where using the concept of Lanthanoid contraction and consequences can lead to a common student error.",
@@ -1484,33 +1052,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-oxidation-states-of-lanthanoids-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation states of lanthanoids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "oxidation-states-of-lanthanoids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "oxidation-states-of-lanthanoids",
-                "conceptSlug": "core-oxidation-states-of-lanthanoids",
-                "microskillSlug": "understand-oxidation-states-of-lanthanoids"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-oxidation-states-of-lanthanoids-2",
               "question": "Explain an application where using the concept of Oxidation states of lanthanoids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1570,33 +1111,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-actinoids-electronic-configuration-1",
-              "question": "What are the fundamental laws or mechanisms governing Actinoids electronic configuration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "actinoids-electronic-configuration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "actinoids-electronic-configuration",
-                "conceptSlug": "core-actinoids-electronic-configuration",
-                "microskillSlug": "understand-actinoids-electronic-configuration"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-actinoids-electronic-configuration-2",
               "question": "Explain an application where using the concept of Actinoids electronic configuration can lead to a common student error.",
@@ -1658,33 +1172,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "d-and-f-block-elements-q-actinoid-contraction-1",
-              "question": "What are the fundamental laws or mechanisms governing Actinoid contraction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "actinoid-contraction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "actinoid-contraction",
-                "conceptSlug": "core-actinoid-contraction",
-                "microskillSlug": "understand-actinoid-contraction"
-              }
-            },
-            {
               "id": "d-and-f-block-elements-q-actinoid-contraction-2",
               "question": "Explain an application where using the concept of Actinoid contraction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1744,33 +1231,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "d-and-f-block-elements-q-comparison-of-lanthanoids-and-actinoids-1",
-              "question": "What are the fundamental laws or mechanisms governing Comparison of lanthanoids and actinoids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "d-and-f-block-elements",
-                "comparison-of-lanthanoids-and-actinoids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "d-and-f-block-elements",
-                "chapterSlug": "d-and-f-block-elements",
-                "topicSlug": "d-and-f-block-elements",
-                "subtopicSlug": "comparison-of-lanthanoids-and-actinoids",
-                "conceptSlug": "core-comparison-of-lanthanoids-and-actinoids",
-                "microskillSlug": "understand-comparison-of-lanthanoids-and-actinoids"
-              }
-            },
             {
               "id": "d-and-f-block-elements-q-comparison-of-lanthanoids-and-actinoids-2",
               "question": "Explain an application where using the concept of Comparison of lanthanoids and actinoids can lead to a common student error.",

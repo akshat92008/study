@@ -201,33 +201,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-root-morphology-and-modifications-1",
-              "question": "What are the fundamental laws or mechanisms governing Root morphology and modifications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "root-morphology-and-modifications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "root-morphology-and-modifications",
-                "conceptSlug": "core-root-morphology-and-modifications",
-                "microskillSlug": "understand-root-morphology-and-modifications"
-              }
-            },
-            {
               "id": "structural-organisation-q-root-morphology-and-modifications-2",
               "question": "Explain an application where using the concept of Root morphology and modifications can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -301,33 +274,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-stem-morphology-and-modifications-1",
-              "question": "What are the fundamental laws or mechanisms governing Stem morphology and modifications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "stem-morphology-and-modifications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "stem-morphology-and-modifications",
-                "conceptSlug": "core-stem-morphology-and-modifications",
-                "microskillSlug": "understand-stem-morphology-and-modifications"
-              }
-            },
             {
               "id": "structural-organisation-q-stem-morphology-and-modifications-2",
               "question": "Explain an application where using the concept of Stem morphology and modifications can lead to a common student error.",
@@ -403,33 +349,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-leaf-morphology-and-venation-1",
-              "question": "What are the fundamental laws or mechanisms governing Leaf morphology and venation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "leaf-morphology-and-venation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "leaf-morphology-and-venation",
-                "conceptSlug": "core-leaf-morphology-and-venation",
-                "microskillSlug": "understand-leaf-morphology-and-venation"
-              }
-            },
-            {
               "id": "structural-organisation-q-leaf-morphology-and-venation-2",
               "question": "Explain an application where using the concept of Leaf morphology and venation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -503,33 +422,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-inflorescence-types-1",
-              "question": "What are the fundamental laws or mechanisms governing Inflorescence types?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "inflorescence-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "inflorescence-types",
-                "conceptSlug": "core-inflorescence-types",
-                "microskillSlug": "understand-inflorescence-types"
-              }
-            },
             {
               "id": "structural-organisation-q-inflorescence-types-2",
               "question": "Explain an application where using the concept of Inflorescence types can lead to a common student error.",
@@ -605,33 +497,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-flower-structure-and-symmetry-1",
-              "question": "What are the fundamental laws or mechanisms governing Flower structure and symmetry?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "flower-structure-and-symmetry"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "flower-structure-and-symmetry",
-                "conceptSlug": "core-flower-structure-and-symmetry",
-                "microskillSlug": "understand-flower-structure-and-symmetry"
-              }
-            },
-            {
               "id": "structural-organisation-q-flower-structure-and-symmetry-2",
               "question": "Explain an application where using the concept of Flower structure and symmetry can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -706,33 +571,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-fruit-types-and-structure-1",
-              "question": "What are the fundamental laws or mechanisms governing Fruit types and structure?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "fruit-types-and-structure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "fruit-types-and-structure",
-                "conceptSlug": "core-fruit-types-and-structure",
-                "microskillSlug": "understand-fruit-types-and-structure"
-              }
-            },
-            {
               "id": "structural-organisation-q-fruit-types-and-structure-2",
               "question": "Explain an application where using the concept of Fruit types and structure can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -806,33 +644,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-seed-structure-dicot-and-monocot-1",
-              "question": "What are the fundamental laws or mechanisms governing Seed structure (dicot and monocot)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "seed-structure-dicot-and-monocot"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "seed-structure-dicot-and-monocot",
-                "conceptSlug": "core-seed-structure-dicot-and-monocot",
-                "microskillSlug": "understand-seed-structure-dicot-and-monocot"
-              }
-            },
             {
               "id": "structural-organisation-q-seed-structure-dicot-and-monocot-2",
               "question": "Explain an application where using the concept of Seed structure (dicot and monocot) can lead to a common student error.",
@@ -921,33 +732,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-plant-tissues-meristematic-and-permanent-1",
-              "question": "What are the fundamental laws or mechanisms governing Plant tissues meristematic and permanent?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "plant-tissues-meristematic-and-permanent"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "plant-tissues-meristematic-and-permanent",
-                "conceptSlug": "core-plant-tissues-meristematic-and-permanent",
-                "microskillSlug": "understand-plant-tissues-meristematic-and-permanent"
-              }
-            },
-            {
               "id": "structural-organisation-q-plant-tissues-meristematic-and-permanent-2",
               "question": "Explain an application where using the concept of Plant tissues meristematic and permanent can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1021,33 +805,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-root-1",
-              "question": "What are the fundamental laws or mechanisms governing Anatomy of dicot and monocot root?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "anatomy-of-dicot-and-monocot-root"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "anatomy-of-dicot-and-monocot-root",
-                "conceptSlug": "core-anatomy-of-dicot-and-monocot-root",
-                "microskillSlug": "understand-anatomy-of-dicot-and-monocot-root"
-              }
-            },
             {
               "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-root-2",
               "question": "Explain an application where using the concept of Anatomy of dicot and monocot root can lead to a common student error.",
@@ -1123,33 +880,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-stem-1",
-              "question": "What are the fundamental laws or mechanisms governing Anatomy of dicot and monocot stem?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "anatomy-of-dicot-and-monocot-stem"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "anatomy-of-dicot-and-monocot-stem",
-                "conceptSlug": "core-anatomy-of-dicot-and-monocot-stem",
-                "microskillSlug": "understand-anatomy-of-dicot-and-monocot-stem"
-              }
-            },
-            {
               "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-stem-2",
               "question": "Explain an application where using the concept of Anatomy of dicot and monocot stem can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1223,33 +953,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-leaf-1",
-              "question": "What are the fundamental laws or mechanisms governing Anatomy of dicot and monocot leaf?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "anatomy-of-dicot-and-monocot-leaf"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "anatomy-of-dicot-and-monocot-leaf",
-                "conceptSlug": "core-anatomy-of-dicot-and-monocot-leaf",
-                "microskillSlug": "understand-anatomy-of-dicot-and-monocot-leaf"
-              }
-            },
             {
               "id": "structural-organisation-q-anatomy-of-dicot-and-monocot-leaf-2",
               "question": "Explain an application where using the concept of Anatomy of dicot and monocot leaf can lead to a common student error.",
@@ -1325,33 +1028,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-secondary-growth-in-plants-1",
-              "question": "What are the fundamental laws or mechanisms governing Secondary growth in plants?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "secondary-growth-in-plants"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "secondary-growth-in-plants",
-                "conceptSlug": "core-secondary-growth-in-plants",
-                "microskillSlug": "understand-secondary-growth-in-plants"
-              }
-            },
-            {
               "id": "structural-organisation-q-secondary-growth-in-plants-2",
               "question": "Explain an application where using the concept of Secondary growth in plants can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1426,33 +1102,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-vascular-cambium-activity-1",
-              "question": "What are the fundamental laws or mechanisms governing Vascular cambium activity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "vascular-cambium-activity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "vascular-cambium-activity",
-                "conceptSlug": "core-vascular-cambium-activity",
-                "microskillSlug": "understand-vascular-cambium-activity"
-              }
-            },
-            {
               "id": "structural-organisation-q-vascular-cambium-activity-2",
               "question": "Explain an application where using the concept of Vascular cambium activity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1526,33 +1175,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-cork-cambium-activity-1",
-              "question": "What are the fundamental laws or mechanisms governing Cork cambium activity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "cork-cambium-activity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "cork-cambium-activity",
-                "conceptSlug": "core-cork-cambium-activity",
-                "microskillSlug": "understand-cork-cambium-activity"
-              }
-            },
             {
               "id": "structural-organisation-q-cork-cambium-activity-2",
               "question": "Explain an application where using the concept of Cork cambium activity can lead to a common student error.",
@@ -1641,33 +1263,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-animal-tissues-epithelial-1",
-              "question": "What are the fundamental laws or mechanisms governing Animal tissues epithelial?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "animal-tissues-epithelial"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "animal-tissues-epithelial",
-                "conceptSlug": "core-animal-tissues-epithelial",
-                "microskillSlug": "understand-animal-tissues-epithelial"
-              }
-            },
-            {
               "id": "structural-organisation-q-animal-tissues-epithelial-2",
               "question": "Explain an application where using the concept of Animal tissues epithelial can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1741,33 +1336,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-animal-tissues-connective-1",
-              "question": "What are the fundamental laws or mechanisms governing Animal tissues connective?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "animal-tissues-connective"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "animal-tissues-connective",
-                "conceptSlug": "core-animal-tissues-connective",
-                "microskillSlug": "understand-animal-tissues-connective"
-              }
-            },
             {
               "id": "structural-organisation-q-animal-tissues-connective-2",
               "question": "Explain an application where using the concept of Animal tissues connective can lead to a common student error.",
@@ -1843,33 +1411,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-animal-tissues-muscular-1",
-              "question": "What are the fundamental laws or mechanisms governing Animal tissues muscular?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "animal-tissues-muscular"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "animal-tissues-muscular",
-                "conceptSlug": "core-animal-tissues-muscular",
-                "microskillSlug": "understand-animal-tissues-muscular"
-              }
-            },
-            {
               "id": "structural-organisation-q-animal-tissues-muscular-2",
               "question": "Explain an application where using the concept of Animal tissues muscular can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1943,33 +1484,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-animal-tissues-neural-1",
-              "question": "What are the fundamental laws or mechanisms governing Animal tissues neural?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "animal-tissues-neural"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "animal-tissues-neural",
-                "conceptSlug": "core-animal-tissues-neural",
-                "microskillSlug": "understand-animal-tissues-neural"
-              }
-            },
             {
               "id": "structural-organisation-q-animal-tissues-neural-2",
               "question": "Explain an application where using the concept of Animal tissues neural can lead to a common student error.",
@@ -2045,33 +1559,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-morphology-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Morphology of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "morphology-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "morphology-of-frog",
-                "conceptSlug": "core-morphology-of-frog",
-                "microskillSlug": "understand-morphology-of-frog"
-              }
-            },
-            {
               "id": "structural-organisation-q-morphology-of-frog-2",
               "question": "Explain an application where using the concept of Morphology of frog can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2146,33 +1633,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-digestive-system-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Digestive system of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "digestive-system-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "digestive-system-of-frog",
-                "conceptSlug": "core-digestive-system-of-frog",
-                "microskillSlug": "understand-digestive-system-of-frog"
-              }
-            },
-            {
               "id": "structural-organisation-q-digestive-system-of-frog-2",
               "question": "Explain an application where using the concept of Digestive system of frog can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2246,33 +1706,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-respiratory-system-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Respiratory system of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "respiratory-system-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "respiratory-system-of-frog",
-                "conceptSlug": "core-respiratory-system-of-frog",
-                "microskillSlug": "understand-respiratory-system-of-frog"
-              }
-            },
             {
               "id": "structural-organisation-q-respiratory-system-of-frog-2",
               "question": "Explain an application where using the concept of Respiratory system of frog can lead to a common student error.",
@@ -2361,33 +1794,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-circulatory-system-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Circulatory system of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "circulatory-system-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "circulatory-system-of-frog",
-                "conceptSlug": "core-circulatory-system-of-frog",
-                "microskillSlug": "understand-circulatory-system-of-frog"
-              }
-            },
-            {
               "id": "structural-organisation-q-circulatory-system-of-frog-2",
               "question": "Explain an application where using the concept of Circulatory system of frog can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2461,33 +1867,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-nervous-system-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Nervous system of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "nervous-system-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "nervous-system-of-frog",
-                "conceptSlug": "core-nervous-system-of-frog",
-                "microskillSlug": "understand-nervous-system-of-frog"
-              }
-            },
             {
               "id": "structural-organisation-q-nervous-system-of-frog-2",
               "question": "Explain an application where using the concept of Nervous system of frog can lead to a common student error.",
@@ -2563,33 +1942,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-reproductive-system-of-frog-1",
-              "question": "What are the fundamental laws or mechanisms governing Reproductive system of frog?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "reproductive-system-of-frog"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "reproductive-system-of-frog",
-                "conceptSlug": "core-reproductive-system-of-frog",
-                "microskillSlug": "understand-reproductive-system-of-frog"
-              }
-            },
-            {
               "id": "structural-organisation-q-reproductive-system-of-frog-2",
               "question": "Explain an application where using the concept of Reproductive system of frog can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2664,33 +2016,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "structural-organisation-q-morphology-of-cockroach-overview-1",
-              "question": "What are the fundamental laws or mechanisms governing Morphology of cockroach overview?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "morphology-of-cockroach-overview"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "morphology-of-cockroach-overview",
-                "conceptSlug": "core-morphology-of-cockroach-overview",
-                "microskillSlug": "understand-morphology-of-cockroach-overview"
-              }
-            },
-            {
               "id": "structural-organisation-q-morphology-of-cockroach-overview-2",
               "question": "Explain an application where using the concept of Morphology of cockroach overview can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2721,309 +2046,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-25-25",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 25",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-25"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 25"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 25 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 25 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 25",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 25",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 25 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 25."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 25.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 25 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 25 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-25-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 25?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-25"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-25",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-25",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-25"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-25-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 25 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-25",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-25",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-25",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-25"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-26-26",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 26",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-26"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 26"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 26 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 26 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 26",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 26",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 26 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 26."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 26.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 26 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 26 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-26-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 26?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-26"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-26",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-26",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-26"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-26-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 26 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-26",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-26",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-26",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-26"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-27-27",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 27",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-27"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 27"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 27 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 27 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 27",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 27",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 27 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 27."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 27.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 27 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 27 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-27-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 27?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-27"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-27",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-27",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-27"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-27-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 27 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-27",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-27",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-27",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-27"
-              }
-            }
-          ]
         }
       ]
     },
@@ -3037,715 +2059,7 @@
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
-      "microtargets": [
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-28-28",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 28",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-28"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 28"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 28 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 28 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 28",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 28",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 28 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 28."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 28.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 28 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 28 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-28-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 28?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-28"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-28",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-28",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-28"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-28-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 28 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-28",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-28",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-28",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-28"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-29-29",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 29",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-29"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 29"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 29 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 29 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 29",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 29",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 29 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 29."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 29.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 29 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 29 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-29-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 29?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-29"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-29",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-29",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-29"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-29-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 29 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-29",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-29",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-29",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-29"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-30-30",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 30",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-30"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 30"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 30 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 30 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 30",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 30",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 30 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 30."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 30.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 30 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 30 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-30-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 30?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-30"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-30",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-30",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-30"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-30-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 30 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-30",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-30",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-30",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-30"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-31-31",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 31",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-31"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 31"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 31 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 31 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 31",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 31",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 31 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 31."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 31.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 31 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 31 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-31-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 31?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-31"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-31",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-31",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-31"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-31-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 31 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-31",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-31",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-31",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-31"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-32-32",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 32",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-32"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 32"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 32 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 32 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 32",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 32",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 32 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 32."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 32.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 32 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 32 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-32-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 32?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-32"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-32",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-32",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-32"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-32-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 32 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-32",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-32",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-32",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-32"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-33-33",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 33",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-33"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 33"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 33 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 33 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 33",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 33",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 33 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 33."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 33.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 33 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 33 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-33-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 33?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-33"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-33",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-33",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-33"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-33-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 33 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-33",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-33",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-33",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-33"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-structural-organisation-structural-organisation-in-animals-and-plants-detailed-structure-34-34",
-          "title": "Structural Organisation in Animals and Plants Anatomical features 34",
-          "conceptTags": [
-            "structural-organisation",
-            "structural-organisation-in-animals-and-plants-detailed-structure-34"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Structural Organisation in Animals and Plants, Section detailing Structural Organisation in Animals and Plants Anatomical features 34"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Structural Organisation in Animals and Plants Anatomical features 34 is frequently appears in NEET examinations.",
-            "Applying the core principles of Structural Organisation in Animals and Plants Anatomical features 34 correctly is essential for solving integrated numerical and conceptual problems in Structural Organisation in Animals and Plants."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Structural Organisation in Animals and Plants Anatomical features 34",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Structural Organisation in Animals and Plants Anatomical features 34",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Structural Organisation in Animals and Plants Anatomical features 34 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Structural Organisation in Animals and Plants Anatomical features 34."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Structural Organisation in Animals and Plants Anatomical features 34.",
-            "Successfully avoids common pitfalls when Structural Organisation in Animals and Plants Anatomical features 34 is integrated with other concepts in Structural Organisation in Animals and Plants."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Structural Organisation in Animals and Plants Anatomical features 34 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-34-1",
-              "question": "What are the fundamental laws or mechanisms governing Structural Organisation in Animals and Plants Anatomical features 34?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-34"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-34",
-                "conceptSlug": "core-structural-organisation-in-animals-and-plants-detailed-structure-34",
-                "microskillSlug": "understand-structural-organisation-in-animals-and-plants-detailed-structure-34"
-              }
-            },
-            {
-              "id": "structural-organisation-q-structural-organisation-in-animals-and-plants-detailed-structure-34-2",
-              "question": "Explain an application where using the concept of Structural Organisation in Animals and Plants Anatomical features 34 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "structural-organisation",
-                "structural-organisation-in-animals-and-plants-detailed-structure-34",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "structural-organisation",
-                "chapterSlug": "structural-organisation",
-                "topicSlug": "structural-organisation",
-                "subtopicSlug": "structural-organisation-in-animals-and-plants-detailed-structure-34",
-                "conceptSlug": "trap-structural-organisation-in-animals-and-plants-detailed-structure-34",
-                "microskillSlug": "avoid-structural-organisation-in-animals-and-plants-detailed-structure-34"
-              }
-            }
-          ]
-        }
-      ]
+      "microtargets": []
     }
   ]
 }

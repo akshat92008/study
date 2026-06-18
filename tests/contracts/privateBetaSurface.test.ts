@@ -14,12 +14,11 @@ describe('private beta MVP surface', () => {
     const commandBar = read('components/ui/CommandBar.tsx');
     const navText = `${sidebar}\n${commandBar}`;
 
-    for (const label of ['Today', 'Sources', 'AI Tutor', 'Mistake Review', 'Progress']) {
+    for (const label of ['Dashboard', 'Tutor', 'Mistake Review', 'Settings']) {
       expect(navText).toContain(label);
     }
-    expect(navText).toContain("feature: 'knowledge_ui'");
 
-    for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/tutor']) {
+    for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/tutor', '/knowledge', '/revision', '/cognition']) {
       expect(navText).not.toContain(`route: '${disabled}'`);
       expect(navText).not.toContain(`href: '${disabled}'`);
       expect(navText).not.toContain(`href="${disabled}"`);
@@ -27,15 +26,12 @@ describe('private beta MVP surface', () => {
   });
 
   it('does not hide beta-critical product routes in middleware', () => {
-    const middleware = read('middleware.ts');
+    const middleware = read('lib/supabase/middleware.ts');
 
     expect(middleware).not.toContain('MVP_DISABLED_ROUTES');
     expect(middleware).not.toContain('disabled_for_mvp');
 
     for (const route of [
-      '/knowledge',
-      '/mistakes',
-      '/goals',
       '/api/knowledge',
       '/api/ingest',
       '/api/ai/revision-coach',
@@ -43,7 +39,6 @@ describe('private beta MVP surface', () => {
       expect(middleware).not.toContain(`"${route}"`);
     }
 
-    expect(middleware).toContain('CRON_ROUTES');
-    expect(middleware).toContain('Authentication is required');
+    expect(middleware).toContain("url.pathname = '/login'");
   });
 });

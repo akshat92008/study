@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-classification-of-alcohols-phenols-and-ethers-1",
-              "question": "What are the fundamental laws or mechanisms governing Classification of alcohols phenols and ethers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "classification-of-alcohols-phenols-and-ethers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "classification-of-alcohols-phenols-and-ethers",
-                "conceptSlug": "core-classification-of-alcohols-phenols-and-ethers",
-                "microskillSlug": "understand-classification-of-alcohols-phenols-and-ethers"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-classification-of-alcohols-phenols-and-ethers-2",
               "question": "Explain an application where using the concept of Classification of alcohols phenols and ethers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-nomenclature-of-alcohols-and-phenols-1",
-              "question": "What are the fundamental laws or mechanisms governing Nomenclature of alcohols and phenols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "nomenclature-of-alcohols-and-phenols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "nomenclature-of-alcohols-and-phenols",
-                "conceptSlug": "core-nomenclature-of-alcohols-and-phenols",
-                "microskillSlug": "understand-nomenclature-of-alcohols-and-phenols"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-nomenclature-of-alcohols-and-phenols-2",
               "question": "Explain an application where using the concept of Nomenclature of alcohols and phenols can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-preparation-of-alcohols-from-alkenes-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of alcohols from alkenes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "preparation-of-alcohols-from-alkenes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "preparation-of-alcohols-from-alkenes",
-                "conceptSlug": "core-preparation-of-alcohols-from-alkenes",
-                "microskillSlug": "understand-preparation-of-alcohols-from-alkenes"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-preparation-of-alcohols-from-alkenes-2",
               "question": "Explain an application where using the concept of Preparation of alcohols from alkenes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -349,33 +268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-preparation-of-alcohols-from-carbonyl-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of alcohols from carbonyl compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "preparation-of-alcohols-from-carbonyl-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "preparation-of-alcohols-from-carbonyl-compounds",
-                "conceptSlug": "core-preparation-of-alcohols-from-carbonyl-compounds",
-                "microskillSlug": "understand-preparation-of-alcohols-from-carbonyl-compounds"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-preparation-of-alcohols-from-carbonyl-compounds-2",
               "question": "Explain an application where using the concept of Preparation of alcohols from carbonyl compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -447,33 +339,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-preparation-of-phenols-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of phenols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "preparation-of-phenols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "preparation-of-phenols",
-                "conceptSlug": "core-preparation-of-phenols",
-                "microskillSlug": "understand-preparation-of-phenols"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-preparation-of-phenols-2",
               "question": "Explain an application where using the concept of Preparation of phenols can lead to a common student error.",
@@ -560,33 +425,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-physical-properties-of-alcohols-and-phenols-1",
-              "question": "What are the fundamental laws or mechanisms governing Physical properties of alcohols and phenols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "physical-properties-of-alcohols-and-phenols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "physical-properties-of-alcohols-and-phenols",
-                "conceptSlug": "core-physical-properties-of-alcohols-and-phenols",
-                "microskillSlug": "understand-physical-properties-of-alcohols-and-phenols"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-physical-properties-of-alcohols-and-phenols-2",
               "question": "Explain an application where using the concept of Physical properties of alcohols and phenols can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -659,33 +497,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-acidic-nature-of-alcohols-and-phenols-1",
-              "question": "What are the fundamental laws or mechanisms governing Acidic nature of alcohols and phenols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "acidic-nature-of-alcohols-and-phenols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "acidic-nature-of-alcohols-and-phenols",
-                "conceptSlug": "core-acidic-nature-of-alcohols-and-phenols",
-                "microskillSlug": "understand-acidic-nature-of-alcohols-and-phenols"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-acidic-nature-of-alcohols-and-phenols-2",
               "question": "Explain an application where using the concept of Acidic nature of alcohols and phenols can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -745,33 +556,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-esterification-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Esterification reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "esterification-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "esterification-reaction",
-                "conceptSlug": "core-esterification-reaction",
-                "microskillSlug": "understand-esterification-reaction"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-esterification-reaction-2",
               "question": "Explain an application where using the concept of Esterification reaction can lead to a common student error.",
@@ -845,33 +629,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-oxidation-of-alcohols-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation of alcohols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "oxidation-of-alcohols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "oxidation-of-alcohols",
-                "conceptSlug": "core-oxidation-of-alcohols",
-                "microskillSlug": "understand-oxidation-of-alcohols"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-oxidation-of-alcohols-2",
               "question": "Explain an application where using the concept of Oxidation of alcohols can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -943,33 +700,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-electrophilic-aromatic-substitution-in-phenols-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrophilic aromatic substitution in phenols?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "electrophilic-aromatic-substitution-in-phenols"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "electrophilic-aromatic-substitution-in-phenols",
-                "conceptSlug": "core-electrophilic-aromatic-substitution-in-phenols",
-                "microskillSlug": "understand-electrophilic-aromatic-substitution-in-phenols"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-electrophilic-aromatic-substitution-in-phenols-2",
               "question": "Explain an application where using the concept of Electrophilic aromatic substitution in phenols can lead to a common student error.",
@@ -1044,33 +774,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-kolbe-s-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Kolbe’s reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "kolbe-s-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "kolbe-s-reaction",
-                "conceptSlug": "core-kolbe-s-reaction",
-                "microskillSlug": "understand-kolbe-s-reaction"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-kolbe-s-reaction-2",
               "question": "Explain an application where using the concept of Kolbe’s reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1130,33 +833,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-reimer-tiemann-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Reimer-Tiemann reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "reimer-tiemann-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "reimer-tiemann-reaction",
-                "conceptSlug": "core-reimer-tiemann-reaction",
-                "microskillSlug": "understand-reimer-tiemann-reaction"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-reimer-tiemann-reaction-2",
               "question": "Explain an application where using the concept of Reimer-Tiemann reaction can lead to a common student error.",
@@ -1230,33 +906,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-preparation-of-ethers-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of ethers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "preparation-of-ethers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "preparation-of-ethers",
-                "conceptSlug": "core-preparation-of-ethers",
-                "microskillSlug": "understand-preparation-of-ethers"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-preparation-of-ethers-2",
               "question": "Explain an application where using the concept of Preparation of ethers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1329,33 +978,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-cleavage-of-c-o-bond-in-ethers-1",
-              "question": "What are the fundamental laws or mechanisms governing Cleavage of C-O bond in ethers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "cleavage-of-c-o-bond-in-ethers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "cleavage-of-c-o-bond-in-ethers",
-                "conceptSlug": "core-cleavage-of-c-o-bond-in-ethers",
-                "microskillSlug": "understand-cleavage-of-c-o-bond-in-ethers"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-cleavage-of-c-o-bond-in-ethers-2",
               "question": "Explain an application where using the concept of Cleavage of C-O bond in ethers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1415,33 +1037,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-nomenclature-of-aldehydes-and-ketones-1",
-              "question": "What are the fundamental laws or mechanisms governing Nomenclature of aldehydes and ketones?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "nomenclature-of-aldehydes-and-ketones"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "nomenclature-of-aldehydes-and-ketones",
-                "conceptSlug": "core-nomenclature-of-aldehydes-and-ketones",
-                "microskillSlug": "understand-nomenclature-of-aldehydes-and-ketones"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-nomenclature-of-aldehydes-and-ketones-2",
               "question": "Explain an application where using the concept of Nomenclature of aldehydes and ketones can lead to a common student error.",
@@ -1516,33 +1111,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-preparation-of-aldehydes-and-ketones-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation of aldehydes and ketones?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "preparation-of-aldehydes-and-ketones"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "preparation-of-aldehydes-and-ketones",
-                "conceptSlug": "core-preparation-of-aldehydes-and-ketones",
-                "microskillSlug": "understand-preparation-of-aldehydes-and-ketones"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-preparation-of-aldehydes-and-ketones-2",
               "question": "Explain an application where using the concept of Preparation of aldehydes and ketones can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1602,33 +1170,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-nucleophilic-addition-reactions-of-carbonyl-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Nucleophilic addition reactions of carbonyl compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "nucleophilic-addition-reactions-of-carbonyl-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "nucleophilic-addition-reactions-of-carbonyl-compounds",
-                "conceptSlug": "core-nucleophilic-addition-reactions-of-carbonyl-compounds",
-                "microskillSlug": "understand-nucleophilic-addition-reactions-of-carbonyl-compounds"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-nucleophilic-addition-reactions-of-carbonyl-compounds-2",
               "question": "Explain an application where using the concept of Nucleophilic addition reactions of carbonyl compounds can lead to a common student error.",
@@ -1690,33 +1231,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-named-reactions-tests-1",
-              "question": "What are the fundamental laws or mechanisms governing Named reactions/tests?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "named-reactions-tests"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "named-reactions-tests",
-                "conceptSlug": "core-named-reactions-tests",
-                "microskillSlug": "understand-named-reactions-tests"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-named-reactions-tests-2",
               "question": "Explain an application where using the concept of Named reactions/tests can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1776,33 +1290,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-oxidation-and-reduction-of-aldehydes-and-ketones-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation and reduction of aldehydes and ketones?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "oxidation-and-reduction-of-aldehydes-and-ketones"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "oxidation-and-reduction-of-aldehydes-and-ketones",
-                "conceptSlug": "core-oxidation-and-reduction-of-aldehydes-and-ketones",
-                "microskillSlug": "understand-oxidation-and-reduction-of-aldehydes-and-ketones"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-oxidation-and-reduction-of-aldehydes-and-ketones-2",
               "question": "Explain an application where using the concept of Oxidation and reduction of aldehydes and ketones can lead to a common student error.",
@@ -1875,33 +1362,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-aldol-condensation-1",
-              "question": "What are the fundamental laws or mechanisms governing Aldol condensation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "aldol-condensation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "aldol-condensation",
-                "conceptSlug": "core-aldol-condensation",
-                "microskillSlug": "understand-aldol-condensation"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-aldol-condensation-2",
               "question": "Explain an application where using the concept of Aldol condensation can lead to a common student error.",
@@ -1988,33 +1448,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-cannizzaro-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Cannizzaro reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "cannizzaro-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "cannizzaro-reaction",
-                "conceptSlug": "core-cannizzaro-reaction",
-                "microskillSlug": "understand-cannizzaro-reaction"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-cannizzaro-reaction-2",
               "question": "Explain an application where using the concept of Cannizzaro reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2074,33 +1507,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-carboxylic-acids-nomenclature-and-preparation-1",
-              "question": "What are the fundamental laws or mechanisms governing Carboxylic acids nomenclature and preparation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "carboxylic-acids-nomenclature-and-preparation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "carboxylic-acids-nomenclature-and-preparation",
-                "conceptSlug": "core-carboxylic-acids-nomenclature-and-preparation",
-                "microskillSlug": "understand-carboxylic-acids-nomenclature-and-preparation"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-carboxylic-acids-nomenclature-and-preparation-2",
               "question": "Explain an application where using the concept of Carboxylic acids nomenclature and preparation can lead to a common student error.",
@@ -2162,33 +1568,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "oxygen-containing-compounds-q-acidic-strength-of-carboxylic-acids-1",
-              "question": "What are the fundamental laws or mechanisms governing Acidic strength of carboxylic acids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "acidic-strength-of-carboxylic-acids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "acidic-strength-of-carboxylic-acids",
-                "conceptSlug": "core-acidic-strength-of-carboxylic-acids",
-                "microskillSlug": "understand-acidic-strength-of-carboxylic-acids"
-              }
-            },
-            {
               "id": "oxygen-containing-compounds-q-acidic-strength-of-carboxylic-acids-2",
               "question": "Explain an application where using the concept of Acidic strength of carboxylic acids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2248,33 +1627,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "oxygen-containing-compounds-q-reactions-of-carboxylic-acids-1",
-              "question": "What are the fundamental laws or mechanisms governing Reactions of carboxylic acids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "oxygen-containing-compounds",
-                "reactions-of-carboxylic-acids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "oxygen-containing-compounds",
-                "chapterSlug": "oxygen-containing-compounds",
-                "topicSlug": "oxygen-containing-compounds",
-                "subtopicSlug": "reactions-of-carboxylic-acids",
-                "conceptSlug": "core-reactions-of-carboxylic-acids",
-                "microskillSlug": "understand-reactions-of-carboxylic-acids"
-              }
-            },
             {
               "id": "oxygen-containing-compounds-q-reactions-of-carboxylic-acids-2",
               "question": "Explain an application where using the concept of Reactions of carboxylic acids can lead to a common student error.",

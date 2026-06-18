@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electric-current-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric current definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electric-current-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electric-current-definition",
-                "conceptSlug": "core-electric-current-definition",
-                "microskillSlug": "understand-electric-current-definition"
-              }
-            },
-            {
               "id": "current-electricity-q-electric-current-definition-2",
               "question": "Explain an application where using the concept of Electric current definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -149,33 +122,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-drift-velocity-1",
-              "question": "What are the fundamental laws or mechanisms governing Drift velocity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "drift-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "drift-velocity",
-                "conceptSlug": "core-drift-velocity",
-                "microskillSlug": "understand-drift-velocity"
-              }
-            },
             {
               "id": "current-electricity-q-drift-velocity-2",
               "question": "Explain an application where using the concept of Drift velocity can lead to a common student error.",
@@ -249,33 +195,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-mobility-of-charge-carriers-1",
-              "question": "What are the fundamental laws or mechanisms governing Mobility of charge carriers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "mobility-of-charge-carriers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "mobility-of-charge-carriers",
-                "conceptSlug": "core-mobility-of-charge-carriers",
-                "microskillSlug": "understand-mobility-of-charge-carriers"
-              }
-            },
-            {
               "id": "current-electricity-q-mobility-of-charge-carriers-2",
               "question": "Explain an application where using the concept of Mobility of charge carriers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-current-density-relation-1",
-              "question": "What are the fundamental laws or mechanisms governing Current-density relation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "current-density-relation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "current-density-relation",
-                "conceptSlug": "core-current-density-relation",
-                "microskillSlug": "understand-current-density-relation"
-              }
-            },
-            {
               "id": "current-electricity-q-current-density-relation-2",
               "question": "Explain an application where using the concept of Current-density relation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -444,33 +336,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-ohm-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Ohm’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "ohm-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "ohm-s-law",
-                "conceptSlug": "core-ohm-s-law",
-                "microskillSlug": "understand-ohm-s-law"
-              }
-            },
             {
               "id": "current-electricity-q-ohm-s-law-2",
               "question": "Explain an application where using the concept of Ohm’s law can lead to a common student error.",
@@ -557,33 +422,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-v-i-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing V-I characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "v-i-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "v-i-characteristics",
-                "conceptSlug": "core-v-i-characteristics",
-                "microskillSlug": "understand-v-i-characteristics"
-              }
-            },
-            {
               "id": "current-electricity-q-v-i-characteristics-2",
               "question": "Explain an application where using the concept of V-I characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -655,33 +493,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-electrical-resistance-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrical resistance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electrical-resistance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-resistance",
-                "conceptSlug": "core-electrical-resistance",
-                "microskillSlug": "understand-electrical-resistance"
-              }
-            },
             {
               "id": "current-electricity-q-electrical-resistance-2",
               "question": "Explain an application where using the concept of Electrical resistance can lead to a common student error.",
@@ -755,33 +566,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-resistivity-1",
-              "question": "What are the fundamental laws or mechanisms governing Resistivity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "resistivity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "resistivity",
-                "conceptSlug": "core-resistivity",
-                "microskillSlug": "understand-resistivity"
-              }
-            },
-            {
               "id": "current-electricity-q-resistivity-2",
               "question": "Explain an application where using the concept of Resistivity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -854,33 +638,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electrical-conductivity-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrical conductivity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electrical-conductivity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-conductivity",
-                "conceptSlug": "core-electrical-conductivity",
-                "microskillSlug": "understand-electrical-conductivity"
-              }
-            },
-            {
               "id": "current-electricity-q-electrical-conductivity-2",
               "question": "Explain an application where using the concept of Electrical conductivity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-temperature-dependence-of-resistance-1",
-              "question": "What are the fundamental laws or mechanisms governing Temperature dependence of resistance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "temperature-dependence-of-resistance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "temperature-dependence-of-resistance",
-                "conceptSlug": "core-temperature-dependence-of-resistance",
-                "microskillSlug": "understand-temperature-dependence-of-resistance"
-              }
-            },
             {
               "id": "current-electricity-q-temperature-dependence-of-resistance-2",
               "question": "Explain an application where using the concept of Temperature dependence of resistance can lead to a common student error.",
@@ -1065,33 +795,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-colour-code-for-carbon-resistors-1",
-              "question": "What are the fundamental laws or mechanisms governing Colour code for carbon resistors?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "colour-code-for-carbon-resistors"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "colour-code-for-carbon-resistors",
-                "conceptSlug": "core-colour-code-for-carbon-resistors",
-                "microskillSlug": "understand-colour-code-for-carbon-resistors"
-              }
-            },
-            {
               "id": "current-electricity-q-colour-code-for-carbon-resistors-2",
               "question": "Explain an application where using the concept of Colour code for carbon resistors can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1163,33 +866,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-resistors-in-series-1",
-              "question": "What are the fundamental laws or mechanisms governing Resistors in series?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "resistors-in-series"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "resistors-in-series",
-                "conceptSlug": "core-resistors-in-series",
-                "microskillSlug": "understand-resistors-in-series"
-              }
-            },
             {
               "id": "current-electricity-q-resistors-in-series-2",
               "question": "Explain an application where using the concept of Resistors in series can lead to a common student error.",
@@ -1263,33 +939,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-resistors-in-parallel-1",
-              "question": "What are the fundamental laws or mechanisms governing Resistors in parallel?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "resistors-in-parallel"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "resistors-in-parallel",
-                "conceptSlug": "core-resistors-in-parallel",
-                "microskillSlug": "understand-resistors-in-parallel"
-              }
-            },
-            {
               "id": "current-electricity-q-resistors-in-parallel-2",
               "question": "Explain an application where using the concept of Resistors in parallel can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1362,33 +1011,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electrical-power-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrical power?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electrical-power"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-power",
-                "conceptSlug": "core-electrical-power",
-                "microskillSlug": "understand-electrical-power"
-              }
-            },
-            {
               "id": "current-electricity-q-electrical-power-2",
               "question": "Explain an application where using the concept of Electrical power can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1459,33 +1081,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-electrical-energy-dissipation-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrical energy dissipation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electrical-energy-dissipation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electrical-energy-dissipation",
-                "conceptSlug": "core-electrical-energy-dissipation",
-                "microskillSlug": "understand-electrical-energy-dissipation"
-              }
-            },
             {
               "id": "current-electricity-q-electrical-energy-dissipation-2",
               "question": "Explain an application where using the concept of Electrical energy dissipation can lead to a common student error.",
@@ -1571,33 +1166,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-electromotive-force-1",
-              "question": "What are the fundamental laws or mechanisms governing Electromotive force?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "electromotive-force"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "electromotive-force",
-                "conceptSlug": "core-electromotive-force",
-                "microskillSlug": "understand-electromotive-force"
-              }
-            },
-            {
               "id": "current-electricity-q-electromotive-force-2",
               "question": "Explain an application where using the concept of Electromotive force can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1669,33 +1237,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-terminal-potential-difference-1",
-              "question": "What are the fundamental laws or mechanisms governing Terminal potential difference?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "terminal-potential-difference"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "terminal-potential-difference",
-                "conceptSlug": "core-terminal-potential-difference",
-                "microskillSlug": "understand-terminal-potential-difference"
-              }
-            },
             {
               "id": "current-electricity-q-terminal-potential-difference-2",
               "question": "Explain an application where using the concept of Terminal potential difference can lead to a common student error.",
@@ -1769,33 +1310,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-internal-resistance-of-a-cell-1",
-              "question": "What are the fundamental laws or mechanisms governing Internal resistance of a cell?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "internal-resistance-of-a-cell"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "internal-resistance-of-a-cell",
-                "conceptSlug": "core-internal-resistance-of-a-cell",
-                "microskillSlug": "understand-internal-resistance-of-a-cell"
-              }
-            },
-            {
               "id": "current-electricity-q-internal-resistance-of-a-cell-2",
               "question": "Explain an application where using the concept of Internal resistance of a cell can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1868,33 +1382,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-cells-in-series-and-parallel-1",
-              "question": "What are the fundamental laws or mechanisms governing Cells in series and parallel?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "cells-in-series-and-parallel"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "cells-in-series-and-parallel",
-                "conceptSlug": "core-cells-in-series-and-parallel",
-                "microskillSlug": "understand-cells-in-series-and-parallel"
-              }
-            },
-            {
               "id": "current-electricity-q-cells-in-series-and-parallel-2",
               "question": "Explain an application where using the concept of Cells in series and parallel can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1966,33 +1453,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-kirchhoff-wheatstone-1",
-              "question": "What are the fundamental laws or mechanisms governing Kirchhoff/Wheatstone?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "kirchhoff-wheatstone"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "kirchhoff-wheatstone",
-                "conceptSlug": "core-kirchhoff-wheatstone",
-                "microskillSlug": "understand-kirchhoff-wheatstone"
-              }
-            },
             {
               "id": "current-electricity-q-kirchhoff-wheatstone-2",
               "question": "Explain an application where using the concept of Kirchhoff/Wheatstone can lead to a common student error.",
@@ -2079,33 +1539,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-meter-bridge-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Meter bridge principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "meter-bridge-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "meter-bridge-principle",
-                "conceptSlug": "core-meter-bridge-principle",
-                "microskillSlug": "understand-meter-bridge-principle"
-              }
-            },
-            {
               "id": "current-electricity-q-meter-bridge-principle-2",
               "question": "Explain an application where using the concept of Meter bridge principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2177,33 +1610,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-potentiometer-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Potentiometer principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "potentiometer-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "potentiometer-principle",
-                "conceptSlug": "core-potentiometer-principle",
-                "microskillSlug": "understand-potentiometer-principle"
-              }
-            },
             {
               "id": "current-electricity-q-potentiometer-principle-2",
               "question": "Explain an application where using the concept of Potentiometer principle can lead to a common student error.",
@@ -2277,33 +1683,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "current-electricity-q-galvanometer-to-ammeter-conversion-1",
-              "question": "What are the fundamental laws or mechanisms governing Galvanometer to ammeter conversion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "galvanometer-to-ammeter-conversion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "galvanometer-to-ammeter-conversion",
-                "conceptSlug": "core-galvanometer-to-ammeter-conversion",
-                "microskillSlug": "understand-galvanometer-to-ammeter-conversion"
-              }
-            },
-            {
               "id": "current-electricity-q-galvanometer-to-ammeter-conversion-2",
               "question": "Explain an application where using the concept of Galvanometer to ammeter conversion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2375,33 +1754,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "current-electricity-q-galvanometer-to-voltmeter-conversion-1",
-              "question": "What are the fundamental laws or mechanisms governing Galvanometer to voltmeter conversion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "current-electricity",
-                "galvanometer-to-voltmeter-conversion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "current-electricity",
-                "chapterSlug": "current-electricity",
-                "topicSlug": "current-electricity",
-                "subtopicSlug": "galvanometer-to-voltmeter-conversion",
-                "conceptSlug": "core-galvanometer-to-voltmeter-conversion",
-                "microskillSlug": "understand-galvanometer-to-voltmeter-conversion"
-              }
-            },
             {
               "id": "current-electricity-q-galvanometer-to-voltmeter-conversion-2",
               "question": "Explain an application where using the concept of Galvanometer to voltmeter conversion can lead to a common student error.",

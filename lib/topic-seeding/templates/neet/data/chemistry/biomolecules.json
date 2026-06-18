@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-carbohydrates-classification-1",
-              "question": "What are the fundamental laws or mechanisms governing Carbohydrates classification?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "carbohydrates-classification"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "carbohydrates-classification",
-                "conceptSlug": "core-carbohydrates-classification",
-                "microskillSlug": "understand-carbohydrates-classification"
-              }
-            },
-            {
               "id": "biomolecules-q-carbohydrates-classification-2",
               "question": "Explain an application where using the concept of Carbohydrates classification can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-monosaccharides-glucose-and-fructose-1",
-              "question": "What are the fundamental laws or mechanisms governing Monosaccharides glucose and fructose?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "monosaccharides-glucose-and-fructose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "monosaccharides-glucose-and-fructose",
-                "conceptSlug": "core-monosaccharides-glucose-and-fructose",
-                "microskillSlug": "understand-monosaccharides-glucose-and-fructose"
-              }
-            },
             {
               "id": "biomolecules-q-monosaccharides-glucose-and-fructose-2",
               "question": "Explain an application where using the concept of Monosaccharides glucose and fructose can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-structure-of-glucose-1",
-              "question": "What are the fundamental laws or mechanisms governing Structure of glucose?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "structure-of-glucose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "structure-of-glucose",
-                "conceptSlug": "core-structure-of-glucose",
-                "microskillSlug": "understand-structure-of-glucose"
-              }
-            },
-            {
               "id": "biomolecules-q-structure-of-glucose-2",
               "question": "Explain an application where using the concept of Structure of glucose can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-cyclic-structure-of-glucose-1",
-              "question": "What are the fundamental laws or mechanisms governing Cyclic structure of glucose?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "cyclic-structure-of-glucose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "cyclic-structure-of-glucose",
-                "conceptSlug": "core-cyclic-structure-of-glucose",
-                "microskillSlug": "understand-cyclic-structure-of-glucose"
-              }
-            },
             {
               "id": "biomolecules-q-cyclic-structure-of-glucose-2",
               "question": "Explain an application where using the concept of Cyclic structure of glucose can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-disaccharides-sucrose-maltose-lactose-1",
-              "question": "What are the fundamental laws or mechanisms governing Disaccharides sucrose maltose lactose?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "disaccharides-sucrose-maltose-lactose"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "disaccharides-sucrose-maltose-lactose",
-                "conceptSlug": "core-disaccharides-sucrose-maltose-lactose",
-                "microskillSlug": "understand-disaccharides-sucrose-maltose-lactose"
-              }
-            },
-            {
               "id": "biomolecules-q-disaccharides-sucrose-maltose-lactose-2",
               "question": "Explain an application where using the concept of Disaccharides sucrose maltose lactose can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-polysaccharides-starch-cellulose-glycogen-1",
-              "question": "What are the fundamental laws or mechanisms governing Polysaccharides starch cellulose glycogen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "polysaccharides-starch-cellulose-glycogen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "polysaccharides-starch-cellulose-glycogen",
-                "conceptSlug": "core-polysaccharides-starch-cellulose-glycogen",
-                "microskillSlug": "understand-polysaccharides-starch-cellulose-glycogen"
-              }
-            },
             {
               "id": "biomolecules-q-polysaccharides-starch-cellulose-glycogen-2",
               "question": "Explain an application where using the concept of Polysaccharides starch cellulose glycogen can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-reducing-and-non-reducing-sugars-1",
-              "question": "What are the fundamental laws or mechanisms governing Reducing and non-reducing sugars?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "reducing-and-non-reducing-sugars"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "reducing-and-non-reducing-sugars",
-                "conceptSlug": "core-reducing-and-non-reducing-sugars",
-                "microskillSlug": "understand-reducing-and-non-reducing-sugars"
-              }
-            },
-            {
               "id": "biomolecules-q-reducing-and-non-reducing-sugars-2",
               "question": "Explain an application where using the concept of Reducing and non-reducing sugars can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-amino-acids-classification-and-zwitter-ion-1",
-              "question": "What are the fundamental laws or mechanisms governing Amino acids classification and zwitter ion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "amino-acids-classification-and-zwitter-ion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "amino-acids-classification-and-zwitter-ion",
-                "conceptSlug": "core-amino-acids-classification-and-zwitter-ion",
-                "microskillSlug": "understand-amino-acids-classification-and-zwitter-ion"
-              }
-            },
             {
               "id": "biomolecules-q-amino-acids-classification-and-zwitter-ion-2",
               "question": "Explain an application where using the concept of Amino acids classification and zwitter ion can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-peptide-bond-and-polypeptides-1",
-              "question": "What are the fundamental laws or mechanisms governing Peptide bond and polypeptides?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "peptide-bond-and-polypeptides"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "peptide-bond-and-polypeptides",
-                "conceptSlug": "core-peptide-bond-and-polypeptides",
-                "microskillSlug": "understand-peptide-bond-and-polypeptides"
-              }
-            },
-            {
               "id": "biomolecules-q-peptide-bond-and-polypeptides-2",
               "question": "Explain an application where using the concept of Peptide bond and polypeptides can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-primary-structure-of-proteins-1",
-              "question": "What are the fundamental laws or mechanisms governing Primary structure of proteins?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "primary-structure-of-proteins"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "primary-structure-of-proteins",
-                "conceptSlug": "core-primary-structure-of-proteins",
-                "microskillSlug": "understand-primary-structure-of-proteins"
-              }
-            },
             {
               "id": "biomolecules-q-primary-structure-of-proteins-2",
               "question": "Explain an application where using the concept of Primary structure of proteins can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-secondary-structure-of-proteins-alpha-helix-beta-sheet-1",
-              "question": "What are the fundamental laws or mechanisms governing Secondary structure of proteins (alpha helix beta sheet)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "secondary-structure-of-proteins-alpha-helix-beta-sheet"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "secondary-structure-of-proteins-alpha-helix-beta-sheet",
-                "conceptSlug": "core-secondary-structure-of-proteins-alpha-helix-beta-sheet",
-                "microskillSlug": "understand-secondary-structure-of-proteins-alpha-helix-beta-sheet"
-              }
-            },
-            {
               "id": "biomolecules-q-secondary-structure-of-proteins-alpha-helix-beta-sheet-2",
               "question": "Explain an application where using the concept of Secondary structure of proteins (alpha helix beta sheet) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1022,33 +725,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-tertiary-and-quaternary-structure-of-proteins-1",
-              "question": "What are the fundamental laws or mechanisms governing Tertiary and quaternary structure of proteins?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "tertiary-and-quaternary-structure-of-proteins"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "tertiary-and-quaternary-structure-of-proteins",
-                "conceptSlug": "core-tertiary-and-quaternary-structure-of-proteins",
-                "microskillSlug": "understand-tertiary-and-quaternary-structure-of-proteins"
-              }
-            },
             {
               "id": "biomolecules-q-tertiary-and-quaternary-structure-of-proteins-2",
               "question": "Explain an application where using the concept of Tertiary and quaternary structure of proteins can lead to a common student error.",
@@ -1123,33 +799,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-denaturation-of-proteins-1",
-              "question": "What are the fundamental laws or mechanisms governing Denaturation of proteins?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "denaturation-of-proteins"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "denaturation-of-proteins",
-                "conceptSlug": "core-denaturation-of-proteins",
-                "microskillSlug": "understand-denaturation-of-proteins"
-              }
-            },
-            {
               "id": "biomolecules-q-denaturation-of-proteins-2",
               "question": "Explain an application where using the concept of Denaturation of proteins can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1209,33 +858,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-enzymes-biological-catalysts-1",
-              "question": "What are the fundamental laws or mechanisms governing Enzymes biological catalysts?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "enzymes-biological-catalysts"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "enzymes-biological-catalysts",
-                "conceptSlug": "core-enzymes-biological-catalysts",
-                "microskillSlug": "understand-enzymes-biological-catalysts"
-              }
-            },
             {
               "id": "biomolecules-q-enzymes-biological-catalysts-2",
               "question": "Explain an application where using the concept of Enzymes biological catalysts can lead to a common student error.",
@@ -1297,33 +919,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-vitamins-classification-and-deficiency-diseases-1",
-              "question": "What are the fundamental laws or mechanisms governing Vitamins classification and deficiency diseases?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "vitamins-classification-and-deficiency-diseases"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "vitamins-classification-and-deficiency-diseases",
-                "conceptSlug": "core-vitamins-classification-and-deficiency-diseases",
-                "microskillSlug": "understand-vitamins-classification-and-deficiency-diseases"
-              }
-            },
-            {
               "id": "biomolecules-q-vitamins-classification-and-deficiency-diseases-2",
               "question": "Explain an application where using the concept of Vitamins classification and deficiency diseases can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1383,33 +978,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-nucleic-acids-chemical-composition-1",
-              "question": "What are the fundamental laws or mechanisms governing Nucleic acids chemical composition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "nucleic-acids-chemical-composition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "nucleic-acids-chemical-composition",
-                "conceptSlug": "core-nucleic-acids-chemical-composition",
-                "microskillSlug": "understand-nucleic-acids-chemical-composition"
-              }
-            },
             {
               "id": "biomolecules-q-nucleic-acids-chemical-composition-2",
               "question": "Explain an application where using the concept of Nucleic acids chemical composition can lead to a common student error.",
@@ -1484,33 +1052,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-structure-of-dna-double-helix-1",
-              "question": "What are the fundamental laws or mechanisms governing Structure of DNA double helix?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "structure-of-dna-double-helix"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "structure-of-dna-double-helix",
-                "conceptSlug": "core-structure-of-dna-double-helix",
-                "microskillSlug": "understand-structure-of-dna-double-helix"
-              }
-            },
-            {
               "id": "biomolecules-q-structure-of-dna-double-helix-2",
               "question": "Explain an application where using the concept of Structure of DNA double helix can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1570,33 +1111,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-structure-and-types-of-rna-1",
-              "question": "What are the fundamental laws or mechanisms governing Structure and types of RNA?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "structure-and-types-of-rna"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "structure-and-types-of-rna",
-                "conceptSlug": "core-structure-and-types-of-rna",
-                "microskillSlug": "understand-structure-and-types-of-rna"
-              }
-            },
             {
               "id": "biomolecules-q-structure-and-types-of-rna-2",
               "question": "Explain an application where using the concept of Structure and types of RNA can lead to a common student error.",
@@ -1658,33 +1172,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "biomolecules-q-biological-functions-of-nucleic-acids-1",
-              "question": "What are the fundamental laws or mechanisms governing Biological functions of nucleic acids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "biological-functions-of-nucleic-acids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "biological-functions-of-nucleic-acids",
-                "conceptSlug": "core-biological-functions-of-nucleic-acids",
-                "microskillSlug": "understand-biological-functions-of-nucleic-acids"
-              }
-            },
-            {
               "id": "biomolecules-q-biological-functions-of-nucleic-acids-2",
               "question": "Explain an application where using the concept of Biological functions of nucleic acids can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1744,33 +1231,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "biomolecules-q-hormones-brief-introduction-1",
-              "question": "What are the fundamental laws or mechanisms governing Hormones brief introduction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "biomolecules",
-                "hormones-brief-introduction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "biomolecules",
-                "chapterSlug": "biomolecules",
-                "topicSlug": "biomolecules",
-                "subtopicSlug": "hormones-brief-introduction",
-                "conceptSlug": "core-hormones-brief-introduction",
-                "microskillSlug": "understand-hormones-brief-introduction"
-              }
-            },
             {
               "id": "biomolecules-q-hormones-brief-introduction-2",
               "question": "Explain an application where using the concept of Hormones brief introduction can lead to a common student error.",

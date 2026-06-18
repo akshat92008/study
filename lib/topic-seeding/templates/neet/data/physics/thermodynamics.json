@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-thermal-equilibrium-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermal equilibrium?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "thermal-equilibrium"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "thermal-equilibrium",
-                "conceptSlug": "core-thermal-equilibrium",
-                "microskillSlug": "understand-thermal-equilibrium"
-              }
-            },
-            {
               "id": "thermodynamics-q-thermal-equilibrium-2",
               "question": "Explain an application where using the concept of Thermal equilibrium can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -149,33 +122,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-zeroth-law-of-thermodynamics-1",
-              "question": "What are the fundamental laws or mechanisms governing Zeroth law of thermodynamics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "zeroth-law-of-thermodynamics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "zeroth-law-of-thermodynamics",
-                "conceptSlug": "core-zeroth-law-of-thermodynamics",
-                "microskillSlug": "understand-zeroth-law-of-thermodynamics"
-              }
-            },
             {
               "id": "thermodynamics-q-zeroth-law-of-thermodynamics-2",
               "question": "Explain an application where using the concept of Zeroth law of thermodynamics can lead to a common student error.",
@@ -249,33 +195,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-concept-of-temperature-1",
-              "question": "What are the fundamental laws or mechanisms governing Concept of temperature?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "concept-of-temperature"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "concept-of-temperature",
-                "conceptSlug": "core-concept-of-temperature",
-                "microskillSlug": "understand-concept-of-temperature"
-              }
-            },
-            {
               "id": "thermodynamics-q-concept-of-temperature-2",
               "question": "Explain an application where using the concept of Concept of temperature can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -347,33 +266,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-heat-and-work-as-path-functions-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat and work as path functions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "heat-and-work-as-path-functions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat-and-work-as-path-functions",
-                "conceptSlug": "core-heat-and-work-as-path-functions",
-                "microskillSlug": "understand-heat-and-work-as-path-functions"
-              }
-            },
-            {
               "id": "thermodynamics-q-heat-and-work-as-path-functions-2",
               "question": "Explain an application where using the concept of Heat and work as path functions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -444,33 +336,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-internal-energy-as-state-function-1",
-              "question": "What are the fundamental laws or mechanisms governing Internal energy as state function?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "internal-energy-as-state-function"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "internal-energy-as-state-function",
-                "conceptSlug": "core-internal-energy-as-state-function",
-                "microskillSlug": "understand-internal-energy-as-state-function"
-              }
-            },
             {
               "id": "thermodynamics-q-internal-energy-as-state-function-2",
               "question": "Explain an application where using the concept of Internal energy as state function can lead to a common student error.",
@@ -556,33 +421,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-first-law-of-thermodynamics-1",
-              "question": "What are the fundamental laws or mechanisms governing First law of thermodynamics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "first-law-of-thermodynamics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "first-law-of-thermodynamics",
-                "conceptSlug": "core-first-law-of-thermodynamics",
-                "microskillSlug": "understand-first-law-of-thermodynamics"
-              }
-            },
-            {
               "id": "thermodynamics-q-first-law-of-thermodynamics-2",
               "question": "Explain an application where using the concept of First law of thermodynamics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -653,33 +491,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-thermodynamic-sign-convention-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermodynamic sign convention?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "thermodynamic-sign-convention"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "thermodynamic-sign-convention",
-                "conceptSlug": "core-thermodynamic-sign-convention",
-                "microskillSlug": "understand-thermodynamic-sign-convention"
-              }
-            },
             {
               "id": "thermodynamics-q-thermodynamic-sign-convention-2",
               "question": "Explain an application where using the concept of Thermodynamic sign convention can lead to a common student error.",
@@ -753,33 +564,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-isothermal-process-1",
-              "question": "What are the fundamental laws or mechanisms governing Isothermal process?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "isothermal-process"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "isothermal-process",
-                "conceptSlug": "core-isothermal-process",
-                "microskillSlug": "understand-isothermal-process"
-              }
-            },
-            {
               "id": "thermodynamics-q-isothermal-process-2",
               "question": "Explain an application where using the concept of Isothermal process can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -852,33 +636,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-adiabatic-process-1",
-              "question": "What are the fundamental laws or mechanisms governing Adiabatic process?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "adiabatic-process"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "adiabatic-process",
-                "conceptSlug": "core-adiabatic-process",
-                "microskillSlug": "understand-adiabatic-process"
-              }
-            },
-            {
               "id": "thermodynamics-q-adiabatic-process-2",
               "question": "Explain an application where using the concept of Adiabatic process can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -950,33 +707,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-isochoric-process-1",
-              "question": "What are the fundamental laws or mechanisms governing Isochoric process?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "isochoric-process"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "isochoric-process",
-                "conceptSlug": "core-isochoric-process",
-                "microskillSlug": "understand-isochoric-process"
-              }
-            },
             {
               "id": "thermodynamics-q-isochoric-process-2",
               "question": "Explain an application where using the concept of Isochoric process can lead to a common student error.",
@@ -1063,33 +793,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-isobaric-process-1",
-              "question": "What are the fundamental laws or mechanisms governing Isobaric process?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "isobaric-process"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "isobaric-process",
-                "conceptSlug": "core-isobaric-process",
-                "microskillSlug": "understand-isobaric-process"
-              }
-            },
-            {
               "id": "thermodynamics-q-isobaric-process-2",
               "question": "Explain an application where using the concept of Isobaric process can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1162,33 +865,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-cyclic-process-1",
-              "question": "What are the fundamental laws or mechanisms governing Cyclic process?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "cyclic-process"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "cyclic-process",
-                "conceptSlug": "core-cyclic-process",
-                "microskillSlug": "understand-cyclic-process"
-              }
-            },
-            {
               "id": "thermodynamics-q-cyclic-process-2",
               "question": "Explain an application where using the concept of Cyclic process can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1259,33 +935,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-pv-graph-work-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing PV graph work calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "pv-graph-work-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "pv-graph-work-calculation",
-                "conceptSlug": "core-pv-graph-work-calculation",
-                "microskillSlug": "understand-pv-graph-work-calculation"
-              }
-            },
             {
               "id": "thermodynamics-q-pv-graph-work-calculation-2",
               "question": "Explain an application where using the concept of PV graph work calculation can lead to a common student error.",
@@ -1359,33 +1008,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-heat-engine-efficiency-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat engine efficiency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "heat-engine-efficiency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat-engine-efficiency",
-                "conceptSlug": "core-heat-engine-efficiency",
-                "microskillSlug": "understand-heat-engine-efficiency"
-              }
-            },
-            {
               "id": "thermodynamics-q-heat-engine-efficiency-2",
               "question": "Explain an application where using the concept of Heat engine efficiency can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1457,33 +1079,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-refrigerator-coefficient-of-performance-1",
-              "question": "What are the fundamental laws or mechanisms governing Refrigerator coefficient of performance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "refrigerator-coefficient-of-performance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "refrigerator-coefficient-of-performance",
-                "conceptSlug": "core-refrigerator-coefficient-of-performance",
-                "microskillSlug": "understand-refrigerator-coefficient-of-performance"
-              }
-            },
             {
               "id": "thermodynamics-q-refrigerator-coefficient-of-performance-2",
               "question": "Explain an application where using the concept of Refrigerator coefficient of performance can lead to a common student error.",
@@ -1569,33 +1164,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-second-law-of-thermodynamics-statements-1",
-              "question": "What are the fundamental laws or mechanisms governing Second law of thermodynamics statements?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "second-law-of-thermodynamics-statements"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "second-law-of-thermodynamics-statements",
-                "conceptSlug": "core-second-law-of-thermodynamics-statements",
-                "microskillSlug": "understand-second-law-of-thermodynamics-statements"
-              }
-            },
-            {
               "id": "thermodynamics-q-second-law-of-thermodynamics-statements-2",
               "question": "Explain an application where using the concept of Second law of thermodynamics statements can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1667,33 +1235,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-reversible-and-irreversible-processes-1",
-              "question": "What are the fundamental laws or mechanisms governing Reversible and irreversible processes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "reversible-and-irreversible-processes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "reversible-and-irreversible-processes",
-                "conceptSlug": "core-reversible-and-irreversible-processes",
-                "microskillSlug": "understand-reversible-and-irreversible-processes"
-              }
-            },
             {
               "id": "thermodynamics-q-reversible-and-irreversible-processes-2",
               "question": "Explain an application where using the concept of Reversible and irreversible processes can lead to a common student error.",
@@ -1767,33 +1308,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-carnot-cycle-steps-1",
-              "question": "What are the fundamental laws or mechanisms governing Carnot cycle steps?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "carnot-cycle-steps"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "carnot-cycle-steps",
-                "conceptSlug": "core-carnot-cycle-steps",
-                "microskillSlug": "understand-carnot-cycle-steps"
-              }
-            },
-            {
               "id": "thermodynamics-q-carnot-cycle-steps-2",
               "question": "Explain an application where using the concept of Carnot cycle steps can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1866,33 +1380,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "thermodynamics-q-carnot-efficiency-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Carnot efficiency formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "carnot-efficiency-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "carnot-efficiency-formula",
-                "conceptSlug": "core-carnot-efficiency-formula",
-                "microskillSlug": "understand-carnot-efficiency-formula"
-              }
-            },
-            {
               "id": "thermodynamics-q-carnot-efficiency-formula-2",
               "question": "Explain an application where using the concept of Carnot efficiency formula can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1964,33 +1451,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-specific-heat-of-gases-relation-1",
-              "question": "What are the fundamental laws or mechanisms governing Specific heat of gases relation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "specific-heat-of-gases-relation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "specific-heat-of-gases-relation",
-                "conceptSlug": "core-specific-heat-of-gases-relation",
-                "microskillSlug": "understand-specific-heat-of-gases-relation"
-              }
-            },
             {
               "id": "thermodynamics-q-specific-heat-of-gases-relation-2",
               "question": "Explain an application where using the concept of Specific heat of gases relation can lead to a common student error.",
@@ -2076,33 +1536,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "thermodynamics-q-heat-pump-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat pump principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "thermodynamics",
-                "heat-pump-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "thermodynamics",
-                "chapterSlug": "thermodynamics",
-                "topicSlug": "thermodynamics",
-                "subtopicSlug": "heat-pump-principle",
-                "conceptSlug": "core-heat-pump-principle",
-                "microskillSlug": "understand-heat-pump-principle"
-              }
-            },
             {
               "id": "thermodynamics-q-heat-pump-principle-2",
               "question": "Explain an application where using the concept of Heat pump principle can lead to a common student error.",

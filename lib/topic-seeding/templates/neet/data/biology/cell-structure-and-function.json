@@ -54,33 +54,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-cell-theory-and-its-modifications-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell theory and its modifications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-theory-and-its-modifications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-theory-and-its-modifications",
-                "conceptSlug": "core-cell-theory-and-its-modifications",
-                "microskillSlug": "understand-cell-theory-and-its-modifications"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-cell-theory-and-its-modifications-2",
               "question": "Explain an application where using the concept of Cell theory and its modifications can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -154,33 +127,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-prokaryotic-cell-structure-1",
-              "question": "What are the fundamental laws or mechanisms governing Prokaryotic cell structure?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "prokaryotic-cell-structure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "prokaryotic-cell-structure",
-                "conceptSlug": "core-prokaryotic-cell-structure",
-                "microskillSlug": "understand-prokaryotic-cell-structure"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-prokaryotic-cell-structure-2",
               "question": "Explain an application where using the concept of Prokaryotic cell structure can lead to a common student error.",
@@ -256,33 +202,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-eukaryotic-cell-structure-1",
-              "question": "What are the fundamental laws or mechanisms governing Eukaryotic cell structure?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "eukaryotic-cell-structure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "eukaryotic-cell-structure",
-                "conceptSlug": "core-eukaryotic-cell-structure",
-                "microskillSlug": "understand-eukaryotic-cell-structure"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-eukaryotic-cell-structure-2",
               "question": "Explain an application where using the concept of Eukaryotic cell structure can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -356,33 +275,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-plant-cell-vs-animal-cell-1",
-              "question": "What are the fundamental laws or mechanisms governing Plant cell vs animal cell?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "plant-cell-vs-animal-cell"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "plant-cell-vs-animal-cell",
-                "conceptSlug": "core-plant-cell-vs-animal-cell",
-                "microskillSlug": "understand-plant-cell-vs-animal-cell"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-plant-cell-vs-animal-cell-2",
               "question": "Explain an application where using the concept of Plant cell vs animal cell can lead to a common student error.",
@@ -458,33 +350,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-cell-membrane-fluid-mosaic-model-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell membrane fluid mosaic model?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-membrane-fluid-mosaic-model"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-membrane-fluid-mosaic-model",
-                "conceptSlug": "core-cell-membrane-fluid-mosaic-model",
-                "microskillSlug": "understand-cell-membrane-fluid-mosaic-model"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-cell-membrane-fluid-mosaic-model-2",
               "question": "Explain an application where using the concept of Cell membrane fluid mosaic model can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -559,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-cell-wall-structure-and-function-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell wall structure and function?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-wall-structure-and-function"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-wall-structure-and-function",
-                "conceptSlug": "core-cell-wall-structure-and-function",
-                "microskillSlug": "understand-cell-wall-structure-and-function"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-cell-wall-structure-and-function-2",
               "question": "Explain an application where using the concept of Cell wall structure and function can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -659,33 +497,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-endomembrane-system-1",
-              "question": "What are the fundamental laws or mechanisms governing Endomembrane system?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "endomembrane-system"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "endomembrane-system",
-                "conceptSlug": "core-endomembrane-system",
-                "microskillSlug": "understand-endomembrane-system"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-endomembrane-system-2",
               "question": "Explain an application where using the concept of Endomembrane system can lead to a common student error.",
@@ -774,33 +585,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-endoplasmic-reticulum-rer-and-ser-1",
-              "question": "What are the fundamental laws or mechanisms governing Endoplasmic reticulum (RER and SER)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "endoplasmic-reticulum-rer-and-ser"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "endoplasmic-reticulum-rer-and-ser",
-                "conceptSlug": "core-endoplasmic-reticulum-rer-and-ser",
-                "microskillSlug": "understand-endoplasmic-reticulum-rer-and-ser"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-endoplasmic-reticulum-rer-and-ser-2",
               "question": "Explain an application where using the concept of Endoplasmic reticulum (RER and SER) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -874,33 +658,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-golgi-apparatus-function-1",
-              "question": "What are the fundamental laws or mechanisms governing Golgi apparatus function?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "golgi-apparatus-function"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "golgi-apparatus-function",
-                "conceptSlug": "core-golgi-apparatus-function",
-                "microskillSlug": "understand-golgi-apparatus-function"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-golgi-apparatus-function-2",
               "question": "Explain an application where using the concept of Golgi apparatus function can lead to a common student error.",
@@ -976,33 +733,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-cell-organelles-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell organelles?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-organelles"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-organelles",
-                "conceptSlug": "core-cell-organelles",
-                "microskillSlug": "understand-cell-organelles"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-cell-organelles-2",
               "question": "Explain an application where using the concept of Cell organelles can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1076,33 +806,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-vacuoles-and-microbodies-1",
-              "question": "What are the fundamental laws or mechanisms governing Vacuoles and microbodies?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "vacuoles-and-microbodies"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "vacuoles-and-microbodies",
-                "conceptSlug": "core-vacuoles-and-microbodies",
-                "microskillSlug": "understand-vacuoles-and-microbodies"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-vacuoles-and-microbodies-2",
               "question": "Explain an application where using the concept of Vacuoles and microbodies can lead to a common student error.",
@@ -1178,33 +881,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-cytoskeleton-cilia-and-flagella-1",
-              "question": "What are the fundamental laws or mechanisms governing Cytoskeleton cilia and flagella?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cytoskeleton-cilia-and-flagella"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cytoskeleton-cilia-and-flagella",
-                "conceptSlug": "core-cytoskeleton-cilia-and-flagella",
-                "microskillSlug": "understand-cytoskeleton-cilia-and-flagella"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-cytoskeleton-cilia-and-flagella-2",
               "question": "Explain an application where using the concept of Cytoskeleton cilia and flagella can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1279,33 +955,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-centrosome-and-centrioles-1",
-              "question": "What are the fundamental laws or mechanisms governing Centrosome and centrioles?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "centrosome-and-centrioles"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "centrosome-and-centrioles",
-                "conceptSlug": "core-centrosome-and-centrioles",
-                "microskillSlug": "understand-centrosome-and-centrioles"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-centrosome-and-centrioles-2",
               "question": "Explain an application where using the concept of Centrosome and centrioles can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1379,33 +1028,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-nucleus-chromatin-and-nucleolus-1",
-              "question": "What are the fundamental laws or mechanisms governing Nucleus chromatin and nucleolus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "nucleus-chromatin-and-nucleolus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "nucleus-chromatin-and-nucleolus",
-                "conceptSlug": "core-nucleus-chromatin-and-nucleolus",
-                "microskillSlug": "understand-nucleus-chromatin-and-nucleolus"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-nucleus-chromatin-and-nucleolus-2",
               "question": "Explain an application where using the concept of Nucleus chromatin and nucleolus can lead to a common student error.",
@@ -1494,33 +1116,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-biomolecules-carbohydrates-1",
-              "question": "What are the fundamental laws or mechanisms governing Biomolecules carbohydrates?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "biomolecules-carbohydrates"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "biomolecules-carbohydrates",
-                "conceptSlug": "core-biomolecules-carbohydrates",
-                "microskillSlug": "understand-biomolecules-carbohydrates"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-biomolecules-carbohydrates-2",
               "question": "Explain an application where using the concept of Biomolecules carbohydrates can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1594,33 +1189,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-biomolecules-lipids-1",
-              "question": "What are the fundamental laws or mechanisms governing Biomolecules lipids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "biomolecules-lipids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "biomolecules-lipids",
-                "conceptSlug": "core-biomolecules-lipids",
-                "microskillSlug": "understand-biomolecules-lipids"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-biomolecules-lipids-2",
               "question": "Explain an application where using the concept of Biomolecules lipids can lead to a common student error.",
@@ -1696,33 +1264,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-biomolecules-proteins-1",
-              "question": "What are the fundamental laws or mechanisms governing Biomolecules proteins?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "biomolecules-proteins"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "biomolecules-proteins",
-                "conceptSlug": "core-biomolecules-proteins",
-                "microskillSlug": "understand-biomolecules-proteins"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-biomolecules-proteins-2",
               "question": "Explain an application where using the concept of Biomolecules proteins can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1796,33 +1337,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-biomolecules-nucleic-acids-1",
-              "question": "What are the fundamental laws or mechanisms governing Biomolecules nucleic acids?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "biomolecules-nucleic-acids"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "biomolecules-nucleic-acids",
-                "conceptSlug": "core-biomolecules-nucleic-acids",
-                "microskillSlug": "understand-biomolecules-nucleic-acids"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-biomolecules-nucleic-acids-2",
               "question": "Explain an application where using the concept of Biomolecules nucleic acids can lead to a common student error.",
@@ -1899,34 +1413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-enzymes-properties-and-action-mechanism-1",
-              "question": "What are the fundamental laws or mechanisms governing Enzymes properties and action mechanism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "enzymes-properties-and-action-mechanism",
-                "mechanism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "enzymes-properties-and-action-mechanism",
-                "conceptSlug": "core-enzymes-properties-and-action-mechanism",
-                "microskillSlug": "understand-enzymes-properties-and-action-mechanism"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-enzymes-properties-and-action-mechanism-2",
               "question": "Explain an application where using the concept of Enzymes properties and action mechanism can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2002,33 +1488,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-factors-affecting-enzyme-activity-1",
-              "question": "What are the fundamental laws or mechanisms governing Factors affecting enzyme activity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "factors-affecting-enzyme-activity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "factors-affecting-enzyme-activity",
-                "conceptSlug": "core-factors-affecting-enzyme-activity",
-                "microskillSlug": "understand-factors-affecting-enzyme-activity"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-factors-affecting-enzyme-activity-2",
               "question": "Explain an application where using the concept of Factors affecting enzyme activity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2102,33 +1561,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-cycle-phases-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell cycle phases?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-cycle-phases"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-cycle-phases",
-                "conceptSlug": "core-cell-cycle-phases",
-                "microskillSlug": "understand-cell-cycle-phases"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-cell-cycle-phases-2",
               "question": "Explain an application where using the concept of Cell cycle phases can lead to a common student error.",
@@ -2217,33 +1649,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-mitosis-stages-and-significance-1",
-              "question": "What are the fundamental laws or mechanisms governing Mitosis stages and significance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "mitosis-stages-and-significance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "mitosis-stages-and-significance",
-                "conceptSlug": "core-mitosis-stages-and-significance",
-                "microskillSlug": "understand-mitosis-stages-and-significance"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-mitosis-stages-and-significance-2",
               "question": "Explain an application where using the concept of Mitosis stages and significance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2317,33 +1722,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-cycle-meiosis-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell cycle/meiosis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-cycle-meiosis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-cycle-meiosis",
-                "conceptSlug": "core-cell-cycle-meiosis",
-                "microskillSlug": "understand-cell-cycle-meiosis"
-              }
-            },
             {
               "id": "cell-structure-and-function-q-cell-cycle-meiosis-2",
               "question": "Explain an application where using the concept of Cell cycle/meiosis can lead to a common student error.",
@@ -2419,33 +1797,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-prophase-i-of-meiosis-in-detail-1",
-              "question": "What are the fundamental laws or mechanisms governing Prophase I of meiosis in detail?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "prophase-i-of-meiosis-in-detail"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "prophase-i-of-meiosis-in-detail",
-                "conceptSlug": "core-prophase-i-of-meiosis-in-detail",
-                "microskillSlug": "understand-prophase-i-of-meiosis-in-detail"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-prophase-i-of-meiosis-in-detail-2",
               "question": "Explain an application where using the concept of Prophase I of meiosis in detail can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2520,33 +1871,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "cell-structure-and-function-q-significance-of-meiosis-1",
-              "question": "What are the fundamental laws or mechanisms governing Significance of meiosis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "significance-of-meiosis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "significance-of-meiosis",
-                "conceptSlug": "core-significance-of-meiosis",
-                "microskillSlug": "understand-significance-of-meiosis"
-              }
-            },
-            {
               "id": "cell-structure-and-function-q-significance-of-meiosis-2",
               "question": "Explain an application where using the concept of Significance of meiosis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2577,309 +1901,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-25-25",
-          "title": "Cell Structure and Function Anatomical features 25",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-25"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 25"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 25 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 25 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 25 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 25."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 25.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 25 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 25 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-25-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 25?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-25"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-25",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-25",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-25"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-25-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 25 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-25",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-25",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-25",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-25"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-26-26",
-          "title": "Cell Structure and Function Anatomical features 26",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-26"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 26"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 26 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 26 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 26 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 26."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 26.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 26 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 26 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-26-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 26?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-26"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-26",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-26",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-26"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-26-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 26 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-26",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-26",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-26",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-26"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-27-27",
-          "title": "Cell Structure and Function Anatomical features 27",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-27"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 27"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 27 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 27 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 27 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 27."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 27.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 27 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 27 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-27-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 27?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-27"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-27",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-27",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-27"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-27-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 27 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-27",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-27",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-27",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-27"
-              }
-            }
-          ]
         }
       ]
     },
@@ -2893,715 +1914,7 @@
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
-      "microtargets": [
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-28-28",
-          "title": "Cell Structure and Function Anatomical features 28",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-28"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 28"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 28 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 28 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 28 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 28."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 28.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 28 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 28 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-28-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 28?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-28"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-28",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-28",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-28"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-28-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 28 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-28",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-28",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-28",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-28"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-29-29",
-          "title": "Cell Structure and Function Anatomical features 29",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-29"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 29"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 29 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 29 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 29 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 29."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 29.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 29 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 29 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-29-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 29?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-29"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-29",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-29",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-29"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-29-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 29 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-29",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-29",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-29",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-29"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-30-30",
-          "title": "Cell Structure and Function Anatomical features 30",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-30"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 30"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 30 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 30 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 30 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 30."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 30.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 30 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 30 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-30-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 30?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-30"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-30",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-30",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-30"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-30-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 30 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-30",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-30",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-30",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-30"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-31-31",
-          "title": "Cell Structure and Function Anatomical features 31",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-31"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 31"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 31 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 31 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 31 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 31."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 31.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 31 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 31 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-31-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 31?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-31"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-31",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-31",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-31"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-31-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 31 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-31",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-31",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-31",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-31"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-32-32",
-          "title": "Cell Structure and Function Anatomical features 32",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-32"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 32"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 32 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 32 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 32 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 32."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 32.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 32 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 32 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-32-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 32?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-32"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-32",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-32",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-32"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-32-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 32 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-32",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-32",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-32",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-32"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-33-33",
-          "title": "Cell Structure and Function Anatomical features 33",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-33"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 33"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 33 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 33 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 33 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 33."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 33.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 33 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 33 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-33-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 33?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-33"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-33",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-33",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-33"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-33-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 33 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-33",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-33",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-33",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-33"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-cell-structure-and-function-cell-structure-and-function-detailed-structure-34-34",
-          "title": "Cell Structure and Function Anatomical features 34",
-          "conceptTags": [
-            "cell-structure-and-function",
-            "cell-structure-and-function-detailed-structure-34"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Cell Structure and Function, Section detailing Cell Structure and Function Anatomical features 34"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Cell Structure and Function Anatomical features 34 is frequently appears in NEET examinations.",
-            "Applying the core principles of Cell Structure and Function Anatomical features 34 correctly is essential for solving integrated numerical and conceptual problems in Cell Structure and Function."
-          ],
-          "diagrams": [
-            {
-              "name": "Eukaryotic Cell Diagram",
-              "labels": [
-                "Nucleus",
-                "Mitochondria",
-                "Golgi Apparatus"
-              ],
-              "provesOrShows": "Distribution of cellular organelles",
-              "commonLabelTraps": [
-                "Plant vs animal specific organelles"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Cell Structure and Function Anatomical features 34 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Cell Structure and Function Anatomical features 34."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Cell Structure and Function Anatomical features 34.",
-            "Successfully avoids common pitfalls when Cell Structure and Function Anatomical features 34 is integrated with other concepts in Cell Structure and Function."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Cell Structure and Function Anatomical features 34 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-34-1",
-              "question": "What are the fundamental laws or mechanisms governing Cell Structure and Function Anatomical features 34?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-34"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-34",
-                "conceptSlug": "core-cell-structure-and-function-detailed-structure-34",
-                "microskillSlug": "understand-cell-structure-and-function-detailed-structure-34"
-              }
-            },
-            {
-              "id": "cell-structure-and-function-q-cell-structure-and-function-detailed-structure-34-2",
-              "question": "Explain an application where using the concept of Cell Structure and Function Anatomical features 34 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "cell-structure-and-function",
-                "cell-structure-and-function-detailed-structure-34",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "cell-structure-and-function",
-                "chapterSlug": "cell-structure-and-function",
-                "topicSlug": "cell-structure-and-function",
-                "subtopicSlug": "cell-structure-and-function-detailed-structure-34",
-                "conceptSlug": "trap-cell-structure-and-function-detailed-structure-34",
-                "microskillSlug": "avoid-cell-structure-and-function-detailed-structure-34"
-              }
-            }
-          ]
-        }
-      ]
+      "microtargets": []
     }
   ]
 }

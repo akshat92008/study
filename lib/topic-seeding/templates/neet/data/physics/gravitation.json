@@ -53,33 +53,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-universal-law-of-gravitation-1",
-              "question": "What are the fundamental laws or mechanisms governing Universal law of gravitation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "universal-law-of-gravitation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "universal-law-of-gravitation",
-                "conceptSlug": "core-universal-law-of-gravitation",
-                "microskillSlug": "understand-universal-law-of-gravitation"
-              }
-            },
-            {
               "id": "gravitation-q-universal-law-of-gravitation-2",
               "question": "Explain an application where using the concept of Universal law of gravitation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -152,33 +125,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-gravitational-constant-1",
-              "question": "What are the fundamental laws or mechanisms governing Gravitational constant?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "gravitational-constant"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-constant",
-                "conceptSlug": "core-gravitational-constant",
-                "microskillSlug": "understand-gravitational-constant"
-              }
-            },
             {
               "id": "gravitation-q-gravitational-constant-2",
               "question": "Explain an application where using the concept of Gravitational constant can lead to a common student error.",
@@ -253,33 +199,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-gravitational-field-intensity-1",
-              "question": "What are the fundamental laws or mechanisms governing Gravitational field intensity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "gravitational-field-intensity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-field-intensity",
-                "conceptSlug": "core-gravitational-field-intensity",
-                "microskillSlug": "understand-gravitational-field-intensity"
-              }
-            },
-            {
               "id": "gravitation-q-gravitational-field-intensity-2",
               "question": "Explain an application where using the concept of Gravitational field intensity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -350,33 +269,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-acceleration-due-to-gravity-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Acceleration due to gravity formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "acceleration-due-to-gravity-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "acceleration-due-to-gravity-formula",
-                "conceptSlug": "core-acceleration-due-to-gravity-formula",
-                "microskillSlug": "understand-acceleration-due-to-gravity-formula"
-              }
-            },
             {
               "id": "gravitation-q-acceleration-due-to-gravity-formula-2",
               "question": "Explain an application where using the concept of Acceleration due to gravity formula can lead to a common student error.",
@@ -449,33 +341,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-variation-of-g-with-altitude-1",
-              "question": "What are the fundamental laws or mechanisms governing Variation of g with altitude?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "variation-of-g-with-altitude"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "variation-of-g-with-altitude",
-                "conceptSlug": "core-variation-of-g-with-altitude",
-                "microskillSlug": "understand-variation-of-g-with-altitude"
-              }
-            },
             {
               "id": "gravitation-q-variation-of-g-with-altitude-2",
               "question": "Explain an application where using the concept of Variation of g with altitude can lead to a common student error.",
@@ -562,33 +427,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-variation-of-g-with-depth-1",
-              "question": "What are the fundamental laws or mechanisms governing Variation of g with depth?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "variation-of-g-with-depth"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "variation-of-g-with-depth",
-                "conceptSlug": "core-variation-of-g-with-depth",
-                "microskillSlug": "understand-variation-of-g-with-depth"
-              }
-            },
-            {
               "id": "gravitation-q-variation-of-g-with-depth-2",
               "question": "Explain an application where using the concept of Variation of g with depth can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -660,33 +498,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-variation-of-g-with-latitude-rotation-1",
-              "question": "What are the fundamental laws or mechanisms governing Variation of g with latitude/rotation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "variation-of-g-with-latitude-rotation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "variation-of-g-with-latitude-rotation",
-                "conceptSlug": "core-variation-of-g-with-latitude-rotation",
-                "microskillSlug": "understand-variation-of-g-with-latitude-rotation"
-              }
-            },
             {
               "id": "gravitation-q-variation-of-g-with-latitude-rotation-2",
               "question": "Explain an application where using the concept of Variation of g with latitude/rotation can lead to a common student error.",
@@ -761,33 +572,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-gravitational-potential-1",
-              "question": "What are the fundamental laws or mechanisms governing Gravitational potential?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "gravitational-potential"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-potential",
-                "conceptSlug": "core-gravitational-potential",
-                "microskillSlug": "understand-gravitational-potential"
-              }
-            },
-            {
               "id": "gravitation-q-gravitational-potential-2",
               "question": "Explain an application where using the concept of Gravitational potential can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -859,33 +643,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-gravitational-potential-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Gravitational potential energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "gravitational-potential-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-potential-energy",
-                "conceptSlug": "core-gravitational-potential-energy",
-                "microskillSlug": "understand-gravitational-potential-energy"
-              }
-            },
-            {
               "id": "gravitation-q-gravitational-potential-energy-2",
               "question": "Explain an application where using the concept of Gravitational potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -956,33 +713,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-escape-velocity-derivation-1",
-              "question": "What are the fundamental laws or mechanisms governing Escape velocity derivation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "escape-velocity-derivation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "escape-velocity-derivation",
-                "conceptSlug": "core-escape-velocity-derivation",
-                "microskillSlug": "understand-escape-velocity-derivation"
-              }
-            },
             {
               "id": "gravitation-q-escape-velocity-derivation-2",
               "question": "Explain an application where using the concept of Escape velocity derivation can lead to a common student error.",
@@ -1068,33 +798,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-orbital-velocity-1",
-              "question": "What are the fundamental laws or mechanisms governing Orbital velocity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "orbital-velocity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "orbital-velocity",
-                "conceptSlug": "core-orbital-velocity",
-                "microskillSlug": "understand-orbital-velocity"
-              }
-            },
-            {
               "id": "gravitation-q-orbital-velocity-2",
               "question": "Explain an application where using the concept of Orbital velocity can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1167,33 +870,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-satellite-time-period-1",
-              "question": "What are the fundamental laws or mechanisms governing Satellite time period?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "satellite-time-period"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "satellite-time-period",
-                "conceptSlug": "core-satellite-time-period",
-                "microskillSlug": "understand-satellite-time-period"
-              }
-            },
-            {
               "id": "gravitation-q-satellite-time-period-2",
               "question": "Explain an application where using the concept of Satellite time period can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1264,33 +940,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-total-energy-of-orbiting-satellite-1",
-              "question": "What are the fundamental laws or mechanisms governing Total energy of orbiting satellite?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "total-energy-of-orbiting-satellite"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "total-energy-of-orbiting-satellite",
-                "conceptSlug": "core-total-energy-of-orbiting-satellite",
-                "microskillSlug": "understand-total-energy-of-orbiting-satellite"
-              }
-            },
             {
               "id": "gravitation-q-total-energy-of-orbiting-satellite-2",
               "question": "Explain an application where using the concept of Total energy of orbiting satellite can lead to a common student error.",
@@ -1364,33 +1013,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-kepler-s-first-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Kepler’s first law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "kepler-s-first-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "kepler-s-first-law",
-                "conceptSlug": "core-kepler-s-first-law",
-                "microskillSlug": "understand-kepler-s-first-law"
-              }
-            },
-            {
               "id": "gravitation-q-kepler-s-first-law-2",
               "question": "Explain an application where using the concept of Kepler’s first law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1462,33 +1084,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-kepler-s-second-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Kepler’s second law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "kepler-s-second-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "kepler-s-second-law",
-                "conceptSlug": "core-kepler-s-second-law",
-                "microskillSlug": "understand-kepler-s-second-law"
-              }
-            },
             {
               "id": "gravitation-q-kepler-s-second-law-2",
               "question": "Explain an application where using the concept of Kepler’s second law can lead to a common student error.",
@@ -1575,33 +1170,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-kepler-s-third-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Kepler’s third law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "kepler-s-third-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "kepler-s-third-law",
-                "conceptSlug": "core-kepler-s-third-law",
-                "microskillSlug": "understand-kepler-s-third-law"
-              }
-            },
-            {
               "id": "gravitation-q-kepler-s-third-law-2",
               "question": "Explain an application where using the concept of Kepler’s third law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1673,33 +1241,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-geostationary-satellite-1",
-              "question": "What are the fundamental laws or mechanisms governing Geostationary satellite?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "geostationary-satellite"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "geostationary-satellite",
-                "conceptSlug": "core-geostationary-satellite",
-                "microskillSlug": "understand-geostationary-satellite"
-              }
-            },
             {
               "id": "gravitation-q-geostationary-satellite-2",
               "question": "Explain an application where using the concept of Geostationary satellite can lead to a common student error.",
@@ -1773,33 +1314,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-polar-satellite-1",
-              "question": "What are the fundamental laws or mechanisms governing Polar satellite?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "polar-satellite"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "polar-satellite",
-                "conceptSlug": "core-polar-satellite",
-                "microskillSlug": "understand-polar-satellite"
-              }
-            },
-            {
               "id": "gravitation-q-polar-satellite-2",
               "question": "Explain an application where using the concept of Polar satellite can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1872,33 +1386,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "gravitation-q-weightlessness-condition-1",
-              "question": "What are the fundamental laws or mechanisms governing Weightlessness condition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "weightlessness-condition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "weightlessness-condition",
-                "conceptSlug": "core-weightlessness-condition",
-                "microskillSlug": "understand-weightlessness-condition"
-              }
-            },
-            {
               "id": "gravitation-q-weightlessness-condition-2",
               "question": "Explain an application where using the concept of Weightlessness condition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1969,33 +1456,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-binding-energy-of-satellite-1",
-              "question": "What are the fundamental laws or mechanisms governing Binding energy of satellite?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "binding-energy-of-satellite"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "binding-energy-of-satellite",
-                "conceptSlug": "core-binding-energy-of-satellite",
-                "microskillSlug": "understand-binding-energy-of-satellite"
-              }
-            },
             {
               "id": "gravitation-q-binding-energy-of-satellite-2",
               "question": "Explain an application where using the concept of Binding energy of satellite can lead to a common student error.",
@@ -2080,33 +1540,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "gravitation-q-gravitational-mass-vs-inertial-mass-1",
-              "question": "What are the fundamental laws or mechanisms governing Gravitational mass vs inertial mass?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "gravitation",
-                "gravitational-mass-vs-inertial-mass"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "gravitation",
-                "chapterSlug": "gravitation",
-                "topicSlug": "gravitation",
-                "subtopicSlug": "gravitational-mass-vs-inertial-mass",
-                "conceptSlug": "core-gravitational-mass-vs-inertial-mass",
-                "microskillSlug": "understand-gravitational-mass-vs-inertial-mass"
-              }
-            },
             {
               "id": "gravitation-q-gravitational-mass-vs-inertial-mass-2",
               "question": "Explain an application where using the concept of Gravitational mass vs inertial mass can lead to a common student error.",

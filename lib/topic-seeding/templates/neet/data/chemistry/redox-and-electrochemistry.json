@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-oxidation-and-reduction-concepts-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation and reduction concepts?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "oxidation-and-reduction-concepts"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "oxidation-and-reduction-concepts",
-                "conceptSlug": "core-oxidation-and-reduction-concepts",
-                "microskillSlug": "understand-oxidation-and-reduction-concepts"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-oxidation-and-reduction-concepts-2",
               "question": "Explain an application where using the concept of Oxidation and reduction concepts can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-oxidation-number-rules-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxidation number rules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "oxidation-number-rules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "oxidation-number-rules",
-                "conceptSlug": "core-oxidation-number-rules",
-                "microskillSlug": "understand-oxidation-number-rules"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-oxidation-number-rules-2",
               "question": "Explain an application where using the concept of Oxidation number rules can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-oxidation-number-method-1",
-              "question": "What are the fundamental laws or mechanisms governing Balancing redox reactions by oxidation number method?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "balancing-redox-reactions-by-oxidation-number-method"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "balancing-redox-reactions-by-oxidation-number-method",
-                "conceptSlug": "core-balancing-redox-reactions-by-oxidation-number-method",
-                "microskillSlug": "understand-balancing-redox-reactions-by-oxidation-number-method"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-oxidation-number-method-2",
               "question": "Explain an application where using the concept of Balancing redox reactions by oxidation number method can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -301,33 +220,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-ion-electron-method-1",
-              "question": "What are the fundamental laws or mechanisms governing Balancing redox reactions by ion-electron method?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "balancing-redox-reactions-by-ion-electron-method"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "balancing-redox-reactions-by-ion-electron-method",
-                "conceptSlug": "core-balancing-redox-reactions-by-ion-electron-method",
-                "microskillSlug": "understand-balancing-redox-reactions-by-ion-electron-method"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-balancing-redox-reactions-by-ion-electron-method-2",
               "question": "Explain an application where using the concept of Balancing redox reactions by ion-electron method can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -387,33 +279,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-types-of-redox-reactions-1",
-              "question": "What are the fundamental laws or mechanisms governing Types of redox reactions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "types-of-redox-reactions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "types-of-redox-reactions",
-                "conceptSlug": "core-types-of-redox-reactions",
-                "microskillSlug": "understand-types-of-redox-reactions"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-types-of-redox-reactions-2",
               "question": "Explain an application where using the concept of Types of redox reactions can lead to a common student error.",
@@ -488,33 +353,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrolytic-and-metallic-conduction-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrolytic and metallic conduction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "electrolytic-and-metallic-conduction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-and-metallic-conduction",
-                "conceptSlug": "core-electrolytic-and-metallic-conduction",
-                "microskillSlug": "understand-electrolytic-and-metallic-conduction"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-electrolytic-and-metallic-conduction-2",
               "question": "Explain an application where using the concept of Electrolytic and metallic conduction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -586,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-conductance-in-electrolytic-solutions-1",
-              "question": "What are the fundamental laws or mechanisms governing Conductance in electrolytic solutions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "conductance-in-electrolytic-solutions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "conductance-in-electrolytic-solutions",
-                "conceptSlug": "core-conductance-in-electrolytic-solutions",
-                "microskillSlug": "understand-conductance-in-electrolytic-solutions"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-conductance-in-electrolytic-solutions-2",
               "question": "Explain an application where using the concept of Conductance in electrolytic solutions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -672,33 +483,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-specific-and-molar-conductivity-1",
-              "question": "What are the fundamental laws or mechanisms governing Specific and molar conductivity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "specific-and-molar-conductivity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "specific-and-molar-conductivity",
-                "conceptSlug": "core-specific-and-molar-conductivity",
-                "microskillSlug": "understand-specific-and-molar-conductivity"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-specific-and-molar-conductivity-2",
               "question": "Explain an application where using the concept of Specific and molar conductivity can lead to a common student error.",
@@ -760,33 +544,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-variation-of-conductivity-with-concentration-1",
-              "question": "What are the fundamental laws or mechanisms governing Variation of conductivity with concentration?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "variation-of-conductivity-with-concentration"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "variation-of-conductivity-with-concentration",
-                "conceptSlug": "core-variation-of-conductivity-with-concentration",
-                "microskillSlug": "understand-variation-of-conductivity-with-concentration"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-variation-of-conductivity-with-concentration-2",
               "question": "Explain an application where using the concept of Variation of conductivity with concentration can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -846,33 +603,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-kohlrausch-s-law-of-independent-migration-of-ions-1",
-              "question": "What are the fundamental laws or mechanisms governing Kohlrausch’s law of independent migration of ions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "kohlrausch-s-law-of-independent-migration-of-ions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "kohlrausch-s-law-of-independent-migration-of-ions",
-                "conceptSlug": "core-kohlrausch-s-law-of-independent-migration-of-ions",
-                "microskillSlug": "understand-kohlrausch-s-law-of-independent-migration-of-ions"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-kohlrausch-s-law-of-independent-migration-of-ions-2",
               "question": "Explain an application where using the concept of Kohlrausch’s law of independent migration of ions can lead to a common student error.",
@@ -947,33 +677,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-galvanic-cells-functioning-1",
-              "question": "What are the fundamental laws or mechanisms governing Galvanic cells functioning?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "galvanic-cells-functioning"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "galvanic-cells-functioning",
-                "conceptSlug": "core-galvanic-cells-functioning",
-                "microskillSlug": "understand-galvanic-cells-functioning"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-galvanic-cells-functioning-2",
               "question": "Explain an application where using the concept of Galvanic cells functioning can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1033,33 +736,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-electrolytic-cells-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrolytic cells?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "electrolytic-cells"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolytic-cells",
-                "conceptSlug": "core-electrolytic-cells",
-                "microskillSlug": "understand-electrolytic-cells"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-electrolytic-cells-2",
               "question": "Explain an application where using the concept of Electrolytic cells can lead to a common student error.",
@@ -1121,33 +797,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrode-potential-and-standard-electrode-potential-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrode potential and standard electrode potential?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "electrode-potential-and-standard-electrode-potential"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrode-potential-and-standard-electrode-potential",
-                "conceptSlug": "core-electrode-potential-and-standard-electrode-potential",
-                "microskillSlug": "understand-electrode-potential-and-standard-electrode-potential"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-electrode-potential-and-standard-electrode-potential-2",
               "question": "Explain an application where using the concept of Electrode potential and standard electrode potential can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1208,33 +857,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-standard-hydrogen-electrode-she-1",
-              "question": "What are the fundamental laws or mechanisms governing Standard hydrogen electrode (SHE)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "standard-hydrogen-electrode-she"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "standard-hydrogen-electrode-she",
-                "conceptSlug": "core-standard-hydrogen-electrode-she",
-                "microskillSlug": "understand-standard-hydrogen-electrode-she"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-standard-hydrogen-electrode-she-2",
               "question": "Explain an application where using the concept of Standard hydrogen electrode (SHE) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1294,33 +916,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-electrochemical-cell-notation-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrochemical cell notation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "electrochemical-cell-notation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrochemical-cell-notation",
-                "conceptSlug": "core-electrochemical-cell-notation",
-                "microskillSlug": "understand-electrochemical-cell-notation"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-electrochemical-cell-notation-2",
               "question": "Explain an application where using the concept of Electrochemical cell notation can lead to a common student error.",
@@ -1407,33 +1002,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-nernst-equation-electrochemistry-1",
-              "question": "What are the fundamental laws or mechanisms governing Nernst equation/electrochemistry?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "nernst-equation-electrochemistry"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "nernst-equation-electrochemistry",
-                "conceptSlug": "core-nernst-equation-electrochemistry",
-                "microskillSlug": "understand-nernst-equation-electrochemistry"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-nernst-equation-electrochemistry-2",
               "question": "Explain an application where using the concept of Nernst equation/electrochemistry can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1493,33 +1061,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-relation-between-cell-potential-and-gibbs-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Relation between cell potential and Gibbs energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "relation-between-cell-potential-and-gibbs-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "relation-between-cell-potential-and-gibbs-energy",
-                "conceptSlug": "core-relation-between-cell-potential-and-gibbs-energy",
-                "microskillSlug": "understand-relation-between-cell-potential-and-gibbs-energy"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-relation-between-cell-potential-and-gibbs-energy-2",
               "question": "Explain an application where using the concept of Relation between cell potential and Gibbs energy can lead to a common student error.",
@@ -1581,33 +1122,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-electrolysis-products-1",
-              "question": "What are the fundamental laws or mechanisms governing Electrolysis products?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "electrolysis-products"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "electrolysis-products",
-                "conceptSlug": "core-electrolysis-products",
-                "microskillSlug": "understand-electrolysis-products"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-electrolysis-products-2",
               "question": "Explain an application where using the concept of Electrolysis products can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1668,33 +1182,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-faraday-s-laws-of-electrolysis-1",
-              "question": "What are the fundamental laws or mechanisms governing Faraday’s laws of electrolysis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "faraday-s-laws-of-electrolysis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "faraday-s-laws-of-electrolysis",
-                "conceptSlug": "core-faraday-s-laws-of-electrolysis",
-                "microskillSlug": "understand-faraday-s-laws-of-electrolysis"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-faraday-s-laws-of-electrolysis-2",
               "question": "Explain an application where using the concept of Faraday’s laws of electrolysis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1754,33 +1241,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-primary-batteries-1",
-              "question": "What are the fundamental laws or mechanisms governing Primary batteries?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "primary-batteries"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "primary-batteries",
-                "conceptSlug": "core-primary-batteries",
-                "microskillSlug": "understand-primary-batteries"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-primary-batteries-2",
               "question": "Explain an application where using the concept of Primary batteries can lead to a common student error.",
@@ -1855,33 +1315,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "redox-and-electrochemistry-q-secondary-batteries-lead-storage-1",
-              "question": "What are the fundamental laws or mechanisms governing Secondary batteries (lead storage)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "secondary-batteries-lead-storage"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "secondary-batteries-lead-storage",
-                "conceptSlug": "core-secondary-batteries-lead-storage",
-                "microskillSlug": "understand-secondary-batteries-lead-storage"
-              }
-            },
-            {
               "id": "redox-and-electrochemistry-q-secondary-batteries-lead-storage-2",
               "question": "Explain an application where using the concept of Secondary batteries (lead storage) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1941,33 +1374,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-fuel-cells-1",
-              "question": "What are the fundamental laws or mechanisms governing Fuel cells?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "fuel-cells"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "fuel-cells",
-                "conceptSlug": "core-fuel-cells",
-                "microskillSlug": "understand-fuel-cells"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-fuel-cells-2",
               "question": "Explain an application where using the concept of Fuel cells can lead to a common student error.",
@@ -2029,34 +1435,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "redox-and-electrochemistry-q-corrosion-mechanism-1",
-              "question": "What are the fundamental laws or mechanisms governing Corrosion mechanism?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "redox-and-electrochemistry",
-                "corrosion-mechanism",
-                "mechanism"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "redox-and-electrochemistry",
-                "chapterSlug": "redox-and-electrochemistry",
-                "topicSlug": "redox-and-electrochemistry",
-                "subtopicSlug": "corrosion-mechanism",
-                "conceptSlug": "core-corrosion-mechanism",
-                "microskillSlug": "understand-corrosion-mechanism"
-              }
-            },
             {
               "id": "redox-and-electrochemistry-q-corrosion-mechanism-2",
               "question": "Explain an application where using the concept of Corrosion mechanism can lead to a common student error.",

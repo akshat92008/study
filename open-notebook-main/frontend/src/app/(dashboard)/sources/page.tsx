@@ -38,6 +38,7 @@ export default function SourcesPage() {
   const loadingMoreRef = useRef(false)
   const hasMoreRef = useRef(true)
   const PAGE_SIZE = 30
+  const failedToLoadMsg = t('sources.failedToLoad')
 
   const fetchSources = useCallback(async (reset = false) => {
     try {
@@ -82,7 +83,7 @@ export default function SourcesPage() {
       setLoadingMore(false)
       loadingMoreRef.current = false
     }
-  }, [sortBy, sortOrder, t('sources.failedToLoad')])
+  }, [sortBy, sortOrder, failedToLoadMsg])
 
   // Initial load and when sort changes
   useEffect(() => {
@@ -96,6 +97,28 @@ export default function SourcesPage() {
       tableRef.current.focus()
     }
   }, [sources])
+
+  const scrollToSelectedRow = (index: number) => {
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer) return
+
+    // Find the selected row element
+    const rows = scrollContainer.querySelectorAll('tbody tr')
+    const selectedRow = rows[index] as HTMLElement
+    if (!selectedRow) return
+
+    const containerRect = scrollContainer.getBoundingClientRect()
+    const rowRect = selectedRow.getBoundingClientRect()
+
+    // Check if row is above visible area
+    if (rowRect.top < containerRect.top) {
+      selectedRow.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    // Check if row is below visible area
+    else if (rowRect.bottom > containerRect.bottom) {
+      selectedRow.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    }
+  }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -144,27 +167,7 @@ export default function SourcesPage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [sources, selectedIndex, router])
 
-  const scrollToSelectedRow = (index: number) => {
-    const scrollContainer = scrollContainerRef.current
-    if (!scrollContainer) return
 
-    // Find the selected row element
-    const rows = scrollContainer.querySelectorAll('tbody tr')
-    const selectedRow = rows[index] as HTMLElement
-    if (!selectedRow) return
-
-    const containerRect = scrollContainer.getBoundingClientRect()
-    const rowRect = selectedRow.getBoundingClientRect()
-
-    // Check if row is above visible area
-    if (rowRect.top < containerRect.top) {
-      selectedRow.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-    // Check if row is below visible area
-    else if (rowRect.bottom > containerRect.bottom) {
-      selectedRow.scrollIntoView({ behavior: 'smooth', block: 'end' })
-    }
-  }
 
   // Set up scroll listener after sources are loaded
   useEffect(() => {

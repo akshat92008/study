@@ -5,46 +5,86 @@ import { upsertAtlasConcepts } from './concept-upserter';
 import { logger } from '@/lib/utils/logger';
 type SupabaseLike = any;
 import { ChapterSeed, MicrotargetSeed } from './types';
+import { getChapterSkeleton, getTopicSkeleton, isTopicInChapter, resolveTopicSkeletonForText } from './templates/neet/topic-skeleton';
 
 function isChapterSeed(template: SeedTemplate | ChapterSeed): template is ChapterSeed {
   return 'missions' in template;
 }
 
+function normalizeSelectedTemplate(
+  _params: SeedTopicParams,
+  selectedOrTemplate: SelectedSeedTemplate | SeedTemplate | ChapterSeed,
+  templateKey?: string,
+  source?: SeedSource
+): SelectedSeedTemplate {
+  if ('template' in selectedOrTemplate) return selectedOrTemplate;
+  return {
+    template: selectedOrTemplate,
+    templateKey: templateKey ?? ('templateKey' in selectedOrTemplate ? selectedOrTemplate.templateKey : `neet-${selectedOrTemplate.subject.toLowerCase()}-${selectedOrTemplate.chapterSlug}`),
+    source: source ?? 'seeded_template',
+    confidence: 0.99,
+  };
+}
+
+function getMicrotargetTopic(mt: MicrotargetSeed, chapterSlug: string) {
+  const taxonomyTopicSlug = mt.activeRecallQuestions?.[0]?.taxonomyPath?.topicSlug;
+  const topicSlug = taxonomyTopicSlug && isTopicInChapter(taxonomyTopicSlug, chapterSlug)
+    ? taxonomyTopicSlug
+    : resolveTopicSkeletonForText([mt.title, ...(mt.conceptTags ?? []), ...(mt.ncertAnchors ?? [])].join(' '), chapterSlug)?.slug;
+
+  const topic = topicSlug ? getTopicSkeleton(chapterSlug, topicSlug) : null;
+  return {
+    topicSlug: topic?.slug ?? topicSlug ?? slugify(mt.title),
+    topicTitle: topic?.displayName ?? mt.activeRecallQuestions?.[0]?.taxonomyPath?.topicSlug?.replace(/-/g, ' ') ?? mt.title,
+  };
+}
+
 function buildSeededTopicRows(
   params: SeedTopicParams,
-  selected: SelectedSeedTemplate
+  selectedOrTemplate: SelectedSeedTemplate | SeedTemplate | ChapterSeed,
+  templateKey?: string,
+  source?: SeedSource
 ) {
-  const { template, templateKey, source, targetMicrotargetSlug } = selected;
-  if (isChapterSeed(template)) {
+  const selected = normalizeSelectedTemplate(params, selectedOrTemplate, templateKey, source);
+  const selectedTemplate = selected.template;
+  const selectedTemplateKey = selected.templateKey;
+  const selectedSource = selected.source;
+  const { targetMicrotargetSlug } = selected;
+  if (isChapterSeed(selectedTemplate)) {
     const rows: any[] = [];
     let globalIndex = 1;
+    const targetTopicSlugs = new Set(selected.targetTopicSlugs ?? []);
 
-    for (const mission of template.missions) {
+    for (const mission of selectedTemplate.missions) {
       for (const mt of mission.microtargets) {
+        const topicInfo = getMicrotargetTopic(mt, selectedTemplate.chapterSlug);
+        if (targetTopicSlugs.size > 0 && !targetTopicSlugs.has(topicInfo.topicSlug)) continue;
+
         rows.push({
           user_id: params.userId,
           goal_id: params.goalId,
-          subject: template.subject,
-          chapter: template.chapterTitle,
-          topic: mission.title,
+          subject: selectedTemplate.subject,
+          chapter: selectedTemplate.chapterTitle,
+          topic: topicInfo.topicTitle,
           microtarget: mt.title,
           order_index: globalIndex,
-          topic_slug: slugify(mission.title),
+          topic_slug: topicInfo.topicSlug,
           microtarget_slug: slugify(mt.title),
-          template_key: templateKey,
-          source,
+          template_key: selectedTemplateKey,
+          source: selectedSource,
           status: 'not_started', // We will set the active one later
           mastery_score: 0,
           confidence: 'low',
           metadata: {
-            displayName: template.chapterTitle,
-            aliases: template.aliases,
+            displayName: selectedTemplate.chapterTitle,
+            aliases: selectedTemplate.aliases,
             tags: mt.conceptTags ?? [],
             difficulty: mt.difficulty ?? 'medium',
             microtargets: [mt],
+            missionTitle: mission.title,
             missionId: mission.id,
             microtargetId: mt.id,
-            ncertChapter: template.chapterTitle,
+            ncertChapter: selectedTemplate.chapterTitle,
             ncertAnchors: mt.ncertAnchors,
             conceptTags: mt.conceptTags,
             formulas: mt.formulas,
@@ -57,9 +97,51 @@ function buildSeededTopicRows(
             taxonomyPath: mt.activeRecallQuestions?.[0]?.taxonomyPath,
             estimatedMinutes: mt.estimatedMinutes,
             seededBy: 'neet-curated-seeder-v2',
-            sourceSubject: template.subject,
-            sourceUnit: template.chapterSlug,
-            sourceChapter: template.chapterTitle,
+            sourceSubject: selectedTemplate.subject,
+            sourceUnit: selectedTemplate.chapterSlug,
+            sourceChapter: selectedTemplate.chapterTitle,
+          },
+        });
+        globalIndex++;
+      }
+    }
+
+    if (rows.length === 0 && targetTopicSlugs.size > 0) {
+      return buildSeededTopicRows(params, { ...selected, targetTopicSlugs: undefined });
+    }
+
+    if (rows.length === 0) {
+      const skeleton = getChapterSkeleton(selectedTemplate.chapterSlug);
+      for (const topic of skeleton?.topics ?? []) {
+        rows.push({
+          user_id: params.userId,
+          goal_id: params.goalId,
+          subject: selectedTemplate.subject,
+          chapter: selectedTemplate.chapterTitle,
+          topic: topic.displayName,
+          microtarget: `Study ${topic.displayName}`,
+          order_index: globalIndex,
+          topic_slug: topic.slug,
+          microtarget_slug: slugify(topic.displayName),
+          template_key: selectedTemplateKey,
+          source: selectedSource,
+          status: 'not_started',
+          mastery_score: 0,
+          confidence: 'low',
+          metadata: {
+            displayName: selectedTemplate.chapterTitle,
+            aliases: selectedTemplate.aliases,
+            tags: topic.aliases,
+            difficulty: 'medium',
+            microtargets: [],
+            skeletonOnly: true,
+            topicSlug: topic.slug,
+            ncertChapter: selectedTemplate.chapterTitle,
+            estimatedMinutes: 20,
+            seededBy: 'neet-topic-skeleton-v1',
+            sourceSubject: selectedTemplate.subject,
+            sourceUnit: selectedTemplate.chapterSlug,
+            sourceChapter: selectedTemplate.chapterTitle,
           },
         });
         globalIndex++;
@@ -79,26 +161,26 @@ function buildSeededTopicRows(
     return rows;
   }
 
-  const rows = template.topics.map((item, idx) => {
+  const rows = selectedTemplate.topics.map((item, idx) => {
     const orderIndex = Number.isFinite(item.orderIndex) ? item.orderIndex : idx + 1;
     return {
       user_id: params.userId,
       goal_id: params.goalId,
-      subject: template.subject,
-      chapter: template.chapter,
+      subject: selectedTemplate.subject,
+      chapter: selectedTemplate.chapter,
       topic: item.topic,
       microtarget: item.microtarget,
       order_index: orderIndex,
       topic_slug: slugify(item.topic),
       microtarget_slug: slugify(item.microtarget),
-      template_key: templateKey,
-      source,
+      template_key: selectedTemplateKey,
+      source: selectedSource,
       status: 'not_started',
       mastery_score: 0,
       confidence: 'low',
       metadata: {
-        displayName: template.displayName,
-        aliases: template.aliases,
+        displayName: selectedTemplate.displayName,
+        aliases: selectedTemplate.aliases,
         tags: item.tags ?? [],
         difficulty: item.difficulty ?? 'medium',
         microtargets: item.microtargets ?? [],

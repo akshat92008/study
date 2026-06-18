@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-charge-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric charge properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-charge-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-charge-properties",
-                "conceptSlug": "core-electric-charge-properties",
-                "microskillSlug": "understand-electric-charge-properties"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-charge-properties-2",
               "question": "Explain an application where using the concept of Electric charge properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -149,33 +122,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-conservation-of-charge-1",
-              "question": "What are the fundamental laws or mechanisms governing Conservation of charge?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "conservation-of-charge"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "conservation-of-charge",
-                "conceptSlug": "core-conservation-of-charge",
-                "microskillSlug": "understand-conservation-of-charge"
-              }
-            },
             {
               "id": "electrostatics-q-conservation-of-charge-2",
               "question": "Explain an application where using the concept of Conservation of charge can lead to a common student error.",
@@ -249,33 +195,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-quantisation-of-charge-1",
-              "question": "What are the fundamental laws or mechanisms governing Quantisation of charge?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "quantisation-of-charge"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "quantisation-of-charge",
-                "conceptSlug": "core-quantisation-of-charge",
-                "microskillSlug": "understand-quantisation-of-charge"
-              }
-            },
-            {
               "id": "electrostatics-q-quantisation-of-charge-2",
               "question": "Explain an application where using the concept of Quantisation of charge can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-coulomb-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Coulomb’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "coulomb-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "coulomb-s-law",
-                "conceptSlug": "core-coulomb-s-law",
-                "microskillSlug": "understand-coulomb-s-law"
-              }
-            },
-            {
               "id": "electrostatics-q-coulomb-s-law-2",
               "question": "Explain an application where using the concept of Coulomb’s law can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -445,33 +337,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-superposition-principle-for-forces-1",
-              "question": "What are the fundamental laws or mechanisms governing Superposition principle for forces?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "superposition-principle-for-forces"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "superposition-principle-for-forces",
-                "conceptSlug": "core-superposition-principle-for-forces",
-                "microskillSlug": "understand-superposition-principle-for-forces"
-              }
-            },
             {
               "id": "electrostatics-q-superposition-principle-for-forces-2",
               "question": "Explain an application where using the concept of Superposition principle for forces can lead to a common student error.",
@@ -544,33 +409,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-electric-field-intensity-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field intensity?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-intensity"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-intensity",
-                "conceptSlug": "core-electric-field-intensity",
-                "microskillSlug": "understand-electric-field-intensity"
-              }
-            },
             {
               "id": "electrostatics-q-electric-field-intensity-2",
               "question": "Explain an application where using the concept of Electric field intensity can lead to a common student error.",
@@ -657,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-field-lines-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field lines properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-lines-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-lines-properties",
-                "conceptSlug": "core-electric-field-lines-properties",
-                "microskillSlug": "understand-electric-field-lines-properties"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-field-lines-properties-2",
               "question": "Explain an application where using the concept of Electric field lines properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -755,33 +566,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-electric-dipole-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric dipole?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-dipole"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-dipole",
-                "conceptSlug": "core-electric-dipole",
-                "microskillSlug": "understand-electric-dipole"
-              }
-            },
             {
               "id": "electrostatics-q-electric-dipole-2",
               "question": "Explain an application where using the concept of Electric dipole can lead to a common student error.",
@@ -855,33 +639,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-field-due-to-dipole-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field due to dipole?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-due-to-dipole"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-due-to-dipole",
-                "conceptSlug": "core-electric-field-due-to-dipole",
-                "microskillSlug": "understand-electric-field-due-to-dipole"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-field-due-to-dipole-2",
               "question": "Explain an application where using the concept of Electric field due to dipole can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -952,33 +709,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-torque-on-dipole-in-uniform-field-1",
-              "question": "What are the fundamental laws or mechanisms governing Torque on dipole in uniform field?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "torque-on-dipole-in-uniform-field"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "torque-on-dipole-in-uniform-field",
-                "conceptSlug": "core-torque-on-dipole-in-uniform-field",
-                "microskillSlug": "understand-torque-on-dipole-in-uniform-field"
-              }
-            },
             {
               "id": "electrostatics-q-torque-on-dipole-in-uniform-field-2",
               "question": "Explain an application where using the concept of Torque on dipole in uniform field can lead to a common student error.",
@@ -1052,33 +782,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-flux-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric flux definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-flux-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-flux-definition",
-                "conceptSlug": "core-electric-flux-definition",
-                "microskillSlug": "understand-electric-flux-definition"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-flux-definition-2",
               "question": "Explain an application where using the concept of Electric flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1150,33 +853,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-gauss-law-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Gauss law applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "gauss-law-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "gauss-law-applications",
-                "conceptSlug": "core-gauss-law-applications",
-                "microskillSlug": "understand-gauss-law-applications"
-              }
-            },
             {
               "id": "electrostatics-q-gauss-law-applications-2",
               "question": "Explain an application where using the concept of Gauss law applications can lead to a common student error.",
@@ -1263,33 +939,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-field-of-straight-wire-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field of straight wire?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-of-straight-wire"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-of-straight-wire",
-                "conceptSlug": "core-electric-field-of-straight-wire",
-                "microskillSlug": "understand-electric-field-of-straight-wire"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-field-of-straight-wire-2",
               "question": "Explain an application where using the concept of Electric field of straight wire can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1361,33 +1010,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-electric-field-of-infinite-sheet-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field of infinite sheet?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-of-infinite-sheet"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-of-infinite-sheet",
-                "conceptSlug": "core-electric-field-of-infinite-sheet",
-                "microskillSlug": "understand-electric-field-of-infinite-sheet"
-              }
-            },
             {
               "id": "electrostatics-q-electric-field-of-infinite-sheet-2",
               "question": "Explain an application where using the concept of Electric field of infinite sheet can lead to a common student error.",
@@ -1461,33 +1083,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-field-of-spherical-shell-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric field of spherical shell?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-field-of-spherical-shell"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-field-of-spherical-shell",
-                "conceptSlug": "core-electric-field-of-spherical-shell",
-                "microskillSlug": "understand-electric-field-of-spherical-shell"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-field-of-spherical-shell-2",
               "question": "Explain an application where using the concept of Electric field of spherical shell can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1559,33 +1154,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-electric-potential-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric potential?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-potential"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-potential",
-                "conceptSlug": "core-electric-potential",
-                "microskillSlug": "understand-electric-potential"
-              }
-            },
             {
               "id": "electrostatics-q-electric-potential-2",
               "question": "Explain an application where using the concept of Electric potential can lead to a common student error.",
@@ -1659,33 +1227,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-potential-difference-1",
-              "question": "What are the fundamental laws or mechanisms governing Potential difference?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "potential-difference"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "potential-difference",
-                "conceptSlug": "core-potential-difference",
-                "microskillSlug": "understand-potential-difference"
-              }
-            },
-            {
               "id": "electrostatics-q-potential-difference-2",
               "question": "Explain an application where using the concept of Potential difference can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1757,33 +1298,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-equipotential-surfaces-1",
-              "question": "What are the fundamental laws or mechanisms governing Equipotential surfaces?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "equipotential-surfaces"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "equipotential-surfaces",
-                "conceptSlug": "core-equipotential-surfaces",
-                "microskillSlug": "understand-equipotential-surfaces"
-              }
-            },
             {
               "id": "electrostatics-q-equipotential-surfaces-2",
               "question": "Explain an application where using the concept of Equipotential surfaces can lead to a common student error.",
@@ -1869,33 +1383,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-electric-potential-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Electric potential energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "electric-potential-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "electric-potential-energy",
-                "conceptSlug": "core-electric-potential-energy",
-                "microskillSlug": "understand-electric-potential-energy"
-              }
-            },
-            {
               "id": "electrostatics-q-electric-potential-energy-2",
               "question": "Explain an application where using the concept of Electric potential energy can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1967,33 +1454,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-conductors-and-insulators-1",
-              "question": "What are the fundamental laws or mechanisms governing Conductors and insulators?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "conductors-and-insulators"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "conductors-and-insulators",
-                "conceptSlug": "core-conductors-and-insulators",
-                "microskillSlug": "understand-conductors-and-insulators"
-              }
-            },
             {
               "id": "electrostatics-q-conductors-and-insulators-2",
               "question": "Explain an application where using the concept of Conductors and insulators can lead to a common student error.",
@@ -2067,33 +1527,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-dielectrics-and-polarisation-1",
-              "question": "What are the fundamental laws or mechanisms governing Dielectrics and polarisation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "dielectrics-and-polarisation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "dielectrics-and-polarisation",
-                "conceptSlug": "core-dielectrics-and-polarisation",
-                "microskillSlug": "understand-dielectrics-and-polarisation"
-              }
-            },
-            {
               "id": "electrostatics-q-dielectrics-and-polarisation-2",
               "question": "Explain an application where using the concept of Dielectrics and polarisation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2165,33 +1598,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-capacitance-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Capacitance definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "capacitance-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitance-definition",
-                "conceptSlug": "core-capacitance-definition",
-                "microskillSlug": "understand-capacitance-definition"
-              }
-            },
             {
               "id": "electrostatics-q-capacitance-definition-2",
               "question": "Explain an application where using the concept of Capacitance definition can lead to a common student error.",
@@ -2265,33 +1671,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-capacitors-in-series-and-parallel-1",
-              "question": "What are the fundamental laws or mechanisms governing Capacitors in series and parallel?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "capacitors-in-series-and-parallel"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "capacitors-in-series-and-parallel",
-                "conceptSlug": "core-capacitors-in-series-and-parallel",
-                "microskillSlug": "understand-capacitors-in-series-and-parallel"
-              }
-            },
-            {
               "id": "electrostatics-q-capacitors-in-series-and-parallel-2",
               "question": "Explain an application where using the concept of Capacitors in series and parallel can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2363,33 +1742,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-parallel-plate-capacitor-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Parallel plate capacitor formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "parallel-plate-capacitor-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "parallel-plate-capacitor-formula",
-                "conceptSlug": "core-parallel-plate-capacitor-formula",
-                "microskillSlug": "understand-parallel-plate-capacitor-formula"
-              }
-            },
             {
               "id": "electrostatics-q-parallel-plate-capacitor-formula-2",
               "question": "Explain an application where using the concept of Parallel plate capacitor formula can lead to a common student error.",
@@ -2476,33 +1828,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "electrostatics-q-effect-of-dielectric-on-capacitance-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of dielectric on capacitance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "effect-of-dielectric-on-capacitance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "effect-of-dielectric-on-capacitance",
-                "conceptSlug": "core-effect-of-dielectric-on-capacitance",
-                "microskillSlug": "understand-effect-of-dielectric-on-capacitance"
-              }
-            },
-            {
               "id": "electrostatics-q-effect-of-dielectric-on-capacitance-2",
               "question": "Explain an application where using the concept of Effect of dielectric on capacitance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2573,33 +1898,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "electrostatics-q-energy-stored-in-capacitor-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy stored in capacitor?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "electrostatics",
-                "energy-stored-in-capacitor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "electrostatics",
-                "chapterSlug": "electrostatics",
-                "topicSlug": "electrostatics",
-                "subtopicSlug": "energy-stored-in-capacitor",
-                "conceptSlug": "core-energy-stored-in-capacitor",
-                "microskillSlug": "understand-energy-stored-in-capacitor"
-              }
-            },
             {
               "id": "electrostatics-q-energy-stored-in-capacitor-2",
               "question": "Explain an application where using the concept of Energy stored in capacitor can lead to a common student error.",

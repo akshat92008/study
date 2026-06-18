@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-magnetic-flux-definition-1",
-              "question": "What are the fundamental laws or mechanisms governing Magnetic flux definition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "magnetic-flux-definition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "magnetic-flux-definition",
-                "conceptSlug": "core-magnetic-flux-definition",
-                "microskillSlug": "understand-magnetic-flux-definition"
-              }
-            },
-            {
               "id": "emi-and-ac-q-magnetic-flux-definition-2",
               "question": "Explain an application where using the concept of Magnetic flux definition can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Electromagnetic induction (Lenz law)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "electromagnetic-induction-lenz-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "electromagnetic-induction-lenz-law",
-                "conceptSlug": "core-electromagnetic-induction-lenz-law",
-                "microskillSlug": "understand-electromagnetic-induction-lenz-law"
-              }
-            },
             {
               "id": "emi-and-ac-q-electromagnetic-induction-lenz-law-2",
               "question": "Explain an application where using the concept of Electromagnetic induction (Lenz law) can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-motional-emf-1",
-              "question": "What are the fundamental laws or mechanisms governing Motional emf?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "motional-emf"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "motional-emf",
-                "conceptSlug": "core-motional-emf",
-                "microskillSlug": "understand-motional-emf"
-              }
-            },
-            {
               "id": "emi-and-ac-q-motional-emf-2",
               "question": "Explain an application where using the concept of Motional emf can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-induced-current-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Induced current calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "induced-current-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "induced-current-calculation",
-                "conceptSlug": "core-induced-current-calculation",
-                "microskillSlug": "understand-induced-current-calculation"
-              }
-            },
-            {
               "id": "emi-and-ac-q-induced-current-calculation-2",
               "question": "Explain an application where using the concept of Induced current calculation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -445,33 +337,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-eddy-currents-1",
-              "question": "What are the fundamental laws or mechanisms governing Eddy currents?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "eddy-currents"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "eddy-currents",
-                "conceptSlug": "core-eddy-currents",
-                "microskillSlug": "understand-eddy-currents"
-              }
-            },
             {
               "id": "emi-and-ac-q-eddy-currents-2",
               "question": "Explain an application where using the concept of Eddy currents can lead to a common student error.",
@@ -558,33 +423,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-self-inductance-1",
-              "question": "What are the fundamental laws or mechanisms governing Self inductance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "self-inductance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "self-inductance",
-                "conceptSlug": "core-self-inductance",
-                "microskillSlug": "understand-self-inductance"
-              }
-            },
-            {
               "id": "emi-and-ac-q-self-inductance-2",
               "question": "Explain an application where using the concept of Self inductance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -657,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-mutual-inductance-1",
-              "question": "What are the fundamental laws or mechanisms governing Mutual inductance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "mutual-inductance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "mutual-inductance",
-                "conceptSlug": "core-mutual-inductance",
-                "microskillSlug": "understand-mutual-inductance"
-              }
-            },
-            {
               "id": "emi-and-ac-q-mutual-inductance-2",
               "question": "Explain an application where using the concept of Mutual inductance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -754,33 +565,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-energy-stored-in-inductor-1",
-              "question": "What are the fundamental laws or mechanisms governing Energy stored in inductor?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "energy-stored-in-inductor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "energy-stored-in-inductor",
-                "conceptSlug": "core-energy-stored-in-inductor",
-                "microskillSlug": "understand-energy-stored-in-inductor"
-              }
-            },
             {
               "id": "emi-and-ac-q-energy-stored-in-inductor-2",
               "question": "Explain an application where using the concept of Energy stored in inductor can lead to a common student error.",
@@ -853,33 +637,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-alternating-current-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Alternating current basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "alternating-current-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "alternating-current-basics",
-                "conceptSlug": "core-alternating-current-basics",
-                "microskillSlug": "understand-alternating-current-basics"
-              }
-            },
-            {
               "id": "emi-and-ac-q-alternating-current-basics-2",
               "question": "Explain an application where using the concept of Alternating current basics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -951,33 +708,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-peak-value-of-ac-1",
-              "question": "What are the fundamental laws or mechanisms governing Peak value of AC?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "peak-value-of-ac"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "peak-value-of-ac",
-                "conceptSlug": "core-peak-value-of-ac",
-                "microskillSlug": "understand-peak-value-of-ac"
-              }
-            },
             {
               "id": "emi-and-ac-q-peak-value-of-ac-2",
               "question": "Explain an application where using the concept of Peak value of AC can lead to a common student error.",
@@ -1064,33 +794,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-rms-value-of-ac-1",
-              "question": "What are the fundamental laws or mechanisms governing Rms value of AC?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "rms-value-of-ac"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "rms-value-of-ac",
-                "conceptSlug": "core-rms-value-of-ac",
-                "microskillSlug": "understand-rms-value-of-ac"
-              }
-            },
-            {
               "id": "emi-and-ac-q-rms-value-of-ac-2",
               "question": "Explain an application where using the concept of Rms value of AC can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1162,33 +865,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-average-value-of-ac-1",
-              "question": "What are the fundamental laws or mechanisms governing Average value of AC?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "average-value-of-ac"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "average-value-of-ac",
-                "conceptSlug": "core-average-value-of-ac",
-                "microskillSlug": "understand-average-value-of-ac"
-              }
-            },
             {
               "id": "emi-and-ac-q-average-value-of-ac-2",
               "question": "Explain an application where using the concept of Average value of AC can lead to a common student error.",
@@ -1262,33 +938,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-inductive-reactance-1",
-              "question": "What are the fundamental laws or mechanisms governing Inductive reactance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "inductive-reactance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "inductive-reactance",
-                "conceptSlug": "core-inductive-reactance",
-                "microskillSlug": "understand-inductive-reactance"
-              }
-            },
-            {
               "id": "emi-and-ac-q-inductive-reactance-2",
               "question": "Explain an application where using the concept of Inductive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1361,33 +1010,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-capacitive-reactance-1",
-              "question": "What are the fundamental laws or mechanisms governing Capacitive reactance?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "capacitive-reactance"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "capacitive-reactance",
-                "conceptSlug": "core-capacitive-reactance",
-                "microskillSlug": "understand-capacitive-reactance"
-              }
-            },
-            {
               "id": "emi-and-ac-q-capacitive-reactance-2",
               "question": "Explain an application where using the concept of Capacitive reactance can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1459,33 +1081,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-impedance-in-ac-1",
-              "question": "What are the fundamental laws or mechanisms governing Impedance in AC?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "impedance-in-ac"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "impedance-in-ac",
-                "conceptSlug": "core-impedance-in-ac",
-                "microskillSlug": "understand-impedance-in-ac"
-              }
-            },
             {
               "id": "emi-and-ac-q-impedance-in-ac-2",
               "question": "Explain an application where using the concept of Impedance in AC can lead to a common student error.",
@@ -1572,33 +1167,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-ac-resonance-lcr-1",
-              "question": "What are the fundamental laws or mechanisms governing AC resonance/LCR?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "ac-resonance-lcr"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "ac-resonance-lcr",
-                "conceptSlug": "core-ac-resonance-lcr",
-                "microskillSlug": "understand-ac-resonance-lcr"
-              }
-            },
-            {
               "id": "emi-and-ac-q-ac-resonance-lcr-2",
               "question": "Explain an application where using the concept of AC resonance/LCR can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1670,33 +1238,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-power-in-ac-circuits-1",
-              "question": "What are the fundamental laws or mechanisms governing Power in AC circuits?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "power-in-ac-circuits"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "power-in-ac-circuits",
-                "conceptSlug": "core-power-in-ac-circuits",
-                "microskillSlug": "understand-power-in-ac-circuits"
-              }
-            },
             {
               "id": "emi-and-ac-q-power-in-ac-circuits-2",
               "question": "Explain an application where using the concept of Power in AC circuits can lead to a common student error.",
@@ -1770,33 +1311,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-power-factor-1",
-              "question": "What are the fundamental laws or mechanisms governing Power factor?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "power-factor"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "power-factor",
-                "conceptSlug": "core-power-factor",
-                "microskillSlug": "understand-power-factor"
-              }
-            },
-            {
               "id": "emi-and-ac-q-power-factor-2",
               "question": "Explain an application where using the concept of Power factor can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1867,33 +1381,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-wattless-current-1",
-              "question": "What are the fundamental laws or mechanisms governing Wattless current?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "wattless-current"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "wattless-current",
-                "conceptSlug": "core-wattless-current",
-                "microskillSlug": "understand-wattless-current"
-              }
-            },
             {
               "id": "emi-and-ac-q-wattless-current-2",
               "question": "Explain an application where using the concept of Wattless current can lead to a common student error.",
@@ -1966,33 +1453,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-transformer-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Transformer principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "transformer-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "transformer-principle",
-                "conceptSlug": "core-transformer-principle",
-                "microskillSlug": "understand-transformer-principle"
-              }
-            },
             {
               "id": "emi-and-ac-q-transformer-principle-2",
               "question": "Explain an application where using the concept of Transformer principle can lead to a common student error.",
@@ -2079,33 +1539,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "emi-and-ac-q-step-up-and-step-down-transformers-1",
-              "question": "What are the fundamental laws or mechanisms governing Step-up and step-down transformers?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "step-up-and-step-down-transformers"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "step-up-and-step-down-transformers",
-                "conceptSlug": "core-step-up-and-step-down-transformers",
-                "microskillSlug": "understand-step-up-and-step-down-transformers"
-              }
-            },
-            {
               "id": "emi-and-ac-q-step-up-and-step-down-transformers-2",
               "question": "Explain an application where using the concept of Step-up and step-down transformers can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2177,33 +1610,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "emi-and-ac-q-ac-generator-1",
-              "question": "What are the fundamental laws or mechanisms governing AC generator?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "emi-and-ac",
-                "ac-generator"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "emi-and-ac",
-                "chapterSlug": "emi-and-ac",
-                "topicSlug": "emi-and-ac",
-                "subtopicSlug": "ac-generator",
-                "conceptSlug": "core-ac-generator",
-                "microskillSlug": "understand-ac-generator"
-              }
-            },
             {
               "id": "emi-and-ac-q-ac-generator-2",
               "question": "Explain an application where using the concept of AC generator can lead to a common student error.",

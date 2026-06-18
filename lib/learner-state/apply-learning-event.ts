@@ -128,6 +128,10 @@ export async function applyLearningEvent(
     });
 
     const conceptName = input.concept.canonicalName?.trim() || input.concept.topic?.trim() || null;
+    if (conceptName && /placeholder_microtarget/i.test(conceptName)) {
+      throw new CognitionError('CONCEPT_RESOLUTION_FAILED', 'Cannot record learning events against placeholder topics.');
+    }
+
     const idempotencyKey = String(
       input.metadata?.idempotencyKey ?? stableKey([
         'learning-event',

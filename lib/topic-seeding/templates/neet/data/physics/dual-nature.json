@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-electron-emission-types-1",
-              "question": "What are the fundamental laws or mechanisms governing Electron emission types?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "electron-emission-types"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "electron-emission-types",
-                "conceptSlug": "core-electron-emission-types",
-                "microskillSlug": "understand-electron-emission-types"
-              }
-            },
-            {
               "id": "dual-nature-q-electron-emission-types-2",
               "question": "Explain an application where using the concept of Electron emission types can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-photoelectric-effect-1",
-              "question": "What are the fundamental laws or mechanisms governing Photoelectric effect?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "photoelectric-effect"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "photoelectric-effect",
-                "conceptSlug": "core-photoelectric-effect",
-                "microskillSlug": "understand-photoelectric-effect"
-              }
-            },
             {
               "id": "dual-nature-q-photoelectric-effect-2",
               "question": "Explain an application where using the concept of Photoelectric effect can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-stopping-potential-1",
-              "question": "What are the fundamental laws or mechanisms governing Stopping potential?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "stopping-potential"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "stopping-potential",
-                "conceptSlug": "core-stopping-potential",
-                "microskillSlug": "understand-stopping-potential"
-              }
-            },
-            {
               "id": "dual-nature-q-stopping-potential-2",
               "question": "Explain an application where using the concept of Stopping potential can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -348,33 +267,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-threshold-frequency-1",
-              "question": "What are the fundamental laws or mechanisms governing Threshold frequency?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "threshold-frequency"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "threshold-frequency",
-                "conceptSlug": "core-threshold-frequency",
-                "microskillSlug": "understand-threshold-frequency"
-              }
-            },
             {
               "id": "dual-nature-q-threshold-frequency-2",
               "question": "Explain an application where using the concept of Threshold frequency can lead to a common student error.",
@@ -460,33 +352,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-work-function-1",
-              "question": "What are the fundamental laws or mechanisms governing Work function?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "work-function"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "work-function",
-                "conceptSlug": "core-work-function",
-                "microskillSlug": "understand-work-function"
-              }
-            },
-            {
               "id": "dual-nature-q-work-function-2",
               "question": "Explain an application where using the concept of Work function can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -559,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-einstein-photoelectric-equation-1",
-              "question": "What are the fundamental laws or mechanisms governing Einstein photoelectric equation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "einstein-photoelectric-equation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "einstein-photoelectric-equation",
-                "conceptSlug": "core-einstein-photoelectric-equation",
-                "microskillSlug": "understand-einstein-photoelectric-equation"
-              }
-            },
-            {
               "id": "dual-nature-q-einstein-photoelectric-equation-2",
               "question": "Explain an application where using the concept of Einstein photoelectric equation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -657,33 +495,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-effect-of-intensity-on-photocurrent-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of intensity on photocurrent?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "effect-of-intensity-on-photocurrent"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "effect-of-intensity-on-photocurrent",
-                "conceptSlug": "core-effect-of-intensity-on-photocurrent",
-                "microskillSlug": "understand-effect-of-intensity-on-photocurrent"
-              }
-            },
-            {
               "id": "dual-nature-q-effect-of-intensity-on-photocurrent-2",
               "question": "Explain an application where using the concept of Effect of intensity on photocurrent can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -754,33 +565,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-effect-of-frequency-on-photocurrent-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of frequency on photocurrent?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "effect-of-frequency-on-photocurrent"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "effect-of-frequency-on-photocurrent",
-                "conceptSlug": "core-effect-of-frequency-on-photocurrent",
-                "microskillSlug": "understand-effect-of-frequency-on-photocurrent"
-              }
-            },
             {
               "id": "dual-nature-q-effect-of-frequency-on-photocurrent-2",
               "question": "Explain an application where using the concept of Effect of frequency on photocurrent can lead to a common student error.",
@@ -866,33 +650,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-de-broglie-wavelength-1",
-              "question": "What are the fundamental laws or mechanisms governing De Broglie wavelength?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "de-broglie-wavelength"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "de-broglie-wavelength",
-                "conceptSlug": "core-de-broglie-wavelength",
-                "microskillSlug": "understand-de-broglie-wavelength"
-              }
-            },
-            {
               "id": "dual-nature-q-de-broglie-wavelength-2",
               "question": "Explain an application where using the concept of De Broglie wavelength can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -964,33 +721,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-davisson-germer-experiment-1",
-              "question": "What are the fundamental laws or mechanisms governing Davisson-Germer experiment?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "davisson-germer-experiment"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "davisson-germer-experiment",
-                "conceptSlug": "core-davisson-germer-experiment",
-                "microskillSlug": "understand-davisson-germer-experiment"
-              }
-            },
             {
               "id": "dual-nature-q-davisson-germer-experiment-2",
               "question": "Explain an application where using the concept of Davisson-Germer experiment can lead to a common student error.",
@@ -1064,33 +794,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-photon-theory-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Photon theory of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "photon-theory-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "photon-theory-of-light",
-                "conceptSlug": "core-photon-theory-of-light",
-                "microskillSlug": "understand-photon-theory-of-light"
-              }
-            },
-            {
               "id": "dual-nature-q-photon-theory-of-light-2",
               "question": "Explain an application where using the concept of Photon theory of light can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1162,33 +865,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-particle-nature-of-light-1",
-              "question": "What are the fundamental laws or mechanisms governing Particle nature of light?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "particle-nature-of-light"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "particle-nature-of-light",
-                "conceptSlug": "core-particle-nature-of-light",
-                "microskillSlug": "understand-particle-nature-of-light"
-              }
-            },
             {
               "id": "dual-nature-q-particle-nature-of-light-2",
               "question": "Explain an application where using the concept of Particle nature of light can lead to a common student error.",
@@ -1274,33 +950,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-wave-nature-of-matter-1",
-              "question": "What are the fundamental laws or mechanisms governing Wave nature of matter?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "wave-nature-of-matter"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "wave-nature-of-matter",
-                "conceptSlug": "core-wave-nature-of-matter",
-                "microskillSlug": "understand-wave-nature-of-matter"
-              }
-            },
-            {
               "id": "dual-nature-q-wave-nature-of-matter-2",
               "question": "Explain an application where using the concept of Wave nature of matter can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1372,33 +1021,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-heisenberg-uncertainty-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Heisenberg uncertainty principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "heisenberg-uncertainty-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "heisenberg-uncertainty-principle",
-                "conceptSlug": "core-heisenberg-uncertainty-principle",
-                "microskillSlug": "understand-heisenberg-uncertainty-principle"
-              }
-            },
             {
               "id": "dual-nature-q-heisenberg-uncertainty-principle-2",
               "question": "Explain an application where using the concept of Heisenberg uncertainty principle can lead to a common student error.",
@@ -1472,33 +1094,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-production-of-x-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing Production of X-rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "production-of-x-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "production-of-x-rays",
-                "conceptSlug": "core-production-of-x-rays",
-                "microskillSlug": "understand-production-of-x-rays"
-              }
-            },
-            {
               "id": "dual-nature-q-production-of-x-rays-2",
               "question": "Explain an application where using the concept of Production of X-rays can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1570,33 +1165,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-continuous-x-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing Continuous X-rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "continuous-x-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "continuous-x-rays",
-                "conceptSlug": "core-continuous-x-rays",
-                "microskillSlug": "understand-continuous-x-rays"
-              }
-            },
             {
               "id": "dual-nature-q-continuous-x-rays-2",
               "question": "Explain an application where using the concept of Continuous X-rays can lead to a common student error.",
@@ -1683,33 +1251,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-characteristic-x-rays-1",
-              "question": "What are the fundamental laws or mechanisms governing Characteristic X-rays?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "characteristic-x-rays"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "characteristic-x-rays",
-                "conceptSlug": "core-characteristic-x-rays",
-                "microskillSlug": "understand-characteristic-x-rays"
-              }
-            },
-            {
               "id": "dual-nature-q-characteristic-x-rays-2",
               "question": "Explain an application where using the concept of Characteristic X-rays can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1781,33 +1322,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-moseley-s-law-1",
-              "question": "What are the fundamental laws or mechanisms governing Moseley’s law?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "moseley-s-law"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "moseley-s-law",
-                "conceptSlug": "core-moseley-s-law",
-                "microskillSlug": "understand-moseley-s-law"
-              }
-            },
             {
               "id": "dual-nature-q-moseley-s-law-2",
               "question": "Explain an application where using the concept of Moseley’s law can lead to a common student error.",
@@ -1881,33 +1395,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "dual-nature-q-compton-effect-basics-1",
-              "question": "What are the fundamental laws or mechanisms governing Compton effect basics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "compton-effect-basics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "compton-effect-basics",
-                "conceptSlug": "core-compton-effect-basics",
-                "microskillSlug": "understand-compton-effect-basics"
-              }
-            },
-            {
               "id": "dual-nature-q-compton-effect-basics-2",
               "question": "Explain an application where using the concept of Compton effect basics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1979,33 +1466,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "dual-nature-q-electron-diffraction-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Electron diffraction applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "dual-nature",
-                "electron-diffraction-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "dual-nature",
-                "chapterSlug": "dual-nature",
-                "topicSlug": "dual-nature",
-                "subtopicSlug": "electron-diffraction-applications",
-                "conceptSlug": "core-electron-diffraction-applications",
-                "microskillSlug": "understand-electron-diffraction-applications"
-              }
-            },
             {
               "id": "dual-nature-q-electron-diffraction-applications-2",
               "question": "Explain an application where using the concept of Electron diffraction applications can lead to a common student error.",

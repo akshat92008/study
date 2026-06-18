@@ -68,6 +68,41 @@ describe('global topic seeding', () => {
     expect(rows[0].status).toBe('active');
     expect(rows[1].status).toBe('not_started');
   });
+  it('scopes circulatory-system goals to Body Fluids and Circulation topics', () => {
+    const selected = selectSeedTemplate({
+      userId: 'u1',
+      goalId: 'g1',
+      goalTitle: 'circulatory system biology',
+      presetId: 'neet_biology',
+      subject: 'Biology',
+    });
+    const rows = __topicSeedingInternals.buildSeededTopicRows(
+      {
+        userId: 'u1',
+        goalId: 'g1',
+        goalTitle: 'circulatory system biology',
+      },
+      selected
+    );
+
+    const topicSlugs = new Set(rows.map((row: any) => row.topic_slug));
+    expect(selected.templateKey).toBe('neet-biology-human-physiology-circulation');
+    expect(rows.length).toBeGreaterThan(0);
+    expect(topicSlugs).toEqual(new Set([
+      'blood-composition',
+      'blood-groups',
+      'coagulation',
+      'lymph',
+      'human-heart',
+      'cardiac-cycle',
+      'ecg',
+      'double-circulation',
+      'regulation-of-cardiac-activity',
+      'circulatory-disorders',
+    ]));
+    expect([...topicSlugs]).not.toContain('respiratory-system');
+    expect([...topicSlugs]).not.toContain('types-of-movement');
+  });
   it('maps autopsy text to seeded topics', () => {
     expect(mapTextToSeededTopic('I made a v-t graph slope mistake')).toBe('x-t/v-t graph slope');
     expect(mapTextToSeededTopic('I used wrong range formula in projectile')).toBe('projectile motion trajectory');

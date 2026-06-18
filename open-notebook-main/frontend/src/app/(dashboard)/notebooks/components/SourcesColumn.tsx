@@ -68,9 +68,10 @@ export function SourcesColumn({
 
   // Collapsible column state
   const { sourcesCollapsed, toggleSources } = useNotebookColumnsStore()
+  const sourcesText = t('navigation.sources')
   const collapseButton = useMemo(
-    () => createCollapseButton(toggleSources, t('navigation.sources')),
-    [toggleSources, t('navigation.sources')]
+    () => createCollapseButton(toggleSources, sourcesText),
+    [toggleSources, sourcesText]
   )
 
   // Scroll container ref for infinite scroll

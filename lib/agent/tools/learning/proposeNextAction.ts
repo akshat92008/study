@@ -21,6 +21,8 @@ const ProposeNextActionInputSchema = z.object({
 
 export type ProposeNextActionInput = z.infer<typeof ProposeNextActionInputSchema>;
 
+import { isPlaceholderTitle } from '@/lib/topic-seeding/templates/neet/topic-skeleton';
+
 export const proposeNextActionTool: AgentToolDefinition<typeof ProposeNextActionInputSchema, typeof ToolResultSchema> = {
   name: 'propose_next_action',
   description: 'Propose and persist a next learning action recommendation. If persistent action is needed, write to agent_actions or similar table.',
@@ -31,6 +33,15 @@ export const proposeNextActionTool: AgentToolDefinition<typeof ProposeNextAction
   maxCallsPerTurn: 3,
   requiresAuth: true,
   async handler(input, context) {
+    if (input.conceptName && isPlaceholderTitle(input.conceptName)) {
+      return {
+        success: false,
+        changed: false,
+        summary: 'Ignored placeholder concept. Agents should not recommend placeholder topics.',
+        data: { proposed: null },
+      };
+    }
+
     const goalId = input.goalId ?? context.goalId;
 
     // Write to agent_actions as the persistent next-action record

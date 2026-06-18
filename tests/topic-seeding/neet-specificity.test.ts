@@ -23,12 +23,33 @@ describe('NEET Specificity Tests', () => {
     expect(hasEquations).toBe(true);
   });
 
-  test('Human Physiology has deep specificity', () => {
-    const physiology = ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === 'human-physiology');
-    expect(physiology).toBeDefined();
-    
-    const jsonStr = JSON.stringify(physiology);
-    expect(jsonStr.toLowerCase()).toContain('breathing');
+  test('Human Physiology sub-chapters have deep specificity', () => {
+    // After the split, human-physiology is now 7 sub-chapters
+    const humanPhysioSlugs = [
+      'human-physiology-digestion',
+      'human-physiology-breathing',
+      'human-physiology-circulation',
+      'human-physiology-excretion',
+      'human-physiology-locomotion',
+      'human-physiology-neural',
+      'human-physiology-chemical',
+    ];
+
+    for (const slug of humanPhysioSlugs) {
+      const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === slug);
+      expect(chapter, `Missing sub-chapter: ${slug}`).toBeDefined();
+      expect(chapter!.missions.length).toBeGreaterThanOrEqual(1);
+    }
+
+    // Check breathing sub-chapter contains breathing-specific content
+    const breathing = ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === 'human-physiology-breathing');
+    const breathingJson = JSON.stringify(breathing);
+    expect(breathingJson.toLowerCase()).toContain('breathing');
+
+    // Check circulation sub-chapter contains circulation-specific content
+    const circulation = ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === 'human-physiology-circulation');
+    const circulationJson = JSON.stringify(circulation);
+    expect(circulationJson.toLowerCase()).toContain('heart');
   });
 
   test('GOC has deep specificity', () => {
@@ -52,11 +73,21 @@ describe('NEET Specificity Tests', () => {
   });
   
   test('Biology has diagram coverage', () => {
-     const diagramHeavyBioChapters = ['human-physiology', 'plant-physiology', 'reproduction', 'ecology-and-environment', 'cell-structure-and-function', 'structural-organisation'];
+     // human-physiology is now sub-chapters; check the ones that are diagram-heavy
+     const diagramHeavyBioChapters = [
+       'human-physiology-digestion',
+       'human-physiology-breathing',
+       'human-physiology-circulation',
+       'plant-physiology',
+       'reproduction',
+       'ecology-and-environment',
+       'cell-structure-and-function',
+       'structural-organisation',
+     ];
      
      diagramHeavyBioChapters.forEach(slug => {
          const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === slug);
-         expect(chapter).toBeDefined();
+         expect(chapter, `Missing chapter: ${slug}`).toBeDefined();
          let hasDiagram = false;
          chapter!.missions.forEach(m => {
              m.microtargets.forEach(mt => {

@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-system-and-surroundings-1",
-              "question": "What are the fundamental laws or mechanisms governing System and surroundings?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "system-and-surroundings"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "system-and-surroundings",
-                "conceptSlug": "core-system-and-surroundings",
-                "microskillSlug": "understand-system-and-surroundings"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-system-and-surroundings-2",
               "question": "Explain an application where using the concept of System and surroundings can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -139,33 +112,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-types-of-thermodynamic-systems-1",
-              "question": "What are the fundamental laws or mechanisms governing Types of thermodynamic systems?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "types-of-thermodynamic-systems"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "types-of-thermodynamic-systems",
-                "conceptSlug": "core-types-of-thermodynamic-systems",
-                "microskillSlug": "understand-types-of-thermodynamic-systems"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-types-of-thermodynamic-systems-2",
               "question": "Explain an application where using the concept of Types of thermodynamic systems can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -226,33 +172,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-state-functions-vs-path-functions-1",
-              "question": "What are the fundamental laws or mechanisms governing State functions vs path functions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "state-functions-vs-path-functions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "state-functions-vs-path-functions",
-                "conceptSlug": "core-state-functions-vs-path-functions",
-                "microskillSlug": "understand-state-functions-vs-path-functions"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-state-functions-vs-path-functions-2",
               "question": "Explain an application where using the concept of State functions vs path functions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -312,33 +231,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-extensive-and-intensive-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Extensive and intensive properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "extensive-and-intensive-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "extensive-and-intensive-properties",
-                "conceptSlug": "core-extensive-and-intensive-properties",
-                "microskillSlug": "understand-extensive-and-intensive-properties"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-extensive-and-intensive-properties-2",
               "question": "Explain an application where using the concept of Extensive and intensive properties can lead to a common student error.",
@@ -411,33 +303,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-thermodynamic-processes-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermodynamic processes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "thermodynamic-processes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "thermodynamic-processes",
-                "conceptSlug": "core-thermodynamic-processes",
-                "microskillSlug": "understand-thermodynamic-processes"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-thermodynamic-processes-2",
               "question": "Explain an application where using the concept of Thermodynamic processes can lead to a common student error.",
@@ -512,33 +377,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-work-done-in-expansion-compression-1",
-              "question": "What are the fundamental laws or mechanisms governing Work done in expansion/compression?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "work-done-in-expansion-compression"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "work-done-in-expansion-compression",
-                "conceptSlug": "core-work-done-in-expansion-compression",
-                "microskillSlug": "understand-work-done-in-expansion-compression"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-work-done-in-expansion-compression-2",
               "question": "Explain an application where using the concept of Work done in expansion/compression can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -598,33 +436,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-heat-and-internal-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat and internal energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "heat-and-internal-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "heat-and-internal-energy",
-                "conceptSlug": "core-heat-and-internal-energy",
-                "microskillSlug": "understand-heat-and-internal-energy"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-heat-and-internal-energy-2",
               "question": "Explain an application where using the concept of Heat and internal energy can lead to a common student error.",
@@ -698,33 +509,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-first-law-of-thermodynamics-chemistry-1",
-              "question": "What are the fundamental laws or mechanisms governing First law of thermodynamics chemistry?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "first-law-of-thermodynamics-chemistry"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "first-law-of-thermodynamics-chemistry",
-                "conceptSlug": "core-first-law-of-thermodynamics-chemistry",
-                "microskillSlug": "understand-first-law-of-thermodynamics-chemistry"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-first-law-of-thermodynamics-chemistry-2",
               "question": "Explain an application where using the concept of First law of thermodynamics chemistry can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -785,33 +569,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-heat-capacity-and-specific-heat-1",
-              "question": "What are the fundamental laws or mechanisms governing Heat capacity and specific heat?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "heat-capacity-and-specific-heat"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "heat-capacity-and-specific-heat",
-                "conceptSlug": "core-heat-capacity-and-specific-heat",
-                "microskillSlug": "understand-heat-capacity-and-specific-heat"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-heat-capacity-and-specific-heat-2",
               "question": "Explain an application where using the concept of Heat capacity and specific heat can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -871,33 +628,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-relation-between-cp-and-cv-1",
-              "question": "What are the fundamental laws or mechanisms governing Relation between Cp and Cv?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "relation-between-cp-and-cv"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "relation-between-cp-and-cv",
-                "conceptSlug": "core-relation-between-cp-and-cv",
-                "microskillSlug": "understand-relation-between-cp-and-cv"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-relation-between-cp-and-cv-2",
               "question": "Explain an application where using the concept of Relation between Cp and Cv can lead to a common student error.",
@@ -972,33 +702,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-enthalpy-change-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy change?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "enthalpy-change"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "enthalpy-change",
-                "conceptSlug": "core-enthalpy-change",
-                "microskillSlug": "understand-enthalpy-change"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-enthalpy-change-2",
               "question": "Explain an application where using the concept of Enthalpy change can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1058,33 +761,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-hess-s-law-of-constant-heat-summation-1",
-              "question": "What are the fundamental laws or mechanisms governing Hess’s law of constant heat summation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "hess-s-law-of-constant-heat-summation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "hess-s-law-of-constant-heat-summation",
-                "conceptSlug": "core-hess-s-law-of-constant-heat-summation",
-                "microskillSlug": "understand-hess-s-law-of-constant-heat-summation"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-hess-s-law-of-constant-heat-summation-2",
               "question": "Explain an application where using the concept of Hess’s law of constant heat summation can lead to a common student error.",
@@ -1146,33 +822,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-standard-enthalpy-of-formation-1",
-              "question": "What are the fundamental laws or mechanisms governing Standard enthalpy of formation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "standard-enthalpy-of-formation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "standard-enthalpy-of-formation",
-                "conceptSlug": "core-standard-enthalpy-of-formation",
-                "microskillSlug": "understand-standard-enthalpy-of-formation"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-standard-enthalpy-of-formation-2",
               "question": "Explain an application where using the concept of Standard enthalpy of formation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1233,33 +882,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-enthalpy-of-combustion-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy of combustion?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "enthalpy-of-combustion"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "enthalpy-of-combustion",
-                "conceptSlug": "core-enthalpy-of-combustion",
-                "microskillSlug": "understand-enthalpy-of-combustion"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-enthalpy-of-combustion-2",
               "question": "Explain an application where using the concept of Enthalpy of combustion can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1319,33 +941,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-bond-dissociation-enthalpy-1",
-              "question": "What are the fundamental laws or mechanisms governing Bond dissociation enthalpy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "bond-dissociation-enthalpy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "bond-dissociation-enthalpy",
-                "conceptSlug": "core-bond-dissociation-enthalpy",
-                "microskillSlug": "understand-bond-dissociation-enthalpy"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-bond-dissociation-enthalpy-2",
               "question": "Explain an application where using the concept of Bond dissociation enthalpy can lead to a common student error.",
@@ -1420,33 +1015,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-enthalpy-of-atomisation-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy of atomisation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "enthalpy-of-atomisation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "enthalpy-of-atomisation",
-                "conceptSlug": "core-enthalpy-of-atomisation",
-                "microskillSlug": "understand-enthalpy-of-atomisation"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-enthalpy-of-atomisation-2",
               "question": "Explain an application where using the concept of Enthalpy of atomisation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1506,33 +1074,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-enthalpy-of-phase-transition-1",
-              "question": "What are the fundamental laws or mechanisms governing Enthalpy of phase transition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "enthalpy-of-phase-transition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "enthalpy-of-phase-transition",
-                "conceptSlug": "core-enthalpy-of-phase-transition",
-                "microskillSlug": "understand-enthalpy-of-phase-transition"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-enthalpy-of-phase-transition-2",
               "question": "Explain an application where using the concept of Enthalpy of phase transition can lead to a common student error.",
@@ -1594,33 +1135,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-entropy-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Entropy concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "entropy-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "entropy-concept",
-                "conceptSlug": "core-entropy-concept",
-                "microskillSlug": "understand-entropy-concept"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-entropy-concept-2",
               "question": "Explain an application where using the concept of Entropy concept can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1680,33 +1194,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-gibbs-free-energy-change-1",
-              "question": "What are the fundamental laws or mechanisms governing Gibbs free energy change?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "gibbs-free-energy-change"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "gibbs-free-energy-change",
-                "conceptSlug": "core-gibbs-free-energy-change",
-                "microskillSlug": "understand-gibbs-free-energy-change"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-gibbs-free-energy-change-2",
               "question": "Explain an application where using the concept of Gibbs free energy change can lead to a common student error.",
@@ -1780,33 +1267,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-thermodynamics-q-thermodynamics-signs-gibbs-free-energy-1",
-              "question": "What are the fundamental laws or mechanisms governing Thermodynamics signs/Gibbs free energy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "thermodynamics-signs-gibbs-free-energy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "thermodynamics-signs-gibbs-free-energy",
-                "conceptSlug": "core-thermodynamics-signs-gibbs-free-energy",
-                "microskillSlug": "understand-thermodynamics-signs-gibbs-free-energy"
-              }
-            },
-            {
               "id": "chemical-thermodynamics-q-thermodynamics-signs-gibbs-free-energy-2",
               "question": "Explain an application where using the concept of Thermodynamics signs/Gibbs free energy can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1879,33 +1339,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-thermodynamics-q-spontaneity-criteria-1",
-              "question": "What are the fundamental laws or mechanisms governing Spontaneity criteria?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-thermodynamics",
-                "spontaneity-criteria"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-thermodynamics",
-                "chapterSlug": "chemical-thermodynamics",
-                "topicSlug": "chemical-thermodynamics",
-                "subtopicSlug": "spontaneity-criteria",
-                "conceptSlug": "core-spontaneity-criteria",
-                "microskillSlug": "understand-spontaneity-criteria"
-              }
-            },
             {
               "id": "chemical-thermodynamics-q-spontaneity-criteria-2",
               "question": "Explain an application where using the concept of Spontaneity criteria can lead to a common student error.",

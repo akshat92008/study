@@ -52,33 +52,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-si-units-1",
-              "question": "What are the fundamental laws or mechanisms governing SI units?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "si-units"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "si-units",
-                "conceptSlug": "core-si-units",
-                "microskillSlug": "understand-si-units"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-si-units-2",
               "question": "Explain an application where using the concept of SI units can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -150,33 +123,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-fundamental-units-1",
-              "question": "What are the fundamental laws or mechanisms governing Fundamental units?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "fundamental-units"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "fundamental-units",
-                "conceptSlug": "core-fundamental-units",
-                "microskillSlug": "understand-fundamental-units"
-              }
-            },
             {
               "id": "physics-and-measurement-q-fundamental-units-2",
               "question": "Explain an application where using the concept of Fundamental units can lead to a common student error.",
@@ -250,33 +196,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-derived-units-1",
-              "question": "What are the fundamental laws or mechanisms governing Derived units?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "derived-units"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "derived-units",
-                "conceptSlug": "core-derived-units",
-                "microskillSlug": "understand-derived-units"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-derived-units-2",
               "question": "Explain an application where using the concept of Derived units can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -349,33 +268,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-dimensions-1",
-              "question": "What are the fundamental laws or mechanisms governing Dimensions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "dimensions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "dimensions",
-                "conceptSlug": "core-dimensions",
-                "microskillSlug": "understand-dimensions"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-dimensions-2",
               "question": "Explain an application where using the concept of Dimensions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -447,33 +339,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-dimensional-formula-of-mechanical-quantities-1",
-              "question": "What are the fundamental laws or mechanisms governing Dimensional formula of mechanical quantities?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "dimensional-formula-of-mechanical-quantities"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "dimensional-formula-of-mechanical-quantities",
-                "conceptSlug": "core-dimensional-formula-of-mechanical-quantities",
-                "microskillSlug": "understand-dimensional-formula-of-mechanical-quantities"
-              }
-            },
             {
               "id": "physics-and-measurement-q-dimensional-formula-of-mechanical-quantities-2",
               "question": "Explain an application where using the concept of Dimensional formula of mechanical quantities can lead to a common student error.",
@@ -560,33 +425,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-dimensional-formula-of-electromagnetic-quantities-1",
-              "question": "What are the fundamental laws or mechanisms governing Dimensional formula of electromagnetic quantities?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "dimensional-formula-of-electromagnetic-quantities"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "dimensional-formula-of-electromagnetic-quantities",
-                "conceptSlug": "core-dimensional-formula-of-electromagnetic-quantities",
-                "microskillSlug": "understand-dimensional-formula-of-electromagnetic-quantities"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-dimensional-formula-of-electromagnetic-quantities-2",
               "question": "Explain an application where using the concept of Dimensional formula of electromagnetic quantities can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -658,33 +496,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-dimensional-analysis-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Dimensional analysis applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "dimensional-analysis-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "dimensional-analysis-applications",
-                "conceptSlug": "core-dimensional-analysis-applications",
-                "microskillSlug": "understand-dimensional-analysis-applications"
-              }
-            },
             {
               "id": "physics-and-measurement-q-dimensional-analysis-applications-2",
               "question": "Explain an application where using the concept of Dimensional analysis applications can lead to a common student error.",
@@ -758,33 +569,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-limitations-of-dimensional-analysis-1",
-              "question": "What are the fundamental laws or mechanisms governing Limitations of dimensional analysis?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "limitations-of-dimensional-analysis"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "limitations-of-dimensional-analysis",
-                "conceptSlug": "core-limitations-of-dimensional-analysis",
-                "microskillSlug": "understand-limitations-of-dimensional-analysis"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-limitations-of-dimensional-analysis-2",
               "question": "Explain an application where using the concept of Limitations of dimensional analysis can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -857,33 +641,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-least-count-1",
-              "question": "What are the fundamental laws or mechanisms governing Least count?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "least-count"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "least-count",
-                "conceptSlug": "core-least-count",
-                "microskillSlug": "understand-least-count"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-least-count-2",
               "question": "Explain an application where using the concept of Least count can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -955,33 +712,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-significant-figures-rules-1",
-              "question": "What are the fundamental laws or mechanisms governing Significant figures rules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "significant-figures-rules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "significant-figures-rules",
-                "conceptSlug": "core-significant-figures-rules",
-                "microskillSlug": "understand-significant-figures-rules"
-              }
-            },
             {
               "id": "physics-and-measurement-q-significant-figures-rules-2",
               "question": "Explain an application where using the concept of Significant figures rules can lead to a common student error.",
@@ -1068,33 +798,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-rounding-off-rules-1",
-              "question": "What are the fundamental laws or mechanisms governing Rounding off rules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "rounding-off-rules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "rounding-off-rules",
-                "conceptSlug": "core-rounding-off-rules",
-                "microskillSlug": "understand-rounding-off-rules"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-rounding-off-rules-2",
               "question": "Explain an application where using the concept of Rounding off rules can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1166,33 +869,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-absolute-error-calculation-1",
-              "question": "What are the fundamental laws or mechanisms governing Absolute error calculation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "absolute-error-calculation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "absolute-error-calculation",
-                "conceptSlug": "core-absolute-error-calculation",
-                "microskillSlug": "understand-absolute-error-calculation"
-              }
-            },
             {
               "id": "physics-and-measurement-q-absolute-error-calculation-2",
               "question": "Explain an application where using the concept of Absolute error calculation can lead to a common student error.",
@@ -1266,33 +942,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-relative-error-1",
-              "question": "What are the fundamental laws or mechanisms governing Relative error?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "relative-error"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "relative-error",
-                "conceptSlug": "core-relative-error",
-                "microskillSlug": "understand-relative-error"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-relative-error-2",
               "question": "Explain an application where using the concept of Relative error can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1365,33 +1014,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-percentage-error-1",
-              "question": "What are the fundamental laws or mechanisms governing Percentage error?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "percentage-error"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "percentage-error",
-                "conceptSlug": "core-percentage-error",
-                "microskillSlug": "understand-percentage-error"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-percentage-error-2",
               "question": "Explain an application where using the concept of Percentage error can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1463,33 +1085,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-propagation-of-errors-in-addition-1",
-              "question": "What are the fundamental laws or mechanisms governing Propagation of errors in addition?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "propagation-of-errors-in-addition"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "propagation-of-errors-in-addition",
-                "conceptSlug": "core-propagation-of-errors-in-addition",
-                "microskillSlug": "understand-propagation-of-errors-in-addition"
-              }
-            },
             {
               "id": "physics-and-measurement-q-propagation-of-errors-in-addition-2",
               "question": "Explain an application where using the concept of Propagation of errors in addition can lead to a common student error.",
@@ -1576,33 +1171,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-propagation-of-errors-in-multiplication-1",
-              "question": "What are the fundamental laws or mechanisms governing Propagation of errors in multiplication?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "propagation-of-errors-in-multiplication"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "propagation-of-errors-in-multiplication",
-                "conceptSlug": "core-propagation-of-errors-in-multiplication",
-                "microskillSlug": "understand-propagation-of-errors-in-multiplication"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-propagation-of-errors-in-multiplication-2",
               "question": "Explain an application where using the concept of Propagation of errors in multiplication can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1674,33 +1242,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-precision-vs-accuracy-1",
-              "question": "What are the fundamental laws or mechanisms governing Precision vs accuracy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "precision-vs-accuracy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "precision-vs-accuracy",
-                "conceptSlug": "core-precision-vs-accuracy",
-                "microskillSlug": "understand-precision-vs-accuracy"
-              }
-            },
             {
               "id": "physics-and-measurement-q-precision-vs-accuracy-2",
               "question": "Explain an application where using the concept of Precision vs accuracy can lead to a common student error.",
@@ -1774,33 +1315,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-vernier-calipers-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Vernier calipers principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "vernier-calipers-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "vernier-calipers-principle",
-                "conceptSlug": "core-vernier-calipers-principle",
-                "microskillSlug": "understand-vernier-calipers-principle"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-vernier-calipers-principle-2",
               "question": "Explain an application where using the concept of Vernier calipers principle can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1873,33 +1387,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-vernier-calipers-zero-error-1",
-              "question": "What are the fundamental laws or mechanisms governing Vernier calipers zero error?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "vernier-calipers-zero-error"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "vernier-calipers-zero-error",
-                "conceptSlug": "core-vernier-calipers-zero-error",
-                "microskillSlug": "understand-vernier-calipers-zero-error"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-vernier-calipers-zero-error-2",
               "question": "Explain an application where using the concept of Vernier calipers zero error can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1971,33 +1458,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-screw-gauge-principle-1",
-              "question": "What are the fundamental laws or mechanisms governing Screw gauge principle?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "screw-gauge-principle"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "screw-gauge-principle",
-                "conceptSlug": "core-screw-gauge-principle",
-                "microskillSlug": "understand-screw-gauge-principle"
-              }
-            },
             {
               "id": "physics-and-measurement-q-screw-gauge-principle-2",
               "question": "Explain an application where using the concept of Screw gauge principle can lead to a common student error.",
@@ -2084,33 +1544,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-screw-gauge-zero-error-1",
-              "question": "What are the fundamental laws or mechanisms governing Screw gauge zero error?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "screw-gauge-zero-error"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "screw-gauge-zero-error",
-                "conceptSlug": "core-screw-gauge-zero-error",
-                "microskillSlug": "understand-screw-gauge-zero-error"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-screw-gauge-zero-error-2",
               "question": "Explain an application where using the concept of Screw gauge zero error can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2183,34 +1616,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-graph-slope-usage-1",
-              "question": "What are the fundamental laws or mechanisms governing Graph slope usage?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "graph-slope-usage",
-                "slope"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "graph-slope-usage",
-                "conceptSlug": "core-graph-slope-usage",
-                "microskillSlug": "understand-graph-slope-usage"
-              }
-            },
             {
               "id": "physics-and-measurement-q-graph-slope-usage-2",
               "question": "Explain an application where using the concept of Graph slope usage can lead to a common student error.",
@@ -2285,33 +1690,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-graph-intercept-usage-1",
-              "question": "What are the fundamental laws or mechanisms governing Graph intercept usage?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "graph-intercept-usage"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "graph-intercept-usage",
-                "conceptSlug": "core-graph-intercept-usage",
-                "microskillSlug": "understand-graph-intercept-usage"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-graph-intercept-usage-2",
               "question": "Explain an application where using the concept of Graph intercept usage can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2384,33 +1762,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "physics-and-measurement-q-order-of-magnitude-1",
-              "question": "What are the fundamental laws or mechanisms governing Order of magnitude?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "order-of-magnitude"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "order-of-magnitude",
-                "conceptSlug": "core-order-of-magnitude",
-                "microskillSlug": "understand-order-of-magnitude"
-              }
-            },
-            {
               "id": "physics-and-measurement-q-order-of-magnitude-2",
               "question": "Explain an application where using the concept of Order of magnitude can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2482,33 +1833,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "physics-and-measurement-q-unit-conversion-techniques-1",
-              "question": "What are the fundamental laws or mechanisms governing Unit conversion techniques?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "physics-and-measurement",
-                "unit-conversion-techniques"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Physics",
-                "unitSlug": "physics-and-measurement",
-                "chapterSlug": "physics-and-measurement",
-                "topicSlug": "physics-and-measurement",
-                "subtopicSlug": "unit-conversion-techniques",
-                "conceptSlug": "core-unit-conversion-techniques",
-                "microskillSlug": "understand-unit-conversion-techniques"
-              }
-            },
             {
               "id": "physics-and-measurement-q-unit-conversion-techniques-2",
               "question": "Explain an application where using the concept of Unit conversion techniques can lead to a common student error.",

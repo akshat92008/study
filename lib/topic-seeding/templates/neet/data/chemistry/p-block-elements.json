@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-group-13-elements-general-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 13 elements general properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-13-elements-general-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-13-elements-general-properties",
-                "conceptSlug": "core-group-13-elements-general-properties",
-                "microskillSlug": "understand-group-13-elements-general-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-group-13-elements-general-properties-2",
               "question": "Explain an application where using the concept of Group 13 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-boron-anomalous-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Boron anomalous properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "boron-anomalous-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "boron-anomalous-properties",
-                "conceptSlug": "core-boron-anomalous-properties",
-                "microskillSlug": "understand-boron-anomalous-properties"
-              }
-            },
             {
               "id": "p-block-elements-q-boron-anomalous-properties-2",
               "question": "Explain an application where using the concept of Boron anomalous properties can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-boron-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Boron compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "boron-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "boron-compounds",
-                "conceptSlug": "core-boron-compounds",
-                "microskillSlug": "understand-boron-compounds"
-              }
-            },
-            {
               "id": "p-block-elements-q-boron-compounds-2",
               "question": "Explain an application where using the concept of Boron compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -301,33 +220,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-aluminium-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Aluminium compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "aluminium-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "aluminium-compounds",
-                "conceptSlug": "core-aluminium-compounds",
-                "microskillSlug": "understand-aluminium-compounds"
-              }
-            },
-            {
               "id": "p-block-elements-q-aluminium-compounds-2",
               "question": "Explain an application where using the concept of Aluminium compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -387,33 +279,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-group-14-elements-general-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 14 elements general properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-14-elements-general-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-14-elements-general-properties",
-                "conceptSlug": "core-group-14-elements-general-properties",
-                "microskillSlug": "understand-group-14-elements-general-properties"
-              }
-            },
             {
               "id": "p-block-elements-q-group-14-elements-general-properties-2",
               "question": "Explain an application where using the concept of Group 14 elements general properties can lead to a common student error.",
@@ -488,33 +353,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-carbon-anomalous-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Carbon anomalous properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "carbon-anomalous-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "carbon-anomalous-properties",
-                "conceptSlug": "core-carbon-anomalous-properties",
-                "microskillSlug": "understand-carbon-anomalous-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-carbon-anomalous-properties-2",
               "question": "Explain an application where using the concept of Carbon anomalous properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -574,33 +412,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-allotropes-of-carbon-1",
-              "question": "What are the fundamental laws or mechanisms governing Allotropes of carbon?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "allotropes-of-carbon"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "allotropes-of-carbon",
-                "conceptSlug": "core-allotropes-of-carbon",
-                "microskillSlug": "understand-allotropes-of-carbon"
-              }
-            },
             {
               "id": "p-block-elements-q-allotropes-of-carbon-2",
               "question": "Explain an application where using the concept of Allotropes of carbon can lead to a common student error.",
@@ -662,33 +473,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-silicon-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Silicon compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "silicon-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "silicon-compounds",
-                "conceptSlug": "core-silicon-compounds",
-                "microskillSlug": "understand-silicon-compounds"
-              }
-            },
-            {
               "id": "p-block-elements-q-silicon-compounds-2",
               "question": "Explain an application where using the concept of Silicon compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -749,33 +533,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-group-15-elements-general-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 15 elements general properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-15-elements-general-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-15-elements-general-properties",
-                "conceptSlug": "core-group-15-elements-general-properties",
-                "microskillSlug": "understand-group-15-elements-general-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-group-15-elements-general-properties-2",
               "question": "Explain an application where using the concept of Group 15 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -835,33 +592,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-nitrogen-anomalous-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Nitrogen anomalous properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "nitrogen-anomalous-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "nitrogen-anomalous-properties",
-                "conceptSlug": "core-nitrogen-anomalous-properties",
-                "microskillSlug": "understand-nitrogen-anomalous-properties"
-              }
-            },
             {
               "id": "p-block-elements-q-nitrogen-anomalous-properties-2",
               "question": "Explain an application where using the concept of Nitrogen anomalous properties can lead to a common student error.",
@@ -936,33 +666,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-preparation-and-properties-of-dinitrogen-1",
-              "question": "What are the fundamental laws or mechanisms governing Preparation and properties of dinitrogen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "preparation-and-properties-of-dinitrogen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "preparation-and-properties-of-dinitrogen",
-                "conceptSlug": "core-preparation-and-properties-of-dinitrogen",
-                "microskillSlug": "understand-preparation-and-properties-of-dinitrogen"
-              }
-            },
-            {
               "id": "p-block-elements-q-preparation-and-properties-of-dinitrogen-2",
               "question": "Explain an application where using the concept of Preparation and properties of dinitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1022,33 +725,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-ammonia-preparation-and-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Ammonia preparation and properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "ammonia-preparation-and-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "ammonia-preparation-and-properties",
-                "conceptSlug": "core-ammonia-preparation-and-properties",
-                "microskillSlug": "understand-ammonia-preparation-and-properties"
-              }
-            },
             {
               "id": "p-block-elements-q-ammonia-preparation-and-properties-2",
               "question": "Explain an application where using the concept of Ammonia preparation and properties can lead to a common student error.",
@@ -1110,33 +786,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-oxides-of-nitrogen-1",
-              "question": "What are the fundamental laws or mechanisms governing Oxides of nitrogen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "oxides-of-nitrogen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "oxides-of-nitrogen",
-                "conceptSlug": "core-oxides-of-nitrogen",
-                "microskillSlug": "understand-oxides-of-nitrogen"
-              }
-            },
-            {
               "id": "p-block-elements-q-oxides-of-nitrogen-2",
               "question": "Explain an application where using the concept of Oxides of nitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1197,33 +846,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-nitric-acid-1",
-              "question": "What are the fundamental laws or mechanisms governing Nitric acid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "nitric-acid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "nitric-acid",
-                "conceptSlug": "core-nitric-acid",
-                "microskillSlug": "understand-nitric-acid"
-              }
-            },
-            {
               "id": "p-block-elements-q-nitric-acid-2",
               "question": "Explain an application where using the concept of Nitric acid can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1283,33 +905,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-phosphorus-allotropes-and-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Phosphorus allotropes and compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "phosphorus-allotropes-and-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "phosphorus-allotropes-and-compounds",
-                "conceptSlug": "core-phosphorus-allotropes-and-compounds",
-                "microskillSlug": "understand-phosphorus-allotropes-and-compounds"
-              }
-            },
             {
               "id": "p-block-elements-q-phosphorus-allotropes-and-compounds-2",
               "question": "Explain an application where using the concept of Phosphorus allotropes and compounds can lead to a common student error.",
@@ -1384,33 +979,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-group-16-elements-general-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 16 elements general properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-16-elements-general-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-16-elements-general-properties",
-                "conceptSlug": "core-group-16-elements-general-properties",
-                "microskillSlug": "understand-group-16-elements-general-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-group-16-elements-general-properties-2",
               "question": "Explain an application where using the concept of Group 16 elements general properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1470,33 +1038,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-dioxygen-preparation-and-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Dioxygen preparation and properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "dioxygen-preparation-and-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "dioxygen-preparation-and-properties",
-                "conceptSlug": "core-dioxygen-preparation-and-properties",
-                "microskillSlug": "understand-dioxygen-preparation-and-properties"
-              }
-            },
             {
               "id": "p-block-elements-q-dioxygen-preparation-and-properties-2",
               "question": "Explain an application where using the concept of Dioxygen preparation and properties can lead to a common student error.",
@@ -1558,33 +1099,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-ozone-1",
-              "question": "What are the fundamental laws or mechanisms governing Ozone?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "ozone"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "ozone",
-                "conceptSlug": "core-ozone",
-                "microskillSlug": "understand-ozone"
-              }
-            },
-            {
               "id": "p-block-elements-q-ozone-2",
               "question": "Explain an application where using the concept of Ozone can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1645,33 +1159,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-sulphur-allotropes-1",
-              "question": "What are the fundamental laws or mechanisms governing Sulphur allotropes?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "sulphur-allotropes"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "sulphur-allotropes",
-                "conceptSlug": "core-sulphur-allotropes",
-                "microskillSlug": "understand-sulphur-allotropes"
-              }
-            },
-            {
               "id": "p-block-elements-q-sulphur-allotropes-2",
               "question": "Explain an application where using the concept of Sulphur allotropes can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1731,33 +1218,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-sulphur-dioxide-and-sulphuric-acid-1",
-              "question": "What are the fundamental laws or mechanisms governing Sulphur dioxide and sulphuric acid?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "sulphur-dioxide-and-sulphuric-acid"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "sulphur-dioxide-and-sulphuric-acid",
-                "conceptSlug": "core-sulphur-dioxide-and-sulphuric-acid",
-                "microskillSlug": "understand-sulphur-dioxide-and-sulphuric-acid"
-              }
-            },
             {
               "id": "p-block-elements-q-sulphur-dioxide-and-sulphuric-acid-2",
               "question": "Explain an application where using the concept of Sulphur dioxide and sulphuric acid can lead to a common student error.",
@@ -1832,33 +1292,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-group-17-elements-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 17 elements properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-17-elements-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-17-elements-properties",
-                "conceptSlug": "core-group-17-elements-properties",
-                "microskillSlug": "understand-group-17-elements-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-group-17-elements-properties-2",
               "question": "Explain an application where using the concept of Group 17 elements properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1919,33 +1352,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-chlorine-preparation-and-properties-1",
-              "question": "What are the fundamental laws or mechanisms governing Chlorine preparation and properties?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "chlorine-preparation-and-properties"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "chlorine-preparation-and-properties",
-                "conceptSlug": "core-chlorine-preparation-and-properties",
-                "microskillSlug": "understand-chlorine-preparation-and-properties"
-              }
-            },
-            {
               "id": "p-block-elements-q-chlorine-preparation-and-properties-2",
               "question": "Explain an application where using the concept of Chlorine preparation and properties can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2005,33 +1411,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-hydrogen-chloride-1",
-              "question": "What are the fundamental laws or mechanisms governing Hydrogen chloride?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "hydrogen-chloride"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "hydrogen-chloride",
-                "conceptSlug": "core-hydrogen-chloride",
-                "microskillSlug": "understand-hydrogen-chloride"
-              }
-            },
             {
               "id": "p-block-elements-q-hydrogen-chloride-2",
               "question": "Explain an application where using the concept of Hydrogen chloride can lead to a common student error.",
@@ -2105,33 +1484,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "p-block-elements-q-interhalogen-compounds-1",
-              "question": "What are the fundamental laws or mechanisms governing Interhalogen compounds?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "interhalogen-compounds"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "interhalogen-compounds",
-                "conceptSlug": "core-interhalogen-compounds",
-                "microskillSlug": "understand-interhalogen-compounds"
-              }
-            },
-            {
               "id": "p-block-elements-q-interhalogen-compounds-2",
               "question": "Explain an application where using the concept of Interhalogen compounds can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2191,33 +1543,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "p-block-elements-q-group-18-elements-properties-and-uses-1",
-              "question": "What are the fundamental laws or mechanisms governing Group 18 elements properties and uses?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "p-block-elements",
-                "group-18-elements-properties-and-uses"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "p-block-elements",
-                "chapterSlug": "p-block-elements",
-                "topicSlug": "p-block-elements",
-                "subtopicSlug": "group-18-elements-properties-and-uses",
-                "conceptSlug": "core-group-18-elements-properties-and-uses",
-                "microskillSlug": "understand-group-18-elements-properties-and-uses"
-              }
-            },
             {
               "id": "p-block-elements-q-group-18-elements-properties-and-uses-2",
               "question": "Explain an application where using the concept of Group 18 elements properties and uses can lead to a common student error.",

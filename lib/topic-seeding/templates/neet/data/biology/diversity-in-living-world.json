@@ -54,33 +54,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-what-is-living-1",
-              "question": "What are the fundamental laws or mechanisms governing What is living?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "what-is-living"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "what-is-living",
-                "conceptSlug": "core-what-is-living",
-                "microskillSlug": "understand-what-is-living"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-what-is-living-2",
               "question": "Explain an application where using the concept of What is living can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -154,33 +127,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-biodiversity-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Biodiversity concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "biodiversity-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "biodiversity-concept",
-                "conceptSlug": "core-biodiversity-concept",
-                "microskillSlug": "understand-biodiversity-concept"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-biodiversity-concept-2",
               "question": "Explain an application where using the concept of Biodiversity concept can lead to a common student error.",
@@ -256,33 +202,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-need-for-classification-1",
-              "question": "What are the fundamental laws or mechanisms governing Need for classification?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "need-for-classification"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "need-for-classification",
-                "conceptSlug": "core-need-for-classification",
-                "microskillSlug": "understand-need-for-classification"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-need-for-classification-2",
               "question": "Explain an application where using the concept of Need for classification can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -356,33 +275,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-taxonomy-examples-classification-1",
-              "question": "What are the fundamental laws or mechanisms governing Taxonomy examples/classification?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "taxonomy-examples-classification"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "taxonomy-examples-classification",
-                "conceptSlug": "core-taxonomy-examples-classification",
-                "microskillSlug": "understand-taxonomy-examples-classification"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-taxonomy-examples-classification-2",
               "question": "Explain an application where using the concept of Taxonomy examples/classification can lead to a common student error.",
@@ -458,33 +350,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-systematics-1",
-              "question": "What are the fundamental laws or mechanisms governing Systematics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "systematics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "systematics",
-                "conceptSlug": "core-systematics",
-                "microskillSlug": "understand-systematics"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-systematics-2",
               "question": "Explain an application where using the concept of Systematics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -559,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-species-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Species concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "species-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "species-concept",
-                "conceptSlug": "core-species-concept",
-                "microskillSlug": "understand-species-concept"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-species-concept-2",
               "question": "Explain an application where using the concept of Species concept can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -659,33 +497,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-taxonomic-hierarchy-1",
-              "question": "What are the fundamental laws or mechanisms governing Taxonomic hierarchy?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "taxonomic-hierarchy"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "taxonomic-hierarchy",
-                "conceptSlug": "core-taxonomic-hierarchy",
-                "microskillSlug": "understand-taxonomic-hierarchy"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-taxonomic-hierarchy-2",
               "question": "Explain an application where using the concept of Taxonomic hierarchy can lead to a common student error.",
@@ -774,33 +585,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-binomial-nomenclature-rules-1",
-              "question": "What are the fundamental laws or mechanisms governing Binomial nomenclature rules?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "binomial-nomenclature-rules"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "binomial-nomenclature-rules",
-                "conceptSlug": "core-binomial-nomenclature-rules",
-                "microskillSlug": "understand-binomial-nomenclature-rules"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-binomial-nomenclature-rules-2",
               "question": "Explain an application where using the concept of Binomial nomenclature rules can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -874,33 +658,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-five-kingdom-classification-system-1",
-              "question": "What are the fundamental laws or mechanisms governing Five kingdom classification system?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "five-kingdom-classification-system"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "five-kingdom-classification-system",
-                "conceptSlug": "core-five-kingdom-classification-system",
-                "microskillSlug": "understand-five-kingdom-classification-system"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-five-kingdom-classification-system-2",
               "question": "Explain an application where using the concept of Five kingdom classification system can lead to a common student error.",
@@ -976,33 +733,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-kingdom-monera-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Kingdom Monera characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "kingdom-monera-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "kingdom-monera-characteristics",
-                "conceptSlug": "core-kingdom-monera-characteristics",
-                "microskillSlug": "understand-kingdom-monera-characteristics"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-kingdom-monera-characteristics-2",
               "question": "Explain an application where using the concept of Kingdom Monera characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1076,33 +806,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-kingdom-protista-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Kingdom Protista characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "kingdom-protista-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "kingdom-protista-characteristics",
-                "conceptSlug": "core-kingdom-protista-characteristics",
-                "microskillSlug": "understand-kingdom-protista-characteristics"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-kingdom-protista-characteristics-2",
               "question": "Explain an application where using the concept of Kingdom Protista characteristics can lead to a common student error.",
@@ -1178,33 +881,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-kingdom-fungi-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Kingdom Fungi characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "kingdom-fungi-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "kingdom-fungi-characteristics",
-                "conceptSlug": "core-kingdom-fungi-characteristics",
-                "microskillSlug": "understand-kingdom-fungi-characteristics"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-kingdom-fungi-characteristics-2",
               "question": "Explain an application where using the concept of Kingdom Fungi characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1279,33 +955,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-viruses-viroids-and-prions-1",
-              "question": "What are the fundamental laws or mechanisms governing Viruses viroids and prions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "viruses-viroids-and-prions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "viruses-viroids-and-prions",
-                "conceptSlug": "core-viruses-viroids-and-prions",
-                "microskillSlug": "understand-viruses-viroids-and-prions"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-viruses-viroids-and-prions-2",
               "question": "Explain an application where using the concept of Viruses viroids and prions can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1379,33 +1028,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-lichens-1",
-              "question": "What are the fundamental laws or mechanisms governing Lichens?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "lichens"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "lichens",
-                "conceptSlug": "core-lichens",
-                "microskillSlug": "understand-lichens"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-lichens-2",
               "question": "Explain an application where using the concept of Lichens can lead to a common student error.",
@@ -1494,33 +1116,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-algae-classification-and-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Algae classification and characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "algae-classification-and-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "algae-classification-and-characteristics",
-                "conceptSlug": "core-algae-classification-and-characteristics",
-                "microskillSlug": "understand-algae-classification-and-characteristics"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-algae-classification-and-characteristics-2",
               "question": "Explain an application where using the concept of Algae classification and characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1594,33 +1189,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-bryophytes-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Bryophytes characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "bryophytes-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "bryophytes-characteristics",
-                "conceptSlug": "core-bryophytes-characteristics",
-                "microskillSlug": "understand-bryophytes-characteristics"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-bryophytes-characteristics-2",
               "question": "Explain an application where using the concept of Bryophytes characteristics can lead to a common student error.",
@@ -1696,33 +1264,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-pteridophytes-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Pteridophytes characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "pteridophytes-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "pteridophytes-characteristics",
-                "conceptSlug": "core-pteridophytes-characteristics",
-                "microskillSlug": "understand-pteridophytes-characteristics"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-pteridophytes-characteristics-2",
               "question": "Explain an application where using the concept of Pteridophytes characteristics can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1796,33 +1337,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-gymnosperms-characteristics-1",
-              "question": "What are the fundamental laws or mechanisms governing Gymnosperms characteristics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "gymnosperms-characteristics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "gymnosperms-characteristics",
-                "conceptSlug": "core-gymnosperms-characteristics",
-                "microskillSlug": "understand-gymnosperms-characteristics"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-gymnosperms-characteristics-2",
               "question": "Explain an application where using the concept of Gymnosperms characteristics can lead to a common student error.",
@@ -1898,33 +1412,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-angiosperms-overview-1",
-              "question": "What are the fundamental laws or mechanisms governing Angiosperms overview?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "angiosperms-overview"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "angiosperms-overview",
-                "conceptSlug": "core-angiosperms-overview",
-                "microskillSlug": "understand-angiosperms-overview"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-angiosperms-overview-2",
               "question": "Explain an application where using the concept of Angiosperms overview can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1999,33 +1486,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-non-chordate-phyla-porifera-to-hemichordata-1",
-              "question": "What are the fundamental laws or mechanisms governing Non-chordate phyla (Porifera to Hemichordata)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "non-chordate-phyla-porifera-to-hemichordata"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "non-chordate-phyla-porifera-to-hemichordata",
-                "conceptSlug": "core-non-chordate-phyla-porifera-to-hemichordata",
-                "microskillSlug": "understand-non-chordate-phyla-porifera-to-hemichordata"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-non-chordate-phyla-porifera-to-hemichordata-2",
               "question": "Explain an application where using the concept of Non-chordate phyla (Porifera to Hemichordata) can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2099,33 +1559,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-chordate-classes-pisces-to-mammalia-1",
-              "question": "What are the fundamental laws or mechanisms governing Chordate classes (Pisces to Mammalia)?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "chordate-classes-pisces-to-mammalia"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "chordate-classes-pisces-to-mammalia",
-                "conceptSlug": "core-chordate-classes-pisces-to-mammalia",
-                "microskillSlug": "understand-chordate-classes-pisces-to-mammalia"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-chordate-classes-pisces-to-mammalia-2",
               "question": "Explain an application where using the concept of Chordate classes (Pisces to Mammalia) can lead to a common student error.",
@@ -2214,33 +1647,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-distinguishing-features-of-animal-phyla-1",
-              "question": "What are the fundamental laws or mechanisms governing Distinguishing features of animal phyla?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "distinguishing-features-of-animal-phyla"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "distinguishing-features-of-animal-phyla",
-                "conceptSlug": "core-distinguishing-features-of-animal-phyla",
-                "microskillSlug": "understand-distinguishing-features-of-animal-phyla"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-distinguishing-features-of-animal-phyla-2",
               "question": "Explain an application where using the concept of Distinguishing features of animal phyla can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2314,33 +1720,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-taxonomic-aids-herbaria-and-botanical-gardens-1",
-              "question": "What are the fundamental laws or mechanisms governing Taxonomic aids herbaria and botanical gardens?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "taxonomic-aids-herbaria-and-botanical-gardens"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "taxonomic-aids-herbaria-and-botanical-gardens",
-                "conceptSlug": "core-taxonomic-aids-herbaria-and-botanical-gardens",
-                "microskillSlug": "understand-taxonomic-aids-herbaria-and-botanical-gardens"
-              }
-            },
             {
               "id": "diversity-in-living-world-q-taxonomic-aids-herbaria-and-botanical-gardens-2",
               "question": "Explain an application where using the concept of Taxonomic aids herbaria and botanical gardens can lead to a common student error.",
@@ -2416,33 +1795,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-museums-and-zoological-parks-1",
-              "question": "What are the fundamental laws or mechanisms governing Museums and zoological parks?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "museums-and-zoological-parks"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "museums-and-zoological-parks",
-                "conceptSlug": "core-museums-and-zoological-parks",
-                "microskillSlug": "understand-museums-and-zoological-parks"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-museums-and-zoological-parks-2",
               "question": "Explain an application where using the concept of Museums and zoological parks can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2517,33 +1869,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "diversity-in-living-world-q-taxonomic-key-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Taxonomic key concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "taxonomic-key-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "taxonomic-key-concept",
-                "conceptSlug": "core-taxonomic-key-concept",
-                "microskillSlug": "understand-taxonomic-key-concept"
-              }
-            },
-            {
               "id": "diversity-in-living-world-q-taxonomic-key-concept-2",
               "question": "Explain an application where using the concept of Taxonomic key concept can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -2574,309 +1899,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-25-25",
-          "title": "Diversity in Living World Anatomical features 25",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-25"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 25"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 25 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 25 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 25",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 25",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 25 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 25."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 25.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 25 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 25 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-25-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 25?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-25"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-25",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-25",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-25"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-25-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 25 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-25",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-25",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-25",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-25"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-26-26",
-          "title": "Diversity in Living World Anatomical features 26",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-26"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 26"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 26 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 26 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 26",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 26",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 26 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 26."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 26.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 26 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 26 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-26-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 26?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-26"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-26",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-26",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-26"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-26-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 26 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-26",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-26",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-26",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-26"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-27-27",
-          "title": "Diversity in Living World Anatomical features 27",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-27"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 27"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 27 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 27 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 27",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 27",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 27 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 27."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 27.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 27 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 27 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-27-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 27?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-27"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-27",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-27",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-27"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-27-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 27 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-27",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-27",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-27",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-27"
-              }
-            }
-          ]
         }
       ]
     },
@@ -2890,715 +1912,7 @@
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
-      "microtargets": [
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-28-28",
-          "title": "Diversity in Living World Anatomical features 28",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-28"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 28"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 28 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 28 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 28",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 28",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 28 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 28."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 28.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 28 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 28 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-28-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 28?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-28"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-28",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-28",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-28"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-28-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 28 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-28",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-28",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-28",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-28"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-29-29",
-          "title": "Diversity in Living World Anatomical features 29",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-29"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 29"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 29 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 29 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 29",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 29",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 29 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 29."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 29.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 29 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 29 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-29-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 29?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-29"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-29",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-29",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-29"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-29-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 29 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-29",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-29",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-29",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-29"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-30-30",
-          "title": "Diversity in Living World Anatomical features 30",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-30"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 30"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 30 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 30 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 30",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 30",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 30 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 30."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 30.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 30 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 30 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-30-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 30?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-30"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-30",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-30",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-30"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-30-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 30 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-30",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-30",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-30",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-30"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-31-31",
-          "title": "Diversity in Living World Anatomical features 31",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-31"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 31"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 31 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 31 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 31",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 31",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 31 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 31."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 31.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 31 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 31 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-31-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 31?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-31"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-31",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-31",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-31"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-31-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 31 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-31",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-31",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-31",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-31"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-32-32",
-          "title": "Diversity in Living World Anatomical features 32",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-32"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 32"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 32 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 32 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 32",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 32",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 32 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 32."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 32.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 32 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 32 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-32-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 32?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-32"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-32",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-32",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-32"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-32-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 32 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-32",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-32",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-32",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-32"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-33-33",
-          "title": "Diversity in Living World Anatomical features 33",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-33"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 33"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 33 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 33 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 33",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 33",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 33 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 33."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 33.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 33 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 33 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-33-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 33?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-33"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-33",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-33",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-33"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-33-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 33 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-33",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-33",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-33",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-33"
-              }
-            }
-          ]
-        },
-        {
-          "id": "mt-diversity-in-living-world-diversity-in-living-world-detailed-structure-34-34",
-          "title": "Diversity in Living World Anatomical features 34",
-          "conceptTags": [
-            "diversity-in-living-world",
-            "diversity-in-living-world-detailed-structure-34"
-          ],
-          "ncertAnchors": [
-            "NCERT Biology Class 11, Chapter: Diversity in Living World, Section detailing Diversity in Living World Anatomical features 34"
-          ],
-          "mustKnowFacts": [
-            "A thorough understanding of Diversity in Living World Anatomical features 34 is frequently appears in NEET examinations.",
-            "Applying the core principles of Diversity in Living World Anatomical features 34 correctly is essential for solving integrated numerical and conceptual problems in Diversity in Living World."
-          ],
-          "diagrams": [
-            {
-              "name": "Visual representation of Diversity in Living World Anatomical features 34",
-              "labels": [
-                "Primary anatomical part 1",
-                "Primary anatomical part 2",
-                "Primary anatomical part 3"
-              ],
-              "provesOrShows": "Morphological or functional aspects of Diversity in Living World Anatomical features 34",
-              "commonLabelTraps": [
-                "Misidentifying adjacent structures"
-              ]
-            }
-          ],
-          "commonTraps": [
-            "Misinterpreting the advanced application scenarios of Diversity in Living World Anatomical features 34 during high-pressure exam scenarios.",
-            "Failing to recall the exact conditions or sign conventions associated with Diversity in Living World Anatomical features 34."
-          ],
-          "masteryCriteria": [
-            "Can accurately solve numericals or identify biological structures related specifically to Diversity in Living World Anatomical features 34.",
-            "Successfully avoids common pitfalls when Diversity in Living World Anatomical features 34 is integrated with other concepts in Diversity in Living World."
-          ],
-          "pyqPatterns": [
-            "NEET PyQs emphasize the application of Diversity in Living World Anatomical features 34 in tricky assertion-reason or statement-based questions."
-          ],
-          "estimatedMinutes": 30,
-          "difficulty": "medium",
-          "activeRecallQuestions": [
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-34-1",
-              "question": "What are the fundamental laws or mechanisms governing Diversity in Living World Anatomical features 34?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-34"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-34",
-                "conceptSlug": "core-diversity-in-living-world-detailed-structure-34",
-                "microskillSlug": "understand-diversity-in-living-world-detailed-structure-34"
-              }
-            },
-            {
-              "id": "diversity-in-living-world-q-diversity-in-living-world-detailed-structure-34-2",
-              "question": "Explain an application where using the concept of Diversity in Living World Anatomical features 34 can lead to a common student error.",
-              "expectedAnswerPoints": [
-                "Sign convention error",
-                "Mislabeling structures",
-                "Ignoring edge conditions"
-              ],
-              "acceptedSynonyms": [
-                "error",
-                "mistake",
-                "trap",
-                "confusion"
-              ],
-              "conceptTags": [
-                "diversity-in-living-world",
-                "diversity-in-living-world-detailed-structure-34",
-                "traps"
-              ],
-              "difficulty": "medium",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "diversity-in-living-world",
-                "chapterSlug": "diversity-in-living-world",
-                "topicSlug": "diversity-in-living-world",
-                "subtopicSlug": "diversity-in-living-world-detailed-structure-34",
-                "conceptSlug": "trap-diversity-in-living-world-detailed-structure-34",
-                "microskillSlug": "avoid-diversity-in-living-world-detailed-structure-34"
-              }
-            }
-          ]
-        }
-      ]
+      "microtargets": []
     }
   ]
 }

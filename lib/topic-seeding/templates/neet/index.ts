@@ -44,7 +44,15 @@ import { diversity_in_living_world_seed } from './biology/diversity-in-living-wo
 import { structural_organisation_seed } from './biology/structural-organisation';
 import { cell_structure_and_function_seed } from './biology/cell-structure-and-function';
 import { plant_physiology_seed } from './biology/plant-physiology';
-import { human_physiology_seed } from './biology/human-physiology';
+import {
+  human_physiology_digestion_seed,
+  human_physiology_breathing_seed,
+  human_physiology_circulation_seed,
+  human_physiology_excretion_seed,
+  human_physiology_locomotion_seed,
+  human_physiology_neural_seed,
+  human_physiology_chemical_seed,
+} from './biology/human-physiology';
 import { reproduction_seed } from './biology/reproduction';
 import { genetics_and_evolution_seed } from './biology/genetics-and-evolution';
 import { biology_and_human_welfare_seed } from './biology/biology-and-human-welfare';
@@ -95,7 +103,15 @@ export { diversity_in_living_world_seed };
 export { structural_organisation_seed };
 export { cell_structure_and_function_seed };
 export { plant_physiology_seed };
-export { human_physiology_seed };
+export {
+  human_physiology_digestion_seed,
+  human_physiology_breathing_seed,
+  human_physiology_circulation_seed,
+  human_physiology_excretion_seed,
+  human_physiology_locomotion_seed,
+  human_physiology_neural_seed,
+  human_physiology_chemical_seed,
+};
 export { reproduction_seed };
 export { genetics_and_evolution_seed };
 export { biology_and_human_welfare_seed };
@@ -147,7 +163,13 @@ export const ALL_NEET_CHAPTER_SEEDS: ChapterSeed[] = [
   structural_organisation_seed,
   cell_structure_and_function_seed,
   plant_physiology_seed,
-  human_physiology_seed,
+  human_physiology_digestion_seed,
+  human_physiology_breathing_seed,
+  human_physiology_circulation_seed,
+  human_physiology_excretion_seed,
+  human_physiology_locomotion_seed,
+  human_physiology_neural_seed,
+  human_physiology_chemical_seed,
   reproduction_seed,
   genetics_and_evolution_seed,
   biology_and_human_welfare_seed,

@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-rate-of-a-chemical-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Rate of a chemical reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "rate-of-a-chemical-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-of-a-chemical-reaction",
-                "conceptSlug": "core-rate-of-a-chemical-reaction",
-                "microskillSlug": "understand-rate-of-a-chemical-reaction"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-rate-of-a-chemical-reaction-2",
               "question": "Explain an application where using the concept of Rate of a chemical reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-average-and-instantaneous-rate-1",
-              "question": "What are the fundamental laws or mechanisms governing Average and instantaneous rate?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "average-and-instantaneous-rate"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "average-and-instantaneous-rate",
-                "conceptSlug": "core-average-and-instantaneous-rate",
-                "microskillSlug": "understand-average-and-instantaneous-rate"
-              }
-            },
             {
               "id": "chemical-kinetics-q-average-and-instantaneous-rate-2",
               "question": "Explain an application where using the concept of Average and instantaneous rate can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-factors-affecting-reaction-rate-1",
-              "question": "What are the fundamental laws or mechanisms governing Factors affecting reaction rate?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "factors-affecting-reaction-rate"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "factors-affecting-reaction-rate",
-                "conceptSlug": "core-factors-affecting-reaction-rate",
-                "microskillSlug": "understand-factors-affecting-reaction-rate"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-factors-affecting-reaction-rate-2",
               "question": "Explain an application where using the concept of Factors affecting reaction rate can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-elementary-and-complex-reactions-1",
-              "question": "What are the fundamental laws or mechanisms governing Elementary and complex reactions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "elementary-and-complex-reactions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "elementary-and-complex-reactions",
-                "conceptSlug": "core-elementary-and-complex-reactions",
-                "microskillSlug": "understand-elementary-and-complex-reactions"
-              }
-            },
             {
               "id": "chemical-kinetics-q-elementary-and-complex-reactions-2",
               "question": "Explain an application where using the concept of Elementary and complex reactions can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-order-of-a-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Order of a reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "order-of-a-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "order-of-a-reaction",
-                "conceptSlug": "core-order-of-a-reaction",
-                "microskillSlug": "understand-order-of-a-reaction"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-order-of-a-reaction-2",
               "question": "Explain an application where using the concept of Order of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -499,33 +364,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-molecularity-of-a-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Molecularity of a reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "molecularity-of-a-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "molecularity-of-a-reaction",
-                "conceptSlug": "core-molecularity-of-a-reaction",
-                "microskillSlug": "understand-molecularity-of-a-reaction"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-molecularity-of-a-reaction-2",
               "question": "Explain an application where using the concept of Molecularity of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -586,33 +424,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-rate-law-expression-1",
-              "question": "What are the fundamental laws or mechanisms governing Rate law expression?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "rate-law-expression"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-law-expression",
-                "conceptSlug": "core-rate-law-expression",
-                "microskillSlug": "understand-rate-law-expression"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-rate-law-expression-2",
               "question": "Explain an application where using the concept of Rate law expression can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -672,33 +483,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-rate-constant-and-its-units-1",
-              "question": "What are the fundamental laws or mechanisms governing Rate constant and its units?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "rate-constant-and-its-units"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "rate-constant-and-its-units",
-                "conceptSlug": "core-rate-constant-and-its-units",
-                "microskillSlug": "understand-rate-constant-and-its-units"
-              }
-            },
             {
               "id": "chemical-kinetics-q-rate-constant-and-its-units-2",
               "question": "Explain an application where using the concept of Rate constant and its units can lead to a common student error.",
@@ -773,33 +557,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-integrated-rate-equation-for-zero-order-1",
-              "question": "What are the fundamental laws or mechanisms governing Integrated rate equation for zero order?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "integrated-rate-equation-for-zero-order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "integrated-rate-equation-for-zero-order",
-                "conceptSlug": "core-integrated-rate-equation-for-zero-order",
-                "microskillSlug": "understand-integrated-rate-equation-for-zero-order"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-integrated-rate-equation-for-zero-order-2",
               "question": "Explain an application where using the concept of Integrated rate equation for zero order can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -859,33 +616,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-integrated-rate-equation-for-first-order-1",
-              "question": "What are the fundamental laws or mechanisms governing Integrated rate equation for first order?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "integrated-rate-equation-for-first-order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "integrated-rate-equation-for-first-order",
-                "conceptSlug": "core-integrated-rate-equation-for-first-order",
-                "microskillSlug": "understand-integrated-rate-equation-for-first-order"
-              }
-            },
             {
               "id": "chemical-kinetics-q-integrated-rate-equation-for-first-order-2",
               "question": "Explain an application where using the concept of Integrated rate equation for first order can lead to a common student error.",
@@ -947,33 +677,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-half-life-of-a-reaction-1",
-              "question": "What are the fundamental laws or mechanisms governing Half-life of a reaction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "half-life-of-a-reaction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "half-life-of-a-reaction",
-                "conceptSlug": "core-half-life-of-a-reaction",
-                "microskillSlug": "understand-half-life-of-a-reaction"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-half-life-of-a-reaction-2",
               "question": "Explain an application where using the concept of Half-life of a reaction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1033,33 +736,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-pseudo-first-order-reactions-1",
-              "question": "What are the fundamental laws or mechanisms governing Pseudo-first order reactions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "pseudo-first-order-reactions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "pseudo-first-order-reactions",
-                "conceptSlug": "core-pseudo-first-order-reactions",
-                "microskillSlug": "understand-pseudo-first-order-reactions"
-              }
-            },
             {
               "id": "chemical-kinetics-q-pseudo-first-order-reactions-2",
               "question": "Explain an application where using the concept of Pseudo-first order reactions can lead to a common student error.",
@@ -1134,33 +810,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-temperature-dependence-of-rate-1",
-              "question": "What are the fundamental laws or mechanisms governing Temperature dependence of rate?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "temperature-dependence-of-rate"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "temperature-dependence-of-rate",
-                "conceptSlug": "core-temperature-dependence-of-rate",
-                "microskillSlug": "understand-temperature-dependence-of-rate"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-temperature-dependence-of-rate-2",
               "question": "Explain an application where using the concept of Temperature dependence of rate can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1221,33 +870,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-arrhenius-equation-applications-1",
-              "question": "What are the fundamental laws or mechanisms governing Arrhenius equation applications?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "arrhenius-equation-applications"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "arrhenius-equation-applications",
-                "conceptSlug": "core-arrhenius-equation-applications",
-                "microskillSlug": "understand-arrhenius-equation-applications"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-arrhenius-equation-applications-2",
               "question": "Explain an application where using the concept of Arrhenius equation applications can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1307,33 +929,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-activation-energy-concept-1",
-              "question": "What are the fundamental laws or mechanisms governing Activation energy concept?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "activation-energy-concept"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "activation-energy-concept",
-                "conceptSlug": "core-activation-energy-concept",
-                "microskillSlug": "understand-activation-energy-concept"
-              }
-            },
             {
               "id": "chemical-kinetics-q-activation-energy-concept-2",
               "question": "Explain an application where using the concept of Activation energy concept can lead to a common student error.",
@@ -1406,33 +1001,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-collision-theory-of-chemical-kinetics-1",
-              "question": "What are the fundamental laws or mechanisms governing Collision theory of chemical kinetics?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "collision-theory-of-chemical-kinetics"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "collision-theory-of-chemical-kinetics",
-                "conceptSlug": "core-collision-theory-of-chemical-kinetics",
-                "microskillSlug": "understand-collision-theory-of-chemical-kinetics"
-              }
-            },
             {
               "id": "chemical-kinetics-q-collision-theory-of-chemical-kinetics-2",
               "question": "Explain an application where using the concept of Collision theory of chemical kinetics can lead to a common student error.",
@@ -1507,33 +1075,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-effect-of-catalyst-on-reaction-rate-1",
-              "question": "What are the fundamental laws or mechanisms governing Effect of catalyst on reaction rate?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "effect-of-catalyst-on-reaction-rate"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "effect-of-catalyst-on-reaction-rate",
-                "conceptSlug": "core-effect-of-catalyst-on-reaction-rate",
-                "microskillSlug": "understand-effect-of-catalyst-on-reaction-rate"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-effect-of-catalyst-on-reaction-rate-2",
               "question": "Explain an application where using the concept of Effect of catalyst on reaction rate can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1593,33 +1134,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-graphical-analysis-of-zero-order-1",
-              "question": "What are the fundamental laws or mechanisms governing Graphical analysis of zero order?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "graphical-analysis-of-zero-order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "graphical-analysis-of-zero-order",
-                "conceptSlug": "core-graphical-analysis-of-zero-order",
-                "microskillSlug": "understand-graphical-analysis-of-zero-order"
-              }
-            },
             {
               "id": "chemical-kinetics-q-graphical-analysis-of-zero-order-2",
               "question": "Explain an application where using the concept of Graphical analysis of zero order can lead to a common student error.",
@@ -1681,33 +1195,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "chemical-kinetics-q-graphical-analysis-of-first-order-1",
-              "question": "What are the fundamental laws or mechanisms governing Graphical analysis of first order?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "graphical-analysis-of-first-order"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "graphical-analysis-of-first-order",
-                "conceptSlug": "core-graphical-analysis-of-first-order",
-                "microskillSlug": "understand-graphical-analysis-of-first-order"
-              }
-            },
-            {
               "id": "chemical-kinetics-q-graphical-analysis-of-first-order-2",
               "question": "Explain an application where using the concept of Graphical analysis of first order can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1767,33 +1254,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "chemical-kinetics-q-integrated-rate-graphs-for-complex-reactions-1",
-              "question": "What are the fundamental laws or mechanisms governing Integrated rate graphs for complex reactions?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "chemical-kinetics",
-                "integrated-rate-graphs-for-complex-reactions"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "chemical-kinetics",
-                "chapterSlug": "chemical-kinetics",
-                "topicSlug": "chemical-kinetics",
-                "subtopicSlug": "integrated-rate-graphs-for-complex-reactions",
-                "conceptSlug": "core-integrated-rate-graphs-for-complex-reactions",
-                "microskillSlug": "understand-integrated-rate-graphs-for-complex-reactions"
-              }
-            },
             {
               "id": "chemical-kinetics-q-integrated-rate-graphs-for-complex-reactions-2",
               "question": "Explain an application where using the concept of Integrated rate graphs for complex reactions can lead to a common student error.",

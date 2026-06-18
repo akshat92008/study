@@ -40,33 +40,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-purification-by-crystallisation-1",
-              "question": "What are the fundamental laws or mechanisms governing Purification by crystallisation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "purification-by-crystallisation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "purification-by-crystallisation",
-                "conceptSlug": "core-purification-by-crystallisation",
-                "microskillSlug": "understand-purification-by-crystallisation"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-purification-by-crystallisation-2",
               "question": "Explain an application where using the concept of Purification by crystallisation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -126,33 +99,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-purification-by-sublimation-1",
-              "question": "What are the fundamental laws or mechanisms governing Purification by sublimation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "purification-by-sublimation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "purification-by-sublimation",
-                "conceptSlug": "core-purification-by-sublimation",
-                "microskillSlug": "understand-purification-by-sublimation"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-purification-by-sublimation-2",
               "question": "Explain an application where using the concept of Purification by sublimation can lead to a common student error.",
@@ -214,33 +160,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-simple-distillation-technique-1",
-              "question": "What are the fundamental laws or mechanisms governing Simple distillation technique?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "simple-distillation-technique"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "simple-distillation-technique",
-                "conceptSlug": "core-simple-distillation-technique",
-                "microskillSlug": "understand-simple-distillation-technique"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-simple-distillation-technique-2",
               "question": "Explain an application where using the concept of Simple distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -300,33 +219,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-fractional-distillation-technique-1",
-              "question": "What are the fundamental laws or mechanisms governing Fractional distillation technique?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "fractional-distillation-technique"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "fractional-distillation-technique",
-                "conceptSlug": "core-fractional-distillation-technique",
-                "microskillSlug": "understand-fractional-distillation-technique"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-fractional-distillation-technique-2",
               "question": "Explain an application where using the concept of Fractional distillation technique can lead to a common student error.",
@@ -401,33 +293,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-steam-distillation-technique-1",
-              "question": "What are the fundamental laws or mechanisms governing Steam distillation technique?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "steam-distillation-technique"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "steam-distillation-technique",
-                "conceptSlug": "core-steam-distillation-technique",
-                "microskillSlug": "understand-steam-distillation-technique"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-steam-distillation-technique-2",
               "question": "Explain an application where using the concept of Steam distillation technique can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -487,33 +352,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-1",
-              "question": "What are the fundamental laws or mechanisms governing Distillation under reduced pressure?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "distillation-under-reduced-pressure"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "distillation-under-reduced-pressure",
-                "conceptSlug": "core-distillation-under-reduced-pressure",
-                "microskillSlug": "understand-distillation-under-reduced-pressure"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-distillation-under-reduced-pressure-2",
               "question": "Explain an application where using the concept of Distillation under reduced pressure can lead to a common student error.",
@@ -575,33 +413,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-differential-extraction-1",
-              "question": "What are the fundamental laws or mechanisms governing Differential extraction?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "differential-extraction"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "differential-extraction",
-                "conceptSlug": "core-differential-extraction",
-                "microskillSlug": "understand-differential-extraction"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-differential-extraction-2",
               "question": "Explain an application where using the concept of Differential extraction can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -661,33 +472,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-chromatography-principles-1",
-              "question": "What are the fundamental laws or mechanisms governing Chromatography principles?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "chromatography-principles"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "chromatography-principles",
-                "conceptSlug": "core-chromatography-principles",
-                "microskillSlug": "understand-chromatography-principles"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-chromatography-principles-2",
               "question": "Explain an application where using the concept of Chromatography principles can lead to a common student error.",
@@ -762,33 +546,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-1",
-              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for nitrogen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "lassaigne-s-test-for-nitrogen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "lassaigne-s-test-for-nitrogen",
-                "conceptSlug": "core-lassaigne-s-test-for-nitrogen",
-                "microskillSlug": "understand-lassaigne-s-test-for-nitrogen"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-nitrogen-2",
               "question": "Explain an application where using the concept of Lassaigne’s test for nitrogen can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -848,33 +605,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-1",
-              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for sulphur?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "lassaigne-s-test-for-sulphur"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "lassaigne-s-test-for-sulphur",
-                "conceptSlug": "core-lassaigne-s-test-for-sulphur",
-                "microskillSlug": "understand-lassaigne-s-test-for-sulphur"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-sulphur-2",
               "question": "Explain an application where using the concept of Lassaigne’s test for sulphur can lead to a common student error.",
@@ -948,33 +678,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-1",
-              "question": "What are the fundamental laws or mechanisms governing Lassaigne’s test for halogens?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "lassaigne-s-test-for-halogens"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "lassaigne-s-test-for-halogens",
-                "conceptSlug": "core-lassaigne-s-test-for-halogens",
-                "microskillSlug": "understand-lassaigne-s-test-for-halogens"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-lassaigne-s-test-for-halogens-2",
               "question": "Explain an application where using the concept of Lassaigne’s test for halogens can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1034,33 +737,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-test-for-phosphorus-1",
-              "question": "What are the fundamental laws or mechanisms governing Test for phosphorus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "test-for-phosphorus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "test-for-phosphorus",
-                "conceptSlug": "core-test-for-phosphorus",
-                "microskillSlug": "understand-test-for-phosphorus"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-test-for-phosphorus-2",
               "question": "Explain an application where using the concept of Test for phosphorus can lead to a common student error.",
@@ -1135,33 +811,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-1",
-              "question": "What are the fundamental laws or mechanisms governing Dumas method for nitrogen estimation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "dumas-method-for-nitrogen-estimation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "dumas-method-for-nitrogen-estimation",
-                "conceptSlug": "core-dumas-method-for-nitrogen-estimation",
-                "microskillSlug": "understand-dumas-method-for-nitrogen-estimation"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-dumas-method-for-nitrogen-estimation-2",
               "question": "Explain an application where using the concept of Dumas method for nitrogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1221,33 +870,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-1",
-              "question": "What are the fundamental laws or mechanisms governing Kjeldahl method for nitrogen estimation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "kjeldahl-method-for-nitrogen-estimation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "kjeldahl-method-for-nitrogen-estimation",
-                "conceptSlug": "core-kjeldahl-method-for-nitrogen-estimation",
-                "microskillSlug": "understand-kjeldahl-method-for-nitrogen-estimation"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-kjeldahl-method-for-nitrogen-estimation-2",
               "question": "Explain an application where using the concept of Kjeldahl method for nitrogen estimation can lead to a common student error.",
@@ -1321,33 +943,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-1",
-              "question": "What are the fundamental laws or mechanisms governing Carius method for halogen estimation?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "carius-method-for-halogen-estimation"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "carius-method-for-halogen-estimation",
-                "conceptSlug": "core-carius-method-for-halogen-estimation",
-                "microskillSlug": "understand-carius-method-for-halogen-estimation"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-carius-method-for-halogen-estimation-2",
               "question": "Explain an application where using the concept of Carius method for halogen estimation can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1407,33 +1002,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-estimation-of-sulphur-1",
-              "question": "What are the fundamental laws or mechanisms governing Estimation of sulphur?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "estimation-of-sulphur"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "estimation-of-sulphur",
-                "conceptSlug": "core-estimation-of-sulphur",
-                "microskillSlug": "understand-estimation-of-sulphur"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-estimation-of-sulphur-2",
               "question": "Explain an application where using the concept of Estimation of sulphur can lead to a common student error.",
@@ -1508,33 +1076,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-estimation-of-phosphorus-1",
-              "question": "What are the fundamental laws or mechanisms governing Estimation of phosphorus?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "estimation-of-phosphorus"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "estimation-of-phosphorus",
-                "conceptSlug": "core-estimation-of-phosphorus",
-                "microskillSlug": "understand-estimation-of-phosphorus"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-estimation-of-phosphorus-2",
               "question": "Explain an application where using the concept of Estimation of phosphorus can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1595,33 +1136,6 @@
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "purification-characterisation-organic-q-estimation-of-oxygen-1",
-              "question": "What are the fundamental laws or mechanisms governing Estimation of oxygen?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "estimation-of-oxygen"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "estimation-of-oxygen",
-                "conceptSlug": "core-estimation-of-oxygen",
-                "microskillSlug": "understand-estimation-of-oxygen"
-              }
-            },
-            {
               "id": "purification-characterisation-organic-q-estimation-of-oxygen-2",
               "question": "Explain an application where using the concept of Estimation of oxygen can lead to a common student error.",
               "expectedAnswerPoints": [
@@ -1681,33 +1195,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Calculation of empirical formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "calculation-of-empirical-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "calculation-of-empirical-formula",
-                "conceptSlug": "core-calculation-of-empirical-formula",
-                "microskillSlug": "understand-calculation-of-empirical-formula"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-calculation-of-empirical-formula-2",
               "question": "Explain an application where using the concept of Calculation of empirical formula can lead to a common student error.",
@@ -1779,33 +1266,6 @@
           "estimatedMinutes": 30,
           "difficulty": "medium",
           "activeRecallQuestions": [
-            {
-              "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-1",
-              "question": "What are the fundamental laws or mechanisms governing Calculation of molecular formula?",
-              "expectedAnswerPoints": [
-                "Primary mechanism or law",
-                "Key variables or structures involved"
-              ],
-              "acceptedSynonyms": [
-                "mechanism",
-                "principle",
-                "variables"
-              ],
-              "conceptTags": [
-                "purification-characterisation-organic",
-                "calculation-of-molecular-formula"
-              ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Chemistry",
-                "unitSlug": "purification-characterisation-organic",
-                "chapterSlug": "purification-characterisation-organic",
-                "topicSlug": "purification-characterisation-organic",
-                "subtopicSlug": "calculation-of-molecular-formula",
-                "conceptSlug": "core-calculation-of-molecular-formula",
-                "microskillSlug": "understand-calculation-of-molecular-formula"
-              }
-            },
             {
               "id": "purification-characterisation-organic-q-calculation-of-molecular-formula-2",
               "question": "Explain an application where using the concept of Calculation of molecular formula can lead to a common student error.",

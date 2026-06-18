@@ -5,6 +5,7 @@ import { CODING_TEMPLATES } from './templates/coding';
 import { GENERAL_ACADEMIC_TEMPLATES } from './templates/general-academic';
 import { ALL_NEET_CHAPTER_SEEDS } from './templates/neet';
 import { findNeetUnitByGoalText } from '../syllabus/neet-ug-2026';
+import { resolveFocusedTopicSlugsFromText, resolveTopicSkeletonForText } from './templates/neet/topic-skeleton';
 import { logger } from '@/lib/utils/logger';
 
 export const ALL_SEED_TEMPLATES: SeedTemplate[] = [
@@ -31,6 +32,9 @@ export function getSeedForGoal(goalText: string, activeGoalContext?: string | nu
     const seed = getNeetSeedBySlug(unit.chapterSlug);
     if (seed) {
       let targetMicrotargetSlug: string | undefined = undefined;
+      const targetTopicSlugs = unit.chapterSlug.startsWith('human-physiology-')
+        ? []
+        : resolveFocusedTopicSlugsFromText(goalText, unit.chapterSlug);
       const normalizedGoal = normalizeText(goalText);
       
       // Try to find a matching microtarget based on the goal text
@@ -58,6 +62,15 @@ export function getSeedForGoal(goalText: string, activeGoalContext?: string | nu
         source: 'seeded_template',
         confidence: 0.99,
         targetMicrotargetSlug,
+        targetTopicSlugs: targetTopicSlugs.length > 0
+          ? targetTopicSlugs
+          : targetMicrotargetSlug
+            ? seed.missions
+                .flatMap(mission => mission.microtargets)
+                .filter(mt => mt.id === targetMicrotargetSlug)
+                .map(mt => resolveTopicSkeletonForText([mt.title, ...(mt.conceptTags ?? [])].join(' '), unit.chapterSlug)?.slug)
+                .filter((slug): slug is string => Boolean(slug))
+            : undefined,
       };
     }
   }

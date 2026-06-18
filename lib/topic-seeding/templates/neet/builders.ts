@@ -1,5 +1,6 @@
 import { ChapterSeed, MissionSeed, MicrotargetSeed, FormulaSeed, ReactionSeed, DiagramSeed, QuestionSeed } from '../../types';
 import { NeetUgUnit } from '../../../syllabus/neet-ug-2026';
+import { getChapterTopicSlugs, isPlaceholderTitle, isPlaceholderQuestion, isTopicInChapter, resolveTopicSkeletonForText } from './topic-skeleton';
 
 export interface ChapterData {
   missions: MissionData[];
@@ -38,25 +39,46 @@ export interface QuestionData {
   conceptTags: string[];
   difficulty: "easy" | "medium" | "hard";
   errorPatterns?: any[];
+  /** If present in JSON data, this is the source-of-truth taxonomy path */
+  taxonomyPath?: {
+    subject: string;
+    unitSlug: string;
+    chapterSlug: string;
+    topicSlug: string;
+    subtopicSlug: string;
+    conceptSlug: string;
+    microskillSlug: string;
+  };
+}
+
+function slugifyTaxonomyPart(value: string | null | undefined, fallback: string): string {
+  const slug = String(value ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  return slug || fallback;
 }
 
 export function buildChapterSeed(unit: NeetUgUnit, data: ChapterData): ChapterSeed {
-  return {
-    exam: "NEET",
-    syllabusVersion: "NEET_UG_2026",
-    subject: unit.subject,
-    unitNumber: unit.unitNumber,
-    unitTitle: unit.unitTitle,
-    chapterSlug: unit.chapterSlug,
-    chapterTitle: unit.unitTitle,
-    classLevel: unit.classLevel === 'mixed' ? undefined : unit.classLevel,
-    aliases: unit.aliases,
-    ncertMapping: unit.ncertMapping,
-    prerequisites: [],
-    estimatedHours: data.missions.reduce((acc, m) => acc + m.estimatedMinutes, 0) / 60,
-    priority: "high",
-    missions: data.missions.map((m, mIndex) => {
+  const shouldScopeToSkeleton = unit.chapterSlug.startsWith('human-physiology-');
+
+  // Filter missions: remove missions where ALL microtargets are placeholders
+  const filteredMissions = data.missions
+    .map((m, mIndex) => {
       const missionId = `${unit.chapterSlug}-m-${mIndex}`;
+
+      // Filter out placeholder microtargets
+      const realMicrotargets = m.microtargets.filter((mt) => {
+        if (isPlaceholderTitle(mt.title)) return false;
+        if (!shouldScopeToSkeleton) return true;
+        return Boolean(resolveTopicSkeletonForText(
+          [mt.title, ...(mt.conceptTags ?? []), ...(mt.ncertAnchors ?? [])].join(' '),
+          unit.chapterSlug
+        ));
+      });
+
+      if (realMicrotargets.length === 0) return null; // Skip entirely empty missions
+
       return {
         id: missionId,
         title: m.title,
@@ -64,8 +86,16 @@ export function buildChapterSeed(unit: NeetUgUnit, data: ChapterData): ChapterSe
         conceptTags: m.conceptTags,
         estimatedMinutes: m.estimatedMinutes,
         difficulty: m.difficulty,
-        microtargets: m.microtargets.map((mt, mtIndex) => {
+        microtargets: realMicrotargets.map((mt, mtIndex) => {
           const microtargetId = `${unit.chapterSlug}-mt-${mIndex}-${mtIndex}`;
+
+          // Filter out placeholder questions
+          const realQuestions = mt.activeRecallQuestions.filter(q => !isPlaceholderQuestion(q.question));
+          const resolvedTopic = resolveTopicSkeletonForText(
+            [mt.title, ...(mt.conceptTags ?? []), ...(mt.ncertAnchors ?? [])].join(' '),
+            unit.chapterSlug
+          );
+
           return {
             id: microtargetId,
             title: mt.title,
@@ -77,10 +107,15 @@ export function buildChapterSeed(unit: NeetUgUnit, data: ChapterData): ChapterSe
             diagrams: mt.diagrams,
             examples: mt.examples,
             commonTraps: mt.commonTraps,
-            activeRecallQuestions: mt.activeRecallQuestions.map((q, qIndex) => {
-              // Extract subtopic slug from microtarget title, concept from question
-              const subtopicSlug = mt.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-              const conceptSlug = q.conceptTags[0]?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'concept';
+            activeRecallQuestions: realQuestions.map((q, qIndex) => {
+              const existingPath = q.taxonomyPath;
+              const existingTopicSlug = existingPath?.topicSlug;
+              const fallbackTopicSlug = getChapterTopicSlugs(unit.chapterSlug)[0] ?? unit.chapterSlug;
+              const topicSlug = resolvedTopic?.slug
+                ?? (existingTopicSlug && isTopicInChapter(existingTopicSlug, unit.chapterSlug) ? existingTopicSlug : fallbackTopicSlug);
+              const subtopicSlug = slugifyTaxonomyPart(existingPath?.subtopicSlug, slugifyTaxonomyPart(mt.title, `subtopic-${mtIndex}`));
+              const conceptSlug = slugifyTaxonomyPart(existingPath?.conceptSlug ?? q.conceptTags[0], 'concept');
+              const microskillSlug = slugifyTaxonomyPart(existingPath?.microskillSlug, `skill-${qIndex}`);
 
               return {
                 id: `${unit.chapterSlug}-q-${mIndex}-${mtIndex}-${qIndex}`,
@@ -93,10 +128,10 @@ export function buildChapterSeed(unit: NeetUgUnit, data: ChapterData): ChapterSe
                   subject: unit.subject,
                   unitSlug: unit.chapterSlug,
                   chapterSlug: unit.chapterSlug,
-                  topicSlug: missionId,
+                  topicSlug: topicSlug,
                   subtopicSlug: subtopicSlug,
                   conceptSlug: conceptSlug,
-                  microskillSlug: `skill-${qIndex}`
+                  microskillSlug: microskillSlug
                 },
                 errorPatterns: q.errorPatterns
               };
@@ -109,5 +144,22 @@ export function buildChapterSeed(unit: NeetUgUnit, data: ChapterData): ChapterSe
         })
       };
     })
+    .filter((m): m is NonNullable<typeof m> => m !== null);
+
+  return {
+    exam: "NEET",
+    syllabusVersion: "NEET_UG_2026",
+    subject: unit.subject,
+    unitNumber: unit.unitNumber,
+    unitTitle: unit.unitTitle,
+    chapterSlug: unit.chapterSlug,
+    chapterTitle: unit.unitTitle,
+    classLevel: unit.classLevel === 'mixed' ? undefined : unit.classLevel,
+    aliases: unit.aliases,
+    ncertMapping: unit.ncertMapping,
+    prerequisites: [],
+    estimatedHours: filteredMissions.reduce((acc, m) => acc + m.estimatedMinutes, 0) / 60,
+    priority: "high",
+    missions: filteredMissions
   };
 }
