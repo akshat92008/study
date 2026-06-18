@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  Zap, X, ChevronLeft, ChevronRight, LogOut,
+  Zap, X, ChevronLeft, ChevronRight, LogOut, Github,
   Brain, RefreshCw, Activity, Home, CreditCard, Database, MessageCircle, Plus, Target, Wrench, Settings, BookOpenCheck
 } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
@@ -35,9 +35,10 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Dashboard', href: '/dashboard', icon: Home },
-    { label: 'Sources', href: '/knowledge', icon: Database },
+    { label: 'Knowledge Base', href: '/knowledge', icon: BookOpenCheck },
     { label: 'Tutor', href: '/chat', icon: MessageCircle },
     { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'autopsy_ui' },
+    { label: 'GitHub Sync', href: '/developer/github', icon: Github },
     { label: 'Settings', href: '/settings', icon: Settings },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature as any));
 
