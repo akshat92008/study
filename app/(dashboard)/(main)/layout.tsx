@@ -47,14 +47,13 @@ export default async function DashboardLayout({
     "getAuthRedirectUrl timed out!"
   );
   
-  if (redirectUrl) {
-    redirect(redirectUrl);
-  }
+  // We DO NOT call redirect() here to prevent infinite loops if x-pathname is missing.
+  // Instead, we pass it to the Client Layout which will verify the actual pathname before redirecting.
 
   // Clean layout — ONE sidebar inside DashboardClientLayout.
   // No hardcoded stub sidebar here. No double wrapping.
   return (
-    <DashboardClientLayout profile={profile}>
+    <DashboardClientLayout profile={profile} serverRedirectUrl={redirectUrl}>
       {children}
       <CommandBar />
       <ToastContainer />

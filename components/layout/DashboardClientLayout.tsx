@@ -4,14 +4,16 @@ import React, { useState, useEffect } from 'react';
 import { useAppStore } from '@/stores/appStore';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import { usePathname, useRouter } from 'next/navigation';
 import { GlobalChat } from '../chat/GlobalChat';
 
 interface DashboardClientLayoutProps {
   children: React.ReactNode;
   profile: any;
+  serverRedirectUrl?: string | null;
 }
 
-export default function DashboardClientLayout({ children, profile }: DashboardClientLayoutProps) {
+export default function DashboardClientLayout({ children, profile, serverRedirectUrl }: DashboardClientLayoutProps) {
   const {
     isSidebarCollapsed,
     isMobileSidebarOpen,
@@ -27,6 +29,15 @@ export default function DashboardClientLayout({ children, profile }: DashboardCl
   const isOverwhelmed = profile?.emotional_state === 'overwhelmed';
   const [isDragging, setIsDragging] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Handle server-requested redirects safely to prevent infinite loops
+  useEffect(() => {
+    if (serverRedirectUrl && pathname !== serverRedirectUrl) {
+      router.replace(serverRedirectUrl);
+    }
+  }, [serverRedirectUrl, pathname, router]);
 
   // Monitor resize to set mobile flag
   useEffect(() => {
