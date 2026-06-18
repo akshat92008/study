@@ -28,24 +28,29 @@ export default async function DashboardLayout({
     "Supabase auth.getUser() timed out!"
   );
 
+  let profile = null;
+  let redirectUrl = null;
+
   if (!user || !user.id) {
-    redirect('/login');
+    redirectUrl = '/login';
+  } else {
+
+    const { data } = await withTimeout(
+      supabase.from('profiles').select('*').eq('id', user.id).single(),
+      5000,
+      "Supabase profiles query timed out!"
+    );
+    profile = data;
+
+    const headersList = await headers();
+    const currentPath = headersList.get('x-pathname') || '/dashboard';
+    
+    redirectUrl = await withTimeout(
+      getAuthRedirectUrl(user, profile, currentPath),
+      5000,
+      "getAuthRedirectUrl timed out!"
+    );
   }
-
-  const { data: profile } = await withTimeout(
-    supabase.from('profiles').select('*').eq('id', user.id).single(),
-    5000,
-    "Supabase profiles query timed out!"
-  );
-
-  const headersList = await headers();
-  const currentPath = headersList.get('x-pathname') || '/dashboard';
-  
-  const redirectUrl = await withTimeout(
-    getAuthRedirectUrl(user, profile, currentPath),
-    5000,
-    "getAuthRedirectUrl timed out!"
-  );
   
   // We DO NOT call redirect() here to prevent infinite loops if x-pathname is missing.
   // Instead, we pass it to the Client Layout which will verify the actual pathname before redirecting.
