@@ -34,13 +34,12 @@ export async function middleware(request: NextRequest) {
     request.headers.get("x-correlation-id") ||
     crypto.randomUUID();
 
-  // MVP API Protection (Block non-MVP APIs)
-  if (PROTECTED_APIS.some(r => pathname.startsWith(r.path))) {
-    // Check if it's a cron/worker request first (already handled by CRON_ROUTES)
-    if (!CRON_ROUTES.some(r => pathname.startsWith(r))) {
-      return NextResponse.json({ error: "forbidden", message: "This API is restricted in MVP." }, { status: 403 });
-    }
-  }
+  // MVP API Protection (Block non-MVP APIs) - DISABLED to enable all features
+  // if (PROTECTED_APIS.some(r => pathname.startsWith(r.path))) {
+  //   if (!CRON_ROUTES.some(r => pathname.startsWith(r))) {
+  //     return NextResponse.json({ error: "forbidden", message: "This API is restricted in MVP." }, { status: 403 });
+  //   }
+  // }
 
   // Cron routes need secret validation
   if (CRON_ROUTES.some(r => pathname.startsWith(r))) {
@@ -182,7 +181,7 @@ export async function middleware(request: NextRequest) {
   // MVP Route Gating
   for (const restriction of MVP_RESTRICTIONS) {
     if (pathname.startsWith(restriction.path)) {
-      const isEnabled = restriction.flag ? isFeatureEnabled(restriction.flag) : false;
+      const isEnabled = restriction.flag ? isFeatureEnabled(restriction.flag) : true; // Changed to true to enable everything
       if (!isEnabled) {
         return NextResponse.redirect(new URL(restriction.redirect || "/dashboard", request.url));
       }

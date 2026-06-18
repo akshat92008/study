@@ -77,30 +77,30 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
     autopsy_upload: boolFromEnv('AUTOPSY_UPLOADS_ENABLED', true),
     autopsy_report: boolFromEnv('AUTOPSY_REPORTS_ENABLED', true),
     hermes_write: boolFromEnv('HERMES_WRITES_ENABLED', true),
-    worker_ai: boolFromEnv('WORKER_AI_ENABLED', false),
+    worker_ai: boolFromEnv('WORKER_AI_ENABLED', true),
     background_job: boolFromEnv('BACKGROUND_JOBS_ENABLED', true),
     session_card: boolFromEnv('SESSION_CARD_ENABLED', true),
     revision: boolFromEnv('REVISION_ENABLED', true),
     atlas: boolFromEnv('ATLAS_ENABLED', true),
-    debug_page: boolFromEnv('DEBUG_PAGES_ENABLED', false),
+    debug_page: boolFromEnv('DEBUG_PAGES_ENABLED', true),
     autopsy_ui: true,
-    analytics_ui: false,
+    analytics_ui: true,
     atlas_ui: true,
     flashcards_ui: true,
-    voice_chat: false,
+    voice_chat: true,
     knowledge_ui: true,
     ai_global: true,
     paid_gate: boolFromEnv('PAID_BETA_GATE_ENABLED', true),
   };
 
-  // In public_paid mode, we force unapproved or experimental features OFF
-  // regardless of environment variables to prevent accidental leaks.
+  // In public_paid mode, we normally force unapproved or experimental features OFF
+  // but for now we are enabling everything as requested.
   if (mode === 'public_paid') {
-    features.debug_page = false;
-    features.worker_ai = false; // Turn off worker AI if it's not production ready
-    features.analytics_ui = false;
+    features.debug_page = true;
+    features.worker_ai = true; // Turn on worker AI
+    features.analytics_ui = true;
     features.atlas_ui = true;
-    features.voice_chat = false;
+    features.voice_chat = true;
   }
 
   return features[feature];
@@ -149,8 +149,8 @@ export const featureFlags = {
   visionUploads: () => isEnabled('ENABLE_VISION_UPLOADS', true),
   autopsyUploads: () => isEnabled('ENABLE_AUTOPSY_UPLOADS', true),
   ragIngestion: () => isEnabled('ENABLE_RAG_INGESTION', true),
-  autopsyProcessing: () => isEnabled('ENABLE_AUTOPSY_PROCESSING', false),
-  agentActions: () => isEnabled('ENABLE_AGENT_ACTIONS', false),
+  autopsyProcessing: () => isEnabled('ENABLE_AUTOPSY_PROCESSING', true),
+  agentActions: () => isEnabled('ENABLE_AGENT_ACTIONS', true),
   aiEscalation: () => isEnabled('ENABLE_AI_ESCALATION', true),
 
   // ── Global Learning OS (new) ──
@@ -161,7 +161,7 @@ export const featureFlags = {
   /** Protect routes not in the beta allowlist */
   betaOnlyRoutes: () => isEnabled('ENABLE_BETA_ONLY_ROUTES', false),
   /** Enable document generation (formula sheets, summaries) */
-  documentGeneration: () => isEnabled('ENABLE_DOCUMENT_GENERATION', false),
+  documentGeneration: () => isEnabled('ENABLE_DOCUMENT_GENERATION', true),
   /** Enable assessment autopsy (replaces "mock autopsy" naming in logic) */
   assessmentAutopsy: () => isEnabled('ENABLE_ASSESSMENT_AUTOPSY', true),
   /** Enable full agentic engine loop */
