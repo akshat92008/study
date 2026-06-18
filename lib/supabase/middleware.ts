@@ -29,9 +29,59 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
+
+  try {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (
+      (error as any)?.code === 'refresh_token_not_found' ||
+      error?.message?.includes('Invalid Refresh Token')
+    ) {
+      const cleanResponse = NextResponse.redirect(new URL('/login', request.url));
+
+      for (const cookie of request.cookies.getAll()) {
+        if (
+          cookie.name.startsWith('sb-') ||
+          cookie.name.includes('supabase') ||
+          cookie.name === '_ob'
+        ) {
+          cleanResponse.cookies.set(cookie.name, '', {
+            maxAge: 0,
+            path: '/',
+          });
+        }
+      }
+
+      return cleanResponse;
+    }
+
+    user = data.user;
+  } catch (error: any) {
+    if (
+      (error as any)?.code === 'refresh_token_not_found' ||
+      error?.message?.includes('Invalid Refresh Token')
+    ) {
+      const cleanResponse = NextResponse.redirect(new URL('/login', request.url));
+
+      for (const cookie of request.cookies.getAll()) {
+        if (
+          cookie.name.startsWith('sb-') ||
+          cookie.name.includes('supabase') ||
+          cookie.name === '_ob'
+        ) {
+          cleanResponse.cookies.set(cookie.name, '', {
+            maxAge: 0,
+            path: '/',
+          });
+        }
+      }
+
+      return cleanResponse;
+    }
+
+    throw error;
+  }
 
   // Protected routes — redirect to login if not authenticated
   if (
@@ -43,7 +93,15 @@ export async function updateSession(request: NextRequest) {
   ) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
-    return NextResponse.redirect(url);
+    const redirectRes = NextResponse.redirect(url);
+    
+    // Copy cookies to ensure token deletion propagates to the browser
+    const cookiesToCopy = supabaseResponse.cookies.getAll();
+    cookiesToCopy.forEach((cookie) => {
+      redirectRes.cookies.set(cookie.name, cookie.value, cookie as any);
+    });
+    
+    return redirectRes;
   }
 
   let onboardingComplete: boolean | null = null;
@@ -97,6 +155,10 @@ export async function updateSession(request: NextRequest) {
 
   if (shouldRedirect) {
     finalResponse = NextResponse.redirect(url);
+    const cookiesToCopy = supabaseResponse.cookies.getAll();
+    cookiesToCopy.forEach((cookie) => {
+      finalResponse.cookies.set(cookie.name, cookie.value, cookie as any);
+    });
   }
 
   if (user && onboardingComplete !== null) {

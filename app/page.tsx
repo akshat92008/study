@@ -22,48 +22,37 @@ function getAvailableLandingVideos() {
 
 export const dynamic = 'force-dynamic';
 
-const withTimeout = <T,>(promise: Promise<T>, ms: number, message: string): Promise<T> => {
-  return Promise.race([
-    promise,
-    new Promise<T>((_, reject) => setTimeout(() => reject(new Error(message)), ms)),
-  ]);
-};
-
 export default async function LandingPage() {
-  let redirectUrl: string | null = null;
+  let user = null;
 
   try {
     const supabase = await createClient();
+    const { data, error } = await supabase.auth.getUser();
 
-    const { data: { user } } = await withTimeout(
-      supabase.auth.getUser(),
-      5000,
-      'Home auth.getUser() timed out'
-    );
+    if (
+      (error as any)?.code === 'refresh_token_not_found' ||
+      error?.message?.includes('Invalid Refresh Token')
+    ) {
+      return <CinematicLandingPage availableVideos={getAvailableLandingVideos()} />;
+    }
+
+    user = data.user;
 
     const { data: profile } = user
-      ? await withTimeout(
-          supabase
-            .from('profiles')
-            .select('onboarding_complete')
-            .eq('id', user.id)
-            .maybeSingle(),
-          5000,
-          'Home profile query timed out'
-        )
+      ? await supabase
+          .from('profiles')
+          .select('onboarding_complete')
+          .eq('id', user.id)
+          .maybeSingle()
       : { data: null };
 
-    redirectUrl = await withTimeout(
-      getAuthRedirectUrl(user, profile, '/'),
-      5000,
-      'Home access redirect check timed out'
-    );
-  } catch (error) {
-    console.error('[HOME_BOOT_ERROR]', error);
-  }
+    const redirectUrl = await getAuthRedirectUrl(user, profile, '/');
 
-  if (redirectUrl) {
-    redirect(redirectUrl);
+    if (redirectUrl) {
+      redirect(redirectUrl);
+    }
+  } catch (error) {
+    console.error('[LANDING_AUTH_ERROR]', error);
   }
 
   return <CinematicLandingPage availableVideos={getAvailableLandingVideos()} />;
