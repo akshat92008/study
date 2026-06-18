@@ -1,4 +1,4 @@
-import type { SeedTemplate, SeedTopicParams, SeedTopicResult, SeedSource } from './types';
+import type { SeedTemplate, SeedTopicParams, SeedTopicResult, SeedSource, SelectedSeedTemplate } from './types';
 import { selectSeedTemplate } from './template-registry';
 import { slugify } from './text-utils';
 import { upsertAtlasConcepts } from './concept-upserter';
@@ -79,7 +79,7 @@ function buildSeededTopicRows(
     return rows;
   }
 
-  return template.topics.map((item, idx) => {
+  const rows = template.topics.map((item, idx) => {
     const orderIndex = Number.isFinite(item.orderIndex) ? item.orderIndex : idx + 1;
     return {
       user_id: params.userId,
@@ -110,7 +110,7 @@ function buildSeededTopicRows(
   // Set the active topic
   let activeIndex = 0;
   if (targetMicrotargetSlug) {
-    const idx = rows.findIndex(r => r.microtarget_slug === slugify(targetMicrotargetSlug) || (r.metadata.microtargets && r.metadata.microtargets[0]?.id === targetMicrotargetSlug));
+    const idx = rows.findIndex(r => r.microtarget_slug === slugify(targetMicrotargetSlug));
     if (idx !== -1) activeIndex = idx;
   }
   if (rows.length > 0) {

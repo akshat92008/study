@@ -27,7 +27,7 @@ const PROTECTED_APIS: Array<{ path: string; redirect?: string }> = [
 // Admin routes — use real URL paths (not Next.js route-group notation)
 const ADMIN_ROUTES = ["/admin", "/api/admin"];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const requestId =
     request.headers.get("x-request-id") ||

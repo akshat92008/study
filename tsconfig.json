@@ -66,6 +66,7 @@
     "scripts",
     "*.config.ts",
     "module5-session-card-hardening",
-    "cognition-os"
+    "cognition-os",
+    "open-notebook-main"
   ]
 }
