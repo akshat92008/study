@@ -35,6 +35,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   } = useAppStore();
   const navItems = [
     { label: 'Dashboard', href: '/dashboard', icon: Home },
+    { label: 'Sources', href: '/knowledge', icon: Database },
     { label: 'Tutor', href: '/chat', icon: MessageCircle },
     { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'autopsy_ui' },
     { label: 'Settings', href: '/settings', icon: Settings },
