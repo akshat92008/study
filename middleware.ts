@@ -130,7 +130,14 @@ export async function middleware(request: NextRequest) {
   }
 
   // Auth check
-  const response = NextResponse.next({ request });
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseUrl.startsWith('http')) {
@@ -154,8 +161,6 @@ export async function middleware(request: NextRequest) {
       },
     }
   );
-
-  response.headers.set("x-pathname", pathname);
 
   const { data: { user } } = await supabase.auth.getUser();
 

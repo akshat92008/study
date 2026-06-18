@@ -23,7 +23,7 @@ export default async function DashboardLayout({
 }) {
   const supabase = await createClient();
   const { data: { user } } = await withTimeout(
-    supabase.auth.getUser(), 
+    supabase.auth.getUser(),
     5000, 
     "Supabase auth.getUser() timed out!"
   );
