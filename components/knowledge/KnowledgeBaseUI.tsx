@@ -483,7 +483,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 'var(--fw-medium)' }}>{mat.original_filename || mat.title}</div>
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>
-                    Uploaded on {new Date(mat.created_at).toLocaleDateString()}
+                    Uploaded on {mat.created_at ? mat.created_at.split('T')[0] : ''}
                   </div>
                   {(mat.detected_subject || mat.detected_chapter) && (
                     <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-secondary)', marginTop: 2 }}>
@@ -494,7 +494,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     {mat.chunk_count ?? mat.study_material_chunks?.[0]?.count ?? 0} chunks
                     {' · '}{mat.embedding_count ?? 0} embeddings
                     {' · '}retry {mat.retry_count ?? 0}
-                    {mat.last_processed_at ? ` · processed ${new Date(mat.last_processed_at).toLocaleString()}` : ''}
+                    {mat.last_processed_at ? ` · processed ${mat.last_processed_at.replace('T', ' ').substring(0, 16)}` : ''}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
@@ -563,7 +563,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                 <div style={{ padding: 'var(--sp-2) var(--sp-3)', background: 'rgba(239, 68, 68, 0.1)', color: 'var(--danger)', fontSize: 'var(--fs-sm)', borderRadius: 'var(--radius-md)' }}>
                   <strong>Error{mat.last_error_code ? ` (${mat.last_error_code})` : ''}:</strong> {mat.error_message || mat.last_error}
                   <div style={{ fontSize: 'var(--fs-xs)', opacity: 0.8, marginTop: '2px' }}>
-                    Retryable: {mat.retryable ? 'Yes' : 'No'} {mat.next_retry_at ? `| Next Retry: ${new Date(mat.next_retry_at).toLocaleString()}` : ''}
+                    Retryable: {mat.retryable ? 'Yes' : 'No'} {mat.next_retry_at ? `| Next Retry: ${mat.next_retry_at.replace('T', ' ').substring(0, 16)}` : ''}
                   </div>
                 </div>
               )}
