@@ -42,6 +42,20 @@ export async function GET(req: NextRequest) {
     const { data, error } = await query.order('created_at', { ascending: false });
 
     if (error) throw error;
+    
+    const hasQueued = data?.some(m => m.status === 'queued');
+    if (hasQueued) {
+      const { after } = await import('next/server');
+      after(async () => {
+        try {
+          const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
+          await processPendingIngestionJobs(2);
+        } catch (workerError) {
+          // ignore
+        }
+      });
+    }
+
     return NextResponse.json({ materials: data || [] }, { headers: { 'x-request-id': requestId } });
   } catch (error) {
     return unexpectedApiErrorResponse(req, error, 'materials_list_unhandled', 'Unable to load study materials.');
