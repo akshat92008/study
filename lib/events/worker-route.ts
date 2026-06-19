@@ -25,7 +25,18 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       agentActionsSkipped,
       agentActionsFailed,
     } = await EventWorkerService.processBatch(batchSize, leaseMinutes, maxRuntimeMs, start, maxAiCallsPerRun);
-    logger.info('Worker batch completed', { processed, failed, skipped, durationMs: Date.now() - start, requestId, feature: 'event-worker' });
+    
+    // Also process pending RAG ingestions that were queued
+    const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
+    const ingestionResult = await processPendingIngestionJobs(2);
+    
+    logger.info('Worker batch completed', { 
+      processed, failed, skipped, 
+      ingestionProcessed: ingestionResult.processed,
+      ingestionFailed: ingestionResult.failed,
+      durationMs: Date.now() - start, 
+      requestId, feature: 'event-worker' 
+    });
     const queue = await EventWorkerService.getHealthSummary();
 
     const queueDepth = queue.pendingEvents;

@@ -371,6 +371,9 @@ export async function POST(req: NextRequest) {
         if (!shouldIngestInline) {
           logger.info('Instantly triggering background event worker for upload', { userId: user.id, materialId: material.id });
           await EventWorkerService.processBatch(25, 5, 50_000, Date.now());
+          
+          const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
+          await processPendingIngestionJobs(2);
         }
       } catch (workerError) {
         logger.error('Instant worker trigger failed', { error: workerError });

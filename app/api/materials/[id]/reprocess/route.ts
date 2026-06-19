@@ -150,6 +150,13 @@ export async function POST(req: NextRequest, context: RouteContext) {
         await EventWorkerService.processBatch(25, 5, 50_000, Date.now()).catch((workerError) => {
           logger.error('material_reprocess_worker_trigger_failed', workerError, { requestId, materialId: material.id });
         });
+        
+        try {
+          const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
+          await processPendingIngestionJobs(2);
+        } catch (workerError) {
+          logger.error('Instant worker trigger failed', { error: workerError });
+        }
       }
     });
 
