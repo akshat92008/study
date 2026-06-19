@@ -24,7 +24,7 @@ export default function CommandBar() {
 
   const actions = [
     { name: 'Dashboard', icon: Home, route: '/dashboard' },
-    { name: 'Tutor', icon: MessageSquare, route: '/chat' },
+    { name: 'Tutor', icon: MessageSquare, route: '/tutor' },
     { name: 'Mistake Review', icon: Activity, route: '/autopsy/deep' },
     { name: 'Settings', icon: Settings, route: '/settings' }
   ];

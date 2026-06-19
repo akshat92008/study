@@ -31,6 +31,8 @@ describe('no-PULSE product gap contracts', () => {
     expect(memoryService).toContain('storeConversationTurnInMemory');
     expect(mentorRoute).toContain("sourceType: 'mentor_chat'");
     expect(tutorRoute).toContain("sourceType: 'tutor_chat'");
+    expect(tutorRoute).toContain('chatPOST');
+    expect(tutorRoute).not.toContain('disabledForMvp');
     expect(memoryService).toContain(".from('chat_memory')");
   });
 

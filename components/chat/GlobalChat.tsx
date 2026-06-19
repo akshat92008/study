@@ -25,6 +25,15 @@ const MIND_QUICK_PROMPTS = [
   'Show source status',
 ];
 
+const TUTOR_QUICK_PROMPTS = [
+  'Explain current topic',
+  'Ask diagnostic question',
+  'Check my answer',
+  'Repair weak area',
+  'Review due memory',
+  'Show source status',
+];
+
 const ChatMessage = memo(function ChatMessage({ msg }: { msg: any }) {
   const isUser = msg.role === 'user';
   const isClosingCard = msg.metadata?.action === 'session_closing_message';
@@ -99,7 +108,13 @@ function buildPracticeUpdateMessage(detail: any) {
   return `I logged this attempt: ${correctCount} correct and ${wrongCount} missed. I updated ${planBits || 'your learner state'} and shifted your next study session toward ${focus}.`;
 }
 
-export const GlobalChat = memo(function GlobalChat() {
+type GlobalChatProps = {
+  endpoint?: string;
+  tutorSurface?: boolean;
+  titleSuffix?: string;
+};
+
+export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', tutorSurface = false, titleSuffix = 'AI Tutor' }: GlobalChatProps) {
   const isAssistantOpen = useAppStore(s => s.isAssistantOpen);
   const toggleAssistant = useAppStore(s => s.toggleAssistant);
   const chatMessages = useAppStore(s => s.chatMessages);
@@ -130,7 +145,7 @@ export const GlobalChat = memo(function GlobalChat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initialize the stream hook
-  const { status, streamingText, send, resetStatus } = useStream('/api/ai/chat');
+  const { status, streamingText, send, resetStatus } = useStream(endpoint);
 
   const hasMessages = chatMessages.length > 0;
   const { formatted } = useSessionTimer(hasMessages);
@@ -380,6 +395,7 @@ export const GlobalChat = memo(function GlobalChat() {
           activeGoalId,
           chatId,
           selectedMaterialIds: useAppStore.getState().selectedMaterialIds,
+          tutorSurface,
         }
       });
 
@@ -449,6 +465,7 @@ export const GlobalChat = memo(function GlobalChat() {
     router,
     send,
     status,
+    tutorSurface,
   ]);
 
   const contextLine = useMemo(() => {
@@ -518,7 +535,7 @@ export const GlobalChat = memo(function GlobalChat() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <h3 style={{ fontSize: '14px', fontWeight: 'var(--fw-semibold)', margin: 0, letterSpacing: 0 }}>
-                {activeGoal ? `${activeGoal.title} AI Tutor` : (sessions.find((s: any) => s.id === chatId)?.title || 'AI Tutor')}
+                {activeGoal ? `${activeGoal.title} ${titleSuffix}` : (sessions.find((s: any) => s.id === chatId)?.title || titleSuffix)}
               </h3>
               {streakDays > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginLeft: '8px', padding: '2px 6px', background: 'rgba(251,146,60,0.12)', borderRadius: '12px', border: '1px solid rgba(251,146,60,0.25)' }}>
@@ -635,7 +652,7 @@ export const GlobalChat = memo(function GlobalChat() {
         zIndex: 10,
       }}>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
-          {MIND_QUICK_PROMPTS.map((prompt) => (
+          {(tutorSurface ? TUTOR_QUICK_PROMPTS : MIND_QUICK_PROMPTS).map((prompt) => (
             <button
               key={prompt}
               onClick={() => handleSendMessage(prompt)}

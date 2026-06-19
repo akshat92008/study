@@ -1,5 +1,6 @@
 import { normalizeGoal, type NormalizedGoal } from '@/lib/goals/normalize-goal';
 import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
+import { resolveCanonicalChapter } from '@/lib/goals/canonical-chapter';
 import { logger } from '@/lib/utils/logger';
 
 export type TutorMode = 'explain' | 'quiz' | 'repair' | 'autopsy' | 'revision' | 'practice' | 'discovery';
@@ -14,6 +15,7 @@ export type ActiveLearningContext = {
   subjectId: string | null;
   chapterId: string | null; // e.g. "Body Fluids and Circulation"
   chapterSlug: string | null; // e.g. "human-physiology-circulation"
+  canonicalGoalSlug: string | null; // e.g. "neet-biology-human-physiology-circulation"
   topicId: string | null; // e.g. "blood-composition"
   
   // Context state
@@ -96,6 +98,9 @@ export async function loadActiveLearningContext(input: {
 
     const metadataGoal = goal.metadata?.normalizedGoal as NormalizedGoal | undefined;
     const normalizedGoal = metadataGoal?.chapterSlug ? metadataGoal : normalizeGoal(goal.title ?? '');
+    const canonicalChapter = resolveCanonicalChapter(
+      normalizedGoal.chapterSlug ?? normalizedGoal.chapter ?? goal.title ?? mission?.topic_slug ?? ''
+    );
 
     const context: ActiveLearningContext = {
       userId: input.userId,
@@ -103,8 +108,9 @@ export async function loadActiveLearningContext(input: {
       
       examId: normalizedGoal.exam ?? goal.exam_type ?? null,
       subjectId: normalizedGoal.subject ?? goal.subject ?? null,
-      chapterId: normalizedGoal.chapter,
-      chapterSlug: normalizedGoal.chapterSlug,
+      chapterId: canonicalChapter?.title ?? normalizedGoal.chapter,
+      chapterSlug: canonicalChapter?.chapterSlug ?? null,
+      canonicalGoalSlug: canonicalChapter?.canonicalGoalSlug ?? normalizedGoal.chapterSlug ?? null,
       topicId: mission?.topic_slug ?? null,
       
       mode: input.requestedMode ?? (normalizedGoal.mode as TutorMode) ?? 'discovery',
@@ -155,6 +161,7 @@ function emptyLearningContext(userId: string, timezone: string): ActiveLearningC
     subjectId: null,
     chapterId: null,
     chapterSlug: null,
+    canonicalGoalSlug: null,
     topicId: null,
     mode: 'discovery',
     confidence: 0,

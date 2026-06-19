@@ -92,7 +92,9 @@ export async function POST(req: NextRequest) {
 
     // 2. Parse Request
     const parsedRequest = await parseChatRequest(req, requestId);
+    const isTutorRoute = new URL(req.url).pathname.endsWith('/api/ai/tutor');
     const { message, imageBase64, imageMimeType, documentBase64, documentMimeType, chatId, requestedGoalId } = parsedRequest;
+    const tutorSurface = parsedRequest.tutorSurface || isTutorRoute;
     let { sessionTurnsCount } = parsedRequest;
 
     // 3. Resolve Active Goal
@@ -161,6 +163,9 @@ export async function POST(req: NextRequest) {
     
     const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, selectedMaterialIds);
     const { profilePreview, detectedIntent, emotion, mindContext, systemPrompt } = contextResult;
+    const effectiveIntent = tutorSurface
+      ? { ...detectedIntent, intent: 'TUTOR_SESSION', topic: detectedIntent.topic ?? activeGoal?.title ?? undefined }
+      : detectedIntent;
     
     // 6. Load Specialized Contexts
     const { mindRag, ragChunks, ragContext } = loadRagContext(contextResult);
@@ -168,7 +173,9 @@ export async function POST(req: NextRequest) {
 
     // 7. Orchestration & Intents
     const hasUploadedFile = !!((imageBase64 && imageMimeType) || (documentBase64 && documentMimeType));
-    const orchestratorResult = orchestrateFromIntent(detectedIntent, hasUploadedFile, message || '');
+    const orchestratorResult = tutorSurface
+      ? { intent: 'tutor_session', mode: 'learning', requiredWorkers: [], shouldAnswerFirst: true, needsFileProcessing: hasUploadedFile, riskLevel: 'low' as const }
+      : orchestrateFromIntent(effectiveIntent, hasUploadedFile, message || '');
     
     // 8. Enqueue Side Effects
     try {
@@ -182,7 +189,7 @@ export async function POST(req: NextRequest) {
       supabase, userId: user.id, sessionId, goalId: activeGoalId,
       userMessage: input.userMessage ?? message ?? '', userMessageId, assistantText: input.assistantText,
       metadata: { ...(input.metadata || {}), ...(mindContext?.ragChunks?.length ? { ragChunks: mindContext.ragChunks } : {}) },
-      intent: input.intent ?? detectedIntent, emotion, promptVersion, idempotencyKey: messageRequestId,
+      intent: input.intent ?? effectiveIntent, emotion, promptVersion, idempotencyKey: messageRequestId,
       recentHistory, sessionTurnsCount, mindContext,
       budgetReservationId: input.budgetReservationId, budgetUsage: input.budgetUsage, onBudgetSettled: input.onBudgetSettled,
     });
@@ -199,7 +206,7 @@ export async function POST(req: NextRequest) {
 
     // 10. Check Rule-First Engine (Overwhelmed / Grounding)
     const ruleResponse = await maybeUseRuleFirstResponse({
-      userId: user.id, message, mindContext, detectedIntent, orchestratorResult, finalizeAssistantTurnFn, encoder
+      userId: user.id, message, mindContext, detectedIntent: effectiveIntent, orchestratorResult, finalizeAssistantTurnFn, encoder
     });
     if (ruleResponse) return ruleResponse;
 
@@ -221,7 +228,7 @@ export async function POST(req: NextRequest) {
       return featureDisabledResponse(requestId);
     }
     const providerResponse = await callAiProvider({
-      userId: user.id, message, detectedIntent, orchestratorResult, mindContext, supabase, activeGoalId: activeGoalId ?? undefined, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
+      userId: user.id, message, detectedIntent: effectiveIntent, orchestratorResult, mindContext, supabase, activeGoalId: activeGoalId ?? undefined, finalizeAssistantTurnFn, encoder, sessionId, recentHistory, systemPrompt, isSimpleMessage, sessionTurnsCount, crossSessionMemories
     });
 
     // 12. Format & Return Stream Response

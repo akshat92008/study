@@ -43,7 +43,8 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     chatId: z.string().nullable().optional(),
     activeGoalId: z.string().nullable().optional(),
     sessionTurnsCount: z.number().nullable().optional(),
-    selectedMaterialIds: z.array(z.string()).nullable().optional()
+    selectedMaterialIds: z.array(z.string()).nullable().optional(),
+    tutorSurface: z.boolean().nullable().optional(),
   });
 
   let rawBody: any;
@@ -70,6 +71,7 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     requestedGoalId: parsed.activeGoalId ?? undefined,
     sessionTurnsCount: parsed.sessionTurnsCount ?? 0,
     selectedMaterialIds: parsed.selectedMaterialIds ?? undefined,
+    tutorSurface: Boolean(parsed.tutorSurface),
   };
 }
 

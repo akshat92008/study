@@ -4,7 +4,7 @@ import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { logger } from '@/lib/utils/logger';
 import { MIN_MIND_TUTOR_COVERAGE_TURNS } from '@/lib/mind/tutor-completion';
 import { evaluateAnswer, persistAnswerEvaluation } from '@/lib/tutor/evaluate-answer';
-import { findQuestionByText, getNextQuestion } from '@/lib/tutor/question-engine';
+import { findQuestionByText, getAllQuestionsForChapter, getNextQuestion } from '@/lib/tutor/question-engine';
 import { loadActiveLearningContext } from '@/lib/learning-context/active-context';
 import { buildTutorRetrievalPacket } from '@/lib/tutor/context';
 import { isExplicitRagRequest } from '@/lib/rag/retrieval';
@@ -51,9 +51,9 @@ export class ChatTutorService {
 
     const requestedTopicChange = explicitlyChangesTopic(message);
     const activeChapterSlug = tutorContext.chapterSlug ?? '';
-    const isBiotechnology = activeChapterSlug === 'neet-biology-biotechnology';
+    const hasDeterministicTutorLoop = getAllQuestionsForChapter(activeChapterSlug).length > 0;
 
-    if (isBiotechnology && !requestedTopicChange) {
+    if (hasDeterministicTutorLoop && !requestedTopicChange) {
       const explicitSourceRequest = isExplicitRagRequest(message);
       if (explicitSourceRequest) {
         const sourceState = getSourceGroundingState(tutorContext.sourceStatuses.map((source) => source.status));
@@ -88,6 +88,8 @@ export class ChatTutorService {
           goalId: tutorContext.goalId,
           missionId: tutorContext.topicId,
           microtargetId: tutorContext.topicId,
+          taxonomyPath: answeredQuestion.taxonomyPath,
+          errorPatterns: answeredQuestion.errorPatterns,
         });
 
         await persistAnswerEvaluation({
@@ -136,8 +138,9 @@ export class ChatTutorService {
       });
 
       const response = [
+        formatTutorStateLine(tutorContext, evaluation),
         evaluation?.feedback,
-        nextQuestion?.question,
+        nextQuestion ? `Diagnostic question:\n${nextQuestion.question}` : 'I could not find a mapped diagnostic question for this chapter yet.',
       ].filter(Boolean).join('\n\n');
       enqueueTextToStream(controller, encoder, response);
 
@@ -154,6 +157,10 @@ export class ChatTutorService {
         metadataPayload: {
           tutorMode: 'deterministic_template',
           chapterSlug: activeChapterSlug,
+          canonicalGoalSlug: tutorContext.canonicalGoalSlug,
+          activeGoal: tutorContext.rawGoal?.title ?? null,
+          topicSlug: tutorContext.topicId,
+          weakAreas,
           question: nextQuestion ?? null,
           evaluation,
           ragGrounded: Boolean(mindContext?.ragContext?.grounded),
@@ -201,9 +208,36 @@ export class ChatTutorService {
       metadataPayload: {
         tutorMode: 'provider',
         chapterSlug: tutorContext.chapterSlug,
+        canonicalGoalSlug: tutorContext.canonicalGoalSlug,
         sessionComplete: coverageTurns >= MIN_MIND_TUTOR_COVERAGE_TURNS,
         coverageTurns,
       },
     };
   }
+}
+
+function formatTutorStateLine(tutorContext: Awaited<ReturnType<typeof loadActiveLearningContext>>, evaluation: ReturnType<typeof evaluateAnswer> | null) {
+  const sourceState = tutorContext.sourceStatuses.length > 0
+    ? tutorContext.sourceStatuses.map(source => `${source.title ?? 'Source'}: ${source.status}`).join(', ')
+    : 'No uploaded source selected';
+  const weakArea = evaluation?.weakAreaCandidate?.displayPath?.join(' > ')
+    ?? tutorContext.recentWeakAreas[0]?.concept_tag
+    ?? 'None detected yet';
+  const nextAction = evaluation
+    ? evaluation.nextAction === 'advance'
+      ? 'Advance after one more check question.'
+      : evaluation.nextAction === 'repair'
+        ? 'Repair the missing points, then retry.'
+        : 'Repeat this concept with a smaller hint.'
+    : 'Answer the diagnostic question so I can update mastery.';
+
+  return [
+    `Tutor mode: Diagnose`,
+    `Active goal: ${tutorContext.rawGoal?.title ?? 'Selected goal'}`,
+    `Chapter: ${tutorContext.chapterId ?? tutorContext.chapterSlug ?? 'Unknown'}`,
+    `Topic: ${tutorContext.topicId ?? 'Next mapped topic'}`,
+    `Source: ${sourceState}`,
+    `Weak area: ${weakArea}`,
+    `Next action: ${nextAction}`,
+  ].join('\n');
 }

@@ -1,5 +1,6 @@
 import { ALL_NEET_CHAPTER_SEEDS } from '../topic-seeding/templates/neet';
 import type { QuestionSeed } from '../topic-seeding/types';
+import { toCanonicalChapterSlug } from '@/lib/goals/canonical-chapter';
 
 export type TutorDifficulty = 'easy' | 'medium' | 'hard';
 
@@ -10,6 +11,8 @@ export type DeterministicTutorQuestion = {
   conceptTags: string[];
   difficulty: TutorDifficulty;
   source: 'deterministic_template';
+  taxonomyPath?: QuestionSeed['taxonomyPath'];
+  errorPatterns?: QuestionSeed['errorPatterns'];
 };
 
 export type NextQuestionInput = {
@@ -34,10 +37,9 @@ function weakTags(input: NextQuestionInput['weakAreas']): string[] {
 }
 
 export function getAllQuestionsForChapter(chapterSlug: string): DeterministicTutorQuestion[] {
-  const normSlug = normalize(chapterSlug);
-  // Match exact slug or fallback to biotechnology check for backward compat
-  const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => normalize(c.chapterSlug) === normSlug) 
-    || (normSlug.includes('biotechnology') ? ALL_NEET_CHAPTER_SEEDS.find(c => c.chapterSlug === 'biotechnology') : null);
+  const canonicalSlug = toCanonicalChapterSlug(chapterSlug) ?? chapterSlug;
+  const normSlug = normalize(canonicalSlug);
+  const chapter = ALL_NEET_CHAPTER_SEEDS.find(c => normalize(c.chapterSlug) === normSlug);
     
   if (!chapter) return [];
 
@@ -53,6 +55,8 @@ export function getAllQuestionsForChapter(chapterSlug: string): DeterministicTut
             conceptTags: q.conceptTags,
             difficulty: q.difficulty,
             source: 'deterministic_template',
+            taxonomyPath: q.taxonomyPath,
+            errorPatterns: q.errorPatterns,
           });
         }
       }
@@ -123,4 +127,3 @@ export class QuestionEngine {
     };
   }
 }
-

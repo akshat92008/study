@@ -18,7 +18,7 @@ describe('private beta MVP surface', () => {
       expect(navText).toContain(label);
     }
 
-    for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/tutor', '/knowledge', '/revision', '/cognition']) {
+    for (const disabled of ['/planner', '/analytics', '/mistakes', '/mentor', '/revision', '/cognition']) {
       expect(navText).not.toContain(`route: '${disabled}'`);
       expect(navText).not.toContain(`href: '${disabled}'`);
       expect(navText).not.toContain(`href="${disabled}"`);

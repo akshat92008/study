@@ -69,7 +69,6 @@ const nextConfig: NextConfig = {
       { source: '/revision', destination: '/dashboard', permanent: false },
       { source: '/mistakes', destination: '/autopsy/deep', permanent: false },
       { source: '/mentor', destination: '/chat', permanent: false },
-      { source: '/tutor', destination: '/chat', permanent: false },
     ];
   },
 };

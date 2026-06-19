@@ -1,10 +1,13 @@
-import { disabledForMvp } from '@/lib/api/disabled';
+// sourceType: 'tutor_chat'
+export const maxDuration = 60;
 
-export async function GET() {
-  // sourceType: 'tutor_chat'
-  return disabledForMvp();
+import type { NextRequest } from 'next/server';
+import { GET as chatGET, POST as chatPOST } from '../chat/route';
+
+export async function GET(request: NextRequest) {
+  return chatGET(request);
 }
 
-export async function POST() {
-  return disabledForMvp();
+export async function POST(request: NextRequest) {
+  return chatPOST(request);
 }

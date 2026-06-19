@@ -36,7 +36,7 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
   const navItems = [
     { label: 'Dashboard', href: '/dashboard', icon: Home },
     { label: 'Knowledge Base', href: '/knowledge', icon: BookOpenCheck },
-    { label: 'Tutor', href: '/chat', icon: MessageCircle },
+    { label: 'Tutor', href: '/tutor', icon: MessageCircle },
     { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'autopsy_ui' },
     { label: 'GitHub Sync', href: '/developer/github', icon: Github },
     { label: 'Settings', href: '/settings', icon: Settings },
