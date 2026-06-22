@@ -70,13 +70,7 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   let board: string | null = explicitBoard || null;
   let confidence = explicitSubject || explicitDomain || explicitExam ? 0.82 : 0.2;
 
-  if (canonical.chapterSlug === 'neet-biology-biotechnology') {
-    subject = explicitSubject || 'biology';
-    domain = explicitDomain || 'medical_exam';
-    exam = explicitExam || 'neet';
-    grade = explicitGrade || 'class_12';
-    confidence = Math.max(confidence, canonical.confidence);
-  }
+  // Remove NEET-biology special case
 
   // 1. Check for specific exams in the title
   const examEntry = Object.entries(EXAM_MAP).find(([key]) =>
@@ -110,17 +104,7 @@ export function inferGoalDomain(rawGoal: string, explicit: GoalDomainInput = {})
   ];
   const isGeneric = genericTerms.some(term => normalizedGoal === term || normalizedGoal === `learn ${term}` || normalizedGoal === `study ${term}`);
 
-  if (!exam && /\bneet\b/.test(normalizedGoal)) {
-    exam = 'neet';
-    domain = domain ?? 'medical_exam';
-    confidence = Math.max(confidence, 0.42);
-  }
-
-  if (!exam && /\bjee\b/.test(normalizedGoal)) {
-    exam = 'jee';
-    domain = domain ?? 'engineering_exam';
-    confidence = Math.max(confidence, 0.42);
-  }
+  // Remove hardcoded neet/jee fallbacks
 
   const gradeMatch = normalizedGoal.match(/\b(?:class|grade|std|standard)\s*(\d{1,2})\b/);
   if (!grade && gradeMatch) {

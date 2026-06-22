@@ -35,6 +35,11 @@ export async function gatherChatContext({
   activeGoalId,
   sessionId,
   selectedMaterialIds,
+  tutorSurface,
+  exam,
+  subject,
+  chapterSlug,
+  topicSlug,
 }: {
   supabase: any;
   userId: string;
@@ -45,6 +50,11 @@ export async function gatherChatContext({
   activeGoalId?: string;
   sessionId: string;
   selectedMaterialIds?: string[];
+  tutorSurface?: boolean;
+  exam?: string;
+  subject?: string;
+  chapterSlug?: string;
+  topicSlug?: string;
 }) {
   const profilePromise = supabase.from('profiles').select('exam_type').eq('id', userId).maybeSingle();
   const explicitSourceRequest = isExplicitRagRequest(message || '');
@@ -207,7 +217,68 @@ export async function gatherChatContext({
 
   let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
 
-const RAG_GROUNDING_RULES = `
+  if (tutorSurface) {
+    let resolvedExam = exam || 'NEET';
+    let resolvedSubject = subject || activeGoal?.subject || 'Unknown';
+    let resolvedChapter = chapterSlug || activeGoal?.chapter || 'Unknown';
+    let resolvedTopic = topicSlug || 'General';
+    let resolvedMicrotarget = 'General';
+
+    if (activeGoalId && (!subject || !chapterSlug || !topicSlug)) {
+      const { data: activeTopics } = await supabase
+        .from('seeded_topics')
+        .select('subject, chapter, topic, microtarget, status')
+        .eq('user_id', userId)
+        .eq('goal_id', activeGoalId)
+        .eq('status', 'active')
+        .limit(1);
+
+      if (activeTopics && activeTopics[0]) {
+        resolvedSubject = resolvedSubject || activeTopics[0].subject;
+        resolvedChapter = resolvedChapter || activeTopics[0].chapter;
+        resolvedTopic = resolvedTopic || activeTopics[0].topic;
+        resolvedMicrotarget = activeTopics[0].microtarget;
+      }
+    }
+
+    const { data: recentAttempts } = await supabase
+      .from('practice_attempts')
+      .select('is_correct, practice_items(question, concept_name)')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    const weakConceptsList = mindContext?.weakConcepts || [];
+
+    const tutorContextBlock = `
+# TUTOR FOCUS CONTEXT
+You are the AI Tutor in a high-stakes competitive exam preparation system (NEET).
+You must tailor your guidance specifically to the current study context.
+
+- Exam: ${resolvedExam}
+- Goal ID: ${activeGoalId || 'None'}
+- Active Chapter: ${resolvedChapter}
+- Active Topic: ${resolvedTopic}
+- Active Microtarget: ${resolvedMicrotarget}
+- Subject: ${resolvedSubject}
+
+## LEARNER'S WEAK AREAS
+${weakConceptsList.length > 0
+  ? weakConceptsList.map((c: any) => `- ${c.name} (Subject: ${c.subject}, Chapter: ${c.chapter}, Mastery: ${c.mastery})`).join('\n')
+  : 'None identified yet.'}
+
+## RECENT PRACTICE ATTEMPTS
+${recentAttempts && recentAttempts.length > 0
+  ? recentAttempts.map((a: any) => `- Question: "${a.practice_items?.question || 'Practice Question'}" | Concept: "${a.practice_items?.concept_name || 'N/A'}" | Result: ${a.is_correct ? 'CORRECT' : 'WRONG'}`).join('\n')
+  : 'No recent practice attempts.'}
+
+Be topic-aware. Focus explanations, analogies, and questions on the Active Topic and address the learner's weak areas. Keep responses concise, supportive, and extremely rigorous.
+`;
+
+    systemPrompt += `\n\n${tutorContextBlock}`;
+  }
+
+  const RAG_GROUNDING_RULES = `
 # CITING INSTRUCTIONS
 
 When referencing information from the source or its insights, you MUST ALWAYS include citations using the document IDs. This helps users track the specific content you're referencing.
@@ -227,11 +298,7 @@ When referencing information from the source or its insights, you MUST ALWAYS in
 `;
 
   if (mindRag?.ragPromptBlock) {
-    systemPrompt += `\
-\
-${RAG_GROUNDING_RULES}\
-\
-${mindRag.ragPromptBlock}`;
+    systemPrompt += `\n\n${RAG_GROUNDING_RULES}\n\n${mindRag.ragPromptBlock}`;
     mindContext.ragContext = mindRag.ragContext;
     mindContext.ragChunks = mindRag.ragContext?.chunks || [];
   }

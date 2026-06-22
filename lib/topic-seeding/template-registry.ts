@@ -32,9 +32,7 @@ export function getSeedForGoal(goalText: string, activeGoalContext?: string | nu
     const seed = getNeetSeedBySlug(unit.chapterSlug);
     if (seed) {
       let targetMicrotargetSlug: string | undefined = undefined;
-      const targetTopicSlugs = unit.chapterSlug.startsWith('human-physiology-')
-        ? []
-        : resolveFocusedTopicSlugsFromText(goalText, unit.chapterSlug);
+      const targetTopicSlugs = resolveFocusedTopicSlugsFromText(goalText, unit.chapterSlug);
       const normalizedGoal = normalizeText(goalText);
       
       // Try to find a matching microtarget based on the goal text

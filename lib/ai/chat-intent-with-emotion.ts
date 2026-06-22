@@ -65,7 +65,7 @@ export async function classifyMessageCombined(
     };
   }
 
-  const prompt = `Student is studying: ${examType || 'NEET/JEE'}
+  const prompt = `Student is studying: ${examType || 'General Study'}
   Recent context: ${conversationContext ? conversationContext.slice(0, 200) : 'None'}
 
   Current message: "${message.slice(0, 400)}"

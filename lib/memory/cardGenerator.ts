@@ -8,7 +8,7 @@ export function generateMemoryCard(signal: LearningSignal) {
       back: [
         signal.misconception ? `Misconception: ${signal.misconception}` : null,
         signal.correction ? `Correction: ${signal.correction}` : null,
-        'Recall the correct mechanism, then apply it to one NEET-style example.',
+        'Recall the correct mechanism, then apply it to a clear, relevant example.',
       ].filter(Boolean).join('\n'),
     };
   }

@@ -846,6 +846,13 @@ function tokenSet(value: string): Set<string> {
   );
 }
 
+function hasWordOrPhrase(text: string, phrase: string): boolean {
+  if (!phrase) return false;
+  const escaped = phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const regex = new RegExp(`(?:^|\\s)${escaped}(?:$|\\s)`, 'i');
+  return regex.test(text);
+}
+
 export function resolveTopicSkeletonForText(text: string, chapterSlug: string): TopicSkeletonEntry | null {
   const skeleton = getChapterSkeleton(chapterSlug);
   if (!skeleton) return null;
@@ -862,7 +869,7 @@ export function resolveTopicSkeletonForText(text: string, chapterSlug: string): 
       const normalizedCandidate = normalizeSkeletonText(candidate);
       if (!normalizedCandidate) continue;
       if (normalized === normalizedCandidate) score = Math.max(score, 120);
-      else if (normalized.includes(normalizedCandidate)) score = Math.max(score, 90);
+      else if (hasWordOrPhrase(normalized, normalizedCandidate)) score = Math.max(score, 90);
       else if (normalizedCandidate.includes(normalized) && normalized.length >= 5) score = Math.max(score, 65);
 
       const candidateTokens = tokenSet(normalizedCandidate);
@@ -886,7 +893,7 @@ export function resolveFocusedTopicSlugsFromText(text: string, chapterSlug: stri
   if (!skeleton) return [];
 
   const normalized = normalizeSkeletonText(text);
-  if (chapterSlug === 'human-physiology') {
+  if (chapterSlug.startsWith('human-physiology')) {
     const groups: Array<{ pattern: RegExp; slugs: string[] }> = [
       {
         pattern: /\b(circulat\w*|body fluids?|blood|plasma|formed elements?|rbc|wbc|platelets?|heart|cardiac|ecg|lymph|coagulat\w*|hypertension|coronary|angina)\b/i,
@@ -947,9 +954,9 @@ export function resolveTopicsFromText(
     if (!skeleton) return null;
     
     const matchingTopics = skeleton.topics.filter(t => {
-      if (normalized.includes(t.slug.replace(/-/g, ' '))) return true;
-      if (normalized.includes(t.displayName.toLowerCase())) return true;
-      return t.aliases.some(a => normalized.includes(a.toLowerCase()));
+      if (hasWordOrPhrase(normalized, t.slug.replace(/-/g, ' '))) return true;
+      if (hasWordOrPhrase(normalized, t.displayName)) return true;
+      return t.aliases.some(a => hasWordOrPhrase(normalized, a));
     });
     
     return matchingTopics.length > 0 
@@ -962,9 +969,9 @@ export function resolveTopicsFromText(
     // Check chapter-level aliases (this is the main "circulatory system" → "human-physiology" case)
     // We don't have chapter aliases here — they're in the syllabus file. This function is for topic-level resolution.
     const matchingTopics = skeleton.topics.filter(t => {
-      if (normalized.includes(t.slug.replace(/-/g, ' '))) return true;
-      if (normalized.includes(t.displayName.toLowerCase())) return true;
-      return t.aliases.some(a => normalized.includes(a.toLowerCase()));
+      if (hasWordOrPhrase(normalized, t.slug.replace(/-/g, ' '))) return true;
+      if (hasWordOrPhrase(normalized, t.displayName)) return true;
+      return t.aliases.some(a => hasWordOrPhrase(normalized, a));
     });
     
     if (matchingTopics.length >= 2) { // Need at least 2 topic matches to avoid false positives

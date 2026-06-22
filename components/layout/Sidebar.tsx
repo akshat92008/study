@@ -38,7 +38,6 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
     { label: 'Knowledge Base', href: '/knowledge', icon: BookOpenCheck },
     { label: 'Tutor', href: '/tutor', icon: MessageCircle },
     { label: 'Mistake Review', href: '/autopsy/deep', icon: Activity, feature: 'autopsy_ui' },
-    { label: 'GitHub Sync', href: '/developer/github', icon: Github },
     { label: 'Settings', href: '/settings', icon: Settings },
   ].filter(item => !item.feature || isFeatureEnabled(item.feature as any));
 
@@ -323,11 +322,11 @@ export default function Sidebar({ userName, examType }: SidebarProps) {
               </span>
             )}
             {recentChats.map((session: any) => {
-              const isActive = pathname === `/chat/sessions/${session.id}`;
+              const isActive = false; // exact match needs search params
               return (
                 <Link
                   key={session.id}
-                  href={`/chat/sessions/${session.id}`}
+                  href={`/chat?sessionId=${session.id}`}
                   className="nav-link-base"
                   style={{
                     display: 'flex',

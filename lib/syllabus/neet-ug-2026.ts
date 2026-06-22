@@ -152,12 +152,10 @@ export function findNeetUnitByGoalText(goalText: string, activeSubjectContext?: 
 
   // Disambiguation
   if (normalizedGoal.includes('respiration')) {
-    if (normalizedGoal.includes('plant') || activeSubjectContext === 'Biology' && bestMatch?.unitTitle === 'Plant Physiology') {
+    if (normalizedGoal.includes('plant')) {
         return NEET_UG_2026_UNITS.find(u => u.unitTitle === 'Plant Physiology') || null;
     }
-    if (normalizedGoal.includes('human') || normalizedGoal.includes('breathing')) {
-        return NEET_UG_2026_UNITS.find(u => u.unitTitle === 'Human Physiology') || null;
-    }
+    return NEET_UG_2026_UNITS.find(u => u.unitTitle === 'Human Physiology: Breathing and Exchange of Gases') || null;
   }
 
   return bestScore >= 20 ? bestMatch : null;

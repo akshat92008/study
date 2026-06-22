@@ -369,8 +369,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
     }).catch(() => ({ dueRetests: [], activeMistakes: [] }));
 
     let firstSeededTopicQuery = supabase
-      .from('goal_curriculum_nodes')
-      .select('id, subject, chapter, title, description, order_index, status')
+      .from('seeded_topics')
+      .select('id, subject, chapter, topic, microtarget, order_index, status')
       .eq('user_id', user.id)
       .in('status', ['active', 'not_started', 'in_progress'])
       .order('order_index', { ascending: true })
@@ -497,8 +497,8 @@ export async function GET(request?: Request): Promise<NextResponse> {
         ? {
             subject: (firstSeededTopicRes.data as any[])[0].subject,
             chapter: (firstSeededTopicRes.data as any[])[0].chapter,
-            topic: (firstSeededTopicRes.data as any[])[0].title,
-            microtarget: (firstSeededTopicRes.data as any[])[0].description,
+            topic: (firstSeededTopicRes.data as any[])[0].topic,
+            microtarget: (firstSeededTopicRes.data as any[])[0].microtarget,
           }
         : null,
       now: generatedAt,

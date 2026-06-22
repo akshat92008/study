@@ -137,7 +137,7 @@ function buildPlanningPrompt(input: ModelPlannerInput): string {
     ? `${input.sourceChunks.length} source chunk(s) retrieved`
     : 'No source chunks retrieved';
 
-  return `You are a learning agent planning the next actions for a student in a medical exam preparation platform (Cognition OS).
+  return `You are a learning agent planning the next actions for a student in a personalized learning platform (Cognition OS).
 
 ## Current Context
 - Channel: ${channel}

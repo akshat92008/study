@@ -121,6 +121,7 @@ export interface MINDContext {
     recentActions: Array<{ actionType: string; status: string; approvalStatus: string; createdAt: string; reason?: string | null }>;
     pendingApprovalCount: number;
   };
+  weeklySynthesis?: string | null;
   hermesMemories?: Array<{
     concept: string;
     pattern: string;
@@ -353,6 +354,10 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
         const date = item.lastSeenAt ? new Date(item.lastSeenAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'recently';
         return `- ${item.subject} / ${item.chapter} / ${item.conceptName}: ${item.outcome} (${item.source}, ${date})`;
       }).join('\n')}\nUse this only when relevant, e.g. "You saw this before on 12 May and the gap was...".\n`
+    : '';
+
+  const weeklySynthesisSection = (!isGeneralChat && ctx.weeklySynthesis)
+    ? `\nWEEKLY PROGRESS NARRATIVE:\n${ctx.weeklySynthesis}\nUse this context to frame the learner's journey over the past week.\n`
     : '';
 
   const cognitiveLoadSection = ctx.cognitiveLoad?.level === 'high'
@@ -614,6 +619,7 @@ ${seededTopicContext}
 ${memoriesSection}
 ${hermesMemoriesSection}
 ${conceptHistorySection}
+${weeklySynthesisSection}
 ${outcomeSection}
 ${ragSection}
 ${behaviouralSection}

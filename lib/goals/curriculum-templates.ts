@@ -130,6 +130,50 @@ export const STARTER_TEMPLATES: CurriculumTemplate[] = [
       { orderIndex: 4, title: "Basic Sentence Structure (Subject-Verb-Object)", chapter: "Grammar", source: "template", estimatedMinutes: 60 },
       { orderIndex: 5, title: "Common Verbs and Simple Present Tense", chapter: "Grammar", source: "template", estimatedMinutes: 60 }
     ]
+  },
+  {
+    id: "template_aws_cloud_practitioner",
+    title: "AWS Cloud Practitioner",
+    match: {
+      subject: "aws",
+      domain: "certification"
+    },
+    nodes: [
+      { orderIndex: 1, title: "Cloud Concepts", chapter: "Cloud Concepts", source: "template", estimatedMinutes: 90, subject: "aws" },
+      { orderIndex: 2, title: "Security and Compliance", chapter: "Security", source: "template", estimatedMinutes: 120, subject: "aws" },
+      { orderIndex: 3, title: "Cloud Technology and Services", chapter: "Technology", source: "template", estimatedMinutes: 180, subject: "aws" },
+      { orderIndex: 4, title: "Billing, Pricing, and Support", chapter: "Billing", source: "template", estimatedMinutes: 60, subject: "aws" }
+    ]
+  },
+  {
+    id: "template_sat_math",
+    title: "SAT Math",
+    match: {
+      subject: "math",
+      exam: "sat",
+      domain: "standardized_exam"
+    },
+    nodes: [
+      { orderIndex: 1, title: "Heart of Algebra", chapter: "Algebra", source: "template", estimatedMinutes: 120, subject: "math" },
+      { orderIndex: 2, title: "Problem Solving and Data Analysis", chapter: "Data Analysis", source: "template", estimatedMinutes: 120, subject: "math" },
+      { orderIndex: 3, title: "Passport to Advanced Math", chapter: "Advanced Math", source: "template", estimatedMinutes: 150, subject: "math" },
+      { orderIndex: 4, title: "Additional Topics in Math", chapter: "Geometry and Trigonometry", source: "template", estimatedMinutes: 90, subject: "math" }
+    ]
+  },
+  {
+    id: "template_gre_vocabulary",
+    title: "GRE Vocabulary",
+    match: {
+      subject: "vocabulary",
+      exam: "gre",
+      domain: "standardized_exam"
+    },
+    nodes: [
+      { orderIndex: 1, title: "High-Frequency Words 1", chapter: "Word Lists", source: "template", estimatedMinutes: 60, subject: "vocabulary" },
+      { orderIndex: 2, title: "High-Frequency Words 2", chapter: "Word Lists", source: "template", estimatedMinutes: 60, subject: "vocabulary" },
+      { orderIndex: 3, title: "Roots, Prefixes, and Suffixes", chapter: "Etymology", source: "template", estimatedMinutes: 90, subject: "vocabulary" },
+      { orderIndex: 4, title: "Words in Context", chapter: "Reading Comprehension", source: "template", estimatedMinutes: 120, subject: "vocabulary" }
+    ]
   }
 ];
 

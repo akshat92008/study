@@ -70,6 +70,7 @@ export interface LearnerStateSnapshot {
     createdAt?: string;
   }>;
   recentTopics: string[];
+  weeklySynthesis?: string | null;
   lastUpdated: string;
 }
 
@@ -169,8 +170,8 @@ export async function getLearnerStateSnapshot(
   if (options.goalId) lastAutopsyQuery = lastAutopsyQuery.eq('goal_id', options.goalId);
 
   let seededTopicsQuery = supabase
-    .from('goal_curriculum_nodes')
-    .select('subject, chapter, title, description, order_index, status')
+    .from('seeded_topics')
+    .select('subject, chapter, topic, microtarget, order_index, status')
     .eq('user_id', userId)
     .in('status', ['active', 'not_started', 'in_progress'])
     .order('order_index', { ascending: true })
@@ -194,6 +195,7 @@ export async function getLearnerStateSnapshot(
     seededTopicsRes,
     hermesMemoriesRes,
     repairSignals,
+    weeklySynthesisRes,
   ] = await Promise.all([
     supabase
       .from('profiles')
@@ -254,6 +256,14 @@ export async function getLearnerStateSnapshot(
       .limit(5),
 
     getRepairSignals(supabase, { userId, goalId: options.goalId, limit: 5 }),
+
+    supabase
+      .from('weekly_syntheses')
+      .select('narrative_text')
+      .eq('user_id', userId)
+      .order('week_start_date', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
   ]);
 
   const profile = profileRes.data;
@@ -337,8 +347,8 @@ export async function getLearnerStateSnapshot(
     seededTopics: ((seededTopicsRes.data as any) || []).map((t: any) => ({
       subject: t.subject,
       chapter: t.chapter,
-      topic: t.title,
-      microtarget: t.description,
+      topic: t.topic,
+      microtarget: t.microtarget,
       order_index: t.order_index,
       status: t.status,
     })),
@@ -373,6 +383,7 @@ export async function getLearnerStateSnapshot(
     recentTopics: sessions
       .map((session: any) => session.chapter || session.notes?.match(/studied\s+(.+?)(?:\s+\(|\.)/i)?.[1])
       .filter(Boolean),
+    weeklySynthesis: weeklySynthesisRes?.data?.narrative_text || null,
     lastUpdated: now,
   };
 }

@@ -263,7 +263,7 @@ export default function DashboardPage() {
                 </button>
 
                 <button
-                  onClick={() => router.push('/chat')}
+                  onClick={() => router.push('/tutor')}
                   style={{ textAlign: 'left', cursor: 'pointer', flex: '1 1 200px', background: 'var(--accent-cyan-dim)', padding: 'var(--sp-4)', borderRadius: 'var(--radius-md)', border: `1px solid var(--accent-cyan)`, transition: 'all 0.2s' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)' }}>

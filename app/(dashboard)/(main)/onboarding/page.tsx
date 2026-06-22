@@ -3,15 +3,13 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import {
   generateDay1Plan,
-  seedInitialCards,
-  seedOnboardingKnowledgeMap,
 } from '@/lib/actions/onboarding';
 import { logger } from '@/lib/utils/logger';
 import {
   completeOnboardingForUser,
-  sanitizeSubjectList,
 } from '@/lib/services/onboarding.service';
 import SubmitButton from '@/components/onboarding/SubmitButton';
+import { NEET_UG_2026_UNITS } from '@/lib/syllabus/neet-ug-2026';
 
 async function completeOnboarding(formData: FormData) {
   'use server';
@@ -21,21 +19,24 @@ async function completeOnboarding(formData: FormData) {
   if (!user) redirect('/login');
 
   const fullName = String(formData.get('fullName') || '').trim();
-  const goalTitle = String(formData.get('goalTitle') || '').trim();
-  const goalType = String(formData.get('goalType') || 'General Study').trim();
+  const startingChapter = String(formData.get('startingChapter') || '').trim();
+  const [subject, chapterSlug, unitTitle] = startingChapter.split(':');
+
+  const goalType = 'NEET';
+  const goalTitle = `Master ${unitTitle}`;
   const targetDate = String(formData.get('targetDate') || '').trim();
   const targetScore = Number(formData.get('targetScore') || 0);
   const dailyHours = Number(formData.get('dailyHours') || 4);
   const currentLevel = String(formData.get('currentLevel') || 'intermediate').trim();
   const timezone = String(formData.get('timezone') || '').trim();
-  const subjects = sanitizeSubjectList(String(formData.get('subjects') || ''));
+  const subjects = [subject];
 
   const completion = await completeOnboardingForUser({
     supabase,
     user,
     input: {
       fullName,
-      goalTitle: goalTitle || goalType,
+      goalTitle,
       goalType,
       targetDate: targetDate || null,
       targetScore: Number.isFinite(targetScore) && targetScore > 0 ? targetScore : null,
@@ -46,18 +47,10 @@ async function completeOnboarding(formData: FormData) {
     },
   });
 
-  const seedResult = await seedOnboardingKnowledgeMap(user.id, goalType, subjects)
-    .catch((err) => {
-      logger.warn('Onboarding ATLAS seed failed', { userId: user.id, err });
-      return { skeletonCreated: 0, expansionQueued: 0 };
-    });
+  const skeletonCreated = completion.topicSeeding?.seeded || 0;
 
   await generateDay1Plan(user.id, goalType).catch((err) => {
     logger.warn('Onboarding day-1 plan generation failed', { userId: user.id, err });
-  });
-
-  await seedInitialCards(user.id, { maxConcepts: 3, cardsPerConcept: 2 }).catch((err) => {
-    logger.warn('Onboarding starter card generation failed', { userId: user.id, err });
   });
 
   const cookieStore = await cookies();
@@ -68,7 +61,7 @@ async function completeOnboarding(formData: FormData) {
     path: '/',
   });
 
-  redirect(`/dashboard?magic=true&firstTime=true&goalId=${completion.goal.id}&seeded=${seedResult.skeletonCreated}`);
+  redirect(`/dashboard?magic=true&firstTime=true&goalId=${completion.goal.id}&seeded=${skeletonCreated}`);
 }
 
 export default async function OnboardingPage() {
@@ -78,7 +71,7 @@ export default async function OnboardingPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('onboarding_complete, full_name, exam_type, target_date, target_score, daily_hours_available, subjects, current_level, timezone')
+    .select('onboarding_complete, full_name, exam_type, target_date, target_score, daily_hours_available, current_level, timezone')
     .eq('id', user.id)
     .maybeSingle();
 
@@ -86,31 +79,15 @@ export default async function OnboardingPage() {
     redirect('/dashboard');
   }
 
-  const { data: existingGoal } = await supabase
-    .from('learning_goals')
-    .select('title')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .order('last_active_at', { ascending: false, nullsFirst: false })
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
-  const existingGoalType = profile?.exam_type || '';
-  const existingSubjects = Array.isArray(profile?.subjects) && profile.subjects.length
-    ? profile.subjects.join(', ')
-    : '';
-
   return (
     <div style={{ padding: 'var(--sp-8)', maxWidth: 640, margin: '0 auto', width: '100%' }}>
-      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Give Cognition OS Something To Protect</h1>
+      <h1 style={{ fontSize: 'var(--fs-2xl)', marginBottom: 'var(--sp-2)' }}>Welcome to Cognition OS</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--sp-6)' }}>
-        Start with a goal, then paste wrong answers, upload mistakes, or take a diagnostic so tomorrow's plan protects marks you might lose again.
+        Configure your NEET preparation profile and select your starting chapter.
       </p>
 
       <form action={completeOnboarding} style={{ display: 'grid', gap: 'var(--sp-4)' }}>
 
-        {/* Name */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
           <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Your Name</span>
           <input
@@ -123,59 +100,39 @@ export default async function OnboardingPage() {
         </label>
 
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Learning Goal</span>
-          <input
-            name="goalTitle"
-            defaultValue={existingGoal?.title || ''}
-            required
-            placeholder="e.g. Pass the SAT, learn Python for data analysis, master Organic Chemistry"
-            style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
-          />
-        </label>
-
-        {/* Goal Type / Preset — universal dropdown */}
-        <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>What are you preparing for or learning?</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Starting NEET Chapter</span>
           <select
-            name="goalType"
-            defaultValue={existingGoalType || ''}
+            name="startingChapter"
             required
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           >
-            <option value="" disabled>Select your exam or goal...</option>
-            <optgroup label="Competitive Exams">
-              <option value="NEET">NEET UG (Medical Entrance)</option>
-              <option value="JEE Main">JEE Main (Engineering)</option>
-              <option value="JEE Advanced">JEE Advanced</option>
-              <option value="UPSC">UPSC Civil Services</option>
-              <option value="SAT">SAT</option>
-              <option value="MCAT">MCAT</option>
-              <option value="USMLE">USMLE</option>
-              <option value="Bar Exam">Bar Exam</option>
-              <option value="GMAT">GMAT</option>
-              <option value="GRE">GRE</option>
-              <option value="Other Competitive Exam">Other Competitive Exam</option>
+            <option value="" disabled selected>Select a chapter...</option>
+            <optgroup label="Biology">
+              {NEET_UG_2026_UNITS.filter(u => u.subject === 'Biology').map(u => (
+                <option key={u.chapterSlug} value={`Biology:${u.chapterSlug}:${u.unitTitle}`}>
+                  {u.unitTitle}
+                </option>
+              ))}
             </optgroup>
-            <optgroup label="Academic">
-              <option value="School Subject">School Subject / Board Exams</option>
-              <option value="College Course">College / University Course</option>
+            <optgroup label="Physics">
+              {NEET_UG_2026_UNITS.filter(u => u.subject === 'Physics').map(u => (
+                <option key={u.chapterSlug} value={`Physics:${u.chapterSlug}:${u.unitTitle}`}>
+                  {u.unitTitle}
+                </option>
+              ))}
             </optgroup>
-            <optgroup label="Skills">
-              <option value="Coding">Coding / Programming</option>
-              <option value="Data Science">Data Science / ML</option>
-              <option value="Language Learning">Language Learning</option>
-              <option value="Finance">Finance / CFA / CPA</option>
-              <option value="Professional Certification">Professional Certification</option>
-            </optgroup>
-            <optgroup label="Custom">
-              <option value="General Study">Custom / General Study</option>
+            <optgroup label="Chemistry">
+              {NEET_UG_2026_UNITS.filter(u => u.subject === 'Chemistry').map(u => (
+                <option key={u.chapterSlug} value={`Chemistry:${u.chapterSlug}:${u.unitTitle}`}>
+                  {u.unitTitle}
+                </option>
+              ))}
             </optgroup>
           </select>
         </label>
 
-        {/* Target Date */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Date (exam, deadline, or goal date)</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Exam Date</span>
           <input
             name="targetDate"
             type="date"
@@ -184,22 +141,19 @@ export default async function OnboardingPage() {
           />
         </label>
 
-        {/* Target Score — universal, optional */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
-            Target Score / Outcome <span style={{ opacity: 0.6 }}>(optional)</span>
-          </span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Target Score (out of 720)</span>
           <input
             name="targetScore"
             type="number"
             min="0"
-            placeholder="e.g. 680 for NEET, 90 for GRE, or leave blank"
+            max="720"
+            placeholder="e.g. 680"
             defaultValue={profile?.target_score || ''}
             style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
           />
         </label>
 
-        {/* Daily Hours */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
           <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Daily Study Hours Available</span>
           <input
@@ -214,22 +168,8 @@ export default async function OnboardingPage() {
           />
         </label>
 
-        {/* Subjects / Topics — not NEET-hardcoded */}
         <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>
-            Subjects / Topics <span style={{ opacity: 0.6 }}>(comma-separated, optional)</span>
-          </span>
-          <input
-            name="subjects"
-            defaultValue={existingSubjects}
-            placeholder="e.g. Physics, Chemistry, Biology  or  Calculus, Algorithms  or  leave blank"
-            style={{ padding: '12px', borderRadius: 8, border: '1px solid var(--border-default)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
-          />
-        </label>
-
-        {/* Current Level */}
-        <label style={{ display: 'grid', gap: 'var(--sp-2)' }}>
-          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Current Level</span>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)' }}>Current level of preparation</span>
           <select
             name="currentLevel"
             defaultValue={profile?.current_level || 'intermediate'}

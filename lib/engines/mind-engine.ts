@@ -126,6 +126,7 @@ export async function getMINDContext(userId: string, message?: string, topic?: s
       outcomeAnalytics: outcomeSummary,
       agentActivity,
       hermesMemories: learnerState.hermesMemories,
+      weeklySynthesis: learnerState.weeklySynthesis,
     };
     logger.info('[MIND] context build completed', {
       userId,
