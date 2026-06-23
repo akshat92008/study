@@ -1,0 +1,15 @@
+name: Cron - Cleanup
+on:
+  schedule:
+    - cron: "0 3 * * *" # Runs at 03:00 UTC every day
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cleanup
+        run: |
+          curl -X POST "${{ secrets.APP_URL }}/api/cron/cleanup" \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+          --fail
