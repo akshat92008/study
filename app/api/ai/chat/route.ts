@@ -161,10 +161,15 @@ export async function POST(req: NextRequest) {
     const isSimpleMessage = cleanMsg === 'hi' || cleanMsg === 'hello' || cleanMsg === 'hey' || cleanMsg === 'ok' || cleanMsg === 'thanks' || cleanMsg === 'thank you';
     const { selectedMaterialIds } = parsedRequest;
     
-    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, selectedMaterialIds, tutorSurface, exam, subject, chapterSlug, topicSlug, currentMaterialId, currentTopic, studyRoomIntent, studyRoomMode);
+    const effectiveMaterialIds = Array.from(new Set([
+      currentMaterialId,
+      ...(selectedMaterialIds ?? [])
+    ].filter(Boolean))) as string[];
+
+    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, effectiveMaterialIds, tutorSurface, exam, subject, chapterSlug, topicSlug, currentMaterialId, currentTopic, studyRoomIntent, studyRoomMode);
     const { profilePreview, detectedIntent, emotion, mindContext, systemPrompt } = contextResult;
     const effectiveIntent = tutorSurface
-      ? { ...detectedIntent, intent: 'TUTOR_SESSION', topic: detectedIntent.topic ?? activeGoal?.title ?? undefined }
+      ? { ...detectedIntent, intent: 'TUTOR_SESSION', topic: detectedIntent.topic ?? activeGoal?.title ?? undefined, currentMaterialId, studyRoomIntent, currentTopic, selectedMaterialIds }
       : detectedIntent;
     
     // 6. Load Specialized Contexts

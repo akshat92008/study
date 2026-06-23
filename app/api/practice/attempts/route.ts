@@ -254,7 +254,7 @@ export async function POST(req: NextRequest) {
 
     const goalResolution = await resolveActiveGoalForUser(supabase, user.id, set.goal_id ?? goalId ?? null);
     const resolvedGoalId = goalResolution.goalId;
-    if (!resolvedGoalId) {
+    if (!resolvedGoalId && !set.message_id) {
       return NextResponse.json({
         ok: false,
         code: 'ACTIVE_GOAL_MISSING',

@@ -103,20 +103,41 @@ export async function handleMainStreaming({
           const sanitizedHistory = sanitizeHistoryForPrompt(recentHistory, getMaxRecentMessages(), message || '');
           void maybeUpdateSessionSummary(userId, sessionId, recentHistory).catch(() => {});
 
-          const tutorResult = await ChatTutorService.handleTutorSession(
-            await supabaseObj,
-            userId,
-            intent,
-            mindContext,
-            systemPrompt,
-            sanitizedHistory,
-            message || '',
-            sessionTurnsCount,
-            bufferedController,
-            encoder
-          );
-          fullResponse = tutorResult.fullResponse;
-          metadataPayload = tutorResult.metadataPayload;
+          if (intent.currentMaterialId || (intent.selectedMaterialIds && intent.selectedMaterialIds.length > 0)) {
+            const { StudyRoomTutorService } = await import('@/lib/study-room/study-room.service');
+            const studyRoomResult = await StudyRoomTutorService.handleMaterialSession({
+              supabase: await supabaseObj,
+              userId,
+              sessionId,
+              currentMaterialId: intent.currentMaterialId,
+              selectedMaterialIds: intent.selectedMaterialIds,
+              currentTopic: intent.currentTopic,
+              studyRoomIntent: intent.studyRoomIntent,
+              message: message || '',
+              recentHistory: sanitizedHistory,
+              systemPrompt,
+              mindContext,
+              controller: bufferedController,
+              encoder
+            });
+            fullResponse = studyRoomResult.fullResponse;
+            metadataPayload = studyRoomResult.metadataPayload;
+          } else {
+            const tutorResult = await ChatTutorService.handleTutorSession(
+              await supabaseObj,
+              userId,
+              intent,
+              mindContext,
+              systemPrompt,
+              sanitizedHistory,
+              message || '',
+              sessionTurnsCount,
+              bufferedController,
+              encoder
+            );
+            fullResponse = tutorResult.fullResponse;
+            metadataPayload = tutorResult.metadataPayload;
+          }
         } else if (intent.intent === 'REPLAN') {
           const replanResult = await ChatPlannerService.handleReplan(
             await supabaseObj, userId, intent.action || 'reduce_tasks', bufferedController, encoder
@@ -172,6 +193,7 @@ export async function handleMainStreaming({
           rag_chunk_count: mindContext?.ragContext?.chunks?.length || 0,
           rag_material_ids: mindContext?.ragContext?.materialIds || [],
           rag_chunk_ids: mindContext?.ragContext?.chunkIds || [],
+          sourcesUsed: mindContext?.ragContext?.sourcesUsed || [],
         };
         metadataPayload = { ...(metadataPayload || {}), contextTrace };
 

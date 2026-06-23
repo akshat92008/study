@@ -4,6 +4,7 @@ import { EpisodicMemoryService } from '@/lib/services/episodic-memory.service';
 import { getMINDContext } from '@/lib/engines/mind-engine';
 import { buildMindRagContext } from '@/lib/rag/mind-rag';
 import { getMINDSystemPrompt } from '@/lib/ai/prompts/mind-prompt';
+import { getStudyRoomSystemPrompt } from '@/lib/ai/prompts/study-room-prompt';
 import { classifyMessageCombined } from '@/lib/ai/chat-intent-with-emotion';
 import { logger } from '@/lib/utils/logger';
 import { getRepairSignals } from '@/lib/services/repair-loop.service';
@@ -162,12 +163,16 @@ export async function gatherChatContext({
         };
       });
 
+  const retrievalQuery = tutorSurface && currentMaterialId
+    ? [currentTopic, message, studyRoomIntent].filter(Boolean).join('\n')
+    : message || '';
+
   const mindRagPromise = isSimpleMessage
     ? Promise.resolve({ ragContext: null, ragPromptBlock: '' })
     : withTimeout(
         buildMindRagContext({
           userId,
-          message: message || '',
+          message: retrievalQuery,
           subject: detectedIntent.subject || undefined,
           chapter: detectedIntent.topic || undefined,
           goalId: activeGoalId,
@@ -223,7 +228,9 @@ export async function gatherChatContext({
     ...semanticMemories,
   ].slice(0, 4);
 
-  let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
+  let systemPrompt = tutorSurface && currentMaterialId
+    ? getStudyRoomSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent)
+    : getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
 
   if (tutorSurface) {
     let resolvedExam = exam || '';
