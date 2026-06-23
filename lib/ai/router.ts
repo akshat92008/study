@@ -677,9 +677,8 @@ export async function routeJSONGeneration<T>(
   const fullSystem = systemPrompt + SECURITY_BOUNDARY + 
     '\n\nIMPORTANT: Respond ONLY with valid JSON. No markdown. No explanation. No code fences.';
 
-  let ignoreCooldowns = false;
   for (let pass = 1; pass <= 2; pass++) {
-    ignoreCooldowns = pass === 2;
+    const ignoreCooldowns = pass === 2;
     let anyTried = false;
 
     for (const providerName of (ignoreCooldowns ? providers.slice(0, 2) : providers)) {
@@ -789,9 +788,9 @@ if (!config || !config.apiKey) {
         await new Promise(r => setTimeout(r, 300 * attempt));
       }
     }
-  }
-  if (anyTried) break;
-  logger.warn(`Pass ${pass} completed. All JSON providers were skipped or failed.`);
+    }
+    if (anyTried) break;
+    logger.warn(`Pass ${pass} completed. All JSON providers were skipped or failed.`);
   }
 
   if (reservationId) {
@@ -1012,9 +1011,8 @@ async function _routeEmbedding(
     reservationId = reservation.reservationId;
   }
 
-  let ignoreCooldowns = false;
   for (let pass = 1; pass <= 2; pass++) {
-    let ignoreCooldowns = pass === 2;
+    const ignoreCooldowns = pass === 2;
     let anyTried = false;
 
     for (const providerName of (ignoreCooldowns ? providersToTry.slice(0, 2) : providersToTry)) {

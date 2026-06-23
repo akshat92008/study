@@ -45,6 +45,9 @@ export default function UploadAssessmentStep({
         {uploading ? <Loader2 className="animate-spin" size={20} /> : 'Select PDF'}
       </label>
       {message && <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--fs-xs)', margin: 0 }}>{message}</p>}
+      <p style={{ color: 'var(--text-tertiary)', fontSize: 'var(--fs-xs)', margin: 0 }}>
+        Text PDFs supported. Scanned PDFs/OCR not yet supported. Use manual entry for scanned papers.
+      </p>
     </Card>
   );
 }

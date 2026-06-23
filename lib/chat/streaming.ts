@@ -6,7 +6,7 @@ import { maybeUpdateSessionSummary } from '@/lib/ai/session-summary';
 import { buildConversationMessages } from '@/lib/ai/chat-intent';
 import { logger } from '@/lib/utils/logger';
 import { isBudgetExceeded, isBudgetUnavailable, budgetExceededResponse, budgetUnavailableResponse } from '@/lib/ai/cost-guard';
-import { reserveUsage, commitUsage, releaseUsage } from '@/lib/usage/enforce-feature-limit';
+import { reserveUsage, commitUsage, releaseUsage, featureLimitResponse } from '@/lib/usage/enforce-feature-limit';
 
 export async function handleMainStreaming({
   userId,
@@ -39,6 +39,7 @@ export async function handleMainStreaming({
   supabase: any;
 }): Promise<Response> {
   let mainGenerator: AsyncGenerator<string> | null = null;
+  let aiReservationId: string | null = null;
   
   if (intent.intent !== 'TUTOR_SESSION' && intent.intent !== 'PRACTICE' && intent.intent !== 'REPLAN' && intent.intent !== 'CREATE_ARTIFACT' && orchestratorResult.intent !== 'planning') {
 
@@ -48,6 +49,11 @@ export async function handleMainStreaming({
       void maybeUpdateSessionSummary(userId, sessionId, recentHistory).catch(() => {});
 
       const conversationMessages = buildConversationMessages(sanitizedHistory, message || '');
+      aiReservationId = await reserveUsage(userId, 'ai_call', 1, {
+        route: '/api/ai/chat',
+        sessionId,
+        intent: intent.intent,
+      });
       mainGenerator = await budgetedStreamGeneration({
         userId,
         feature: 'chat',
@@ -57,6 +63,18 @@ export async function handleMainStreaming({
         userPrompt: conversationMessages,
       });
     } catch (err) {
+      if (aiReservationId) {
+        // Release reservation on provider failure before falling back.
+        await releaseUsage(aiReservationId, {
+          reason: 'provider_generation_failed',
+          error: err instanceof Error ? err.message : String(err),
+        }).catch((releaseError) => {
+          logger.warn('Failed to release AI usage reservation after provider failure', releaseError);
+        });
+        aiReservationId = null;
+      }
+
+      if ((err as any)?.check) return featureLimitResponse((err as any).check);
       if (isBudgetExceeded(err)) return budgetExceededResponse();
       if (isBudgetUnavailable(err)) return budgetUnavailableResponse();
       
@@ -75,7 +93,7 @@ export async function handleMainStreaming({
     async start(controller) {
       let fullResponse = '';
       let metadataPayload: any = null;
-      const bufferedController = { enqueue: () => undefined } as unknown as ReadableStreamDefaultController<Uint8Array>;
+      const bufferedController = { enqueue: (chunk: Uint8Array) => controller.enqueue(chunk) } as unknown as ReadableStreamDefaultController<Uint8Array>;
 
       try {
         const { getMaxRecentMessages } = await import('@/lib/ai/cost-mode');
@@ -117,6 +135,7 @@ export async function handleMainStreaming({
         } else if (mainGenerator) {
           for await (const chunk of mainGenerator) {
             fullResponse += chunk;
+            controller.enqueue(encoder.encode(chunk));
           }
         }
 
@@ -160,6 +179,7 @@ export async function handleMainStreaming({
         if (looksTruncated(fullResponse)) {
           const truncationHint = '\n\n*The response may be incomplete. Say "continue" and I will finish it.*';
           fullResponse += truncationHint;
+          controller.enqueue(encoder.encode(truncationHint));
         }
 
         const isDegraded = fullResponse.includes('temporarily unavailable') || 
@@ -175,12 +195,47 @@ export async function handleMainStreaming({
           budgetReservationId: null,
           turnStatus: isDegraded ? 'failed_provider' : 'assistant_saved',
         });
-        controller.enqueue(encoder.encode(finalized.assistantText));
+        if (aiReservationId) {
+          const reservationToCommit = aiReservationId;
+          try {
+            await commitUsage(reservationToCommit, {
+              route: '/api/ai/chat',
+              sessionId,
+              intent: intent.intent,
+              turnStatus: isDegraded ? 'failed_provider' : 'assistant_saved',
+              estimatedCompletionTokens: Math.max(1, Math.ceil(fullResponse.length / 4)),
+            });
+            aiReservationId = null;
+          } catch (commitError) {
+            logger.error('Failed to commit AI usage reservation', commitError, {
+              userId,
+              sessionId,
+              reservationId: reservationToCommit,
+            });
+            await releaseUsage(reservationToCommit, {
+              reason: 'usage_commit_failed',
+              error: commitError instanceof Error ? commitError.message : String(commitError),
+            }).catch((releaseError) => {
+              logger.warn('Failed to release AI usage reservation after commit failure', releaseError);
+            });
+            aiReservationId = null;
+          }
+        }
         if (metadataPayload) {
           controller.enqueue(encoder.encode(`\n\n===METADATA===\n${JSON.stringify(metadataPayload)}`));
         }
 
       } catch (err: any) {
+        if (aiReservationId) {
+          // Release reservation on provider failure or downstream stream failure.
+          await releaseUsage(aiReservationId, {
+            reason: 'stream_failed',
+            error: err instanceof Error ? err.message : String(err),
+          }).catch((releaseError) => {
+            logger.warn('Failed to release AI usage reservation after stream failure', releaseError);
+          });
+          aiReservationId = null;
+        }
         logger.error('Chat stream error', err);
         const { getDegradationMessage } = await import('@/lib/ai/degradation-messages');
         const fallbackMsg = err.message === 'RAG_SOURCE_PROCESSING' 

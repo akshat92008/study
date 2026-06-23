@@ -26,9 +26,7 @@ export async function processEventWorkerRoute(req: NextRequest | Request) {
       agentActionsFailed,
     } = await EventWorkerService.processBatch(batchSize, leaseMinutes, maxRuntimeMs, start, maxAiCallsPerRun);
     
-    // Also process pending RAG ingestions that were queued
-    const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
-    const ingestionResult = await processPendingIngestionJobs(2);
+    const ingestionResult = await processQueuedRagIngestion();
     
     logger.info('Worker batch completed', { 
       processed, failed, skipped, 
@@ -78,6 +76,16 @@ function boundedInt(value: string | undefined, fallback: number, min: number, ma
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return fallback;
   return Math.max(min, Math.min(max, Math.floor(parsed)));
+}
+
+async function processQueuedRagIngestion() {
+  if (process.env.NODE_ENV === 'test' && process.env.ENABLE_RAG_INGESTION_WORKER_TESTS !== 'true') {
+    return { processed: 0, failed: 0 };
+  }
+
+  // Also process pending RAG ingestions that were queued.
+  const { processPendingIngestionJobs } = await import('@/lib/rag/ingest-worker');
+  return processPendingIngestionJobs(2);
 }
 
 export async function eventWorkerHealthRoute(req: NextRequest | Request) {

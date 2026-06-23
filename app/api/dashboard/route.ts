@@ -1,5 +1,6 @@
 import { after, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { betaAccessErrorResponse, requireActiveBetaUser } from '@/lib/access/beta-access';
 import { getCognitionGraph } from '@/lib/engines/cognition-graph';
 import { getRevisionStats, getDueCards } from '@/lib/engines/revision-engine';
 import { getMistakeAnalytics } from '@/lib/engines/mistake-engine';
@@ -7,6 +8,7 @@ import { apiErrorResponse, getRequestId, unexpectedApiErrorResponse } from '@/li
 import { EventWorkerService } from '@/lib/events/worker';
 import { logger } from '@/lib/utils/logger';
 import { loadActiveLearningContext } from '@/lib/learning-context/active-context';
+import { resolveActiveGoalForUser } from '@/lib/goals/resolve-active-goal';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,17 +25,30 @@ export async function GET(request: Request) {
       });
     }
 
+    try {
+      await requireActiveBetaUser(user.id);
+    } catch (accessError) {
+      const response = betaAccessErrorResponse(accessError, requestId);
+      if (response) return response;
+      return apiErrorResponse('beta_access_required', {
+        status: 403,
+        message: 'Cognition OS is currently in a limited beta. Ask the admin to activate your beta access.',
+        requestId,
+      });
+    }
+
     const localDate = new Date().toISOString().split('T')[0];
     const { searchParams } = new URL(request.url);
     const requestedGoalId = searchParams.get('goalId');
+    const activeGoalResolution = await resolveActiveGoalForUser(supabase as any, user.id, requestedGoalId);
     const activeContext = await loadActiveLearningContext({
       supabase,
       userId: user.id,
-      requestedGoalId: requestedGoalId,
+      requestedGoalId: activeGoalResolution.goalId,
       requestId,
     });
-    const goalId = activeContext.goalId;
-    const activeGoal = activeContext.rawGoal;
+    const goalId = activeContext.goalId ?? activeGoalResolution.goalId;
+    const activeGoal = activeContext.rawGoal ?? activeGoalResolution.goal;
 
     let allCardsQuery = supabase.from('revision_cards')
       .select('id, due, stability, difficulty, state, subject, chapter')

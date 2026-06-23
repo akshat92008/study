@@ -45,7 +45,10 @@ async function main() {
   // Schema version from supabase migrations if possible
   const migrationsDir = path.join(process.cwd(), 'supabase', 'migrations');
   if (fs.existsSync(migrationsDir)) {
-    const files = fs.readdirSync(migrationsDir);
+    const files = fs.readdirSync(migrationsDir, { withFileTypes: true })
+      .filter(entry => entry.isFile() && entry.name.endsWith('.sql'))
+      .map(entry => entry.name)
+      .sort();
     report.schemaVersion = files.length > 0 ? files[files.length - 1] : 'unknown';
   } else {
     report.schemaVersion = 'unknown';

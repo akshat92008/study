@@ -93,8 +93,8 @@ export async function authenticateChatUser(requestId: string) {
 }
 
 export async function enforceChatRateLimit(userId: string) {
-  const { RateLimits, checkRateLimit, rateLimitResponse } = await import('@/lib/middleware/rateLimit');
-  const { allowed, remaining, resetAt } = await checkRateLimit(userId, RateLimits.CHAT);
+  const { checkRateLimit, rateLimitResponse } = await import('@/lib/middleware/rateLimit');
+  const { allowed, remaining, resetAt } = await checkRateLimit(userId, { name: 'chat', requests: 30, window: '1 m' });
   if (!allowed) {
     throw new PipelineError(rateLimitResponse(remaining, resetAt));
   }

@@ -266,7 +266,13 @@ export async function POST(req: NextRequest, context: RouteContext) {
         logger.warn('Autopsy agent runtime failed (non-fatal)', { userId: user.id, error: runtimeError });
       }
 
-      return jsonWithRequestId({ report: persistedReport, deterministicReport: report, projection, agentMutationSummary: agentLoopResult?.mutationSummary ?? null }, requestId);
+      return jsonWithRequestId({ 
+        report: persistedReport, 
+        deterministicReport: report, 
+        projection, 
+        memoryRows: agentLoopResult?.mutationSummary?.memoriesCreated ?? [],
+        agentMutationSummary: agentLoopResult?.mutationSummary ?? null 
+      }, requestId);
     } catch (err) {
       // Phase 8.3: Mark status as failed if projection or generation fails
       await supabase

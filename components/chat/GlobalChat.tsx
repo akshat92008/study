@@ -9,7 +9,7 @@ import { RichMessageRenderer } from './RichMessageRenderer';
 import { createClient } from '@/lib/supabase/client';
 import { SessionClosingCard } from './SessionClosingCard';
 import { useSessionTimer } from '@/hooks/useSessionTimer';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
 import { ThinkingIndicator } from './ThinkingIndicator';
 
@@ -125,6 +125,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
   const streakDays = useAppStore(s => s.streakDays);
   const chatId = useAppStore(s => s.chatId);
   const loadChatFromSupabase = useAppStore(s => s.loadChatFromSupabase);
+  const selectSession = useAppStore(s => (s as any).selectSession);
   const isAssistantExpanded = useAppStore(s => s.isAssistantExpanded);
   const toggleAssistantExpanded = useAppStore(s => s.toggleAssistantExpanded);
   const sessions = useAppStore(s => s.sessions);
@@ -141,6 +142,8 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
   const [learningSignalSummary, setLearningSignalSummary] = useState<string | null>(null);
   const thinkingTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const urlSessionId = searchParams?.get('sessionId');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -163,10 +166,12 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
   // Load chat history when user is available
   useEffect(() => {
     if (!user) return;
-    if (!chatId && !activeGoalId) {
+    if (urlSessionId && urlSessionId !== chatId) {
+      selectSession(urlSessionId);
+    } else if (!chatId && !activeGoalId && !urlSessionId) {
       loadChatFromSupabase();
     }
-  }, [user, chatId, activeGoalId, loadChatFromSupabase]);
+  }, [user, chatId, activeGoalId, loadChatFromSupabase, selectSession, urlSessionId]);
 
   // Listen for goal context refresh events (e.g. source ready)
   useEffect(() => {

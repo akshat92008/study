@@ -6,19 +6,7 @@
     },
     {
       "path": "/api/internal/workers/process-events",
-      "schedule": "0 4 * * *"
-    },
-    {
-      "path": "/api/cron/daily-synthesis",
-      "schedule": "0 8 * * *"
-    },
-    {
-      "path": "/api/cron/decay-detector",
-      "schedule": "0 */6 * * *"
-    },
-    {
-      "path": "/api/cron/weekly-synthesis",
-      "schedule": "0 12 * * 0"
+      "schedule": "*/10 * * * *"
     }
   ]
 }

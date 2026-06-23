@@ -219,12 +219,12 @@ export async function gatherChatContext({
 
   if (tutorSurface) {
     let resolvedExam = exam || 'NEET';
-    let resolvedSubject = subject || activeGoal?.subject || 'Unknown';
-    let resolvedChapter = chapterSlug || activeGoal?.chapter || 'Unknown';
-    let resolvedTopic = topicSlug || 'General';
+    let resolvedSubject = subject || activeGoal?.subject || '';
+    let resolvedChapter = chapterSlug || activeGoal?.chapter || '';
+    let resolvedTopic = topicSlug || '';
     let resolvedMicrotarget = 'General';
 
-    if (activeGoalId && (!subject || !chapterSlug || !topicSlug)) {
+    if (activeGoalId && (!resolvedSubject || !resolvedChapter || !resolvedTopic)) {
       const { data: activeTopics } = await supabase
         .from('seeded_topics')
         .select('subject, chapter, topic, microtarget, status')
@@ -240,6 +240,10 @@ export async function gatherChatContext({
         resolvedMicrotarget = activeTopics[0].microtarget;
       }
     }
+
+    resolvedSubject = resolvedSubject || 'Unknown';
+    resolvedChapter = resolvedChapter || 'Unknown';
+    resolvedTopic = resolvedTopic || 'General';
 
     const { data: recentAttempts } = await supabase
       .from('practice_attempts')

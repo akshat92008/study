@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const MindTutorOutputSchema = z.object({
-  internalThoughtProcess: z.string().describe("Chain of thought for pedagogy. What turn is it? What phase are we in? What is the fracture point? Have they genuinely demonstrated understanding?"),
+  internalThoughtProcess: z.string().describe("Brief pedagogical rationale. State the phase, fracture point if any, and whether the student demonstrated understanding. Do not include step-by-step private reasoning."),
   state: z.enum([
     'DIAGNOSTIC', 
     'FRACTURE_POINT_PROBE', 
@@ -93,6 +93,7 @@ ${context.emotionalState === 'overwhelmed' || context.emotionalState === 'frustr
 
 - Format math using LaTeX: $E = mc^2$ for inline, $$E = mc^2$$ for blocks.
 - ALWAYS output STRICT JSON matching the required schema.
+- Keep "internalThoughtProcess" to a short pedagogical rationale. Do not include step-by-step private reasoning.
 - If you find a fracture point, log it IMMEDIATELY in "diagnosedMisconception" so the OS can create a flashcard.
 `;
 }

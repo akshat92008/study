@@ -41,7 +41,7 @@ export function getAppLaunchMode(): AppLaunchMode {
   if (mode && ['local', 'staging', 'private_beta', 'public_free', 'public_paid', 'maintenance'].includes(mode)) {
     return mode;
   }
-  return process.env.NODE_ENV === 'production' ? 'public_paid' : 'local';
+  return process.env.NODE_ENV === 'production' ? 'private_beta' : 'local';
 }
 
 export function getFeatureLimits() {
@@ -96,7 +96,7 @@ export function isFeatureEnabled(feature: AppFeature): boolean {
   // In public_paid mode, we force unapproved or experimental features OFF
   if (mode === 'public_paid') {
     features.debug_page = false;
-    features.worker_ai = true; 
+    features.worker_ai = false;
     features.analytics_ui = false;
     features.atlas_ui = false;
     features.voice_chat = false;
@@ -148,8 +148,8 @@ export const featureFlags = {
   visionUploads: () => isEnabled('ENABLE_VISION_UPLOADS', true),
   autopsyUploads: () => isEnabled('ENABLE_AUTOPSY_UPLOADS', true),
   ragIngestion: () => isEnabled('ENABLE_RAG_INGESTION', true),
-  autopsyProcessing: () => isEnabled('ENABLE_AUTOPSY_PROCESSING', true),
-  agentActions: () => isEnabled('ENABLE_AGENT_ACTIONS', true),
+  autopsyProcessing: () => isEnabled('ENABLE_AUTOPSY_PROCESSING', false),
+  agentActions: () => isEnabled('ENABLE_AGENT_ACTIONS', false),
   aiEscalation: () => isEnabled('ENABLE_AI_ESCALATION', true),
 
   // ── Global Learning OS (new) ──

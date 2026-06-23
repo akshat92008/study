@@ -3296,248 +3296,245 @@
     },
     {
       "id": "m-human-physiology-digestion-mock",
-      "title": "Mastery Module: human-physiology-digestion",
-      "description": "Comprehensive analysis of human-physiology-digestion",
+      "title": "Digestion and Absorption NEET Core",
+      "description": "Alimentary canal anatomy, digestive enzymes, absorption through villi, assimilation, egestion, and common digestive disorders.",
       "conceptTags": [
         "digestive-system",
-        "human digestive system"
+        "digestion-of-food",
+        "absorption-and-assimilation"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-digestion-1",
-          "title": "Topic 1 of human-physiology-digestion",
+          "title": "Human Digestive System Anatomy",
           "conceptTags": [
             "digestive-system",
-            "human digestive system"
+            "alimentary-canal",
+            "digestive-glands"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-digestion"
+            "NCERT Biology Class 11, Digestion and Absorption: Human digestive system"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "The alimentary canal runs from mouth to anus and includes buccal cavity, pharynx, oesophagus, stomach, small intestine, large intestine, rectum, and anus.",
+            "Salivary glands, liver, pancreas, and gastric glands are the major digestive glands emphasized in NCERT.",
+            "Bile is produced by the liver, stored in the gall bladder, and helps emulsify fats."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-digestion",
+              "name": "Human digestive system",
               "labels": [
-                "A"
+                "oesophagus",
+                "stomach",
+                "liver",
+                "pancreas",
+                "small intestine",
+                "large intestine"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Route of food and location of accessory digestive glands",
               "commonLabelTraps": [
-                "C"
+                "Confusing liver secretion with gall bladder storage",
+                "Swapping pancreas and stomach labels"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Confusing digestion in the buccal cavity with complete carbohydrate digestion.",
+            "Forgetting that bile has no digestive enzyme but still supports fat digestion."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Label the alimentary canal and accessory glands correctly.",
+            "State the role of liver, gall bladder, pancreas, and salivary glands without mixing them."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Diagram-label questions on digestive glands and their secretions.",
+            "Statement-based questions distinguishing organ, secretion, and site of action."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-digestion-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "Which accessory gland produces bile, and where is bile stored before release?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Liver produces bile",
+                "Gall bladder stores and concentrates bile"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "liver",
+                "gall bladder"
               ],
               "conceptTags": [
-                "digestive-system"
+                "digestive-system",
+                "bile"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-digestion-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "List the alimentary canal parts in order from mouth to anus.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Mouth/buccal cavity",
+                "Pharynx",
+                "Oesophagus",
+                "Stomach",
+                "Small intestine",
+                "Large intestine",
+                "Rectum",
+                "Anus"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "digestive tract"
               ],
               "conceptTags": [
-                "digestive-system"
+                "digestive-system",
+                "alimentary-canal"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-digestion-2",
-          "title": "Topic 2 of human-physiology-digestion",
+          "title": "Enzymes and Sites of Digestion",
           "conceptTags": [
-            "digestive-system",
-            "human digestive system"
+            "digestion-of-food",
+            "digestive-enzymes",
+            "carbohydrate-digestion",
+            "protein-digestion",
+            "fat-digestion"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-digestion"
+            "NCERT Biology Class 11, Digestion and Absorption: Digestion of food"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Salivary amylase begins starch digestion in the mouth.",
+            "Pepsin digests proteins in the acidic stomach; trypsin and chymotrypsin continue protein digestion in the small intestine.",
+            "Pancreatic lipase acts on emulsified fats, while bile salts increase the surface area for lipase action."
           ],
           "diagrams": [],
           "commonTraps": [
-            "Trap 1"
+            "Saying pepsin acts in the small intestine instead of the stomach.",
+            "Treating bile as an enzyme rather than an emulsifying secretion."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Match each digestive enzyme with substrate, site, and product.",
+            "Explain how bile assists lipid digestion without calling it an enzyme."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Match-the-column items on enzyme, substrate, and site.",
+            "Assertion-reason questions on pH and enzyme activation."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-digestion-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "Name the enzyme that starts protein digestion in the stomach and the inactive form from which it is produced.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Pepsin starts protein digestion",
+                "Pepsinogen is the inactive precursor"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "pepsinogen"
               ],
               "conceptTags": [
-                "digestive-system"
+                "digestion-of-food",
+                "pepsin"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-digestion-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "Why does bile help in fat digestion even though it is not an enzyme?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Bile emulsifies fats",
+                "Emulsification increases surface area for lipase"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "emulsification"
               ],
               "conceptTags": [
-                "digestive-system"
+                "digestion-of-food",
+                "bile",
+                "lipase"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-digestion-3",
-          "title": "Topic 3 of human-physiology-digestion",
+          "title": "Absorption, Assimilation, and Digestive Disorders",
           "conceptTags": [
-            "digestive-system",
-            "human digestive system"
+            "absorption-and-assimilation",
+            "villi",
+            "lacteals",
+            "egestion",
+            "digestive-disorders"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-digestion"
+            "NCERT Biology Class 11, Digestion and Absorption: Absorption of digested products and disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "Villi and microvilli increase the absorptive surface area of the small intestine.",
+            "Fatty acids and glycerol enter lacteals after being packaged into small fat droplets.",
+            "Assimilation is the use of absorbed nutrients by body tissues; egestion removes undigested material."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Villus of small intestine",
+              "labels": [
+                "epithelium",
+                "blood capillaries",
+                "lacteal"
+              ],
+              "provesOrShows": "Separate absorption routes for sugars/amino acids and fats",
+              "commonLabelTraps": [
+                "Confusing lacteal with blood capillary"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Confusing absorption with assimilation.",
+            "Forgetting that fats use lacteals rather than directly entering blood capillaries first."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Describe absorption of carbohydrates, proteins, and fats using the correct route.",
+            "Differentiate absorption, assimilation, and egestion in one explanation."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Questions asking which digestive product enters lymph first.",
+            "Statement-based checks on villi, microvilli, and absorption routes."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-digestion-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "Which absorbed nutrient products mainly enter lacteals of intestinal villi?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Fatty acids",
+                "Glycerol",
+                "Re-formed fat droplets/chylomicron-like particles"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "fats"
               ],
               "conceptTags": [
-                "digestive-system"
+                "absorption-and-assimilation",
+                "lacteals"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-digestion-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Differentiate absorption and assimilation in digestion.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Absorption moves digested nutrients into blood or lymph",
+                "Assimilation is use or storage by tissues"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "uptake",
+                "utilization"
               ],
               "conceptTags": [
-                "digestive-system"
+                "absorption-and-assimilation"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-digestion",
-                "chapterSlug": "human-physiology-digestion",
-                "topicSlug": "digestive-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         }
@@ -3545,248 +3542,234 @@
     },
     {
       "id": "m-human-physiology-breathing-mock",
-      "title": "Mastery Module: human-physiology-breathing",
-      "description": "Comprehensive analysis of human-physiology-breathing",
+      "title": "Breathing and Exchange of Gases NEET Core",
+      "description": "Respiratory anatomy, mechanics of breathing, lung volumes, gas exchange, gas transport, regulation, and respiratory disorders.",
       "conceptTags": [
         "respiratory-system",
-        "human respiratory system"
+        "mechanism-of-breathing",
+        "respiratory-volumes",
+        "exchange-of-gases"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-breathing-1",
-          "title": "Topic 1 of human-physiology-breathing",
+          "title": "Human Respiratory System and Alveolar Exchange",
           "conceptTags": [
             "respiratory-system",
-            "human respiratory system"
+            "exchange-of-gases",
+            "alveoli",
+            "partial-pressure"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-breathing"
+            "NCERT Biology Class 11, Breathing and Exchange of Gases: Respiratory organs and exchange of gases"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "The conducting pathway includes nostrils, nasal chamber, pharynx, larynx, trachea, bronchi, bronchioles, and terminal bronchioles.",
+            "Alveoli are the primary sites of gas exchange because of thin walls, rich capillary supply, and large surface area.",
+            "Gases diffuse across the respiratory membrane according to partial pressure gradients."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-breathing",
+              "name": "Human respiratory system and alveolus",
               "labels": [
-                "A"
+                "trachea",
+                "bronchus",
+                "bronchiole",
+                "alveolus",
+                "pulmonary capillary"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Path of air and site of gas exchange",
               "commonLabelTraps": [
-                "C"
+                "Calling bronchioles bronchi",
+                "Missing capillaries around alveoli"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Saying gas exchange occurs mainly in bronchi instead of alveoli.",
+            "Ignoring partial pressure gradients in diffusion questions."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Trace airflow from nostrils to alveoli.",
+            "Explain oxygen and carbon dioxide diffusion using partial pressure differences."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Diagram-label questions on respiratory pathway.",
+            "Assertion-reason questions on diffusion across alveoli."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-breathing-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "Why are alveoli efficient sites for gaseous exchange?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Thin respiratory membrane",
+                "Large surface area",
+                "Rich capillary network",
+                "Partial pressure gradients"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "alveolus"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "respiratory-system",
+                "exchange-of-gases"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-breathing-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "Name the principle that drives oxygen and carbon dioxide exchange across alveoli.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Diffusion down partial pressure gradients"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "diffusion"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "exchange-of-gases",
+                "partial-pressure"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-breathing-2",
-          "title": "Topic 2 of human-physiology-breathing",
+          "title": "Mechanism of Breathing and Respiratory Volumes",
           "conceptTags": [
-            "respiratory-system",
-            "human respiratory system"
+            "mechanism-of-breathing",
+            "respiratory-volumes",
+            "tidal-volume",
+            "vital-capacity"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-breathing"
+            "NCERT Biology Class 11, Breathing and Exchange of Gases: Mechanism of breathing and respiratory volumes"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Inspiration occurs when diaphragm and external intercostal muscles contract, increasing thoracic volume and lowering intrapulmonary pressure.",
+            "Normal tidal volume is about 500 mL in a healthy adult.",
+            "Vital capacity is the maximum volume of air a person can breathe out after a forced inspiration."
           ],
           "diagrams": [],
           "commonTraps": [
-            "Trap 1"
+            "Reversing diaphragm movement during inspiration and expiration.",
+            "Confusing residual volume with expiratory reserve volume."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Predict pressure and volume changes during inspiration and expiration.",
+            "Identify tidal volume, IRV, ERV, RV, inspiratory capacity, and vital capacity from definitions."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Numerical or definition questions on lung volumes and capacities.",
+            "Statement-based questions on diaphragm and intercostal muscles."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-breathing-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "What happens to diaphragm position and intrapulmonary pressure during inspiration?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Diaphragm contracts and flattens",
+                "Thoracic volume increases",
+                "Intrapulmonary pressure decreases below atmospheric pressure"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "inspiration"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "mechanism-of-breathing"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-breathing-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "What is the approximate normal tidal volume in an adult?",
               "expectedAnswerPoints": [
-                "Answer"
+                "About 500 mL"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "TV"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "respiratory-volumes",
+                "tidal-volume"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-breathing-3",
-          "title": "Topic 3 of human-physiology-breathing",
+          "title": "Gas Transport, Regulation, and Respiratory Disorders",
           "conceptTags": [
-            "respiratory-system",
-            "human respiratory system"
+            "transport-of-oxygen",
+            "transport-of-carbon-dioxide",
+            "regulation-of-respiration",
+            "respiratory-disorders"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-breathing"
+            "NCERT Biology Class 11, Breathing and Exchange of Gases: Transport of gases, regulation, and disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "Most oxygen is transported as oxyhaemoglobin, while a small fraction is dissolved in plasma.",
+            "Most carbon dioxide is transported as bicarbonate ions; carbonic anhydrase in RBCs accelerates conversion.",
+            "Respiratory rhythm is regulated by medullary and pontine centers and by chemosensitive areas responding mainly to CO2 and H+."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Oxygen dissociation curve",
+              "labels": [
+                "pO2 axis",
+                "percentage saturation",
+                "sigmoid curve"
+              ],
+              "provesOrShows": "Relationship between pO2 and haemoglobin saturation",
+              "commonLabelTraps": [
+                "Forgetting that low pH and high CO2 shift unloading toward tissues"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Confusing oxygen transport percentage with carbon dioxide transport percentage.",
+            "Missing that CO2/H+ changes are stronger respiratory regulators than oxygen under normal conditions."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Explain oxyhaemoglobin formation and unloading using the dissociation curve.",
+            "State the main forms of carbon dioxide transport and the role of carbonic anhydrase."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Bohr effect and oxygen dissociation curve interpretation.",
+            "Questions on asthma, emphysema, and occupational respiratory disorders."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-breathing-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "In what major form is carbon dioxide transported in blood?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Mostly as bicarbonate ions",
+                "Some as carbaminohaemoglobin",
+                "Small amount dissolved in plasma"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "bicarbonate"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "transport-of-carbon-dioxide"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-breathing-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Which enzyme in RBCs speeds up conversion between carbon dioxide and carbonic acid?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Carbonic anhydrase"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "CA"
               ],
               "conceptTags": [
-                "respiratory-system"
+                "transport-of-carbon-dioxide",
+                "carbonic-anhydrase"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-breathing",
-                "chapterSlug": "human-physiology-breathing",
-                "topicSlug": "respiratory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         }
@@ -3794,248 +3777,253 @@
     },
     {
       "id": "m-human-physiology-circulation-mock",
-      "title": "Mastery Module: human-physiology-circulation",
-      "description": "Comprehensive analysis of human-physiology-circulation",
+      "title": "Body Fluids and Circulation NEET Core",
+      "description": "Blood composition, blood groups, coagulation, lymph, heart structure, cardiac cycle, ECG, circulation pathways, and disorders.",
       "conceptTags": [
         "blood-composition",
-        "blood composition"
+        "blood-groups",
+        "human-heart",
+        "cardiac-cycle",
+        "ecg"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-circulation-1",
-          "title": "Topic 1 of human-physiology-circulation",
+          "title": "Blood Composition, Blood Groups, and Coagulation",
           "conceptTags": [
             "blood-composition",
-            "blood composition"
+            "blood-groups",
+            "coagulation",
+            "formed-elements"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-circulation"
+            "NCERT Biology Class 11, Body Fluids and Circulation: Blood, blood groups, and coagulation"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "Plasma forms about 55 percent of blood and contains water, proteins, salts, nutrients, gases, and wastes.",
+            "ABO grouping depends on RBC surface antigens and plasma antibodies; Rh incompatibility can cause erythroblastosis fetalis.",
+            "Coagulation converts fibrinogen to fibrin through a cascade requiring calcium ions."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-circulation",
+              "name": "Blood smear and ABO grouping table",
               "labels": [
-                "A"
+                "RBC",
+                "WBC",
+                "platelet",
+                "A antigen",
+                "anti-B antibody"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Formed elements and antigen-antibody basis of blood grouping",
               "commonLabelTraps": [
-                "C"
+                "Confusing antigen on RBC with antibody in plasma"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Calling serum the same as plasma.",
+            "Forgetting calcium is required for clotting."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Differentiate RBC, WBC, platelets, plasma, and serum.",
+            "Predict basic ABO/Rh compatibility from antigens and antibodies."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Blood group compatibility and Rh factor scenarios.",
+            "Questions on plasma proteins and formed elements."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-circulation-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "How is serum different from plasma?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Serum is plasma without clotting factors such as fibrinogen"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "clotting factors"
               ],
               "conceptTags": [
-                "blood-composition"
+                "blood-composition",
+                "plasma"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-circulation-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "Which ion is essential for blood clotting?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Calcium ions",
+                "Ca2+"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "calcium"
               ],
               "conceptTags": [
-                "blood-composition"
+                "coagulation",
+                "calcium"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-circulation-2",
-          "title": "Topic 2 of human-physiology-circulation",
+          "title": "Human Heart, Cardiac Cycle, and ECG",
           "conceptTags": [
-            "blood-composition",
-            "blood composition"
+            "human-heart",
+            "cardiac-cycle",
+            "ecg",
+            "nodal-tissue"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-circulation"
+            "NCERT Biology Class 11, Body Fluids and Circulation: Human heart, cardiac cycle, and ECG"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "SA node is the pacemaker; AV node, bundle of His, and Purkinje fibres conduct impulses to ventricles.",
+            "Cardiac output equals stroke volume multiplied by heart rate.",
+            "P wave represents atrial depolarisation, QRS complex ventricular depolarisation, and T wave ventricular repolarisation."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Section of human heart with conducting system",
+              "labels": [
+                "SA node",
+                "AV node",
+                "bundle of His",
+                "Purkinje fibres",
+                "left ventricle"
+              ],
+              "provesOrShows": "Electrical pathway and chamber-valve layout",
+              "commonLabelTraps": [
+                "Swapping pulmonary artery and pulmonary vein",
+                "Calling AV node the pacemaker instead of SA node"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Thinking heart sounds are caused by valve opening instead of valve closure.",
+            "Confusing QRS complex with ventricular repolarisation."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Sequence impulse conduction through nodal tissue.",
+            "Interpret P, QRS, and T portions of an ECG."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "ECG wave identification questions.",
+            "Cardiac output and pacemaker questions."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-circulation-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "What does the QRS complex of an ECG represent?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Ventricular depolarisation"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "QRS"
               ],
               "conceptTags": [
-                "blood-composition"
+                "ecg",
+                "cardiac-cycle"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-circulation-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "Write the formula for cardiac output.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Cardiac output = stroke volume x heart rate"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "CO",
+                "SV x HR"
               ],
               "conceptTags": [
-                "blood-composition"
+                "cardiac-cycle",
+                "cardiac-output"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-circulation-3",
-          "title": "Topic 3 of human-physiology-circulation",
+          "title": "Double Circulation, Lymph, and Circulatory Disorders",
           "conceptTags": [
-            "blood-composition",
-            "blood composition"
+            "double-circulation",
+            "lymph",
+            "circulatory-disorders",
+            "pulmonary-circulation",
+            "systemic-circulation"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-circulation"
+            "NCERT Biology Class 11, Body Fluids and Circulation: Double circulation, lymph, and disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "Double circulation separates pulmonary and systemic circuits, keeping oxygenated and deoxygenated blood largely separate.",
+            "Lymph drains excess interstitial fluid and transports absorbed fats from intestinal lacteals.",
+            "Hypertension, coronary artery disease, angina, and heart failure are NCERT-listed circulatory disorders."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Double circulation pathway",
+              "labels": [
+                "right atrium",
+                "right ventricle",
+                "pulmonary artery",
+                "lungs",
+                "left atrium",
+                "left ventricle",
+                "aorta"
+              ],
+              "provesOrShows": "Pulmonary and systemic circuits in sequence",
+              "commonLabelTraps": [
+                "Forgetting pulmonary artery carries deoxygenated blood"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Assuming all arteries carry oxygenated blood.",
+            "Confusing heart failure with cardiac arrest."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Trace one complete route through pulmonary and systemic circulation.",
+            "State the major functions of lymph and identify common circulatory disorders."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Blood-flow sequence questions.",
+            "Statement-based questions on pulmonary artery, pulmonary vein, and lymph."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-circulation-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "Why is human circulation called double circulation?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Blood passes through the heart twice in one complete circuit",
+                "Pulmonary and systemic circuits are separate"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "pulmonary",
+                "systemic"
               ],
               "conceptTags": [
-                "blood-composition"
+                "double-circulation"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-circulation-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Name one artery that carries deoxygenated blood in adults.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Pulmonary artery"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "pulmonary artery"
               ],
               "conceptTags": [
-                "blood-composition"
+                "double-circulation",
+                "pulmonary-circulation"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-circulation",
-                "chapterSlug": "human-physiology-circulation",
-                "topicSlug": "blood-composition",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         }
@@ -4043,248 +4031,236 @@
     },
     {
       "id": "m-human-physiology-excretion-mock",
-      "title": "Mastery Module: human-physiology-excretion",
-      "description": "Comprehensive analysis of human-physiology-excretion",
+      "title": "Excretory Products and Elimination NEET Core",
+      "description": "Excretory organs, nephron structure, urine formation, counter-current concentration, hormonal regulation, dialysis, and disorders.",
       "conceptTags": [
         "excretory-system",
-        "human excretory system"
+        "nephron-structure",
+        "urine-formation",
+        "counter-current-mechanism"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-excretion-1",
-          "title": "Topic 1 of human-physiology-excretion",
+          "title": "Human Excretory System and Nephron Structure",
           "conceptTags": [
             "excretory-system",
-            "human excretory system"
+            "nephron-structure",
+            "kidney",
+            "glomerulus"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-excretion"
+            "NCERT Biology Class 11, Excretory Products and Their Elimination: Human excretory system and nephron"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "Each kidney contains about one million nephrons, the structural and functional units of the kidney.",
+            "A nephron has the glomerulus, Bowmans capsule, PCT, loop of Henle, DCT, and collecting duct.",
+            "Cortical nephrons have shorter loops, while juxtamedullary nephrons have long loops important for concentrated urine."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-excretion",
+              "name": "Nephron structure",
               "labels": [
-                "A"
+                "glomerulus",
+                "Bowmans capsule",
+                "PCT",
+                "loop of Henle",
+                "DCT",
+                "collecting duct"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Sites of filtration, reabsorption, secretion, and concentration",
               "commonLabelTraps": [
-                "C"
+                "Swapping ascending and descending limb permeability"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Calling ureter the urine storage organ instead of urinary bladder.",
+            "Mixing PCT and DCT locations/functions."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Label all major nephron parts.",
+            "State the functional role of each nephron segment at NEET level."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Diagram-label questions on nephron.",
+            "Statement-based questions on cortical and juxtamedullary nephrons."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-excretion-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "Name the structural and functional unit of kidney.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Nephron"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "renal tubule"
               ],
               "conceptTags": [
-                "excretory-system"
+                "nephron-structure"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-excretion-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "Which nephron part receives filtrate immediately after glomerular filtration?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Bowmans capsule"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "capsular space"
               ],
               "conceptTags": [
-                "excretory-system"
+                "nephron-structure",
+                "glomerular-filtration"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-excretion-2",
-          "title": "Topic 2 of human-physiology-excretion",
+          "title": "Urine Formation and Counter-Current Mechanism",
           "conceptTags": [
-            "excretory-system",
-            "human excretory system"
+            "urine-formation",
+            "glomerular-filtration",
+            "tubular-reabsorption",
+            "tubular-secretion",
+            "counter-current-mechanism"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-excretion"
+            "NCERT Biology Class 11, Excretory Products and Their Elimination: Urine formation and concentration"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Urine formation involves glomerular filtration, selective reabsorption, and tubular secretion.",
+            "GFR is about 125 mL per minute, or roughly 180 L per day, in a healthy adult.",
+            "The loop of Henle and vasa recta create and maintain a medullary osmotic gradient for urine concentration."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Counter-current mechanism",
+              "labels": [
+                "descending limb",
+                "ascending limb",
+                "vasa recta",
+                "renal medulla"
+              ],
+              "provesOrShows": "How opposite flows help maintain the osmotic gradient",
+              "commonLabelTraps": [
+                "Saying both limbs are equally permeable to water"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Forgetting that most filtrate is reabsorbed.",
+            "Confusing filtration pressure with tubular secretion."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Explain filtration, reabsorption, and secretion separately.",
+            "Describe why loop of Henle and vasa recta are arranged counter-currently."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Numerical recall on GFR.",
+            "Questions on water and salt permeability in loop of Henle."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-excretion-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "List the three main steps of urine formation.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Glomerular filtration",
+                "Tubular reabsorption",
+                "Tubular secretion"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "filtration",
+                "reabsorption",
+                "secretion"
               ],
               "conceptTags": [
-                "excretory-system"
+                "urine-formation"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-excretion-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "What approximate volume of filtrate is formed per day from normal GFR?",
               "expectedAnswerPoints": [
-                "Answer"
+                "About 180 L per day"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "180 litres"
               ],
               "conceptTags": [
-                "excretory-system"
+                "urine-formation",
+                "gfr"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-excretion-3",
-          "title": "Topic 3 of human-physiology-excretion",
+          "title": "Regulation of Kidney Function and Excretory Disorders",
           "conceptTags": [
-            "excretory-system",
-            "human excretory system"
+            "regulation-of-kidney-function",
+            "adh",
+            "aldosterone",
+            "anp",
+            "excretory-disorders"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-excretion"
+            "NCERT Biology Class 11, Excretory Products and Their Elimination: Regulation and disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "JGA activates the renin-angiotensin-aldosterone system when GFR falls.",
+            "ADH increases water reabsorption in distal nephron and collecting duct, helping produce concentrated urine.",
+            "Hemodialysis removes nitrogenous wastes from blood in renal failure using a semipermeable membrane."
           ],
           "diagrams": [],
           "commonTraps": [
-            "Trap 1"
+            "Confusing ADH with ANP; ADH conserves water while ANP promotes sodium and water loss.",
+            "Calling dialysis a cure for kidney failure instead of supportive filtration."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Connect ADH, aldosterone, and ANP to water/salt balance.",
+            "Explain the principle of hemodialysis and identify uremia."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Hormonal regulation of nephron questions.",
+            "Clinical-style questions on renal failure and dialysis."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-excretion-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "What is the main effect of ADH on urine formation?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Increases water reabsorption",
+                "Makes urine more concentrated"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "vasopressin"
               ],
               "conceptTags": [
-                "excretory-system"
+                "regulation-of-kidney-function",
+                "adh"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-excretion-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Which apparatus in the kidney helps activate RAAS when GFR decreases?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Juxtaglomerular apparatus",
+                "JGA"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "renin"
               ],
               "conceptTags": [
-                "excretory-system"
+                "regulation-of-kidney-function",
+                "raas"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-excretion",
-                "chapterSlug": "human-physiology-excretion",
-                "topicSlug": "excretory-system",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         }
@@ -4292,248 +4268,238 @@
     },
     {
       "id": "m-human-physiology-locomotion-mock",
-      "title": "Mastery Module: human-physiology-locomotion",
-      "description": "Comprehensive analysis of human-physiology-locomotion",
+      "title": "Locomotion and Movement NEET Core",
+      "description": "Types of movement, skeletal muscle ultrastructure, sliding filament theory, skeleton, joints, and movement disorders.",
       "conceptTags": [
         "types-of-movement",
-        "types of movement"
+        "skeletal-muscle",
+        "muscle-contraction",
+        "skeletal-system"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-locomotion-1",
-          "title": "Topic 1 of human-physiology-locomotion",
+          "title": "Types of Movement and Skeletal Muscle Structure",
           "conceptTags": [
             "types-of-movement",
-            "types of movement"
+            "skeletal-muscle",
+            "sarcomere",
+            "actin",
+            "myosin"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-locomotion"
+            "NCERT Biology Class 11, Locomotion and Movement: Types of movement and skeletal muscle"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "Amoeboid, ciliary, and muscular movements are the three NCERT movement types.",
+            "Skeletal muscle fibres are striated, voluntary, multinucleate, and organized into myofibrils.",
+            "A sarcomere extends from one Z-line to the next and contains actin and myosin filaments."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-locomotion",
+              "name": "Sarcomere structure",
               "labels": [
-                "A"
+                "Z-line",
+                "A band",
+                "I band",
+                "H zone",
+                "M line",
+                "actin",
+                "myosin"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Structural basis of striations and contraction",
               "commonLabelTraps": [
-                "C"
+                "Confusing A band with actin-only region"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Saying A band shortens during contraction.",
+            "Confusing ciliary movement with amoeboid movement."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Match movement types to examples.",
+            "Label sarcomere bands and filaments correctly."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Sarcomere diagram and band-change questions.",
+            "Movement type example questions."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-locomotion-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "What is the functional contractile unit of skeletal muscle?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Sarcomere"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "contractile unit"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "skeletal-muscle",
+                "sarcomere"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-locomotion-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "Which sarcomere band remains constant during muscle contraction?",
               "expectedAnswerPoints": [
-                "Answer"
+                "A band remains constant"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "A band"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "skeletal-muscle",
+                "muscle-contraction"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-locomotion-2",
-          "title": "Topic 2 of human-physiology-locomotion",
+          "title": "Sliding Filament Mechanism of Muscle Contraction",
           "conceptTags": [
-            "types-of-movement",
-            "types of movement"
+            "muscle-contraction",
+            "sliding-filament-theory",
+            "calcium-ions",
+            "troponin",
+            "tropomyosin"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-locomotion"
+            "NCERT Biology Class 11, Locomotion and Movement: Mechanism of muscle contraction"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Calcium ions bind troponin, moving tropomyosin away from myosin-binding sites on actin.",
+            "ATP hydrolysis powers myosin head movement during cross-bridge cycling.",
+            "During contraction, I band and H zone reduce while A band length stays constant."
           ],
           "diagrams": [],
           "commonTraps": [
-            "Trap 1"
+            "Forgetting ATP is needed both for cross-bridge movement and detachment.",
+            "Saying filaments shorten instead of sliding past each other."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Sequence calcium release, binding-site exposure, cross-bridge formation, power stroke, and relaxation.",
+            "Predict band changes during contraction."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Assertion-reason questions on calcium and ATP.",
+            "Band-change questions in sliding filament theory."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-locomotion-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "What exposes myosin-binding sites on actin during contraction?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Calcium binds troponin",
+                "Tropomyosin shifts away from binding sites"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "troponin",
+                "tropomyosin"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "muscle-contraction",
+                "calcium-ions"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-locomotion-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "Do actin and myosin filaments themselves shorten during contraction?",
               "expectedAnswerPoints": [
-                "Answer"
+                "No",
+                "They slide past each other"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "sliding"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "muscle-contraction",
+                "sliding-filament-theory"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-locomotion-3",
-          "title": "Topic 3 of human-physiology-locomotion",
+          "title": "Skeletal System, Joints, and Musculoskeletal Disorders",
           "conceptTags": [
-            "types-of-movement",
-            "types of movement"
+            "skeletal-system",
+            "joints",
+            "musculoskeletal-disorders",
+            "axial-skeleton",
+            "appendicular-skeleton"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-locomotion"
+            "NCERT Biology Class 11, Locomotion and Movement: Skeletal system and disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "The human skeleton has axial and appendicular divisions with 206 bones in adults.",
+            "Synovial joints include ball-and-socket, hinge, pivot, gliding, saddle, and condyloid joints.",
+            "Myasthenia gravis, muscular dystrophy, arthritis, osteoporosis, and gout are high-yield disorders."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Types of synovial joints",
+              "labels": [
+                "ball and socket",
+                "hinge",
+                "pivot",
+                "gliding"
+              ],
+              "provesOrShows": "Joint type and movement range",
+              "commonLabelTraps": [
+                "Confusing hinge with pivot joint examples"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Mixing osteoporosis with arthritis.",
+            "Confusing axial skeleton with appendicular skeleton."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Classify major bones into axial or appendicular skeleton.",
+            "Match joint types and disorders with defining features."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Match joint type to example.",
+            "Disorder definition questions."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-locomotion-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "Give one example of a ball-and-socket joint.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Shoulder joint",
+                "Hip joint"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "shoulder",
+                "hip"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "skeletal-system",
+                "joints"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-locomotion-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Which disorder is caused by autoimmunity at the neuromuscular junction?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Myasthenia gravis"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "autoimmune"
               ],
               "conceptTags": [
-                "types-of-movement"
+                "musculoskeletal-disorders"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-locomotion",
-                "chapterSlug": "human-physiology-locomotion",
-                "topicSlug": "types-of-movement",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         }
@@ -4541,248 +4507,249 @@
     },
     {
       "id": "m-human-physiology-neural-mock",
-      "title": "Mastery Module: human-physiology-neural",
-      "description": "Comprehensive analysis of human-physiology-neural",
+      "title": "Neural Control and Coordination NEET Core",
+      "description": "Neuron structure, impulse conduction, synaptic transmission, reflex action, brain regions, and sense organs.",
       "conceptTags": [
         "neuron-structure",
-        "structure of neuron"
+        "nerve-impulse",
+        "synaptic-transmission",
+        "central-nervous-system"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-neural-1",
-          "title": "Topic 1 of human-physiology-neural",
+          "title": "Neuron Structure and Nerve Impulse",
           "conceptTags": [
             "neuron-structure",
-            "structure of neuron"
+            "nerve-impulse",
+            "myelin-sheath",
+            "action-potential"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-neural"
+            "NCERT Biology Class 11, Neural Control and Coordination: Neuron and nerve impulse"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "A neuron has dendrites, cell body, axon, and axon terminals.",
+            "Resting membrane potential is maintained mainly by ionic gradients and selective membrane permeability.",
+            "Myelinated axons conduct impulses faster through saltatory conduction at nodes of Ranvier."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-neural",
+              "name": "Structure of neuron",
               "labels": [
-                "A"
+                "dendrite",
+                "cell body",
+                "axon",
+                "myelin sheath",
+                "node of Ranvier",
+                "axon terminal"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Polarity and conduction path in a neuron",
               "commonLabelTraps": [
-                "C"
+                "Confusing dendrites with axon terminals"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Reversing the direction of impulse conduction.",
+            "Forgetting that depolarisation involves sodium ion entry."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Label neuron parts and trace impulse direction.",
+            "Explain resting potential, depolarisation, repolarisation, and saltatory conduction."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Neuron-label questions.",
+            "Statement questions on ions during action potential."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-neural-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "What is saltatory conduction?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Impulse jumping from one node of Ranvier to the next in a myelinated axon"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "nodes of Ranvier"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "nerve-impulse",
+                "myelin-sheath"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-neural-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "During depolarisation of a neuron, which ion mainly enters the axon?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Sodium ions",
+                "Na+"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "sodium"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "nerve-impulse",
+                "action-potential"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-neural-2",
-          "title": "Topic 2 of human-physiology-neural",
+          "title": "Synaptic Transmission and Reflex Action",
           "conceptTags": [
-            "neuron-structure",
-            "structure of neuron"
+            "synaptic-transmission",
+            "reflex-action",
+            "neurotransmitters",
+            "reflex-arc"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-neural"
+            "NCERT Biology Class 11, Neural Control and Coordination: Synapse and reflex action"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Chemical synapses transmit signals using neurotransmitters released into the synaptic cleft.",
+            "A reflex arc typically includes receptor, sensory neuron, interneuron, motor neuron, and effector.",
+            "Synaptic transmission is one-way because neurotransmitter release occurs from the presynaptic terminal."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Reflex arc",
+              "labels": [
+                "receptor",
+                "sensory neuron",
+                "spinal cord",
+                "motor neuron",
+                "effector"
+              ],
+              "provesOrShows": "Fast involuntary response pathway",
+              "commonLabelTraps": [
+                "Putting effector before motor neuron"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Saying neurotransmitters are released by the postsynaptic membrane.",
+            "Forgetting spinal cord can integrate simple reflexes without conscious brain involvement."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Sequence chemical synaptic transmission.",
+            "Trace a reflex arc from stimulus to response."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Reflex arc diagram labeling.",
+            "Chemical versus electrical synapse comparisons."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-neural-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "Why is chemical synaptic transmission usually one-way?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Neurotransmitters are released from presynaptic terminal",
+                "Receptors are on postsynaptic membrane"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "presynaptic",
+                "postsynaptic"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "synaptic-transmission"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-neural-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "Name the neuron that carries impulses from receptor to CNS in a reflex arc.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Sensory neuron",
+                "Afferent neuron"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "afferent"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "reflex-action"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-neural-3",
-          "title": "Topic 3 of human-physiology-neural",
+          "title": "Brain, Eye, Ear, and Sensory Coordination",
           "conceptTags": [
-            "neuron-structure",
-            "structure of neuron"
+            "central-nervous-system",
+            "sensory-organs",
+            "brain",
+            "eye",
+            "ear"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-neural"
+            "NCERT Biology Class 11, Neural Control and Coordination: CNS and sensory organs"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "Cerebrum handles higher functions; cerebellum coordinates posture and balance; medulla controls vital involuntary functions.",
+            "Retina contains rods for dim light and cones for colour vision.",
+            "Cochlea is for hearing, while the vestibular apparatus helps maintain balance."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Human brain and sensory organs",
+              "labels": [
+                "cerebrum",
+                "cerebellum",
+                "medulla",
+                "retina",
+                "cochlea"
+              ],
+              "provesOrShows": "Functional regions of CNS, eye, and ear",
+              "commonLabelTraps": [
+                "Confusing cochlea with semicircular canals"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Mixing cerebellum balance with cerebrum intelligence functions.",
+            "Saying cones are for dim-light vision instead of rods."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Match brain regions with functions.",
+            "Differentiate rods/cones and cochlea/vestibular apparatus."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Function matching for brain parts.",
+            "Eye and ear receptor questions."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-neural-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "Which part of the brain coordinates posture and balance?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Cerebellum"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "hindbrain"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "central-nervous-system",
+                "brain"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-neural-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Which sensory structure is primarily responsible for hearing?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Cochlea"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "inner ear"
               ],
               "conceptTags": [
-                "neuron-structure"
+                "sensory-organs",
+                "ear"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-neural",
-                "chapterSlug": "human-physiology-neural",
-                "topicSlug": "neuron-structure",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         }
@@ -4790,248 +4757,234 @@
     },
     {
       "id": "m-human-physiology-chemical-mock",
-      "title": "Mastery Module: human-physiology-chemical",
-      "description": "Comprehensive analysis of human-physiology-chemical",
+      "title": "Chemical Coordination and Integration NEET Core",
+      "description": "Endocrine glands, hormone classes, feedback regulation, mechanisms of hormone action, and endocrine disorders.",
       "conceptTags": [
         "endocrine-glands",
-        "endocrine glands and hormones"
+        "mechanism-of-hormone-action",
+        "endocrine-disorders"
       ],
       "estimatedMinutes": 120,
       "difficulty": "medium",
       "microtargets": [
         {
-          "id": "mt-human-physiology-chemical-1",
-          "title": "Topic 1 of human-physiology-chemical",
+          "title": "Endocrine Glands and Major Hormones",
           "conceptTags": [
             "endocrine-glands",
-            "endocrine glands and hormones"
+            "pituitary",
+            "thyroid",
+            "adrenal",
+            "pancreas"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-chemical"
+            "NCERT Biology Class 11, Chemical Coordination and Integration: Endocrine glands and hormones"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 1",
-            "Fact 2 for 1"
+            "Hypothalamus releases regulatory hormones that control anterior pituitary secretion.",
+            "Pituitary hormones include GH, TSH, ACTH, LH, FSH, prolactin, oxytocin, and vasopressin/ADH.",
+            "Thyroid hormones need iodine; pancreatic islets secrete insulin and glucagon."
           ],
           "diagrams": [
             {
-              "name": "Diagram for human-physiology-chemical",
+              "name": "Human endocrine glands",
               "labels": [
-                "A"
+                "hypothalamus",
+                "pituitary",
+                "thyroid",
+                "adrenal",
+                "pancreas",
+                "gonads"
               ],
-              "provesOrShows": "B",
+              "provesOrShows": "Location and hormone-source mapping",
               "commonLabelTraps": [
-                "C"
+                "Confusing endocrine pancreas with exocrine pancreas"
               ]
             }
           ],
           "commonTraps": [
-            "Trap 1"
+            "Calling hypothalamus only neural and not neuroendocrine.",
+            "Mixing insulin and glucagon effects on blood glucose."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Match major endocrine glands with their hormones.",
+            "State the primary action of insulin, glucagon, thyroid hormone, and adrenal hormones."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Hormone-source match questions.",
+            "Statement-based questions on pituitary and hypothalamus."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-chemical-1-1",
-              "question": "Question 1 for mt 1?",
+              "question": "Which pancreatic hormone lowers blood glucose level?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Insulin"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "beta cells"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "endocrine-glands",
+                "pancreas"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-chemical-1-2",
-              "question": "Question 2 for mt 1?",
+              "question": "Which element is required for synthesis of thyroid hormones?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Iodine"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "iodide"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "endocrine-glands",
+                "thyroid"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-chemical-2",
-          "title": "Topic 2 of human-physiology-chemical",
+          "title": "Mechanism of Hormone Action and Feedback Control",
           "conceptTags": [
-            "endocrine-glands",
-            "endocrine glands and hormones"
+            "mechanism-of-hormone-action",
+            "steroid-hormones",
+            "peptide-hormones",
+            "secondary-messenger",
+            "feedback-control"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-chemical"
+            "NCERT Biology Class 11, Chemical Coordination and Integration: Mechanism of hormone action"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 2",
-            "Fact 2 for 2"
+            "Peptide hormones usually act through membrane receptors and second messengers such as cAMP.",
+            "Steroid and thyroid hormones can act through intracellular receptors to regulate gene expression.",
+            "Negative feedback stabilizes hormone levels, such as thyroid hormone feedback on pituitary and hypothalamus."
           ],
-          "diagrams": [],
+          "diagrams": [
+            {
+              "name": "Peptide versus steroid hormone action",
+              "labels": [
+                "membrane receptor",
+                "cAMP",
+                "intracellular receptor",
+                "nucleus"
+              ],
+              "provesOrShows": "Different receptor locations and response pathways",
+              "commonLabelTraps": [
+                "Saying all hormones enter the nucleus directly"
+              ]
+            }
+          ],
           "commonTraps": [
-            "Trap 1"
+            "Treating peptide and steroid hormone mechanisms as identical.",
+            "Forgetting feedback loops include hypothalamus, pituitary, and target gland."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Compare membrane-receptor and intracellular-receptor hormone action.",
+            "Trace one negative feedback loop using thyroid hormone."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Second messenger questions.",
+            "Feedback regulation assertion-reason questions."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-chemical-2-1",
-              "question": "Question 1 for mt 2?",
+              "question": "Why do peptide hormones usually need second messengers?",
               "expectedAnswerPoints": [
-                "Answer"
+                "They bind cell-surface receptors",
+                "They generally do not pass directly through the lipid membrane"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "cAMP"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "mechanism-of-hormone-action",
+                "secondary-messenger"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             },
             {
-              "id": "q-human-physiology-chemical-2-2",
-              "question": "Question 2 for mt 2?",
+              "question": "What kind of feedback usually controls thyroid hormone levels?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Negative feedback"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "thyroxine feedback"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "mechanism-of-hormone-action",
+                "feedback-control"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             }
           ]
         },
         {
-          "id": "mt-human-physiology-chemical-3",
-          "title": "Topic 3 of human-physiology-chemical",
+          "title": "Endocrine Disorders and Clinical Clues",
           "conceptTags": [
-            "endocrine-glands",
-            "endocrine glands and hormones"
+            "endocrine-disorders",
+            "diabetes-mellitus",
+            "goitre",
+            "acromegaly",
+            "addison-disease"
           ],
           "ncertAnchors": [
-            "NCERT Biology Class 11, human-physiology-chemical"
+            "NCERT Biology Class 11, Chemical Coordination and Integration: Hormonal disorders"
           ],
           "mustKnowFacts": [
-            "Fact 1 for 3",
-            "Fact 2 for 3"
+            "Diabetes mellitus is linked to deficient insulin secretion or reduced insulin response.",
+            "Hypothyroidism can cause simple goitre when iodine deficiency reduces thyroid hormone synthesis.",
+            "Excess GH in adults causes acromegaly, while deficiency in childhood causes pituitary dwarfism."
           ],
           "diagrams": [],
           "commonTraps": [
-            "Trap 1"
+            "Confusing diabetes mellitus with diabetes insipidus.",
+            "Mixing gigantism in children with acromegaly in adults."
           ],
           "masteryCriteria": [
-            "Criterion 1"
+            "Match hormone excess or deficiency with named disorders.",
+            "Use clinical clues to identify diabetes mellitus, goitre, acromegaly, dwarfism, Addison disease, and Cushing syndrome."
           ],
           "pyqPatterns": [
-            "PYQ 1"
+            "Disease-hormone matching questions.",
+            "Clinical clue questions on thyroid, pituitary, pancreas, and adrenal disorders."
           ],
-          "estimatedMinutes": 30,
+          "estimatedMinutes": 35,
           "difficulty": "medium",
           "activeRecallQuestions": [
             {
-              "id": "q-human-physiology-chemical-3-1",
-              "question": "Question 1 for mt 3?",
+              "question": "Which hormone deficiency or ineffective action is central to diabetes mellitus?",
               "expectedAnswerPoints": [
-                "Answer"
+                "Insulin"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "pancreas"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "endocrine-disorders",
+                "diabetes-mellitus"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "easy"
             },
             {
-              "id": "q-human-physiology-chemical-3-2",
-              "question": "Question 2 for mt 3?",
+              "question": "Differentiate gigantism and acromegaly by timing of GH excess.",
               "expectedAnswerPoints": [
-                "Answer"
+                "Gigantism occurs before epiphyseal closure in children",
+                "Acromegaly occurs in adults after epiphyseal closure"
               ],
               "acceptedSynonyms": [
-                "syn"
+                "GH"
               ],
               "conceptTags": [
-                "endocrine-glands"
+                "endocrine-disorders",
+                "growth-hormone"
               ],
-              "difficulty": "easy",
-              "taxonomyPath": {
-                "subject": "Biology",
-                "unitSlug": "human-physiology-chemical",
-                "chapterSlug": "human-physiology-chemical",
-                "topicSlug": "endocrine-glands",
-                "subtopicSlug": "subtopic",
-                "conceptSlug": "concept",
-                "microskillSlug": "skill"
-              }
+              "difficulty": "medium"
             }
           ]
         }

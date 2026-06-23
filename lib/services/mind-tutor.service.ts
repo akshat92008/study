@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import { budgetedGenerateJSON, budgetedStreamGeneration } from '@/lib/ai/budgeted';
+import { budgetedGenerateJSON } from '@/lib/ai/budgeted';
 import { MindTutorOutputSchema, MindTutorOutput, compileTutorSystemPrompt, MindTutorContext } from '@/lib/ai/prompts/tutor.prompt';
 import { logger } from '@/lib/utils/logger';
 import { ConceptService } from './concept.service';
@@ -150,7 +150,7 @@ export class MindTutorService extends BaseService {
     }
 
     const closingMessage = await this.handleStateTransition(userId, sessionState.id, output, message, history);
-    return this.streamWithOptionalClosing(userId, systemPrompt, userPrompt, closingMessage);
+    return this.streamTutorText(output.responseToStudent, closingMessage);
   }
 
   private async handleStateTransition(
@@ -324,33 +324,11 @@ export class MindTutorService extends BaseService {
     }
   }
 
-  private async *realStream(
-    userId: string,
-    systemPrompt: string,
-    userPrompt: string
-  ): AsyncGenerator<string> {
-    try {
-      const stream = await budgetedStreamGeneration({
-        userId, feature: 'tutor', route: 'mind-tutor:stream', model: 'pro',
-        systemPrompt, userPrompt, maxOutputTokens: 1200
-      });
-      for await (const chunk of stream) {
-        yield chunk;
-      }
-    } catch (err) {
-      console.error('[MindTutor] Stream failed, falling back to text:', err);
-      // Graceful fallback — yield the error message as a complete string
-      yield 'I encountered an issue generating a response. Please try again.';
-    }
-  }
-
-  private async *streamWithOptionalClosing(
-    userId: string,
-    systemPrompt: string,
-    userPrompt: string,
+  private async *streamTutorText(
+    responseToStudent: string,
     closingMessage: string | null
   ): AsyncGenerator<string> {
-    yield* this.realStream(userId, systemPrompt, userPrompt);
+    yield responseToStudent;
     if (closingMessage) {
       yield "\n\n---\n\n";
       yield `**Session Complete:** ${closingMessage}`;

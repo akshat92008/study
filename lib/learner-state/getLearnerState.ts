@@ -18,6 +18,7 @@ export interface LearnerStateSnapshot {
     version: number;
   };
   activeGoal: {
+    id: string;
     title: string;
     targetDate: string | null;
     progress: number | null;
@@ -32,7 +33,7 @@ export interface LearnerStateSnapshot {
     isCompleted?: boolean;
   } | null;
   atlas: {
-    weakConcepts: Array<{ name: string; subject: string; chapter: string; mastery: string }>;
+    weakConcepts: Array<{ id: string; name: string; subject: string; chapter: string; mastery: string; mastery_score?: number | null; forgetting_probability?: number | null; times_reviewed?: number | null }>;
     masterySummary: {
       totalConcepts: number;
       masteredCount: number;
@@ -45,7 +46,7 @@ export interface LearnerStateSnapshot {
     topDueCards: Array<{ id: string; front: string }>;
   };
   autopsy: {
-  recentMistakes: Array<{ chapter: string; topic?: string | null; concept?: string | null; category: string; mistake_type: string; subject: string; status?: string | null; mistake_text?: string | null; created_at?: string }>;
+  recentMistakes: Array<{ id: string; chapter: string; topic?: string | null; concept?: string | null; concept_id?: string | null; category: string; mistake_type: string; subject: string; status?: string | null; mistake_text?: string | null; severity?: number | null; exam_trap?: string | null; next_retest_at?: string | null; created_at?: string }>;
     needsReviewCount: number;
     lastAutopsy: { test_name: string; current_score: number; potential_score: number; created_at: string } | null;
     dueRetests: any[];
@@ -84,7 +85,7 @@ export async function getLearnerStateSnapshot(
 
   let weakConceptsQuery = supabase
     .from('concepts')
-    .select('name, subject, chapter, mastery')
+    .select('id, name, subject, chapter, mastery, mastery_score, forgetting_probability, times_reviewed')
     .eq('user_id', userId)
     .in('mastery', ['not_started', 'exposed', 'developing'])
     .order('mastery')
@@ -95,7 +96,7 @@ export async function getLearnerStateSnapshot(
 
   let mistakesQuery = supabase
     .from('mistakes')
-    .select('chapter, topic, concept, category, mistake_type, subject, status, mistake_text, created_at')
+    .select('id, chapter, topic, concept, concept_id, category, mistake_type, subject, status, mistake_text, severity, exam_trap, next_retest_at, created_at')
     .eq('user_id', userId)
     .in('status', ['open', 'repairing', 'retest_due', 'verified_mistake', 'pending_review'])
     .order('created_at', { ascending: false })
@@ -305,6 +306,7 @@ export async function getLearnerStateSnapshot(
   if (activeGoalData) {
     const inferred = inferGoalDomain(activeGoalData.title);
     activeGoal = {
+      id: activeGoalData.id,
       title: activeGoalData.title,
       targetDate: activeGoalData.target_date ?? null,
       progress: activeGoalData.progress ?? null,

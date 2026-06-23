@@ -134,6 +134,65 @@ async function materializePracticeSetFromChat(
   return null;
 }
 
+async function rollbackPracticeAttempts(
+  supabase: any,
+  input: {
+    userId: string;
+    idempotencyKeys: string[];
+    requestId: string;
+    reason: string;
+  }
+) {
+  const keys = Array.from(new Set(input.idempotencyKeys.filter(Boolean)));
+  if (keys.length === 0) return;
+
+  const { error } = await supabase
+    .from('practice_attempts')
+    .delete()
+    .eq('user_id', input.userId)
+    .in('idempotency_key', keys);
+
+  if (error) {
+    logger.error('Practice projection rollback failed', error, {
+      userId: input.userId,
+      requestId: input.requestId,
+      reason: input.reason,
+      rollbackAttemptCount: keys.length,
+    });
+  }
+}
+
+async function practiceProjectionFailedResponse(
+  supabase: any,
+  input: {
+    userId: string;
+    requestId: string;
+    practiceSetId: string;
+    newAttemptKeys: string[];
+    reason: string;
+    errors?: unknown;
+  }
+) {
+  await rollbackPracticeAttempts(supabase, {
+    userId: input.userId,
+    idempotencyKeys: input.newAttemptKeys,
+    requestId: input.requestId,
+    reason: input.reason,
+  });
+
+  return NextResponse.json({
+    ok: false,
+    success: false,
+    code: 'PRACTICE_PROJECTION_FAILED',
+    message: 'Practice could not be saved because learner-state projection failed. Please retry.',
+    retryable: true,
+    attemptSaved: false,
+    traceId: input.requestId,
+    practiceSetId: input.practiceSetId,
+    projectionErrors: input.errors ?? null,
+  }, { status: 500 });
+}
+
 export async function POST(req: NextRequest) {
   const requestId = getRequestId(req);
   try {
@@ -347,7 +406,19 @@ export async function POST(req: NextRequest) {
       });
 
       if (!agentLoopResult?.verification?.ok) {
-        logger.warn('Learner-state verification failed, but bypassing.', { errors: agentLoopResult?.verification?.errors });
+        logger.error('Practice learner-state verification failed', {
+          userId: user.id,
+          practiceSetId: set.id,
+          errors: agentLoopResult?.verification?.errors,
+        });
+        return practiceProjectionFailedResponse(supabase, {
+          userId: user.id,
+          requestId,
+          practiceSetId: set.id,
+          newAttemptKeys,
+          reason: 'verification_failed',
+          errors: agentLoopResult?.verification?.errors ?? null,
+        });
       }
 
       logger.info('Practice agent runtime completed', {
@@ -356,9 +427,17 @@ export async function POST(req: NextRequest) {
         changed: agentLoopResult?.mutationSummary?.changed,
       });
     } catch (runtimeError) {
-      logger.error('Practice learner-state projection failed gracefully', runtimeError, {
+      logger.error('Practice learner-state projection failed', runtimeError, {
         userId: user.id,
         practiceSetId: set.id,
+      });
+      return practiceProjectionFailedResponse(supabase, {
+        userId: user.id,
+        requestId,
+        practiceSetId: set.id,
+        newAttemptKeys,
+        reason: 'runtime_error',
+        errors: runtimeError instanceof Error ? runtimeError.message : String(runtimeError),
       });
     }
 

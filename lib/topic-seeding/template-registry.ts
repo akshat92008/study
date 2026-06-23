@@ -151,7 +151,35 @@ export function selectSeedTemplate(params: SeedTopicParams): SelectedSeedTemplat
     return neetSeed;
   }
 
-  // No fallback allowed for strict ground-truth tutoring
-  logger.warn('mission_template_rejected', { goalText: haystack, reason: 'unrecognized_domain' });
-  return null;
+  const scoredTemplate = ALL_SEED_TEMPLATES
+    .filter((template) => isTemplateCompatible(template, params))
+    .map((template) => ({
+      template,
+      score: scoreTemplate(template, haystack, params),
+    }))
+    .filter((candidate) => candidate.score > 0)
+    .sort((a, b) => b.score - a.score)[0];
+
+  if (scoredTemplate) {
+    logger.info('mission_template_selected', {
+      goalText: haystack,
+      matchedSlug: scoredTemplate.template.templateKey,
+      confidence: Math.min(0.9, 0.5 + scoredTemplate.score / 200),
+    });
+    return {
+      template: scoredTemplate.template,
+      templateKey: scoredTemplate.template.templateKey,
+      source: 'seeded_template',
+      confidence: Math.min(0.9, 0.5 + scoredTemplate.score / 200),
+    };
+  }
+
+  const fallback = buildFallbackTemplate(params);
+  logger.warn('mission_template_fallback', { goalText: haystack, reason: 'unrecognized_domain' });
+  return {
+    template: fallback,
+    templateKey: fallback.templateKey,
+    source: 'custom_seed',
+    confidence: 0.35,
+  };
 }
