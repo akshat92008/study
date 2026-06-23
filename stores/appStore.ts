@@ -112,6 +112,7 @@ export interface AppState extends ChatSlice {
   activeGoalId: string | null;
   activeGoalContext: any | null;
   selectedMaterialIds: string[];
+  setSelectedMaterialIds: (ids: string[]) => void;
   toggleSelectedMaterial: (id: string) => void;
   clearSelectedMaterials: () => void;
   setActiveGoalId: (id: string | null) => void;
@@ -221,6 +222,7 @@ export const useAppStore = create<AppState>()(
       activeGoalId: null,
       activeGoalContext: null,
       selectedMaterialIds: [],
+      setSelectedMaterialIds: (ids) => set({ selectedMaterialIds: Array.from(new Set(ids)) }),
       toggleSelectedMaterial: (id) => set((state) => ({
         selectedMaterialIds: state.selectedMaterialIds.includes(id)
           ? state.selectedMaterialIds.filter(m => m !== id)

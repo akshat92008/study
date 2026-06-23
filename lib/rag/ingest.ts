@@ -8,6 +8,7 @@ import { logger } from '@/lib/utils/logger';
 import { EventDispatcher } from '@/lib/events/orchestrator';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
 import { budgetedVisionCall } from '@/lib/ai/budgeted';
+import { analyzeMaterialText } from '@/lib/materials/study-room-analysis';
 
 export type IngestStudyMaterialInput = {
   materialId: string;
@@ -107,6 +108,7 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     }
 
     await updateRagJob(job?.id, input.userId, 'chunking');
+    const materialAnalysis = analyzeMaterialText(extracted.pages.map(page => page.text).join('\n\n'));
     const chunks = chunkExtractedPages({
       pages: extracted.pages,
       maxChunks: config.maxChunksPerFile,
@@ -175,6 +177,8 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
         char_count: extracted.charCount,
         chunk_count: chunks.length,
         embedding_count: embeddingCount,
+        material_analysis: materialAnalysis,
+        source_type: materialAnalysis.sourceType === 'unknown' ? undefined : materialAnalysis.sourceType,
         processing_finished_at: new Date().toISOString(),
         last_processed_at: new Date().toISOString(),
         error_message: null,

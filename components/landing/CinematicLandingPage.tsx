@@ -358,7 +358,7 @@ function LandingNav() {
           <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-violet-300/25 bg-violet-400/10 shadow-[0_0_28px_rgba(124,58,237,0.22)]">
             <BrainCircuit className="h-5 w-5 text-violet-200" />
           </span>
-          <span className="font-display text-[1rem] font-semibold">Cognition OS</span>
+          <span className="font-display text-[1rem] font-semibold">Cognition</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -490,7 +490,7 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              Understand anything.
+              Master anything from
             </motion.span>
             <motion.span
               className="block bg-gradient-to-r from-white via-violet-100 to-cyan-100 bg-clip-text text-transparent"
@@ -498,22 +498,22 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              Remember everything.
+              your own study material.
             </motion.span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.24}>
           <p className="mx-auto mt-7 max-w-3xl text-[1.05rem] leading-8 text-white/68 sm:text-[1.22rem]">
-            An AI companion that knows your materials, mistakes, weak spots, and daily plan.
+            Upload PDFs, notes, slides, or question banks. Cognition turns them into an AI Study Room where you can learn, practice, solve doubts, detect weak areas, and revise.
           </p>
         </Reveal>
 
         <Reveal delay={0.32}>
           <div className="mt-9 flex w-full max-w-md [flex-direction:column] gap-3 sm:max-w-none sm:[flex-direction:row] sm:justify-center">
-            <PrimaryButton href="/dashboard">Launch Cognition OS</PrimaryButton>
-            <PrimaryButton href="/signup" variant="secondary">
-              Get Started
+            <PrimaryButton href="/materials">Upload Material</PrimaryButton>
+            <PrimaryButton href="/study-room" variant="secondary">
+              Open Study Room
             </PrimaryButton>
           </div>
         </Reveal>
@@ -595,7 +595,7 @@ function ProductMockup({ mode = 'mission' }: { mode?: ProductMode }) {
               <BrainCircuit className="h-4 w-4 text-violet-200" />
             </div>
             <div>
-              <p className="text-[0.78rem] font-semibold text-white">Cognition OS</p>
+              <p className="text-[0.78rem] font-semibold text-white">Cognition</p>
               <p className="text-[0.7rem] text-white/40">Learning state live</p>
             </div>
           </div>

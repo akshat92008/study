@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Cognition OS — AI-Powered Learning Operating System',
+  title: 'Cognition — AI Study Room',
   description: 'An AI-native system that continuously models your knowledge, memory, behavior, and performance to autonomously optimize your learning outcomes.',
 };
 

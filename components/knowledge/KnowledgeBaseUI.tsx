@@ -5,10 +5,11 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Badge from '@/components/ui/Badge';
-import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw, Trash2 } from 'lucide-react';
+import { Database, Plus, FileText, Loader2, Sparkles, Headphones, RefreshCw, Trash2, MessageCircle } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { useAppStore } from '@/stores/appStore';
 import { classifySource } from '@/lib/materials/classify-source';
+import { materialStudyStats } from '@/lib/materials/study-room-analysis';
 
 export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials: any[] }) {
   const { activeGoalId, chatId, learningGoals, selectedMaterialIds, toggleSelectedMaterial } = useAppStore();
@@ -134,7 +135,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       } else if (data.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed. Try another file or re-upload this source.' });
       } else {
-        setStatus({ type: 'info', msg: 'Source is queued for indexing. Amaura will use it once chunks are ready.' });
+            setStatus({ type: 'info', msg: 'Material is queued for indexing. The Study Room will use it once chunks are ready.' });
       }
 
       await loadMaterials();
@@ -229,13 +230,13 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       } else if (res.material?.status === 'failed') {
         setStatus({ type: 'error', msg: 'Material indexing failed.' });
       } else if (res.material?.status === 'ready' && (res.chunksProcessed ?? 0) > 0) {
-        setStatus({ type: 'success', msg: `Source ready: ${res.chunksProcessed} chunks indexed.` });
+        setStatus({ type: 'success', msg: `Material ready: ${res.chunksProcessed} source chunks indexed.` });
         setShowForm(false);
         await loadMaterials();
       } else if (res.material?.status === 'ready' && (res.chunksProcessed ?? 0) === 0) {
-        setStatus({ type: 'error', msg: 'Source uploaded but no searchable text was found. This may be a scanned image. Try a text-based PDF.' });
+        setStatus({ type: 'error', msg: 'Material uploaded, but no searchable text was found. This may be a scanned image. Try a text-based PDF or OCR first.' });
       } else {
-        setStatus({ type: 'info', msg: 'Source uploaded and queued for indexing. Use Process now if it stays queued.' });
+        setStatus({ type: 'info', msg: 'Material uploaded and queued for extraction. Use Process now if it stays queued.' });
         setShowForm(false);
         await loadMaterials();
       }
@@ -282,10 +283,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
         <div>
           <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 'var(--fw-bold)', letterSpacing: 'var(--ls-tight)' }}>
             <Database size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 'var(--sp-2)', color: 'var(--accent-cyan)' }} />
-            Sources
+            Materials
           </h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--sp-1)' }}>
-            {activeGoal ? `Sources attached to ${activeGoal.title}.` : 'Upload lecture notes so the AI tutor can ground explanations in your materials.'}
+            Upload PDFs, notes, slides, transcripts, assignments, or question banks. Cognition extracts useful study structure for your Study Room.
           </p>
         </div>
         <div style={{ display: 'flex', gap: 'var(--sp-2)' }}>
@@ -353,10 +354,10 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       {showForm && (
         <Card padding="lg" variant="glow" className="animate-fade">
           <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
-            Add Source
+            Upload Material
           </h3>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-4)' }}>
-            <Input name="title" label="Source Title" placeholder="e.g. Chapter 4: Thermodynamics Notes" required />
+            <Input name="title" label="Material Title" placeholder="e.g. Kinematics module, Week 3 lecture notes, Economics question bank" required />
             
             <div>
               <label style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: 'var(--sp-1)' }}>
@@ -379,7 +380,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               <Button variant="ghost" type="button" onClick={() => setShowForm(false)}>Cancel</Button>
               <Button type="submit" disabled={loading} style={{ background: 'var(--accent-cyan)', color: '#000' }}>
                 {loading ? <Loader2 size={16} className="spin" /> : <Sparkles size={16} />}
-                {loading ? 'Uploading...' : 'Process Source'}
+                {loading ? 'Uploading...' : 'Upload and Analyze'}
               </Button>
             </div>
           </form>
@@ -410,7 +411,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
               </label>
               <Input
                 name="title"
-                placeholder="Custom title for this link"
+                placeholder="Custom title for this material"
                 style={{ width: '100%' }}
               />
             </div>
@@ -420,7 +421,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                 Cancel
               </Button>
               <Button type="submit" variant="primary" disabled={loading}>
-                {loading ? <Loader2 size={16} className="animate-spin" /> : 'Ingest Link'}
+                {loading ? <Loader2 size={16} className="animate-spin" /> : 'Add Link'}
               </Button>
             </div>
           </form>
@@ -438,26 +439,28 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
       {/* Uploaded Materials List */}
       <Card>
         <h3 style={{ fontSize: 'var(--fs-md)', fontWeight: 'var(--fw-semibold)', marginBottom: 'var(--sp-4)' }}>
-          Uploaded Sources
+          Uploaded Materials
           <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 'normal', color: 'var(--text-tertiary)', marginLeft: '8px' }}>
-            {selectedMaterialIds.length > 0 ? `${selectedMaterialIds.length} selected for chat` : 'All ready sources included in chat'}
+            {selectedMaterialIds.length > 0 ? `${selectedMaterialIds.length} selected for Study Room` : 'Ready materials can be selected in the Study Room'}
           </span>
         </h3>
         {materials.length === 0 ? (
           <div style={{ textAlign: 'center', padding: 'var(--sp-12)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px dashed var(--border-default)' }}>
             <Database size={48} style={{ opacity: 0.3, margin: '0 auto var(--sp-4)', color: 'var(--text-secondary)' }} />
-            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Start Here: Add Your First Source</h2>
-            <p style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-6)' }}>Upload notes or study materials to ground the AI tutor for this goal.</p>
+            <h2 style={{ fontSize: 'var(--fs-xl)', fontWeight: 'var(--fw-bold)', marginBottom: 'var(--sp-2)' }}>Start here: upload your first material</h2>
+            <p style={{ color: 'var(--text-tertiary)', marginBottom: 'var(--sp-6)' }}>Cognition works best with lecture notes, PDFs, slides, textbook chapters, and question banks.</p>
             <Button onClick={() => setShowForm(true)} style={{ background: 'var(--accent-cyan)', color: '#000', padding: '12px 24px' }}>
               <Plus size={18} style={{ marginRight: 8 }} /> Upload Material
             </Button>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
-            {materials.map((mat) => (
+            {materials.map((mat) => {
+              const stats = materialStudyStats(mat);
+              return (
               <div key={mat.id} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
               <div style={{
-                display: 'flex', alignItems: 'center', padding: 'var(--sp-3)',
+                display: 'grid', gridTemplateColumns: 'auto 1fr auto', alignItems: 'center', padding: 'var(--sp-3)',
                 background: 'var(--bg-tertiary)', borderRadius: 'var(--radius-md)', gap: 'var(--sp-3)',
                 transition: 'all 0.3s ease',
                 ...(mat.status === 'processing' || mat.status === 'queued' ? {
@@ -476,7 +479,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     checked={selectedMaterialIds.includes(mat.id)}
                     onChange={() => toggleSelectedMaterial(mat.id)}
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--accent-cyan)' }}
-                    title="Include in AI Chat context"
+                    title="Use this material in the Study Room"
                   />
                 )}
                 <FileText size={18} style={{ color: mat.status === 'ready' && selectedMaterialIds.includes(mat.id) ? 'var(--accent-cyan)' : 'var(--text-tertiary)' }} />
@@ -491,13 +494,31 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     </div>
                   )}
                   <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text-tertiary)', marginTop: 2 }}>
-                    {mat.chunk_count ?? mat.study_material_chunks?.[0]?.count ?? 0} chunks
-                    {' · '}{mat.embedding_count ?? 0} embeddings
-                    {' · '}retry {mat.retry_count ?? 0}
+                    Text extracted: {stats.textExtraction === 'usable' ? 'Usable' : stats.textExtraction === 'partial' ? 'Partial' : 'Not yet'}
+                    {' · '}Topics found: {stats.counts.topics}
+                    {' · '}Questions found: {stats.counts.questions}
+                    {' · '}Examples found: {stats.counts.examples + stats.counts.solvedExamples}
+                    {' · '}Formulas found: {stats.counts.formulas}
                     {mat.last_processed_at ? ` · processed ${mat.last_processed_at.replace('T', ' ').substring(0, 16)}` : ''}
                   </div>
+                  {stats.warnings.length > 0 && (
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--warning)', marginTop: 2 }}>
+                      {stats.warnings[0]}
+                    </div>
+                  )}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)' }}>
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    disabled={mat.status !== 'ready'}
+                    onClick={() => {
+                      if (!selectedMaterialIds.includes(mat.id)) toggleSelectedMaterial(mat.id);
+                      window.location.href = `/study-room?materialId=${mat.id}`;
+                    }}
+                  >
+                    <MessageCircle size={14} /> Open Study Room
+                  </Button>
                   <Button
                     size="sm"
                     variant="secondary"
@@ -552,7 +573,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                     {mat.status === 'ready' ? 'Ready' : mat.status === 'failed' ? 'Failed' : mat.status === 'retryable_failed' ? 'Retry available' : mat.status === 'uploaded' ? 'Uploaded' : mat.status === 'queued' ? 'Queued' : 'Processing'}
                   </Badge>
                   <Badge color="gray">
-                    {mat.source_type?.toUpperCase() || (mat.mime_type?.includes('pdf') ? 'PDF' : 'TXT')}
+                    {stats.sourceType.replaceAll('_', ' ')}
                   </Badge>
                   {mat.study_material_chunks?.[0]?.count > 0 && (
                     <Badge color="purple">{mat.study_material_chunks[0].count} chunks</Badge>
@@ -568,7 +589,7 @@ export default function KnowledgeBaseUI({ initialMaterials }: { initialMaterials
                 </div>
               )}
               </div>
-            ))}
+            )})}
           </div>
         )}
       </Card>

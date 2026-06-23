@@ -13,25 +13,15 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { isAutopsyUploadIntent } from '@/lib/autopsy/upload-intent';
 import { ThinkingIndicator } from './ThinkingIndicator';
 
-import { AgentActivityFeed } from '@/components/amaura/AgentActivityFeed';
-
-const MIND_QUICK_PROMPTS = [
-  'What should I do now?',
-  'Continue',
-  'Create a goal',
-  'Generate a quiz',
-  'Autopsy a mistake',
-  'Show weak areas',
-  'Show source status',
-];
-
-const TUTOR_QUICK_PROMPTS = [
-  'Explain current topic',
-  'Ask diagnostic question',
-  'Check my answer',
-  'Repair weak area',
-  'Review due memory',
-  'Show source status',
+const STUDY_ROOM_QUICK_PROMPTS = [
+  'Teach this',
+  'Quiz me',
+  'Solve a doubt',
+  'Generate similar questions',
+  'Revise key points',
+  'Find weak areas',
+  'Explain from source',
+  'Ask harder questions',
 ];
 
 const ChatMessage = memo(function ChatMessage({ msg }: { msg: any }) {
@@ -112,9 +102,33 @@ type GlobalChatProps = {
   endpoint?: string;
   tutorSurface?: boolean;
   titleSuffix?: string;
+  embedded?: boolean;
+  quickPrompts?: string[];
+  currentMaterialId?: string | null;
+  currentTopic?: string | null;
 };
 
-export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', tutorSurface = false, titleSuffix = 'AI Tutor' }: GlobalChatProps) {
+function inferStudyRoomIntent(message: string) {
+  const lower = message.toLowerCase();
+  if (lower.includes('quiz')) return 'quiz';
+  if (lower.includes('similar question')) return 'question_bank';
+  if (lower.includes('weak')) return 'diagnosis';
+  if (lower.includes('source')) return 'source_grounded';
+  if (lower.includes('doubt')) return 'doubt';
+  if (lower.includes('harder')) return 'harder_questions';
+  if (lower.includes('revise') || lower.includes('key point')) return 'review';
+  return 'teach';
+}
+
+export const GlobalChat = memo(function GlobalChat({
+  endpoint = '/api/ai/chat',
+  tutorSurface = false,
+  titleSuffix = 'Study Room',
+  embedded = false,
+  quickPrompts = STUDY_ROOM_QUICK_PROMPTS,
+  currentMaterialId = null,
+  currentTopic = null,
+}: GlobalChatProps) {
   const isAssistantOpen = useAppStore(s => s.isAssistantOpen);
   const toggleAssistant = useAppStore(s => s.toggleAssistant);
   const chatMessages = useAppStore(s => s.chatMessages);
@@ -138,7 +152,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
   const [inputMessage, setInputMessage] = useState('');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [isProcessingUpload, setIsProcessingUpload] = useState(false);
-  const [thinkingLabel, setThinkingLabel] = useState('Amaura is thinking');
+  const [thinkingLabel, setThinkingLabel] = useState('Reading your material');
   const [learningSignalSummary, setLearningSignalSummary] = useState<string | null>(null);
   const thinkingTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const router = useRouter();
@@ -282,24 +296,6 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
     if (!textToSend && !pendingFile) return;
     if (status === 'streaming' || status === 'connecting' || isProcessingUpload) return;
 
-    // Special handling for 'Create a goal' quick action
-    if (textToSend === 'Create a goal') {
-      addChatMessage({
-        role: 'user',
-        content: textToSend,
-        timestamp: new Date().toISOString(),
-      });
-      setTimeout(() => {
-        addChatMessage({
-          role: 'assistant',
-          content: 'What specific learning goal should I create? For example: "mechanical properties of fluids", "solutions", or "NEET physics revision".',
-          timestamp: new Date().toISOString(),
-        });
-      }, 400);
-      setInputMessage('');
-      return;
-    }
-
     let imageBase64: string | null = null;
     let imageMimeType: string | null = null;
     let documentBase64: string | null = null;
@@ -372,12 +368,11 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
     setInputMessage('');
     setPendingFile(null);
     resetStatus();
-    setThinkingLabel('MIND observing learning signal');
-    window.dispatchEvent(new Event('amaura:agent-start'));
+    setThinkingLabel('Reading your material');
 
     thinkingTimersRef.current.forEach(clearTimeout);
     thinkingTimersRef.current = [
-      setTimeout(() => setThinkingLabel('Amaura analyzing'), 1500),
+      setTimeout(() => setThinkingLabel('Finding relevant passages'), 1500),
       setTimeout(() => setThinkingLabel('Building answer'), 5000),
     ];
 
@@ -401,6 +396,9 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
           chatId,
           selectedMaterialIds: useAppStore.getState().selectedMaterialIds,
           tutorSurface,
+          currentMaterialId,
+          currentTopic,
+          studyRoomIntent: inferStudyRoomIntent(content),
         }
       });
 
@@ -421,9 +419,9 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
           if (result.toolCall.action === 'show_revision' || result.toolCall.action === 'show_flashcards') {
             setActiveDrawer('revision');
           } else if (result.toolCall.action === 'show_atlas') {
-            setActiveDrawer('cognition');
+            router.push('/review');
           } else if (result.toolCall.action === 'run_autopsy') {
-            setActiveDrawer('autopsy');
+            router.push('/review');
           } else if (result.toolCall.action === 'show_analytics') {
             router.push('/dashboard');
             window.dispatchEvent(new Event('refresh-dashboard'));
@@ -453,14 +451,15 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
     } finally {
       thinkingTimersRef.current.forEach(clearTimeout);
       thinkingTimersRef.current = [];
-      setThinkingLabel('Amaura is thinking');
-      window.dispatchEvent(new Event('amaura:agent-stop'));
+      setThinkingLabel('Reading your material');
     }
   }, [
     activeGoalId,
     addChatMessage,
     chatId,
     chatMessages,
+    currentMaterialId,
+    currentTopic,
     fileToBase64,
     inferMimeType,
     inputMessage,
@@ -474,7 +473,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
   ]);
 
   const contextLine = useMemo(() => {
-    if (!activeGoal) return 'General assistant · Create a goal to activate Amaura.';
+    if (!activeGoal) return 'Study Room';
 
     const c = activeGoal.counts;
     if (learningSignalSummary) {
@@ -488,19 +487,30 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
       if (sessionSignals > 0) {
         return `Context: ${activeGoal.title} · ${sessionSignals} learning signal${sessionSignals === 1 ? '' : 's'} captured from this session.`;
       }
-      return `Context: ${activeGoal.title} · No learning signals yet. Ask a doubt or start today's mission.`;
+      return `Context: ${activeGoal.title} · No weak areas yet.`;
     }
 
     const stateBits = [
       (c?.weakConcepts || 0) > 0 ? `${c?.weakConcepts} weak area${c?.weakConcepts === 1 ? '' : 's'}` : null,
       (c?.dueCards || 0) > 0 ? `${c?.dueCards} due card${c?.dueCards === 1 ? '' : 's'}` : null,
       (c?.recentMistakes || 0) > 0 ? `${c?.recentMistakes} mistake${c?.recentMistakes === 1 ? '' : 's'}` : null,
-      (c?.sourcesReady || 0) > 0 ? `${c?.sourcesReady} source${c?.sourcesReady === 1 ? '' : 's'} ready` : null,
+      (c?.sourcesReady || 0) > 0 ? `${c?.sourcesReady} material${c?.sourcesReady === 1 ? '' : 's'} ready` : null,
       (c?.sourcesProcessing || 0) > 0 ? `${c?.sourcesProcessing} processing` : null,
     ].filter(Boolean);
 
     return `Context: ${activeGoal.title} · ${stateBits.join(' · ')}.`;
   }, [activeGoal, chatMessages, learningSignalSummary]);
+
+  useEffect(() => {
+    const handleStudyRoomPrompt = (event: Event) => {
+      const detail = (event as CustomEvent<{ message?: string }>).detail;
+      if (detail?.message) {
+        handleSendMessage(detail.message);
+      }
+    };
+    window.addEventListener('study-room:send-prompt', handleStudyRoomPrompt);
+    return () => window.removeEventListener('study-room:send-prompt', handleStudyRoomPrompt);
+  }, [handleSendMessage]);
 
    return (
      <div
@@ -557,7 +567,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
               }} />
               <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 'var(--fw-medium)' }}>
                 {status === 'streaming' || status === 'connecting'
-                  ? 'Loading mission and learner state...'
+                  ? 'Reading material and learner state...'
                   : contextLine}
               </span>
             </div>
@@ -579,28 +589,33 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
           >
             <RefreshCw size={16} />
           </button>
-          <button
-            onClick={toggleAssistantExpanded}
-            style={{
-              background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
-              padding: '6px', cursor: 'pointer', borderRadius: '4px'
-            }}
-            title={isAssistantExpanded ? "Minimize Chat" : "Expand Chat"}
-          >
-            {isAssistantExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
-          </button>
-          <button
-            onClick={toggleAssistant}
-            style={{
-              background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
-              padding: '6px', cursor: 'pointer', borderRadius: '4px'
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
+          {!embedded && (
+            <>
+              <button
+                onClick={toggleAssistantExpanded}
+                style={{
+                  background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
+                  padding: '6px', cursor: 'pointer', borderRadius: '4px'
+                }}
+                title={isAssistantExpanded ? "Minimize Chat" : "Expand Chat"}
+              >
+                {isAssistantExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+              </button>
+              <button
+                onClick={toggleAssistant}
+                style={{
+                  background: 'transparent', border: 'none', color: 'var(--text-tertiary)',
+                  padding: '6px', cursor: 'pointer', borderRadius: '4px'
+                }}
+                aria-label="Close chat"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -657,7 +672,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
         zIndex: 10,
       }}>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
-          {(tutorSurface ? TUTOR_QUICK_PROMPTS : MIND_QUICK_PROMPTS).map((prompt) => (
+          {quickPrompts.map((prompt) => (
             <button
               key={prompt}
               onClick={() => handleSendMessage(prompt)}
@@ -690,7 +705,7 @@ export const GlobalChat = memo(function GlobalChat({ endpoint = '/api/ai/chat', 
           textAlign: 'center', marginTop: '12px', fontSize: '10px',
           color: 'var(--text-tertiary)', fontWeight: 'var(--fw-medium)'
         }}>
-          Cognition OS can make mistakes. Verify important academic concepts.
+          Cognition can make mistakes. Verify important academic concepts.
         </div>
       </div>
     </div>

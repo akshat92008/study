@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import DashboardClientLayout from '@/components/layout/DashboardClientLayout';
-import CommandBar from '@/components/ui/CommandBar';
 import ToastContainer from '@/components/ui/Toast';
 import { headers } from 'next/headers';
 import { getAuthRedirectUrl } from '@/lib/auth/redirects';
@@ -60,7 +59,6 @@ export default async function DashboardLayout({
   return (
     <DashboardClientLayout profile={profile} serverRedirectUrl={redirectUrl}>
       {children}
-      <CommandBar />
       <ToastContainer />
       <RealtimeProvider>{null}</RealtimeProvider>
     </DashboardClientLayout>

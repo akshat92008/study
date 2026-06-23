@@ -39,7 +39,7 @@ export default function SettingsPage() {
       <div>
         <h1 style={{ margin: 0, fontSize: 'var(--fs-xl)', fontWeight: 900 }}>Settings</h1>
         <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: 'var(--fs-sm)' }}>
-          Manage your Cognition OS data, account, and support links.
+          Manage your Cognition data, account, and support links.
         </p>
       </div>
 
