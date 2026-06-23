@@ -1,2 +1,5 @@
 import { redirect } from 'next/navigation';
-export default function RevisionRedirect() { redirect('/dashboard'); }
+
+export default function RevisionPage() {
+  redirect('/review');
+}

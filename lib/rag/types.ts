@@ -50,6 +50,14 @@ export interface RagContext {
   grounded: boolean;
   evidenceStrength: EvidenceStrength;
   warnings: string[];
+  sourcesUsed?: Array<{
+    materialId: string;
+    materialTitle: string;
+    page?: number | null;
+    chunkId: string;
+    snippet: string;
+    relevanceScore: number;
+  }>;
 }
 
 export interface RagRetrieveInput {

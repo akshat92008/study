@@ -40,6 +40,10 @@ export async function gatherChatContext({
   subject,
   chapterSlug,
   topicSlug,
+  currentMaterialId,
+  currentTopic,
+  studyRoomIntent,
+  studyRoomMode,
 }: {
   supabase: any;
   userId: string;
@@ -55,6 +59,10 @@ export async function gatherChatContext({
   subject?: string;
   chapterSlug?: string;
   topicSlug?: string;
+  currentMaterialId?: string;
+  currentTopic?: string;
+  studyRoomIntent?: string;
+  studyRoomMode?: string;
 }) {
   const profilePromise = supabase.from('profiles').select('exam_type').eq('id', userId).maybeSingle();
   const explicitSourceRequest = isExplicitRagRequest(message || '');
@@ -218,10 +226,10 @@ export async function gatherChatContext({
   let systemPrompt = getMINDSystemPrompt(mindContext, crossSessionMemories, detectedIntent.intent);
 
   if (tutorSurface) {
-    let resolvedExam = exam || 'NEET';
+    let resolvedExam = exam || '';
     let resolvedSubject = subject || activeGoal?.subject || '';
     let resolvedChapter = chapterSlug || activeGoal?.chapter || '';
-    let resolvedTopic = topicSlug || '';
+    let resolvedTopic = currentTopic || topicSlug || '';
     let resolvedMicrotarget = 'General';
 
     if (activeGoalId && (!resolvedSubject || !resolvedChapter || !resolvedTopic)) {
@@ -241,8 +249,8 @@ export async function gatherChatContext({
       }
     }
 
-    resolvedSubject = resolvedSubject || 'Unknown';
-    resolvedChapter = resolvedChapter || 'Unknown';
+    resolvedSubject = resolvedSubject || 'Not specified';
+    resolvedChapter = resolvedChapter || 'Not specified';
     resolvedTopic = resolvedTopic || 'General';
 
     const { data: recentAttempts } = await supabase
@@ -253,22 +261,28 @@ export async function gatherChatContext({
       .limit(5);
 
     const weakConceptsList = mindContext?.weakConcepts || [];
+    const studyRoomIntentLabel = studyRoomIntent || 'general';
+    const activeMaterialId = currentMaterialId || (selectedMaterialIds?.length ? selectedMaterialIds[0] : '');
 
     const tutorContextBlock = `
-# TUTOR FOCUS CONTEXT
-You are the AI Tutor in a high-stakes competitive exam preparation system (NEET).
-You must tailor your guidance specifically to the current study context.
+# STUDY ROOM CONTEXT
+You are Cognition Study Room, an AI tutor that helps the user master their selected uploaded material.
+The user leads the session. You adapt.
+Use uploaded material first. If the answer is not present in the selected material, say so clearly before using general knowledge.
+Help the user understand, practice, solve doubts, generate similar questions, detect weak areas, and review until mastery.
+Do not force goals, targets, autonomous plans, or dashboards.
 
-- Exam: ${resolvedExam}
-- Goal ID: ${activeGoalId || 'None'}
-- Active Chapter: ${resolvedChapter}
-- Active Topic: ${resolvedTopic}
-- Active Microtarget: ${resolvedMicrotarget}
-- Subject: ${resolvedSubject}
+- Selected Material ID: ${activeMaterialId || 'None'}
+- Current Topic: ${resolvedTopic}
+- User Intent: ${studyRoomIntentLabel}
+${resolvedExam ? `- Exam Context: ${resolvedExam}` : ''}
+${activeGoalId ? `- Goal ID: ${activeGoalId}` : ''}
+${resolvedChapter !== 'Not specified' ? `- Chapter: ${resolvedChapter}` : ''}
+${resolvedSubject !== 'Not specified' ? `- Subject: ${resolvedSubject}` : ''}
 
 ## LEARNER'S WEAK AREAS
 ${weakConceptsList.length > 0
-  ? weakConceptsList.map((c: any) => `- ${c.name} (Subject: ${c.subject}, Chapter: ${c.chapter}, Mastery: ${c.mastery})`).join('\n')
+  ? weakConceptsList.map((c: any) => `- ${c.name} (Mastery: ${c.mastery})`).join('\n')
   : 'None identified yet.'}
 
 ## RECENT PRACTICE ATTEMPTS
@@ -276,7 +290,17 @@ ${recentAttempts && recentAttempts.length > 0
   ? recentAttempts.map((a: any) => `- Question: "${a.practice_items?.question || 'Practice Question'}" | Concept: "${a.practice_items?.concept_name || 'N/A'}" | Result: ${a.is_correct ? 'CORRECT' : 'WRONG'}`).join('\n')
   : 'No recent practice attempts.'}
 
-Be topic-aware. Focus explanations, analogies, and questions on the Active Topic and address the learner's weak areas. Keep responses concise, supportive, and extremely rigorous.
+## INTENT-SPECIFIC BEHAVIOR
+${studyRoomIntentLabel === 'teach' ? 'Explain the selected topic step-by-step from the material. Use examples. Ask one check question at the end.' : ''}
+${studyRoomIntentLabel === 'quiz' ? 'Ask ONE question at a time from or inspired by the material. Check the answer strictly. Explain mistakes. Save weak areas if needed.' : ''}
+${studyRoomIntentLabel === 'doubt' ? 'Identify what the user is confused about. Retrieve relevant source. Explain the missing concept. Offer a practice question.' : ''}
+${studyRoomIntentLabel === 'generate_similar' || studyRoomIntentLabel === 'question_bank' ? 'Retrieve representative questions from the material. Analyze their style. Generate new questions matching the style. Clearly label them as generated.' : ''}
+${studyRoomIntentLabel === 'diagnose' || studyRoomIntentLabel === 'diagnosis' ? 'Use actual session attempts. Summarize weak concepts with evidence. Suggest repair actions.' : ''}
+${studyRoomIntentLabel === 'explain_source' || studyRoomIntentLabel === 'source_grounded' ? 'Explain the topic exclusively from the uploaded material. Cite specific passages.' : ''}
+${studyRoomIntentLabel === 'harder_questions' ? 'Generate harder questions on the topic, increasing difficulty from the material baseline.' : ''}
+${studyRoomIntentLabel === 'review' ? 'Revise key points, formulas, and definitions from the selected topic. Use rapid-fire recall checks.' : ''}
+
+Be topic-aware. Focus explanations and questions on the Current Topic. Keep responses concise, supportive, and rigorous.
 `;
 
     systemPrompt += `\n\n${tutorContextBlock}`;

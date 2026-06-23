@@ -45,6 +45,14 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     sessionTurnsCount: z.number().nullable().optional(),
     selectedMaterialIds: z.array(z.string()).nullable().optional(),
     tutorSurface: z.boolean().nullable().optional(),
+    currentMaterialId: z.string().nullable().optional(),
+    currentTopic: z.string().nullable().optional(),
+    studyRoomIntent: z.enum([
+      'teach', 'quiz', 'doubt', 'generate_similar', 'review',
+      'diagnose', 'explain_source', 'harder_questions', 'solve_question',
+      'question_bank', 'diagnosis', 'source_grounded',
+    ]).nullable().optional(),
+    studyRoomMode: z.string().nullable().optional(),
     exam: z.string().nullable().optional(),
     subject: z.string().nullable().optional(),
     chapterSlug: z.string().nullable().optional(),
@@ -76,6 +84,10 @@ export async function parseChatRequest(req: NextRequest, requestId: string) {
     sessionTurnsCount: parsed.sessionTurnsCount ?? 0,
     selectedMaterialIds: parsed.selectedMaterialIds ?? undefined,
     tutorSurface: Boolean(parsed.tutorSurface),
+    currentMaterialId: parsed.currentMaterialId ?? undefined,
+    currentTopic: parsed.currentTopic ?? undefined,
+    studyRoomIntent: parsed.studyRoomIntent ?? undefined,
+    studyRoomMode: parsed.studyRoomMode ?? undefined,
     exam: parsed.exam ?? undefined,
     subject: parsed.subject ?? undefined,
     chapterSlug: parsed.chapterSlug ?? undefined,
@@ -129,7 +141,11 @@ export async function loadChatContext(
   exam?: string,
   subject?: string,
   chapterSlug?: string,
-  topicSlug?: string
+  topicSlug?: string,
+  currentMaterialId?: string,
+  currentTopic?: string,
+  studyRoomIntent?: string,
+  studyRoomMode?: string,
 ) {
   return gatherChatContext({
     supabase,
@@ -146,6 +162,10 @@ export async function loadChatContext(
     subject,
     chapterSlug,
     topicSlug,
+    currentMaterialId,
+    currentTopic,
+    studyRoomIntent,
+    studyRoomMode,
   });
 }
 

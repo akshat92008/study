@@ -99,41 +99,6 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
     chunks = await keywordFallback({ ...input, materialIds }, topK);
   }
 
-  if (chunks.length === 0 && materialIds?.length && (input.goalId || input.chatSessionId)) {
-    if (embedding && embedding.length > 0) {
-      const { data, error } = await supabase.rpc('match_study_material_chunks', {
-        query_embedding: `[${embedding.join(',')}]`,
-        match_user_id: input.userId,
-        match_count: topK,
-        material_filter: null,
-        subject_filter: input.subject ?? null,
-        chapter_filter: input.chapter ?? null,
-        similarity_threshold: RAG_CONFIG.minSimilarity,
-      });
-
-      if (!error && Array.isArray(data)) {
-        chunks = data.map((row: any) => ({
-          id: row.id,
-          materialId: row.material_id,
-          materialTitle: row.material_title ?? 'Uploaded material',
-          sourceType: row.source_type ?? null,
-          subject: row.subject ?? null,
-          chapter: row.chapter ?? null,
-          heading: row.heading ?? null,
-          pageStart: row.page_start ?? null,
-          pageEnd: row.page_end ?? null,
-          // Fix 2: Standardize on content, support legacy text
-          text: wrapSourceText(normalizeChunkText(row)),
-          score: Number(row.similarity ?? 0),
-        })).filter((chunk: RagChunk) => chunk.text.length > 0);
-      }
-    }
-
-    if (chunks.length === 0) {
-      chunks = await keywordFallback({ ...input, materialIds: undefined }, topK);
-    }
-  }
-
   const costMode = getAiCostMode();
   // Assume chat task for budget if not specified.
   const task: AiTask = (input as any).task ?? 'chat'; 
@@ -150,6 +115,14 @@ export async function retrieveRagContext(input: RagRetrieveInput): Promise<RagCo
     grounded: chunks.length > 0,
     evidenceStrength: getEvidenceStrength(chunks),
     warnings: chunks.length === 0 ? ['No relevant uploaded source chunks found.'] : [],
+    sourcesUsed: chunks.map(c => ({
+      materialId: c.materialId,
+      materialTitle: c.materialTitle,
+      page: c.pageStart,
+      chunkId: c.id,
+      snippet: c.text,
+      relevanceScore: c.score,
+    })),
   };
 
   try {

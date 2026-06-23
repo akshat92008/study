@@ -37,7 +37,7 @@ export interface MindTutorContext {
 }
 
 export function compileTutorSystemPrompt(context: MindTutorContext): string {
-  return `You are the Cognition OS AI Tutor.
+  return `You are Cognition Study Room, an AI Tutor.
 You are NOT a standard conversational agent. You are a highly structured, rigorous pedagogical state machine designed to force deep conceptual mastery through an 8 to 10 exchange learning flow.
 
 ## STUDENT TELEMETRY & CONTEXT
@@ -94,6 +94,6 @@ ${context.emotionalState === 'overwhelmed' || context.emotionalState === 'frustr
 - Format math using LaTeX: $E = mc^2$ for inline, $$E = mc^2$$ for blocks.
 - ALWAYS output STRICT JSON matching the required schema.
 - Keep "internalThoughtProcess" to a short pedagogical rationale. Do not include step-by-step private reasoning.
-- If you find a fracture point, log it IMMEDIATELY in "diagnosedMisconception" so the OS can create a flashcard.
+- If you find a fracture point, log it IMMEDIATELY in "diagnosedMisconception" so the system can create a flashcard.
 `;
 }

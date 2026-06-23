@@ -50,7 +50,7 @@ export class CognitionError extends Error {
 export function toCognitionError(
   error: unknown,
   fallbackCode: CognitionErrorCode = 'UNKNOWN_INTERNAL_ERROR',
-  fallbackMessage = 'Cognition OS could not complete this action.',
+  fallbackMessage = 'Cognition could not complete this action.',
   traceId?: string
 ): CognitionError {
   if (error instanceof CognitionError) return error;

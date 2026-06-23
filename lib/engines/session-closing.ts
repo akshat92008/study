@@ -99,7 +99,7 @@ export async function generateSessionClosingMessage(
     const masteryNewPct = newMastery !== null ? Math.round(newMastery * 100) : null;
 
     // Build a data-rich prompt so Gemini writes the message like a real coach
-    const prompt = `You are the closing message writer for Cognition OS, an AI study OS.
+    const prompt = `You are the closing message writer for Cognition Study Room.
 
 Write a SHORT (3-5 sentences max) personalized closing message for a student who just finished a study session.
 
@@ -134,7 +134,7 @@ Write only the message. Nothing else.`;
       feature: 'chat',
       route: 'chat:session-closing',
       model: 'flash',
-      systemPrompt: 'You are the closing message writer for Cognition OS, an AI study OS.',
+      systemPrompt: 'You are the closing message writer for Cognition Study Room.',
       userPrompt: prompt,
       maxOutputTokens: 200
     });

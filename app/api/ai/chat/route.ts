@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
     // 2. Parse Request
     const parsedRequest = await parseChatRequest(req, requestId);
     const isTutorRoute = new URL(req.url).pathname.endsWith('/api/ai/tutor');
-    const { message, imageBase64, imageMimeType, documentBase64, documentMimeType, chatId, requestedGoalId, exam, subject, chapterSlug, topicSlug } = parsedRequest;
+    const { message, imageBase64, imageMimeType, documentBase64, documentMimeType, chatId, requestedGoalId, exam, subject, chapterSlug, topicSlug, currentMaterialId, currentTopic, studyRoomIntent, studyRoomMode } = parsedRequest;
     const tutorSurface = parsedRequest.tutorSurface || isTutorRoute;
     let { sessionTurnsCount } = parsedRequest;
 
@@ -161,7 +161,7 @@ export async function POST(req: NextRequest) {
     const isSimpleMessage = cleanMsg === 'hi' || cleanMsg === 'hello' || cleanMsg === 'hey' || cleanMsg === 'ok' || cleanMsg === 'thanks' || cleanMsg === 'thank you';
     const { selectedMaterialIds } = parsedRequest;
     
-    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, selectedMaterialIds, tutorSurface, exam, subject, chapterSlug, topicSlug);
+    const contextResult = await loadChatContext(supabase, user.id, message, recentHistory, isSimpleMessage, activeGoal, activeGoalId, sessionId, selectedMaterialIds, tutorSurface, exam, subject, chapterSlug, topicSlug, currentMaterialId, currentTopic, studyRoomIntent, studyRoomMode);
     const { profilePreview, detectedIntent, emotion, mindContext, systemPrompt } = contextResult;
     const effectiveIntent = tutorSurface
       ? { ...detectedIntent, intent: 'TUTOR_SESSION', topic: detectedIntent.topic ?? activeGoal?.title ?? undefined }

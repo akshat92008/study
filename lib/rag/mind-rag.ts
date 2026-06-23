@@ -23,7 +23,9 @@ export async function buildMindRagContext(input: {
     .eq('user_id', input.userId)
     .eq('status', 'ready');
 
-  if (input.goalId && input.chatSessionId) {
+  if (input.selectedMaterialIds && input.selectedMaterialIds.length > 0) {
+    readyQuery = readyQuery.in('id', input.selectedMaterialIds);
+  } else if (input.goalId && input.chatSessionId) {
     readyQuery = (readyQuery as any).or(`goal_id.eq.${input.goalId},chat_session_id.eq.${input.chatSessionId}`);
   } else if (input.goalId) {
     readyQuery = readyQuery.eq('goal_id', input.goalId);
@@ -33,7 +35,7 @@ export async function buildMindRagContext(input: {
 
   let { count } = await readyQuery;
 
-  if ((count ?? 0) === 0 && input.goalId) {
+  if ((count ?? 0) === 0 && input.goalId && (!input.selectedMaterialIds || input.selectedMaterialIds.length === 0)) {
     const fallback = await supabase
       .from('study_materials')
       .select('id', { count: 'exact', head: true })

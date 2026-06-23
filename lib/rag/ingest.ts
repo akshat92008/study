@@ -9,6 +9,7 @@ import { EventDispatcher } from '@/lib/events/orchestrator';
 import { recordAgentAction } from '@/lib/agents/agent-runtime';
 import { budgetedVisionCall } from '@/lib/ai/budgeted';
 import { analyzeMaterialText } from '@/lib/materials/study-room-analysis';
+import { extractAndStoreQuestions } from '@/lib/materials/extract-questions';
 
 export type IngestStudyMaterialInput = {
   materialId: string;
@@ -108,7 +109,14 @@ export async function ingestStudyMaterial(input: IngestStudyMaterialInput) {
     }
 
     await updateRagJob(job?.id, input.userId, 'chunking');
-    const materialAnalysis = analyzeMaterialText(extracted.pages.map(page => page.text).join('\n\n'));
+    const fullText = extracted.pages.map(page => page.text).join('\n\n');
+    const materialAnalysis = analyzeMaterialText(fullText);
+    
+    // Extract and store questions
+    await extractAndStoreQuestions(supabase, input.userId, input.materialId, fullText).catch(e => {
+      logger.warn('Failed to extract material questions', { error: e.message, materialId: input.materialId });
+    });
+
     const chunks = chunkExtractedPages({
       pages: extracted.pages,
       maxChunks: config.maxChunksPerFile,

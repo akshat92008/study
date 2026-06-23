@@ -42,12 +42,12 @@ const navItems = [
 ];
 
 const loopSteps: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Create Goal', icon: Target },
-  { label: 'Upload Sources', icon: UploadCloud },
+  { label: 'Upload Material', icon: UploadCloud },
+  { label: 'Study Room', icon: Target },
   { label: 'Ask Tutor', icon: MessageSquareText },
-  { label: 'Autopsy Mistakes', icon: SearchCheck },
-  { label: 'Review Memory', icon: BrainCircuit },
-  { label: 'Get Mission', icon: Compass },
+  { label: 'Review Mistakes', icon: SearchCheck },
+  { label: 'Strengthen Memory', icon: BrainCircuit },
+  { label: 'Master Concept', icon: Compass },
 ];
 
 const featureVideos: Array<{
@@ -58,16 +58,16 @@ const featureVideos: Array<{
   mock: FeatureMockKind;
 }> = [
   {
-    eyebrow: 'Goal Intelligence',
-    title: 'Start with any goal.',
-    copy: 'Type what you want to master. Cognition OS turns it into a structured roadmap with starter targets and a first mission.',
+    eyebrow: 'Study Intelligence',
+    title: 'Start with any material.',
+    copy: 'Upload what you want to master. Cognition turns it into an interactive study session with your own AI tutor.',
     videoSrc: '/landing/videos/goal-roadmap.mp4',
     mock: 'goal-roadmap',
   },
   {
     eyebrow: 'Source Library',
     title: 'Upload the chaos.',
-    copy: 'PDFs, notes, question papers, and lecture material become searchable memory for your AI tutor.',
+    copy: 'PDFs, markdown, and text notes become searchable memory for your AI tutor.',
     videoSrc: '/landing/videos/source-memory.mp4',
     mock: 'source-memory',
   },
@@ -93,9 +93,9 @@ const featureVideos: Array<{
     mock: 'review-memory',
   },
   {
-    eyebrow: 'Mission Loop',
-    title: 'Wake up to the next move.',
-    copy: 'Every source, question, mistake, and review updates tomorrow’s mission so you always know what to do next.',
+    eyebrow: 'Study Loop',
+    title: 'Keep your momentum.',
+    copy: 'Every source, question, mistake, and review adapts to what you need to study next.',
     videoSrc: '/landing/videos/daily-mission.mp4',
     mock: 'daily-mission',
   },
@@ -108,8 +108,8 @@ const storySteps: Array<{
   icon: LucideIcon;
 }> = [
   {
-    title: 'Create a goal',
-    copy: 'Name what you want to master, then let the system shape it into milestones.',
+    title: 'Upload Material',
+    copy: 'Upload PDFs, text files, or markdown notes.',
     mode: 'goal',
     icon: Target,
   },
@@ -138,8 +138,8 @@ const storySteps: Array<{
     icon: BrainCircuit,
   },
   {
-    title: 'Receive next mission',
-    copy: 'Wake up to the smallest serious plan that moves the goal forward.',
+    title: 'Master the concept',
+    copy: 'Your AI tutor adapts to help you master the material.',
     mode: 'mission',
     icon: Compass,
   },
@@ -505,7 +505,7 @@ function HeroSection() {
 
         <Reveal delay={0.24}>
           <p className="mx-auto mt-7 max-w-3xl text-[1.05rem] leading-8 text-white/68 sm:text-[1.22rem]">
-            Upload PDFs, notes, slides, or question banks. Cognition turns them into an AI Study Room where you can learn, practice, solve doubts, detect weak areas, and revise.
+            Upload PDFs, text files, or markdown notes. Cognition turns them into an AI Study Room where you can learn, practice, solve doubts, detect weak areas, and revise.
           </p>
         </Reveal>
 
@@ -790,10 +790,10 @@ function ProductLoop() {
       <div className={pageContainerClass}>
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-[2.25rem] font-semibold leading-tight text-white sm:text-[3.4rem]">
-            One loop. Every day.
+            One study room. Everything you need.
           </h2>
           <p className="mt-4 text-[1rem] leading-7 text-white/62 sm:text-[1.15rem]">
-            Stop managing scattered tools. Cognition OS builds the next action from everything you learn.
+            Stop managing scattered tools. Cognition acts as your AI Study Room.
           </p>
         </Reveal>
 

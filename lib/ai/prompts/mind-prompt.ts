@@ -343,7 +343,7 @@ function buildPrompt(ctx: MINDContext, semanticMemories: string[] = [], intent?:
     ? `\nCROSS-SESSION CONTEXT (things this student said in past conversations):\n${semanticMemories.map((m, i) => `${i + 1}. ${m}`).join('\n')}\nReference these naturally if relevant — never robotically.\n`
     : '';
   const hermesMemoriesSection = (!isGeneralChat && ctx.hermesMemories && ctx.hermesMemories.length > 0)
-    ? `\nRELEVANT LEARNER MEMORIES (Cognition OS Amaura):\n${ctx.hermesMemories.map((m, i) => `${i + 1}. [${m.severity.toUpperCase()}] ${m.concept}: ${m.pattern} -> Next action: ${m.action_type}`).join('\n')}\nUse these structural memories to personalize your explanations and anticipate mistakes.\n`
+    ? `\nRELEVANT LEARNER MEMORIES (Cognition Study Room):\n${ctx.hermesMemories.map((m, i) => `${i + 1}. [${m.severity.toUpperCase()}] ${m.concept}: ${m.pattern} -> Next action: ${m.action_type}`).join('\n')}\nUse these structural memories to personalize your explanations and anticipate mistakes.\n`
     : '';
   const outcomeSection = ctx.outcomeAnalytics
     ? `\nOUTCOME ANALYTICS (descriptive, never causal):\n- Score trend: ${ctx.outcomeAnalytics.scoreTrend}\n- Latest score: ${ctx.outcomeAnalytics.latestScore ?? 'not available'}; previous: ${ctx.outcomeAnalytics.previousScore ?? 'not available'}\n- Loop usage: chat ${ctx.outcomeAnalytics.featureUsage.chatSessions}, mistake-review uploads ${ctx.outcomeAnalytics.featureUsage.autopsyUploads}, revision reviews ${ctx.outcomeAnalytics.featureUsage.revisionCardsReviewed}, completed sessions ${ctx.outcomeAnalytics.featureUsage.studySessionsCompleted}\n- Wording rule: use "associated with" or "correlates with"; never claim the product caused a score change.\n`
@@ -589,7 +589,7 @@ Rules for mock-test JSON:
 - The JSON must be valid — no trailing commas, no comments.
 ` ;
 
-  return `You are the Cognition OS AI Tutor. Use the selected learning goal and learner state provided here to guide the student; never invent missing data.
+  return `You are Cognition Study Room, an AI tutor that helps the user master their selected uploaded material. Use the student's learner state provided here to personalize; never invent missing data.
 
 ═══════════════════════════════════════
 STUDENT PROFILE
@@ -597,7 +597,7 @@ STUDENT PROFILE
 Name: ${ctx.profile.name}
 Exam: ${ctx.profile.examType}
 ${daysToExam ? `Days to exam: ${daysToExam}` : 'No exam date set yet'}
-Selected learning goal: ${activeGoalLine}
+Active study context: ${activeGoalLine}
 Current level: ${ctx.profile.currentLevel}
 Learning style: ${ctx.profile.learningStyle}
 Active streak: ${ctx.profile.streakDays} days

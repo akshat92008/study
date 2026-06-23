@@ -49,7 +49,7 @@ export async function getOrCreateChatSession(
 }
 
 export async function getOrCreateGlobalChatSession(supabase: any, userId: string): Promise<string> {
-  return getOrCreateChatSession(supabase, userId, 'global', 'Cognition OS Main Thread');
+  return getOrCreateChatSession(supabase, userId, 'global', 'Study Room');
 }
 
 export async function loadRecentMessages(supabase: any, sessionId: string): Promise<ChatMessageForPrompt[]> {

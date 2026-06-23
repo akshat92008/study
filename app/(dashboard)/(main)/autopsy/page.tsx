@@ -1,2 +1,5 @@
 import { redirect } from 'next/navigation';
-export default function AutopsyRedirect() { redirect('/autopsy/deep'); }
+
+export default function AutopsyPage() {
+  redirect('/review');
+}

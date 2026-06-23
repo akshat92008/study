@@ -11,9 +11,9 @@ export type TutorRetrievalPacket = {
 export function buildTutorRetrievalPacket(context: ActiveLearningContext): TutorRetrievalPacket {
   if (!context.goalId) {
     return {
-      systemPromptAddendum: 'No active learning goal. Prompt user to select a goal.',
-      sourceChunkIds: [],
-      activeConceptId: null,
+      systemPromptAddendum: 'No active goal set. The user is studying from uploaded material. Help them learn, practice, and solve doubts from the selected material. Do not require or prompt the user to select a goal.',
+      sourceChunkIds: context.sourceChunkIds ?? [],
+      activeConceptId: context.topicId ?? null,
     };
   }
 
@@ -47,7 +47,7 @@ ${recentQsStr}
 
 === RULES ===
 1. You MUST stay strictly within the domain of the Chapter and Current Topic.
-2. DO NOT hallucinate facts outside the NCERT syllabus or the RETRIEVED SOURCE CHUNKS.
+2. DO NOT hallucinate facts outside the student's uploaded material or the RETRIEVED SOURCE CHUNKS.
 3. If mode is REPAIR or AUTOPSY, prioritize addressing the Recent Weak Areas.
 4. Follow the CITING INSTRUCTIONS exactly if source chunks are provided in the context.
 5. Ask one question at a time.

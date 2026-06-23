@@ -2,7 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 
 export type WeakAreaQueryOptions = {
   userId: string;
-  goalId: string;
+  goalId?: string | null;
+  materialId?: string | null;
   chapterSlug?: string;
   topicSlug?: string;
   granularity?: "chapter" | "topic" | "subtopic" | "concept" | "microskill" | "error_pattern";
@@ -10,16 +11,23 @@ export type WeakAreaQueryOptions = {
 };
 
 export async function getWeakAreasForUser(supabase: any, options: WeakAreaQueryOptions) {
-  const { userId, goalId, chapterSlug, topicSlug, granularity = "concept", limit = 10 } = options;
+  const { userId, goalId, materialId, chapterSlug, topicSlug, granularity = "concept", limit = 10 } = options;
 
   let query = supabase
     .from('weak_area_events')
     .select('*')
     .eq('user_id', userId)
-    .eq('goal_id', goalId)
     .is('resolved_at', null)
     .order('evidence_count', { ascending: false })
     .order('created_at', { ascending: false });
+
+  // Apply optional filters — goalId is no longer required
+  if (goalId) {
+    query = query.eq('goal_id', goalId);
+  }
+  if (materialId) {
+    query = query.eq('material_id', materialId);
+  }
 
   if (chapterSlug) {
     query = query.eq('chapter_slug', chapterSlug);
