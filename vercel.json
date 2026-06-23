@@ -1,12 +1,2 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/cleanup",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/internal/workers/process-events",
-      "schedule": "*/10 * * * *"
-    }
-  ]
 }
